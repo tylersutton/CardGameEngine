@@ -11,7 +11,7 @@ func _init(game_to_control: Game) -> void:
 func draw(from: Zone, to: Zone, amount: int = 1) -> void:
 	for i in amount:
 		if from.is_empty():
-			game.trigger(from.name + "_empty")
+			game.zone_empty(from)
 		if from.is_empty():
 			return
 		game.move(from.cards.back(), to)
@@ -144,6 +144,10 @@ func owner(card: Card) -> int:
 
 func movable(cards: Variant, to: Variant) -> Array:
 	return game.movable(cards_in(cards), zones_in(to))
+
+
+func matching(cards: Variant, condition: String) -> Array:
+	return game.matching(cards_in(cards), condition)
 
 
 func face_down(cards: Variant) -> Array:

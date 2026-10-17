@@ -303,7 +303,7 @@ Named step lists:
 |---|---|
 | `start` | The game begins (and on Reload) |
 | `turn_start` | After every `end_turn()` |
-| `<zone>_empty` | A `draw` needs a card from that zone and it's empty, e.g. `deck_empty` |
+| `<zone>_empty` | A `draw` needs a card from that zone and it's empty, e.g. `deck_empty`. For a per-player zone (`deck_2`), `deck_empty` runs as that zone's owner, so `["move(discard, deck)", "shuffle(deck)"]` refills whoever ran out. |
 | any other name | You call it with `trigger('name')`. Handy for routines used in several places, like a `deal`. |
 
 ### `effects`
@@ -385,7 +385,7 @@ On a bot's turn, it tries every legal input: each allowed drag, each click on a 
 
 Write `prefer` as "how good is this position for me?". Things to know:
 - **It only looks one input ahead.**
-- **It doesn't peek.** Cards it couldn't see (face down, or in another player's `owner`/`human` hand) are shuffled among themselves before each try, several times, and the results averaged. So drawing from the deck is judged on what it might get, not what's really there.
+- **It doesn't peek.** Cards it couldn't see (face down, even its own, like the order of its deck; or in another player's `owner`/`human` hand) are shuffled among themselves before each try, several times, and the results averaged. So drawing from the deck is judged on what it might get, not what's really there.
   - `"samples": 4` sets how many shuffles (more is fairer but slower).
   - `"peek": true` lets the bot see everything, which is stronger and faster.
 - **It never makes inputs that only reorder cards,** such as sorting.
@@ -487,6 +487,7 @@ To repeat steps while something is true, use a `while` step:
 | `where(cards, 'column', value)` | The cards whose column equals `value` |
 | `without(cards, removed)` | The cards, minus the removed ones |
 | `movable(cards, to)` | The cards that a move rule currently allows into `to` (a zone, a group like `foundation`, or a list like `[tableau, foundation]`). `count(movable(hand, pile)) == 0` means "can't play"; `"choose": "movable(hand, knock)"` offers only legal cards |
+| `matching(cards, 'condition')` | The cards for which a named [condition](#conditions) holds, checked with each card as `card`, e.g. `matching(hand, 'is_treasure')` with `"is_treasure": "card.data.type == 'Treasure'"` |
 | `face_down(cards)` | The cards that are face down, e.g. `flip(face_down(top(from)))` turns the new top card up only if it's down |
 
 **Melds** (need `melds` in the game file)

@@ -271,6 +271,26 @@ func trigger(event: String) -> void:
 		run(rules.triggers[event])
 
 
+## Fires "<zone>_empty"; for a per-player zone with no trigger of its own, fires "<kind>_empty"
+## as its owner, so "deck_empty" can say move(discard, deck) for whoever ran out.
+func zone_empty(zone: Zone) -> void:
+	var own_trigger := zone.name + "_empty"
+	if zone.owner == 0 or own_trigger in rules.triggers:
+		trigger(own_trigger)
+		return
+	var turn: Variant = variables[PLAYER_VARIABLE]
+	variables[PLAYER_VARIABLE] = zone.owner
+	trigger(zone.kind + "_empty")
+	variables[PLAYER_VARIABLE] = turn
+
+
+func matching(cards: Array, condition: String) -> Array:
+	if condition not in rules.conditions:
+		failed.emit("No condition named \"%s\" in \"conditions\"" % condition)
+		return []
+	return cards.filter(func(card: Card) -> bool: return _holds(rules.conditions[condition], card))
+
+
 func current_player() -> int:
 	return int(variables.get(PLAYER_VARIABLE, 1))
 
@@ -391,14 +411,14 @@ static func _reachable_cards(zone: Zone) -> Array[Card]:
 	return zone.cards
 
 
-## Cards whose identity the player can't know: face down, or in another player's hidden hand.
+## Cards whose identity the player can't know: face down (even their own, like their deck's order),
+## or in another player's hidden hand.
 func hidden_from(player: int) -> Array[Card]:
 	var hidden: Array[Card] = []
 	for zone: Zone in zones.values():
-		if zone.owner == player:
-			continue
+		var hidden_zone := zone.owner != player and zone.face in [Zone.FACE_OWNER, Zone.FACE_HUMAN]
 		for card in zone.cards:
-			if not card.face_up or zone.face in [Zone.FACE_OWNER, Zone.FACE_HUMAN]:
+			if not card.face_up or hidden_zone:
 				hidden.append(card)
 	return hidden
 
