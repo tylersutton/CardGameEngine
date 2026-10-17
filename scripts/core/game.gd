@@ -50,6 +50,8 @@ var chosen: Variant
 var asked := ""
 var history: Array[Dictionary] = []
 var pending_log: Dictionary = {}
+var pending_line := ""
+var pending_line_repeats := 0
 var move_from: Zone
 var move_to: Zone
 var checking_moves := false
@@ -124,7 +126,7 @@ func ask(action_name: String) -> void:
 	if action_name in rules.actions:
 		asked = action_name
 	else:
-		failed.emit("No action named \"%s\" to ask for" % action_name)
+		report_failure("No action named \"%s\" to ask for" % action_name)
 
 
 func choosing_cards() -> bool:
@@ -210,6 +212,7 @@ func drag(card: Card, destination: Zone, index := -1) -> bool:
 	var rule := {} if sandbox else _matching_move(card, source, destination)
 	if rule.is_empty() and not can_move(card, destination):
 		log_line("[not allowed] %s: %s → %s (%s)" % [card.title, source.name, destination.name, _refusal_reason(source, destination)])
+		_flush_log()
 		return false
 	_during_move(source, destination, func() -> void:
 		for carried_card in carried(card):
@@ -236,7 +239,7 @@ func movable(cards: Array, destinations: Array) -> Array:
 	checking_moves = false
 	if checked_itself:
 		checked_itself = false
-		failed.emit("movable() was used inside a move rule that movable() was checking; that inner check counts as no moves")
+		report_failure("movable() was used inside a move rule that movable() was checking; that inner check counts as no moves")
 	return result
 
 
@@ -262,6 +265,7 @@ func reorder(card: Card, index: int) -> void:
 	zone.reorder(card, index)
 	_remember(before)
 	log_line("  %s: position %d in %s (manual order)" % [card.title, index + 1, zone.name])
+	_flush_log()
 	state_changed.emit()
 
 
@@ -286,7 +290,7 @@ func zone_empty(zone: Zone) -> void:
 
 func matching(cards: Array, condition: String) -> Array:
 	if condition not in rules.conditions:
-		failed.emit("No condition named \"%s\" in \"conditions\"" % condition)
+		report_failure("No condition named \"%s\" in \"conditions\"" % condition)
 		return []
 	return cards.filter(func(card: Card) -> bool: return _holds(rules.conditions[condition], card))
 
@@ -356,6 +360,7 @@ func undo() -> void:
 	while is_bot_turn() and history:
 		_restore(history.pop_back())
 	log_line("[undo]")
+	_flush_log()
 	variables_changed.emit()
 	state_changed.emit()
 
@@ -494,6 +499,7 @@ func _try_once(input: Callable, measure: String) -> Variant:
 	selected.assign(choice_state[3])
 	asked = choice_state[4]
 	pending_log.clear()
+	pending_line = ""
 	_set_quiet(false)
 	return value
 
@@ -539,7 +545,7 @@ func _remember(before: Dictionary) -> void:
 
 func run(steps: Array, card: Card = null) -> bool:
 	if nesting >= MAX_NESTING:
-		failed.emit("Stopped: steps triggered each other %d levels deep (endless loop?)" % MAX_NESTING)
+		report_failure("Stopped: steps triggered each other %d levels deep (endless loop?)" % MAX_NESTING)
 		return false
 	nesting += 1
 	var completed := _run_steps(steps, card)
@@ -559,7 +565,7 @@ func _run_steps(steps: Array, card: Card) -> bool:
 			continue
 		var text: String = step["if"] if step is Dictionary else step
 		var result: Variant = _evaluate(text, card)
-		_flush_log()
+		_flush_moves()
 		if evaluation_failed:
 			return false
 		if step is Dictionary:
@@ -576,7 +582,7 @@ func _run_loop(loop: Dictionary, card: Card) -> bool:
 		return false
 	var item_list: Variant = _loop_items(items)
 	if item_list == null:
-		failed.emit("Can't loop over \"%s\": it should be a zone, a list, or a number" % loop.in)
+		report_failure("Can't loop over \"%s\": it should be a zone, a list, or a number" % loop.in)
 		return false
 	var name: String = loop.for
 	var number_name := name + LOOP_NUMBER_SUFFIX
@@ -613,7 +619,7 @@ func _run_while(loop: Dictionary, card: Card) -> bool:
 			return not evaluation_failed
 		if not run(loop.get("do", []), card):
 			return false
-	failed.emit("Stopped: \"while %s\" was still true after %d repeats" % [loop.while, MAX_REPEATS])
+	report_failure("Stopped: \"while %s\" was still true after %d repeats" % [loop.while, MAX_REPEATS])
 	return false
 
 
@@ -670,7 +676,7 @@ func _evaluate(text: String, card: Card) -> Variant:
 	var result: Variant = _evaluate_logic(logic.get(text, text), card, failure)
 	evaluation_failed = not failure.is_empty()
 	if evaluation_failed:
-		failed.emit("Step failed: \"%s\": %s" % [text, failure.message])
+		report_failure("Step failed: \"%s\": %s" % [text, failure.message])
 	return result
 
 
@@ -718,22 +724,44 @@ func flip(card: Card) -> void:
 	zone.changed.emit(zone)
 
 
+## Identical lines in a row are logged once with a count, e.g. "if count(pile) == 0 → else (×17)".
 func log_line(text: String) -> void:
+	if text == pending_line and pending_log.is_empty():
+		pending_line_repeats += 1
+		return
 	_flush_log()
-	logged.emit(text)
+	pending_line = text
+	pending_line_repeats = 1
 
 
 ## Card moves and flips are collected and logged one line per kind, e.g. "deck → hand_1: 2♦, 7♥".
 func _log_item(kind: String, item: String) -> void:
+	_flush_line()
 	if kind not in pending_log:
 		pending_log[kind] = []
 	pending_log[kind].append(item)
 
 
 func _flush_log() -> void:
+	_flush_line()
+	_flush_moves()
+
+
+func _flush_moves() -> void:
 	for kind: String in pending_log:
 		logged.emit("  %s: %s" % [kind, ", ".join(pending_log[kind])])
 	pending_log.clear()
+
+
+func report_failure(text: String) -> void:
+	_flush_log()
+	failed.emit(text)
+
+
+func _flush_line() -> void:
+	if pending_line:
+		logged.emit(pending_line + (" (×%d)" % pending_line_repeats if pending_line_repeats > 1 else ""))
+	pending_line = ""
 
 
 func shows_face(card: Card) -> bool:
@@ -749,7 +777,7 @@ func shows_face(card: Card) -> bool:
 func set_variable(variable: String, value: Variant) -> void:
 	var name := _resolve(variable)
 	if name not in variables:
-		failed.emit("Unknown variable \"%s\" (declare it in \"variables\")" % name)
+		report_failure("Unknown variable \"%s\" (declare it in \"variables\")" % name)
 		return
 	variables[name] = value
 	log_line("  %s = %s" % [name, format_value(value)])

@@ -82,7 +82,7 @@ func next_player(seats: int = 1) -> int:
 func zone(kind: String, player: int) -> Zone:
 	var name := "%s_%d" % [kind, player]
 	if name not in game.zones:
-		game.failed.emit("No zone \"%s\"" % name)
+		game.report_failure("No zone \"%s\"" % name)
 		return null
 	return game.zones[name]
 
@@ -95,7 +95,7 @@ func trigger(event: String) -> void:
 	if event in game.rules.triggers:
 		game.trigger(event)
 	else:
-		game.failed.emit("No trigger named \"%s\" in \"triggers\"" % event)
+		game.report_failure("No trigger named \"%s\" in \"triggers\"" % event)
 
 
 func count(cards: Variant) -> int:

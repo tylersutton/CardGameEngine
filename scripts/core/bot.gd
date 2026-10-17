@@ -21,7 +21,7 @@ func take_input() -> bool:
 		turn_player = game.current_player()
 		inputs_this_turn = 0
 	if inputs_this_turn >= MAX_INPUTS_PER_TURN:
-		game.failed.emit("Bot %d stopped after %d inputs this turn (is \"prefer\" pushing it in circles?)" % [turn_player, MAX_INPUTS_PER_TURN])
+		game.report_failure("Bot %d stopped after %d inputs this turn (is \"prefer\" pushing it in circles?)" % [turn_player, MAX_INPUTS_PER_TURN])
 		return false
 	var best_input: Callable
 	var best_value := -INF

@@ -36,7 +36,7 @@ To jump straight into one game while working on it, open `scenes/main.tscn`, set
 | **Sandbox** | Ignore the rules and move anything anywhere, for testing. Rule follow-ups (like scoring) don't run in sandbox. |
 | **Zone names** | Show every zone's name and card count above it: the names to use in rules (e.g. `won_1`). Off by default. |
 
-The right-hand panel shows the game's variables and live readouts at the top, and a log of everything that happened below. Errors appear in red. Card moves and flips are grouped, one line per step and destination, e.g. `deck → hand_1: 5♦, 4♥, K♦`.
+The right-hand panel shows the game's variables and live readouts at the top, and a log of everything that happened below. Errors appear in red. Card moves and flips are grouped, one line per step and destination, e.g. `deck → hand_1: 5♦, 4♥, K♦`. Identical lines in a row are shown once with a count, e.g. `if count(pile) == 0 → else (×17)`.
 
 ## Tutorial: making a game
 
