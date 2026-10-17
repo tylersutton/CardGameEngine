@@ -1,18 +1,25 @@
-name,pile,cost,type,action,coins,cards,actions,buys,vp,text,ink,count,on_play
-Copper,1,0,Treasure,,1,,,,,$1,#9a7b00,60,treasure
-Silver,2,3,Treasure,,2,,,,,$2,#9a7b00,40,treasure
-Gold,3,6,Treasure,,3,,,,,$3,#9a7b00,30,treasure
-Estate,4,2,Victory,,,,,,1,1 VP,#2e7d32,14,
-Duchy,5,5,Victory,,,,,,3,3 VP,#2e7d32,8,
-Province,6,8,Victory,,,,,,6,6 VP,#2e7d32,8,
-Curse,7,0,Curse,,,,,,-1,-1 VP,#6a1b9a,10,
-Village,8,3,Action,1,,1,2,,,"+1 Card, +2 Actions",#222222,10,action
-Smithy,9,4,Action,1,,3,,,,+3 Cards,#222222,10,action
-Market,10,5,Action,1,1,1,1,1,,"+1 Card, +1 Action, +1 Buy, +$1",#222222,10,action
-Festival,11,5,Action,1,2,,2,1,,"+2 Actions, +1 Buy, +$2",#222222,10,action
-Laboratory,12,5,Action,1,,2,1,,,"+2 Cards, +1 Action",#222222,10,action
-Council Room,13,5,Action,1,,4,,1,,"+4 Cards, +1 Buy. Each other player draws a card.",#222222,10,action; council_room
-Witch,14,5,Action,1,,2,,,,+2 Cards. Each other player gains a Curse.,#222222,10,action; witch
-Woodcutter,15,3,Action,1,2,,,1,,"+1 Buy, +$2",#222222,10,action
-Great Hall,16,3,Action-Victory,1,,1,1,,1,"+1 Card, +1 Action. Worth 1 VP.",#2e7d32,8,action
-Gardens,17,4,Victory,,,,,,,Worth 1 VP per 10 cards you have (round down).,#2e7d32,8,
+name,cost,type,action,coins,cards,actions,buys,vp,text,ink,count,on_play
+Copper,0,Treasure,,1,,,,,$1,#9a7b00,60,treasure
+Silver,3,Treasure,,2,,,,,$2,#9a7b00,40,treasure; silver
+Gold,6,Treasure,,3,,,,,$3,#9a7b00,30,treasure
+Estate,2,Victory,,,,,,1,1 VP,#2e7d32,14,
+Duchy,5,Victory,,,,,,3,3 VP,#2e7d32,8,
+Province,8,Victory,,,,,,6,6 VP,#2e7d32,8,
+Curse,0,Curse,,,,,,-1,-1 VP,#6a1b9a,10,
+Cellar,2,Action,1,,,1,,,"+1 Action. Discard any number of cards, then draw that many.",#222222,10,action; cellar
+Chapel,2,Action,1,,,,,,Trash up to 4 cards from your hand.,#222222,10,action; chapel
+Merchant,3,Action,1,,1,1,,,"+1 Card, +1 Action. The first time you play a Silver this turn, +$1.",#222222,10,action; merchant
+Village,3,Action,1,,1,2,,,"+1 Card, +2 Actions",#222222,10,action
+Workshop,3,Action,1,,,,,,Gain a card costing up to $4.,#222222,10,action; workshop
+Woodcutter,3,Action,1,2,,,1,,"+1 Buy, +$2",#222222,10,action
+Great Hall,3,Action-Victory,1,,1,1,,1,"+1 Card, +1 Action. Worth 1 VP.",#2e7d32,8,action
+Smithy,4,Action,1,,3,,,,+3 Cards,#222222,10,action
+Remodel,4,Action,1,,,,,,Trash a card from your hand. Gain a card costing up to $2 more than it.,#222222,10,action; remodel
+Throne Room,4,Action,1,,,,,,You may play an Action card from your hand twice.,#222222,10,action; throne_room
+Gardens,4,Victory,,,,,,,Worth 1 VP per 10 cards you have (round down).,#2e7d32,8,
+Market,5,Action,1,1,1,1,1,,"+1 Card, +1 Action, +1 Buy, +$1",#222222,10,action
+Festival,5,Action,1,2,,2,1,,"+2 Actions, +1 Buy, +$2",#222222,10,action
+Laboratory,5,Action,1,,2,1,,,"+2 Cards, +1 Action",#222222,10,action
+Council Room,5,Action,1,,4,,1,,"+4 Cards, +1 Buy. Each other player draws a card.",#222222,10,action; council_room
+Witch,5,Action,1,,2,,,,+2 Cards. Each other player gains a Curse.,#222222,10,action; witch
+Mine,5,Action,1,,,,,,You may trash a Treasure from your hand. Gain a Treasure to your hand costing up to $3 more than it.,#222222,10,action; mine

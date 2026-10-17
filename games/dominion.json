@@ -1,11 +1,12 @@
 {
-	"title": "Dominion (simple kingdom)",
-	"description": "Deckbuilding: buy cards to grow a better deck. Village, Smithy, Market, Festival, Laboratory, Council Room, Witch, Woodcutter, Great Hall, Gardens. You against a Big Money bot.",
+	"title": "Dominion",
+	"description": "Deckbuilding: buy cards to grow a better deck. You against a Big Money bot. Change \"kingdom\" in the game file to play with other cards.",
 	"players": 2,
 	"player_names": ["You", "Bot"],
 	"seats": [[0.07, 0.75], [0.93, 0.11]],
 	"zones": {
-		"box": { "outline": false, "layout": "pile", "face": "down", "anchor": [0.5, 0.5], "cards": "res://decks/dominion.csv" },
+		"box": { "outline": false, "layout": "pile", "face": "down", "anchor": [-0.3, 0.5], "cards": "res://decks/dominion.csv" },
+		"trash": { "label": "Trash", "layout": "pile", "anchor": [0.55, 0.3] },
 		"supply": {
 			"label": "Empty", "copies": 17, "layout": "pile",
 			"anchors": [[0.05, 0.11], [0.14, 0.11], [0.23, 0.11], [0.32, 0.11], [0.41, 0.11], [0.5, 0.11], [0.59, 0.11], [0.05, 0.3], [0.14, 0.3], [0.23, 0.3], [0.32, 0.3], [0.41, 0.3], [0.05, 0.49], [0.14, 0.49], [0.23, 0.49], [0.32, 0.49], [0.41, 0.49]],
@@ -16,7 +17,11 @@
 		"play": { "per_player": true, "layout": "row", "anchors": [[0.5, 0.67], [0.78, 0.49]], "width": 0.5 },
 		"discard": { "label": "Discard", "per_player": true, "layout": "pile", "anchors": [[0.93, 0.88], [0.82, 0.11]] }
 	},
-	"variables": { "phase": "action", "actions": 1, "buys": 1, "coins": 0, "attacker": 0, "empty_piles": 0, "result": "" },
+	"variables": {
+		"phase": "action", "actions": 1, "buys": 1, "coins": 0, "result": "",
+		"attacker": 0, "empty_piles": 0, "gain_limit": 0, "merchants": 0, "silver_played": false
+	},
+	"show_variables": ["phase", "actions", "buys", "coins", "result"],
 	"player_variables": { "score": 0 },
 	"status": {
 		"your victory points": "sum([deck_1, hand_1, play_1, discard_1], 'vp')",
@@ -24,6 +29,10 @@
 	},
 	"bot": { "players": [2], "prefer": "20 * (sum(my_cards, 'coins') - count(matching(my_cards, 'is_copper'))) / count(my_cards) + sum(my_cards, 'vp') + 0.01 * coins" },
 	"conditions": {
+		"basics": "['Copper', 'Silver', 'Gold', 'Estate', 'Duchy', 'Province', 'Curse']",
+		"kingdom": "['Cellar', 'Chapel', 'Merchant', 'Village', 'Workshop', 'Remodel', 'Smithy', 'Throne Room', 'Market', 'Mine']",
+		"within_limit": "number(card, 'cost') <= gain_limit",
+		"treasure_within_limit": "is_treasure and within_limit",
 		"is_action": "number(card, 'action') == 1",
 		"is_treasure": "card.data.type == 'Treasure'",
 		"is_gardens": "card.data.name == 'Gardens'",
@@ -44,6 +53,14 @@
 			"assign('attacker', player)",
 			{ "for": "player", "in": "players", "do": [{ "if": "player != attacker", "then": ["draw(deck, hand)"] }] }
 		],
+		"silver": [{ "if": "not silver_played", "then": ["assign('coins', coins + merchants)", "assign('silver_played', true)"] }],
+		"merchant": ["assign('merchants', merchants + 1)"],
+		"cellar": ["ask('Cellar')"],
+		"chapel": ["ask('Chapel')"],
+		"workshop": ["assign('gain_limit', 4)", "ask('Gain a card')"],
+		"remodel": ["ask('Remodel')"],
+		"mine": ["ask('Mine')"],
+		"throne_room": ["ask('Throne Room')"],
 		"witch": [
 			"assign('attacker', player)",
 			{ "for": "player", "in": "players", "do": [{ "if": "player != attacker", "then": ["move(top(zone('supply', 7)), discard)"] }] }
@@ -71,11 +88,31 @@
 			"when": "phase == 'action' or count(matching(hand, 'is_treasure')) > 0 and phase == 'buy'",
 			"steps": [{ "for": "treasure", "in": "matching(hand, 'is_treasure')", "do": ["try_move(treasure, play)"] }, "assign('phase', 'buy')"]
 		},
-		"End turn": { "when": "phase != 'over'", "steps": ["trigger('cleanup')"] }
+		"End turn": { "when": "phase != 'over'", "steps": ["trigger('cleanup')"] },
+		"Cellar": {
+			"button": false, "choose": "hand", "up_to": "count(hand)",
+			"steps": ["move(choice, discard)", "draw(deck, hand, count(choice))"]
+		},
+		"Chapel": { "button": false, "choose": "hand", "up_to": 4, "steps": ["move(choice, trash)"] },
+		"Remodel": {
+			"button": false, "choose": "hand",
+			"steps": ["move(choice, trash)", "assign('gain_limit', number(choice, 'cost') + 2)", "ask('Gain a card')"]
+		},
+		"Mine": {
+			"button": false, "choose": "matching(hand, 'is_treasure')", "up_to": 1,
+			"steps": [{ "if": "count(choice) == 1", "then": ["move(choice, trash)", "assign('gain_limit', number(top(choice), 'cost') + 3)", "ask('Gain a treasure')"] }]
+		},
+		"Throne Room": {
+			"button": false, "choose": "matching(hand, 'is_action')", "up_to": 1,
+			"steps": [{ "if": "count(choice) == 1", "then": ["move(choice, play)", "run_effect(top(choice), 'play')"] }]
+		},
+		"Gain a card": { "button": false, "choose": "matching(tops(supply), 'within_limit')", "steps": ["move(choice, discard)"] },
+		"Gain a treasure": { "button": false, "choose": "matching(tops(supply), 'treasure_within_limit')", "steps": ["move(choice, hand)"] }
 	},
 	"triggers": {
 		"start": [
-			{ "for": "pile", "in": "supply", "do": ["move(where(box, 'pile', pile_number), pile)"] },
+			{ "for": "name", "in": "basics", "do": ["move(where(box, 'name', name), zone('supply', name_number))"] },
+			{ "for": "name", "in": "kingdom", "do": ["move(where(box, 'name', name), zone('supply', 7 + name_number))"] },
 			"deal(zone('supply', 1), all_deck, 7)",
 			"deal(zone('supply', 4), all_deck, 3)",
 			{ "for": "player", "in": "players", "do": ["sort(hand, ['type', 'cost'])", "shuffle(deck)", "draw(deck, hand, 5)"] }
@@ -89,6 +126,8 @@
 			"assign('buys', 1)",
 			"assign('coins', 0)",
 			"assign('phase', 'action')",
+			"assign('merchants', 0)",
+			"assign('silver_played', false)",
 			"trigger('check_end')",
 			{ "if": "phase != 'over'", "then": ["end_turn()"] }
 		],
