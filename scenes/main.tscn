@@ -20,7 +20,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_main")
-rules_path = "res://games/hearts.json"
 
 [node name="Layout" type="HBoxContainer" parent="." unique_id=1742410408]
 layout_mode = 1

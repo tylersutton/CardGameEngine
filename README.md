@@ -103,13 +103,14 @@ Point Rules Path at this file and press Reload. You should see a face-down deck.
 		"sort(hand_1, ['color', 'number'])",
 		"sort(hand_2, ['color', 'number'])",
 		"shuffle(deck)",
-		"draw(deck, hand_1, 7)",
-		"draw(deck, hand_2, 7)",
+		"deal(deck, all_hand, 7)",
 		"move(top(deck), pile)"
 	],
 	"deck_empty": ["move(without(pile, top(pile)), deck)", "shuffle(deck)"]
 }
 ```
+
+`deal(deck, all_hand, 7)` deals 7 cards to every hand, one card at a time around the table. `all_hand` means every player's hand (`hand_1`, `hand_2`).
 
 `deck_empty` runs when someone tries to draw from an empty deck. Here it shuffles the pile, minus its top card, back into the deck.
 
@@ -414,7 +415,7 @@ This deals solitaire: for each of the 7 tableau columns, draw as many cards as i
   - a number, to repeat that many times (`"in": "3"`)
 - **Changing what you're looping over is safe:** the loop goes through the items that were there when it started, so `{ "for": "c", "in": "hand", "do": ["move(c, discard)"] }` works.
 - **Nesting:** loops can be nested, and can contain conditional steps.
-- **Every player:** `{ "for": "player", "in": "players", "do": [...] }` runs the steps once per player as if it were their turn, so `hand`, `score` and `opponent_hand` follow along: `{ "for": "player", "in": "players", "do": ["draw(deck, hand, 13)"] }` deals 13 to everyone. The turn goes back to whoever had it after the loop.
+- **Every player:** `{ "for": "player", "in": "players", "do": [...] }` runs the steps once per player as if it were their turn, so `hand`, `score` and `opponent_hand` follow along: `{ "for": "player", "in": "players", "do": ["assign('score', score + sum(won, 'points'))"] }` scores everyone's won cards. The turn goes back to whoever had it after the loop.
 
 ### Building blocks
 
@@ -423,6 +424,7 @@ This deals solitaire: for each of the 7 tableau columns, draw as many cards as i
 | Building block | Does |
 |---|---|
 | `draw(from, to, amount)` | Move the top card(s) of `from` to `to`. `amount` defaults to 1. Fires `<from>_empty` if it runs out. |
+| `deal(from, to, amount)` | Deal `amount` cards to each zone in `to`, one card at a time in order, e.g. `deal(deck, all_hand, 13)`. To start with a particular player, list the hands in that order: `deal(stock, [hand, opponent_hand], 10)`. |
 | `move(cards, to)` | Move cards to a zone. |
 | `try_move(card, to)` | Move a card only if a `moves` rule allows it (and run that rule's `then`). `to` can be a group of zones (`foundation`); the first one that allows it is used. Does nothing if `card` is `null`. |
 | `shuffle(zone)` | Shuffle a zone. |

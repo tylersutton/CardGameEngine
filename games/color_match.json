@@ -44,8 +44,7 @@
 			"sort(hand_1, ['color', 'number'])",
 			"sort(hand_2, ['color', 'number'])",
 			"shuffle(deck)",
-			"draw(deck, hand_1, 7)",
-			"draw(deck, hand_2, 7)",
+			"deal(deck, all_hand, 7)",
 			"move(top(deck), pile)",
 			"assign('active_color', top(pile).data.color)"
 		],

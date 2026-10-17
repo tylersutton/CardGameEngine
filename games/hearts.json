@@ -61,7 +61,7 @@
 		"deal": [
 			"move([all_hand, all_played, all_passing, all_won], deck)",
 			"shuffle(deck)",
-			{ "for": "player", "in": "players", "do": ["draw(deck, hand, 13)"] },
+			"deal(deck, all_hand, 13)",
 			"assign('phase', 'pass')",
 			"assign('passed', 0)",
 			"assign('tricks', 0)",

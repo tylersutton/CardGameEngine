@@ -17,6 +17,13 @@ func draw(from: Zone, to: Zone, amount: int = 1) -> void:
 		game.move(from.cards.back(), to)
 
 
+func deal(from: Zone, to: Variant, amount: int = 1) -> void:
+	var hands := zones_in(to)
+	for round in amount:
+		for hand: Zone in hands:
+			draw(from, hand)
+
+
 func move(cards: Variant, to: Zone) -> void:
 	for card: Card in cards_in(cards):
 		game.move(card, to)
