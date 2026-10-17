@@ -37,6 +37,8 @@ var per_player_names: Array[String] = []
 var zone_groups: Dictionary[String, Array] = {}
 var meld_rules: Melds
 var expressions: Dictionary[String, Expression] = {}
+var logic: Dictionary = {}
+var evaluation_failed := false
 var errors: Array[String] = []
 var sandbox := false
 var nesting := 0
@@ -477,7 +479,7 @@ func _run_steps(steps: Array, card: Card) -> bool:
 			continue
 		var text: String = step["if"] if step is Dictionary else step
 		var result: Variant = _evaluate(text, card)
-		if expressions[text].has_execute_failed():
+		if evaluation_failed:
 			return false
 		if step is Dictionary:
 			var branch := "then" if result else "else"
@@ -489,7 +491,7 @@ func _run_steps(steps: Array, card: Card) -> bool:
 
 func _run_loop(loop: Dictionary, card: Card) -> bool:
 	var items: Variant = _evaluate(loop.in, card)
-	if expressions[loop.in].has_execute_failed():
+	if evaluation_failed:
 		return false
 	var item_list: Variant = _loop_items(items)
 	if item_list == null:
@@ -527,7 +529,7 @@ func _run_while(loop: Dictionary, card: Card) -> bool:
 	for repeats in MAX_REPEATS:
 		if not _holds(loop.while, card):
 			logged.emit("  while %s: repeated %d times" % [loop.while, repeats])
-			return not expressions[loop.while].has_execute_failed()
+			return not evaluation_failed
 		if not run(loop.get("do", []), card):
 			return false
 	failed.emit("Stopped: \"while %s\" was still true after %d repeats" % [loop.while, MAX_REPEATS])
@@ -548,7 +550,7 @@ func _holds(condition: String, card: Card = null) -> bool:
 	if condition.is_empty():
 		return true
 	var result: Variant = _evaluate(condition, card)
-	return not expressions[condition].has_execute_failed() and (true if result else false)
+	return not evaluation_failed and (true if result else false)
 
 
 func _matching_move(card: Card, source: Zone, destination: Zone) -> Dictionary:
@@ -583,15 +585,41 @@ func status_values() -> Dictionary:
 
 
 func _evaluate(text: String, card: Card) -> Variant:
-	var expression := expressions[text]
-	var result: Variant = expression.execute(_input_values(card), Actions.new(self))
-	if expression.has_execute_failed():
-		var message := expression.get_error_text()
-		var call := failed_call.search(message)
-		if call and call.get_string(1) in building_blocks:
-			message += " wrong kind of argument, expected " + signature(call.get_string(1))
-		failed.emit("Step failed: \"%s\": %s" % [text, message])
+	var failure := {}
+	var result: Variant = _evaluate_logic(logic.get(text, text), card, failure)
+	evaluation_failed = not failure.is_empty()
+	if evaluation_failed:
+		failed.emit("Step failed: \"%s\": %s" % [text, failure.message])
 	return result
+
+
+## "and"/"or" stop as soon as the answer is known, so "count(to) > 0 and top(to).data.x" is safe on an empty zone.
+func _evaluate_logic(node: Variant, card: Card, failure: Dictionary) -> Variant:
+	if node is String:
+		var expression := expressions[node]
+		var result: Variant = expression.execute(_input_values(card), Actions.new(self))
+		if expression.has_execute_failed():
+			failure.message = _failure_message(expression)
+		return result
+	if node.op == "not":
+		var value: Variant = _evaluate_logic(node.term, card, failure)
+		return null if failure else not value
+	var stops_on: bool = node.op == "or"
+	for term: Variant in node.terms:
+		var value: Variant = _evaluate_logic(term, card, failure)
+		if failure:
+			return null
+		if (true if value else false) == stops_on:
+			return stops_on
+	return not stops_on
+
+
+static func _failure_message(expression: Expression) -> String:
+	var message := expression.get_error_text()
+	var call := failed_call.search(message)
+	if call and call.get_string(1) in building_blocks:
+		message += " wrong kind of argument, expected " + signature(call.get_string(1))
+	return message
 
 
 func move(card: Card, destination: Zone) -> void:
@@ -870,6 +898,88 @@ func _compile(step: String) -> void:
 		errors.append("Step \"%s\": %s" % [step, ", ".join(problems)])
 		return
 	expressions[step] = expression
+	var tree: Variant = _logic_tree(code)
+	if tree is Dictionary:
+		logic[step] = tree
+		_compile_logic_parts(tree, input_names)
+
+
+func _compile_logic_parts(node: Variant, input_names: PackedStringArray) -> void:
+	if node is Dictionary:
+		for term: Variant in node.get("terms", [node.get("term")]):
+			_compile_logic_parts(term, input_names)
+	elif node not in expressions:
+		var expression := Expression.new()
+		expression.parse(node, input_names)
+		expressions[node] = expression
+
+
+## Splits an expression on its outermost "or", then "and", then "not", into a tree evaluated left to right.
+func _logic_tree(code: String) -> Variant:
+	code = code.strip_edges()
+	for keyword in ["or", "and"]:
+		var parts := _split_top_level(code, keyword)
+		if parts.size() > 1:
+			return {op = keyword, terms = parts.map(_logic_tree)}
+	if _is_word_at(code, 0, "not"):
+		return {op = "not", term = _logic_tree(code.substr(3))}
+	if code.begins_with("(") and _top_level_end(code, 0) == code.length() - 1:
+		var inner: Variant = _logic_tree(code.substr(1, code.length() - 2))
+		if inner is Dictionary:
+			return inner
+	return code
+
+
+static func _split_top_level(code: String, keyword: String) -> Array[String]:
+	var parts: Array[String] = []
+	var start := 0
+	var i := 0
+	while i < code.length():
+		var next := _top_level_end(code, i)
+		if next != i:
+			i = next + 1
+		elif _is_word_at(code, i, keyword):
+			parts.append(code.substr(start, i - start))
+			i += keyword.length()
+			start = i
+		else:
+			i += 1
+	parts.append(code.substr(start))
+	return parts
+
+
+## If code[i] opens a bracket or quote, the index of its closing partner; otherwise i.
+static func _top_level_end(code: String, i: int) -> int:
+	var opening := code[i]
+	if opening in "'\"":
+		var closing := code.find(opening, i + 1)
+		return closing if closing != -1 else code.length() - 1
+	if opening not in "([{":
+		return i
+	var depth := 0
+	var j := i
+	while j < code.length():
+		if code[j] in "'\"":
+			j = _top_level_end(code, j)
+		elif code[j] in "([{":
+			depth += 1
+		elif code[j] in ")]}":
+			depth -= 1
+			if depth == 0:
+				return j
+		j += 1
+	return code.length() - 1
+
+
+static func _is_word_at(code: String, i: int, word: String) -> bool:
+	var end := i + word.length()
+	return code.substr(i, word.length()) == word \
+		and (i == 0 or not _is_word_character(code[i - 1])) \
+		and (end >= code.length() or not _is_word_character(code[end]))
+
+
+static func _is_word_character(character: String) -> bool:
+	return character == "_" or character.is_valid_int() or character.to_lower() != character.to_upper()
 
 
 ## Replaces each condition name with its expression in brackets, including conditions inside conditions.

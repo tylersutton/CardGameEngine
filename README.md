@@ -498,7 +498,7 @@ Wherever a building block takes `cards`, you can pass a zone, a single card, or 
 ### Tips
 
 - **Card values are text.** `card.data.number == '3'` works, but for greater/less than use `number`: `number(card, 'value') > 5`.
-- **`and`/`or` check both sides.** `count(to) > 0 and top(to).data.color == 'Red'` still fails on an empty zone, because `top(to)` is `null`. Use `number(...)`, `text(...)` and `count(...)`, which are safe with `null`: `text(top(to), 'color') == 'Red'`.
+- **`and`/`or` stop as soon as the answer is known**, so `count(to) > 0 and top(to).data.color == 'Red'` is safe on an empty zone: the second half isn't checked when the first is false.
 - **Numbers in the JSON are decimals.** A variable starting at `0` displays as `0` but is stored as `0.0`. Comparisons work normally.
 - **To deal the same way in several places,** put the steps in a custom trigger and call `trigger('deal')`.
 - **"Draw only if you can't play"** is a move rule like `{ "from": "deck", "to": "hand", "when": "count(movable(hand, pile)) == 0" }`. (A rule can't use `movable` to check moves into its own destination; that inner check counts as "no moves" and the log says so.)
