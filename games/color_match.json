@@ -1,0 +1,44 @@
+{
+	"players": 2,
+	"zones": {
+		"deck": {
+			"layout": "pile", "face": "down", "anchor": [0.4, 0.5],
+			"cards": "res://decks/color_match.csv",
+			"on_click": ["try_move(top(deck), hand)"]
+		},
+		"pile": { "layout": "pile", "anchor": [0.6, 0.5] },
+		"hand": { "per_player": true, "layout": "fan", "face": "owner", "anchors": [[0.5, 0.83], [0.5, 0.16]] }
+	},
+	"variables": { "winner": null },
+	"effects": {
+		"draw_two": ["draw(deck, opponent_hand, 2)"]
+	},
+	"moves": [
+		{
+			"from": "hand", "to": "pile",
+			"when": "winner == null and (card.data.color == top(pile).data.color or card.data.number == top(pile).data.number)",
+			"then": [{ "if": "count(hand) == 0", "then": ["assign('winner', player)"], "else": ["end_turn()"] }]
+		},
+		{
+			"from": "deck", "to": "hand",
+			"when": "winner == null",
+			"then": ["end_turn()"]
+		}
+	],
+	"actions": {
+		"Sort by color": ["sort(hand, ['color', 'number'])"],
+		"Sort by number": ["sort(hand, ['number', 'color'])"]
+	},
+	"triggers": {
+		"start": [
+			"sort(hand_1, ['color', 'number'])",
+			"sort(hand_2, ['color', 'number'])",
+			"shuffle(deck)",
+			"draw(deck, hand_1, 7)",
+			"draw(deck, hand_2, 7)",
+			"move(top(deck), pile)"
+		],
+		"deck_empty": ["move(without(pile, top(pile)), deck)", "shuffle(deck)"]
+	},
+	"card_face": { "corner": "number", "title": "number", "body": ["color"], "color": "ink" }
+}

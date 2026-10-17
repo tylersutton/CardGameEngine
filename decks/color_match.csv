@@ -1,0 +1,25 @@
+name,color,number,ink,count,on_pile
+Red 1,Red,1,#c0392b,2,
+Red 2,Red,2,#c0392b,2,
+Red 3,Red,3,#c0392b,2,
+Red 4,Red,4,#c0392b,2,
+Red 5,Red,5,#c0392b,2,
+Red +2,Red,+2,#c0392b,2,draw_two
+Blue 1,Blue,1,#2471a3,2,
+Blue 2,Blue,2,#2471a3,2,
+Blue 3,Blue,3,#2471a3,2,
+Blue 4,Blue,4,#2471a3,2,
+Blue 5,Blue,5,#2471a3,2,
+Blue +2,Blue,+2,#2471a3,2,draw_two
+Green 1,Green,1,#1e8449,2,
+Green 2,Green,2,#1e8449,2,
+Green 3,Green,3,#1e8449,2,
+Green 4,Green,4,#1e8449,2,
+Green 5,Green,5,#1e8449,2,
+Green +2,Green,+2,#1e8449,2,draw_two
+Yellow 1,Yellow,1,#b7950b,2,
+Yellow 2,Yellow,2,#b7950b,2,
+Yellow 3,Yellow,3,#b7950b,2,
+Yellow 4,Yellow,4,#b7950b,2,
+Yellow 5,Yellow,5,#b7950b,2,
+Yellow +2,Yellow,+2,#b7950b,2,draw_two
