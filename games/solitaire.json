@@ -7,7 +7,7 @@
 			"cards": "res://decks/gin_deck.csv",
 			"on_click": [{ "if": "count(stock) == 0", "then": ["draw(waste, stock, count(waste))"], "else": ["draw(stock, waste, draw_count)"] }]
 		},
-		"waste": { "label": "Waste", "layout": "pile", "spread": 3, "anchor": [0.21, 0.16], "on_click": ["try_move(card, foundation)"] },
+		"waste": { "label": "Waste", "layout": "pile", "spread": 3, "anchor": [0.21, 0.16], "on_double_click": ["try_move(card, foundation)"] },
 		"foundation": { "label": "A",
 			"copies": 4, "layout": "pile",
 			"anchors": [[0.47, 0.16], [0.6, 0.16], [0.73, 0.16], [0.86, 0.16]]
@@ -15,7 +15,7 @@
 		"tableau": { "label": "K",
 			"copies": 7, "layout": "column", "drag": "stack",
 			"anchors": [[0.08, 0.45], [0.21, 0.45], [0.34, 0.45], [0.47, 0.45], [0.6, 0.45], [0.73, 0.45], [0.86, 0.45]],
-			"on_click": ["try_move(card, foundation)"]
+			"on_double_click": ["try_move(card, foundation)"]
 		}
 	},
 	"variables": { "result": "", "draw_count": 1 },

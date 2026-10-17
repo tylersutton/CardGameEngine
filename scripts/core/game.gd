@@ -49,6 +49,7 @@ var selected: Array[Card] = []
 var chosen: Variant
 var asked := ""
 var history: Array[Dictionary] = []
+var pending_log: Dictionary = {}
 var move_from: Zone
 var move_to: Zone
 var checking_moves := false
@@ -96,6 +97,7 @@ func _init(rules_path: String) -> void:
 
 func start() -> void:
 	trigger("start")
+	_flush_log()
 	_perform_asked()
 	state_changed.emit()
 
@@ -110,7 +112,7 @@ func perform(action_name: String) -> void:
 	cancel_choice()
 	var before := _snapshot()
 	var action: Dictionary = rules.actions[action_name]
-	logged.emit("[action] " + action_name)
+	log_line("[action] " + action_name)
 	if action.has("choose"):
 		_start_choice(action_name, action)
 	else:
@@ -142,20 +144,20 @@ func _start_choice(action_name: String, action: Dictionary) -> void:
 	pick_count = int(action.get("pick", 1))
 	selected = []
 	if choices.size() < pick_count:
-		logged.emit("  nothing to choose")
+		log_line("  nothing to choose")
 		choices = []
 		return
 	choosing = action_name
 	if choosing_cards():
-		logged.emit("  choose %d: click the highlighted cards (click anything else to cancel)" % pick_count)
+		log_line("  choose %d: click the highlighted cards (click anything else to cancel)" % pick_count)
 	else:
-		logged.emit("  choose one: " + ", ".join(choices.map(format_value)))
+		log_line("  choose one: " + ", ".join(choices.map(format_value)))
 
 
 func _complete_choice(choice: Variant) -> void:
 	var action_name := choosing
 	_clear_choice()
-	logged.emit("[%s] chose %s" % [action_name, _describe(choice)])
+	log_line("[%s] chose %s" % [action_name, _describe(choice)])
 	var outer_choice: Variant = chosen
 	chosen = choice
 	run(rules.actions[action_name].get("steps", []), choice if choice is Card else null)
@@ -175,6 +177,7 @@ static func _describe(choice: Variant) -> String:
 
 
 func _finish_input(before: Dictionary) -> void:
+	_flush_log()
 	_remember(before)
 	_perform_asked()
 	state_changed.emit()
@@ -189,7 +192,7 @@ func _perform_asked() -> void:
 
 func cancel_choice() -> void:
 	if choosing:
-		logged.emit("[cancelled] " + choosing)
+		log_line("[cancelled] " + choosing)
 		_clear_choice()
 
 
@@ -206,7 +209,7 @@ func drag(card: Card, destination: Zone, index := -1) -> bool:
 	var source := zone_of(card)
 	var rule := {} if sandbox else _matching_move(card, source, destination)
 	if rule.is_empty() and not can_move(card, destination):
-		logged.emit("[not allowed] %s: %s → %s (%s)" % [card.title, source.name, destination.name, _refusal_reason(source, destination)])
+		log_line("[not allowed] %s: %s → %s (%s)" % [card.title, source.name, destination.name, _refusal_reason(source, destination)])
 		return false
 	_during_move(source, destination, func() -> void:
 		for carried_card in carried(card):
@@ -258,13 +261,13 @@ func reorder(card: Card, index: int) -> void:
 	var zone := zone_of(card)
 	zone.reorder(card, index)
 	_remember(before)
-	logged.emit("  %s: position %d in %s (manual order)" % [card.title, index + 1, zone.name])
+	log_line("  %s: position %d in %s (manual order)" % [card.title, index + 1, zone.name])
 	state_changed.emit()
 
 
 func trigger(event: String) -> void:
 	if event in rules.triggers:
-		logged.emit("[trigger] " + event)
+		log_line("[trigger] " + event)
 		run(rules.triggers[event])
 
 
@@ -289,7 +292,7 @@ func click(card: Card) -> void:
 	elif choosing:
 		cancel_choice()
 	elif zone.on_click:
-		logged.emit("[click] %s in %s" % [card.title, zone.name])
+		log_line("[click] %s in %s" % [card.title, zone.name])
 		run(zone.on_click, card)
 	_finish_input(before)
 
@@ -305,11 +308,21 @@ func _select(card: Card) -> void:
 			_complete_choice(selected.duplicate())
 
 
+func double_click(card: Card) -> void:
+	var before := _snapshot()
+	cancel_choice()
+	var zone := zone_of(card)
+	if zone.on_double_click:
+		log_line("[double-click] %s in %s" % [card.title, zone.name])
+		run(zone.on_double_click, card)
+	_finish_input(before)
+
+
 func click_empty(zone: Zone) -> void:
 	var before := _snapshot()
 	cancel_choice()
 	if zone.on_click:
-		logged.emit("[click] " + zone.name)
+		log_line("[click] " + zone.name)
 		run(zone.on_click)
 	_finish_input(before)
 
@@ -322,7 +335,7 @@ func undo() -> void:
 	_restore(history.pop_back())
 	while is_bot_turn() and history:
 		_restore(history.pop_back())
-	logged.emit("[undo]")
+	log_line("[undo]")
 	variables_changed.emit()
 	state_changed.emit()
 
@@ -354,6 +367,9 @@ func legal_inputs() -> Array[Callable]:
 		elif source.on_click:
 			for card in _reachable_cards(source):
 				inputs.append(click.bind(card))
+		if source.on_double_click:
+			for card in _reachable_cards(source):
+				inputs.append(double_click.bind(card))
 	for action_name: String in rules.actions:
 		var action: Dictionary = rules.actions[action_name]
 		if action.get("human_only", false) or not _holds(action.get("when", "")):
@@ -442,6 +458,7 @@ func _try_once(input: Callable, measure: String) -> Variant:
 	var contents_before := _contents()
 	var history_size := history.size()
 	var choice_state := [choosing, choices, pick_count, selected.duplicate(), asked]
+	_flush_log()
 	_set_quiet(true)
 	input.call()
 	var value: Variant = null
@@ -456,6 +473,7 @@ func _try_once(input: Callable, measure: String) -> Variant:
 	pick_count = choice_state[2]
 	selected.assign(choice_state[3])
 	asked = choice_state[4]
+	pending_log.clear()
 	_set_quiet(false)
 	return value
 
@@ -521,11 +539,12 @@ func _run_steps(steps: Array, card: Card) -> bool:
 			continue
 		var text: String = step["if"] if step is Dictionary else step
 		var result: Variant = _evaluate(text, card)
+		_flush_log()
 		if evaluation_failed:
 			return false
 		if step is Dictionary:
 			var branch := "then" if result else "else"
-			logged.emit("  if %s → %s" % [text, branch])
+			log_line("  if %s → %s" % [text, branch])
 			if not run(step.get(branch, []), card):
 				return false
 	return true
@@ -542,7 +561,7 @@ func _run_loop(loop: Dictionary, card: Card) -> bool:
 	var name: String = loop.for
 	var number_name := name + LOOP_NUMBER_SUFFIX
 	var outer_values := [_loop_value(name), _loop_value(number_name)]
-	logged.emit("  for %s in %s (%d)" % [name, loop.in, item_list.size()])
+	log_line("  for %s in %s (%d)" % [name, loop.in, item_list.size()])
 	var completed := true
 	for i in item_list.size():
 		_set_loop_value(name, item_list[i])
@@ -570,7 +589,7 @@ func _loop_value(name: String) -> Variant:
 func _run_while(loop: Dictionary, card: Card) -> bool:
 	for repeats in MAX_REPEATS:
 		if not _holds(loop.while, card):
-			logged.emit("  while %s: repeated %d times" % [loop.while, repeats])
+			log_line("  while %s: repeated %d times" % [loop.while, repeats])
 			return not evaluation_failed
 		if not run(loop.get("do", []), card):
 			return false
@@ -668,15 +687,33 @@ func move(card: Card, destination: Zone) -> void:
 	var source := zone_of(card)
 	source.remove(card)
 	destination.add(card)
-	logged.emit("  %s: %s → %s" % [card.title, source.name, destination.name])
+	_log_item("%s → %s" % [source.name, destination.name], card.title)
 	run(_card_effect(card, destination), card)
 
 
 func flip(card: Card) -> void:
 	card.face_up = not card.face_up
 	var zone := zone_of(card)
-	logged.emit("  %s: face %s in %s" % [card.title, "up" if card.face_up else "down", zone.name])
+	_log_item("face %s in %s" % ["up" if card.face_up else "down", zone.name], card.title)
 	zone.changed.emit(zone)
+
+
+func log_line(text: String) -> void:
+	_flush_log()
+	logged.emit(text)
+
+
+## Card moves and flips are collected and logged one line per kind, e.g. "deck → hand_1: 2♦, 7♥".
+func _log_item(kind: String, item: String) -> void:
+	if kind not in pending_log:
+		pending_log[kind] = []
+	pending_log[kind].append(item)
+
+
+func _flush_log() -> void:
+	for kind: String in pending_log:
+		logged.emit("  %s: %s" % [kind, ", ".join(pending_log[kind])])
+	pending_log.clear()
 
 
 func shows_face(card: Card) -> bool:
@@ -695,7 +732,7 @@ func set_variable(variable: String, value: Variant) -> void:
 		failed.emit("Unknown variable \"%s\" (declare it in \"variables\")" % name)
 		return
 	variables[name] = value
-	logged.emit("  %s = %s" % [name, format_value(value)])
+	log_line("  %s = %s" % [name, format_value(value)])
 	variables_changed.emit()
 
 
@@ -859,6 +896,7 @@ func _compile_all_steps() -> void:
 	conditions.append(rules.bot.get("prefer", ""))
 	for zone: Zone in zones.values():
 		step_lists.append(zone.on_click)
+		step_lists.append(zone.on_double_click)
 		for card in zone.cards:
 			for destination: Zone in zones.values():
 				step_lists.append(_card_effect(card, destination))

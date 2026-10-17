@@ -34,7 +34,7 @@ func take_input() -> bool:
 	if not best_input.is_valid():
 		return false
 	inputs_this_turn += 1
-	game.logged.emit("[bot %d]" % turn_player)
+	game.log_line("[bot %d]" % turn_player)
 	best_input.call()
 	history_after_last_input = game.history.size()
 	return true

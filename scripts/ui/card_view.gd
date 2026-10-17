@@ -4,6 +4,7 @@ extends Control
 signal picked_up(view: CardView)
 signal dragged(view: CardView)
 signal clicked(view: CardView)
+signal double_clicked(view: CardView)
 signal dropped(view: CardView)
 
 const SIZE := Vector2(100, 140)
@@ -75,9 +76,11 @@ func move_to(target_position: Vector2, target_rotation: float) -> void:
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
+		if event.double_click:
+			double_clicked.emit(self)
+		elif event.pressed:
 			_grab()
-		else:
+		elif grabbed:
 			_release()
 	elif event is InputEventMouseMotion and grabbed:
 		global_position = get_global_mouse_position() - grab_offset

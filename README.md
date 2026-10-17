@@ -9,7 +9,7 @@ Included games:
 | Gin Rummy (default) | `games/gin_rummy.json`, `decks/gin_deck.csv` | Turn phases, melds, scoring, a match to 100, a bot opponent |
 | Hearts | `games/hearts.json`, `decks/hearts_deck.csv` | Four players (you and three bots), passing three cards, following suit, winning tricks |
 | Color Match | `games/color_match.json`, `decks/color_match.csv` | A small two-player game with a custom deck, hidden hands, card effects, and wild cards that ask for a color. Built step by step in the tutorial below |
-| Solitaire (Klondike) | `games/solitaire.json`, `decks/gin_deck.csv` | Cascading columns, dragging whole stacks, groups of zones (7 columns, 4 foundations), click to send a card up, draw one or three |
+| Solitaire (Klondike) | `games/solitaire.json`, `decks/gin_deck.csv` | Cascading columns, dragging whole stacks, groups of zones (7 columns, 4 foundations), double-click to send a card up, draw one or three |
 | Standard deck | `games/standard.json`, `decks/standard_deck.csv` | A free-play sandbox: draw, play, discard, sort |
 
 ## Quick start
@@ -36,7 +36,7 @@ To jump straight into one game while working on it, open `scenes/main.tscn`, set
 | **Sandbox** | Ignore the rules and move anything anywhere, for testing. Rule follow-ups (like scoring) don't run in sandbox. |
 | **Zone names** | Show every zone's name and card count above it: the names to use in rules (e.g. `won_1`). Off by default. |
 
-The right-hand panel shows the game's variables and live readouts at the top, and a log of everything that happened below. Errors appear in red.
+The right-hand panel shows the game's variables and live readouts at the top, and a log of everything that happened below. Errors appear in red. Card moves and flips are grouped, one line per step and destination, e.g. `deck → hand_1: 5♦, 4♥, K♦`.
 
 ## Tutorial: making a game
 
@@ -225,6 +225,7 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 | `rotation` | Turn the zone, in degrees, e.g. `90` for a hand on the left side of the table | `0` |
 | `cards` | A deck to start with, e.g. `"res://decks/my_deck.csv"` | empty |
 | `on_click` | Steps run when a card in this zone is clicked (`card` is the clicked card), or when the empty zone is clicked (`card` is `null`) | none |
+| `on_double_click` | Steps run when a card in this zone is double-clicked, e.g. solitaire's `["try_move(card, foundation)"]`. (The first click of a double-click also counts as a single click.) | none |
 | `spread` | For a `pile`: fan out its top few cards sideways so they can be read, e.g. `3` for a draw-three solitaire waste | `0` |
 | `drag` | `"stack"`: dragging a card also carries every card on top of it | one card |
 | `per_player` | `true` makes one zone per player: `hand_1`, `hand_2`, ... | `false` |

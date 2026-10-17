@@ -39,7 +39,7 @@ func try_move(card: Card, to: Variant) -> void:
 		if destination != game.zone_of(card) and game.can_move(card, destination):
 			game.drag(card, destination)
 			return
-	game.logged.emit("[not allowed] %s: no move rule allows any of %s" % [card.title, ", ".join(to.map(func(zone: Zone) -> String: return zone.name))])
+	game.log_line("[not allowed] %s: no move rule allows any of %s" % [card.title, ", ".join(to.map(func(zone: Zone) -> String: return zone.name))])
 
 
 func all(zone: Zone) -> Array[Card]:
@@ -53,14 +53,14 @@ func flip(cards: Variant) -> void:
 
 func shuffle(zone: Zone) -> void:
 	zone.shuffle()
-	game.logged.emit("  shuffle " + zone.name)
+	game.log_line("  shuffle " + zone.name)
 
 
 func sort(zone: Zone, columns: Array) -> void:
 	var column_names: Array[String] = []
 	column_names.assign(columns)
 	zone.keep_sorted_by(column_names)
-	game.logged.emit("  sort %s by %s" % [zone.name, ", ".join(column_names)] if column_names else "  %s: manual order" % zone.name)
+	game.log_line("  sort %s by %s" % [zone.name, ", ".join(column_names)] if column_names else "  %s: manual order" % zone.name)
 
 
 func assign(variable: String, value: Variant) -> void:

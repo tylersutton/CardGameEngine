@@ -101,6 +101,7 @@ func _view_for(card: Card, spawn_center: Vector2) -> CardView:
 		view.picked_up.connect(_on_card_picked_up)
 		view.dragged.connect(_on_card_dragged)
 		view.clicked.connect(_on_card_clicked)
+		view.double_clicked.connect(_on_card_double_clicked)
 		view.dropped.connect(_on_card_dropped)
 		add_child(view)
 		views[card] = view
@@ -180,6 +181,12 @@ func _on_card_clicked(view: CardView) -> void:
 		preview_zone = null
 	var zone := game.zone_of(view.card)
 	game.click(view.card)
+	_layout_zone(zone)
+
+
+func _on_card_double_clicked(view: CardView) -> void:
+	var zone := game.zone_of(view.card)
+	game.double_click(view.card)
 	_layout_zone(zone)
 
 
