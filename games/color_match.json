@@ -2,6 +2,7 @@
 	"title": "Color Match",
 	"description": "Two players sharing the screen. Match the color or number; +2 and Wild cards. The README tutorial builds it.",
 	"players": 2,
+	"seats": [[0.15, 0.83], [0.15, 0.16]],
 	"zones": {
 		"deck": { "label": "Deck",
 			"layout": "pile", "face": "down", "anchor": [0.4, 0.5],

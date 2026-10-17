@@ -10,9 +10,14 @@ const LABEL_FONT_SIZE := 14
 const LABEL_GAP := 22.0
 const BOTTOM_MARGIN := 8.0
 const LABEL_OVERHANG := 20.0
+const SEAT_PADDING := Vector2(10, 4)
+const SEAT_TEXT_COLOR := Color.WHITE
+const CURRENT_SEAT_TEXT_COLOR := Color(0.1, 0.1, 0.1)
 
 static var slot_style := _slot_box(SLOT_BORDER)
 static var current_slot_style := _slot_box(CURRENT_SLOT_BORDER)
+static var seat_style := _seat_box(Color(0, 0, 0, 0.45))
+static var current_seat_style := _seat_box(CURRENT_SLOT_BORDER)
 
 var game: Game
 var views: Dictionary[Card, CardView] = {}
@@ -147,8 +152,11 @@ func _nearest_slot(zone: Zone, point: Vector2) -> int:
 func _max_spread(zone: Zone) -> float:
 	if zone.layout == "column":
 		return size.y * (1 - zone.anchor.y) - CardView.SIZE.y / 2 - BOTTOM_MARGIN
-	var sideways := is_equal_approx(absf(sin(deg_to_rad(zone.rotation))), 1.0)
-	return zone.width * (size.y if sideways else size.x) if zone.width else ZoneLayout.MAX_WIDTH
+	return zone.width * (size.y if _is_sideways(zone) else size.x) if zone.width else ZoneLayout.MAX_WIDTH
+
+
+func _is_sideways(zone: Zone) -> bool:
+	return is_equal_approx(absf(sin(deg_to_rad(zone.rotation))), 1.0)
 
 
 func _nearest_zone(point: Vector2, ignored_views: Array[CardView]) -> Zone:
@@ -167,7 +175,8 @@ func _nearest_zone(point: Vector2, ignored_views: Array[CardView]) -> Zone:
 
 
 func _slot(zone: Zone) -> Rect2:
-	return Rect2(zone.anchor * size - CardView.SIZE / 2, CardView.SIZE)
+	var slot_size := Vector2(CardView.SIZE.y, CardView.SIZE.x) if _is_sideways(zone) else CardView.SIZE
+	return Rect2(zone.anchor * size - slot_size / 2, slot_size)
 
 
 func _draw() -> void:
@@ -188,6 +197,26 @@ func _draw() -> void:
 			var name_position := slot.position - Vector2(LABEL_OVERHANG, LABEL_GAP)
 			var name_text := "%s (%d)" % [zone.name, zone.cards.size()]
 			draw_string(font, name_position, name_text, HORIZONTAL_ALIGNMENT_CENTER, slot.size.x + LABEL_OVERHANG * 2, LABEL_FONT_SIZE, LABEL_COLOR)
+	_draw_seats(font)
+
+
+func _draw_seats(font: Font) -> void:
+	for player in range(1, game.rules.seats.size() + 1):
+		var is_current := player == game.current_player()
+		var text := game.player_name(player)
+		var text_size := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, LABEL_FONT_SIZE)
+		var seat := Vector2(game.rules.seats[player - 1][0], game.rules.seats[player - 1][1]) * size
+		var tag := Rect2(seat - text_size / 2 - SEAT_PADDING, text_size + SEAT_PADDING * 2)
+		draw_style_box(current_seat_style if is_current else seat_style, tag)
+		var baseline := Vector2(tag.position.x + SEAT_PADDING.x, tag.position.y + SEAT_PADDING.y + font.get_ascent(LABEL_FONT_SIZE))
+		draw_string(font, baseline, text, HORIZONTAL_ALIGNMENT_LEFT, -1, LABEL_FONT_SIZE, CURRENT_SEAT_TEXT_COLOR if is_current else SEAT_TEXT_COLOR)
+
+
+static func _seat_box(color: Color) -> StyleBoxFlat:
+	var box := StyleBoxFlat.new()
+	box.bg_color = color
+	box.set_corner_radius_all(10)
+	return box
 
 
 static func _slot_box(border_color: Color) -> StyleBoxFlat:

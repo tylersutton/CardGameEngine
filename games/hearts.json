@@ -2,26 +2,32 @@
 	"title": "Hearts",
 	"description": "Four players, you against three bots. Pass three cards, follow suit, and avoid hearts and the queen of spades.",
 	"players": 4,
+	"player_names": ["You", "West", "North", "East"],
+	"seats": [[0.236, 0.86], [0.09, 0.247], [0.78, 0.14], [0.91, 0.753]],
 	"zones": {
 		"deck": { "outline": false, "layout": "pile", "face": "down", "anchor": [0.5, 0.5], "cards": "res://decks/hearts_deck.csv" },
 		"hand": {
-			"per_player": true, "layout": "fan", "face": "human", "width": 0.5,
+			"per_player": true, "layout": "fan", "face": "human", "width": 0.45,
 			"anchors": [[0.5, 0.86], [0.09, 0.5], [0.5, 0.14], [0.91, 0.5]],
 			"rotations": [0, 90, 180, 270]
 		},
 		"played": { "per_player": true, "layout": "pile", "anchors": [[0.5, 0.62], [0.37, 0.5], [0.5, 0.38], [0.63, 0.5]] },
-		"passing": { "label": "Pass #", "per_player": true, "layout": "pile", "face": "human", "anchors": [[0.22, 0.86], [0.09, 0.14], [0.78, 0.14], [0.91, 0.86]] },
-		"won": { "label": "Tricks #", "per_player": true, "layout": "pile", "face": "down", "anchors": [[0.78, 0.86], [0.22, 0.14], [0.91, 0.14], [0.09, 0.86]] }
+		"won": {
+			"label": "Tricks", "per_player": true, "layout": "pile", "face": "down",
+			"anchors": [[0.787, 0.86], [0.09, 0.817], [0.213, 0.14], [0.91, 0.183]],
+			"rotations": [0, 90, 180, 270]
+		}
 	},
 	"variables": { "phase": "pass", "passed": 0, "lead": "", "hearts_broken": false, "tricks": 0 },
 	"player_variables": { "score": 0 },
 	"status": { "your points this hand": "sum(won_1, 'points')" },
-	"bot": { "players": [2, 3, 4], "prefer": "sum(passing, 'value') - 10 * sum(won, 'points') - sum(played, 'value')" },
+	"bot": { "players": [2, 3, 4], "prefer": "-sum(hand, 'value') - 2 * played_face_up - 10 * sum(won, 'points')" },
 	"conditions": {
 		"follows_suit": "lead == '' or card.data.suit == lead or count(where(hand, 'suit', lead)) == 0",
 		"hearts_allowed": "lead != '' or card.data.suit != 'Hearts' or hearts_broken or count(where(hand, 'suit', 'Hearts')) == count(hand)",
 		"two_of_clubs_leads": "tricks > 0 or lead != '' or card.data.name == '2♣'",
-		"trick_winner": "owner(highest(where(all_played, 'suit', lead), 'value'))"
+		"trick_winner": "owner(highest(where(all_played, 'suit', lead), 'value'))",
+		"played_face_up": "sum(played, 'value') - sum(face_down(played), 'value')"
 	},
 	"moves": [
 		{
@@ -39,7 +45,8 @@
 			"when": "phase == 'pass'",
 			"choose": "hand", "pick": 3,
 			"steps": [
-				"move(choice, passing)",
+				"move(choice, played)",
+				"flip(choice)",
 				"assign('passed', passed + 1)",
 				{ "if": "passed == 4", "then": ["trigger('exchange')"], "else": ["end_turn()"] }
 			]
@@ -61,7 +68,7 @@
 			"trigger('deal')"
 		],
 		"deal": [
-			"move([all_hand, all_played, all_passing, all_won], deck)",
+			"move([all_hand, all_played, all_won], deck)",
 			"shuffle(deck)",
 			"deal(deck, all_hand, 13)",
 			"assign('phase', 'pass')",
@@ -74,7 +81,7 @@
 		],
 		"turn_start": [{ "if": "phase == 'pass'", "then": ["ask('Pass 3')"] }],
 		"exchange": [
-			{ "for": "player", "in": "players", "do": ["move(passing, opponent_hand)"] },
+			{ "for": "player", "in": "players", "do": ["move(played, opponent_hand)"] },
 			"assign('phase', 'play')",
 			"assign('player', owner(top(where(all_hand, 'name', '2♣'))))"
 		],

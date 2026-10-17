@@ -9,6 +9,8 @@ var conditions: Dictionary
 var moves: Array
 var variables: Dictionary
 var players: int
+var seats: Array
+var player_names: Array
 var player_variables: Dictionary
 var melds: Dictionary
 var status: Dictionary
@@ -42,6 +44,8 @@ static func load_json(path: String) -> GameRules:
 	rules.conditions = data.get("conditions", {})
 	rules.variables = data.get("variables", {})
 	rules.players = int(data.get("players", 1))
+	rules.seats = data.get("seats", [])
+	rules.player_names = data.get("player_names", [])
 	rules.player_variables = data.get("player_variables", {})
 	rules.melds = data.get("melds", {})
 	rules.status = data.get("status", {})

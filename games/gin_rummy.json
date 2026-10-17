@@ -2,6 +2,7 @@
 	"title": "Gin Rummy",
 	"description": "Two players, you against a bot. Knock with 10 or less deadwood; first to 100 wins the match.",
 	"players": 2,
+	"seats": [[0.1, 0.72], [0.1, 0.28]],
 	"zones": {
 		"stock": { "label": "Stock",
 			"layout": "pile", "face": "down", "anchor": [0.08, 0.5],

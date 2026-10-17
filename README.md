@@ -237,6 +237,8 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 ### `players`, `variables`, `player_variables`
 
 - `"players": 2` turns on turns. The `player` variable holds whose turn it is (starting at 1); `end_turn()` passes the turn to the next player. To jump to a specific player, `assign('player', ...)`, e.g. the winner of a trick.
+- `"seats": [[0.24, 0.71], [0.24, 0.5], ...]` (optional, one `[x, y]` per player) draws a name tag for each player at that spot on the table. The current player's tag is highlighted, and bots' tags say "(bot)".
+- `"player_names": ["You", "West", "North", "East"]` (optional) names the players on their tags; otherwise they're "Player 1", "Player 2", ...
 - `players` is the list of player numbers (`[1, 2, 3, 4]`). Loop over it with `"for": "player"` to do something for every player as if it were their turn (see [Loops](#loops)).
 - `"variables": { "phase": "draw", "taken": null }` declares variables and their starting values.
 - `"player_variables": { "score": 0 }` makes one per player (`score_1`, `score_2`). In steps, `score` means the current player's and `opponent_score` the other player's, just like `hand` and `opponent_hand`.

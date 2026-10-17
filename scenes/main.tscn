@@ -42,41 +42,47 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Toolbar" type="HBoxContainer" parent="Layout/TableColumn/ToolbarMargin" unique_id=56630377]
+[node name="Toolbar" type="HFlowContainer" parent="Layout/TableColumn/ToolbarMargin" unique_id=56630377]
 layout_mode = 2
 
 [node name="GamesButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 tooltip_text = "Back to the list of games"
 text = "Games"
 
 [node name="ReloadButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=768880190]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 text = "Reload"
 
 [node name="UndoButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=1169205054]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 shortcut = SubResource("Shortcut_undo")
 text = "Undo"
 
 [node name="SandboxToggle" type="CheckButton" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=1630523048]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 tooltip_text = "Ignore move rules and action conditions"
 text = "Sandbox"
 
 [node name="ZoneNamesToggle" type="CheckButton" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 tooltip_text = "Show each zone's name and card count, as used in rules"
 text = "Zone names"
 
-[node name="ActionButtons" type="HBoxContainer" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=510503867]
+[node name="ActionButtons" type="HFlowContainer" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=510503867]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ChoiceMargin" type="MarginContainer" parent="Layout/TableColumn" unique_id=1722594352]
 unique_name_in_owner = true

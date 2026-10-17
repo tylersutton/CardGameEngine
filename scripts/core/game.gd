@@ -327,6 +327,11 @@ func is_bot_turn() -> bool:
 	return is_bot(current_player())
 
 
+func player_name(player: int) -> String:
+	var name: String = rules.player_names[player - 1] if player <= rules.player_names.size() else "Player %d" % player
+	return name + " (bot)" if is_bot(player) else name
+
+
 func is_bot(player: int) -> bool:
 	return rules.bot.get("players", []).any(func(bot_player: float) -> bool: return int(bot_player) == player)
 
@@ -729,6 +734,10 @@ func _check_actions_and_moves() -> void:
 			var zone_name: Variant = rule.get(end) if rule is Dictionary else null
 			if zone_name is String and zone_name not in zones and zone_name not in _aliases() and zone_name not in zone_groups:
 				errors.append("%s: unknown zone \"%s\"" % [label, zone_name])
+	for list_name in ["seats", "player_names"]:
+		var list: Array = rules.get(list_name)
+		if list and list.size() < rules.players:
+			errors.append("\"%s\" needs one entry per player (%d)" % [list_name, rules.players])
 	if rules.bot:
 		_check_entry("bot", rules.bot, {"players": TYPE_ARRAY, "prefer": TYPE_STRING})
 		if not rules.bot.has("prefer"):
