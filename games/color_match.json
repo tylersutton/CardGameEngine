@@ -9,15 +9,19 @@
 		"pile": { "layout": "pile", "anchor": [0.6, 0.5] },
 		"hand": { "per_player": true, "layout": "fan", "face": "owner", "anchors": [[0.5, 0.83], [0.5, 0.16]] }
 	},
-	"variables": { "winner": null },
+	"variables": { "winner": null, "active_color": "" },
 	"effects": {
-		"draw_two": ["draw(deck, opponent_hand, 2)"]
+		"draw_two": ["draw(deck, opponent_hand, 2)"],
+		"wild": ["ask('Choose color')"]
 	},
 	"moves": [
 		{
 			"from": "hand", "to": "pile",
-			"when": "winner == null and (card.data.color == top(pile).data.color or card.data.number == top(pile).data.number)",
-			"then": [{ "if": "count(hand) == 0", "then": ["assign('winner', player)"], "else": ["end_turn()"] }]
+			"when": "winner == null and (card.data.color == 'Wild' or card.data.color == active_color or card.data.number == top(pile).data.number)",
+			"then": [
+				"assign('active_color', card.data.color)",
+				{ "if": "count(hand) == 0", "then": ["assign('winner', player)"], "else": [{ "if": "card.data.color != 'Wild'", "then": ["end_turn()"] }] }
+			]
 		},
 		{
 			"from": "deck", "to": "hand",
@@ -26,6 +30,12 @@
 		}
 	],
 	"actions": {
+		"Choose color": {
+			"button": false,
+			"when": "winner == null and active_color == 'Wild'",
+			"choose": "['Red', 'Blue', 'Green', 'Yellow']",
+			"steps": ["assign('active_color', choice)", "end_turn()"]
+		},
 		"Sort by color": ["sort(hand, ['color', 'number'])"],
 		"Sort by number": ["sort(hand, ['number', 'color'])"]
 	},
@@ -36,7 +46,8 @@
 			"shuffle(deck)",
 			"draw(deck, hand_1, 7)",
 			"draw(deck, hand_2, 7)",
-			"move(top(deck), pile)"
+			"move(top(deck), pile)",
+			"assign('active_color', top(pile).data.color)"
 		],
 		"deck_empty": ["move(without(pile, top(pile)), deck)", "shuffle(deck)"]
 	},

@@ -7,7 +7,9 @@ Included games:
 | Game | Files | Shows off |
 |---|---|---|
 | Gin Rummy (default) | `games/gin_rummy.json`, `decks/gin_deck.csv` | Turn phases, melds, scoring, a match to 100, a bot opponent |
-| Color Match | `games/color_match.json`, `decks/color_match.csv` | A small two-player game with a custom deck, hidden hands, and a card effect. Built step by step in the tutorial below |
+| Hearts | `games/hearts.json`, `decks/hearts_deck.csv` | Four players (you and three bots), passing three cards, following suit, winning tricks |
+| Color Match | `games/color_match.json`, `decks/color_match.csv` | A small two-player game with a custom deck, hidden hands, card effects, and wild cards that ask for a color. Built step by step in the tutorial below |
+| Solitaire (Klondike) | `games/solitaire.json`, `decks/gin_deck.csv` | Cascading columns, dragging whole stacks, groups of zones (7 columns, 4 foundations), click to send a card up |
 | Standard deck | `games/standard.json`, `decks/standard_deck.csv` | A free-play sandbox: draw, play, discard, sort |
 
 ## Quick start
@@ -22,7 +24,8 @@ Included games:
 |---|---|
 | Drag a card | Move it to the zone nearest where you drop it. If the rules forbid it, it snaps back and the log says why. |
 | Drag a card within its own hand/row | Reorder it. This turns that zone's automatic sorting off. |
-| Click a card | Runs that zone's click behavior (e.g. click the deck to draw). |
+| Click a card | Runs that zone's click behavior (e.g. click the deck to draw). Clicking an empty zone's outline runs it too, with no `card`. |
+| Choosing | When the game asks you to choose cards, the choices are outlined in yellow: click one, or for several, click each (selected cards turn blue; click again to unselect). When it asks for something else, like a color, pick from the bar of buttons above the table. |
 | Toolbar buttons | The game's actions. A button is greyed out while its condition is false. |
 | **Undo** / Ctrl+Z | Step back one input. In a game with a bot, it goes back to your last input. |
 | **Reload** | Re-read the JSON and CSV files from disk and start over. |
@@ -170,6 +173,30 @@ Step "draw(deck, hnad)": unknown zone or variable "hnad"
 
 When a drag is refused, the log shows the rule's condition so you can see which part failed. Turn on **Sandbox** to set up a situation by hand.
 
+### 8. Add wild cards
+
+The finished `color_match.json` goes one step further: Wild cards that let you choose the color to match. Four `Wild` rows in the deck have `wild` in their `on_pile` column, and the game file adds:
+
+```json
+"variables": { "winner": null, "active_color": "" },
+"effects": {
+	"wild": ["ask('Choose color')"]
+},
+"actions": {
+	"Choose color": {
+		"button": false,
+		"when": "winner == null and active_color == 'Wild'",
+		"choose": "['Red', 'Blue', 'Green', 'Yellow']",
+		"steps": ["assign('active_color', choice)", "end_turn()"]
+	}
+}
+```
+
+- `ask('Choose color')` opens that action's choice as soon as the current move finishes.
+- Because `choose` lists values instead of cards, they appear as buttons above the table. The picked one is `choice`.
+- `"button": false` keeps the action out of the toolbar, since it only happens when asked.
+- The play rule now matches `active_color` instead of the top card's color, and doesn't end the turn after a Wild (choosing the color does).
+
 ## Game file reference
 
 Everything a game file can contain. Only `zones` is required.
@@ -178,18 +205,27 @@ Everything a game file can contain. Only `zones` is required.
 
 | Key | Meaning | Default |
 |---|---|---|
-| `layout` | `pile`, `row`, `fan`, or `melds` (groups the cards into their melds; for rummy tables) | `row` |
-| `face` | `up`, `down`, or `owner` (face up only on the owning player's turn). Cards take this face when they enter the zone. | `up` |
+| `layout` | `pile`, `row`, `fan`, `column` (cascading downward from the anchor, squeezing to fit; for solitaire), or `melds` (groups the cards into their melds; for rummy tables) | `row` |
+| `face` | `up`, `down`, `owner` (face up only on the owning player's turn), or `human` (face up unless a bot owns it). Cards take this face when they enter the zone. | `up` |
 | `anchor` | Position on the table as `[x, y]` fractions | `[0.5, 0.5]` |
-| `width` | Widest a `row`/`fan` may spread, as a fraction of the table width | 800 pixels |
+| `width` | Widest a `row`/`fan` may spread, as a fraction of the table width (of its height, for a zone turned sideways) | 800 pixels |
+| `rotation` | Turn the zone, in degrees, e.g. `90` for a hand on the left side of the table | `0` |
 | `cards` | A deck to start with, e.g. `"res://decks/my_deck.csv"` | empty |
-| `on_click` | Steps run when a card in this zone is clicked; `card` is the clicked card | none |
+| `on_click` | Steps run when a card in this zone is clicked (`card` is the clicked card), or when the empty zone is clicked (`card` is `null`) | none |
+| `drag` | `"stack"`: dragging a card also carries every card on top of it | one card |
 | `per_player` | `true` makes one zone per player: `hand_1`, `hand_2`, ... | `false` |
-| `anchors` | With `per_player`, one `[x, y]` position per player | |
+| `copies` | A number: makes that many zones, e.g. `"copies": 7` makes `tableau_1` ... `tableau_7` | |
+| `anchors` | With `per_player` or `copies`, one `[x, y]` position each | |
+| `rotations` | With `per_player` or `copies`, one rotation each, e.g. `[0, 90, 180, 270]` for four players around a table | |
+
+**Per-player zones and copies** are named the same way but mean different things in rules and steps:
+- **Per-player:** `hand` means the current player's hand, and `opponent_hand` the next player's. `all_hand` is every player's hand, as a list (e.g. `count(all_played) == 4`).
+- **Copies:** the plain name means the whole group. In a move rule, `"to": "foundation"` matches any of the foundations. In a step, `foundation` is the list of all of them, e.g. `count(foundation)` counts every card on every foundation, and `try_move(card, foundation)` moves to the first one that allows it.
 
 ### `players`, `variables`, `player_variables`
 
-- `"players": 2` turns on turns. The `player` variable holds whose turn it is (starting at 1); `end_turn()` passes the turn.
+- `"players": 2` turns on turns. The `player` variable holds whose turn it is (starting at 1); `end_turn()` passes the turn to the next player. To jump to a specific player, `assign('player', ...)`, e.g. the winner of a trick.
+- `players` is the list of player numbers (`[1, 2, 3, 4]`). Loop over it with `"for": "player"` to do something for every player as if it were their turn (see [Loops](#loops)).
 - `"variables": { "phase": "draw", "taken": null }` declares variables and their starting values.
 - `"player_variables": { "score": 0 }` makes one per player (`score_1`, `score_2`). In steps, `score` means the current player's and `opponent_score` the other player's, just like `hand` and `opponent_hand`.
 
@@ -199,11 +235,21 @@ A list of allowed drags. Each rule has:
 
 | Key | Meaning |
 |---|---|
-| `from`, `to` | Zone names. Leave one out to mean "any zone". |
-| `when` | Condition that must be true. `card` is the dragged card. |
+| `from`, `to` | Zone names, or the name of a group of `copies` to match any of them. Leave one out to mean "any zone". |
+| `when` | Condition that must be true. |
 | `then` | Steps to run after the move. |
 
-The first rule that matches wins. With no `moves` list at all, every drag is allowed.
+Inside `when` and `then`, `card` is the dragged card, `from` is the zone it came from, and `to` is where it's going. For example, a solitaire foundation rule:
+
+```json
+{
+	"from": "tableau", "to": "foundation",
+	"when": "card == top(from) and number(card, 'value') == count(to) + 1",
+	"then": ["flip(face_down(top(from)))"]
+}
+```
+
+The first rule that matches wins. With no `moves` list at all, every drag is allowed. When a zone drags stacks, the rule is checked for the grabbed card and the cards on top of it come along.
 
 ### `actions`
 
@@ -217,8 +263,8 @@ or an object with extra options:
 
 ```json
 "Knock": {
-	"when": "phase == 'discard'",
-	"choose": "without(hand, taken)",
+	"when": "count(movable(hand, knock)) > 0",
+	"choose": "movable(hand, knock)",
 	"steps": ["try_move(card, knock)"]
 }
 ```
@@ -227,8 +273,10 @@ or an object with extra options:
 |---|---|
 | `steps` | What the button does. |
 | `when` | The button is disabled while this is false. |
-| `choose` | The button first highlights these cards and waits for you to click one. The steps then run with that card as `card`. Clicking anything else cancels. |
+| `choose` | What to choose from. If it gives cards (e.g. `"hand"`), they're highlighted for you to click. If it gives other values (e.g. `"['Red', 'Blue']"` or `"numbers(0, 13)"`), they appear as buttons above the table. The steps then run with the pick as `choice` (and, for a single card, also as `card`). Clicking anything else cancels. |
+| `pick` | How many cards to choose, e.g. `3` to pass three cards. `choice` is then a list of cards. |
 | `human_only` | `true` means bots never press this button. |
+| `button` | `false` hides it from the toolbar, for actions only started with `ask('name')`. |
 
 ### `triggers`
 
@@ -253,6 +301,27 @@ Named card effects, used by name in a deck's `on_<zone>` columns:
 ```
 
 Each effect is a list of steps, so conditional steps work. `card` is the card whose effect is running. Every effect is checked when the game loads, even ones no card uses yet.
+
+### `conditions`
+
+Named expressions, so a check used in several places is written once:
+
+```json
+"conditions": {
+	"top_card": "card == top(from)",
+	"fits_tableau": "(count(to) == 0 and number(card, 'value') == 13) or (number(card, 'value') == number(top(to), 'value') - 1 and card.data.color != text(top(to), 'color'))"
+},
+"moves": [
+	{ "from": "waste", "to": "tableau", "when": "fits_tableau" },
+	{ "from": "tableau", "to": "tableau", "when": "card.face_up and fits_tableau" },
+	{ "from": "foundation", "to": "tableau", "when": "top_card and fits_tableau" }
+]
+```
+
+- **Where they work:** a condition's name can be used in any expression: `when`, `if`, `status`, steps, other conditions.
+- **How they work:** it behaves exactly as if its text were written there in brackets, so `card`, `from` and `to` mean whatever they mean at that spot.
+- **Refused moves:** the log quotes the names (`requires: card.face_up and fits_tableau`), which keeps refusal messages short.
+- **Not just true/false:** a condition can be any expression, e.g. `"rank": "number(card, 'value')"`.
 
 ### `status`
 
@@ -301,7 +370,7 @@ Write `prefer` as "how good is this position for me?". Things to know:
 - **It only looks one input ahead.**
 - **It can see hidden cards,** including the top of the deck.
 - **It never makes inputs that only reorder cards,** such as sorting.
-- **`face: "owner"` doesn't suit bot games.** It would reveal the bot's hand on the bot's turn, so use `up` or `down`.
+- **Use `face: "human"` for hands in bot games.** It shows your hand and hides the bots'. (`owner` would reveal each bot's hand on its turn.)
 
 ## Steps
 
@@ -310,6 +379,7 @@ A step is one line of text that does something or calculates something, like `dr
 You can use:
 - **Zone and variable names** directly.
 - **`card`**: the card involved (dragged, clicked, chosen, or whose effect is running). It's `null` when there isn't one.
+- **`choice`**: what was picked in a `choose` action: a card, a list of cards, or a value.
 - **Card columns,** as `card.data.<column>`.
 - **Operators:** `==`, `!=`, `<`, `>`, `<=`, `>=`, `+`, `-`, `*`, `/`, `and`, `or`, `not`, and parentheses.
 - **Text in single quotes,** e.g. `'discard'`. The JSON itself uses double quotes.
@@ -326,6 +396,26 @@ There's no inline "if" in a step, so use a conditional step anywhere a list of s
 
 `else` is optional, and conditional steps can be nested.
 
+### Loops
+
+To repeat steps, use a loop step anywhere a list of steps is allowed:
+
+```json
+{ "for": "column", "in": "tableau", "do": ["draw(stock, column, column_number)", "flip(without(column, top(column)))"] }
+```
+
+This deals solitaire: for each of the 7 tableau columns, draw as many cards as its position (1 to 7), then turn all but the top card face down.
+
+- **The loop variable:** `"for"` names it, here `column`. It can be used in the `do` steps, and `<name>_number` is its position, counting from 1.
+- **What `"in"` can be:**
+  - a zone, to loop over its cards (`"in": "hand"`)
+  - a group of zones (`"in": "tableau"`)
+  - any list (`"in": "where(hand, 'suit', 'Hearts')"`)
+  - a number, to repeat that many times (`"in": "3"`)
+- **Changing what you're looping over is safe:** the loop goes through the items that were there when it started, so `{ "for": "c", "in": "hand", "do": ["move(c, discard)"] }` works.
+- **Nesting:** loops can be nested, and can contain conditional steps.
+- **Every player:** `{ "for": "player", "in": "players", "do": [...] }` runs the steps once per player as if it were their turn, so `hand`, `score` and `opponent_hand` follow along: `{ "for": "player", "in": "players", "do": ["draw(deck, hand, 13)"] }` deals 13 to everyone. The turn goes back to whoever had it after the loop.
+
 ### Building blocks
 
 **Changing things**
@@ -334,25 +424,34 @@ There's no inline "if" in a step, so use a conditional step anywhere a list of s
 |---|---|
 | `draw(from, to, amount)` | Move the top card(s) of `from` to `to`. `amount` defaults to 1. Fires `<from>_empty` if it runs out. |
 | `move(cards, to)` | Move cards to a zone. |
-| `try_move(card, to)` | Move a card only if a `moves` rule allows it (and run that rule's `then`). Does nothing if `card` is `null`. |
+| `try_move(card, to)` | Move a card only if a `moves` rule allows it (and run that rule's `then`). `to` can be a group of zones (`foundation`); the first one that allows it is used. Does nothing if `card` is `null`. |
 | `shuffle(zone)` | Shuffle a zone. |
 | `flip(cards)` | Turn cards over (until they move to another zone). |
 | `sort(zone, ['column', ...])` | Keep a zone sorted by these columns, first column first. Numbers sort numerically. `sort(zone, [])` turns sorting off. |
 | `assign('variable', value)` | Change a variable. |
 | `end_turn()` | Pass the turn to the next player and fire `turn_start`. |
 | `trigger('name')` | Run a step list from `triggers`. |
+| `ask('Action name')` | Start that action (usually a `choose`) once the current move finishes, e.g. from a wild card's effect. |
 
 **Questions**
 
 | Building block | Gives |
 |---|---|
 | `all(zone)` | All the cards in a zone |
-| `top(zone)` | The top card, or `null` if empty |
+| `top(cards)` | The top card of a zone (or the last of a list), or `null` if empty |
+| `highest(cards, 'column')`, `lowest(cards, 'column')` | The card with the biggest or smallest number in that column, e.g. the winner of a trick: `highest(where(all_played, 'suit', lead), 'value')` |
+| `owner(card)` | The number of the player whose zone the card is in (0 for shared zones), e.g. `assign('player', owner(highest(...)))` |
+| `next_player(seats)` | The player that many seats after the current one, wrapping around: `next_player(1)` is next, `next_player(-1)` is previous |
+| `zone('kind', player)` | That player's zone, e.g. `zone('hand', next_player(2))` for the player across the table |
+| `numbers(low, high)` | The list of whole numbers from `low` to `high`, e.g. for bids: `"choose": "numbers(0, 13)"` |
 | `count(cards)` | How many cards |
 | `number(card, 'column')` | A card's column as a number, for comparing, e.g. `number(card, 'value') > 5` (`0` if `card` is `null` or the column isn't a number) |
+| `text(card, 'column')` | A card's column as text, or `''` if `card` is `null`. Use this instead of `card.data.column` when the card might be missing, e.g. `text(top(to), 'color')` |
 | `sum(cards, 'column')` | The numeric total of a column |
 | `where(cards, 'column', value)` | The cards whose column equals `value` |
 | `without(cards, removed)` | The cards, minus the removed ones |
+| `movable(cards, to)` | The cards that a move rule currently allows into `to` (a zone, a group like `foundation`, or a list like `[tableau, foundation]`). `count(movable(hand, pile)) == 0` means "can't play"; `"choose": "movable(hand, knock)"` offers only legal cards |
+| `face_down(cards)` | The cards that are face down, e.g. `flip(face_down(top(from)))` turns the new top card up only if it's down |
 
 **Melds** (need `melds` in the game file)
 
@@ -367,9 +466,12 @@ Wherever a building block takes `cards`, you can pass a zone, a single card, or 
 ### Tips
 
 - **Card values are text.** `card.data.number == '3'` works, but for greater/less than use `number`: `number(card, 'value') > 5`.
+- **`and`/`or` check both sides.** `count(to) > 0 and top(to).data.color == 'Red'` still fails on an empty zone, because `top(to)` is `null`. Use `number(...)`, `text(...)` and `count(...)`, which are safe with `null`: `text(top(to), 'color') == 'Red'`.
 - **Numbers in the JSON are decimals.** A variable starting at `0` displays as `0` but is stored as `0.0`. Comparisons work normally.
 - **To deal the same way in several places,** put the steps in a custom trigger and call `trigger('deal')`.
-- **Look at `games/gin_rummy.json`** for a full game: turn phases, knocking, scoring, and a match to 100.
+- **"Draw only if you can't play"** is a move rule like `{ "from": "deck", "to": "hand", "when": "count(movable(hand, pile)) == 0" }`. (A rule can't use `movable` to check moves into its own destination; that inner check counts as "no moves" and the log says so.)
+- **To repeat a check,** give it a name in [`conditions`](#conditions). **To repeat a step,** use a [loop](#loops).
+- **Look at `games/gin_rummy.json`** for a full game: turn phases, knocking, scoring, and a match to 100. `games/solitaire.json` shows columns, stacks, and groups of zones.
 
 ## Deck reference
 
@@ -397,4 +499,3 @@ func discard_hand(zone: Zone, to: Zone) -> void:
 Other places to look:
 - `scripts/core/`: the game logic. `Game` runs the rules, `Zone` holds cards, `Melds` finds melds, `Bot` picks moves.
 - `scripts/ui/`: the table and side panel.
-- `ROADMAP.md`: what's been built and why.

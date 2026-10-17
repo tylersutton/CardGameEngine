@@ -5,6 +5,8 @@ signal changed(zone: Zone)
 
 const FACE_DOWN := "down"
 const FACE_OWNER := "owner"
+const FACE_HUMAN := "human"
+const DRAG_STACK := "stack"
 
 var name: String
 var kind: String
@@ -13,20 +15,25 @@ var layout: String
 var face: String
 var anchor: Vector2
 var width: float
+var rotation: float
+var drags_stack: bool
 var on_click: Array
 var cards: Array[Card] = []
 var sort_columns: Array[String] = []
 
 
-func _init(zone_kind: String, definition: Dictionary, player := 0) -> void:
+func _init(zone_kind: String, definition: Dictionary, number := 0) -> void:
 	kind = zone_kind
-	owner = player
-	name = kind if owner == 0 else "%s_%d" % [kind, owner]
+	owner = number if definition.get("per_player", false) else 0
+	name = kind if number == 0 else "%s_%d" % [kind, number]
 	layout = definition.get("layout", "row")
 	face = definition.get("face", "up")
-	var anchor_values: Array = definition.anchors[owner - 1] if owner and definition.has("anchors") else definition.get("anchor", [0.5, 0.5])
+	var anchor_values: Array = definition.anchors[number - 1] if number and definition.has("anchors") else definition.get("anchor", [0.5, 0.5])
 	anchor = Vector2(anchor_values[0], anchor_values[1])
 	width = definition.get("width", 0.0)
+	var rotations: Array = definition.get("rotations", [])
+	rotation = rotations[number - 1] if number and rotations.size() >= number else definition.get("rotation", 0.0)
+	drags_stack = definition.get("drag", "") == DRAG_STACK
 	on_click = definition.get("on_click", [])
 
 

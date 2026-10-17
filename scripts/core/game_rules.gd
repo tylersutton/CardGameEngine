@@ -5,6 +5,7 @@ var zones: Dictionary
 var actions: Dictionary
 var triggers: Dictionary
 var effects: Dictionary
+var conditions: Dictionary
 var moves: Array
 var variables: Dictionary
 var players: int
@@ -34,6 +35,7 @@ static func load_json(path: String) -> GameRules:
 	rules.moves = data.get("moves", [])
 	rules.triggers = data.get("triggers", {})
 	rules.effects = data.get("effects", {})
+	rules.conditions = data.get("conditions", {})
 	rules.variables = data.get("variables", {})
 	rules.players = int(data.get("players", 1))
 	rules.player_variables = data.get("player_variables", {})

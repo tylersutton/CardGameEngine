@@ -6,12 +6,13 @@ const FAN_SPACING := 50.0
 const FAN_RADIUS := 1200.0
 const MAX_WIDTH := 800.0
 const MELD_SPACING := 26.0
+const COLUMN_SPACING := 30.0
 const MELD_GAP := 24.0
 
 
-static func place(layout: String, index: int, count: int, max_width := MAX_WIDTH) -> Transform2D:
+static func place(layout: String, index: int, count: int, max_spread := MAX_WIDTH) -> Transform2D:
 	var steps_from_middle := index - (count - 1) / 2.0
-	var widest_spacing := (max_width - CardView.SIZE.x) / maxf(count - 1, 1)
+	var widest_spacing := (max_spread - CardView.SIZE.x) / maxf(count - 1, 1)
 	match layout:
 		"pile":
 			return Transform2D(0.0, Vector2(0, -index * PILE_STEP))
@@ -20,6 +21,8 @@ static func place(layout: String, index: int, count: int, max_width := MAX_WIDTH
 			return Transform2D(x / FAN_RADIUS, Vector2(x, x * x / (2 * FAN_RADIUS)))
 		"melds":
 			return Transform2D(0.0, Vector2(steps_from_middle * MELD_SPACING, 0))
+		"column":
+			return Transform2D(0.0, Vector2(0, index * minf(COLUMN_SPACING, max_spread / maxf(count - 1, 1))))
 		_:
 			var x := steps_from_middle * minf(ROW_SPACING, widest_spacing)
 			return Transform2D(0.0, Vector2(x, 0))

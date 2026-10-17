@@ -99,8 +99,8 @@
 			}]
 		},
 		"Knock": {
-			"when": "phase == 'discard'",
-			"choose": "without(hand, taken)",
+			"when": "count(movable(hand, knock)) > 0",
+			"choose": "movable(hand, knock)",
 			"steps": ["try_move(card, knock)"]
 		},
 		"Big Gin": {

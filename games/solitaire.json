@@ -1,0 +1,59 @@
+{
+	"zones": {
+		"stock": {
+			"layout": "pile", "face": "down", "anchor": [0.08, 0.16],
+			"cards": "res://decks/gin_deck.csv",
+			"on_click": [{ "if": "count(stock) == 0", "then": ["draw(waste, stock, count(waste))"], "else": ["draw(stock, waste)"] }]
+		},
+		"waste": { "layout": "pile", "anchor": [0.21, 0.16], "on_click": ["try_move(card, foundation)"] },
+		"foundation": {
+			"copies": 4, "layout": "pile",
+			"anchors": [[0.47, 0.16], [0.6, 0.16], [0.73, 0.16], [0.86, 0.16]]
+		},
+		"tableau": {
+			"copies": 7, "layout": "column", "drag": "stack",
+			"anchors": [[0.08, 0.45], [0.21, 0.45], [0.34, 0.45], [0.47, 0.45], [0.6, 0.45], [0.73, 0.45], [0.86, 0.45]],
+			"on_click": ["try_move(card, foundation)"]
+		}
+	},
+	"variables": { "result": "" },
+	"status": { "cards on foundations": "count(foundation)", "cards you can move": "count(movable([waste, tableau], [tableau, foundation]))" },
+	"conditions": {
+		"top_card": "card == top(from)",
+		"fits_foundation": "number(card, 'value') == count(to) + 1 and count(where(to, 'suit', card.data.suit)) == count(to)",
+		"fits_tableau": "(count(to) == 0 and number(card, 'value') == 13) or (number(card, 'value') == number(top(to), 'value') - 1 and card.data.color != text(top(to), 'color'))"
+	},
+	"moves": [
+		{
+			"from": "waste", "to": "foundation",
+			"when": "fits_foundation",
+			"then": ["trigger('check_win')"]
+		},
+		{
+			"from": "tableau", "to": "foundation",
+			"when": "top_card and fits_foundation",
+			"then": ["flip(face_down(top(from)))", "trigger('check_win')"]
+		},
+		{
+			"from": "waste", "to": "tableau",
+			"when": "fits_tableau"
+		},
+		{
+			"from": "tableau", "to": "tableau",
+			"when": "card.face_up and fits_tableau",
+			"then": ["flip(face_down(top(from)))"]
+		},
+		{
+			"from": "foundation", "to": "tableau",
+			"when": "top_card and fits_tableau"
+		}
+	],
+	"triggers": {
+		"start": [
+			"shuffle(stock)",
+			{ "for": "column", "in": "tableau", "do": ["draw(stock, column, column_number)", "flip(without(column, top(column)))"] }
+		],
+		"check_win": [{ "if": "count(foundation) == 52", "then": ["assign('result', 'You win!')"] }]
+	},
+	"card_face": { "corner": "name", "title": "name", "body": ["suit"], "color": "color" }
+}

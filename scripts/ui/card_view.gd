@@ -1,6 +1,8 @@
 class_name CardView
 extends Control
 
+signal picked_up(view: CardView)
+signal dragged(view: CardView)
 signal clicked(view: CardView)
 signal dropped(view: CardView)
 
@@ -14,10 +16,12 @@ const TITLE_FONT_SIZE := 24
 const BODY_FONT_SIZE := 12
 const HIGHLIGHT_COLOR := Color(1, 0.85, 0.2)
 const HIGHLIGHT_WIDTH := 4
+const SELECTED_COLOR := Color(0.3, 0.75, 1)
 
 static var face_style := _rounded_box(Color.WHITE, Color(0.75, 0.75, 0.75))
 static var back_style := _rounded_box(Color(0.16, 0.24, 0.52), Color.WHITE)
 static var highlight_style := _outline_box(HIGHLIGHT_COLOR)
+static var selected_style := _outline_box(SELECTED_COLOR)
 
 var card: Card
 var face: Dictionary
@@ -28,6 +32,10 @@ var face_up := true:
 var highlighted := false:
 	set(value):
 		highlighted = value
+		queue_redraw()
+var selected := false:
+	set(value):
+		selected = value
 		queue_redraw()
 var lift := 0.0:
 	set(value):
@@ -49,8 +57,7 @@ func _init(card_to_show: Card, card_face: Dictionary) -> void:
 
 
 func move_to(target_position: Vector2, target_rotation: float) -> void:
-	if tween:
-		tween.kill()
+	stop_moving()
 	tween = create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position", target_position, MOVE_TIME)
 	tween.tween_property(self, "rotation", target_rotation, MOVE_TIME)
@@ -64,15 +71,21 @@ func _gui_input(event: InputEvent) -> void:
 			_release()
 	elif event is InputEventMouseMotion and grabbed:
 		global_position = get_global_mouse_position() - grab_offset
+		dragged.emit(self)
 
 
 func _grab() -> void:
 	grabbed = true
 	grab_start = get_global_mouse_position()
 	grab_offset = grab_start - global_position
+	stop_moving()
+	get_parent().move_child(self, -1)
+	picked_up.emit(self)
+
+
+func stop_moving() -> void:
 	if tween:
 		tween.kill()
-	get_parent().move_child(self, -1)
 
 
 func _release() -> void:
@@ -94,8 +107,8 @@ func _draw() -> void:
 		_draw_face(rect)
 	else:
 		draw_style_box(back_style, rect)
-	if highlighted:
-		draw_style_box(highlight_style, rect.grow(HIGHLIGHT_WIDTH / 2.0))
+	if selected or highlighted:
+		draw_style_box(selected_style if selected else highlight_style, rect.grow(HIGHLIGHT_WIDTH / 2.0))
 
 
 func _draw_face(rect: Rect2) -> void:
