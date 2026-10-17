@@ -355,6 +355,8 @@ Live readouts in the side panel, recalculated after every change:
 | `corner` | Column shown small in the top-left |
 | `title` | Column shown large in the middle |
 | `body` | List of columns shown below the title |
+| `text` | Column with rules text, drawn small and word-wrapped under the title (long titles also shrink to fit) |
+| `zoom` | e.g. `2.4`: hovering a face-up card shows an enlarged copy beside it, so small text can be read |
 | `color` | Column holding the text color: a name like `Red` or a hex code like `#c0392b` |
 
 ### `melds`

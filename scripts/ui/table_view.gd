@@ -9,6 +9,7 @@ const CURRENT_SLOT_BORDER := Color(1, 0.85, 0.4, 0.8)
 const LABEL_FONT_SIZE := 14
 const LABEL_GAP := 22.0
 const BOTTOM_MARGIN := 8.0
+const ZOOM_GAP := 12.0
 const LABEL_OVERHANG := 20.0
 const SEAT_PADDING := Vector2(10, 4)
 const SEAT_TEXT_COLOR := Color.WHITE
@@ -23,6 +24,7 @@ var game: Game
 var views: Dictionary[Card, CardView] = {}
 var show_zone_names := false
 var preview_zone: Zone
+var zoom_view: CardView
 var hover_zone: Zone
 var hover_allowed := false
 var carried_views: Array[CardView] = []
@@ -38,6 +40,7 @@ func show_game(game_to_show: Game) -> void:
 		view.queue_free()
 	views.clear()
 	game = game_to_show
+	_make_zoom_view()
 	for zone: Zone in game.zones.values():
 		zone.changed.connect(_layout_zone)
 		zone.changed.connect(queue_redraw.unbind(1))
@@ -102,13 +105,51 @@ func _view_for(card: Card, spawn_center: Vector2) -> CardView:
 		view.dragged.connect(_on_card_dragged)
 		view.clicked.connect(_on_card_clicked)
 		view.double_clicked.connect(_on_card_double_clicked)
+		view.hovered.connect(_on_card_hovered)
+		view.unhovered.connect(func(_view: CardView) -> void: _hide_zoom())
 		view.dropped.connect(_on_card_dropped)
 		add_child(view)
 		views[card] = view
 	return views[card]
 
 
+## With "zoom" in card_face, hovering a face-up card shows an enlarged copy beside it.
+func _make_zoom_view() -> void:
+	if zoom_view:
+		zoom_view.queue_free()
+		zoom_view = null
+	if not game.rules.card_face.has("zoom") or game.zones.is_empty():
+		return
+	zoom_view = CardView.new(null, game.rules.card_face)
+	zoom_view.pivot_offset = Vector2.ZERO
+	zoom_view.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	zoom_view.z_index = 10
+	zoom_view.visible = false
+	add_child(zoom_view)
+
+
+func _on_card_hovered(view: CardView) -> void:
+	if not zoom_view or not view.face_up or view.grabbed:
+		return
+	var zoom: float = game.rules.card_face.zoom
+	var zoom_size := CardView.SIZE * zoom
+	var spot := view.position + Vector2(CardView.SIZE.x + ZOOM_GAP, (CardView.SIZE.y - zoom_size.y) / 2)
+	if spot.x + zoom_size.x > size.x:
+		spot.x = view.position.x - zoom_size.x - ZOOM_GAP
+	zoom_view.card = view.card
+	zoom_view.scale = Vector2(zoom, zoom)
+	zoom_view.position = spot.clamp(Vector2.ZERO, size - zoom_size)
+	zoom_view.visible = true
+	zoom_view.queue_redraw()
+
+
+func _hide_zoom() -> void:
+	if zoom_view:
+		zoom_view.visible = false
+
+
 func _on_card_picked_up(view: CardView) -> void:
+	_hide_zoom()
 	carried_views.clear()
 	carried_offsets.clear()
 	for card in game.carried(view.card).slice(1):
