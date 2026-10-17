@@ -68,6 +68,12 @@ layout_mode = 2
 tooltip_text = "Ignore move rules and action conditions"
 text = "Sandbox"
 
+[node name="ZoneNamesToggle" type="CheckButton" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Show each zone's name and card count, as used in rules"
+text = "Zone names"
+
 [node name="ActionButtons" type="HBoxContainer" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=510503867]
 unique_name_in_owner = true
 layout_mode = 2

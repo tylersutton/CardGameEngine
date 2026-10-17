@@ -3,15 +3,20 @@ extends Control
 
 const FELT_COLOR := Color(0.12, 0.38, 0.22)
 const LABEL_COLOR := Color(1, 1, 1, 0.7)
+const ZONE_LABEL_COLOR := Color(1, 1, 1, 0.45)
+const SLOT_BORDER := Color(1, 1, 1, 0.25)
+const CURRENT_SLOT_BORDER := Color(1, 0.85, 0.4, 0.8)
 const LABEL_FONT_SIZE := 14
 const LABEL_GAP := 22.0
 const BOTTOM_MARGIN := 8.0
 const LABEL_OVERHANG := 20.0
 
-static var slot_style := _slot_box()
+static var slot_style := _slot_box(SLOT_BORDER)
+static var current_slot_style := _slot_box(CURRENT_SLOT_BORDER)
 
 var game: Game
 var views: Dictionary[Card, CardView] = {}
+var show_zone_names := false
 var carried_views: Array[CardView] = []
 var carried_offsets: Array[Vector2] = []
 
@@ -171,21 +176,24 @@ func _draw() -> void:
 		return
 	var font := get_theme_default_font()
 	for zone: Zone in game.zones.values():
-		if zone.layout == "melds" and zone.is_empty():
+		if not zone.has_outline or zone.layout == "melds" and zone.is_empty():
 			continue
 		var slot := _slot(zone)
-		draw_style_box(slot_style, slot)
-		var label := "%s (%d)" % [zone.name, zone.cards.size()]
-		if game.rules.players > 1 and zone.owner == game.current_player():
-			label = "▶ " + label
-		var label_position := slot.position - Vector2(LABEL_OVERHANG, LABEL_GAP)
-		draw_string(font, label_position, label, HORIZONTAL_ALIGNMENT_CENTER, slot.size.x + LABEL_OVERHANG * 2, LABEL_FONT_SIZE, LABEL_COLOR)
+		var is_current := game.rules.players > 1 and zone.owner == game.current_player()
+		draw_style_box(current_slot_style if is_current else slot_style, slot)
+		if zone.label:
+			var baseline := Vector2(slot.position.x, slot.get_center().y + LABEL_FONT_SIZE / 3.0)
+			draw_string(font, baseline, zone.label, HORIZONTAL_ALIGNMENT_CENTER, slot.size.x, LABEL_FONT_SIZE, ZONE_LABEL_COLOR)
+		if show_zone_names:
+			var name_position := slot.position - Vector2(LABEL_OVERHANG, LABEL_GAP)
+			var name_text := "%s (%d)" % [zone.name, zone.cards.size()]
+			draw_string(font, name_position, name_text, HORIZONTAL_ALIGNMENT_CENTER, slot.size.x + LABEL_OVERHANG * 2, LABEL_FONT_SIZE, LABEL_COLOR)
 
 
-static func _slot_box() -> StyleBoxFlat:
+static func _slot_box(border_color: Color) -> StyleBoxFlat:
 	var box := StyleBoxFlat.new()
 	box.bg_color = Color(0, 0, 0, 0.15)
-	box.border_color = Color(1, 1, 1, 0.25)
+	box.border_color = border_color
 	box.set_border_width_all(2)
 	box.set_corner_radius_all(8)
 	return box

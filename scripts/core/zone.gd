@@ -7,8 +7,11 @@ const FACE_DOWN := "down"
 const FACE_OWNER := "owner"
 const FACE_HUMAN := "human"
 const DRAG_STACK := "stack"
+const LABEL_NUMBER := "#"
 
 var name: String
+var label: String
+var has_outline: bool
 var kind: String
 var owner: int
 var layout: String
@@ -26,6 +29,8 @@ func _init(zone_kind: String, definition: Dictionary, number := 0) -> void:
 	kind = zone_kind
 	owner = number if definition.get("per_player", false) else 0
 	name = kind if number == 0 else "%s_%d" % [kind, number]
+	label = definition.get("label", "").replace(LABEL_NUMBER, str(number))
+	has_outline = definition.get("outline", true)
 	layout = definition.get("layout", "row")
 	face = definition.get("face", "up")
 	var anchor_values: Array = definition.anchors[number - 1] if number and definition.has("anchors") else definition.get("anchor", [0.5, 0.5])

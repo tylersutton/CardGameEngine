@@ -33,6 +33,7 @@ To jump straight into one game while working on it, open `scenes/main.tscn`, set
 | **Games** | Back to the title screen to pick another game. |
 | **Reload** | Re-read the JSON and CSV files from disk and start over. |
 | **Sandbox** | Ignore the rules and move anything anywhere, for testing. Rule follow-ups (like scoring) don't run in sandbox. |
+| **Zone names** | Show every zone's name and card count above it: the names to use in rules (e.g. `won_1`). Off by default. |
 
 The right-hand panel shows the game's variables and live readouts at the top, and a log of everything that happened below. Errors appear in red.
 
@@ -79,8 +80,8 @@ Create `games/color_match.json`. Start with the **zones**: the named places card
 {
 	"players": 2,
 	"zones": {
-		"deck": { "layout": "pile", "face": "down", "anchor": [0.4, 0.5], "cards": "res://decks/color_match.csv" },
-		"pile": { "layout": "pile", "anchor": [0.6, 0.5] },
+		"deck": { "label": "Deck", "layout": "pile", "face": "down", "anchor": [0.4, 0.5], "cards": "res://decks/color_match.csv" },
+		"pile": { "label": "Pile", "layout": "pile", "anchor": [0.6, 0.5] },
 		"hand": { "per_player": true, "layout": "fan", "face": "owner", "anchors": [[0.5, 0.83], [0.5, 0.16]] }
 	},
 	"card_face": { "corner": "number", "title": "number", "body": ["color"], "color": "ink" }
@@ -88,6 +89,7 @@ Create `games/color_match.json`. Start with the **zones**: the named places card
 ```
 
 - `anchor` is where the zone sits, as fractions of the table: `[0.5, 0.5]` is the center, `[0.5, 0.83]` is near the bottom.
+- `"label": "Pile"` (optional) is shown faintly inside the zone's outline while it's empty. The zone's real name (`pile`) is shown with the **Zone names** toggle.
 - `layout` is how the cards spread out: `pile` (stacked), `row`, or `fan`.
 - `"cards"` puts the whole deck in that zone at the start.
 - `"per_player": true` makes one hand per player, `hand_1` and `hand_2`, placed at the two `anchors`.
@@ -213,6 +215,8 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 
 | Key | Meaning | Default |
 |---|---|---|
+| `label` | Text shown inside the zone's outline while it's empty, e.g. `"Discard"`, or `"K"` for an empty solitaire column. In per-player zones and copies, `#` becomes the number: `"Tricks #"` shows "Tricks 1", "Tricks 2", ... | none |
+| `outline` | `false` draws no outline or label, for zones that are only used in passing (e.g. the deck in Hearts) | `true` |
 | `layout` | `pile`, `row`, `fan`, `column` (cascading downward from the anchor, squeezing to fit; for solitaire), or `melds` (groups the cards into their melds; for rummy tables) | `row` |
 | `face` | `up`, `down`, `owner` (face up only on the owning player's turn), or `human` (face up unless a bot owns it). Cards take this face when they enter the zone. | `up` |
 | `anchor` | Position on the table as `[x, y]` fractions | `[0.5, 0.5]` |

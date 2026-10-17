@@ -2,14 +2,14 @@
 	"title": "Free Play",
 	"description": "A standard deck with no rules: draw, play, discard, and sort.",
 	"zones": {
-		"deck": {
+		"deck": { "label": "Deck",
 			"layout": "pile", "face": "down", "anchor": [0.42, 0.5],
 			"cards": "res://decks/standard_deck.csv",
 			"on_click": ["draw(deck, hand)"]
 		},
-		"discard": { "layout": "pile", "anchor": [0.58, 0.5] },
-		"table": { "anchor": [0.5, 0.18] },
-		"hand": { "layout": "fan", "anchor": [0.5, 0.82] }
+		"discard": { "label": "Discard", "layout": "pile", "anchor": [0.58, 0.5] },
+		"table": { "label": "Table", "anchor": [0.5, 0.18] },
+		"hand": { "label": "Hand", "layout": "fan", "anchor": [0.5, 0.82] }
 	},
 	"actions": {
 		"Shuffle": ["shuffle(deck)"],

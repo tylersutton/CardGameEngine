@@ -15,6 +15,7 @@ func _ready() -> void:
 	%ReloadButton.pressed.connect(_load_game)
 	%UndoButton.pressed.connect(func() -> void: if game: game.undo())
 	%SandboxToggle.toggled.connect(_set_sandbox)
+	%ZoneNamesToggle.toggled.connect(_show_zone_names)
 	_load_game()
 
 
@@ -43,6 +44,11 @@ func _set_sandbox(enabled: bool) -> void:
 	if game:
 		game.sandbox = enabled
 		_refresh_action_buttons()
+
+
+func _show_zone_names(enabled: bool) -> void:
+	%TableView.show_zone_names = enabled
+	%TableView.queue_redraw()
 
 
 func _add_action_buttons() -> void:

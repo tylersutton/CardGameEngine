@@ -3,15 +3,15 @@
 	"description": "Four players, you against three bots. Pass three cards, follow suit, and avoid hearts and the queen of spades.",
 	"players": 4,
 	"zones": {
-		"deck": { "layout": "pile", "face": "down", "anchor": [0.92, 0.9], "cards": "res://decks/hearts_deck.csv" },
+		"deck": { "outline": false, "layout": "pile", "face": "down", "anchor": [0.5, 0.5], "cards": "res://decks/hearts_deck.csv" },
 		"hand": {
 			"per_player": true, "layout": "fan", "face": "human", "width": 0.5,
 			"anchors": [[0.5, 0.86], [0.09, 0.5], [0.5, 0.14], [0.91, 0.5]],
 			"rotations": [0, 90, 180, 270]
 		},
 		"played": { "per_player": true, "layout": "pile", "anchors": [[0.5, 0.62], [0.37, 0.5], [0.5, 0.38], [0.63, 0.5]] },
-		"passing": { "per_player": true, "layout": "pile", "face": "human", "anchors": [[0.22, 0.86], [0.09, 0.14], [0.78, 0.14], [0.91, 0.86]] },
-		"won": { "per_player": true, "layout": "pile", "face": "down", "anchors": [[0.78, 0.86], [0.22, 0.14], [0.91, 0.14], [0.09, 0.86]] }
+		"passing": { "label": "Pass #", "per_player": true, "layout": "pile", "face": "human", "anchors": [[0.22, 0.86], [0.09, 0.14], [0.78, 0.14], [0.91, 0.86]] },
+		"won": { "label": "Tricks #", "per_player": true, "layout": "pile", "face": "down", "anchors": [[0.78, 0.86], [0.22, 0.14], [0.91, 0.14], [0.09, 0.86]] }
 	},
 	"variables": { "phase": "pass", "passed": 0, "lead": "", "hearts_broken": false, "tricks": 0 },
 	"player_variables": { "score": 0 },
