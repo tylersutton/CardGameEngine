@@ -41,16 +41,21 @@ func take_input() -> bool:
 
 
 ## Random identities for the cards this bot can't see, shared by every input it compares.
+## Its own hidden cards are only shuffled among themselves: it knows what it owns, just not the order.
 func _deals() -> Array:
-	var hidden := game.hidden_from(game.current_player())
+	var player := game.current_player()
+	var hidden := game.hidden_from(player)
 	if game.rules.bot.get("peek", false) or hidden.is_empty():
 		return []
+	var own := hidden.filter(func(card: Card) -> bool: return game.zone_of(card).owner == player)
+	var others := hidden.filter(func(card: Card) -> bool: return game.zone_of(card).owner != player)
 	var deals := []
 	for sample in int(game.rules.bot.get("samples", DEFAULT_SAMPLES)):
-		var identities := hidden.map(func(card: Card) -> Dictionary: return card.data)
-		identities.shuffle()
 		var deal := {}
-		for i in hidden.size():
-			deal[hidden[i]] = identities[i]
+		for group: Array in [own, others]:
+			var identities := group.map(func(card: Card) -> Dictionary: return card.data)
+			identities.shuffle()
+			for i in group.size():
+				deal[group[i]] = identities[i]
 		deals.append(deal)
 	return deals

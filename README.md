@@ -387,7 +387,7 @@ On a bot's turn, it tries every legal input: each allowed drag, each click on a 
 
 Write `prefer` as "how good is this position for me?". Things to know:
 - **It only looks one input ahead.**
-- **It doesn't peek.** Cards it couldn't see (face down, even its own, like the order of its deck; or in another player's `owner`/`human` hand) are shuffled among themselves before each try, several times, and the results averaged. So drawing from the deck is judged on what it might get, not what's really there.
+- **It doesn't peek.** Cards it couldn't see (face down, even its own, like the order of its deck; or in another player's `owner`/`human` hand) are shuffled among themselves before each try, several times, and the results averaged. So drawing from the deck is judged on what it might get, not what's really there. Its own hidden cards are only shuffled among themselves: it knows what's in its deck, just not the order.
   - `"samples": 4` sets how many shuffles (more is fairer but slower).
   - `"peek": true` lets the bot see everything, which is stronger and faster.
 - **It never makes inputs that only reorder cards,** such as sorting.
