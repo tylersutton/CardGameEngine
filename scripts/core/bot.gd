@@ -2,6 +2,7 @@ class_name Bot
 extends RefCounted
 
 const MAX_INPUTS_PER_TURN := 30
+const DEFAULT_SAMPLES := 4
 
 var game: Game
 var turn_player := 0
@@ -24,8 +25,9 @@ func take_input() -> bool:
 		return false
 	var best_input: Callable
 	var best_value := -INF
+	var deals := _deals()
 	for input in game.legal_inputs():
-		var value: Variant = game.try_out(input, game.rules.bot.prefer)
+		var value: Variant = game.try_out(input, game.rules.bot.prefer, deals)
 		if (value is float or value is int) and value > best_value:
 			best_input = input
 			best_value = value
@@ -36,3 +38,19 @@ func take_input() -> bool:
 	best_input.call()
 	history_after_last_input = game.history.size()
 	return true
+
+
+## Random identities for the cards this bot can't see, shared by every input it compares.
+func _deals() -> Array:
+	var hidden := game.hidden_from(game.current_player())
+	if game.rules.bot.get("peek", false) or hidden.is_empty():
+		return []
+	var deals := []
+	for sample in int(game.rules.bot.get("samples", DEFAULT_SAMPLES)):
+		var identities := hidden.map(func(card: Card) -> Dictionary: return card.data)
+		identities.shuffle()
+		var deal := {}
+		for i in hidden.size():
+			deal[hidden[i]] = identities[i]
+		deals.append(deal)
+	return deals

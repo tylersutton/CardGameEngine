@@ -379,11 +379,13 @@ Computer players:
 "bot": { "players": [2], "prefer": "score - opponent_score - sum(deadwood(hand), 'points')" }
 ```
 
-On a bot's turn, it tries every legal input: each allowed drag, each enabled button, and each choice for `choose` buttons. It scores the result of each with `prefer`, from its own point of view, and takes the highest. It plays one input at a time so you can watch.
+On a bot's turn, it tries every legal input: each allowed drag, each click on a zone with `on_click`, each enabled button, and each choice for `choose` buttons. It scores the result of each with `prefer`, from its own point of view, and takes the highest. It plays one input at a time so you can watch.
 
 Write `prefer` as "how good is this position for me?". Things to know:
 - **It only looks one input ahead.**
-- **It can see hidden cards,** including the top of the deck.
+- **It doesn't peek.** Cards it couldn't see (face down, or in another player's `owner`/`human` hand) are shuffled among themselves before each try, several times, and the results averaged. So drawing from the deck is judged on what it might get, not what's really there.
+  - `"samples": 4` sets how many shuffles (more is fairer but slower).
+  - `"peek": true` lets the bot see everything, which is stronger and faster.
 - **It never makes inputs that only reorder cards,** such as sorting.
 - **Use `face: "human"` for hands in bot games.** It shows your hand and hides the bots'. (`owner` would reveal each bot's hand on its turn.)
 

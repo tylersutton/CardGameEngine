@@ -345,11 +345,15 @@ func legal_inputs() -> Array[Callable]:
 		return _choice_inputs(choices, pick_count)
 	var inputs: Array[Callable] = []
 	for source: Zone in zones.values():
-		var reachable_cards: Array = [source.cards.back()] if source.layout == "pile" and source.cards else source.cards
-		for card: Card in reachable_cards:
+		for card in _reachable_cards(source):
 			for destination: Zone in zones.values():
 				if destination != source and not _matching_move(card, source, destination).is_empty():
 					inputs.append(drag.bind(card, destination))
+		if source.on_click and source.is_empty():
+			inputs.append(click_empty.bind(source))
+		elif source.on_click:
+			for card in _reachable_cards(source):
+				inputs.append(click.bind(card))
 	for action_name: String in rules.actions:
 		var action: Dictionary = rules.actions[action_name]
 		if action.get("human_only", false) or not _holds(action.get("when", "")):
@@ -362,6 +366,25 @@ func legal_inputs() -> Array[Callable]:
 				perform(action_name)
 				complete_choice.call())
 	return inputs
+
+
+## What a player could pick up: only the top card of a pile.
+static func _reachable_cards(zone: Zone) -> Array[Card]:
+	if zone.layout == "pile":
+		return [zone.cards.back()] if zone.cards else []
+	return zone.cards
+
+
+## Cards whose identity the player can't know: face down, or in another player's hidden hand.
+func hidden_from(player: int) -> Array[Card]:
+	var hidden: Array[Card] = []
+	for zone: Zone in zones.values():
+		if zone.owner == player:
+			continue
+		for card in zone.cards:
+			if not card.face_up or zone.face in [Zone.FACE_OWNER, Zone.FACE_HUMAN]:
+				hidden.append(card)
+	return hidden
 
 
 func _choice_inputs(options: Array, pick: int) -> Array[Callable]:
@@ -393,8 +416,27 @@ static func _combinations(items: Array, size: int) -> Array:
 
 
 ## Runs the input silently, measures the result as the current player, then undoes it.
-## Returns null if the input only reordered cards.
-func try_out(input: Callable, measure: String) -> Variant:
+## Returns null if the input only reordered cards. With deals (card -> data), hidden cards are
+## given those identities for each try and the results averaged, so the measure can't peek.
+func try_out(input: Callable, measure: String, deals: Array = []) -> Variant:
+	if deals.is_empty():
+		return _try_once(input, measure)
+	var total := 0.0
+	for deal: Dictionary in deals:
+		var real_data := {}
+		for card: Card in deal:
+			real_data[card] = card.data
+			card.data = deal[card]
+		var value: Variant = _try_once(input, measure)
+		for card: Card in real_data:
+			card.data = real_data[card]
+		if value is not float and value is not int:
+			return null
+		total += value
+	return total / deals.size()
+
+
+func _try_once(input: Callable, measure: String) -> Variant:
 	var player := current_player()
 	var before := _snapshot()
 	var contents_before := _contents()
@@ -769,7 +811,7 @@ func _check_actions_and_moves() -> void:
 		if list and list.size() < rules.players:
 			errors.append("\"%s\" needs one entry per player (%d)" % [list_name, rules.players])
 	if rules.bot:
-		_check_entry("bot", rules.bot, {"players": TYPE_ARRAY, "prefer": TYPE_STRING})
+		_check_entry("bot", rules.bot, {"players": TYPE_ARRAY, "prefer": TYPE_STRING, "peek": TYPE_BOOL, "samples": TYPE_FLOAT})
 		if not rules.bot.has("prefer"):
 			errors.append("bot needs \"prefer\": an expression the bot tries to make as high as possible")
 	for effect_name in rules.effects:
