@@ -8,8 +8,16 @@ const DESCRIPTION_COLOR := Color(1, 1, 1, 0.75)
 
 func _ready() -> void:
 	%Felt.color = TableView.FELT_COLOR
+	_fit_window_to_screen()
 	for path in _game_paths():
 		_add_game(path, GameRules.load_json(path))
+
+
+func _fit_window_to_screen() -> void:
+	var screen := DisplayServer.screen_get_usable_rect().size
+	var window := DisplayServer.window_get_size()
+	if window.x > screen.x or window.y > screen.y:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 
 
 func _game_paths() -> Array[String]:
