@@ -75,6 +75,11 @@ func restore(saved_cards: Array[Card], saved_sort_columns: Array[String]) -> voi
 	changed.emit(self)
 
 
+## Where the card would go if it were added, given the zone's sorting.
+func sorted_index(card: Card) -> int:
+	return cards.filter(func(other: Card) -> bool: return other != card and not _precedes(card, other)).size()
+
+
 func shuffle() -> void:
 	cards.shuffle()
 	changed.emit(self)

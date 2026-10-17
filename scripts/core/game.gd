@@ -198,7 +198,7 @@ func _clear_choice() -> void:
 	state_changed.emit()
 
 
-func drag(card: Card, destination: Zone) -> bool:
+func drag(card: Card, destination: Zone, index := -1) -> bool:
 	cancel_choice()
 	var before := _snapshot()
 	var source := zone_of(card)
@@ -209,6 +209,8 @@ func drag(card: Card, destination: Zone) -> bool:
 	_during_move(source, destination, func() -> void:
 		for carried_card in carried(card):
 			move(carried_card, destination)
+		if index >= 0 and destination.sort_columns.is_empty() and card in destination.cards:
+			destination.reorder(card, mini(index, destination.cards.size() - 1))
 		run(rule.get("then", []), card))
 	_finish_input(before)
 	return true

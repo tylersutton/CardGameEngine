@@ -22,6 +22,7 @@ static var current_seat_style := _seat_box(CURRENT_SLOT_BORDER)
 var game: Game
 var views: Dictionary[Card, CardView] = {}
 var show_zone_names := false
+var preview_zone: Zone
 var carried_views: Array[CardView] = []
 var carried_offsets: Array[Vector2] = []
 
@@ -51,14 +52,21 @@ func _layout_all() -> void:
 			_layout_zone(zone)
 
 
-func _layout_zone(zone: Zone) -> void:
+## With an incoming card, the other cards make room for it at that index (the incoming card itself is being dragged).
+func _layout_zone(zone: Zone, incoming: Card = null, index := 0) -> void:
 	var center := zone.anchor * size
 	var turn := deg_to_rad(zone.rotation)
 	var groups := _groups(zone)
+	if incoming:
+		var arranged := zone.cards.filter(func(card: Card) -> bool: return card != incoming)
+		arranged.insert(index, incoming)
+		groups = [arranged]
 	var group_centers := ZoneLayout.group_centers(groups.map(func(group: Array) -> int: return group.size()))
 	for group_index in groups.size():
 		var group: Array = groups[group_index]
 		for i in group.size():
+			if group[i] == incoming:
+				continue
 			var view := _view_for(group[i], center)
 			view.face_up = game.shows_face(group[i])
 			move_child(view, -1)
@@ -108,10 +116,48 @@ func _on_card_picked_up(view: CardView) -> void:
 func _on_card_dragged(view: CardView) -> void:
 	for i in carried_views.size():
 		carried_views[i].position = view.position + carried_offsets[i]
+	var target := _nearest_zone(get_local_mouse_position(), _dragged_views(view))
+	if not _makes_room(target):
+		target = null
+	if preview_zone and preview_zone != target:
+		_close_gap(view.card)
+	preview_zone = target
+	if target:
+		_layout_zone(target, view.card, _drop_index(target, view.card, get_local_mouse_position()))
+		for dragged_view in _dragged_views(view):
+			move_child(dragged_view, -1)
+
+
+## Back to the normal layout, except that a card still being dragged stays under the cursor.
+func _close_gap(dragged_card: Card) -> void:
+	if dragged_card in preview_zone.cards:
+		_layout_zone(preview_zone, dragged_card, preview_zone.cards.find(dragged_card))
+	else:
+		_layout_zone(preview_zone)
+
+
+func _makes_room(zone: Zone) -> bool:
+	return zone.layout in ["row", "fan"]
+
+
+func _drop_index(zone: Zone, card: Card, point: Vector2) -> int:
+	if zone.sort_columns and card not in zone.cards:
+		return zone.sorted_index(card)
+	var slots := zone.cards.size() if card in zone.cards else zone.cards.size() + 1
+	return _nearest_slot(zone, point, slots)
+
+
+func _dragged_views(view: CardView) -> Array[CardView]:
+	var dragged: Array[CardView] = [view]
+	dragged.append_array(carried_views)
+	return dragged
 
 
 func _on_card_clicked(view: CardView) -> void:
 	carried_views.clear()
+	if preview_zone:
+		_layout_zone(preview_zone)
+		preview_zone = null
 	var zone := game.zone_of(view.card)
 	game.click(view.card)
 	_layout_zone(zone)
@@ -120,14 +166,15 @@ func _on_card_clicked(view: CardView) -> void:
 func _on_card_dropped(view: CardView) -> void:
 	var source := game.zone_of(view.card)
 	var drop_point := get_local_mouse_position()
-	var dragged_views: Array[CardView] = [view]
-	dragged_views.append_array(carried_views)
-	var destination := _nearest_zone(drop_point, dragged_views)
+	var destination := _nearest_zone(drop_point, _dragged_views(view))
+	var index := _drop_index(destination, view.card, drop_point) if _makes_room(destination) else -1
 	carried_views.clear()
-	if destination == source and source.layout in ["row", "fan"]:
-		game.reorder(view.card, _nearest_slot(source, drop_point))
-	elif destination == source or not game.drag(view.card, destination):
+	preview_zone = null
+	if destination == source and _makes_room(source):
+		game.reorder(view.card, index)
+	elif destination == source or not game.drag(view.card, destination, index):
 		_layout_zone(source)
+		_layout_zone(destination)
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -137,12 +184,12 @@ func _gui_input(event: InputEvent) -> void:
 				game.click_empty(zone)
 
 
-func _nearest_slot(zone: Zone, point: Vector2) -> int:
-	var offset := point.x - zone.anchor.x * size.x
+func _nearest_slot(zone: Zone, point: Vector2, slots: int) -> int:
+	var offset := (point - zone.anchor * size).rotated(-deg_to_rad(zone.rotation)).x
 	var nearest := 0
 	var nearest_distance := INF
-	for i in zone.cards.size():
-		var distance := absf(ZoneLayout.place(zone.layout, i, zone.cards.size(), _max_spread(zone)).origin.x - offset)
+	for i in slots:
+		var distance := absf(ZoneLayout.place(zone.layout, i, slots, _max_spread(zone)).origin.x - offset)
 		if distance < nearest_distance:
 			nearest = i
 			nearest_distance = distance
