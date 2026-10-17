@@ -23,6 +23,8 @@ var game: Game
 var views: Dictionary[Card, CardView] = {}
 var show_zone_names := false
 var preview_zone: Zone
+var hover_zone: Zone
+var hover_allowed := false
 var carried_views: Array[CardView] = []
 var carried_offsets: Array[Vector2] = []
 
@@ -116,8 +118,10 @@ func _on_card_picked_up(view: CardView) -> void:
 func _on_card_dragged(view: CardView) -> void:
 	for i in carried_views.size():
 		carried_views[i].position = view.position + carried_offsets[i]
+	var source := game.zone_of(view.card)
 	var target := _nearest_zone(get_local_mouse_position(), _dragged_views(view))
-	if not _makes_room(target):
+	_show_drop_hint(view, null if target == source else target)
+	if not _makes_room(target) or target != source and not hover_allowed:
 		target = null
 	if preview_zone and preview_zone != target:
 		_close_gap(view.card)
@@ -126,6 +130,18 @@ func _on_card_dragged(view: CardView) -> void:
 		_layout_zone(target, view.card, _drop_index(target, view.card, get_local_mouse_position()))
 		for dragged_view in _dragged_views(view):
 			move_child(dragged_view, -1)
+
+
+## Outlines the zone the card would land in, and the card itself, green if the move is allowed or red if not.
+func _show_drop_hint(view: CardView, target: Zone) -> void:
+	if target != hover_zone:
+		hover_zone = target
+		hover_allowed = target != null and game.can_move(view.card, target)
+		queue_redraw()
+	if not hover_zone:
+		view.drop_hint = CardView.DropHint.NONE
+	else:
+		view.drop_hint = CardView.DropHint.ALLOWED if hover_allowed else CardView.DropHint.REFUSED
 
 
 ## Back to the normal layout, except that a card still being dragged stays under the cursor.
@@ -155,6 +171,7 @@ func _dragged_views(view: CardView) -> Array[CardView]:
 
 func _on_card_clicked(view: CardView) -> void:
 	carried_views.clear()
+	_show_drop_hint(view, null)
 	if preview_zone:
 		_layout_zone(preview_zone)
 		preview_zone = null
@@ -170,6 +187,7 @@ func _on_card_dropped(view: CardView) -> void:
 	var index := _drop_index(destination, view.card, drop_point) if _makes_room(destination) else -1
 	carried_views.clear()
 	preview_zone = null
+	_show_drop_hint(view, null)
 	if destination == source and _makes_room(source):
 		game.reorder(view.card, index)
 	elif destination == source or not game.drag(view.card, destination, index):
@@ -244,6 +262,8 @@ func _draw() -> void:
 			var name_position := slot.position - Vector2(LABEL_OVERHANG, LABEL_GAP)
 			var name_text := "%s (%d)" % [zone.name, zone.cards.size()]
 			draw_string(font, name_position, name_text, HORIZONTAL_ALIGNMENT_CENTER, slot.size.x + LABEL_OVERHANG * 2, LABEL_FONT_SIZE, LABEL_COLOR)
+	if hover_zone:
+		draw_style_box(CardView.allowed_style if hover_allowed else CardView.refused_style, _slot(hover_zone).grow(CardView.HIGHLIGHT_WIDTH / 2.0))
 	_draw_seats(font)
 
 

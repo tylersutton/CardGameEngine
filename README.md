@@ -24,7 +24,7 @@ To jump straight into one game while working on it, open `scenes/main.tscn`, set
 
 | Control | What it does |
 |---|---|
-| Drag a card | Move it to the zone nearest where you drop it. If the rules forbid it, it snaps back and the log says why. |
+| Drag a card | Move it to the zone nearest where you drop it. While dragging, that zone and the card are outlined green if the move is allowed, or red if not. A refused drop snaps back and the log says why. |
 | Dragging over a hand | The other cards move aside to show where the card will land: under the cursor, or in its sorted spot if the hand is sorted. |
 | Drag a card within its own hand/row | Reorder it. This turns that zone's automatic sorting off. |
 | Click a card | Runs that zone's click behavior (e.g. click the deck to draw). Clicking an empty zone's outline runs it too, with no `card`. |

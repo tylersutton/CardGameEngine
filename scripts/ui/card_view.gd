@@ -17,11 +17,17 @@ const BODY_FONT_SIZE := 12
 const HIGHLIGHT_COLOR := Color(1, 0.85, 0.2)
 const HIGHLIGHT_WIDTH := 4
 const SELECTED_COLOR := Color(0.3, 0.75, 1)
+const ALLOWED_COLOR := Color(0.35, 0.9, 0.45)
+const REFUSED_COLOR := Color(0.95, 0.35, 0.3)
+
+enum DropHint { NONE, ALLOWED, REFUSED }
 
 static var face_style := _rounded_box(Color.WHITE, Color(0.75, 0.75, 0.75))
 static var back_style := _rounded_box(Color(0.16, 0.24, 0.52), Color.WHITE)
 static var highlight_style := _outline_box(HIGHLIGHT_COLOR)
 static var selected_style := _outline_box(SELECTED_COLOR)
+static var allowed_style := _outline_box(ALLOWED_COLOR)
+static var refused_style := _outline_box(REFUSED_COLOR)
 
 var card: Card
 var face: Dictionary
@@ -36,6 +42,10 @@ var highlighted := false:
 var selected := false:
 	set(value):
 		selected = value
+		queue_redraw()
+var drop_hint := DropHint.NONE:
+	set(value):
+		drop_hint = value
 		queue_redraw()
 var lift := 0.0:
 	set(value):
@@ -107,8 +117,20 @@ func _draw() -> void:
 		_draw_face(rect)
 	else:
 		draw_style_box(back_style, rect)
-	if selected or highlighted:
-		draw_style_box(selected_style if selected else highlight_style, rect.grow(HIGHLIGHT_WIDTH / 2.0))
+	var outline := _outline_style()
+	if outline:
+		draw_style_box(outline, rect.grow(HIGHLIGHT_WIDTH / 2.0))
+
+
+func _outline_style() -> StyleBoxFlat:
+	match drop_hint:
+		DropHint.ALLOWED:
+			return allowed_style
+		DropHint.REFUSED:
+			return refused_style
+	if selected:
+		return selected_style
+	return highlight_style if highlighted else null
 
 
 func _draw_face(rect: Rect2) -> void:
