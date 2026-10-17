@@ -1,4 +1,6 @@
 {
+	"title": "Color Match",
+	"description": "Two players sharing the screen. Match the color or number; +2 and Wild cards. The README tutorial builds it.",
 	"players": 2,
 	"zones": {
 		"deck": {

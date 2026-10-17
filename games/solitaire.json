@@ -1,4 +1,6 @@
 {
+	"title": "Solitaire",
+	"description": "Klondike: build the foundations from Ace to King. Draw one card at a time.",
 	"zones": {
 		"stock": {
 			"layout": "pile", "face": "down", "anchor": [0.08, 0.16],
@@ -22,6 +24,12 @@
 		"top_card": "card == top(from)",
 		"fits_foundation": "number(card, 'value') == count(to) + 1 and count(where(to, 'suit', card.data.suit)) == count(to)",
 		"fits_tableau": "(count(to) == 0 and number(card, 'value') == 13) or (number(card, 'value') == number(top(to), 'value') - 1 and card.data.color != text(top(to), 'color'))"
+	},
+	"actions": {
+		"Auto-finish": {
+			"when": "result == '' and count(stock) + count(waste) == 0 and count(face_down(tableau)) == 0",
+			"steps": [{ "while": "count(movable(tableau, foundation)) > 0", "do": ["try_move(top(movable(tableau, foundation)), foundation)"] }]
+		}
 	},
 	"moves": [
 		{

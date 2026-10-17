@@ -16,7 +16,9 @@ Included games:
 
 1. Open the project folder in Godot 4.7.
 2. Press **F5** (Run Project).
-3. To play a different game, open `scenes/main.tscn`, select the **Main** node, and set **Rules Path** in the Inspector to a file in `games/`.
+3. Pick a game from the title screen. Every `.json` file in `games/` is listed there, so a new game appears automatically.
+
+To jump straight into one game while working on it, open `scenes/main.tscn`, set **Rules Path** on the **Main** node in the Inspector, and press **F6** (Run Current Scene).
 
 ## Playing
 
@@ -28,6 +30,7 @@ Included games:
 | Choosing | When the game asks you to choose cards, the choices are outlined in yellow: click one, or for several, click each (selected cards turn blue; click again to unselect). When it asks for something else, like a color, pick from the bar of buttons above the table. |
 | Toolbar buttons | The game's actions. A button is greyed out while its condition is false. |
 | **Undo** / Ctrl+Z | Step back one input. In a game with a bot, it goes back to your last input. |
+| **Games** | Back to the title screen to pick another game. |
 | **Reload** | Re-read the JSON and CSV files from disk and start over. |
 | **Sandbox** | Ignore the rules and move anything anywhere, for testing. Rule follow-ups (like scoring) don't run in sandbox. |
 
@@ -91,7 +94,7 @@ Create `games/color_match.json`. Start with the **zones**: the named places card
 - `"face": "owner"` shows each hand only on its owner's turn, so two people can share a screen.
 - `card_face` picks which columns appear on the card. `color` is the column holding each card's text color.
 
-Point Rules Path at this file and press Reload. You should see a face-down deck. Nothing is dealt yet.
+Run the project and pick **Color Match** on the title screen (it's listed because it's in `games/`). You should see a face-down deck. Nothing is dealt yet.
 
 ### 3. Set up the game
 
@@ -201,6 +204,10 @@ The finished `color_match.json` goes one step further: Wild cards that let you c
 ## Game file reference
 
 Everything a game file can contain. Only `zones` is required.
+
+### `title`, `description`
+
+The name and one-line description shown on the title screen, e.g. `"title": "Gin Rummy"`. Without a title, the file name is used (`gin_rummy.json` → "Gin Rummy").
 
 ### `zones`
 
@@ -417,6 +424,22 @@ This deals solitaire: for each of the 7 tableau columns, draw as many cards as i
 - **Nesting:** loops can be nested, and can contain conditional steps.
 - **Every player:** `{ "for": "player", "in": "players", "do": [...] }` runs the steps once per player as if it were their turn, so `hand`, `score` and `opponent_hand` follow along: `{ "for": "player", "in": "players", "do": ["assign('score', score + sum(won, 'points'))"] }` scores everyone's won cards. The turn goes back to whoever had it after the loop.
 
+### Repeat until
+
+To repeat steps while something is true, use a `while` step:
+
+```json
+{ "while": "sum(dealer, 'value') < 17", "do": ["draw(deck, dealer)"] }
+```
+
+- **When it's checked:** before each repeat, so the steps may run zero times.
+- **Safety limit:** after 1,000 repeats it stops with an error, so a condition that never becomes false can't freeze the game.
+- **Example:** Solitaire's Auto-finish button uses one to keep moving cards to the foundations while any can go:
+
+```json
+{ "while": "count(movable(tableau, foundation)) > 0", "do": ["try_move(top(movable(tableau, foundation)), foundation)"] }
+```
+
 ### Building blocks
 
 **Changing things**
@@ -472,7 +495,7 @@ Wherever a building block takes `cards`, you can pass a zone, a single card, or 
 - **Numbers in the JSON are decimals.** A variable starting at `0` displays as `0` but is stored as `0.0`. Comparisons work normally.
 - **To deal the same way in several places,** put the steps in a custom trigger and call `trigger('deal')`.
 - **"Draw only if you can't play"** is a move rule like `{ "from": "deck", "to": "hand", "when": "count(movable(hand, pile)) == 0" }`. (A rule can't use `movable` to check moves into its own destination; that inner check counts as "no moves" and the log says so.)
-- **To repeat a check,** give it a name in [`conditions`](#conditions). **To repeat a step,** use a [loop](#loops).
+- **To repeat a check,** give it a name in [`conditions`](#conditions). **To repeat a step,** use a [loop](#loops), or [repeat until](#repeat-until) something changes.
 - **Look at `games/gin_rummy.json`** for a full game: turn phases, knocking, scoring, and a match to 100. `games/solitaire.json` shows columns, stacks, and groups of zones.
 
 ## Deck reference

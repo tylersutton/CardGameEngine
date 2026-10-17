@@ -20,6 +20,8 @@ const KEYWORDS := ["true", "false", "null", "and", "or", "not"]
 const CONDITIONAL_KEYS := ["if", "then", "else"]
 const LOOP_KEYS := ["for", "in", "do"]
 const LOOP_NUMBER_SUFFIX := "_number"
+const WHILE_KEYS := ["while", "do"]
+const MAX_REPEATS := 1000
 const TYPE_DESCRIPTIONS := {TYPE_STRING: "text", TYPE_ARRAY: "a list", TYPE_FLOAT: "a number", TYPE_BOOL: "true or false"}
 const MAX_NESTING := 50
 
@@ -462,6 +464,10 @@ func _run_steps(steps: Array, card: Card) -> bool:
 			if not _run_loop(step, card):
 				return false
 			continue
+		if step is Dictionary and step.has("while"):
+			if not _run_while(step, card):
+				return false
+			continue
 		var text: String = step["if"] if step is Dictionary else step
 		var result: Variant = _evaluate(text, card)
 		if expressions[text].has_execute_failed():
@@ -508,6 +514,17 @@ func _set_loop_value(name: String, value: Variant) -> void:
 
 func _loop_value(name: String) -> Variant:
 	return variables.get(name) if name == PLAYER_VARIABLE else loop_values.get(name)
+
+
+func _run_while(loop: Dictionary, card: Card) -> bool:
+	for repeats in MAX_REPEATS:
+		if not _holds(loop.while, card):
+			logged.emit("  while %s: repeated %d times" % [loop.while, repeats])
+			return not expressions[loop.while].has_execute_failed()
+		if not run(loop.get("do", []), card):
+			return false
+	failed.emit("Stopped: \"while %s\" was still true after %d repeats" % [loop.while, MAX_REPEATS])
+	return false
 
 
 func _loop_items(items: Variant) -> Variant:
@@ -786,8 +803,11 @@ func _collect_steps(steps: Array, into: Dictionary) -> void:
 			_add_loop_name(step.for)
 			into[step.in] = true
 			_collect_steps(step.get("do", []), into)
+		elif _is_valid_while(step):
+			into[step.while] = true
+			_collect_steps(step.get("do", []), into)
 		else:
-			errors.append("Invalid step %s: use a string, { \"if\": ..., \"then\": [...], \"else\": [...] }, or { \"for\": \"name\", \"in\": ..., \"do\": [...] }" % JSON.stringify(step))
+			errors.append("Invalid step %s: use a string, { \"if\": ..., \"then\": [...], \"else\": [...] }, { \"for\": \"name\", \"in\": ..., \"do\": [...] }, or { \"while\": ..., \"do\": [...] }" % JSON.stringify(step))
 
 
 func _add_loop_name(name: String) -> void:
@@ -819,6 +839,10 @@ func _is_valid_loop(step: Variant) -> bool:
 		and step.get("in") is String \
 		and step.keys().all(func(key: String) -> bool: return key in LOOP_KEYS) \
 		and step.get("do", []) is Array
+
+
+func _is_valid_while(step: Variant) -> bool:
+	return step is Dictionary 		and step.get("while") is String 		and step.keys().all(func(key: String) -> bool: return key in WHILE_KEYS) 		and step.get("do", []) is Array
 
 
 func _compile(step: String) -> void:

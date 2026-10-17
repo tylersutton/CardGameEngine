@@ -1,4 +1,6 @@
 {
+	"title": "Hearts",
+	"description": "Four players, you against three bots. Pass three cards, follow suit, and avoid hearts and the queen of spades.",
 	"players": 4,
 	"zones": {
 		"deck": { "layout": "pile", "face": "down", "anchor": [0.92, 0.9], "cards": "res://decks/hearts_deck.csv" },

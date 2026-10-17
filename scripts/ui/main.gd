@@ -3,6 +3,7 @@ extends Control
 @export_file("*.json") var rules_path := "res://games/gin_rummy.json"
 
 const BOT_DELAY := 0.6
+const TITLE_SCENE := "res://scenes/title.tscn"
 
 var game: Game
 var bot: Bot
@@ -10,8 +11,9 @@ var bot_waiting := false
 
 
 func _ready() -> void:
+	%GamesButton.pressed.connect(func() -> void: get_tree().change_scene_to_file(TITLE_SCENE))
 	%ReloadButton.pressed.connect(_load_game)
-	%UndoButton.pressed.connect(func() -> void: game.undo())
+	%UndoButton.pressed.connect(func() -> void: if game: game.undo())
 	%SandboxToggle.toggled.connect(_set_sandbox)
 	_load_game()
 

@@ -1,4 +1,6 @@
 {
+	"title": "Gin Rummy",
+	"description": "Two players, you against a bot. Knock with 10 or less deadwood; first to 100 wins the match.",
 	"players": 2,
 	"zones": {
 		"stock": {

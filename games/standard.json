@@ -1,4 +1,6 @@
 {
+	"title": "Free Play",
+	"description": "A standard deck with no rules: draw, play, discard, and sort.",
 	"zones": {
 		"deck": {
 			"layout": "pile", "face": "down", "anchor": [0.42, 0.5],

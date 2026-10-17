@@ -14,6 +14,8 @@ var melds: Dictionary
 var status: Dictionary
 var bot: Dictionary
 var card_face: Dictionary
+var title: String
+var description: String
 var error: String
 
 
@@ -27,6 +29,8 @@ static func load_json(path: String) -> GameRules:
 		rules.error = "%s, line %d: %s" % [path.get_file(), json.get_error_line() + 1, json.get_error_message()]
 		return rules
 	var data: Dictionary = json.data
+	rules.title = data.get("title", path.get_file().get_basename().capitalize())
+	rules.description = data.get("description", "")
 	rules.zones = data.get("zones", {})
 	var actions: Dictionary = data.get("actions", {})
 	for action_name in actions:
