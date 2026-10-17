@@ -20,6 +20,7 @@ var anchor: Vector2
 var width: float
 var rotation: float
 var drags_stack: bool
+var spread: int
 var on_click: Array
 var cards: Array[Card] = []
 var sort_columns: Array[String] = []
@@ -39,6 +40,7 @@ func _init(zone_kind: String, definition: Dictionary, number := 0) -> void:
 	var rotations: Array = definition.get("rotations", [])
 	rotation = rotations[number - 1] if number and rotations.size() >= number else definition.get("rotation", 0.0)
 	drags_stack = definition.get("drag", "") == DRAG_STACK
+	spread = int(definition.get("spread", 0))
 	on_click = definition.get("on_click", [])
 
 

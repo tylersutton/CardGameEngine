@@ -9,7 +9,7 @@ Included games:
 | Gin Rummy (default) | `games/gin_rummy.json`, `decks/gin_deck.csv` | Turn phases, melds, scoring, a match to 100, a bot opponent |
 | Hearts | `games/hearts.json`, `decks/hearts_deck.csv` | Four players (you and three bots), passing three cards, following suit, winning tricks |
 | Color Match | `games/color_match.json`, `decks/color_match.csv` | A small two-player game with a custom deck, hidden hands, card effects, and wild cards that ask for a color. Built step by step in the tutorial below |
-| Solitaire (Klondike) | `games/solitaire.json`, `decks/gin_deck.csv` | Cascading columns, dragging whole stacks, groups of zones (7 columns, 4 foundations), click to send a card up |
+| Solitaire (Klondike) | `games/solitaire.json`, `decks/gin_deck.csv` | Cascading columns, dragging whole stacks, groups of zones (7 columns, 4 foundations), click to send a card up, draw one or three |
 | Standard deck | `games/standard.json`, `decks/standard_deck.csv` | A free-play sandbox: draw, play, discard, sort |
 
 ## Quick start
@@ -218,13 +218,14 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 |---|---|---|
 | `label` | Text shown inside the zone's outline while it's empty, e.g. `"Discard"`, or `"K"` for an empty solitaire column. In per-player zones and copies, `#` becomes the number: `"Tricks #"` shows "Tricks 1", "Tricks 2", ... | none |
 | `outline` | `false` draws no outline or label, for zones that are only used in passing (e.g. the deck in Hearts) | `true` |
-| `layout` | `pile`, `row`, `fan`, `column` (cascading downward from the anchor, squeezing to fit; for solitaire), or `melds` (groups the cards into their melds; for rummy tables) | `row` |
+| `layout` | `pile`, `row`, `fan`, `column` (cascading downward from the anchor, face-down cards overlapping more, squeezing to fit; for solitaire), or `melds` (groups the cards into their melds; for rummy tables) | `row` |
 | `face` | `up`, `down`, `owner` (face up only on the owning player's turn), or `human` (face up unless a bot owns it). Cards take this face when they enter the zone. | `up` |
 | `anchor` | Position on the table as `[x, y]` fractions | `[0.5, 0.5]` |
 | `width` | Widest a `row`/`fan` may spread, as a fraction of the table width (of its height, for a zone turned sideways) | 800 pixels |
 | `rotation` | Turn the zone, in degrees, e.g. `90` for a hand on the left side of the table | `0` |
 | `cards` | A deck to start with, e.g. `"res://decks/my_deck.csv"` | empty |
 | `on_click` | Steps run when a card in this zone is clicked (`card` is the clicked card), or when the empty zone is clicked (`card` is `null`) | none |
+| `spread` | For a `pile`: fan out its top few cards sideways so they can be read, e.g. `3` for a draw-three solitaire waste | `0` |
 | `drag` | `"stack"`: dragging a card also carries every card on top of it | one card |
 | `per_player` | `true` makes one zone per player: `hand_1`, `hand_2`, ... | `false` |
 | `copies` | A number: makes that many zones, e.g. `"copies": 7` makes `tableau_1` ... `tableau_7` | |

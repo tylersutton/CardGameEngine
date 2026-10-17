@@ -66,13 +66,16 @@ func _layout_zone(zone: Zone, incoming: Card = null, index := 0) -> void:
 	var group_centers := ZoneLayout.group_centers(groups.map(func(group: Array) -> int: return group.size()))
 	for group_index in groups.size():
 		var group: Array = groups[group_index]
+		var column_offsets: Array = ZoneLayout.column_offsets(group.map(game.shows_face), _max_spread(zone)) if zone.layout == "column" else []
 		for i in group.size():
 			if group[i] == incoming:
 				continue
 			var view := _view_for(group[i], center)
 			view.face_up = game.shows_face(group[i])
 			move_child(view, -1)
-			var placement := ZoneLayout.place(zone.layout, i, group.size(), _max_spread(zone))
+			var placement := ZoneLayout.place(zone.layout, i, group.size(), _max_spread(zone), zone.spread)
+			if zone.layout == "column":
+				placement = Transform2D(0.0, Vector2(0, column_offsets[i]))
 			var offset := (Vector2(group_centers[group_index], 0) + placement.origin).rotated(turn)
 			view.move_to(center + offset - CardView.SIZE / 2, placement.get_rotation() + turn)
 
