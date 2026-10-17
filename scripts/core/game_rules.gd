@@ -14,6 +14,7 @@ var player_names: Array
 var player_variables: Dictionary
 var melds: Dictionary
 var status: Dictionary
+var show_variables: Array
 var bot: Dictionary
 var card_face: Dictionary
 var title: String
@@ -49,6 +50,7 @@ static func load_json(path: String) -> GameRules:
 	rules.player_variables = data.get("player_variables", {})
 	rules.melds = data.get("melds", {})
 	rules.status = data.get("status", {})
+	rules.show_variables = data.get("show_variables", [])
 	rules.bot = data.get("bot", {})
 	rules.card_face = data.get("card_face", {})
 	return rules

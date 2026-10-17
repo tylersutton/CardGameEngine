@@ -12,9 +12,9 @@ func show_game(game_to_show: Game) -> void:
 
 
 func _refresh() -> void:
-	var values := game.variables.duplicate()
-	for name in values:
-		values[name] = Game.format_value(values[name])
+	var values := {}
+	for name in (game.rules.show_variables if game.rules.show_variables else game.variables.keys()):
+		values[name] = Game.format_value(game.variables.get(name))
 	values.merge(game.status_values())
 	visible = not values.is_empty()
 	text = "\n".join(values.keys().map(func(name: String) -> String: return "%s: %s" % [name, values[name]]))

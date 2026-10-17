@@ -150,6 +150,15 @@ func matching(cards: Variant, condition: String) -> Array:
 	return game.matching(cards_in(cards), condition)
 
 
+func run_effect(card: Card, zone_kind: String) -> void:
+	if card:
+		game.run_card_effect(card, zone_kind)
+
+
+func tops(zones: Variant) -> Array:
+	return zones_in(zones).filter(func(zone: Zone) -> bool: return not zone.is_empty()).map(func(zone: Zone) -> Card: return zone.cards.back())
+
+
 func face_down(cards: Variant) -> Array:
 	return cards_in(cards).filter(func(card: Card) -> bool: return not card.face_up)
 

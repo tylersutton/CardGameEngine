@@ -73,17 +73,27 @@ func _refresh_choice_bar() -> void:
 	for child in %ChoiceBar.get_children():
 		%ChoiceBar.remove_child(child)
 		child.queue_free()
-	%ChoiceMargin.visible = game.choosing != "" and not game.choosing_cards()
+	var picking_cards := game.choosing_cards() and not game.pick_exact
+	%ChoiceMargin.visible = game.choosing != "" and (picking_cards or not game.choosing_cards())
 	if not %ChoiceMargin.visible:
 		return
 	var prompt := Label.new()
 	prompt.text = game.choosing + ":"
+	if picking_cards:
+		prompt.text += " choose up to %d (%d selected)" % [game.pick_count, game.selected.size()]
 	%ChoiceBar.add_child(prompt)
-	for option in game.choices:
-		var button := Button.new()
-		button.text = Game.format_value(option)
-		button.pressed.connect(game.choose_option.bind(option))
-		%ChoiceBar.add_child(button)
+	if picking_cards:
+		_add_choice_button("Done", game.finish_choice)
+	else:
+		for option in game.choices:
+			_add_choice_button(Game.format_value(option), game.choose_option.bind(option))
+
+
+func _add_choice_button(text: String, on_pressed: Callable) -> void:
+	var button := Button.new()
+	button.text = text
+	button.pressed.connect(on_pressed)
+	%ChoiceBar.add_child(button)
 
 
 func _schedule_bot() -> void:

@@ -31,7 +31,7 @@ To jump straight into one game while working on it, open `scenes/main.tscn`, set
 | Click a card | Runs that zone's click behavior (e.g. click the deck to draw). Clicking an empty zone's outline runs it too, with no `card`. |
 | Choosing | When the game asks you to choose cards, the choices are outlined in yellow: click one, or for several, click each (selected cards turn blue; click again to unselect). When it asks for something else, like a color, pick from the bar of buttons above the table. |
 | Toolbar buttons | The game's actions. A button is greyed out while its condition is false. |
-| **Undo** / Ctrl+Z | Step back one input. In a game with a bot, it goes back to your last input. |
+| **Undo** / Ctrl+Z | Step back one input, including steps of a choice in progress. In a game with a bot, it goes back to your last input. |
 | **Games** | Back to the title screen to pick another game. |
 | **Reload** | Re-read the JSON and CSV files from disk and start over. |
 | **Sandbox** | Ignore the rules and move anything anywhere, for testing. Rule follow-ups (like scoring) don't run in sandbox. |
@@ -293,8 +293,9 @@ or an object with extra options:
 | `when` | The button is disabled while this is false. |
 | `choose` | What to choose from. If it gives cards (e.g. `"hand"`), they're highlighted for you to click. If it gives other values (e.g. `"['Red', 'Blue']"` or `"numbers(0, 13)"`), they appear as buttons above the table. The steps then run with the pick as `choice` (and, for a single card, also as `card`). Clicking anything else cancels. |
 | `pick` | How many cards to choose, e.g. `3` to pass three cards. `choice` is then a list of cards. |
+| `up_to` | Choose any number of cards from none up to this many, then press **Done** in the bar above the table. A number, or an expression like `"count(hand)"` for "any number". `choice` is a list of cards (maybe empty). |
 | `human_only` | `true` means bots never press this button. |
-| `button` | `false` hides it from the toolbar, for actions only started with `ask('name')`. |
+| `button` | `false` hides it from the toolbar, for actions only started with `ask('name')`. Bots never press these directly either. |
 
 ### `triggers`
 
@@ -341,6 +342,10 @@ Named expressions, so a check used in several places is written once:
 - **Refused moves:** the log quotes the names (`requires: card.face_up and fits_tableau`), which keeps refusal messages short.
 - **Not just true/false:** a condition can be any expression, e.g. `"rank": "number(card, 'value')"`.
 
+### `show_variables`
+
+By default every variable is listed in the side panel. `"show_variables": ["phase", "actions", "buys", "coins"]` lists only those, in that order, and hides bookkeeping variables.
+
 ### `status`
 
 Live readouts in the side panel, recalculated after every change:
@@ -384,7 +389,7 @@ Computer players:
 "bot": { "players": [2], "prefer": "score - opponent_score - sum(deadwood(hand), 'points')" }
 ```
 
-On a bot's turn, it tries every legal input: each allowed drag, each click on a zone with `on_click`, each enabled button, and each choice for `choose` buttons. It scores the result of each with `prefer`, from its own point of view, and takes the highest. It plays one input at a time so you can watch.
+On a bot's turn, it tries every legal input: each allowed drag, each click on a zone with `on_click`, each enabled button, and each choice for `choose` buttons. It scores the result of each with `prefer`, from its own point of view, and takes the highest. It plays one input at a time so you can watch. When an input opens a choice (playing Chapel, say), it's scored by the best way of making that choice.
 
 Write `prefer` as "how good is this position for me?". Things to know:
 - **It only looks one input ahead.**
@@ -470,7 +475,8 @@ To repeat steps while something is true, use a `while` step:
 | `assign('variable', value)` | Change a variable. |
 | `end_turn()` | Pass the turn to the next player and fire `turn_start`. |
 | `trigger('name')` | Run a step list from `triggers`. |
-| `ask('Action name')` | Start that action (usually a `choose`) once the current move finishes, e.g. from a wild card's effect. |
+| `ask('Action name')` | Start that action (usually a `choose`) once the current move finishes, e.g. from a wild card's effect. Several asks wait in line: each starts when the previous choice is finished. |
+| `run_effect(card, 'play')` | Run a card's `on_play` effect again, e.g. Throne Room playing an action twice |
 
 **Questions**
 
@@ -490,6 +496,7 @@ To repeat steps while something is true, use a `while` step:
 | `where(cards, 'column', value)` | The cards whose column equals `value` |
 | `without(cards, removed)` | The cards, minus the removed ones |
 | `movable(cards, to)` | The cards that a move rule currently allows into `to` (a zone, a group like `foundation`, or a list like `[tableau, foundation]`). `count(movable(hand, pile)) == 0` means "can't play"; `"choose": "movable(hand, knock)"` offers only legal cards |
+| `tops(zones)` | The top card of each zone in a list or group, e.g. `matching(tops(supply), 'costs_up_to_4')` to choose a card to gain |
 | `matching(cards, 'condition')` | The cards for which a named [condition](#conditions) holds, checked with each card as `card`, e.g. `matching(hand, 'is_treasure')` with `"is_treasure": "card.data.type == 'Treasure'"` |
 | `face_down(cards)` | The cards that are face down, e.g. `flip(face_down(top(from)))` turns the new top card up only if it's down |
 

@@ -18,7 +18,7 @@ const CORNER_FONT_SIZE := 14
 const TITLE_FONT_SIZE := 24
 const BODY_FONT_SIZE := 12
 const TEXT_FONT_SIZE := 10
-const MAX_TEXT_LINES := 6
+const MIN_TEXT_FONT_SIZE := 6
 const MIN_TITLE_FONT_SIZE := 12
 const HIGHLIGHT_COLOR := Color(1, 0.85, 0.2)
 const HIGHLIGHT_WIDTH := 4
@@ -158,7 +158,15 @@ func _draw_face(rect: Rect2) -> void:
 		draw_string(font, Vector2(MARGIN, line_y), card.data.get(column, ""), HORIZONTAL_ALIGNMENT_CENTER, text_width, BODY_FONT_SIZE, ink)
 		line_y += BODY_FONT_SIZE + 4
 	if rules_text:
-		draw_multiline_string(font, Vector2(MARGIN, line_y + 2), rules_text, HORIZONTAL_ALIGNMENT_CENTER, text_width, TEXT_FONT_SIZE, MAX_TEXT_LINES, ink)
+		var text_size := _fitting_text_size(font, rules_text, text_width, SIZE.y - MARGIN - line_y)
+		draw_multiline_string(font, Vector2(MARGIN, line_y + 2), rules_text, HORIZONTAL_ALIGNMENT_CENTER, text_width, text_size, -1, ink)
+
+
+static func _fitting_text_size(font: Font, text: String, width: float, height: float) -> int:
+	var font_size := TEXT_FONT_SIZE
+	while font_size > MIN_TEXT_FONT_SIZE and font.get_multiline_string_size(text, HORIZONTAL_ALIGNMENT_CENTER, width, font_size).y > height:
+		font_size -= 1
+	return font_size
 
 
 static func _fitting_size(font: Font, text: String, width: float) -> int:
