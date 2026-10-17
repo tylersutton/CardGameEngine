@@ -1,0 +1,107 @@
+{
+	"title": "Dominion (simple kingdom)",
+	"description": "Deckbuilding: buy cards to grow a better deck. Village, Smithy, Market, Festival, Laboratory, Council Room, Witch, Woodcutter, Great Hall, Gardens. You against a Big Money bot.",
+	"players": 2,
+	"player_names": ["You", "Bot"],
+	"seats": [[0.07, 0.75], [0.93, 0.11]],
+	"zones": {
+		"box": { "outline": false, "layout": "pile", "face": "down", "anchor": [0.5, 0.5], "cards": "res://decks/dominion.csv" },
+		"supply": {
+			"label": "Empty", "copies": 17, "layout": "pile",
+			"anchors": [[0.05, 0.11], [0.14, 0.11], [0.23, 0.11], [0.32, 0.11], [0.41, 0.11], [0.5, 0.11], [0.59, 0.11], [0.05, 0.3], [0.14, 0.3], [0.23, 0.3], [0.32, 0.3], [0.41, 0.3], [0.05, 0.49], [0.14, 0.49], [0.23, 0.49], [0.32, 0.49], [0.41, 0.49]],
+			"on_click": ["try_move(card, discard)"]
+		},
+		"deck": { "label": "Deck", "per_player": true, "layout": "pile", "face": "down", "anchors": [[0.07, 0.88], [0.72, 0.11]] },
+		"hand": { "per_player": true, "layout": "fan", "face": "human", "anchors": [[0.5, 0.88], [0.8, 0.3]], "width": 0.6 },
+		"play": { "per_player": true, "layout": "row", "anchors": [[0.5, 0.67], [0.78, 0.49]], "width": 0.5 },
+		"discard": { "label": "Discard", "per_player": true, "layout": "pile", "anchors": [[0.93, 0.88], [0.82, 0.11]] }
+	},
+	"variables": { "phase": "action", "actions": 1, "buys": 1, "coins": 0, "attacker": 0, "empty_piles": 0, "result": "" },
+	"player_variables": { "score": 0 },
+	"status": {
+		"your victory points": "sum([deck_1, hand_1, play_1, discard_1], 'vp')",
+		"bot's victory points": "sum([deck_2, hand_2, play_2, discard_2], 'vp')"
+	},
+	"bot": { "players": [2], "prefer": "20 * (sum(my_cards, 'coins') - count(matching(my_cards, 'is_copper'))) / count(my_cards) + sum(my_cards, 'vp') + 0.01 * coins" },
+	"conditions": {
+		"is_action": "number(card, 'action') == 1",
+		"is_treasure": "card.data.type == 'Treasure'",
+		"is_gardens": "card.data.name == 'Gardens'",
+		"is_copper": "card.data.name == 'Copper'",
+		"my_cards": "[deck, hand, play, discard]",
+		"gardens_vp": "count(matching(my_cards, 'is_gardens')) * (count(my_cards) / 10)",
+		"affordable": "buys > 0 and coins >= number(card, 'cost')"
+	},
+	"effects": {
+		"treasure": ["assign('coins', coins + number(card, 'coins'))"],
+		"action": [
+			"draw(deck, hand, number(card, 'cards'))",
+			"assign('actions', actions + number(card, 'actions'))",
+			"assign('buys', buys + number(card, 'buys'))",
+			"assign('coins', coins + number(card, 'coins'))"
+		],
+		"council_room": [
+			"assign('attacker', player)",
+			{ "for": "player", "in": "players", "do": [{ "if": "player != attacker", "then": ["draw(deck, hand)"] }] }
+		],
+		"witch": [
+			"assign('attacker', player)",
+			{ "for": "player", "in": "players", "do": [{ "if": "player != attacker", "then": ["move(top(zone('supply', 7)), discard)"] }] }
+		]
+	},
+	"moves": [
+		{
+			"from": "hand", "to": "play",
+			"when": "phase == 'action' and actions > 0 and is_action",
+			"then": ["assign('actions', actions - 1)"]
+		},
+		{
+			"from": "hand", "to": "play",
+			"when": "phase != 'over' and is_treasure",
+			"then": ["assign('phase', 'buy')"]
+		},
+		{
+			"from": "supply", "to": "discard",
+			"when": "phase == 'buy' and affordable",
+			"then": ["assign('buys', buys - 1)", "assign('coins', coins - number(card, 'cost'))", "assign('phase', 'buy')"]
+		}
+	],
+	"actions": {
+		"Play treasures": {
+			"when": "phase == 'action' or count(matching(hand, 'is_treasure')) > 0 and phase == 'buy'",
+			"steps": [{ "for": "treasure", "in": "matching(hand, 'is_treasure')", "do": ["try_move(treasure, play)"] }, "assign('phase', 'buy')"]
+		},
+		"End turn": { "when": "phase != 'over'", "steps": ["trigger('cleanup')"] }
+	},
+	"triggers": {
+		"start": [
+			{ "for": "pile", "in": "supply", "do": ["move(where(box, 'pile', pile_number), pile)"] },
+			"deal(zone('supply', 1), all_deck, 7)",
+			"deal(zone('supply', 4), all_deck, 3)",
+			{ "for": "player", "in": "players", "do": ["sort(hand, ['type', 'cost'])", "shuffle(deck)", "draw(deck, hand, 5)"] }
+		],
+		"deck_empty": ["move(discard, deck)", "shuffle(deck)"],
+		"cleanup": [
+			"move(play, discard)",
+			"move(hand, discard)",
+			"draw(deck, hand, 5)",
+			"assign('actions', 1)",
+			"assign('buys', 1)",
+			"assign('coins', 0)",
+			"assign('phase', 'action')",
+			"trigger('check_end')",
+			{ "if": "phase != 'over'", "then": ["end_turn()"] }
+		],
+		"check_end": [
+			"assign('empty_piles', 0)",
+			{ "for": "pile", "in": "supply", "do": [{ "if": "count(pile) == 0", "then": ["assign('empty_piles', empty_piles + 1)"] }] },
+			{ "if": "count(zone('supply', 6)) == 0 or empty_piles >= 3", "then": ["trigger('final_score')"] }
+		],
+		"final_score": [
+			{ "for": "player", "in": "players", "do": ["assign('score', sum(my_cards, 'vp') + gardens_vp)"] },
+			"assign('phase', 'over')",
+			{ "if": "score_1 > score_2", "then": ["assign('result', 'You win!')"], "else": [{ "if": "score_1 < score_2", "then": ["assign('result', 'The bot wins')"], "else": ["assign('result', 'A tie')"] }] }
+		]
+	},
+	"card_face": { "corner": "cost", "title": "name", "body": ["type"], "text": "text", "color": "ink", "zoom": 2.4 }
+}

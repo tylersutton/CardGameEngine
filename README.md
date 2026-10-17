@@ -7,6 +7,7 @@ Included games:
 | Game | Files | Shows off |
 |---|---|---|
 | Gin Rummy (default) | `games/gin_rummy.json`, `decks/gin_deck.csv` | Turn phases, melds, scoring, a match to 100, a bot opponent |
+| Dominion (simple kingdom) | `games/dominion.json`, `decks/dominion.csv` | Deckbuilding: a 17-pile supply, per-player decks that reshuffle, actions/buys/coins, card effects from CSV columns, rules text with hover zoom, and a Big Money bot |
 | Hearts | `games/hearts.json`, `decks/hearts_deck.csv` | Four players (you and three bots), passing three cards, following suit, winning tricks |
 | Color Match | `games/color_match.json`, `decks/color_match.csv` | A small two-player game with a custom deck, hidden hands, card effects, and wild cards that ask for a color. Built step by step in the tutorial below |
 | Solitaire (Klondike) | `games/solitaire.json`, `decks/gin_deck.csv` | Cascading columns, dragging whole stacks, groups of zones (7 columns, 4 foundations), double-click to send a card up, draw one or three |
