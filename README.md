@@ -81,15 +81,7 @@ Three columns have special meaning:
 
 Every other column (`color`, `number`, `ink`) is yours to use in rules, sorting, and the card face.
 
-**One required extra file:** Godot tries to import CSV files as translations. Next to each deck, add a file with the same name plus `.import` (e.g. `color_match.csv.import`) containing:
-
-```
-[remap]
-
-importer="keep"
-```
-
-Or, in the Godot editor, select the CSV, open the **Import** tab, set **Import As** to **Keep File**, and click **Reimport**.
+Save it in `decks/` and that's all. (The `decks/` folder holds an empty `.gdignore` file, which stops Godot treating CSV files as translations. As a result the decks don't appear in Godot's FileSystem panel: edit them in a spreadsheet or text editor. To export the project as a standalone game, add `decks/*` to the export preset's **Filters to export non-resource files**.)
 
 ### 2. Lay out the table
 
