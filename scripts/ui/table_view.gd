@@ -95,6 +95,7 @@ func _refresh_views() -> void:
 		views[card].face_up = game.shows_face(card)
 		views[card].highlighted = card in game.choices and not game.is_bot_turn()
 		views[card].selected = card in game.selected
+		views[card].marks_text = " ".join(card.marks.values().map(Game.format_value))
 
 
 func _view_for(card: Card, spawn_center: Vector2) -> CardView:

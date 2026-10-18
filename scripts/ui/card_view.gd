@@ -25,6 +25,9 @@ const HIGHLIGHT_WIDTH := 4
 const SELECTED_COLOR := Color(0.3, 0.75, 1)
 const ALLOWED_COLOR := Color(0.35, 0.9, 0.45)
 const REFUSED_COLOR := Color(0.95, 0.35, 0.3)
+const MARKS_HEIGHT := 18.0
+const MARKS_FONT_SIZE := 13
+const MARKS_BACKGROUND := Color(0.1, 0.1, 0.1, 0.8)
 
 enum DropHint { NONE, ALLOWED, REFUSED }
 
@@ -52,6 +55,10 @@ var selected := false:
 var drop_hint := DropHint.NONE:
 	set(value):
 		drop_hint = value
+		queue_redraw()
+var marks_text := "":
+	set(value):
+		marks_text = value
 		queue_redraw()
 var lift := 0.0:
 	set(value):
@@ -127,6 +134,8 @@ func _draw() -> void:
 		_draw_face(rect)
 	else:
 		draw_style_box(back_style, rect)
+	if marks_text:
+		_draw_marks(rect)
 	var outline := _outline_style()
 	if outline:
 		draw_style_box(outline, rect.grow(HIGHLIGHT_WIDTH / 2.0))
@@ -162,6 +171,15 @@ func _draw_face(rect: Rect2) -> void:
 		draw_multiline_string(font, Vector2(MARGIN, line_y + 2), rules_text, HORIZONTAL_ALIGNMENT_CENTER, text_width, text_size, -1, ink)
 
 
+## Marks show on both sides, so a player can see what they know about a card they can't see.
+func _draw_marks(rect: Rect2) -> void:
+	var font := get_theme_default_font()
+	var band := Rect2(rect.position.x + 4, rect.end.y - MARKS_HEIGHT - 6, rect.size.x - 8, MARKS_HEIGHT)
+	var font_size := _fitting_size(font, marks_text, band.size.x - 4, MARKS_FONT_SIZE, MIN_TEXT_FONT_SIZE)
+	draw_rect(band, MARKS_BACKGROUND)
+	draw_string(font, Vector2(band.position.x, band.end.y - 5), marks_text, HORIZONTAL_ALIGNMENT_CENTER, band.size.x, font_size, Color.WHITE)
+
+
 static func _fitting_text_size(font: Font, text: String, width: float, height: float) -> int:
 	var font_size := TEXT_FONT_SIZE
 	while font_size > MIN_TEXT_FONT_SIZE and font.get_multiline_string_size(text, HORIZONTAL_ALIGNMENT_CENTER, width, font_size).y > height:
@@ -169,9 +187,9 @@ static func _fitting_text_size(font: Font, text: String, width: float, height: f
 	return font_size
 
 
-static func _fitting_size(font: Font, text: String, width: float) -> int:
-	var font_size := TITLE_FONT_SIZE
-	while font_size > MIN_TITLE_FONT_SIZE and font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x > width:
+static func _fitting_size(font: Font, text: String, width: float, largest := TITLE_FONT_SIZE, smallest := MIN_TITLE_FONT_SIZE) -> int:
+	var font_size := largest
+	while font_size > smallest and font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x > width:
 		font_size -= 1
 	return font_size
 

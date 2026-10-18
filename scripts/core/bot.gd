@@ -44,21 +44,36 @@ func take_input() -> bool:
 
 
 ## Random identities for the cards this bot can't see, shared by every input it compares.
-## Its own hidden cards are only shuffled among themselves: it knows what it owns, just not the order.
+## Its own face-down cards are only shuffled among themselves: it knows what it owns, just not the order.
+## (Cards held facing away from it, face "others", could be anything it can't see.)
 func _deals() -> Array:
 	var player := game.current_player()
 	var hidden := game.hidden_from(player)
 	if game.rules.bot.get("peek", false) or hidden.is_empty():
 		return []
-	var own := hidden.filter(func(card: Card) -> bool: return game.zone_of(card).owner == player)
-	var others := hidden.filter(func(card: Card) -> bool: return game.zone_of(card).owner != player)
+	var known_set := func(card: Card) -> bool:
+		var zone := game.zone_of(card)
+		return zone.owner == player and zone.face != Zone.FACE_OTHERS
+	var own := hidden.filter(known_set)
+	var others := hidden.filter(func(card: Card) -> bool: return not known_set.call(card))
 	var deals := []
 	for sample in int(game.rules.bot.get("samples", DEFAULT_SAMPLES)):
 		var deal := {}
 		for group: Array in [own, others]:
 			var identities := group.map(func(card: Card) -> Dictionary: return card.data)
 			identities.shuffle()
-			for i in group.size():
-				deal[group[i]] = identities[i]
+			var most_marked_first := group.duplicate()
+			most_marked_first.sort_custom(func(a: Card, b: Card) -> bool: return a.marks.size() > b.marks.size())
+			for card: Card in most_marked_first:
+				var fitting := identities.find_custom(_fits_marks.bind(card))
+				deal[card] = identities.pop_at(maxi(fitting, 0))
 		deals.append(deal)
 	return deals
+
+
+## A mark named after a column (a "color" mark on a card with a color column) is what the bot knows about it.
+static func _fits_marks(data: Dictionary, card: Card) -> bool:
+	for key in card.marks:
+		if key in data and data[key] != Game.format_value(card.marks[key]):
+			return false
+	return true

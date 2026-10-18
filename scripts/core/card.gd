@@ -5,6 +5,7 @@ const TITLE_COLUMN := "name"
 
 var data: Dictionary
 var face_up := true
+var marks: Dictionary = {}
 
 var title: String:
 	get: return data.get(TITLE_COLUMN, "")

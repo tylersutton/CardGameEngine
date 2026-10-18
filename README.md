@@ -11,6 +11,7 @@ Included games:
 | Hearts | `games/hearts.json`, `decks/hearts_deck.csv` | Four players (you and three bots), passing three cards in a rotating direction, following suit, winning tricks, shooting the moon, a game to 100 |
 | Spades | `games/spades.json`, `decks/spades_deck.csv` | Partnerships (`teams`): bidding, team scores and bags, trump, nil bids, a game to 500 |
 | Cribbage | `games/cribbage.json`, `decks/cribbage_deck.csv` | Scoring combinations: fifteens, pairs and runs in pegging and in the show, the crib, go, nobs and flushes, a game to 121 |
+| Fireworks | `games/fireworks.json`, `decks/fireworks_deck.csv` | A cooperative Hanabi-style game: you hold your cards facing away (`face: "others"`), clues `mark` your partner's cards, and the bot partner reasons only from what it's been told |
 | President | `games/president.json`, `decks/president_deck.csv` | Playing several cards at once (`allow` checks they're a valid set), a single 2 that beats anything and clears the table, matching the last play to skip the next player, passing, finishing order and titles, the card exchange between President and Scum |
 | Color Match | `games/color_match.json`, `decks/color_match.csv` | A small two-player game with a custom deck, hidden hands, card effects, and wild cards that ask for a color. Built step by step in the tutorial below |
 | Solitaire (Klondike) | `games/solitaire.json`, `decks/gin_deck.csv` | Cascading columns, dragging whole stacks, groups of zones (7 columns, 4 foundations), double-click to send a card up, draw one or three |
@@ -40,7 +41,7 @@ To jump straight into one game while working on it, open `scenes/main.tscn`, set
 | **Sandbox** | Ignore the rules and move anything anywhere, for testing. Rule follow-ups (like scoring) don't run in sandbox. |
 | **Zone names** | Show every zone's name and card count above it: the names to use in rules (e.g. `won_1`). Off by default. |
 
-The right-hand panel shows the game's variables and live readouts at the top, and a log of everything that happened below. Errors appear in red. Card moves and flips are grouped, one line per step and destination, e.g. `deck → hand_1: 5♦, 4♥, K♦`. Identical lines in a row are shown once with a count, e.g. `if count(pile) == 0 → else (×17)`.
+The right-hand panel shows the game's variables and live readouts at the top, and a log of everything that happened below. The log only names cards you could see, so a card drawn into a bot's hidden hand shows as "1 hidden card". Errors appear in red. Card moves and flips are grouped, one line per step and destination, e.g. `deck → hand_1: 5♦, 4♥, K♦`. Identical lines in a row are shown once with a count, e.g. `if count(pile) == 0 → else (×17)`.
 
 ## Tutorial: making a game
 
@@ -224,7 +225,7 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 | `label` | Text shown inside the zone's outline while it's empty, e.g. `"Discard"`, or `"K"` for an empty solitaire column. In per-player zones and copies, `#` becomes the number: `"Tricks #"` shows "Tricks 1", "Tricks 2", ... | none |
 | `outline` | `false` draws no outline or label, for zones that are only used in passing (e.g. the deck in Hearts) | `true` |
 | `layout` | `pile`, `row`, `fan`, `column` (cascading downward from the anchor, face-down cards overlapping more, squeezing to fit; for solitaire), or `melds` (groups the cards into their melds; for rummy tables) | `row` |
-| `face` | `up`, `down`, `owner` (face up only on the owning player's turn), or `human` (face up unless a bot owns it). Cards take this face when they enter the zone. | `up` |
+| `face` | `up`, `down`, `owner` (face up only on the owning player's turn), `human` (face up unless a bot owns it), or `others` (face up for everyone except its owner, like holding cards facing out in Hanabi; bots can't see their own either). Cards take this face when they enter the zone. | `up` |
 | `anchor` | Position on the table as `[x, y]` fractions | `[0.5, 0.5]` |
 | `width` | Widest a `row`/`fan` may spread, as a fraction of the table width (of its height, for a zone turned sideways) | 800 pixels |
 | `rotation` | Turn the zone, in degrees, e.g. `90` for a hand on the left side of the table | `0` |
@@ -236,6 +237,7 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 | `per_player` | `true` makes one zone per player: `hand_1`, `hand_2`, ... | `false` |
 | `copies` | A number: makes that many zones, e.g. `"copies": 7` makes `tableau_1` ... `tableau_7` | |
 | `anchors` | With `per_player` or `copies`, one `[x, y]` position each | |
+| `labels` | With `per_player` or `copies`, one label each, e.g. `["Red", "Yellow", "Green"]` | |
 | `rotations` | With `per_player` or `copies`, one rotation each, e.g. `[0, 90, 180, 270]` for four players around a table | |
 | `grid` | With `copies`, instead of `anchors`: lay the copies out in rows from `anchor`, e.g. `{ "columns": 5, "spacing": [0.09, -0.19] }` puts 5 per row, 0.09 apart, each row 0.19 higher than the last | |
 | `group` | With `copies`, also put them in a group with this name, shared with other zones that name it. Dominion's `basic_pile` and `kingdom_pile` copies are both in `"group": "supply"`, so `tops(supply)` and `"from": "supply"` cover all 17 piles | |
@@ -488,6 +490,8 @@ To repeat steps while something is true, use a `while` step:
 | `try_move(card, to)` | Move a card only if a `moves` rule allows it (and run that rule's `then`). `to` can be a group of zones (`foundation`); the first one that allows it is used. Does nothing if `card` is `null`. |
 | `shuffle(zone)` | Shuffle a zone. |
 | `flip(cards)` | Turn cards over (until they move to another zone). |
+| `mark(cards, 'key', value)` | Put a note on cards, e.g. a clue `mark(where(opponent_hand, 'color', 'Red'), 'color', 'Red')`, a counter `mark(card, 'damage', 2)`, or `mark(card, 'tapped', 'tapped')`. Marks are drawn on the card (on its back too) and last until it moves to another zone. A mark named after a column (here `color`) tells bots what that card is, even when they can't see it. |
+| `unmark(cards, 'key')` | Remove that mark. |
 | `sort(zone, ['column', ...])` | Keep a zone sorted by these columns, first column first. Numbers sort numerically. `sort(zone, [])` turns sorting off. |
 | `assign('variable', value)` | Change a variable. |
 | `end_turn()` | Pass the turn to the next player and fire `turn_start`. |
@@ -516,6 +520,7 @@ To repeat steps while something is true, use a `while` step:
 | `tops(zones)` | The top card of each zone in a list or group, e.g. `matching(tops(supply), 'costs_up_to_4')` to choose a card to gain |
 | `matching(cards, 'condition')` | The cards for which a named [condition](#conditions) holds, checked with each card as `card`, e.g. `matching(hand, 'is_treasure')` with `"is_treasure": "card.data.type == 'Treasure'"` |
 | `face_down(cards)` | The cards that are face down, e.g. `flip(face_down(top(from)))` turns the new top card up only if it's down |
+| `mark_of(card, 'key')` | A card's mark, or `null` if it has none, e.g. `mark_of(card, 'damage') >= 3` |
 | `last(cards, amount)` | The last `amount` cards of a zone or list (the top of a pile), e.g. the cards just played: `last(pegging, 3)` |
 | `team(player)` | A player's team number (needs [`teams`](#players-variables-player_variables)) |
 

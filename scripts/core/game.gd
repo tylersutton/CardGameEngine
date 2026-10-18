@@ -16,6 +16,7 @@ const PLAYER_VARIABLE := "player"
 const OPPONENT_PREFIX := "opponent_"
 const TEAM_PREFIX := "team_"
 const CARD_EFFECT_PREFIX := "on_"
+const HIDDEN_CARD := "a hidden card"
 const CARD_EFFECT_SEPARATOR := ";"
 const KEYWORDS := ["true", "false", "null", "and", "or", "not"]
 const MATH_FUNCTIONS := ["abs", "min", "max", "floor", "ceil", "round", "int"]
@@ -206,11 +207,11 @@ func _pick_rule(action: Dictionary, option_count: int) -> Array:
 func _complete_choice(choice: Variant) -> void:
 	var action_name := choosing
 	if not _allows(action_name, choice):
-		log_line("[not allowed] %s: requires %s" % [_describe(choice), rules.actions[action_name].allow])
+		log_line("[not allowed] %s: requires %s" % [describe(choice), rules.actions[action_name].allow])
 		return
 	var back_to := return_player
 	_clear_choice()
-	log_line("[%s] chose %s" % [action_name, _describe(choice)])
+	log_line("[%s] chose %s" % [action_name, describe(choice)])
 	var outer_choice: Variant = chosen
 	chosen = choice
 	run(rules.actions[action_name].get("steps", []), choice if choice is Card else null)
@@ -237,10 +238,13 @@ func _choice_list(options: Variant) -> Array:
 	return options.duplicate() if are_values else Actions.cards_in(options)
 
 
-static func _describe(choice: Variant) -> String:
-	if choice is Array:
-		return ", ".join(choice.map(format_value))
-	return format_value(choice)
+## Like format_value, but a card the viewer can't see is "a hidden card", so the log doesn't give away hands.
+func describe(value: Variant) -> String:
+	if value is Card:
+		return value.title if shows_face(value) else HIDDEN_CARD
+	if value is Array:
+		return ", ".join(value.map(describe))
+	return format_value(value)
 
 
 func _finish_input(before: Dictionary) -> void:
@@ -513,7 +517,8 @@ static func _reachable_cards(zone: Zone) -> Array[Card]:
 func hidden_from(player: int) -> Array[Card]:
 	var hidden: Array[Card] = []
 	for zone: Zone in zones.values():
-		var hidden_zone := zone.owner != player and zone.face in [Zone.FACE_OWNER, Zone.FACE_HUMAN]
+		var hidden_zone := (zone.owner != player and zone.face in [Zone.FACE_OWNER, Zone.FACE_HUMAN]) \
+			or (zone.owner == player and zone.face == Zone.FACE_OTHERS)
 		for card in zone.cards:
 			if not card.face_up or hidden_zone:
 				hidden.append(card)
@@ -619,6 +624,7 @@ func _restore(snapshot: Dictionary) -> void:
 		zones[name].restore(snapshot.zones[name], snapshot.sort_columns[name])
 	for card: Card in snapshot.faces:
 		card.face_up = snapshot.faces[card]
+		card.marks = snapshot.marks.get(card, {}).duplicate()
 	variables.clear()
 	variables.merge(snapshot.variables.duplicate(true))
 	choosing = snapshot.choice.choosing
@@ -632,11 +638,14 @@ func _restore(snapshot: Dictionary) -> void:
 
 
 func _contents() -> Dictionary:
-	var contents := {variables = variables.duplicate(true)}
+	var contents := {variables = variables.duplicate(true), marks = {}}
 	for name in zones:
 		var face_up_ids := zones[name].cards.map(func(card: Card) -> int: return card.get_instance_id() * (1 if card.face_up else -1))
 		face_up_ids.sort()
 		contents[name] = face_up_ids
+		for card in zones[name].cards:
+			if card.marks:
+				contents.marks[card.get_instance_id()] = card.marks.duplicate()
 	return contents
 
 
@@ -649,12 +658,14 @@ func _set_quiet(quiet: bool) -> void:
 func _snapshot() -> Dictionary:
 	var choice := {choosing = choosing, choices = choices.duplicate(), pick_count = pick_count, pick_exact = pick_exact,
 		selected = selected.duplicate(), asked = asked.duplicate(true), choice_asked = choice_asked, return_player = return_player}
-	var snapshot := {zones = {}, sort_columns = {}, faces = {}, variables = variables.duplicate(true), choice = choice}
+	var snapshot := {zones = {}, sort_columns = {}, faces = {}, marks = {}, variables = variables.duplicate(true), choice = choice}
 	for name in zones:
 		snapshot.zones[name] = zones[name].cards.duplicate()
 		snapshot.sort_columns[name] = zones[name].sort_columns.duplicate()
 		for card in zones[name].cards:
 			snapshot.faces[card] = card.face_up
+			if card.marks:
+				snapshot.marks[card] = card.marks.duplicate()
 	return snapshot
 
 
@@ -831,16 +842,28 @@ static func _failure_message(expression: Expression) -> String:
 
 func move(card: Card, destination: Zone) -> void:
 	var source := zone_of(card)
+	var seen_before := shows_face(card)
 	source.remove(card)
 	destination.add(card)
-	_log_item("%s → %s" % [source.name, destination.name], card.title)
+	_log_item("%s → %s" % [source.name, destination.name], card.title if seen_before or shows_face(card) else "")
 	run(_card_effect(card, destination.kind), card)
+
+
+func mark(card: Card, key: String, value: Variant) -> void:
+	card.marks[key] = value
+	_log_item("mark %s = %s" % [key, format_value(value)], describe(card))
+
+
+func unmark(card: Card, key: String) -> void:
+	if card.marks.erase(key):
+		_log_item("unmark " + key, describe(card))
 
 
 func flip(card: Card) -> void:
 	card.face_up = not card.face_up
 	var zone := zone_of(card)
-	_log_item("face %s in %s" % ["up" if card.face_up else "down", zone.name], card.title)
+	var seen := shows_face(card) or (not card.face_up and zone.face != Zone.FACE_DOWN)
+	_log_item("face %s in %s" % ["up" if card.face_up else "down", zone.name], card.title if seen else "")
 	zone.changed.emit(zone)
 
 
@@ -869,7 +892,11 @@ func _flush_log() -> void:
 
 func _flush_moves() -> void:
 	for kind: String in pending_log:
-		logged.emit("  %s: %s" % [kind, ", ".join(pending_log[kind])])
+		var names: Array = pending_log[kind].filter(func(item: String) -> bool: return item != "")
+		var hidden: int = pending_log[kind].size() - names.size()
+		if hidden:
+			names.append("%d hidden card%s" % [hidden, "" if hidden == 1 else "s"])
+		logged.emit("  %s: %s" % [kind, ", ".join(names)])
 	pending_log.clear()
 
 
@@ -891,7 +918,15 @@ func shows_face(card: Card) -> bool:
 			return card.face_up and zone.owner == current_player()
 		Zone.FACE_HUMAN:
 			return card.face_up and not is_bot(zone.owner)
+		Zone.FACE_OTHERS:
+			return card.face_up and zone.owner != viewer()
 	return card.face_up
+
+
+## Who the table is shown to: the only human at a table of bots, otherwise whoever's turn it is (sharing one screen).
+func viewer() -> int:
+	var humans := range(1, rules.players + 1).filter(func(player: int) -> bool: return not is_bot(player))
+	return humans[0] if humans.size() == 1 else current_player()
 
 
 func set_variable(variable: String, value: Variant) -> void:
@@ -900,7 +935,7 @@ func set_variable(variable: String, value: Variant) -> void:
 		report_failure("Unknown variable \"%s\" (declare it in \"variables\")" % name)
 		return
 	variables[name] = value
-	log_line("  %s = %s" % [name, format_value(value)])
+	log_line("  %s = %s" % [name, "[%s]" % describe(value) if value is Array else describe(value)])
 	variables_changed.emit()
 
 

@@ -6,6 +6,7 @@ signal changed(zone: Zone)
 const FACE_DOWN := "down"
 const FACE_OWNER := "owner"
 const FACE_HUMAN := "human"
+const FACE_OTHERS := "others"
 const DRAG_STACK := "stack"
 const LABEL_NUMBER := "#"
 
@@ -31,7 +32,8 @@ func _init(zone_kind: String, definition: Dictionary, number := 0) -> void:
 	kind = zone_kind
 	owner = number if definition.get("per_player", false) else 0
 	name = kind if number == 0 else "%s_%d" % [kind, number]
-	label = definition.get("label", "").replace(LABEL_NUMBER, str(number))
+	var labels: Array = definition.get("labels", [])
+	label = labels[number - 1] if number and labels.size() >= number else definition.get("label", "").replace(LABEL_NUMBER, str(number))
 	has_outline = definition.get("outline", true)
 	layout = definition.get("layout", "row")
 	face = definition.get("face", "up")
@@ -52,6 +54,7 @@ func _init(zone_kind: String, definition: Dictionary, number := 0) -> void:
 
 func add(card: Card) -> void:
 	card.face_up = face != FACE_DOWN
+	card.marks.clear()
 	cards.append(card)
 	_sort()
 	changed.emit(self)

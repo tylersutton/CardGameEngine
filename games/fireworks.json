@@ -1,0 +1,81 @@
+{
+	"title": "Fireworks",
+	"description": "Cooperative, in the style of Hanabi: you and a bot partner build five fireworks (Red, Yellow, Green, Blue, White) from 1 to 5. You can see your partner's cards but not your own. Spend a clue to mark all of your partner's cards of one color or number; play a card by dragging it to Play, or discard it for a clue. Three wrong plays and it's over.",
+	"players": 2,
+	"player_names": ["You", "Partner"],
+	"seats": [[0.1, 0.75], [0.1, 0.25]],
+	"zones": {
+		"deck": { "label": "Deck", "layout": "pile", "face": "down", "anchor": [0.07, 0.5], "cards": "res://decks/fireworks_deck.csv" },
+		"firework": { "labels": ["Red", "Yellow", "Green", "Blue", "White"], "copies": 5, "layout": "pile", "anchor": [0.2, 0.5], "grid": { "columns": 5, "spacing": [0.09, 0] } },
+		"play": { "label": "Play", "layout": "pile", "anchor": [0.68, 0.5] },
+		"discard": { "label": "Discard", "layout": "row", "width": 0.2, "anchor": [0.86, 0.5] },
+		"hand": { "per_player": true, "layout": "row", "face": "others", "anchors": [[0.5, 0.84], [0.5, 0.16]] }
+	},
+	"variables": { "phase": "play", "clues": 8, "fuses": 3, "final_turns": -1, "result": "" },
+	"show_variables": ["clues", "fuses", "result"],
+	"status": { "score": "count(firework)", "cards left": "count(deck)" },
+	"bot": {
+		"players": [2],
+		"prefer": "10 * count(firework) - 15 * (3 - fuses) + 0.5 * clues + 3 * count(matching(opponent_hand, 'hinted_playable')) - 4 * count(matching(discard, 'is_five'))",
+		"samples": 20
+	},
+	"conditions": {
+		"firework_of_card": "zone('firework', int(number(card, 'slot')))",
+		"playable": "number(card, 'number') == count(firework_of_card) + 1",
+		"hinted_playable": "playable and (mark_of(card, 'color') != null or mark_of(card, 'number') != null)",
+		"is_five": "card.data.number == '5'"
+	},
+	"moves": [
+		{
+			"from": "hand", "to": "play",
+			"when": "phase == 'play'",
+			"then": [
+				{
+					"if": "playable",
+					"then": ["move(card, firework_of_card)", { "if": "is_five and clues < 8", "then": ["assign('clues', clues + 1)"] }],
+					"else": ["move(card, discard)", "assign('fuses', fuses - 1)"]
+				},
+				"draw(deck, hand)",
+				"trigger('end_of_turn')"
+			]
+		},
+		{
+			"from": "hand", "to": "discard",
+			"when": "phase == 'play' and clues < 8",
+			"then": ["assign('clues', clues + 1)", "draw(deck, hand)", "trigger('end_of_turn')"]
+		}
+	],
+	"actions": {
+		"Clue color": {
+			"when": "phase == 'play' and clues > 0",
+			"choose": "opponent_hand",
+			"steps": [
+				"mark(where(opponent_hand, 'color', text(choice, 'color')), 'color', text(choice, 'color'))",
+				"assign('clues', clues - 1)",
+				"trigger('end_of_turn')"
+			]
+		},
+		"Clue number": {
+			"when": "phase == 'play' and clues > 0",
+			"choose": "opponent_hand",
+			"steps": [
+				"mark(where(opponent_hand, 'number', text(choice, 'number')), 'number', text(choice, 'number'))",
+				"assign('clues', clues - 1)",
+				"trigger('end_of_turn')"
+			]
+		}
+	},
+	"triggers": {
+		"start": ["shuffle(deck)", "deal(deck, all_hand, 5)"],
+		"end_of_turn": [
+			{ "if": "final_turns > 0", "then": ["assign('final_turns', final_turns - 1)"] },
+			{ "if": "final_turns == -1 and count(deck) == 0", "then": ["assign('final_turns', 2)"] },
+			{ "if": "final_turns == 0 or fuses == 0 or count(firework) == 25", "then": ["trigger('game_over')"], "else": ["end_turn()"] }
+		],
+		"game_over": [
+			"assign('phase', 'over')",
+			{ "if": "fuses == 0", "then": ["assign('result', 'Boom! Out of fuses')"], "else": ["assign('result', '%d of 25' % count(firework))"] }
+		]
+	},
+	"card_face": { "corner": "number", "title": "number", "body": ["color"], "color": "ink" }
+}

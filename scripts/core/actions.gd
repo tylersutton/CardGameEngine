@@ -46,6 +46,20 @@ func all(zone: Zone) -> Array[Card]:
 	return zone.cards.duplicate()
 
 
+func mark(cards: Variant, key: String, value: Variant) -> void:
+	for card: Card in cards_in(cards):
+		game.mark(card, key, value)
+
+
+func unmark(cards: Variant, key: String) -> void:
+	for card: Card in cards_in(cards):
+		game.unmark(card, key)
+
+
+func mark_of(card: Card, key: String) -> Variant:
+	return card.marks.get(key) if card else null
+
+
 func flip(cards: Variant) -> void:
 	for card: Card in cards_in(cards):
 		game.flip(card)
