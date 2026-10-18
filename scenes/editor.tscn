@@ -99,7 +99,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="DetailsScroll" type="ScrollContainer" parent="Layout/Panes/Middle"]
-custom_minimum_size = Vector2(340, 0)
+custom_minimum_size = Vector2(440, 0)
 layout_mode = 2
 horizontal_scroll_mode = 0
 

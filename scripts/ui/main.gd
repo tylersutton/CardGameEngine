@@ -41,7 +41,9 @@ func _ready() -> void:
 
 
 ## The variables and log beside the table (the editor hides them while you arrange the table).
-func show_side_panel(shown: bool) -> void:
+## The editor hides the toolbar and log while it is laying out the table, not playing.
+func show_play_controls(shown: bool) -> void:
+	$Layout/TableColumn/ToolbarMargin.visible = shown
 	$Layout/LogPanel.visible = shown
 
 

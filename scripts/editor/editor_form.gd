@@ -94,7 +94,7 @@ func _control_for(field: Dictionary, path: Array, value: Variant) -> Control:
 			line.focus_exited.connect(commit)
 			return line
 		"json":
-			return _json_box(path, value)
+			return _json_box(path, value, field.example)
 		"expression":
 			var smart: SmartField = editor.smart_field(_as_text(value))
 			smart.committed.connect(func(text: String) -> void:
@@ -179,12 +179,12 @@ func _spot(path: Array, value: Variant) -> HBoxContainer:
 
 
 ## Anything else, as JSONC text; only sent when it reads correctly.
-func _json_box(path: Array, value: Variant) -> TextEdit:
+func _json_box(path: Array, value: Variant, example: String) -> TextEdit:
 	var box := TextEdit.new()
 	box.text = GameDocument.format(value) if value != null else ""
 	box.custom_minimum_size.y = 60
 	box.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
-	box.placeholder_text = "JSON, e.g. [\"draw(deck, hand)\"]"
+	box.placeholder_text = "e.g. " + example
 	box.focus_exited.connect(func() -> void:
 		if box.text.strip_edges().is_empty():
 			changed.emit(path, null)

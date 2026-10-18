@@ -87,7 +87,7 @@ func _ready() -> void:
 	preview.given_files = _files()
 	preview.set_anchors_preset(Control.PRESET_FULL_RECT)
 	%Center.add_child(preview)
-	preview.show_side_panel(false)
+	preview.show_play_controls(false)
 	var table: TableView = preview.get_node("%TableView")
 	dragger = ZoneDragger.new(table)
 	dragger.zone_picked.connect(func(zone: Zone) -> void:
@@ -235,7 +235,8 @@ func _leave() -> void:
 
 func _set_playing(playing: bool) -> void:
 	dragger.visible = not playing
-	preview.show_side_panel(playing)
+	preview.show_play_controls(playing)
+	%Details.get_parent().visible = not playing
 	_reload()
 
 

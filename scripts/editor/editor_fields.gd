@@ -2,7 +2,8 @@ class_name EditorFields
 ## What each part of a game file can hold, for the editor's forms: the key, the kind of control, and a line of help
 ## (the same as README's game file reference). Kinds: text, long_text, number, whole, yes_no, choice (with options),
 ## spot ([x, y] on the table), list (comma-separated; one item stays text), names and numbers (comma-separated lists),
-## column (a deck column), columns, expression and steps (checked as typed), zones, json (anything else, as text).
+## column (a deck column), columns, expression and steps (checked as typed), zones, json (anything else, as text,
+## with an example).
 
 const GAME := [
 	{key = "title", kind = "text", help = "The name on the title screen."},
@@ -25,12 +26,12 @@ const ZONE := [
 	{key = "group", kind = "text", help = "With copies: also put them in a group with this name, shared with other zones."},
 	{key = "on_click", kind = "steps", help = "Steps run when a card here (or the empty zone) is clicked; card is the clicked card."},
 	{key = "on_double_click", kind = "steps", help = "Steps run when a card here is double-clicked."},
-	{key = "columns", kind = "json", help = "With cards: columns to add or change on every card, e.g. { \"points\": \"min(card.value, 10)\" }."},
-	{key = "anchors", kind = "json", help = "With per_player or copies: one [x, y] spot each, to place them yourself."},
-	{key = "rotations", kind = "json", help = "With per_player or copies: one rotation each."},
-	{key = "labels", kind = "json", help = "With per_player or copies: one label each."},
-	{key = "grid", kind = "json", help = "With copies: lay them out in rows, e.g. { \"columns\": 5, \"spacing\": [0.09, 0.19] }."},
-	{key = "covered_by", kind = "json", help = "With copies: which copies lie on top of each one (Pyramid)."},
+	{key = "columns", kind = "json", example = "{ \"points\": \"min(card.value, 10)\" }", help = "With cards: columns to add or change on every card, e.g. { \"points\": \"min(card.value, 10)\" }."},
+	{key = "anchors", kind = "json", example = "[[0.5, 0.85], [0.5, 0.15]]", help = "With per_player or copies: one [x, y] spot each, to place them yourself."},
+	{key = "rotations", kind = "json", example = "[0, 180]", help = "With per_player or copies: one rotation each."},
+	{key = "labels", kind = "json", example = "[\"You\", \"Them\"]", help = "With per_player or copies: one label each."},
+	{key = "grid", kind = "json", example = "{ \"columns\": 5, \"spacing\": [0.09, 0.19] }", help = "With copies: lay them out in rows, e.g. { \"columns\": 5, \"spacing\": [0.09, 0.19] }."},
+	{key = "covered_by", kind = "json", example = "[[1, 2], [2, 3]]", help = "With copies: which copies lie on top of each one (Pyramid)."},
 ]
 
 const MOVE := [
@@ -67,8 +68,8 @@ const CARD_FACE := [
 const PLAYERS := [
 	{key = "players", kind = "whole", help = "How many players. Turns pass with end_turn(); player is whose turn it is."},
 	{key = "player_names", kind = "names", help = "Names on the seat tags, in seat order (comma-separated). Otherwise Player 1, Player 2, ..."},
-	{key = "seats", kind = "json", help = "Where the name tags go: [[x, y]] for seat 1 (the rest go round the table), or one [x, y] per player."},
-	{key = "teams", kind = "json", help = "Partnerships, e.g. [[1, 3], [2, 4]]: every player on exactly one team."},
+	{key = "seats", kind = "json", example = "[[0.22, 0.86]]", help = "Where the name tags go: [[x, y]] for seat 1 (the rest go round the table), or one [x, y] per player."},
+	{key = "teams", kind = "json", example = "[[1, 3], [2, 4]]", help = "Partnerships, e.g. [[1, 3], [2, 4]]: every player on exactly one team."},
 ]
 
 const BOT := [
