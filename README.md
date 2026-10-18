@@ -525,7 +525,7 @@ To repeat steps while something is true, use a `while` step:
 | `assign('variable', value)` | Change a variable. |
 | `add('variable', amount)` | Add to a number variable, e.g. `add('score', 10)` or `add('passes', -1)` |
 | `end_turn()` | Pass the turn to the next player and fire `turn_start`. |
-| `trigger('name')` | Run a step list from `triggers`. |
+| `trigger('name')` | Run a step list from `triggers`. It runs with the same `card` as the step that called it. |
 | `ask('Action name', player)` | Start that action (usually a `choose`) once the current move finishes, e.g. from a wild card's effect. Several asks wait in line: each starts when the previous choice is finished. With a player number, that player makes the choice: it's their turn until they've chosen (so `hand` means their hand, and a bot answers by itself), then the turn goes back. A choice started by `ask` must be made: clicking elsewhere doesn't cancel it, and other buttons and drags wait. |
 | `ask_all('Action name', 'trigger')` | Everyone makes that choice at the same time, e.g. a secret bid: people choose first (so nobody waits on the bots), then each bot, then the trigger runs, e.g. to turn the bids over. Put the choices somewhere face down (`move(choice, bid)` with a face-down `bid` zone) so nobody, bots included, sees them before the reveal. Real-time play (Speed, Slapjack) isn't possible. |
 | `ask_others('Action name', 'trigger')` | A chance to respond: every other player, in turn order, is asked that action (players whose `when` is false are skipped), then the trigger runs. If someone responds by calling `ask_others` again, the rest of the first round is called off and a new round starts around them, so the trigger runs once, after a round where nobody responds. That's how Kaboom's Nope works, including a Nope on a Nope: see `games/kaboom.json`. |
@@ -590,7 +590,6 @@ Wherever a building block takes `cards`, you can pass a zone, a single card, or 
 - **`and`/`or` stop as soon as the answer is known**, so `count(to) > 0 and top(to).data.color == 'Red'` is safe on an empty zone: the second half isn't checked when the first is false.
 - **Whole numbers stay whole.** Variables starting at whole numbers (`0`, `4`) are whole numbers, so `dealer % 4` and `['a', 'b'][index]` work. Numbers with decimals (`0.5`) stay decimal.
 - **To deal the same way in several places,** put the steps in a custom trigger and call `trigger('deal')`.
-- **Triggers don't know the card.** Inside a trigger `card` is `null`, so steps about the clicked or dragged card ("if it's a King, remove it") belong in the zone's `on_click` or the move rule's `then`, not in a trigger they call.
 - **"Draw only if you can't play"** is a move rule like `{ "from": "deck", "to": "hand", "when": "count(movable(hand, pile)) == 0" }`. (A rule can't use `movable` to check moves into its own destination; that inner check counts as "no moves" and the log says so.)
 - **To repeat a check,** give it a name in [`conditions`](#conditions). **To repeat a step,** use a [loop](#loops), or [repeat until](#repeat-until) something changes.
 - **Look at `games/gin_rummy.json`** for a full game: turn phases, knocking, scoring, and a match to 100. `games/solitaire.json` shows columns, stacks, and groups of zones. `games/cribbage.json` scores combinations, and `games/spades.json` has teams.

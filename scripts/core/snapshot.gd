@@ -37,28 +37,26 @@ static func restore(game: Game, snapshot: Dictionary) -> void:
 	game.rng.state = snapshot.rng
 
 
-## What's where, ignoring the order cards sit in, so a bot can tell whether a move changed anything.
-static func contents(game: Game) -> Dictionary:
-	var result := {variables = game.variables.duplicate(true), marks = {}}
+## What's where (cards, faces, marks, variables) as plain data. With every_detail, also the order cards sit in,
+## any choice in progress and the random numbers' state; without, just enough to tell whether a move changed anything.
+static func describe(game: Game, every_detail := true) -> Dictionary:
+	var state := {variables = _plain(game.variables), zones = {}, marks = {}}
+	if every_detail:
+		state.merge({choice = _plain(take(game).choice), rng = game.rng.state})
 	for name in game.zones:
-		var face_up_ids := game.zones[name].cards.map(func(card: Card) -> int: return card.get_instance_id() * (1 if card.face_up else -1))
-		face_up_ids.sort()
-		result[name] = face_up_ids
+		var ids: Array = game.zones[name].cards.map(func(card: Card) -> int: return card.id if card.face_up else -1 - card.id)
+		if not every_detail:
+			ids.sort()
+		state.zones[name] = ids
 		for card in game.zones[name].cards:
 			if card.marks:
-				result.marks[card.get_instance_id()] = card.marks.duplicate()
-	return result
+				state.marks[str(card.id)] = _plain(card.marks)
+	return state
 
 
 ## Everything that decides what happens next, as one number.
 static func state_hash(game: Game) -> int:
-	var state := {variables = _plain(game.variables), choice = _plain(take(game).choice), rng = game.rng.state, zones = {}, marks = {}}
-	for name in game.zones:
-		state.zones[name] = game.zones[name].cards.map(func(card: Card) -> int: return card.id if card.face_up else -1 - card.id)
-		for card in game.zones[name].cards:
-			if card.marks:
-				state.marks[str(card.id)] = _plain(card.marks)
-	return JSON.stringify(state).hash()
+	return JSON.stringify(describe(game)).hash()
 
 
 ## Cards as their ids, so the state can be written out as JSON.

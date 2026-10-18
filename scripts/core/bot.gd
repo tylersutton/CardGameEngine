@@ -125,7 +125,7 @@ func try_out(move: Array, measure: String, deals: Array = []) -> Variant:
 func _try_once(move: Array, measure: String) -> Variant:
 	var player := game.current_player()
 	var before := Snapshot.take(game)
-	var contents_before := Snapshot.contents(game)
+	var contents_before := Snapshot.describe(game, false)
 	var history_size := game.history.size()
 	var was_quiet := game.is_blocking_signals()
 	game.game_log.flush()
@@ -135,7 +135,7 @@ func _try_once(move: Array, measure: String) -> Variant:
 	var value: Variant = null
 	if game.choosing and not before.choice.choosing and game.current_player() == player:
 		value = _best_choice_value(measure)
-	elif Snapshot.contents(game) != contents_before or game.current_player() != player:
+	elif Snapshot.describe(game, false) != contents_before or game.current_player() != player:
 		if Game.PLAYER_VARIABLE in game.variables:
 			game.variables[Game.PLAYER_VARIABLE] = player
 		value = game.evaluate(measure)

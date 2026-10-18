@@ -2,10 +2,13 @@ class_name Actions
 extends RefCounted
 
 var game: Game
+## The card of the step being run, passed on to the triggers it calls.
+var step_card: Card
 
 
-func _init(game_to_control: Game) -> void:
+func _init(game_to_control: Game, card_of_step: Card = null) -> void:
 	game = game_to_control
+	step_card = card_of_step
 
 
 func draw(from: Zone, to: Zone, amount: int = 1) -> void:
@@ -144,7 +147,7 @@ func one_of(items: Variant) -> Variant:
 
 func trigger(event: String) -> void:
 	if event in game.rules.triggers:
-		game.trigger(event)
+		game.trigger(event, step_card)
 	else:
 		game.report_failure("No trigger named \"%s\" in \"triggers\"" % event)
 

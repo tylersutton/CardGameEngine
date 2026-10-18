@@ -36,6 +36,8 @@ var zones: Dictionary[String, Zone] = {}
 var variables: Dictionary = {}
 var per_player_names: Array[String] = []
 var per_team_names: Array[String] = []
+var aliases_by_player: Dictionary = {}
+var team_groups_by_team: Dictionary = {}
 var zone_groups: Dictionary[String, Array] = {}
 var meld_rules: Melds
 var expressions: Dictionary[String, Expression] = {}
@@ -497,10 +499,11 @@ func reorder(card: Card, index: int) -> void:
 	state_changed.emit()
 
 
-func trigger(event: String) -> void:
+## A trigger called from a step runs with that step's card, so it can say "if it's a King, remove it".
+func trigger(event: String, card: Card = null) -> void:
 	if event in rules.triggers:
 		log_line("[trigger] " + event)
-		run(rules.triggers[event])
+		run(rules.triggers[event], card)
 
 
 ## Fires "<zone>_empty"; for a per-player zone with no trigger of its own, fires "<kind>_empty"
@@ -882,7 +885,7 @@ func evaluate(text: String, card: Card = null) -> Variant:
 func _evaluate_logic(node: Variant, card: Card, failure: Dictionary) -> Variant:
 	if node is String:
 		var expression := expressions[node]
-		var result: Variant = expression.execute(_input_values(card), Actions.new(self))
+		var result: Variant = expression.execute(_input_values(card), Actions.new(self, card))
 		if expression.has_execute_failed():
 			failure.message = StepCompiler.failure_message(expression)
 		return result
@@ -1000,14 +1003,20 @@ func zone_of(card: Card) -> Zone:
 	return null
 
 
+## "hand" -> "hand_2" and so on for the current player. Only the current player changes them,
+## so they're worked out once per player rather than for every step.
 func aliases() -> Dictionary:
+	var player := current_player()
+	if player in aliases_by_player:
+		return aliases_by_player[player]
 	var aliases := {}
 	for name in per_player_names:
-		aliases[name] = "%s_%d" % [name, current_player()]
+		aliases[name] = "%s_%d" % [name, player]
 		aliases[OPPONENT_PREFIX + name] = "%s_%d" % [name, next_player()]
 	for name in per_team_names:
-		aliases[name] = "%s_%d" % [name, team_of(current_player())]
+		aliases[name] = "%s_%d" % [name, team_of(player)]
 		aliases[OPPONENT_PREFIX + name] = "%s_%d" % [name, team_of(next_player())]
+	aliases_by_player[player] = aliases
 	return aliases
 
 
@@ -1017,6 +1026,9 @@ func _team_groups() -> Dictionary:
 	if rules.teams.is_empty():
 		return groups
 	var team: int = team_of(current_player())
+	if team in team_groups_by_team:
+		return team_groups_by_team[team]
+	team_groups_by_team[team] = groups
 	for group_name: String in zone_groups:
 		if group_name.begins_with(ALL_PREFIX):
 			groups[TEAM_PREFIX + group_name.trim_prefix(ALL_PREFIX)] = zone_groups[group_name].filter(func(zone: Zone) -> bool:
