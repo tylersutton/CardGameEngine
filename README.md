@@ -77,7 +77,7 @@ A deck is a spreadsheet saved as CSV in `decks/`. The first row is column names;
 Three columns have special meaning:
 - `name` is the card's title, used in the log.
 - `count` (optional) is how many copies of the card to make; blank means 1.
-- `on_<zone>` (optional) is a **card effect**: what happens when the card enters that zone. Here, a +2 entering the pile runs the `draw_two` effect, which we'll define in the game file in [step 5](#5-define-card-effects).
+- `on_<zone>` (optional) is a **card effect**: what happens when the card enters that zone. Here, a +2 entering the pile runs `draw_two`, a trigger we'll define in the game file in [step 5](#5-define-card-effects).
 
 Every other column (`color`, `number`, `ink`) is yours to use in rules, sorting, and the card face.
 
@@ -159,15 +159,16 @@ To make clicking the deck draw a card too, add `"on_click": ["try_move(top(deck)
 
 ### 5. Define card effects
 
-The deck's `on_pile` column says `draw_two`. Define what that means once, in the game file, and every card that names it shares it:
+The deck's `on_pile` column says `draw_two`. Define what that means once, as a trigger in the game file, and every card that names it shares it:
 
 ```json
-"effects": {
-	"draw_two": ["draw(deck, opponent_hand, 2)"]
+"triggers": {
+	"draw_two": ["draw(deck, opponent_hand, 2)"],
+	...
 }
 ```
 
-Effects run when the card enters the zone, before the move rule's `then`. So at that point `opponent_hand` is still the player who's about to take their turn.
+A card's effect runs when the card enters the zone, before the move rule's `then`. So at that point `opponent_hand` is still the player who's about to take their turn.
 
 ### 6. Add buttons
 
@@ -196,8 +197,9 @@ The finished `color_match.json` goes one step further: Wild cards that let you c
 
 ```json
 "variables": { "winner": null, "active_color": "" },
-"effects": {
-	"wild": ["ask('Choose color')"]
+"triggers": {
+	"wild": ["ask('Choose color')"],
+	...
 },
 "actions": {
 	"Choose color": {
@@ -221,7 +223,7 @@ Everything a game file can contain. Only `zones` is required. A misspelled key (
 
 **Comments:** `//` starts a comment that runs to the end of the line, e.g. `"players": 2, // you and a bot`. (Inside quoted text it's just text, so `"res://decks/..."` is fine.)
 
-**Lists of steps:** wherever a list of steps goes (`then`, `else`, `do`, `steps`, triggers, effects, `on_click`), a single step will do: `"then": "end_turn()"`.
+**Lists of steps:** wherever a list of steps goes (`then`, `else`, `do`, `steps`, triggers, `on_click`), a single step will do: `"then": "end_turn()"`.
 
 ### `title`, `description`
 
@@ -333,20 +335,9 @@ Named step lists:
 | `start` | The game begins (and on Reload) |
 | `turn_start` | After every `end_turn()` |
 | `<zone>_empty` | A `draw` needs a card from that zone and it's empty, e.g. `deck_empty`. For a per-player zone (`deck_2`), `deck_empty` runs as that zone's owner, so `["move(discard, deck)", "shuffle(deck)"]` refills whoever ran out. |
-| any other name | You call it with `trigger('name')`. Handy for routines used in several places, like a `deal`. |
+| any other name | You call it with `trigger('name')`, or a card names it in its `on_<zone>` column (a **card effect**). Handy for routines used in several places, like a `deal`. |
 
-### `effects`
-
-Named card effects, used by name in a deck's `on_<zone>` columns:
-
-```json
-"effects": {
-	"draw_two": ["draw(deck, opponent_hand, 2)"],
-	"wild": [{ "if": "count(hand) > 1", "then": ["assign('phase', 'choose_color')"] }]
-}
-```
-
-Each effect is a list of steps, so conditional steps work. `card` is the card whose effect is running. Every effect is checked when the game loads, even ones no card uses yet.
+As a card effect, a trigger runs with `card` as the card that moved, e.g. `"wild": [{ "if": "count(hand) > 1", "then": ["assign('phase', 'choose_color')"] }]`. Every trigger is checked when the game loads, even ones nothing uses yet. (Older game files put card effects in a separate `"effects"` section; that still works.)
 
 ### `conditions`
 
@@ -592,10 +583,10 @@ Wherever a building block takes `cards`, you can pass a zone, a single card, or 
 - **First row:** column names. Each row after it is one card; every column becomes readable as `card.data.<column>`.
 - **`name`:** the card's title in the log.
 - **`count`:** how many copies to make (blank = 1).
-- **`on_<zone>`:** what happens when the card enters that zone. Usually the name of an effect from the game file's [`effects`](#effects), e.g. `draw_two`.
-  - A cell can also hold steps directly, separated by `;`, and mix them with effect names, e.g. `draw_two; shuffle(deck)`.
+- **`on_<zone>`:** what happens when the card enters that zone. Usually the name of a trigger from the game file's [`triggers`](#triggers), e.g. `draw_two`.
+  - A cell can also hold steps directly, separated by `;`, and mix them with trigger names, e.g. `draw_two; shuffle(deck)`.
   - For per-player zones, use the name without the number: `on_hand`, not `on_hand_1`.
-  - A cell starting with `[` is read as a JSON list of steps, e.g. `[{"if": "count(hand) > 2", "then": ["move(card, pile)"]}]`. Usually it's tidier to make it a named effect instead.
+  - A cell starting with `[` is read as a JSON list of steps, e.g. `[{"if": "count(hand) > 2", "then": ["move(card, pile)"]}]`. Usually it's tidier to make it a named trigger instead.
   - An effect that keeps triggering itself is stopped with an error instead of freezing the game.
 - **Commas and quotes:** cells containing commas need quotes around them. Spreadsheet programs do this automatically when exporting CSV.
 - **Saving:** save the file as UTF-8 so symbols like ♠ survive.

@@ -13,10 +13,6 @@
 		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchors": [[0.5, 0.83], [0.5, 0.16]] }
 	},
 	"variables": { "winner": null, "active_color": "" },
-	"effects": {
-		"draw_two": ["draw(deck, opponent_hand, 2)"],
-		"wild": ["ask('Choose color')"]
-	},
 	"moves": [
 		{
 			"from": "hand", "to": "pile",
@@ -43,6 +39,8 @@
 		"Sort by number": ["sort(hand, ['number', 'color'])"]
 	},
 	"triggers": {
+		"draw_two": ["draw(deck, opponent_hand, 2)"],
+		"wild": ["ask('Choose color')"],
 		"start": [
 			"sort(hand_1, ['color', 'number'])",
 			"sort(hand_2, ['color', 'number'])",

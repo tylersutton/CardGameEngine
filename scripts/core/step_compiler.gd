@@ -135,9 +135,12 @@ func _check_actions_and_moves() -> void:
 		errors.append("\"player_names\" needs one name per player (%d)" % rules.players)
 	if rules.bot:
 		_check_entry("bot", rules.bot, {"players": TYPE_ARRAY, "prefer": TYPE_STRING, "peek": TYPE_BOOL, "samples": TYPE_FLOAT})
-	for effect_name in rules.effects:
-		if rules.effects[effect_name] is not Array:
-			errors.append("Effect \"%s\" should be a list of steps" % effect_name)
+	for name in rules.effects:
+		if rules.triggers[name] != rules.effects[name]:
+			errors.append("\"%s\" is both an effect and a trigger" % name)
+	for name in rules.triggers:
+		if rules.triggers[name] is not Array:
+			errors.append("Trigger \"%s\" should be a list of steps" % name)
 	for name in rules.show_variables:
 		if name not in game.variables:
 			errors.append("show_variables: unknown variable \"%s\"" % name)
@@ -172,7 +175,7 @@ func _check_entry(label: String, entry: Variant, field_types: Dictionary) -> voi
 
 
 func _compile_all_steps() -> void:
-	var step_lists: Array = rules.triggers.values() + rules.effects.values()
+	var step_lists: Array = rules.triggers.values()
 	var conditions: Array = []
 	for action: Dictionary in rules.actions.values():
 		step_lists.append(action.get("steps", []))
@@ -403,7 +406,7 @@ func _problems_in(step: String, input_names: PackedStringArray) -> Array[String]
 			if problem:
 				problems.append(problem)
 		elif name not in input_names:
-			var problem := "unknown effect \"%s\" (define it in \"effects\")" if step == name else "unknown zone or variable \"%s\""
+			var problem := "unknown trigger \"%s\" (a card's on_ column names a trigger)" if step == name else "unknown zone or variable \"%s\""
 			problems.append(problem % name)
 	return problems
 

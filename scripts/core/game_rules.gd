@@ -69,7 +69,11 @@ static func load_json(path: String, files := {}) -> GameRules:
 		if rule is Dictionary and rule.has("then"):
 			rule.then = _as_steps(rule.then)
 	rules.triggers = _steps_by_name(data.get("triggers", {}))
+	# "effects" is the older name for triggers that cards name in their on_<zone> column.
 	rules.effects = _steps_by_name(data.get("effects", {}))
+	for name in rules.effects:
+		if name not in rules.triggers:
+			rules.triggers[name] = rules.effects[name]
 	rules.conditions = data.get("conditions", {})
 	rules.variables = _whole_numbers(data.get("variables", {}))
 	rules.players = int(data.get("players", 1))

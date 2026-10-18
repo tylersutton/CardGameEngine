@@ -53,29 +53,6 @@
 		"affordable": "buys > 0 and coins >= number(card, 'cost')",
 		"nothing_left": "buys == 0 and (actions == 0 or phase == 'buy')"
 	},
-	"effects": {
-		"treasure": ["add('coins', number(card, 'coins'))"],
-		"action": [
-			"draw(deck, hand, number(card, 'cards'))",
-			"add('actions', number(card, 'actions'))",
-			"add('buys', number(card, 'buys'))",
-			"add('coins', number(card, 'coins'))"
-		],
-		"council_room": [
-			"assign('attacker', player)",
-			{ "for": "player", "in": "players", "do": [{ "if": "player != attacker", "then": ["draw(deck, hand)"] }] }
-		],
-		"silver": [{ "if": "not silver_played", "then": ["add('coins', merchants)", "assign('silver_played', true)"] }],
-		"merchant": ["add('merchants', 1)"],
-		"cellar": ["ask('Cellar')"],
-		"chapel": ["ask('Chapel')"],
-		"workshop": ["assign('gain_limit', 4)", "ask('Gain a card')"],
-		"remodel": ["ask('Remodel')"],
-		"mine": ["ask('Mine')"],
-		"throne_room": ["ask('Throne Room')"],
-		"militia": ["assign('attacker', player)", "trigger('reactions')", "ask('Militia attack')"],
-		"witch": ["assign('attacker', player)", "trigger('reactions')", "ask('Witch attack')"]
-	},
 	"moves": [
 		{
 			"from": "hand", "to": "play",
@@ -148,6 +125,27 @@
 		"Gain a treasure": { "button": false, "choose": "matching(tops(supply), 'treasure_within_limit')", "steps": ["move(choice, hand)"] }
 	},
 	"triggers": {
+		"treasure": ["add('coins', number(card, 'coins'))"],
+		"action": [
+			"draw(deck, hand, number(card, 'cards'))",
+			"add('actions', number(card, 'actions'))",
+			"add('buys', number(card, 'buys'))",
+			"add('coins', number(card, 'coins'))"
+		],
+		"council_room": [
+			"assign('attacker', player)",
+			{ "for": "player", "in": "players", "do": [{ "if": "player != attacker", "then": ["draw(deck, hand)"] }] }
+		],
+		"silver": [{ "if": "not silver_played", "then": ["add('coins', merchants)", "assign('silver_played', true)"] }],
+		"merchant": ["add('merchants', 1)"],
+		"cellar": ["ask('Cellar')"],
+		"chapel": ["ask('Chapel')"],
+		"workshop": ["assign('gain_limit', 4)", "ask('Gain a card')"],
+		"remodel": ["ask('Remodel')"],
+		"mine": ["ask('Mine')"],
+		"throne_room": ["ask('Throne Room')"],
+		"militia": ["assign('attacker', player)", "trigger('reactions')", "ask('Militia attack')"],
+		"witch": ["assign('attacker', player)", "trigger('reactions')", "ask('Witch attack')"],
 		"start": [
 			{ "for": "name", "in": "basics", "do": ["move(where(box, 'name', name), zone('basic_pile', name_number))"] },
 			"sort(chosen, ['cost', 'name'])",

@@ -1086,8 +1086,8 @@ func card_effect(card: Card, zone_kind: String) -> Array:
 	var step_list := []
 	for part in steps.split(CARD_EFFECT_SEPARATOR, false):
 		var step := part.strip_edges()
-		if rules.effects.get(step) is Array:
-			step_list.append_array(rules.effects[step])
+		if rules.triggers.get(step) is Array:
+			step_list.append_array(rules.triggers[step])
 		else:
 			step_list.append(step)
 	return step_list
