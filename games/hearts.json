@@ -23,20 +23,18 @@
 	"status": { "your points this hand": "sum(zone('won', min(viewer(), 4)), 'points')", "passing": "['no pass', 'left', 'across', 'right'][int(pass_to)]" },
 	"bot": { "players": [2, 3, 4], "prefer": "-sum(hand, 'value') - 2 * played_face_up - 10 * sum(won, 'points')" },
 	"conditions": {
-		"follows_suit": "lead == '' or card.data.suit == lead or count(where(hand, 'suit', lead)) == 0",
 		"hearts_allowed": "lead != '' or card.data.suit != 'Hearts' or hearts_broken or count(where(hand, 'suit', 'Hearts')) == count(hand)",
 		"two_of_clubs_leads": "tricks > 0 or lead != '' or card.data.name == '2♣'",
-		"trick_winner": "owner(highest(where(all_played, 'suit', lead), 'value'))",
 		"played_face_up": "sum(played, 'value') - sum(face_down(played), 'value')"
 	},
 	"moves": [
 		{
 			"from": "hand", "to": "played",
-			"phase": "play", "when": "follows_suit and hearts_allowed and two_of_clubs_leads",
+			"phase": "play", "when": "follows_suit(card, hand, lead) and hearts_allowed and two_of_clubs_leads",
 			"then": [
 				{ "if": "lead == ''", "then": ["assign('lead', card.data.suit)"] },
 				{ "if": "card.data.suit == 'Hearts'", "then": ["assign('hearts_broken', true)"] },
-				{ "if": "count(all_played) == 4", "then": ["assign('phase', 'trick done')", "assign('player', trick_winner)"], "else": ["end_turn()"] }
+				{ "if": "count(all_played) == 4", "then": ["assign('phase', 'trick done')", "assign('player', owner(trick_winner(all_played, lead)))"], "else": ["end_turn()"] }
 			]
 		}
 	],

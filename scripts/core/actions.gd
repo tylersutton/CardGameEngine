@@ -196,6 +196,18 @@ func lowest(cards: Variant, column: String) -> Card:
 	return best
 
 
+## Whether playing the card follows suit: nothing has been led yet, it's the suit led, or the hand has none of it.
+func follows_suit(card: Card, hand: Variant, lead: String) -> bool:
+	return lead == "" or text(card, "suit") == lead or where(hand, "suit", lead).is_empty()
+
+
+## The card taking a trick: the highest trump if any were played, otherwise the highest of the suit led
+## (by the "suit" and "value" columns).
+func trick_winner(cards: Variant, lead: String, trump: String = "") -> Card:
+	var trumps := where(cards, "suit", trump) if trump else []
+	return highest(trumps if trumps else where(cards, "suit", lead), "value")
+
+
 func owner(card: Card) -> int:
 	return game.zone_of(card).owner if card else 0
 

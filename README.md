@@ -523,6 +523,8 @@ To repeat steps while something is true, use a `while` step:
 | `all(zone)` | All the cards in a zone |
 | `top(cards)` | The top card of a zone (or the last of a list), or `null` if empty |
 | `highest(cards, 'column')`, `lowest(cards, 'column')` | The card with the biggest or smallest number in that column, e.g. the winner of a trick: `highest(where(all_played, 'suit', lead), 'value')` |
+| `follows_suit(card, hand, lead)` | Whether playing the card follows suit: nothing led yet (`lead` is `''`), it's the suit led, or the hand has none of it. Uses the `suit` column |
+| `trick_winner(cards, lead, trump)` | The card taking a trick: the highest trump played, if any, otherwise the highest of the suit led, e.g. `owner(trick_winner(all_played, lead, 'Spades'))` is who won. `trump` is optional. Uses the `suit` and `value` columns |
 | `owner(card)` | The number of the player whose zone the card is in (0 for shared zones), e.g. `assign('player', owner(highest(...)))` |
 | `next_player(seats)` | The player that many seats after the current one, wrapping around: `next_player(1)` is next, `next_player(-1)` is previous |
 | `name_of(player)` | A player's name: from `player_names` ("You", "West"), or online the name they joined with. Use it instead of writing names into text, e.g. `assign('result', 'Winner: ' + name_of(best))`, so the text is right on every screen |
