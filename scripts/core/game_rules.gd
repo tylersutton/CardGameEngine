@@ -24,13 +24,13 @@ var description: String
 var error: String
 
 
-static func load_json(path: String) -> GameRules:
+static func load_json(path: String, files := {}) -> GameRules:
 	var rules := GameRules.new()
-	if not FileAccess.file_exists(path):
+	if path not in files and not FileAccess.file_exists(path):
 		rules.error = "Game file not found: " + path
 		return rules
 	var json := JSON.new()
-	if json.parse(FileAccess.get_file_as_string(path)) != OK:
+	if json.parse(files[path] if path in files else FileAccess.get_file_as_string(path)) != OK:
 		rules.error = "%s, line %d: %s" % [path.get_file(), json.get_error_line() + 1, json.get_error_message()]
 		return rules
 	var data: Dictionary = json.data

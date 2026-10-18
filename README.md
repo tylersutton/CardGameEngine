@@ -46,6 +46,16 @@ To jump straight into one game while working on it, open `scenes/main.tscn`, set
 
 The right-hand panel shows the game's variables and live readouts at the top, and a log of everything that happened below. The log only names cards you could see, so a card drawn into a bot's hidden hand shows as "1 hidden card". Errors appear in red. Card moves and flips are grouped, one line per step and destination, e.g. `deck → hand_1: 5♦, 4♥, K♦`. Identical lines in a row are shown once with a count, e.g. `if count(pile) == 0 → else (×17)`.
 
+## Playing online
+
+Press **Play online...** on the title screen.
+
+1. **Host:** enter your name and press **Host** (port 7777 unless you change it). Windows may ask to let Godot through the firewall. Pick the game.
+2. **Join:** the others enter the host's address and press **Join**. On the same network that's the host computer's local address (e.g. `192.168.1.20`); over the internet the host has to forward the port, or everyone can use a virtual network like Tailscale or ZeroTier. Nobody else needs the game's files: the host sends the rules and decks.
+3. **Seats:** everyone presses **Sit here** on a seat. The host can tick **Bot** on any empty seat (if the game has a bot), then press **Start**.
+
+During the match each player sees only their own hidden cards, and acts only on their own turn. Bots run on the host's computer. **Undo** asks everyone else at the table first. Reload and Sandbox are off. If someone drops out, their seat shows "(away)" and the game waits; they get their seat back by joining again with the same name. Pressing **Games** leaves the match (if the host leaves, it ends for everyone).
+
 ## Tutorial: making a game
 
 We'll build **Color Match**, a small UNO-like game. It's in the project already, so you can compare as you go.
@@ -593,7 +603,9 @@ func discard_hand(zone: Zone, to: Zone) -> void:
 Other places to look:
 - `scripts/core/`: the game logic. `Game` runs the rules, `Zone` holds cards, `Melds` finds melds, `Bot` picks moves.
 - `scripts/ui/`: the table and side panel.
+- `scripts/net/net.gd`: online play (the `Net` autoload): the lobby, sending inputs through the host, undo requests, rejoining.
 - `tests/determinism_test.gd`: plays every game and checks matches replay exactly. Run it after engine changes: `godot --headless -s tests/determinism_test.gd`.
+- `tests/net_test.tscn`: a host and a guest play a hand of Hearts over the network, with an undo, a rejoin and a catch-up. Run `godot --headless res://tests/net_test.tscn -- host` and, in a second terminal, the same with `-- guest`; the two final state numbers must match.
 
 ### Inputs, seeds and replays
 

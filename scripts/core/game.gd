@@ -5,6 +5,7 @@ signal logged(text: String)
 signal failed(text: String)
 signal variables_changed
 signal state_changed
+signal input_applied(input: Dictionary)
 
 const CARD_VARIABLE := "card"
 const CHOICE_VARIABLE := "choice"
@@ -40,6 +41,7 @@ var rng := RandomNumberGenerator.new()
 var cards: Array[Card] = []
 var inputs: Array[Dictionary] = []
 var local_seat := 0
+var given_files := {}
 var zones: Dictionary[String, Zone] = {}
 var variables: Dictionary = {}
 var per_player_names: Array[String] = []
@@ -75,11 +77,13 @@ var loop_values: Dictionary = {}
 
 
 ## A seed makes the match repeatable: the same seed and inputs always give the same game.
-func _init(path: String, seed := -1) -> void:
+## files (path -> text) stands in for the game and deck files, e.g. ones sent by an online host.
+func _init(path: String, seed := -1, files := {}) -> void:
 	rules_path = path
 	match_seed = seed if seed >= 0 else randi()
 	rng.seed = match_seed
-	rules = GameRules.load_json(rules_path)
+	given_files = files
+	rules = GameRules.load_json(rules_path, files)
 	if rules.error:
 		errors.append(rules.error)
 		return
@@ -174,6 +178,7 @@ func apply(input: Dictionary) -> bool:
 	if not _apply_input(input):
 		return false
 	inputs.append(input.duplicate())
+	input_applied.emit(inputs.back())
 	return true
 
 
@@ -1232,8 +1237,8 @@ func _check_names_are_unique() -> void:
 
 
 func _load_cards(zone: Zone, path: String) -> void:
-	if FileAccess.file_exists(path):
-		var deck := DeckLoader.load_csv(path)
+	if path in given_files or FileAccess.file_exists(path):
+		var deck := DeckLoader.parse_csv(given_files[path]) if path in given_files else DeckLoader.load_csv(path)
 		for card in deck:
 			card.id = cards.size()
 			cards.append(card)

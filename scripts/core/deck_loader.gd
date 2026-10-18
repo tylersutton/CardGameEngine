@@ -1,6 +1,7 @@
 class_name DeckLoader
 
 const COUNT_COLUMN := "count"
+const RECEIVED_DECK := "user://received_deck.csv"
 
 
 static func load_csv(path: String) -> Array[Card]:
@@ -18,6 +19,14 @@ static func load_csv(path: String) -> Array[Card]:
 		for copy in _copies(row):
 			cards.append(Card.new(row.duplicate()))
 	return cards
+
+
+## For a deck received as text: Godot only reads CSV (with its quoted fields) from files, so it goes through one.
+static func parse_csv(text: String) -> Array[Card]:
+	var file := FileAccess.open(RECEIVED_DECK, FileAccess.WRITE)
+	file.store_string(text)
+	file.close()
+	return load_csv(RECEIVED_DECK)
 
 
 static func _copies(row: Dictionary) -> int:

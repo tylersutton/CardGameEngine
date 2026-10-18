@@ -2,6 +2,7 @@ extends Control
 
 const GAMES_FOLDER := "res://games/"
 const MAIN_SCENE := preload("res://scenes/main.tscn")
+const LOBBY_SCENE := "res://scenes/lobby.tscn"
 const SELECTED_COLOR := Color(1, 0.85, 0.4)
 
 static var selected_style := _selected_box()
@@ -13,6 +14,7 @@ func _ready() -> void:
 	%Felt.color = TableView.FELT_COLOR
 	_fit_window_to_screen()
 	%Play.pressed.connect(func() -> void: _play(selected_path))
+	%OnlineButton.pressed.connect(func() -> void: get_tree().change_scene_to_file(LOBBY_SCENE))
 	var group := ButtonGroup.new()
 	var games := _game_paths().map(func(path: String) -> Array: return [path, GameRules.load_json(path)])
 	games.sort_custom(func(a: Array, b: Array) -> bool: return _title(a[0], a[1]).naturalnocasecmp_to(_title(b[0], b[1])) < 0)
