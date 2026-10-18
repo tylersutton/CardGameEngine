@@ -31,6 +31,7 @@ var rng := RandomNumberGenerator.new()
 var cards: Array[Card] = []
 var inputs: Array[Dictionary] = []
 var local_seat := 0
+var started := false
 var given_files := {}
 var zones: Dictionary[String, Zone] = {}
 var variables: Dictionary = {}
@@ -121,6 +122,7 @@ func _init(path: String, seed := -1, files := {}) -> void:
 
 
 func start() -> void:
+	started = true
 	trigger("start")
 	game_log.flush()
 	_perform_asked()
@@ -935,8 +937,13 @@ func log_line(text: String) -> void:
 	game_log.line(text)
 
 
+## A step that fails while the game loads (e.g. working out "columns") is a load error, shown before play starts.
 func report_failure(text: String) -> void:
 	game_log.flush()
+	if not started:
+		if text not in errors:
+			errors.append(text)
+		return
 	failed.emit(text)
 
 

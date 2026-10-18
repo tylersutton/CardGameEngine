@@ -18,6 +18,7 @@ const TYPE_DESCRIPTIONS := {TYPE_STRING: "text", TYPE_ARRAY: "a list", TYPE_FLOA
 
 static var building_blocks := _building_blocks()
 static var failed_call := RegEx.create_from_string(r"On call to '(\w+)'")
+static var unknown_name := RegEx.create_from_string(r"Invalid named index '(\w+)'")
 static var string_literal := RegEx.create_from_string("'[^']*'|\"[^\"]*\"")
 static var name_in_code := RegEx.create_from_string(r"(?<![.\w])([A-Za-z_]\w*)\s*(\()?")
 
@@ -84,6 +85,9 @@ func check_and_compile() -> void:
 ## A failed step's error, with the building block's parameters when it was given the wrong kind of argument.
 static func failure_message(expression: Expression) -> String:
 	var message := expression.get_error_text()
+	var unknown := unknown_name.search(message)
+	if unknown:
+		message += " (no column \"%s\" in this card's deck)" % unknown.get_string(1)
 	var call := failed_call.search(message)
 	if call and call.get_string(1) in building_blocks:
 		message += " wrong kind of argument, expected " + signature(call.get_string(1))

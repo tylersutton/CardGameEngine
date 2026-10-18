@@ -438,7 +438,7 @@ You can use:
 - **Zone and variable names** directly.
 - **`card`**: the card involved (dragged, clicked, chosen, or whose effect is running). It's `null` when there isn't one.
 - **`choice`**: what was picked in a `choose` action: a card, a list of cards, or a value.
-- **Card columns,** as `card.<column>`, e.g. `card.suit == lead` or `card.value > 5`. A column where every card has a number (`value`) gives numbers; a column with any text in it (`rank`: 2 ... 10, J, Q, K, A) gives text for every card, so `card.rank == 'A'` and `card.rank == '10'` both work. `card.data.<column>` is always the text as written.
+- **Card columns,** as `card.<column>`, e.g. `card.suit == lead` or `card.value > 5`. Capitals don't matter: `card.color` reads a column headed `Color`. A column where every card has a number (`value`) gives numbers; a column with any text in it (`rank`: 2 ... 10, J, Q, K, A) gives text for every card, so `card.rank == 'A'` and `card.rank == '10'` both work. `card.data.<column>` is always the text as written.
 - **Operators:** `==`, `!=`, `<`, `>`, `<=`, `>=`, `+`, `-`, `*`, `/`, `and`, `or`, `not`, and parentheses.
 - **Either-or values:** `either(count(hand) == 0, 'out', 'in')`. (`x if condition else y` doesn't work in steps.)
 - **Text with numbers in it:** `'bid %d, score %d' % [team_bid_1, team_score_1]`, handy in [`status`](#status).
