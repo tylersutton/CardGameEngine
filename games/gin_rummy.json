@@ -26,7 +26,7 @@
 	},
 	"player_variables": { "score": 0, "hands_won": 0 },
 	"bot": { "players": [2], "prefer": "score - opponent_score - sum(deadwood(hand), 'points')" },
-	"status": { "deadwood in hand": "sum(deadwood(hand), 'points')" },
+	"status": { "your deadwood": "sum(deadwood(zone('hand', min(viewer(), 2))), 'points')" },
 	"melds": {
 		"types": [
 			{ "same": "rank", "min": 3 },

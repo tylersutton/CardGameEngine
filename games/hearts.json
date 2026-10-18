@@ -21,7 +21,7 @@
 	"variables": { "phase": "pass", "hand_number": 0, "pass_to": 1, "passed": 0, "lead": "", "hearts_broken": false, "tricks": 0, "moon": 0, "best": 0, "best_score": 0, "result": "" },
 	"player_variables": { "score": 0 },
 	"show_variables": ["phase", "hearts_broken", "score_1", "score_2", "score_3", "score_4", "result"],
-	"status": { "your points this hand": "sum(won_1, 'points')", "passing": "['no pass', 'left', 'across', 'right'][int(pass_to)]" },
+	"status": { "your points this hand": "sum(zone('won', min(viewer(), 4)), 'points')", "passing": "['no pass', 'left', 'across', 'right'][int(pass_to)]" },
 	"bot": { "players": [2, 3, 4], "prefer": "-sum(hand, 'value') - 2 * played_face_up - 10 * sum(won, 'points')" },
 	"conditions": {
 		"follows_suit": "lead == '' or card.data.suit == lead or count(where(hand, 'suit', lead)) == 0",
@@ -106,7 +106,7 @@
 			"assign('best', 1)",
 			"assign('best_score', score_1)",
 			{ "for": "player", "in": "players", "do": [{ "if": "score < best_score", "then": ["assign('best', player)", "assign('best_score', score)"] }] },
-			"assign('result', ['You win!', 'West wins', 'North wins', 'East wins'][int(best) - 1])"
+			"assign('result', 'Winner: ' + name_of(int(best)))"
 		]
 	},
 	"card_face": { "corner": "name", "title": "name", "body": ["suit"], "color": "color" }

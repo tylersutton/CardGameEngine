@@ -16,10 +16,10 @@
 		"bid": { "label": "Bid", "per_player": true, "layout": "pile", "face": "down", "anchors": [[0.5, 0.62], [0.3, 0.5], [0.7, 0.5]] },
 		"won": { "label": "Won", "per_player": true, "layout": "pile", "anchors": [[0.84, 0.86], [0.25, 0.16], [0.75, 0.16]] }
 	},
-	"variables": { "phase": "bid", "stake": 0, "high": 0, "result": "" },
+	"variables": { "phase": "bid", "stake": 0, "high": 0, "best": 1, "result": "" },
 	"show_variables": ["phase", "result"],
 	"status": {
-		"points (You, W, E)": "'%d, %d, %d' % [sum(won_1, 'value'), sum(won_2, 'value'), sum(won_3, 'value')]",
+		"points": "'%s %d, %s %d, %s %d' % [name_of(1), sum(won_1, 'value'), name_of(2), sum(won_2, 'value'), name_of(3), sum(won_3, 'value')]",
 		"prize worth": "stake"
 	},
 	"bot": { "players": [2, 3], "prefer": "sum(won, 'value')" },
@@ -61,7 +61,9 @@
 		"game_over": [
 			"move(prize, box)",
 			"assign('phase', 'over')",
-			{ "if": "sum(won_1, 'value') > max(sum(won_2, 'value'), sum(won_3, 'value'))", "then": ["assign('result', 'You win!')"], "else": ["assign('result', 'A bot wins')"] }
+			"assign('best', 1)",
+			{ "for": "player", "in": "players", "do": [{ "if": "sum(won, 'value') > sum(zone('won', int(best)), 'value')", "then": ["assign('best', player)"] }] },
+			"assign('result', 'Winner: ' + name_of(int(best)))"
 		]
 	},
 	"card_face": { "corner": "name", "title": "name", "body": ["suit"], "color": "color" }

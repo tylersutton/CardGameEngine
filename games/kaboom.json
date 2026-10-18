@@ -20,7 +20,7 @@
 	"player_variables": { "alive": true },
 	"show_variables": ["phase", "result"],
 	"status": {
-		"on the table": "'' if pending == '' else '%s by %s%s' % [pending, ['You', 'West', 'East'][actor - 1], ' (Noped)' if noped else '']",
+		"on the table": "'' if pending == '' else '%s by %s%s' % [pending, name_of(actor), ' (Noped)' if noped else '']",
 		"cards in the deck": "count(deck)"
 	},
 	"bot": {
@@ -114,7 +114,7 @@
 			"move(hand, out)",
 			{ "if": "living_players == 1", "then": [
 				"assign('phase', 'over')",
-				{ "if": "alive_1", "then": ["assign('result', 'You win!')"], "else": ["assign('result', 'You lose')"] }
+				{ "for": "player", "in": "players", "do": [{ "if": "alive", "then": ["assign('result', 'Winner: ' + name_of(player))"] }] }
 			] }
 		]
 	},

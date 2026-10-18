@@ -18,6 +18,7 @@ const OPPONENT_PREFIX := "opponent_"
 const TEAM_PREFIX := "team_"
 const CARD_EFFECT_PREFIX := "on_"
 const HIDDEN_CARD := "a hidden card"
+const VIEWER_BLOCK := "viewer("
 const CARD_EFFECT_SEPARATOR := ";"
 const KEYWORDS := ["true", "false", "null", "and", "or", "not", "if", "else"]
 const MATH_FUNCTIONS := ["abs", "min", "max", "floor", "ceil", "round", "int"]
@@ -652,8 +653,12 @@ func is_local_turn() -> bool:
 
 
 func player_name(player: int) -> String:
-	var name: String = rules.player_names[player - 1] if player <= rules.player_names.size() else "Player %d" % player
-	return name + " (bot)" if is_bot(player) else name
+	return seat_name(player) + (" (bot)" if is_bot(player) else "")
+
+
+## The name in "player_names" (online, the name each person joined with).
+func seat_name(player: int) -> String:
+	return rules.player_names[player - 1] if player >= 1 and player <= rules.player_names.size() else "Player %d" % player
 
 
 func is_bot(player: int) -> bool:
@@ -1360,6 +1365,8 @@ func _compile_all_steps() -> void:
 			unique_steps[condition] = true
 	for step: String in unique_steps:
 		_compile(step)
+		if step not in rules.status.values() and step not in rules.conditions.values() and VIEWER_BLOCK in _with_conditions(step):
+			errors.append("Step \"%s\": viewer() only works in \"status\" (each screen has its own, so rules can't depend on it)" % step)
 
 
 func _collect_steps(steps: Array, into: Dictionary) -> void:

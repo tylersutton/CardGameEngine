@@ -380,8 +380,10 @@ By default every variable is listed in the side panel. `"show_variables": ["phas
 Live readouts in the side panel, recalculated after every change:
 
 ```json
-"status": { "deadwood in hand": "sum(deadwood(hand), 'points')" }
+"status": { "scores": "'%s %d, %s %d' % [name_of(1), score_1, name_of(2), score_2]" }
 ```
+
+Write readouts so they read right on every screen: name players with `name_of`, and use `viewer()` for anything personal ("your points"). Online each player's screen shows their own seat at the bottom, so text like "You" or "West" baked into a label would be wrong for everyone but seat 1.
 
 ### `card_face`
 
@@ -525,6 +527,8 @@ To repeat steps while something is true, use a `while` step:
 | `highest(cards, 'column')`, `lowest(cards, 'column')` | The card with the biggest or smallest number in that column, e.g. the winner of a trick: `highest(where(all_played, 'suit', lead), 'value')` |
 | `owner(card)` | The number of the player whose zone the card is in (0 for shared zones), e.g. `assign('player', owner(highest(...)))` |
 | `next_player(seats)` | The player that many seats after the current one, wrapping around: `next_player(1)` is next, `next_player(-1)` is previous |
+| `name_of(player)` | A player's name: from `player_names` ("You", "West"), or online the name they joined with. Use it instead of writing names into text, e.g. `assign('result', 'Winner: ' + name_of(best))`, so the text is right on every screen |
+| `viewer()` | The seat this screen belongs to (the person playing here), e.g. `"your deadwood": "sum(deadwood(zone('hand', viewer())), 'points')"`. Only allowed in `status`: each screen has its own, so rules can't depend on it |
 | `variable_of('name', player)` | Another player's player variable, e.g. `variable_of('alive', next_player())` |
 | `zone('kind', player)` | That player's zone, e.g. `zone('hand', next_player(2))` for the player across the table |
 | `random(low, high)` | A random whole number from `low` to `high`, e.g. a die roll `random(1, 6)` or a random first player `assign('player', random(1, 4))` |

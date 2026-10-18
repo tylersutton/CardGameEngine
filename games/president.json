@@ -21,10 +21,10 @@
 	"player_variables": { "title": "", "score": 0 },
 	"show_variables": ["phase", "result"],
 	"status": {
-		"You": "'%s (%d points)' % [title_1, score_1]",
-		"West": "'%s (%d points)' % [title_2, score_2]",
-		"North": "'%s (%d points)' % [title_3, score_3]",
-		"East": "'%s (%d points)' % [title_4, score_4]"
+		"seat 1": "'%s: %s (%d points)' % [name_of(1), title_1, score_1]",
+		"seat 2": "'%s: %s (%d points)' % [name_of(2), title_2, score_2]",
+		"seat 3": "'%s: %s (%d points)' % [name_of(3), title_3, score_3]",
+		"seat 4": "'%s: %s (%d points)' % [name_of(4), title_4, score_4]"
 	},
 	"bot": { "players": [2, 3, 4], "prefer": "-10 * count(hand) + 0.5 * sum(hand, 'order')" },
 	"conditions": {

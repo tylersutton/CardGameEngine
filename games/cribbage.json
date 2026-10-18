@@ -19,7 +19,7 @@
 	},
 	"player_variables": { "score": 0, "kept": [] },
 	"show_variables": ["phase", "total", "points", "result"],
-	"status": { "your score": "score_1", "opponent's score": "score_2", "dealer": "['You', 'Opponent'][int(dealer) - 1]" },
+	"status": { "scores": "'%s %d, %s %d' % [name_of(1), score_1, name_of(2), score_2]", "dealer": "name_of(int(dealer))" },
 	"bot": { "players": [2], "prefer": "score - opponent_score" },
 	"conditions": {
 		"playable": "number(card, 'value') <= 31 - total",
@@ -125,8 +125,8 @@
 			"assign('player', next_player())"
 		],
 		"check_win": [
-			{ "if": "phase != 'over' and score_1 >= 121", "then": ["assign('result', 'You win!')", "assign('phase', 'over')"] },
-			{ "if": "phase != 'over' and score_2 >= 121", "then": ["assign('result', 'The opponent wins')", "assign('phase', 'over')"] }
+			{ "if": "phase != 'over' and score_1 >= 121", "then": ["assign('result', 'Winner: ' + name_of(1))", "assign('phase', 'over')"] },
+			{ "if": "phase != 'over' and score_2 >= 121", "then": ["assign('result', 'Winner: ' + name_of(2))", "assign('phase', 'over')"] }
 		]
 	},
 	"card_face": { "corner": "name", "title": "name", "body": ["suit"], "color": "color" }

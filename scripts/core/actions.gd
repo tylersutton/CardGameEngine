@@ -108,6 +108,15 @@ func variable_of(name: String, player: int) -> Variant:
 	return game.variables.get(variable)
 
 
+func name_of(player: int) -> String:
+	return game.seat_name(player)
+
+
+## The seat this screen shows (the person playing here); for "status" only.
+func viewer() -> int:
+	return game.viewer()
+
+
 func zone(kind: String, player: int) -> Zone:
 	var name := "%s_%d" % [kind, player]
 	if name not in game.zones:

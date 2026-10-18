@@ -24,9 +24,9 @@
 	"team_variables": { "team_bid": 0, "team_score": 0, "bags": 0 },
 	"show_variables": ["phase", "result"],
 	"status": {
-		"bids (You, W, N, E)": "'%d, %d, %d, %d' % [bid_1, bid_2, bid_3, bid_4]",
-		"You & North": "'bid %d, won %d, score %d, bags %d' % [team_bid_1, count(won_1) / 4 + count(won_3) / 4, team_score_1, bags_1]",
-		"West & East": "'bid %d, won %d, score %d, bags %d' % [team_bid_2, count(won_2) / 4 + count(won_4) / 4, team_score_2, bags_2]"
+		"bids": "'%s %d, %s %d, %s %d, %s %d' % [name_of(1), bid_1, name_of(2), bid_2, name_of(3), bid_3, name_of(4), bid_4]",
+		"team 1": "'%s & %s: bid %d, won %d, score %d, bags %d' % [name_of(1), name_of(3), team_bid_1, count(won_1) / 4 + count(won_3) / 4, team_score_1, bags_1]",
+		"team 2": "'%s & %s: bid %d, won %d, score %d, bags %d' % [name_of(2), name_of(4), team_bid_2, count(won_2) / 4 + count(won_4) / 4, team_score_2, bags_2]"
 	},
 	"bot": { "players": [2, 3, 4], "prefer": "10 * count(team_won) + 5 * int(team_winning) - 0.2 * sum(played, 'value')" },
 	"conditions": {
@@ -104,8 +104,8 @@
 				{ "if": "bid == 0 and count(won) > 0", "then": ["assign('team_score', team_score - 100)"] }
 			] },
 			"assign('phase', 'hand over')",
-			{ "if": "team_score_1 >= 500 and team_score_1 > team_score_2", "then": ["assign('result', 'You and North win!')", "assign('phase', 'over')"] },
-			{ "if": "team_score_2 >= 500 and team_score_2 > team_score_1", "then": ["assign('result', 'West and East win')", "assign('phase', 'over')"] }
+			{ "if": "team_score_1 >= 500 and team_score_1 > team_score_2", "then": ["assign('result', 'Winners: %s & %s' % [name_of(1), name_of(3)])", "assign('phase', 'over')"] },
+			{ "if": "team_score_2 >= 500 and team_score_2 > team_score_1", "then": ["assign('result', 'Winners: %s & %s' % [name_of(2), name_of(4)])", "assign('phase', 'over')"] }
 		]
 	},
 	"card_face": { "corner": "name", "title": "name", "body": ["suit"], "color": "color" }
