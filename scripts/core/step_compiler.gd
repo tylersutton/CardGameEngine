@@ -9,6 +9,9 @@ const WHILE_KEYS := ["while", "do"]
 const KEYWORDS := ["true", "false", "null", "and", "or", "not", "if", "else"]
 const MATH_FUNCTIONS := ["abs", "min", "max", "floor", "ceil", "round", "int"]
 const VIEWER_BLOCK := "viewer("
+const ZONE_KEYS := ["label", "labels", "outline", "layout", "face", "anchor", "anchors", "width", "rotation", "rotations", "cards",
+	"on_click", "on_double_click", "spread", "drag", "per_player", "copies", "grid", "group", "covered_by"]
+const CARD_FACE_KEYS := ["corner", "title", "body", "text", "color", "zoom"]
 const TYPE_DESCRIPTIONS := {TYPE_STRING: "text", TYPE_ARRAY: "a list", TYPE_FLOAT: "a number", TYPE_BOOL: "true or false"}
 
 static var building_blocks := _building_blocks()
@@ -27,13 +30,21 @@ func _init(game_to_check: Game) -> void:
 	errors = game.errors
 
 
-## Before any zone is made: settings that would stop the zones being built at all.
+## Before any zone is made: misspelled keys, and settings that would stop the zones being built at all.
 func check_zone_definitions() -> void:
+	for key in rules.unknown_keys:
+		errors.append("Unknown key \"%s\" at the top of the game file" % key)
+	for key in rules.card_face:
+		if key not in CARD_FACE_KEYS:
+			errors.append("card_face: unknown key \"%s\" (it has %s)" % [key, ", ".join(CARD_FACE_KEYS)])
 	for zone_kind in rules.zones:
 		var definition: Variant = rules.zones[zone_kind]
 		if definition is not Dictionary:
 			errors.append("Zone \"%s\" should be an object" % zone_kind)
 			continue
+		for key in definition:
+			if key not in ZONE_KEYS:
+				errors.append("Zone \"%s\": unknown key \"%s\"" % [zone_kind, key])
 		var per_player: bool = definition.get("per_player", false)
 		if per_player and definition.has("copies"):
 			errors.append("Zone \"%s\": use \"per_player\" or \"copies\", not both" % zone_kind)
@@ -99,19 +110,22 @@ func _check_names_are_unique() -> void:
 
 func _check_actions_and_moves() -> void:
 	for action_name in rules.actions:
-		_check_entry("Action \"%s\"" % action_name, rules.actions[action_name], {"when": TYPE_STRING, "choose": TYPE_STRING, "pick": [TYPE_FLOAT, TYPE_STRING], "up_to": [TYPE_FLOAT, TYPE_STRING], "allow": TYPE_STRING, "human_only": TYPE_BOOL, "button": TYPE_BOOL, "prefer": TYPE_STRING, "steps": TYPE_ARRAY})
+		_check_entry("Action \"%s\"" % action_name, rules.actions[action_name], {"when": TYPE_STRING, "choose": TYPE_STRING, "pick": [TYPE_FLOAT, TYPE_STRING], "up_to": [TYPE_FLOAT, TYPE_STRING], "allow": TYPE_STRING, "human_only": TYPE_BOOL, "button": TYPE_BOOL, "prefer": TYPE_STRING, "steps": TYPE_ARRAY, "phase": [TYPE_STRING, TYPE_ARRAY]})
 		var action: Variant = rules.actions[action_name]
 		for key in ["pick", "up_to", "allow"]:
 			if action is Dictionary and action.has(key) and not action.has("choose"):
 				errors.append("Action \"%s\": \"%s\" needs \"choose\"" % [action_name, key])
 	for rule in rules.moves:
 		var label := "Move %s" % JSON.stringify(rule)
-		_check_entry(label, rule, {"from": [TYPE_STRING, TYPE_ARRAY], "to": [TYPE_STRING, TYPE_ARRAY], "when": TYPE_STRING, "then": TYPE_ARRAY})
+		_check_entry(label, rule, {"from": [TYPE_STRING, TYPE_ARRAY], "to": [TYPE_STRING, TYPE_ARRAY], "when": TYPE_STRING, "then": TYPE_ARRAY, "phase": [TYPE_STRING, TYPE_ARRAY]})
 		for end in ["from", "to"]:
 			var zone_names: Variant = rule.get(end) if rule is Dictionary else null
 			for zone_name: Variant in zone_names if zone_names is Array else [zone_names]:
 				if zone_name is String and zone_name not in game.zones and zone_name not in game.aliases() and zone_name not in game.zone_groups:
 					errors.append("%s: unknown zone \"%s\"" % [label, zone_name])
+	var uses_phase := (rules.actions.values() + rules.moves).any(func(entry: Variant) -> bool: return entry is Dictionary and entry.has(Game.PHASE_KEY))
+	if uses_phase and Game.PHASE_KEY not in game.variables:
+		errors.append("\"phase\" on a move or action needs a variable named phase, e.g. \"variables\": { \"phase\": \"draw\" }")
 	for list_name in ["seats", "player_names"]:
 		var list: Array = rules.get(list_name)
 		if list and list.size() < rules.players:

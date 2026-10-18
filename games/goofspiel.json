@@ -32,7 +32,7 @@
 			"steps": ["move(choice, bid)"]
 		},
 		"Next round": {
-			"when": "phase == 'revealed'", "human_only": true,
+			"phase": "revealed", "human_only": true,
 			"steps": ["move(all_bid, box)", { "if": "count(prizes) > 0", "then": ["trigger('round')"], "else": ["trigger('game_over')"] }]
 		}
 	},

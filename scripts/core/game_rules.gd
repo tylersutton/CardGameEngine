@@ -19,9 +19,15 @@ var status: Dictionary
 var show_variables: Array
 var bot: Dictionary
 var card_face: Dictionary
+var unknown_keys: Array[String] = []
 var title: String
 var description: String
 var error: String
+
+
+const KEYS := ["title", "description", "players", "player_names", "seats", "teams", "zones", "variables", "player_variables",
+	"team_variables", "show_variables", "status", "conditions", "effects", "moves", "actions", "triggers", "melds", "bot", "card_face"]
+const DEFAULT_CARD_FACE := {"corner": "name", "title": "name"}
 
 
 static func load_json(path: String, files := {}) -> GameRules:
@@ -34,27 +40,65 @@ static func load_json(path: String, files := {}) -> GameRules:
 		rules.error = "%s, line %d: %s" % [path.get_file(), json.get_error_line() + 1, json.get_error_message()]
 		return rules
 	var data: Dictionary = json.data
+	rules.unknown_keys.assign(data.keys().filter(func(key: String) -> bool: return key not in KEYS))
 	rules.title = data.get("title", path.get_file().get_basename().capitalize())
 	rules.description = data.get("description", "")
 	rules.zones = data.get("zones", {})
+	for zone: Variant in rules.zones.values():
+		for key in ["on_click", "on_double_click"]:
+			if zone is Dictionary and zone.has(key):
+				zone[key] = _as_steps(zone[key])
 	var actions: Dictionary = data.get("actions", {})
 	for action_name in actions:
 		var action: Variant = actions[action_name]
-		rules.actions[action_name] = {"steps": action} if action is Array else action
+		rules.actions[action_name] = action if action is Dictionary else {"steps": action}
+		if rules.actions[action_name].has("steps"):
+			rules.actions[action_name].steps = _as_steps(rules.actions[action_name].steps)
 	rules.moves = data.get("moves", [])
-	rules.triggers = data.get("triggers", {})
-	rules.effects = data.get("effects", {})
+	for rule: Variant in rules.moves:
+		if rule is Dictionary and rule.has("then"):
+			rule.then = _as_steps(rule.then)
+	rules.triggers = _steps_by_name(data.get("triggers", {}))
+	rules.effects = _steps_by_name(data.get("effects", {}))
 	rules.conditions = data.get("conditions", {})
-	rules.variables = data.get("variables", {})
+	rules.variables = _whole_numbers(data.get("variables", {}))
 	rules.players = int(data.get("players", 1))
 	rules.seats = data.get("seats", [])
 	rules.player_names = data.get("player_names", [])
-	rules.player_variables = data.get("player_variables", {})
+	rules.player_variables = _whole_numbers(data.get("player_variables", {}))
 	rules.teams = data.get("teams", [])
-	rules.team_variables = data.get("team_variables", {})
+	rules.team_variables = _whole_numbers(data.get("team_variables", {}))
 	rules.melds = data.get("melds", {})
 	rules.status = data.get("status", {})
 	rules.show_variables = data.get("show_variables", [])
 	rules.bot = data.get("bot", {})
-	rules.card_face = data.get("card_face", {})
+	rules.card_face = data.get("card_face", DEFAULT_CARD_FACE)
 	return rules
+
+
+## Wherever a list of steps goes, a single step will do: "then": "end_turn()".
+static func _as_steps(steps: Variant) -> Variant:
+	if steps is String:
+		return [steps]
+	if steps is not Array:
+		return steps
+	for step: Variant in steps:
+		if step is Dictionary:
+			for key in ["then", "else", "do"]:
+				if step.has(key):
+					step[key] = _as_steps(step[key])
+	return steps
+
+
+static func _steps_by_name(lists: Dictionary) -> Dictionary:
+	for name in lists:
+		lists[name] = _as_steps(lists[name])
+	return lists
+
+
+## JSON numbers all arrive as decimals; starting values like 0 or 4 become whole numbers, so % and list positions work.
+static func _whole_numbers(values: Dictionary) -> Dictionary:
+	for name in values:
+		if values[name] is float and values[name] == floorf(values[name]):
+			values[name] = int(values[name])
+	return values

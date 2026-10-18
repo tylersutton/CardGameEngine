@@ -35,9 +35,9 @@
 	"moves": [
 		{
 			"from": "hand", "to": "pegging",
-			"when": "phase == 'pegging' and playable",
+			"phase": "pegging", "when": "playable",
 			"then": [
-				"assign('total', total + number(card, 'value'))",
+				"add('total', number(card, 'value'))",
 				"assign('points', 0)",
 				{ "if": "total == 15 or total == 31", "then": ["assign('points', 2)"] },
 				"assign('pair_points', 0)",
@@ -48,16 +48,16 @@
 				{ "for": "length", "in": "numbers(3, count(pegging))", "do": [
 					{ "if": "size(runs(last(pegging, length), 'order', length)) > 0", "then": ["assign('run_points', length)"] }
 				] },
-				"assign('points', points + pair_points + run_points)",
-				"assign('score', score + points)",
+				"add('points', pair_points + run_points)",
+				"add('score', points)",
 				"trigger('check_win')",
 				{ "if": "count(all_hand) == 0", "then": [
-					{ "if": "total != 31", "then": ["assign('score', score + 1)", "trigger('check_win')"] },
+					{ "if": "total != 31", "then": ["add('score', 1)", "trigger('check_win')"] },
 					"trigger('show')"
 				], "else": [
 					{ "if": "count(matching(opponent_hand, 'playable')) > 0", "then": ["end_turn()"], "else": [
 						{ "if": "count(matching(hand, 'playable')) == 0", "then": [
-							{ "if": "total != 31", "then": ["assign('score', score + 1)", "trigger('check_win')"] },
+							{ "if": "total != 31", "then": ["add('score', 1)", "trigger('check_win')"] },
 							"move(pegging, pegged)",
 							"assign('total', 0)",
 							{ "if": "count(opponent_hand) > 0", "then": ["end_turn()"] }
@@ -72,23 +72,23 @@
 			"button": false, "choose": "hand", "pick": 2, "prefer": "kept_points",
 			"steps": [
 				"move(choice, crib)",
-				"assign('discarded', discarded + 1)",
+				"add('discarded', 1)",
 				{ "if": "discarded == 2", "then": ["trigger('cut')"] }
 			]
 		},
 		"Count hand": {
-			"when": "phase == 'show'", "human_only": true,
+			"phase": "show", "human_only": true,
 			"steps": [
 				{ "if": "counting_crib", "then": ["move(shown, deck)", "move(crib, shown)"], "else": ["move(kept, shown)"] },
 				"assign('points', hand_points)",
-				"assign('score', score + points)",
-				"assign('counted', counted + 1)",
+				"add('score', points)",
+				"add('counted', 1)",
 				"trigger('check_win')",
 				{ "if": "counted == 1", "then": ["end_turn()"] },
 				{ "if": "counted == 3 and phase != 'over'", "then": ["assign('phase', 'hand over')"] }
 			]
 		},
-		"Next hand": { "when": "phase == 'hand over'", "human_only": true, "steps": ["trigger('deal')"] }
+		"Next hand": { "phase": "hand over", "human_only": true, "steps": ["trigger('deal')"] }
 	},
 	"triggers": {
 		"start": [
@@ -111,7 +111,7 @@
 		"cut": [
 			"move(top(deck), starter)",
 			{ "if": "text(top(starter), 'rank') == 'J'", "then": [
-				{ "for": "player", "in": "[dealer]", "do": ["assign('score', score + 2)"] },
+				{ "for": "player", "in": "[dealer]", "do": ["add('score', 2)"] },
 				"trigger('check_win')"
 			] },
 			{ "for": "player", "in": "players", "do": ["assign('kept', all(hand))"] },

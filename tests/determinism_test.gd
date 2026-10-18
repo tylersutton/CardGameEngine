@@ -1,7 +1,7 @@
 extends SceneTree
 ## Plays every game in games/ with random legal moves (plus some bot moves and undos), feeding each accepted
 ## input to a second copy made from the same seed, and checks both copies stay identical after every input.
-## Then checks that replaying the match's record, sent through JSON like a network message, ends in the same state, and that out-of-turn inputs are refused.
+## Any step that fails along the way is reported too. Then checks that replaying the match's record, sent through JSON like a network message, ends in the same state, and that out-of-turn inputs are refused.
 ## Run: godot --headless -s tests/determinism_test.gd
 
 const GAMES_FOLDER := "res://games/"
@@ -25,6 +25,7 @@ func _init() -> void:
 func _check_game(path: String) -> void:
 	var game := Game.new(path, SEED)
 	var copy := Game.new(path, SEED)
+	game.failed.connect(func(text: String) -> void: failures.append("%s: %s" % [path.get_file(), text]))
 	game.start()
 	copy.start()
 	var bot := Bot.new(game)

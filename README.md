@@ -159,7 +159,7 @@ Without a `moves` list, any drag is allowed. Once you add one, only the drags it
 ```
 
 - `hand` means **the current player's** hand, so you can only play your own cards. (`opponent_hand` is the other player's.)
-- `when` must be true for the move to be allowed. `card` is the card being dragged, and `card.data.color` reads its `color` column.
+- `when` must be true for the move to be allowed. `card` is the card being dragged, and `card.data.color` reads its `color` column (`card.color` works too; see [Steps](#steps)).
 - `then` runs after the move. Here: if your hand is now empty you win, otherwise the turn passes. Taking the last card from the deck refills it from the pile.
 - `winner` is a **variable** we declared. Variables show in the side panel, and are changed with `assign`.
 
@@ -225,7 +225,9 @@ The finished `color_match.json` goes one step further: Wild cards that let you c
 
 ## Game file reference
 
-Everything a game file can contain. Only `zones` is required.
+Everything a game file can contain. Only `zones` is required. A misspelled key (`"trigers"`, `"anchr"`) is reported when the game loads, rather than quietly ignored.
+
+**Lists of steps:** wherever a list of steps goes (`then`, `else`, `do`, `steps`, triggers, effects, `on_click`), a single step will do: `"then": "end_turn()"`.
 
 ### `title`, `description`
 
@@ -281,6 +283,7 @@ A list of allowed drags. Each rule has:
 | Key | Meaning |
 |---|---|
 | `from`, `to` | Zone names, or the name of a group of `copies` to match any of them, or a list of those (`["pyramid", "waste"]`). Leave one out to mean "any zone". |
+| `phase` | Only allowed in this phase (or any of a list of phases): `"phase": "discard"` means the `phase` variable must be `'discard'`. Saves writing `phase == 'discard' and ...` in `when`. |
 | `when` | Condition that must be true. |
 | `then` | Steps to run after the move. |
 
@@ -317,6 +320,7 @@ or an object with extra options:
 | Key | Meaning |
 |---|---|
 | `steps` | What the button does. |
+| `phase` | The button only works in this phase (or any of a list), like `phase` on a move. |
 | `when` | The button is disabled while this is false. |
 | `choose` | What to choose from. If it gives cards (e.g. `"hand"`), they're highlighted for you to click. If it gives other values (e.g. `"['Red', 'Blue']"` or `"numbers(0, 13)"`), they appear as buttons above the table. The steps then run with the pick as `choice` (and, for a single card, also as `card`). Clicking anything else cancels. |
 | `pick` | How many cards to choose, e.g. `3` to pass three cards, or an expression like `"count(hand) - 3"`. `choice` is then a list of cards. |
@@ -396,6 +400,8 @@ Write readouts so they read right on every screen: name players with `name_of`, 
 | `zoom` | e.g. `2.4`: hovering a face-up card shows an enlarged copy beside it, so small text can be read |
 | `color` | Column holding the text color: a name like `Red` or a hex code like `#c0392b` |
 
+Without a `card_face`, cards show their `name` in the corner and the middle.
+
 ### `melds`
 
 For rummy-style games. Describes which groups of cards count as melds:
@@ -438,7 +444,7 @@ You can use:
 - **Zone and variable names** directly.
 - **`card`**: the card involved (dragged, clicked, chosen, or whose effect is running). It's `null` when there isn't one.
 - **`choice`**: what was picked in a `choose` action: a card, a list of cards, or a value.
-- **Card columns,** as `card.data.<column>`.
+- **Card columns,** as `card.<column>`, e.g. `card.suit == lead` or `card.value > 5`. Numbers come back as numbers (`"12"` is 12) and everything else as text. `card.data.<column>` is always text: use it for a column that mixes numbers and text (like `2` and `+2`), since a number can't be compared with text.
 - **Operators:** `==`, `!=`, `<`, `>`, `<=`, `>=`, `+`, `-`, `*`, `/`, `and`, `or`, `not`, and parentheses.
 - **Either-or values:** `'out' if count(hand) == 0 else 'in'`. Put parentheses around a condition that uses `and`/`or`.
 - **Text with numbers in it:** `'bid %d, score %d' % [team_bid_1, team_score_1]`, handy in [`status`](#status).
@@ -511,6 +517,7 @@ To repeat steps while something is true, use a `while` step:
 | `unmark(cards, 'key')` | Remove that mark. |
 | `sort(zone, ['column', ...])` | Keep a zone sorted by these columns, first column first. Numbers sort numerically. `sort(zone, [])` turns sorting off. |
 | `assign('variable', value)` | Change a variable. |
+| `add('variable', amount)` | Add to a number variable, e.g. `add('score', 10)` or `add('passes', -1)` |
 | `end_turn()` | Pass the turn to the next player and fire `turn_start`. |
 | `trigger('name')` | Run a step list from `triggers`. |
 | `ask('Action name', player)` | Start that action (usually a `choose`) once the current move finishes, e.g. from a wild card's effect. Several asks wait in line: each starts when the previous choice is finished. With a player number, that player makes the choice: it's their turn until they've chosen (so `hand` means their hand, and a bot answers by itself), then the turn goes back. A choice started by `ask` must be made: clicking elsewhere doesn't cancel it, and other buttons and drags wait. |
@@ -573,9 +580,9 @@ Wherever a building block takes `cards`, you can pass a zone, a single card, or 
 
 ### Tips
 
-- **Card values are text.** `card.data.number == '3'` works, but for greater/less than use `number`: `number(card, 'value') > 5`.
+- **Is the card there?** `card.value` fails if `card` is `null` (an empty zone's top card). `number(top(pile), 'value')` and `text(top(pile), 'suit')` give `0` and `''` instead.
 - **`and`/`or` stop as soon as the answer is known**, so `count(to) > 0 and top(to).data.color == 'Red'` is safe on an empty zone: the second half isn't checked when the first is false.
-- **Numbers in the JSON are decimals.** A variable starting at `0` displays as `0` but is stored as `0.0`. Comparisons work normally.
+- **Whole numbers stay whole.** Variables starting at whole numbers (`0`, `4`) are whole numbers, so `dealer % 4` and `['a', 'b'][index]` work. Numbers with decimals (`0.5`) stay decimal.
 - **To deal the same way in several places,** put the steps in a custom trigger and call `trigger('deal')`.
 - **Triggers don't know the card.** Inside a trigger `card` is `null`, so steps about the clicked or dragged card ("if it's a King, remove it") belong in the zone's `on_click` or the move rule's `then`, not in a trigger they call.
 - **"Draw only if you can't play"** is a move rule like `{ "from": "deck", "to": "hand", "when": "count(movable(hand, pile)) == 0" }`. (A rule can't use `movable` to check moves into its own destination; that inner check counts as "no moves" and the log says so.)

@@ -34,7 +34,7 @@
 		],
 		"turn_card": [
 			{ "if": "count(stock) > 0", "then": ["draw(stock, waste)"], "else": [
-				{ "if": "passes < 3", "then": ["draw(waste, stock, count(waste))", "assign('passes', passes + 1)"] }
+				{ "if": "passes < 3", "then": ["draw(waste, stock, count(waste))", "add('passes', 1)"] }
 			] }
 		],
 		"check_win": [{ "if": "count(pyramid) == 0", "then": ["assign('result', 'You win!')"] }]

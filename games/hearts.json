@@ -33,7 +33,7 @@
 	"moves": [
 		{
 			"from": "hand", "to": "played",
-			"when": "phase == 'play' and follows_suit and hearts_allowed and two_of_clubs_leads",
+			"phase": "play", "when": "follows_suit and hearts_allowed and two_of_clubs_leads",
 			"then": [
 				{ "if": "lead == ''", "then": ["assign('lead', card.data.suit)"] },
 				{ "if": "card.data.suit == 'Hearts'", "then": ["assign('hearts_broken', true)"] },
@@ -48,20 +48,20 @@
 			"steps": [
 				"move(choice, played)",
 				"flip(choice)",
-				"assign('passed', passed + 1)",
+				"add('passed', 1)",
 				{ "if": "passed == 4", "then": ["trigger('exchange')"], "else": ["end_turn()"] }
 			]
 		},
 		"Collect trick": {
-			"when": "phase == 'trick done'", "human_only": true,
+			"phase": "trick done", "human_only": true,
 			"steps": [
 				"move(all_played, won)",
 				"assign('lead', '')",
-				"assign('tricks', tricks + 1)",
+				"add('tricks', 1)",
 				{ "if": "count(all_hand) == 0", "then": ["trigger('score_hand')"], "else": ["assign('phase', 'play')"] }
 			]
 		},
-		"Next hand": { "when": "phase == 'hand over'", "human_only": true, "steps": ["trigger('deal')"] }
+		"Next hand": { "phase": "hand over", "human_only": true, "steps": ["trigger('deal')"] }
 	},
 	"triggers": {
 		"start": [
@@ -69,7 +69,7 @@
 			"trigger('deal')"
 		],
 		"deal": [
-			"assign('hand_number', hand_number + 1)",
+			"add('hand_number', 1)",
 			"assign('pass_to', [1, 3, 2, 0][int(hand_number - 1) % 4])",
 			"move([all_hand, all_played, all_won], deck)",
 			"shuffle(deck)",
@@ -95,8 +95,8 @@
 			"assign('moon', 0)",
 			{ "for": "player", "in": "players", "do": [{ "if": "sum(won, 'points') == 26", "then": ["assign('moon', player)"] }] },
 			{ "for": "player", "in": "players", "do": [
-				{ "if": "moon == 0", "then": ["assign('score', score + sum(won, 'points'))"] },
-				{ "if": "moon != 0 and moon != player", "then": ["assign('score', score + 26)"] }
+				{ "if": "moon == 0", "then": ["add('score', sum(won, 'points'))"] },
+				{ "if": "moon != 0 and moon != player", "then": ["add('score', 26)"] }
 			] },
 			"assign('phase', 'hand over')",
 			{ "if": "max(max(score_1, score_2), max(score_3, score_4)) >= 100", "then": ["trigger('game_over')"] }

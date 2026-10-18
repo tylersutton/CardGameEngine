@@ -81,6 +81,10 @@ func assign(variable: String, value: Variant) -> void:
 	game.set_variable(variable, value)
 
 
+func add(variable: String, amount: Variant) -> void:
+	game.add_to(variable, amount)
+
+
 func end_turn() -> void:
 	game.end_turn()
 

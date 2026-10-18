@@ -40,7 +40,7 @@
 	"moves": [
 		{
 			"from": "hand", "to": "played",
-			"when": "phase == 'play' and follows_suit and spades_allowed",
+			"phase": "play", "when": "follows_suit and spades_allowed",
 			"then": [
 				{ "if": "lead == ''", "then": ["assign('lead', card.data.suit)"] },
 				{ "if": "card.data.suit == 'Spades'", "then": ["assign('spades_broken', true)"] },
@@ -54,20 +54,20 @@
 			"prefer": "-abs(bid - max(1, count(matching(hand, 'likely_winner'))))",
 			"steps": [
 				"assign('bid', choice)",
-				"assign('team_bid', team_bid + choice)",
-				"assign('bids', bids + 1)",
+				"add('team_bid', choice)",
+				"add('bids', 1)",
 				{ "if": "bids == 4", "then": ["assign('phase', 'play')", "assign('player', next_player())"], "else": ["end_turn()"] }
 			]
 		},
 		"Collect trick": {
-			"when": "phase == 'trick done'", "human_only": true,
+			"phase": "trick done", "human_only": true,
 			"steps": [
 				"move(all_played, won)",
 				"assign('lead', '')",
 				{ "if": "count(all_hand) == 0", "then": ["trigger('score_hand')"], "else": ["assign('phase', 'play')"] }
 			]
 		},
-		"Next hand": { "when": "phase == 'hand over'", "human_only": true, "steps": ["trigger('deal')"] }
+		"Next hand": { "phase": "hand over", "human_only": true, "steps": ["trigger('deal')"] }
 	},
 	"triggers": {
 		"start": [
@@ -94,14 +94,14 @@
 			{ "for": "player", "in": "[1, 2]", "do": [
 				{
 					"if": "team_tricks >= team_bid",
-					"then": ["assign('team_score', team_score + 10 * team_bid + team_tricks - team_bid)", "assign('bags', bags + team_tricks - team_bid)"],
-					"else": ["assign('team_score', team_score - 10 * team_bid)"]
+					"then": ["add('team_score', 10 * team_bid + team_tricks - team_bid)", "add('bags', team_tricks - team_bid)"],
+					"else": ["add('team_score', -(10 * team_bid))"]
 				},
-				{ "if": "bags >= 10", "then": ["assign('team_score', team_score - 100)", "assign('bags', bags - 10)"] }
+				{ "if": "bags >= 10", "then": ["add('team_score', -100)", "add('bags', -10)"] }
 			] },
 			{ "for": "player", "in": "players", "do": [
-				{ "if": "bid == 0 and count(won) == 0", "then": ["assign('team_score', team_score + 100)"] },
-				{ "if": "bid == 0 and count(won) > 0", "then": ["assign('team_score', team_score - 100)"] }
+				{ "if": "bid == 0 and count(won) == 0", "then": ["add('team_score', 100)"] },
+				{ "if": "bid == 0 and count(won) > 0", "then": ["add('team_score', -100)"] }
 			] },
 			"assign('phase', 'hand over')",
 			{ "if": "team_score_1 >= 500 and team_score_1 > team_score_2", "then": ["assign('result', 'Winners: %s & %s' % [name_of(1), name_of(3)])", "assign('phase', 'over')"] },

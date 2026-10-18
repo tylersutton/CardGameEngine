@@ -54,19 +54,19 @@
 		"nothing_left": "buys == 0 and (actions == 0 or phase == 'buy')"
 	},
 	"effects": {
-		"treasure": ["assign('coins', coins + number(card, 'coins'))"],
+		"treasure": ["add('coins', number(card, 'coins'))"],
 		"action": [
 			"draw(deck, hand, number(card, 'cards'))",
-			"assign('actions', actions + number(card, 'actions'))",
-			"assign('buys', buys + number(card, 'buys'))",
-			"assign('coins', coins + number(card, 'coins'))"
+			"add('actions', number(card, 'actions'))",
+			"add('buys', number(card, 'buys'))",
+			"add('coins', number(card, 'coins'))"
 		],
 		"council_room": [
 			"assign('attacker', player)",
 			{ "for": "player", "in": "players", "do": [{ "if": "player != attacker", "then": ["draw(deck, hand)"] }] }
 		],
-		"silver": [{ "if": "not silver_played", "then": ["assign('coins', coins + merchants)", "assign('silver_played', true)"] }],
-		"merchant": ["assign('merchants', merchants + 1)"],
+		"silver": [{ "if": "not silver_played", "then": ["add('coins', merchants)", "assign('silver_played', true)"] }],
+		"merchant": ["add('merchants', 1)"],
 		"cellar": ["ask('Cellar')"],
 		"chapel": ["ask('Chapel')"],
 		"workshop": ["assign('gain_limit', 4)", "ask('Gain a card')"],
@@ -79,8 +79,8 @@
 	"moves": [
 		{
 			"from": "hand", "to": "play",
-			"when": "phase == 'action' and actions > 0 and is_action",
-			"then": ["assign('actions', actions - 1)"]
+			"phase": "action", "when": "actions > 0 and is_action",
+			"then": ["add('actions', -1)"]
 		},
 		{
 			"from": "hand", "to": "play",
@@ -89,10 +89,10 @@
 		},
 		{
 			"from": "supply", "to": "discard",
-			"when": "phase == 'buy' and affordable",
+			"phase": "buy", "when": "affordable",
 			"then": [
-				"assign('buys', buys - 1)",
-				"assign('coins', coins - number(card, 'cost'))",
+				"add('buys', -1)",
+				"add('coins', -(number(card, 'cost')))",
 				"assign('phase', 'buy')",
 				{ "if": "nothing_left", "then": ["trigger('cleanup')"] }
 			]
@@ -176,7 +176,7 @@
 		],
 		"check_end": [
 			"assign('empty_piles', 0)",
-			{ "for": "pile", "in": "supply", "do": [{ "if": "count(pile) == 0", "then": ["assign('empty_piles', empty_piles + 1)"] }] },
+			{ "for": "pile", "in": "supply", "do": [{ "if": "count(pile) == 0", "then": ["add('empty_piles', 1)"] }] },
 			{ "if": "count(zone('basic_pile', 6)) == 0 or empty_piles >= 3", "then": ["trigger('final_score')"] }
 		],
 		"final_score": [

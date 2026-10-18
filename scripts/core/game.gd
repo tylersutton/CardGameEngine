@@ -19,6 +19,7 @@ const CARD_EFFECT_PREFIX := "on_"
 const HIDDEN_CARD := "a hidden card"
 const CARD_EFFECT_SEPARATOR := ";"
 const LOOP_NUMBER_SUFFIX := "_number"
+const PHASE_KEY := "phase"
 const MAX_REPEATS := 1000
 const MAX_NESTING := 50
 
@@ -125,7 +126,7 @@ func start() -> void:
 func can_perform(action_name: String) -> bool:
 	if sandbox:
 		return true
-	return not waiting_for_choice() and holds(rules.actions[action_name].get("when", ""))
+	return not waiting_for_choice() and applies(rules.actions[action_name])
 
 
 ## A choice a rule asked for (e.g. "discard down to 3") must be made before anything else happens.
@@ -653,7 +654,7 @@ func legal_moves() -> Array[Array]:
 	for action_name: String in rules.actions:
 		var action: Dictionary = rules.actions[action_name]
 		var only_asked: bool = not action.get("button", true)
-		if action.get("human_only", false) or only_asked or not holds(action.get("when", "")):
+		if action.get("human_only", false) or only_asked or not applies(action):
 			continue
 		var press := {type = "perform", action = action_name}
 		if not action.has("choose"):
@@ -820,7 +821,7 @@ func holds(condition: String, card: Card = null) -> bool:
 func _matching_move(card: Card, source: Zone, destination: Zone) -> Dictionary:
 	return _during_move(source, destination, func() -> Dictionary:
 		for rule: Dictionary in _rules_between(source, destination):
-			if holds(rule.get("when", ""), card):
+			if applies(rule, card):
 				return rule
 		return {})
 
@@ -836,8 +837,26 @@ func _names(rule_zone: Variant, zone: Zone) -> bool:
 	return rule_zone == null or _resolve(rule_zone) == zone.name or (rule_zone in zone_groups and zone in zone_groups[rule_zone])
 
 
+## Whether a move rule or action applies now: in its "phase" (one or a list), if it has one, and while "when" holds.
+func applies(entry: Dictionary, card: Card = null) -> bool:
+	if entry.has(PHASE_KEY):
+		var phases: Array = entry.phase if entry.phase is Array else [entry.phase]
+		if variables.get(PHASE_KEY) not in phases:
+			return false
+	return holds(entry.get("when", ""), card)
+
+
+static func _requirements(entry: Dictionary) -> String:
+	var parts: Array[String] = []
+	if entry.has(PHASE_KEY):
+		parts.append("phase is " + (entry.phase if entry.phase is String else " or ".join(entry.phase)))
+	if entry.get("when", ""):
+		parts.append(entry.when)
+	return " and ".join(parts) if parts else "always"
+
+
 func _refusal_reason(source: Zone, destination: Zone) -> String:
-	var conditions: Array = _rules_between(source, destination).map(func(rule: Dictionary) -> String: return rule.get("when", ""))
+	var conditions: Array = _rules_between(source, destination).map(_requirements)
 	if conditions.is_empty():
 		return "no move rule allows this"
 	return "requires: " + " OR ".join(conditions)
@@ -942,6 +961,14 @@ func viewer() -> int:
 		return local_seat
 	var humans := range(1, rules.players + 1).filter(func(player: int) -> bool: return not is_bot(player))
 	return humans[0] if humans.size() == 1 else current_player()
+
+
+func add_to(variable: String, amount: Variant) -> void:
+	var name := _resolve(variable)
+	if name not in variables:
+		report_failure("Unknown variable \"%s\" (declare it in \"variables\")" % name)
+		return
+	set_variable(variable, variables[name] + amount)
 
 
 func set_variable(variable: String, value: Variant) -> void:

@@ -35,7 +35,7 @@
 	"moves": [
 		{
 			"from": "hand", "to": "pile",
-			"when": "phase == 'play' and card.data.kind == 'action' and pending == ''",
+			"phase": "play", "when": "card.data.kind == 'action' and pending == ''",
 			"then": [
 				"assign('pending', card.data.name)",
 				"assign('actor', player)",
@@ -49,7 +49,7 @@
 		},
 		{
 			"from": "deck", "to": "hand",
-			"when": "phase == 'play' and pending == ''",
+			"phase": "play", "when": "pending == ''",
 			"then": [
 				{ "if": "card.data.kind == 'bomb'", "then": [
 					{ "if": "count(matching(hand, 'is_defuse')) > 0", "then": [

@@ -39,7 +39,7 @@
 	},
 	"actions": {
 		"Play": {
-			"when": "phase == 'play' and count(hand) > 0",
+			"phase": "play", "when": "count(hand) > 0",
 			"choose": "matching(hand, 'can_beat')", "up_to": 4,
 			"allow": "count(choice) > 0 and one_rank and (right_size or single_two)",
 			"steps": [
@@ -58,7 +58,7 @@
 			]
 		},
 		"Pass": {
-			"when": "phase == 'play' and set_size > 0",
+			"phase": "play", "when": "set_size > 0",
 			"steps": ["trigger('pass')"]
 		},
 		"Give 2 back": {
@@ -69,7 +69,7 @@
 			"button": false, "choose": "hand", "prefer": "sum(hand, 'order')",
 			"steps": ["move(choice, zone('hand', ranking[2]))", "assign('phase', 'play')"]
 		},
-		"Next hand": { "when": "phase == 'hand over'", "human_only": true, "steps": ["trigger('deal')"] }
+		"Next hand": { "phase": "hand over", "human_only": true, "steps": ["trigger('deal')"] }
 	},
 	"triggers": {
 		"start": [
@@ -102,7 +102,7 @@
 		],
 		"clear": ["move([table, beaten], deck)", "assign('set_size', 0)", "assign('top_order', 0)", "assign('passes', 0)"],
 		"pass": [
-			"assign('passes', passes + 1)",
+			"add('passes', 1)",
 			"trigger('next')",
 			{ "if": "round_over", "then": ["trigger('clear')"] }
 		],
@@ -111,9 +111,9 @@
 			{ "while": "count(hand) == 0", "do": ["end_turn()"] }
 		],
 		"finished": [
-			"assign('finish_order', finish_order + [player])",
+			"add('finish_order', [player])",
 			"assign('title', ['President', 'Vice President', 'Vice Scum', 'Scum'][size(finish_order) - 1])",
-			"assign('score', score + 4 - size(finish_order))"
+			"add('score', 4 - size(finish_order))"
 		],
 		"hand_over": [
 			"assign('ranking', finish_order)",
