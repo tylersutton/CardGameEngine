@@ -48,7 +48,10 @@ var pick_count := 1
 var pick_exact := true
 var selected: Array[Card] = []
 var chosen: Variant
-var asked: Array[String] = []
+var asked: Array[Dictionary] = []
+var choice_asked := false
+var return_player := 0
+var performing_asked := false
 var history: Array[Dictionary] = []
 var pending_log: Dictionary = {}
 var pending_line := ""
@@ -106,7 +109,14 @@ func start() -> void:
 
 
 func can_perform(action_name: String) -> bool:
-	return sandbox or _holds(rules.actions[action_name].get("when", ""))
+	if sandbox:
+		return true
+	return not waiting_for_choice() and _holds(rules.actions[action_name].get("when", ""))
+
+
+## A choice a rule asked for (e.g. "discard down to 3") must be made before anything else happens.
+func waiting_for_choice() -> bool:
+	return choosing != "" and choice_asked
 
 
 func perform(action_name: String) -> void:
@@ -123,9 +133,10 @@ func perform(action_name: String) -> void:
 	_finish_input(before)
 
 
-func ask(action_name: String) -> void:
+## Queues an action; with a player, that player makes its choice (it's their turn until they have).
+func ask(action_name: String, player := 0) -> void:
 	if action_name in rules.actions:
-		asked.append(action_name)
+		asked.append({action = action_name, player = player})
 	else:
 		report_failure("No action named \"%s\" to ask for" % action_name)
 
@@ -161,12 +172,13 @@ func _start_choice(action_name: String, action: Dictionary) -> void:
 		choices = []
 		return
 	choosing = action_name
+	choice_asked = performing_asked
 	if not choosing_cards():
 		log_line("  choose one: " + ", ".join(choices.map(format_value)))
 	elif pick_exact:
-		log_line("  choose %d: click the highlighted cards (click anything else to cancel)" % pick_count)
+		log_line("  %s: choose %d (click the highlighted cards%s)" % [player_name(current_player()), pick_count, "" if choice_asked else "; click anything else to cancel"])
 	else:
-		log_line("  choose up to %d: click the highlighted cards, then Done" % pick_count)
+		log_line("  %s: choose up to %d (click the highlighted cards, then Done)" % [player_name(current_player()), pick_count])
 
 
 ## How many to pick: [count, exactly]. "up_to" (a number or an expression) allows anything from none to that many.
@@ -174,17 +186,21 @@ func _pick_rule(action: Dictionary, option_count: int) -> Array:
 	if action.has("up_to"):
 		var limit: Variant = action.up_to if action.up_to is float else _evaluate(action.up_to, null)
 		return [mini(int(limit), option_count), false]
-	return [int(action.get("pick", 1)), true]
+	var pick: Variant = action.get("pick", 1.0)
+	return [int(pick if pick is float else _evaluate(pick, null)), true]
 
 
 func _complete_choice(choice: Variant) -> void:
 	var action_name := choosing
+	var back_to := return_player
 	_clear_choice()
 	log_line("[%s] chose %s" % [action_name, _describe(choice)])
 	var outer_choice: Variant = chosen
 	chosen = choice
 	run(rules.actions[action_name].get("steps", []), choice if choice is Card else null)
 	chosen = outer_choice
+	if back_to:
+		set_variable(PLAYER_VARIABLE, back_to)
 
 
 func _choice_list(options: Variant) -> Array:
@@ -208,14 +224,26 @@ func _finish_input(before: Dictionary) -> void:
 
 ## Asked-for actions run one at a time, each once the previous choice is finished.
 func _perform_asked() -> void:
+	if performing_asked:
+		return
+	performing_asked = true
 	while nesting == 0 and asked and not choosing:
+		var request: Dictionary = asked.pop_front()
+		var turn := current_player()
 		var history_size := history.size()
-		perform(asked.pop_front())
+		if request.player and request.player != turn:
+			set_variable(PLAYER_VARIABLE, request.player)
+		perform(request.action)
 		history.resize(history_size)
+		if choosing:
+			return_player = turn if current_player() != turn else 0
+		elif current_player() != turn:
+			set_variable(PLAYER_VARIABLE, turn)
+	performing_asked = false
 
 
 func cancel_choice() -> void:
-	if choosing:
+	if choosing and not choice_asked:
 		log_line("[cancelled] " + choosing)
 		_clear_choice()
 
@@ -224,10 +252,16 @@ func _clear_choice() -> void:
 	choosing = ""
 	choices = []
 	selected = []
+	choice_asked = false
+	return_player = 0
 	state_changed.emit()
 
 
 func drag(card: Card, destination: Zone, index := -1) -> bool:
+	if waiting_for_choice() and not sandbox:
+		log_line("[waiting] %s must finish \"%s\" first" % [player_name(current_player()), choosing])
+		_flush_log()
+		return false
 	cancel_choice()
 	var before := _snapshot()
 	var source := zone_of(card)
@@ -517,9 +551,9 @@ func _try_once(input: Callable, measure: String) -> Variant:
 	_set_quiet(true)
 	input.call()
 	var value: Variant = null
-	if choosing and not before.choice.choosing:
+	if choosing and not before.choice.choosing and current_player() == player:
 		value = _best_choice_value(measure)
-	elif _contents() != contents_before:
+	elif _contents() != contents_before or current_player() != player:
 		if PLAYER_VARIABLE in variables:
 			variables[PLAYER_VARIABLE] = player
 		value = _evaluate(measure, null)
@@ -553,7 +587,9 @@ func _restore(snapshot: Dictionary) -> void:
 	pick_count = snapshot.choice.pick_count
 	pick_exact = snapshot.choice.pick_exact
 	selected.assign(snapshot.choice.selected)
-	asked.assign(snapshot.choice.asked)
+	asked.assign(snapshot.choice.asked.duplicate(true))
+	choice_asked = snapshot.choice.choice_asked
+	return_player = snapshot.choice.return_player
 
 
 func _contents() -> Dictionary:
@@ -572,7 +608,8 @@ func _set_quiet(quiet: bool) -> void:
 
 
 func _snapshot() -> Dictionary:
-	var choice := {choosing = choosing, choices = choices.duplicate(), pick_count = pick_count, pick_exact = pick_exact, selected = selected.duplicate(), asked = asked.duplicate()}
+	var choice := {choosing = choosing, choices = choices.duplicate(), pick_count = pick_count, pick_exact = pick_exact,
+		selected = selected.duplicate(), asked = asked.duplicate(true), choice_asked = choice_asked, return_player = return_player}
 	var snapshot := {zones = {}, sort_columns = {}, faces = {}, variables = variables.duplicate(true), choice = choice}
 	for name in zones:
 		snapshot.zones[name] = zones[name].cards.duplicate()
@@ -928,7 +965,7 @@ func _card_effect(card: Card, zone_kind: String) -> Array:
 
 func _check_actions_and_moves() -> void:
 	for action_name in rules.actions:
-		_check_entry("Action \"%s\"" % action_name, rules.actions[action_name], {"when": TYPE_STRING, "choose": TYPE_STRING, "pick": TYPE_FLOAT, "up_to": [TYPE_FLOAT, TYPE_STRING], "human_only": TYPE_BOOL, "button": TYPE_BOOL, "steps": TYPE_ARRAY})
+		_check_entry("Action \"%s\"" % action_name, rules.actions[action_name], {"when": TYPE_STRING, "choose": TYPE_STRING, "pick": [TYPE_FLOAT, TYPE_STRING], "up_to": [TYPE_FLOAT, TYPE_STRING], "human_only": TYPE_BOOL, "button": TYPE_BOOL, "prefer": TYPE_STRING, "steps": TYPE_ARRAY})
 		var action: Variant = rules.actions[action_name]
 		for key in ["pick", "up_to"]:
 			if action is Dictionary and action.has(key) and not action.has("choose"):
@@ -991,8 +1028,9 @@ func _compile_all_steps() -> void:
 		step_lists.append(action.get("steps", []))
 		conditions.append(action.get("when", ""))
 		conditions.append(action.get("choose", ""))
-		if action.get("up_to") is String:
-			conditions.append(action.up_to)
+		for key in ["pick", "up_to", "prefer"]:
+			if action.get(key) is String:
+				conditions.append(action[key])
 	for rule: Dictionary in rules.moves:
 		step_lists.append(rule.get("then", []))
 		conditions.append(rule.get("when", ""))

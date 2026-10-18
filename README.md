@@ -292,10 +292,11 @@ or an object with extra options:
 | `steps` | What the button does. |
 | `when` | The button is disabled while this is false. |
 | `choose` | What to choose from. If it gives cards (e.g. `"hand"`), they're highlighted for you to click. If it gives other values (e.g. `"['Red', 'Blue']"` or `"numbers(0, 13)"`), they appear as buttons above the table. The steps then run with the pick as `choice` (and, for a single card, also as `card`). Clicking anything else cancels. |
-| `pick` | How many cards to choose, e.g. `3` to pass three cards. `choice` is then a list of cards. |
+| `pick` | How many cards to choose, e.g. `3` to pass three cards, or an expression like `"count(hand) - 3"`. `choice` is then a list of cards. |
 | `up_to` | Choose any number of cards from none up to this many, then press **Done** in the bar above the table. A number, or an expression like `"count(hand)"` for "any number". `choice` is a list of cards (maybe empty). |
 | `human_only` | `true` means bots never press this button. |
 | `button` | `false` hides it from the toolbar, for actions only started with `ask('name')`. Bots never press these directly either. |
+| `prefer` | For a bot making this action's choice, what to aim for instead of the game's `bot.prefer`, e.g. `"sum(hand, 'coins')"` to keep treasures when discarding |
 
 ### `triggers`
 
@@ -441,6 +442,7 @@ This deals solitaire: for each of the 7 tableau columns, draw as many cards as i
   - a number, to repeat that many times (`"in": "3"`)
 - **Changing what you're looping over is safe:** the loop goes through the items that were there when it started, so `{ "for": "c", "in": "hand", "do": ["move(c, discard)"] }` works.
 - **Nesting:** loops can be nested, and can contain conditional steps.
+- **Each other player chooses:** inside a loop over players, `ask('Discard down to 3', player)` queues that choice for each of them in turn (Militia).
 - **Every player:** `{ "for": "player", "in": "players", "do": [...] }` runs the steps once per player as if it were their turn, so `hand`, `score` and `opponent_hand` follow along: `{ "for": "player", "in": "players", "do": ["assign('score', score + sum(won, 'points'))"] }` scores everyone's won cards. The turn goes back to whoever had it after the loop.
 
 ### Repeat until
@@ -475,7 +477,7 @@ To repeat steps while something is true, use a `while` step:
 | `assign('variable', value)` | Change a variable. |
 | `end_turn()` | Pass the turn to the next player and fire `turn_start`. |
 | `trigger('name')` | Run a step list from `triggers`. |
-| `ask('Action name')` | Start that action (usually a `choose`) once the current move finishes, e.g. from a wild card's effect. Several asks wait in line: each starts when the previous choice is finished. |
+| `ask('Action name', player)` | Start that action (usually a `choose`) once the current move finishes, e.g. from a wild card's effect. Several asks wait in line: each starts when the previous choice is finished. With a player number, that player makes the choice: it's their turn until they've chosen (so `hand` means their hand, and a bot answers by itself), then the turn goes back. A choice started by `ask` must be made: clicking elsewhere doesn't cancel it, and other buttons and drags wait. |
 | `run_effect(card, 'play')` | Run a card's `on_play` effect again, e.g. Throne Room playing an action twice |
 
 **Questions**

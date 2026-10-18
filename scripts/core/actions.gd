@@ -71,8 +71,8 @@ func end_turn() -> void:
 	game.end_turn()
 
 
-func ask(action: String) -> void:
-	game.ask(action)
+func ask(action: String, player: int = 0) -> void:
+	game.ask(action, player)
 
 
 func next_player(seats: int = 1) -> int:

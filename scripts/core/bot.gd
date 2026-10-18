@@ -26,8 +26,11 @@ func take_input() -> bool:
 	var best_input: Callable
 	var best_value := -INF
 	var deals := _deals()
+	var prefer: String = game.rules.bot.prefer
+	if game.choosing:
+		prefer = game.rules.actions[game.choosing].get("prefer", prefer)
 	for input in game.legal_inputs():
-		var value: Variant = game.try_out(input, game.rules.bot.prefer, deals)
+		var value: Variant = game.try_out(input, prefer, deals)
 		if (value is float or value is int) and value > best_value:
 			best_input = input
 			best_value = value
