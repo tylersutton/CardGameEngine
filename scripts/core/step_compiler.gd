@@ -126,14 +126,12 @@ func _check_actions_and_moves() -> void:
 	var uses_phase := (rules.actions.values() + rules.moves).any(func(entry: Variant) -> bool: return entry is Dictionary and entry.has(Game.PHASE_KEY))
 	if uses_phase and Game.PHASE_KEY not in game.variables:
 		errors.append("\"phase\" on a move or action needs a variable named phase, e.g. \"variables\": { \"phase\": \"draw\" }")
-	for list_name in ["seats", "player_names"]:
-		var list: Array = rules.get(list_name)
-		if list and list.size() < rules.players:
-			errors.append("\"%s\" needs one entry per player (%d)" % [list_name, rules.players])
+	if rules.seats.size() not in [0, 1, rules.players]:
+		errors.append("\"seats\" needs one spot per player (%d), or just seat 1's to place the rest round the table" % rules.players)
+	if rules.player_names and rules.player_names.size() < rules.players:
+		errors.append("\"player_names\" needs one name per player (%d)" % rules.players)
 	if rules.bot:
 		_check_entry("bot", rules.bot, {"players": TYPE_ARRAY, "prefer": TYPE_STRING, "peek": TYPE_BOOL, "samples": TYPE_FLOAT})
-		if not rules.bot.has("prefer"):
-			errors.append("bot needs \"prefer\": an expression the bot tries to make as high as possible")
 	for effect_name in rules.effects:
 		if rules.effects[effect_name] is not Array:
 			errors.append("Effect \"%s\" should be a list of steps" % effect_name)

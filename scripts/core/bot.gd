@@ -23,17 +23,10 @@ func take_input() -> bool:
 	if inputs_this_turn >= MAX_INPUTS_PER_TURN:
 		game.report_failure("Bot %d stopped after %d inputs this turn (is \"prefer\" pushing it in circles?)" % [turn_player, MAX_INPUTS_PER_TURN])
 		return false
-	var best_move: Array = []
-	var best_value := -INF
-	var deals := _deals()
-	var prefer: String = game.rules.bot.prefer
+	var prefer: String = game.rules.bot.get("prefer", "")
 	if game.choosing:
 		prefer = game.rules.actions[game.choosing].get("prefer", prefer)
-	for move in game.legal_moves():
-		var value: Variant = try_out(move, prefer, deals)
-		if (value is float or value is int) and value > best_value:
-			best_move = move
-			best_value = value
+	var best_move := _best_move(prefer) if prefer else _any_move()
 	if best_move.is_empty():
 		return false
 	inputs_this_turn += 1
@@ -41,6 +34,25 @@ func take_input() -> bool:
 	game.apply_move(best_move, turn_player)
 	history_after_last_input = game.history.size()
 	return true
+
+
+func _best_move(prefer: String) -> Array:
+	var best_move: Array = []
+	var best_value := -INF
+	var deals := _deals()
+	for move in game.legal_moves():
+		var value: Variant = try_out(move, prefer, deals)
+		if (value is float or value is int) and value > best_value:
+			best_move = move
+			best_value = value
+	return best_move
+
+
+## With no "prefer", any legal move: enough to play a prototype through. Picked with the bot's own random
+## numbers, not the match's, so a bot's thinking never changes the match (or online copies would differ).
+func _any_move() -> Array:
+	var moves := game.legal_moves()
+	return moves.pick_random() if moves else []
 
 
 ## Random identities for the cards this bot can't see, shared by every input it compares.

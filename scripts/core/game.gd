@@ -90,7 +90,7 @@ func _init(path: String, seed := -1, files := {}) -> void:
 			per_player_names.append(zone_kind)
 		zone_groups[group_name] = []
 		for number in range(1, copies + 1):
-			var zone := Zone.new(zone_kind, definition, number)
+			var zone := Zone.new(zone_kind, definition, number, rules.players)
 			_add_zone(zone, definition)
 			zone_groups[group_name].append(zone)
 			if definition.has("group"):

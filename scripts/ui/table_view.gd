@@ -317,6 +317,14 @@ func _rotation(zone: Zone) -> float:
 	return _place_of(zone).rotation
 
 
+## Where a seat's name tag goes: from "seats", or round the table from seat 1's when only that is given.
+func _seat_spot(seat: int) -> Vector2:
+	var seats := game.rules.seats
+	if seats.size() == 1:
+		return Zone.around_table(Vector2(seats[0][0], seats[0][1]), seat, game.rules.players)
+	return Vector2(seats[seat - 1][0], seats[seat - 1][1])
+
+
 func _slot(zone: Zone) -> Rect2:
 	var slot_size := Vector2(CardView.SIZE.y, CardView.SIZE.x) if _is_sideways(zone) else CardView.SIZE
 	return Rect2(_anchor(zone) * size - slot_size / 2, slot_size)
@@ -346,12 +354,11 @@ func _draw() -> void:
 
 
 func _draw_seats(font: Font) -> void:
-	for player in range(1, game.rules.seats.size() + 1):
+	for player in range(1, game.rules.players + 1 if game.rules.seats else 1):
 		var is_current := player == game.current_player()
 		var text := game.player_name(player)
 		var text_size := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, LABEL_FONT_SIZE)
-		var place: Array = game.rules.seats[_seat_on_screen(player) - 1]
-		var seat := Vector2(place[0], place[1]) * size
+		var seat := _seat_spot(_seat_on_screen(player)) * size
 		var tag := Rect2(seat - text_size / 2 - SEAT_PADDING, text_size + SEAT_PADDING * 2)
 		draw_style_box(current_seat_style if is_current else seat_style, tag)
 		var baseline := Vector2(tag.position.x + SEAT_PADDING.x, tag.position.y + SEAT_PADDING.y + font.get_ascent(LABEL_FONT_SIZE))

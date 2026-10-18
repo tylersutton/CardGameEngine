@@ -241,7 +241,7 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 | `outline` | `false` draws no outline or label, for zones that are only used in passing (e.g. the deck in Hearts) | `true` |
 | `layout` | `pile`, `row`, `fan`, `column` (cascading downward from the anchor, face-down cards overlapping more, squeezing to fit; for solitaire), or `melds` (groups the cards into their melds; for rummy tables) | `row` |
 | `face` | `up`, `down`, `owner` (face up only on the owning player's turn), `human` (face up unless a bot owns it), or `others` (face up for everyone except its owner, like holding cards facing out in Hanabi; bots can't see their own either). Cards take this face when they enter the zone. | `up` |
-| `anchor` | Position on the table as `[x, y]` fractions | `[0.5, 0.5]` |
+| `anchor` | Position on the table as `[x, y]` fractions. In a `per_player` zone, it's seat 1's spot (usually the bottom of the table), and the other seats' are worked out round the table: with 4 players, seat 2 on the left, seat 3 across the top, seat 4 on the right, with the side seats' cards turned sideways. | `[0.5, 0.5]` |
 | `width` | Widest a `row`/`fan` may spread, as a fraction of the table width (of its height, for a zone turned sideways) | 800 pixels |
 | `rotation` | Turn the zone, in degrees, e.g. `90` for a hand on the left side of the table | `0` |
 | `cards` | A deck to start with, e.g. `"res://decks/my_deck.csv"` | empty |
@@ -251,7 +251,7 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 | `drag` | `"stack"`: dragging a card also carries every card on top of it | one card |
 | `per_player` | `true` makes one zone per player: `hand_1`, `hand_2`, ... | `false` |
 | `copies` | A number: makes that many zones, e.g. `"copies": 7` makes `tableau_1` ... `tableau_7` | |
-| `anchors` | With `per_player` or `copies`, one `[x, y]` position each | |
+| `anchors` | With `per_player` or `copies`, one `[x, y]` position each, to place them yourself | |
 | `labels` | With `per_player` or `copies`, one label each, e.g. `["Red", "Yellow", "Green"]` | |
 | `rotations` | With `per_player` or `copies`, one rotation each, e.g. `[0, 90, 180, 270]` for four players around a table | |
 | `covered_by` | With `copies`, which copies lie on top of each one, as one list of copy numbers per copy, e.g. Pyramid's `[[2, 3], [4, 5], ...]` (copy 1 is covered by 2 and 3). `covered(zone)` is then true while any of those still hold a card | |
@@ -265,7 +265,7 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 ### `players`, `variables`, `player_variables`
 
 - `"players": 2` turns on turns. The `player` variable holds whose turn it is (starting at 1); `end_turn()` passes the turn to the next player. To jump to a specific player, `assign('player', ...)`, e.g. the winner of a trick.
-- `"seats": [[0.24, 0.71], [0.24, 0.5], ...]` (optional, one `[x, y]` per player) draws a name tag for each player at that spot on the table. The current player's tag is highlighted, and bots' tags say "(bot)".
+- `"seats": [[0.24, 0.86]]` (optional) draws a name tag for each player: give seat 1's spot and the others go round the table like `per_player` zones, or one `[x, y]` per player to place them yourself. The current player's tag is highlighted, and bots' tags say "(bot)".
 - `"player_names": ["You", "West", "North", "East"]` (optional) names the players on their tags; otherwise they're "Player 1", "Player 2", ...
 - `players` is the list of player numbers (`[1, 2, 3, 4]`). Loop over it with `"for": "player"` to do something for every player as if it were their turn (see [Loops](#loops)).
 - `"variables": { "phase": "draw", "taken": null }` declares variables and their starting values.
@@ -420,13 +420,19 @@ A meld is at least `min` cards with the same value in the `same` column. With `s
 
 ### `bot`
 
-Computer players:
+Computer players. The simplest bot just lists its seats, and plays a random legal move each time, which is enough to play a prototype through:
+
+```json
+"bot": { "players": [2, 3, 4] }
+```
+
+To make it play well, add `prefer`, an expression for how good a position is from the bot's point of view:
 
 ```json
 "bot": { "players": [2], "prefer": "score - opponent_score - sum(deadwood(hand), 'points')" }
 ```
 
-On a bot's turn, it tries every legal input: each allowed drag, each click on a zone with `on_click`, each enabled button, and each choice for `choose` buttons. It scores the result of each with `prefer`, from its own point of view, and takes the highest. It plays one input at a time so you can watch. When an input opens a choice (playing Chapel, say), it's scored by the best way of making that choice.
+With `prefer`, on a bot's turn, it tries every legal input: each allowed drag, each click on a zone with `on_click`, each enabled button, and each choice for `choose` buttons. It scores the result of each with `prefer`, from its own point of view, and takes the highest. It plays one input at a time so you can watch. When an input opens a choice (playing Chapel, say), it's scored by the best way of making that choice.
 
 Write `prefer` as "how good is this position for me?". Things to know:
 - **It only looks one input ahead.**

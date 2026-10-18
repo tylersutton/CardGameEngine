@@ -29,7 +29,8 @@ var cards: Array[Card] = []
 var sort_columns: Array[String] = []
 
 
-func _init(zone_kind: String, definition: Dictionary, number := 0) -> void:
+## seats: how many players there are, for per-player zones placed round the table from seat 1's "anchor".
+func _init(zone_kind: String, definition: Dictionary, number := 0, seats := 1) -> void:
 	kind = zone_kind
 	owner = number if definition.get("per_player", false) else 0
 	name = kind if number == 0 else "%s_%d" % [kind, number]
@@ -47,6 +48,9 @@ func _init(zone_kind: String, definition: Dictionary, number := 0) -> void:
 	width = definition.get("width", 0.0)
 	var rotations: Array = definition.get("rotations", [])
 	rotation = rotations[number - 1] if number and rotations.size() >= number else definition.get("rotation", 0.0)
+	if definition.get("per_player", false) and number > 1 and not definition.has("anchors"):
+		anchor = around_table(anchor, number, seats)
+		rotation += seat_turn(number, seats)
 	drags_stack = definition.get("drag", "") == DRAG_STACK
 	spread = int(definition.get("spread", 0))
 	on_click = definition.get("on_click", [])
@@ -54,6 +58,19 @@ func _init(zone_kind: String, definition: Dictionary, number := 0) -> void:
 	var covering: Array = definition.get("covered_by", [])
 	if number and covering.size() >= number:
 		covered_by = covering[number - 1]
+
+
+## Where seat 1's spot is for another seat: turned round the table's center, one equal step per seat
+## (seat 2 on seat 1's left, as play goes clockwise).
+static func around_table(seat_one_spot: Vector2, seat: int, seats: int) -> Vector2:
+	var center := Vector2(0.5, 0.5)
+	return center + (seat_one_spot - center).rotated(TAU * (seat - 1) / seats)
+
+
+## How far cards turn at that seat: sideways at the sides, but upright across the table, so they stay readable.
+static func seat_turn(seat: int, seats: int) -> float:
+	var quarter_turns := roundi(4.0 * (seat - 1) / seats) % 4
+	return 0.0 if quarter_turns == 2 else 90.0 * quarter_turns
 
 
 func add(card: Card) -> void:

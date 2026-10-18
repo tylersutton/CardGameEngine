@@ -3,19 +3,17 @@
 	"description": "Four players, you against three bots. Pass three cards (left, right, across, then keep), follow suit, and avoid hearts and the queen of spades. Take every point card to shoot the moon. The game ends when someone reaches 100; lowest score wins.",
 	"players": 4,
 	"player_names": ["You", "West", "North", "East"],
-	"seats": [[0.236, 0.86], [0.09, 0.247], [0.78, 0.14], [0.91, 0.753]],
+	"seats": [[0.236, 0.86]],
 	"zones": {
 		"deck": { "outline": false, "layout": "pile", "face": "down", "anchor": [0.5, 0.5], "cards": "res://decks/hearts_deck.csv" },
 		"hand": {
 			"per_player": true, "layout": "fan", "face": "human", "width": 0.45,
-			"anchors": [[0.5, 0.86], [0.09, 0.5], [0.5, 0.14], [0.91, 0.5]],
-			"rotations": [0, 90, 180, 270]
+			"anchor": [0.5, 0.86]
 		},
-		"played": { "per_player": true, "layout": "pile", "anchors": [[0.5, 0.62], [0.37, 0.5], [0.5, 0.38], [0.63, 0.5]] },
+		"played": { "per_player": true, "layout": "pile", "anchor": [0.5, 0.62] },
 		"won": {
 			"label": "Tricks", "per_player": true, "layout": "pile", "face": "down",
-			"anchors": [[0.787, 0.86], [0.09, 0.817], [0.213, 0.14], [0.91, 0.183]],
-			"rotations": [0, 90, 180, 270]
+			"anchor": [0.787, 0.86]
 		}
 	},
 	"variables": { "phase": "pass", "hand_number": 0, "pass_to": 1, "passed": 0, "lead": "", "hearts_broken": false, "tricks": 0, "moon": 0, "best": 0, "best_score": 0, "result": "" },
