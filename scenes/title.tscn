@@ -48,10 +48,19 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.75)
 text = "Choose a game"
 horizontal_alignment = 1
 
-[node name="OnlineButton" type="Button" parent="Margin/Column"]
+[node name="TopButtons" type="HBoxContainer" parent="Margin/Column"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 16
+
+[node name="NewGameButton" type="Button" parent="Margin/Column/TopButtons"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+text = "New game..."
+
+[node name="OnlineButton" type="Button" parent="Margin/Column/TopButtons"]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Play online..."
 
 [node name="Panes" type="HBoxContainer" parent="Margin/Column"]
@@ -100,10 +109,20 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 0.8)
 autowrap_mode = 3
 
-[node name="Play" type="Button" parent="Margin/Column/Panes/Details/DetailsMargin/DetailsColumn"]
+[node name="DetailsButtons" type="HBoxContainer" parent="Margin/Column/Panes/Details/DetailsMargin/DetailsColumn"]
+layout_mode = 2
+alignment = 2
+theme_override_constants/separation = 12
+
+[node name="EditButton" type="Button" parent="Margin/Column/Panes/Details/DetailsMargin/DetailsColumn/DetailsButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 44)
+layout_mode = 2
+text = "Edit file"
+
+[node name="Play" type="Button" parent="Margin/Column/Panes/Details/DetailsMargin/DetailsColumn/DetailsButtons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 44)
 layout_mode = 2
-size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 20
 text = "Play"

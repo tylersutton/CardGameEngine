@@ -26,6 +26,8 @@ Included games:
 2. Press **F5** (Run Project).
 3. Pick a game from the title screen. Every `.json` file in `games/` is listed there, so a new game appears automatically.
 
+**To start your own game,** press **New game...**: give it a name, a player count and a deck, and it writes a playable game file (draw a card, discard a card, random bots in the other seats) with comments explaining each part. Press **Edit file** to open it in your editor; every save reloads the table.
+
 To jump straight into one game while working on it, open `scenes/main.tscn`, set **Rules Path** on the **Main** node in the Inspector, and press **F6** (Run Current Scene).
 
 ## Playing
@@ -58,7 +60,7 @@ During the match each player sees the table from their own seat: their hand and 
 
 ## Tutorial: making a game
 
-We'll build **Color Match**, a small UNO-like game. It's in the project already, so you can compare as you go.
+We'll build **Color Match**, a small UNO-like game. It's in the project already, so you can compare as you go. (For a quicker start on your own idea, **New game...** on the title screen writes a small playable game file to change, using the same pieces.)
 
 > Each player starts with 7 cards. On your turn, play a card matching the top of the pile by color or number, or draw a card. Playing a +2 makes your opponent draw two. First to empty their hand wins.
 
