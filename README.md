@@ -9,6 +9,9 @@ Included games:
 | Gin Rummy (default) | `games/gin_rummy.json`, `decks/gin_deck.csv` | Turn phases, melds, scoring, a match to 100, a bot opponent |
 | Dominion | `games/dominion.json`, `decks/dominion.csv` | Deckbuilding: a supply of 7 basic and 10 kingdom piles (pick the kingdom from 17 cards in the game file), per-player decks that reshuffle, actions/buys/coins, choices like Cellar, Chapel, Remodel, Mine and Throne Room, attacks (Militia, Witch) answered by the other player, Moat reactions, rules text with hover zoom, and a Big Money bot. The default kingdom is the official First Game set |
 | Hearts | `games/hearts.json`, `decks/hearts_deck.csv` | Four players (you and three bots), passing three cards, following suit, winning tricks |
+| Spades | `games/spades.json`, `decks/spades_deck.csv` | Partnerships (`teams`): bidding, team scores and bags, trump, nil bids, a game to 500 |
+| Cribbage | `games/cribbage.json`, `decks/cribbage_deck.csv` | Scoring combinations: fifteens, pairs and runs in pegging and in the show, the crib, go, nobs and flushes, a game to 121 |
+| President | `games/president.json`, `decks/president_deck.csv` | Playing several cards at once (`allow` checks they're a valid set), passing, finishing order and titles, the card exchange between President and Scum |
 | Color Match | `games/color_match.json`, `decks/color_match.csv` | A small two-player game with a custom deck, hidden hands, card effects, and wild cards that ask for a color. Built step by step in the tutorial below |
 | Solitaire (Klondike) | `games/solitaire.json`, `decks/gin_deck.csv` | Cascading columns, dragging whole stacks, groups of zones (7 columns, 4 foundations), double-click to send a card up, draw one or three |
 | Standard deck | `games/standard.json`, `decks/standard_deck.csv` | A free-play sandbox: draw, play, discard, sort |
@@ -246,6 +249,11 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 - `players` is the list of player numbers (`[1, 2, 3, 4]`). Loop over it with `"for": "player"` to do something for every player as if it were their turn (see [Loops](#loops)).
 - `"variables": { "phase": "draw", "taken": null }` declares variables and their starting values.
 - `"player_variables": { "score": 0 }` makes one per player (`score_1`, `score_2`). In steps, `score` means the current player's and `opponent_score` the other player's, just like `hand` and `opponent_hand`.
+- `"teams": [[1, 3], [2, 4]]` makes partnerships: each list is a team (team 1, team 2, ...), and every player must be on exactly one. Then:
+  - `"team_variables": { "team_score": 0, "bags": 0 }` makes one per team (`team_score_1`, `team_score_2`). In steps, `team_score` means the current player's team's and `opponent_team_score` the next player's team's.
+  - `team_<zone>` is the per-player zones of everyone on the current player's team, e.g. `count(team_won) / 4` for the tricks a partnership has won.
+  - `team(player)` gives a player's team number, e.g. `team(owner(best_card)) == team(player)` for "my side is winning this trick".
+  - To do something once per team, loop over one player from each: `{ "for": "player", "in": "[1, 2]", "do": [...] }`.
 
 ### `moves`
 
@@ -294,6 +302,7 @@ or an object with extra options:
 | `choose` | What to choose from. If it gives cards (e.g. `"hand"`), they're highlighted for you to click. If it gives other values (e.g. `"['Red', 'Blue']"` or `"numbers(0, 13)"`), they appear as buttons above the table. The steps then run with the pick as `choice` (and, for a single card, also as `card`). Clicking anything else cancels. |
 | `pick` | How many cards to choose, e.g. `3` to pass three cards, or an expression like `"count(hand) - 3"`. `choice` is then a list of cards. |
 | `up_to` | Choose any number of cards from none up to this many, then press **Done** in the bar above the table. A number, or an expression like `"count(hand)"` for "any number". `choice` is a list of cards (maybe empty). |
+| `allow` | A condition the whole choice must meet, checked with the pick as `choice` before the steps run, e.g. President's `"count(choice) > 0 and size(groups(choice, 'rank')) == 1"` (one or more cards, all the same rank). A refused choice stays open and the log says why; bots only consider allowed choices. |
 | `human_only` | `true` means bots never press this button. |
 | `button` | `false` hides it from the toolbar, for actions only started with `ask('name')`. Bots never press these directly either. |
 | `prefer` | For a bot making this action's choice, what to aim for instead of the game's `bot.prefer`, e.g. `"sum(hand, 'coins')"` to keep treasures when discarding |
@@ -410,6 +419,9 @@ You can use:
 - **`choice`**: what was picked in a `choose` action: a card, a list of cards, or a value.
 - **Card columns,** as `card.data.<column>`.
 - **Operators:** `==`, `!=`, `<`, `>`, `<=`, `>=`, `+`, `-`, `*`, `/`, `and`, `or`, `not`, and parentheses.
+- **Text with numbers in it:** `'bid %d, score %d' % [team_bid_1, team_score_1]`, handy in [`status`](#status).
+- **Lists:** `[1, 2]`, joined with `+` (`finish_order + [player]`) and read by position from 0 (`ranking[0]`).
+- **Math:** `abs`, `min`, `max`, `floor`, `ceil`, `round`, and `int` (which also turns `true`/`false` into `1`/`0`, e.g. `5 * int(team_winning)`).
 - **Text in single quotes,** e.g. `'discard'`. The JSON itself uses double quotes.
 
 Every step is checked when the game loads (spelling, unknown names, wrong number of arguments), so most mistakes show up right away. If a step fails while running, the rest of its list is skipped and the log says why.
@@ -501,6 +513,20 @@ To repeat steps while something is true, use a `while` step:
 | `tops(zones)` | The top card of each zone in a list or group, e.g. `matching(tops(supply), 'costs_up_to_4')` to choose a card to gain |
 | `matching(cards, 'condition')` | The cards for which a named [condition](#conditions) holds, checked with each card as `card`, e.g. `matching(hand, 'is_treasure')` with `"is_treasure": "card.data.type == 'Treasure'"` |
 | `face_down(cards)` | The cards that are face down, e.g. `flip(face_down(top(from)))` turns the new top card up only if it's down |
+| `last(cards, amount)` | The last `amount` cards of a zone or list (the top of a pile), e.g. the cards just played: `last(pegging, 3)` |
+| `team(player)` | A player's team number (needs [`teams`](#players-variables-player_variables)) |
+
+**Combinations**
+
+These find groups of cards, each as a list. `size(...)` counts the groups; `count(...)` counts all the cards in them.
+
+| Building block | Gives |
+|---|---|
+| `size(list)` | How many items a list has. Unlike `count`, a group of cards counts as one item |
+| `groups(cards, 'column')` | The cards grouped by equal values in that column, biggest group first. `size(groups(choice, 'rank')) == 1` means "all the same rank"; `size(groups(hand, 'suit')) == 1` is a flush; `count(groups(hand, 'rank')[0]) == 3` means the biggest set is three of a kind |
+| `pairs(cards, 'column')` | Every two cards with the same value. A pair is one pair, three of a kind is three: `2 * size(pairs(cards, 'rank'))` scores pairs the cribbage way |
+| `runs(cards, 'column', length)` | Every longest run of consecutive numbers at least `length` long (a straight). A repeated value makes one run per copy, so 3-4-4-5 is two runs of three: `count(runs(cards, 'order', 3))` scores runs the cribbage way, and `size(runs(cards, 'order', 5)) > 0` means there's a straight |
+| `sums(cards, 'column', total)` | Every combination of cards whose column adds up to `total`: `2 * size(sums(cards, 'value', 15))` scores cribbage fifteens. It tries every combination, so use it on small hands (up to about 12 cards) |
 
 **Melds** (need `melds` in the game file)
 
@@ -520,7 +546,7 @@ Wherever a building block takes `cards`, you can pass a zone, a single card, or 
 - **To deal the same way in several places,** put the steps in a custom trigger and call `trigger('deal')`.
 - **"Draw only if you can't play"** is a move rule like `{ "from": "deck", "to": "hand", "when": "count(movable(hand, pile)) == 0" }`. (A rule can't use `movable` to check moves into its own destination; that inner check counts as "no moves" and the log says so.)
 - **To repeat a check,** give it a name in [`conditions`](#conditions). **To repeat a step,** use a [loop](#loops), or [repeat until](#repeat-until) something changes.
-- **Look at `games/gin_rummy.json`** for a full game: turn phases, knocking, scoring, and a match to 100. `games/solitaire.json` shows columns, stacks, and groups of zones.
+- **Look at `games/gin_rummy.json`** for a full game: turn phases, knocking, scoring, and a match to 100. `games/solitaire.json` shows columns, stacks, and groups of zones. `games/cribbage.json` scores combinations, and `games/spades.json` has teams.
 
 ## Deck reference
 

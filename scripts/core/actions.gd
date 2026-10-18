@@ -172,6 +172,59 @@ func where(cards: Variant, column: String, value: Variant) -> Array:
 	return cards_in(cards).filter(func(card: Card) -> bool: return card.data.get(column) == Game.format_value(value))
 
 
+func last(cards: Variant, amount: int) -> Array:
+	var card_list := cards_in(cards)
+	return card_list.slice(maxi(card_list.size() - amount, 0))
+
+
+func size(list: Array) -> int:
+	return list.size()
+
+
+func groups(cards: Variant, column: String) -> Array:
+	var by_value := Melds.group_by(cards_in(cards), column).values()
+	by_value.sort_custom(func(a: Array, b: Array) -> bool: return a.size() > b.size())
+	return by_value
+
+
+func pairs(cards: Variant, column: String) -> Array:
+	var found := []
+	for group: Array in groups(cards, column):
+		for i in group.size():
+			for j in range(i + 1, group.size()):
+				found.append([group[i], group[j]])
+	return found
+
+
+## Every set of cards whose column adds up to total. Tries every subset, so keep it to small hands.
+func sums(cards: Variant, column: String, total: float) -> Array:
+	return Melds.subsets(cards_in(cards)).filter(func(subset: Array) -> bool: return subset and sum(subset, column) == total)
+
+
+## Every longest run of consecutive values, at least length long. A repeated value gives one run per copy
+## (3, 4, 4, 5 is two runs), so count(runs(...)) scores runs the cribbage way.
+func runs(cards: Variant, column: String, length: int) -> Array:
+	var by_value := {}
+	for card: Card in cards_in(cards):
+		by_value.get_or_add(int(number(card, column)), []).append(card)
+	var values := by_value.keys()
+	values.sort()
+	var found := []
+	var stretch := []
+	for value in values + [null]:
+		if stretch and (value == null or value != stretch.back() + 1):
+			if stretch.size() >= length:
+				found.append_array(_one_from_each(stretch.map(func(stretch_value: int) -> Array: return by_value[stretch_value])))
+			stretch = []
+		if value != null:
+			stretch.append(value)
+	return found
+
+
+func team(player: int) -> int:
+	return game.team_of(player)
+
+
 func melds(cards: Variant) -> Array:
 	return game.meld_rules.best(cards_in(cards))
 
@@ -182,6 +235,17 @@ func deadwood(cards: Variant) -> Array:
 
 func layoff(cards: Variant, onto_melds: Array) -> Array:
 	return game.meld_rules.layoff(cards_in(cards), onto_melds)
+
+
+static func _one_from_each(card_groups: Array) -> Array:
+	var picks := [[]]
+	for group: Array in card_groups:
+		var longer := []
+		for pick: Array in picks:
+			for card: Card in group:
+				longer.append(pick + [card])
+		picks = longer
+	return picks
 
 
 static func zones_in(source: Variant) -> Array:

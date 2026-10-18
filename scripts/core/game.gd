@@ -14,9 +14,11 @@ const FROM_VARIABLE := "from"
 const TO_VARIABLE := "to"
 const PLAYER_VARIABLE := "player"
 const OPPONENT_PREFIX := "opponent_"
+const TEAM_PREFIX := "team_"
 const CARD_EFFECT_PREFIX := "on_"
 const CARD_EFFECT_SEPARATOR := ";"
 const KEYWORDS := ["true", "false", "null", "and", "or", "not"]
+const MATH_FUNCTIONS := ["abs", "min", "max", "floor", "ceil", "round", "int"]
 const CONDITIONAL_KEYS := ["if", "then", "else"]
 const LOOP_KEYS := ["for", "in", "do"]
 const LOOP_NUMBER_SUFFIX := "_number"
@@ -34,6 +36,7 @@ var rules: GameRules
 var zones: Dictionary[String, Zone] = {}
 var variables: Dictionary = {}
 var per_player_names: Array[String] = []
+var per_team_names: Array[String] = []
 var zone_groups: Dictionary[String, Array] = {}
 var meld_rules: Melds
 var expressions: Dictionary[String, Expression] = {}
@@ -93,6 +96,14 @@ func _init(rules_path: String) -> void:
 			if player_variable in variables:
 				errors.append("\"%s\" is used as more than one zone or variable name" % player_variable)
 			variables[player_variable] = rules.player_variables[name]
+	for name in rules.team_variables:
+		per_team_names.append(name)
+		for team in range(1, rules.teams.size() + 1):
+			var team_variable := "%s_%d" % [name, team]
+			if team_variable in variables:
+				errors.append("\"%s\" is used as more than one zone or variable name" % team_variable)
+			variables[team_variable] = rules.team_variables[name]
+	_check_teams()
 	meld_rules = Melds.new(rules.melds)
 	_check_names_are_unique()
 	_check_actions_and_moves()
@@ -192,6 +203,9 @@ func _pick_rule(action: Dictionary, option_count: int) -> Array:
 
 func _complete_choice(choice: Variant) -> void:
 	var action_name := choosing
+	if not _allows(action_name, choice):
+		log_line("[not allowed] %s: requires %s" % [_describe(choice), rules.actions[action_name].allow])
+		return
 	var back_to := return_player
 	_clear_choice()
 	log_line("[%s] chose %s" % [action_name, _describe(choice)])
@@ -201,6 +215,18 @@ func _complete_choice(choice: Variant) -> void:
 	chosen = outer_choice
 	if back_to:
 		set_variable(PLAYER_VARIABLE, back_to)
+
+
+## "allow" refuses a choice as a whole, e.g. cards that aren't all the same rank.
+func _allows(action_name: String, choice: Variant) -> bool:
+	var allow: String = rules.actions[action_name].get("allow", "")
+	if allow.is_empty():
+		return true
+	var outer_choice: Variant = chosen
+	chosen = choice
+	var allowed := _holds(allow, choice if choice is Card else null)
+	chosen = outer_choice
+	return allowed
 
 
 func _choice_list(options: Variant) -> Array:
@@ -359,6 +385,13 @@ func next_player() -> int:
 	return current_player() % rules.players + 1
 
 
+func team_of(player: int) -> int:
+	for i in rules.teams.size():
+		if rules.teams[i] is Array and rules.teams[i].has(float(player)):
+			return i + 1
+	return 0
+
+
 func end_turn() -> void:
 	set_variable(PLAYER_VARIABLE, next_player())
 	trigger("turn_start")
@@ -434,7 +467,7 @@ func is_bot(player: int) -> bool:
 
 func legal_inputs() -> Array[Callable]:
 	if choosing:
-		return _choice_inputs(choices, pick_count, pick_exact)
+		return _choice_inputs(choosing, choices, pick_count, pick_exact)
 	var inputs: Array[Callable] = []
 	for source: Zone in zones.values():
 		for card in _reachable_cards(source):
@@ -459,7 +492,7 @@ func legal_inputs() -> Array[Callable]:
 			continue
 		var options := _choice_list(_evaluate(action.choose, null))
 		var rule := _pick_rule(action, options.size())
-		for complete_choice in _choice_inputs(options, rule[0], rule[1]):
+		for complete_choice in _choice_inputs(action_name, options, rule[0], rule[1]):
 			inputs.append(func() -> void:
 				perform(action_name)
 				complete_choice.call())
@@ -485,28 +518,32 @@ func hidden_from(player: int) -> Array[Card]:
 	return hidden
 
 
-func _choice_inputs(options: Array, pick: int, exactly: bool) -> Array[Callable]:
+func _choice_inputs(action_name: String, options: Array, pick: int, exactly: bool) -> Array[Callable]:
 	var inputs: Array[Callable] = []
 	if options.size() < pick:
 		return inputs
 	if not exactly:
 		for size in range(pick + 1):
 			for combination: Array in _combinations(options, size):
-				inputs.append(func() -> void:
-					for card: Card in combination:
-						click(card)
-					finish_choice())
+				if _allows(action_name, combination):
+					inputs.append(func() -> void:
+						for card: Card in combination:
+							click(card)
+						finish_choice())
 	elif not options.all(func(option: Variant) -> bool: return option is Card):
 		for option in options:
-			inputs.append(choose_option.bind(option))
+			if _allows(action_name, option):
+				inputs.append(choose_option.bind(option))
 	elif pick == 1:
 		for card: Card in options:
-			inputs.append(click.bind(card))
+			if _allows(action_name, card):
+				inputs.append(click.bind(card))
 	else:
 		for combination: Array in _combinations(options, pick):
-			inputs.append(func() -> void:
-				for card: Card in combination:
-					click(card))
+			if _allows(action_name, combination):
+				inputs.append(func() -> void:
+					for card: Card in combination:
+						click(card))
 	return inputs
 
 
@@ -868,6 +905,8 @@ func set_variable(variable: String, value: Variant) -> void:
 static func format_value(value: Variant) -> String:
 	if value is Card:
 		return value.title
+	if value is Array:
+		return "[%s]" % ", ".join(value.map(format_value))
 	if value == null:
 		return "—"
 	if value is float and value == floorf(value):
@@ -887,7 +926,23 @@ func _aliases() -> Dictionary:
 	for name in per_player_names:
 		aliases[name] = "%s_%d" % [name, current_player()]
 		aliases[OPPONENT_PREFIX + name] = "%s_%d" % [name, next_player()]
+	for name in per_team_names:
+		aliases[name] = "%s_%d" % [name, team_of(current_player())]
+		aliases[OPPONENT_PREFIX + name] = "%s_%d" % [name, team_of(next_player())]
 	return aliases
+
+
+## "team_hand" is the hands of everyone on the current player's team.
+func _team_groups() -> Dictionary:
+	var groups := {}
+	if rules.teams.is_empty():
+		return groups
+	var team: int = team_of(current_player())
+	for group_name: String in zone_groups:
+		if group_name.begins_with(ALL_PREFIX):
+			groups[TEAM_PREFIX + group_name.trim_prefix(ALL_PREFIX)] = zone_groups[group_name].filter(func(zone: Zone) -> bool:
+				return team_of(zone.owner) == team)
+	return groups
 
 
 func _resolve(name: String) -> String:
@@ -895,7 +950,7 @@ func _resolve(name: String) -> String:
 
 
 func _input_names() -> PackedStringArray:
-	return PackedStringArray(zones.keys() + variables.keys() + _aliases().keys() + zone_groups.keys() + loop_names \
+	return PackedStringArray(zones.keys() + variables.keys() + _aliases().keys() + zone_groups.keys() + _team_groups().keys() + loop_names \
 		+ [CARD_VARIABLE, FROM_VARIABLE, TO_VARIABLE, CHOICE_VARIABLE, PLAYERS_VARIABLE])
 
 
@@ -903,7 +958,7 @@ func _input_values(card: Card) -> Array:
 	var aliased := _aliases().values().map(func(name: String) -> Variant:
 		return zones[name] if name in zones else variables[name])
 	var looped := loop_names.map(func(name: String) -> Variant: return loop_values.get(name))
-	return zones.values() + variables.values() + aliased + zone_groups.values() + looped \
+	return zones.values() + variables.values() + aliased + zone_groups.values() + _team_groups().values() + looped \
 		+ [card, move_from, move_to, chosen, range(1, rules.players + 1)]
 
 
@@ -922,6 +977,15 @@ func _copies_of(zone_kind: String, definition: Dictionary) -> int:
 		errors.append("Zone \"%s\" needs %d anchors in \"anchors\" (one per %s)" % [zone_kind, copies, "player" if per_player else "copy"])
 		return 0
 	return copies
+
+
+func _check_teams() -> void:
+	if rules.team_variables and rules.teams.is_empty():
+		errors.append("\"team_variables\" needs \"teams\", e.g. [[1, 3], [2, 4]]")
+	for player in range(1, rules.players + 1):
+		var team_count := rules.teams.filter(func(team: Variant) -> bool: return team is Array and team.has(float(player))).size()
+		if rules.teams and team_count != 1:
+			errors.append("teams: player %d should be on exactly one team" % player)
 
 
 func _check_names_are_unique() -> void:
@@ -965,9 +1029,9 @@ func _card_effect(card: Card, zone_kind: String) -> Array:
 
 func _check_actions_and_moves() -> void:
 	for action_name in rules.actions:
-		_check_entry("Action \"%s\"" % action_name, rules.actions[action_name], {"when": TYPE_STRING, "choose": TYPE_STRING, "pick": [TYPE_FLOAT, TYPE_STRING], "up_to": [TYPE_FLOAT, TYPE_STRING], "human_only": TYPE_BOOL, "button": TYPE_BOOL, "prefer": TYPE_STRING, "steps": TYPE_ARRAY})
+		_check_entry("Action \"%s\"" % action_name, rules.actions[action_name], {"when": TYPE_STRING, "choose": TYPE_STRING, "pick": [TYPE_FLOAT, TYPE_STRING], "up_to": [TYPE_FLOAT, TYPE_STRING], "allow": TYPE_STRING, "human_only": TYPE_BOOL, "button": TYPE_BOOL, "prefer": TYPE_STRING, "steps": TYPE_ARRAY})
 		var action: Variant = rules.actions[action_name]
-		for key in ["pick", "up_to"]:
+		for key in ["pick", "up_to", "allow"]:
 			if action is Dictionary and action.has(key) and not action.has("choose"):
 				errors.append("Action \"%s\": \"%s\" needs \"choose\"" % [action_name, key])
 	for rule in rules.moves:
@@ -1028,7 +1092,7 @@ func _compile_all_steps() -> void:
 		step_lists.append(action.get("steps", []))
 		conditions.append(action.get("when", ""))
 		conditions.append(action.get("choose", ""))
-		for key in ["pick", "up_to", "prefer"]:
+		for key in ["pick", "up_to", "allow", "prefer"]:
 			if action.get(key) is String:
 				conditions.append(action[key])
 	for rule: Dictionary in rules.moves:
@@ -1238,7 +1302,7 @@ func _problems_in(step: String, input_names: PackedStringArray) -> Array[String]
 	for found in name_in_code.search_all(code):
 		var name := found.get_string(1)
 		var is_call := found.get_string(2) != ""
-		if name in KEYWORDS:
+		if name in KEYWORDS or (is_call and name in MATH_FUNCTIONS):
 			continue
 		if is_call and name not in building_blocks:
 			problems.append("unknown building block \"%s\"" % name)

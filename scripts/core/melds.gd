@@ -27,7 +27,7 @@ func deadwood(cards: Array) -> Array:
 func layoff(cards: Array, melds: Array) -> Array:
 	var best_choice := []
 	var fewest_points := INF
-	for choice: Array in _subsets(_extensions(cards, melds)):
+	for choice: Array in subsets(_extensions(cards, melds)):
 		if _extensions(choice, melds).size() != choice.size():
 			continue
 		var points := _deadwood_points(cards.filter(func(card: Card) -> bool: return card not in choice))
@@ -82,7 +82,7 @@ func _fits(cards: Array, type: Dictionary) -> bool:
 func _candidates(cards: Array) -> Array:
 	var candidates := []
 	for type: Dictionary in types:
-		for group: Array in _group_by(cards, type.same).values():
+		for group: Array in group_by(cards, type.same).values():
 			var possible_melds := []
 			if type.has("sequence"):
 				group.sort_custom(func(a: Card, b: Card) -> bool: return int(a.data[type.sequence]) < int(b.data[type.sequence]))
@@ -90,7 +90,7 @@ func _candidates(cards: Array) -> Array:
 					for end in range(start + 1, group.size() + 1):
 						possible_melds.append(group.slice(start, end))
 			else:
-				possible_melds = _subsets(group)
+				possible_melds = subsets(group)
 			candidates.append_array(possible_melds.filter(func(meld: Array) -> bool: return _fits(meld, type)))
 	return candidates
 
@@ -120,7 +120,7 @@ func _points(card: Card) -> float:
 	return card.data.get(points_column, "0").to_float()
 
 
-static func _group_by(cards: Array, column: String) -> Dictionary:
+static func group_by(cards: Array, column: String) -> Dictionary:
 	var groups := {}
 	for card: Card in cards:
 		var key: String = card.data.get(column, "")
@@ -130,7 +130,7 @@ static func _group_by(cards: Array, column: String) -> Dictionary:
 	return groups
 
 
-static func _subsets(items: Array) -> Array:
+static func subsets(items: Array) -> Array:
 	var subsets := [[]]
 	for item in items:
 		subsets += subsets.map(func(subset: Array) -> Array: return subset + [item])

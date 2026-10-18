@@ -1,0 +1,111 @@
+{
+	"title": "Spades",
+	"description": "Four players in two partnerships: you and North against West and East. Bid your tricks, spades are trump; the first team to 500 wins.",
+	"players": 4,
+	"player_names": ["You", "West", "North", "East"],
+	"teams": [[1, 3], [2, 4]],
+	"seats": [[0.236, 0.86], [0.09, 0.247], [0.78, 0.14], [0.91, 0.753]],
+	"zones": {
+		"deck": { "outline": false, "layout": "pile", "face": "down", "anchor": [0.5, 0.5], "cards": "res://decks/spades_deck.csv" },
+		"hand": {
+			"per_player": true, "layout": "fan", "face": "human", "width": 0.45,
+			"anchors": [[0.5, 0.86], [0.09, 0.5], [0.5, 0.14], [0.91, 0.5]],
+			"rotations": [0, 90, 180, 270]
+		},
+		"played": { "per_player": true, "layout": "pile", "anchors": [[0.5, 0.62], [0.37, 0.5], [0.5, 0.38], [0.63, 0.5]] },
+		"won": {
+			"label": "Tricks", "per_player": true, "layout": "pile", "face": "down",
+			"anchors": [[0.787, 0.86], [0.09, 0.817], [0.213, 0.14], [0.91, 0.183]],
+			"rotations": [0, 90, 180, 270]
+		}
+	},
+	"variables": { "phase": "bid", "dealer": 4, "bids": 0, "lead": "", "spades_broken": false, "result": "" },
+	"player_variables": { "bid": 0 },
+	"team_variables": { "team_bid": 0, "team_score": 0, "bags": 0 },
+	"show_variables": ["phase", "result"],
+	"status": {
+		"bids (You, W, N, E)": "'%d, %d, %d, %d' % [bid_1, bid_2, bid_3, bid_4]",
+		"You & North": "'bid %d, won %d, score %d, bags %d' % [team_bid_1, count(won_1) / 4 + count(won_3) / 4, team_score_1, bags_1]",
+		"West & East": "'bid %d, won %d, score %d, bags %d' % [team_bid_2, count(won_2) / 4 + count(won_4) / 4, team_score_2, bags_2]"
+	},
+	"bot": { "players": [2, 3, 4], "prefer": "10 * count(team_won) + 5 * int(team_winning) - 0.2 * sum(played, 'value')" },
+	"conditions": {
+		"follows_suit": "lead == '' or card.data.suit == lead or count(where(hand, 'suit', lead)) == 0",
+		"spades_allowed": "lead != '' or card.data.suit != 'Spades' or spades_broken or count(where(hand, 'suit', 'Spades')) == count(hand)",
+		"best_card": "highest(where(all_played, 'suit', 'Spades') + where(all_played, 'suit', lead), 'power')",
+		"team_winning": "team(owner(best_card)) == team(player)",
+		"team_tricks": "count(team_won) / 4",
+		"likely_winner": "card.data.rank == 'A' or card.data.rank == 'K' or (card.data.suit == 'Spades' and number(card, 'value') >= 11)"
+	},
+	"moves": [
+		{
+			"from": "hand", "to": "played",
+			"when": "phase == 'play' and follows_suit and spades_allowed",
+			"then": [
+				{ "if": "lead == ''", "then": ["assign('lead', card.data.suit)"] },
+				{ "if": "card.data.suit == 'Spades'", "then": ["assign('spades_broken', true)"] },
+				{ "if": "count(all_played) == 4", "then": ["assign('phase', 'trick done')", "assign('player', owner(best_card))"], "else": ["end_turn()"] }
+			]
+		}
+	],
+	"actions": {
+		"Bid": {
+			"button": false, "choose": "numbers(0, 13)",
+			"prefer": "-abs(bid - max(1, count(matching(hand, 'likely_winner'))))",
+			"steps": [
+				"assign('bid', choice)",
+				"assign('team_bid', team_bid + choice)",
+				"assign('bids', bids + 1)",
+				{ "if": "bids == 4", "then": ["assign('phase', 'play')", "assign('player', next_player())"], "else": ["end_turn()"] }
+			]
+		},
+		"Collect trick": {
+			"when": "phase == 'trick done'", "human_only": true,
+			"steps": [
+				"move(all_played, won)",
+				"assign('lead', '')",
+				{ "if": "count(all_hand) == 0", "then": ["trigger('score_hand')"], "else": ["assign('phase', 'play')"] }
+			]
+		},
+		"Next hand": { "when": "phase == 'hand over'", "human_only": true, "steps": ["trigger('deal')"] }
+	},
+	"triggers": {
+		"start": [
+			{ "for": "player", "in": "players", "do": ["sort(hand, ['suit', 'value'])"] },
+			"trigger('deal')"
+		],
+		"deal": [
+			"move([all_hand, all_played, all_won], deck)",
+			"shuffle(deck)",
+			"deal(deck, all_hand, 13)",
+			"assign('player', dealer)",
+			"assign('dealer', next_player())",
+			"assign('phase', 'bid')",
+			"assign('bids', 0)",
+			"assign('lead', '')",
+			"assign('spades_broken', false)",
+			{ "for": "player", "in": "[1, 2]", "do": ["assign('team_bid', 0)"] },
+			"assign('player', next_player(2))",
+			"ask('Bid')"
+		],
+		"turn_start": [{ "if": "phase == 'bid'", "then": ["ask('Bid')"] }],
+		"score_hand": [
+			{ "for": "player", "in": "[1, 2]", "do": [
+				{
+					"if": "team_tricks >= team_bid",
+					"then": ["assign('team_score', team_score + 10 * team_bid + team_tricks - team_bid)", "assign('bags', bags + team_tricks - team_bid)"],
+					"else": ["assign('team_score', team_score - 10 * team_bid)"]
+				},
+				{ "if": "bags >= 10", "then": ["assign('team_score', team_score - 100)", "assign('bags', bags - 10)"] }
+			] },
+			{ "for": "player", "in": "players", "do": [
+				{ "if": "bid == 0 and count(won) == 0", "then": ["assign('team_score', team_score + 100)"] },
+				{ "if": "bid == 0 and count(won) > 0", "then": ["assign('team_score', team_score - 100)"] }
+			] },
+			"assign('phase', 'hand over')",
+			{ "if": "team_score_1 >= 500 and team_score_1 > team_score_2", "then": ["assign('result', 'You and North win!')", "assign('phase', 'over')"] },
+			{ "if": "team_score_2 >= 500 and team_score_2 > team_score_1", "then": ["assign('result', 'West and East win')", "assign('phase', 'over')"] }
+		]
+	},
+	"card_face": { "corner": "name", "title": "name", "body": ["suit"], "color": "color" }
+}
