@@ -386,7 +386,8 @@ Write readouts so they read right on every screen: name players with `name_of`, 
 | `body` | List of columns shown below the title |
 | `text` | Column with rules text, drawn small and word-wrapped under the title (long titles also shrink to fit) |
 | `zoom` | e.g. `2.4`: hovering a face-up card shows an enlarged copy beside it, so small text can be read |
-| `color` | Column holding the text color: a name like `Red` or a hex code like `#c0392b` |
+| `color` | Text color: a column holding each card's color (a name like `Red` or a code like `#c0392b`), or one color for every card, e.g. `"#333333"` |
+| `background` | Card face color, the same way: a column (each card its own, e.g. a `paper` column of soft colors) or one color for every card, e.g. `"#f3e9d2"`. White if not given |
 
 Without a `card_face`, cards show their `name` in the corner and the middle.
 

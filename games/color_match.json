@@ -52,5 +52,5 @@
 		],
 		"deck_empty": ["move(without(pile, top(pile)), deck)", "shuffle(deck)"]
 	},
-	"card_face": { "corner": "number", "title": "number", "body": ["color"], "color": "ink" }
+	"card_face": { "corner": "number", "title": "number", "body": ["color"], "color": "color" }
 }

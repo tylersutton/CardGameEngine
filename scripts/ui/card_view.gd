@@ -31,7 +31,11 @@ const MARKS_BACKGROUND := Color(0.1, 0.1, 0.1, 0.8)
 
 enum DropHint { NONE, ALLOWED, REFUSED }
 
-static var face_style := _rounded_box(Color.WHITE, Color(0.75, 0.75, 0.75))
+const FACE_BORDER := Color(0.75, 0.75, 0.75)
+
+static var face_style := _rounded_box(Color.WHITE, FACE_BORDER)
+## One face box per background color, shared by every card with that color.
+static var face_styles_by_color: Dictionary[Color, StyleBoxFlat] = {}
 static var back_style := _rounded_box(Color(0.16, 0.24, 0.52), Color.WHITE)
 static var highlight_style := _outline_box(HIGHLIGHT_COLOR)
 static var selected_style := _outline_box(SELECTED_COLOR)
@@ -157,9 +161,9 @@ func _outline_style() -> StyleBoxFlat:
 
 
 func _draw_face(rect: Rect2) -> void:
-	draw_style_box(face_style, rect)
+	draw_style_box(_face_box(), rect)
 	var font := get_theme_default_font()
-	var ink := Color.from_string(_field("color"), Color.BLACK)
+	var ink := Color.from_string(_color_field("color"), Color.BLACK)
 	var text_width := SIZE.x - MARGIN * 2
 	draw_string(font, Vector2(MARGIN, MARGIN + CORNER_FONT_SIZE), _field("corner"), HORIZONTAL_ALIGNMENT_LEFT, text_width, CORNER_FONT_SIZE, ink)
 	var rules_text := _field("text")
@@ -196,6 +200,19 @@ static func _fitting_size(font: Font, text: String, width: float, largest := TIT
 	while font_size > smallest and font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x > width:
 		font_size -= 1
 	return font_size
+
+
+func _face_box() -> StyleBoxFlat:
+	var background := Color.from_string(_color_field("background"), Color.WHITE)
+	if background == Color.WHITE:
+		return face_style
+	return face_styles_by_color.get_or_add(background, _rounded_box(background, FACE_BORDER))
+
+
+## "color" and "background" name a column (each card its own color) or give one color for every card ("#f3e9d2").
+func _color_field(face_part: String) -> String:
+	var setting: String = face.get(face_part, "")
+	return card.data.get(setting, setting)
 
 
 func _field(face_part: String) -> String:

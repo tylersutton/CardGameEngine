@@ -13,7 +13,7 @@ const MATH_FUNCTIONS := ["abs", "min", "max", "floor", "ceil", "round", "int"]
 const VIEWER_BLOCK := "viewer("
 const ZONE_KEYS := ["label", "labels", "outline", "layout", "face", "anchor", "anchors", "width", "rotation", "rotations", "cards",
 	"on_click", "on_double_click", "spread", "drag", "per_player", "copies", "grid", "group", "covered_by", "columns"]
-const CARD_FACE_KEYS := ["corner", "title", "body", "text", "color", "zoom"]
+const CARD_FACE_KEYS := ["corner", "title", "body", "text", "color", "background", "zoom"]
 const TYPE_DESCRIPTIONS := {TYPE_STRING: "text", TYPE_ARRAY: "a list", TYPE_FLOAT: "a number", TYPE_BOOL: "true or false"}
 
 static var building_blocks := _building_blocks()
