@@ -182,13 +182,19 @@ func _add_member(container_path: Array, member: String) -> void:
 		return child.size() == container_path.size() + 1 and child.slice(0, -1) == container_path)
 	if children.is_empty():
 		var empty_inside := text.substr(span.start + 1, close - span.start - 1)
+		if empty_inside.contains("\n"):
+			var indent := _indent_at(span.start)
+			_replace(span.start + 1, close, empty_inside.strip_edges(false, true) + "\n" + indent + INDENT + member.strip_edges() + "\n" + indent)
+			return
 		var padded := " %s " % member.strip_edges() if text[span.start] == "{" else member.strip_edges()
 		_replace(span.start + 1, close, padded if empty_inside.strip_edges().is_empty() else empty_inside + padded)
 		return
 	var last_end: int = children.map(func(key: String) -> int: return spans[key].end).max()
 	var has_comma := _skip_spaces(last_end) < text.length() and text[_skip_spaces(last_end)] == ","
 	var comma_end := _skip_spaces(last_end) + 1 if has_comma else last_end
-	if text.substr(span.start, span.end - span.start).contains("\n"):
+	var first_member: int = children.map(func(key: String) -> int: return spans[key].member_start).min()
+	# One member per line only when the first member starts its own line; a one-line object can hold a multi-line value.
+	if text.substr(span.start, first_member - span.start).contains("\n"):
 		var last_member: int = children.map(func(key: String) -> int: return spans[key].member_start).max()
 		var line_end := _line_end(comma_end)
 		_replace(last_end, line_end, "," + text.substr(comma_end, line_end - comma_end) + "\n" + _indent_at(last_member) + member.strip_edges())

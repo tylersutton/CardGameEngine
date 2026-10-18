@@ -82,6 +82,15 @@ func check_and_compile() -> void:
 		_compile_all_steps()
 
 
+## Problems with one step or condition on its own, e.g. for the editor as it's typed.
+func problems_with(step: String) -> Array[String]:
+	var code := _with_conditions(step)
+	var expression := Expression.new()
+	if expression.parse(code, game.input_names()) != OK:
+		return [expression.get_error_text()]
+	return _problems_in(code, game.input_names())
+
+
 ## A failed step's error, with the building block's parameters when it was given the wrong kind of argument.
 static func failure_message(expression: Expression) -> String:
 	var message := expression.get_error_text()
@@ -225,6 +234,8 @@ func _collect_steps(steps: Array, into: Dictionary) -> void:
 	for step in steps:
 		if step is String:
 			into[step] = true
+		elif step is Dictionary and _is_blank_condition(step):
+			errors.append("A step %s has nothing to check: fill in its condition, or remove it" % JSON.stringify(step).left(60))
 		elif _is_valid_conditional(step):
 			into[step["if"]] = true
 			_collect_steps(step.get("then", []), into)
@@ -238,6 +249,14 @@ func _collect_steps(steps: Array, into: Dictionary) -> void:
 			_collect_steps(step.get("do", []), into)
 		else:
 			errors.append("Invalid step %s: use a string, { \"if\": ..., \"then\": [...], \"else\": [...] }, { \"for\": \"name\", \"in\": ..., \"do\": [...] }, or { \"while\": ..., \"do\": [...] }" % JSON.stringify(step))
+
+
+## An "if", "for each ... in" or "repeat while" whose condition was left empty (e.g. just added in the editor).
+static func _is_blank_condition(step: Dictionary) -> bool:
+	for key in ["if", "in", "while"]:
+		if step.has(key) and step[key] is String and step[key].strip_edges().is_empty():
+			return true
+	return false
 
 
 func _add_loop_name(name: String) -> void:

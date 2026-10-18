@@ -9,6 +9,7 @@ var failures: Array[String] = []
 func _init() -> void:
 	for path in GameRules.game_paths():
 		_check_round_trips(path)
+		_check_rebuilding(path)
 	_check_editing()
 	print("EDITOR: ", "all passed" if failures.is_empty() else "FAILED\n  " + "\n  ".join(failures))
 	quit(0 if failures.is_empty() else 1)
@@ -44,6 +45,31 @@ func _check_round_trips(path: String) -> void:
 	document.set_value(["triggers", "test_trigger"], ["shuffle(deck)"])
 	document.remove(["triggers", "test_trigger"])
 	check(document.text == original, "%s: add + remove trigger changed the text:\n%s" % [name, _difference(original, document.text)])
+
+
+## Builds the game again from an empty file, one setting at a time as the editor's forms do, and checks the
+## result holds the same game and loads cleanly.
+func _check_rebuilding(path: String) -> void:
+	var original: Dictionary = GameRules.read_file(path)
+	var document := GameDocument.new()
+	document.path = "user://rebuilt_" + path.get_file()
+	document.set_text("{
+}
+")
+	_set_leaves(document, [], original)
+	var name := path.get_file()
+	check(GameDocument.format(document.data) == GameDocument.format(original), "%s: rebuilt differently" % name)
+	var game := Game.new(path, 1, {path: document.text})
+	check(game.errors.is_empty(), "%s: rebuilt game has problems: %s" % [name, game.errors])
+
+
+## Sets every value that isn't an object, depth first, so objects and lists are made along the way.
+func _set_leaves(document: GameDocument, at: Array, value: Variant) -> void:
+	if value is Dictionary and value:
+		for key: String in value:
+			_set_leaves(document, at + [key], value[key])
+	else:
+		document.set_value(at, value)
 
 
 func _check_editing() -> void:

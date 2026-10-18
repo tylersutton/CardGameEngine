@@ -740,6 +740,8 @@ func run(steps: Array, card: Card = null) -> bool:
 
 func _run_steps(steps: Array, card: Card) -> bool:
 	for step in steps:
+		if step is String and step.strip_edges().is_empty():
+			continue
 		if step is Dictionary and step.has("for"):
 			if not _run_loop(step, card):
 				return false

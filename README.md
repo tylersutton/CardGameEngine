@@ -66,6 +66,9 @@ Select a game on the title screen and press **Open in editor** (**New game...** 
 - **Middle:** the table. In **Table**, every zone is outlined and named: click one to select it, drag it to move it. A per-player zone moves seat 1's spot (the others follow round the table), and a grid of copies moves as a whole. Switch on **Play** to play the game as it stands, unsaved changes included.
 - **Right:** everything about the selected entry, with a line of help under each setting. **×** takes a setting out, back to its default. A zone's **note** is the `//` comment above it in the file.
 - **Deck:** the deck as a table, one row per card, with the selected card drawn using the game's card face. Add, copy and remove cards and columns; the card face settings are beside it.
+- **Variables:** the game's, each player's and each team's variables, with their starting values written as in the file (`5`, `"draw"`, `true`, `[]`).
+- **Moves, Buttons, Triggers, Conditions:** one entry each. Moves are tried in order, so **Up** and **Down** reorder them. A button written as just a list of steps gets the full form (when, choose, pick...) with **More settings**.
+- **Steps** are edited as a list: plain steps, **if** blocks (with an optional **else**), **for each** and **repeat while**, each foldable with ▾. **⋮** moves or removes a step, **+ Add** adds one, and **Edit as text** shows the whole list as JSONC. While typing, a step box suggests zones, variables, card columns (after `card.`) and building blocks, shows the signature of the building block you're in, and flags problems such as an unknown name.
 - **Bottom:** problems with the game, checked as you edit. Double-click one to go to what it's about.
 - **Undo** and **Redo** (Ctrl+Z, Ctrl+Y) step through your edits. **Games** goes back to the title screen (asking first if there are unsaved changes).
 

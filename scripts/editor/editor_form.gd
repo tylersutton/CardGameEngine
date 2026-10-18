@@ -9,15 +9,19 @@ const DECKS_FOLDER := "res://decks/"
 const HELP_COLOR := Color(1, 1, 1, 0.55)
 const BAD_COLOR := Color(1, 0.45, 0.4)
 const NOT_SET := "(not set)"
+## Expression settings that may also be a plain number.
+const NUMBER_OR_TEXT := ["pick", "up_to"]
 
+var editor: Node
 var document: GameDocument
 var base_path: Array
 ## The deck's column names, for "column" fields.
 var columns: Array = []
 
 
-func show_fields(game_document: GameDocument, path: Array, fields: Array, deck_columns: Array = []) -> void:
-	document = game_document
+func show_fields(game_editor: Node, path: Array, fields: Array, deck_columns: Array = []) -> void:
+	editor = game_editor
+	document = editor.document
 	base_path = path
 	columns = deck_columns
 	for child in get_children():
@@ -79,22 +83,53 @@ func _control_for(field: Dictionary, path: Array, value: Variant) -> Control:
 			return _spot(path, value)
 		"columns", "list":
 			var line := LineEdit.new()
-			line.text = ", ".join(value) if value is Array else ""
+			line.text = ", ".join(value) if value is Array else _as_text(value)
 			line.placeholder_text = "comma-separated" + (": " + ", ".join(columns) if field.kind == "columns" and columns else "")
 			var commit := func(_text: Variant = null) -> void:
 				var items := Array(line.text.split(",", false)).map(func(item: String) -> String: return item.strip_edges())
-				changed.emit(path, items if items else null)
+				var one_allowed: bool = field.kind == "list" and items.size() == 1
+				changed.emit(path, null if items.is_empty() else (items[0] if one_allowed else items))
 			line.text_submitted.connect(commit)
 			line.focus_exited.connect(commit)
 			return line
 		"json":
 			return _json_box(path, value)
+		"expression":
+			var smart: SmartField = editor.smart_field(_as_text(value))
+			smart.committed.connect(func(text: String) -> void:
+				changed.emit(path, _number_or_text(text) if field.key in NUMBER_OR_TEXT else (text if text else null)))
+			return smart
+		"steps":
+			return StepList.new(editor, path)
+		"zones":
+			var zones := LineEdit.new()
+			zones.text = ", ".join(value) if value is Array else _as_text(value)
+			zones.placeholder_text = "e.g. hand, or pile, discard"
+			var send := func(_text: Variant = null) -> void:
+				var names := Array(zones.text.split(",", false)).map(func(name: String) -> String: return name.strip_edges())
+				changed.emit(path, null if names.is_empty() else (names[0] if names.size() == 1 else names))
+			zones.text_submitted.connect(send)
+			zones.focus_exited.connect(send)
+			return zones
 	var text_line := LineEdit.new()
 	text_line.text = str(value) if value != null else ""
 	var submit := func(_text: Variant = null) -> void: changed.emit(path, text_line.text if text_line.text else null)
 	text_line.text_submitted.connect(submit)
 	text_line.focus_exited.connect(submit)
 	return text_line
+
+
+static func _as_text(value: Variant) -> String:
+	if value == null:
+		return ""
+	return GameDocument.format(value) if value is float or value is Array else str(value)
+
+
+## "3" is the number 3 (for pick and up_to); anything else stays text. Empty takes the key out.
+static func _number_or_text(text: String) -> Variant:
+	if text.is_empty():
+		return null
+	return text.to_float() if text.is_valid_float() else text
 
 
 func _options(field: Dictionary) -> Array:

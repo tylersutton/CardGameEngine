@@ -49,10 +49,41 @@ func _edit(path: String) -> void:
 		editor.undo()
 	if editor.document.text != original or editor.deck_texts:
 		problems.append("%s: undoing every edit didn't give back the file" % name)
+	_check_rule_editing(editor, name)
 	editor.get_node("%PlayToggle").button_pressed = true
 	await get_tree().process_frame
 	editor.queue_free()
 	await get_tree().process_frame
+
+
+## Milestone 2: steps are checked and suggested as they're typed, and step lists can be added to and changed.
+func _check_rule_editing(editor: Node, name: String) -> void:
+	if editor._check_step("draw(deck, no_such_zone)").is_empty():
+		problems.append("%s: a step naming a missing zone wasn't flagged" % name)
+	var field: SmartField = editor.smart_field("tri")
+	field.code.set_caret_column(3)
+	field._suggest()
+	var options := field.code.get_code_completion_options().map(func(option: Dictionary) -> String: return option.display_text)
+	if not options.any(func(text: String) -> bool: return text.begins_with("trigger(")):
+		problems.append("%s: no suggestion for 'tri': %s" % [name, options])
+	field.free()
+	editor.select_section("Triggers")
+	if not editor.entry:
+		return
+	var before: String = editor.document.text
+	var steps := StepList.new(editor, ["triggers", editor.entry])
+	steps._add({"if": "true", "then": ["shuffle(deck)"]})
+	var list: Array = editor.document.get_value(["triggers", editor.entry])
+	if not (list.back() is Dictionary and list.back().get("if") == "true"):
+		problems.append("%s: adding an if block to a trigger didn't work" % name)
+	steps._move(list.size() - 1, 0)
+	if not (editor.document.get_value(["triggers", editor.entry, 0]) is Dictionary):
+		problems.append("%s: moving a step up didn't work" % name)
+	steps.free()
+	editor.undo()
+	editor.undo()
+	if editor.document.text != before:
+		problems.append("%s: undoing step edits didn't give back the trigger" % name)
 
 
 func _play(path: String) -> void:
