@@ -4,10 +4,13 @@ extends Control
 
 const BOT_DELAY := 0.6
 const TITLE_SCENE := "res://scenes/title.tscn"
+const WATCH_INTERVAL := 1.0
 
 var game: Game
 var bot: Bot
 var bot_waiting := false
+## Modified times of the game file and its decks, to reload when one is saved.
+var watched_files: Dictionary = {}
 
 
 func _ready() -> void:
@@ -16,6 +19,11 @@ func _ready() -> void:
 	%UndoButton.pressed.connect(func() -> void: if game: _submit({type = "undo"}))
 	%SandboxToggle.toggled.connect(_set_sandbox)
 	%ZoneNamesToggle.toggled.connect(_show_zone_names)
+	if not Net.online:
+		var watcher := Timer.new()
+		watcher.timeout.connect(_reload_if_changed)
+		add_child(watcher)
+		watcher.start(WATCH_INTERVAL)
 	if Net.online:
 		%ReloadButton.disabled = true
 		%SandboxToggle.disabled = true
@@ -47,8 +55,20 @@ func _ask_undo(asker: String) -> void:
 	dialog.popup_centered()
 
 
+## Saving the game file or a deck reloads the game, so changes show up without pressing Reload.
+func _reload_if_changed() -> void:
+	for path in watched_files:
+		if FileAccess.get_modified_time(path) != watched_files[path]:
+			_load_game()
+			%LogView.add("[reloaded: %s changed]" % path.get_file())
+			return
+
+
 func _load_game() -> void:
 	var new_game := Net.game if Net.online else Game.new(rules_path)
+	watched_files.clear()
+	for path in new_game.rules.files_used(rules_path):
+		watched_files[path] = FileAccess.get_modified_time(path)
 	if new_game.errors:
 		for error in new_game.errors:
 			%LogView.add_error(error)

@@ -40,7 +40,7 @@ To jump straight into one game while working on it, open `scenes/main.tscn`, set
 | Toolbar buttons | The game's actions. A button is greyed out while its condition is false. |
 | **Undo** / Ctrl+Z | Step back one input, including steps of a choice in progress. In a game with a bot, it goes back to your last input. |
 | **Games** | Back to the title screen to pick another game. |
-| **Reload** | Re-read the JSON and CSV files from disk and start over. |
+| **Reload** | Re-read the JSON and CSV files from disk and start over. Saving the game file or one of its decks does this by itself. |
 | **Sandbox** | Ignore the rules and move anything anywhere, for testing. Rule follow-ups (like scoring) don't run in sandbox. |
 | **Zone names** | Show every zone's name and card count above it: the names to use in rules (e.g. `won_1`). Off by default. |
 
@@ -182,7 +182,7 @@ Each action becomes a toolbar button that runs its steps. Reload, and the game i
 
 ### 7. Iterate
 
-Change anything, save, and press Reload. If something is wrong, the log tells you in red, usually as soon as the game loads:
+Change anything and save: the game reloads by itself. If something is wrong, the log tells you in red, usually as soon as the game loads:
 
 ```
 Step "draw(deck, hnad)": unknown zone or variable "hnad"
@@ -218,6 +218,8 @@ The finished `color_match.json` goes one step further: Wild cards that let you c
 ## Game file reference
 
 Everything a game file can contain. Only `zones` is required. A misspelled key (`"trigers"`, `"anchr"`) is reported when the game loads, rather than quietly ignored.
+
+**Comments:** `//` starts a comment that runs to the end of the line, e.g. `"players": 2, // you and a bot`. (Inside quoted text it's just text, so `"res://decks/..."` is fine.)
 
 **Lists of steps:** wherever a list of steps goes (`then`, `else`, `do`, `steps`, triggers, effects, `on_click`), a single step will do: `"then": "end_turn()"`.
 

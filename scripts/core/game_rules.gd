@@ -46,7 +46,7 @@ static func load_json(path: String, files := {}) -> GameRules:
 		rules.error = "Game file not found: " + path
 		return rules
 	var json := JSON.new()
-	if json.parse(files[path] if path in files else FileAccess.get_file_as_string(path)) != OK:
+	if json.parse(_without_comments(files[path] if path in files else FileAccess.get_file_as_string(path))) != OK:
 		rules.error = "%s, line %d: %s" % [path.get_file(), json.get_error_line() + 1, json.get_error_message()]
 		return rules
 	var data: Dictionary = json.data
@@ -84,6 +84,39 @@ static func load_json(path: String, files := {}) -> GameRules:
 	rules.bot = data.get("bot", {})
 	rules.card_face = data.get("card_face", DEFAULT_CARD_FACE)
 	return rules
+
+
+## Game files may have comments: "//" to the end of the line, except inside quoted text (so "res://..." is safe).
+## Line breaks are kept, so error line numbers still match the file.
+static func _without_comments(text: String) -> String:
+	var kept := ""
+	var in_text := false
+	var i := 0
+	while i < text.length():
+		var character := text[i]
+		if in_text and character == "\\":
+			kept += text.substr(i, 2)
+			i += 2
+			continue
+		if character == "\"":
+			in_text = not in_text
+		elif not in_text and text.substr(i, 2) == "//":
+			var line_end := text.find("
+", i)
+			i = text.length() if line_end == -1 else line_end
+			continue
+		kept += character
+		i += 1
+	return kept
+
+
+## Every file a game reads: the game file and its decks (for reloading when one changes).
+func files_used(path: String) -> Array[String]:
+	var paths: Array[String] = [path]
+	for zone: Variant in zones.values():
+		if zone is Dictionary and zone.get("cards") is String:
+			paths.append(zone.cards)
+	return paths
 
 
 ## Wherever a list of steps goes, a single step will do: "then": "end_turn()".
