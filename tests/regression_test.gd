@@ -61,7 +61,7 @@ func hearts() -> void:
 	var total := 0.0
 	for player in range(1, 5):
 		total += game.variables["score_%d" % player]
-	check(game.variables.tricks == 13 and total == 26, "hearts hand: %d tricks, %d points" % [game.variables.tricks, total])
+	check(game.variables.tricks == 13 and total in [26.0, 78.0], "hearts hand: %d tricks, %d points (26, or 78 when someone shoots the moon)" % [game.variables.tricks, total])
 
 
 func color_match() -> void:
