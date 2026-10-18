@@ -97,6 +97,7 @@ func _refresh_views() -> void:
 		views[card].face_up = game.shows_face(card)
 		views[card].highlighted = card in game.choices and game.is_local_turn()
 		views[card].selected = card in game.selected
+		views[card].movable = game.may_handle(card)
 		views[card].marks_text = " ".join(card.marks.values().map(Game.format_value))
 
 
@@ -243,7 +244,8 @@ func _on_card_dropped(view: CardView) -> void:
 	preview_zone = null
 	_show_drop_hint(view, null)
 	if destination == source and _makes_room(source):
-		submit.call({type = "reorder", card = view.card.id, index = index})
+		if not submit.call({type = "reorder", card = view.card.id, index = index}):
+			_layout_zone(source)
 	elif destination == source or not submit.call({type = "drag", card = view.card.id, to = destination.name, index = index}):
 		_layout_zone(source)
 		_layout_zone(destination)

@@ -58,6 +58,12 @@ func _on_match_started() -> void:
 	bot = Bot.new(Net.game)
 	waiting_for = -1
 	print("  [%s] match started as seat %d with %d inputs so far" % [_role(), Net.game.local_seat, Net.game.inputs.size()])
+	var other_person := 1 if hosting else 3
+	var other_card: Card = Net.game.zones["hand_%d" % other_person].cards[0] if Net.game.zones["hand_%d" % other_person].cards else null
+	if Net.game.is_bot(Net.game.local_seat) or Net.game.is_bot(other_person):
+		print("  [%s] PROBLEM: a person's seat is played by a bot" % _role())
+	if other_card and (Net.game.shows_face(other_card) or Net.game.may_handle(other_card)):
+		print("  [%s] PROBLEM: can see or pick up the other person's cards" % _role())
 
 
 func _process(_delta: float) -> void:

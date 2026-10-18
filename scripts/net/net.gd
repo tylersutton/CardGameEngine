@@ -217,8 +217,7 @@ func _begin_match(package: Dictionary, inputs_so_far: Array) -> void:
 	if new_game.errors:
 		notice.emit("Couldn't load the host's game: " + "; ".join(new_game.errors))
 		return
-	if package.bots:
-		new_game.rules.bot.players = package.bots
+	new_game.rules.bot.players = package.bots
 	game_names = new_game.rules.player_names.duplicate()
 	new_game.rules.player_names = _seat_names()
 	var seat := my_seat()
@@ -260,7 +259,8 @@ func submit(input: Dictionary) -> bool:
 		sent.player = game.local_seat
 		return game.apply(sent)
 	_request_input.rpc_id(HOST, input)
-	return input.type != "drag" or (game.may_act(game.local_seat, input) and game.can_move(game.cards[input.card], game.zones[input.to]))
+	var may_act := game.may_act(game.local_seat, input)
+	return may_act and (input.type != "drag" or game.can_move(game.cards[input.card], game.zones[input.to]))
 
 
 @rpc("any_peer", "reliable")

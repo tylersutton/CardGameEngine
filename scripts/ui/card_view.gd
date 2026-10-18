@@ -65,6 +65,8 @@ var lift := 0.0:
 		lift = value
 		queue_redraw()
 var tween: Tween
+## Off for cards this screen's player can't move (another player's, online): they can still be clicked.
+var movable := true
 var grabbed := false
 var grab_start: Vector2
 var grab_offset: Vector2
@@ -96,7 +98,7 @@ func _gui_input(event: InputEvent) -> void:
 			_grab()
 		elif grabbed:
 			_release()
-	elif event is InputEventMouseMotion and grabbed:
+	elif event is InputEventMouseMotion and grabbed and movable:
 		global_position = get_global_mouse_position() - grab_offset
 		dragged.emit(self)
 
@@ -105,9 +107,10 @@ func _grab() -> void:
 	grabbed = true
 	grab_start = get_global_mouse_position()
 	grab_offset = grab_start - global_position
-	stop_moving()
-	get_parent().move_child(self, -1)
-	picked_up.emit(self)
+	if movable:
+		stop_moving()
+		get_parent().move_child(self, -1)
+		picked_up.emit(self)
 
 
 func stop_moving() -> void:
@@ -119,7 +122,7 @@ func _release() -> void:
 	grabbed = false
 	if get_global_mouse_position().distance_to(grab_start) < CLICK_DISTANCE:
 		clicked.emit(self)
-	else:
+	elif movable:
 		dropped.emit(self)
 
 

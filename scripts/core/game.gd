@@ -641,6 +641,11 @@ func is_bot_turn() -> bool:
 	return is_bot(current_player())
 
 
+## Whether the person at this screen may pick up the card: online, only from shared zones and their own.
+func may_handle(card: Card) -> bool:
+	return not local_seat or sandbox or zone_of(card).owner in [0, local_seat]
+
+
 ## Whether the person at this screen acts now: online, only on their seat's turn; sharing a screen, on any person's.
 func is_local_turn() -> bool:
 	return current_player() == local_seat if local_seat else not is_bot_turn()
