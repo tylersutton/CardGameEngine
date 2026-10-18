@@ -136,6 +136,10 @@ func numbers(low: int, high: int) -> Array:
 	return range(low, high + 1)
 
 
+func either(condition: bool, if_true: Variant, if_false: Variant) -> Variant:
+	return if_true if condition else if_false
+
+
 func random(low: int, high: int) -> int:
 	return game.rng.randi_range(low, high)
 

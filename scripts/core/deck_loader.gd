@@ -18,6 +18,12 @@ static func load_csv(path: String) -> Array[Card]:
 			row[headers[i]] = values[i]
 		for copy in _copies(row):
 			cards.append(Card.new(row.duplicate()))
+	var number_columns := {}
+	for column in headers:
+		if column != COUNT_COLUMN and cards.all(func(card: Card) -> bool: return Card.is_number(card.data.get(column, ""))):
+			number_columns[column] = true
+	for card in cards:
+		card.number_columns = number_columns
 	return cards
 
 

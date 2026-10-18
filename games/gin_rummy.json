@@ -6,7 +6,7 @@
 	"zones": {
 		"stock": { "label": "Stock",
 			"layout": "pile", "face": "down", "anchor": [0.08, 0.5],
-			"cards": "res://decks/gin_deck.csv",
+			"cards": "res://decks/standard_deck.csv", "columns": { "points": "min(card.value, 10)" },
 			"on_click": ["try_move(top(stock), hand)"]
 		},
 		"discard": { "label": "Discard", "layout": "pile", "anchor": [0.19, 0.5], "on_click": ["try_move(top(discard), hand)"] },

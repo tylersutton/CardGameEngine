@@ -4,7 +4,6 @@
 	"zones": {
 		"stock": { "label": "Stock", "layout": "pile", "face": "down", "anchor": [0.12, 0.85], "cards": "res://decks/standard_deck.csv", "on_click": ["trigger('turn_card')"] },
 		"waste": { "label": "Waste", "layout": "pile", "anchor": [0.24, 0.85], "on_click": [{ "if": "number(card, 'value') == 13 and free", "then": ["move(card, removed)", "trigger('check_win')"] }] },
-		"box": { "outline": false, "layout": "pile", "anchor": [-0.3, 0.5] },
 		"removed": { "label": "Removed", "layout": "pile", "face": "down", "anchor": [0.88, 0.85] },
 		"pyramid": {
 			"copies": 28, "layout": "pile", "outline": false,
@@ -28,7 +27,6 @@
 	],
 	"triggers": {
 		"start": [
-			"move(where(stock, 'name', 'Joker'), box)",
 			"shuffle(stock)",
 			{ "for": "spot", "in": "pyramid", "do": ["draw(stock, spot)"] }
 		],

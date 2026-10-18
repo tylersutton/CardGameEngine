@@ -20,7 +20,7 @@
 	"player_variables": { "alive": true },
 	"show_variables": ["phase", "result"],
 	"status": {
-		"on the table": "'' if pending == '' else '%s by %s%s' % [pending, name_of(actor), ' (Noped)' if noped else '']",
+		"on the table": "either(pending == '', '', '%s by %s%s' % [pending, name_of(actor), either(noped, ' (Noped)', '')])",
 		"cards in the deck": "count(deck)"
 	},
 	"bot": {

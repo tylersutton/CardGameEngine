@@ -4,7 +4,7 @@
 	"zones": {
 		"stock": { "label": "Stock",
 			"layout": "pile", "face": "down", "anchor": [0.08, 0.16],
-			"cards": "res://decks/gin_deck.csv",
+			"cards": "res://decks/standard_deck.csv",
 			"on_click": [{ "if": "count(stock) == 0", "then": ["draw(waste, stock, count(waste))"], "else": ["draw(stock, waste, draw_count)"] }]
 		},
 		"waste": { "label": "Waste", "layout": "pile", "spread": 3, "anchor": [0.21, 0.16], "on_double_click": ["try_move(card, foundation)"] },

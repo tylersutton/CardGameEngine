@@ -6,7 +6,8 @@
 	"teams": [[1, 3], [2, 4]],
 	"seats": [[0.215, 0.86]],
 	"zones": {
-		"deck": { "outline": false, "layout": "pile", "face": "down", "anchor": [0.5, 0.5], "cards": "res://decks/spades_deck.csv" },
+		"deck": { "outline": false, "layout": "pile", "face": "down", "anchor": [0.5, 0.5], "cards": "res://decks/standard_deck.csv",
+			"columns": { "value": "either(card.rank == 'A', 14, card.value)", "power": "card.value + either(card.suit == 'Spades', 100, 0)" } },
 		"hand": {
 			"per_player": true, "layout": "fan", "face": "private", "width": 0.45,
 			"anchor": [0.5, 0.86]

@@ -5,7 +5,7 @@
 	"player_names": ["You", "Opponent"],
 	"seats": [[0.1, 0.72], [0.1, 0.28]],
 	"zones": {
-		"deck": { "label": "Deck", "layout": "pile", "face": "down", "anchor": [0.08, 0.5], "cards": "res://decks/cribbage_deck.csv" },
+		"deck": { "label": "Deck", "layout": "pile", "face": "down", "anchor": [0.08, 0.5], "cards": "res://decks/standard_deck.csv", "columns": { "order": "card.value", "value": "min(card.value, 10)" } },
 		"starter": { "label": "Starter", "layout": "pile", "anchor": [0.19, 0.5] },
 		"pegging": { "label": "Play to 31", "layout": "row", "width": 0.4, "anchor": [0.5, 0.5] },
 		"pegged": { "label": "Played", "layout": "pile", "face": "down", "anchor": [0.81, 0.5] },

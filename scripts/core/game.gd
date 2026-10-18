@@ -116,6 +116,8 @@ func _init(path: String, seed := -1, files := {}) -> void:
 			variables[team_variable] = rules.team_variables[name]
 	meld_rules = Melds.new(rules.melds)
 	compiler.check_and_compile()
+	if errors.is_empty():
+		_compute_columns()
 
 
 func start() -> void:
@@ -1074,7 +1076,21 @@ func _load_cards(zone: Zone, path: String) -> void:
 		errors.append("Deck not found: " + path)
 
 
-func runcard_effect(card: Card, zone_kind: String) -> void:
+## "columns" next to a zone's "cards": columns added or changed for every card as the game loads, each worked
+## out from the card (in order, so a later column can use an earlier one), e.g. "points": "min(card.value, 10)".
+func _compute_columns() -> void:
+	for zone: Zone in zones.values():
+		var columns: Dictionary = rules.zones[zone.kind].get("columns", {})
+		for column in columns:
+			for card in zone.cards:
+				card.data[column] = format_value(evaluate(columns[column], card))
+			if zone.cards and zone.cards.all(func(card: Card) -> bool: return Card.is_number(card.data[column])):
+				zone.cards[0].number_columns[column] = true
+			elif zone.cards:
+				zone.cards[0].number_columns.erase(column)
+
+
+func run_card_effect(card: Card, zone_kind: String) -> void:
 	run(card_effect(card, zone_kind), card)
 
 

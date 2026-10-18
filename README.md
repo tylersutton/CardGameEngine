@@ -6,18 +6,18 @@ Included games:
 
 | Game | Files | Shows off |
 |---|---|---|
-| Gin Rummy (default) | `games/gin_rummy.json`, `decks/gin_deck.csv` | Turn phases, melds, scoring, a match to 100, a bot opponent |
+| Gin Rummy (default) | `games/gin_rummy.json`, `decks/standard_deck.csv` | Turn phases, melds, scoring, a match to 100, a bot opponent |
 | Dominion | `games/dominion.json`, `decks/dominion.csv` | Deckbuilding: a supply of 7 basic and 10 kingdom piles (pick the kingdom from 17 cards in the game file), per-player decks that reshuffle, actions/buys/coins, choices like Cellar, Chapel, Remodel, Mine and Throne Room, attacks (Militia, Witch) answered by the other player, Moat reactions, rules text with hover zoom, and a Big Money bot. The default kingdom is the official First Game set |
-| Hearts | `games/hearts.json`, `decks/hearts_deck.csv` | Four players (you and three bots), passing three cards in a rotating direction, following suit, winning tricks, shooting the moon, a game to 100 |
-| Spades | `games/spades.json`, `decks/spades_deck.csv` | Partnerships (`teams`): bidding, team scores and bags, trump, nil bids, a game to 500 |
-| Cribbage | `games/cribbage.json`, `decks/cribbage_deck.csv` | Scoring combinations: fifteens, pairs and runs in pegging and in the show, the crib, go, nobs and flushes, a game to 121 |
+| Hearts | `games/hearts.json`, `decks/standard_deck.csv` | Four players (you and three bots), passing three cards in a rotating direction, following suit, winning tricks, shooting the moon, a game to 100 |
+| Spades | `games/spades.json`, `decks/standard_deck.csv` | Partnerships (`teams`): bidding, team scores and bags, trump, nil bids, a game to 500 |
+| Cribbage | `games/cribbage.json`, `decks/standard_deck.csv` | Scoring combinations: fifteens, pairs and runs in pegging and in the show, the crib, go, nobs and flushes, a game to 121 |
 | Kaboom | `games/kaboom.json`, `decks/kaboom_deck.csv` | Responding to other players' cards (`ask_others`): Nope chains, Steal (the target picks what to give), Peek, and a bomb-dodging elimination game |
 | Pyramid | `games/pyramid.json`, `decks/standard_deck.csv` | Solitaire with overlapping cards (`covered_by`): pair uncovered cards that add up to 13 by dragging one onto the other |
 | Goofspiel | `games/goofspiel.json`, `decks/standard_deck.csv` | Everyone bids at once (`ask_all`): secret face-down bids, a reveal, ties carrying the prize over |
 | Fireworks | `games/fireworks.json`, `decks/fireworks_deck.csv` | A cooperative Hanabi-style game: you hold your cards facing away (`face: "others"`), clues `mark` your partner's cards, and the bot partner reasons only from what it's been told |
-| President | `games/president.json`, `decks/president_deck.csv` | Playing several cards at once (`allow` checks they're a valid set), a single 2 that beats anything and clears the table, matching the last play to skip the next player, passing, finishing order and titles, the card exchange between President and Scum |
+| President | `games/president.json`, `decks/standard_deck.csv` | Playing several cards at once (`allow` checks they're a valid set), a single 2 that beats anything and clears the table, matching the last play to skip the next player, passing, finishing order and titles, the card exchange between President and Scum |
 | Color Match | `games/color_match.json`, `decks/color_match.csv` | A small two-player game with a custom deck, hidden hands, card effects, and wild cards that ask for a color. Built step by step in the tutorial below |
-| Solitaire (Klondike) | `games/solitaire.json`, `decks/gin_deck.csv` | Cascading columns, dragging whole stacks, groups of zones (7 columns, 4 foundations), double-click to send a card up, draw one or three |
+| Solitaire (Klondike) | `games/solitaire.json`, `decks/standard_deck.csv` | Cascading columns, dragging whole stacks, groups of zones (7 columns, 4 foundations), double-click to send a card up, draw one or three |
 | Standard deck | `games/standard.json`, `decks/standard_deck.csv` | A free-play sandbox: draw, play, discard, sort |
 
 ## Quick start
@@ -241,6 +241,7 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 | `width` | Widest a `row`/`fan` may spread, as a fraction of the table width (of its height, for a zone turned sideways) | 800 pixels |
 | `rotation` | Turn the zone, in degrees, e.g. `90` for a hand on the left side of the table | `0` |
 | `cards` | A deck to start with, e.g. `"res://decks/my_deck.csv"` | empty |
+| `columns` | With `cards`: columns to add or change on every card as the game loads, each an expression about `card`, worked out in order. E.g. Hearts uses the standard deck with `{ "value": "either(card.rank == 'A', 14, card.value)", "points": "either(card.name == 'Q♠', 13, int(card.suit == 'Hearts'))" }` (aces high, and the scoring cards) | |
 | `on_click` | Steps run when a card in this zone is clicked (`card` is the clicked card), or when the empty zone is clicked (`card` is `null`) | none |
 | `on_double_click` | Steps run when a card in this zone is double-clicked, e.g. solitaire's `["try_move(card, foundation)"]`. (The first click of a double-click also counts as a single click.) | none |
 | `spread` | For a `pile`: fan out its top few cards sideways so they can be read, e.g. `3` for a draw-three solitaire waste | `0` |
@@ -434,9 +435,9 @@ You can use:
 - **Zone and variable names** directly.
 - **`card`**: the card involved (dragged, clicked, chosen, or whose effect is running). It's `null` when there isn't one.
 - **`choice`**: what was picked in a `choose` action: a card, a list of cards, or a value.
-- **Card columns,** as `card.<column>`, e.g. `card.suit == lead` or `card.value > 5`. Numbers come back as numbers (`"12"` is 12) and everything else as text. `card.data.<column>` is always text: use it for a column that mixes numbers and text (like `2` and `+2`), since a number can't be compared with text.
+- **Card columns,** as `card.<column>`, e.g. `card.suit == lead` or `card.value > 5`. A column where every card has a number (`value`) gives numbers; a column with any text in it (`rank`: 2 ... 10, J, Q, K, A) gives text for every card, so `card.rank == 'A'` and `card.rank == '10'` both work. `card.data.<column>` is always the text as written.
 - **Operators:** `==`, `!=`, `<`, `>`, `<=`, `>=`, `+`, `-`, `*`, `/`, `and`, `or`, `not`, and parentheses.
-- **Either-or values:** `'out' if count(hand) == 0 else 'in'`. Put parentheses around a condition that uses `and`/`or`.
+- **Either-or values:** `either(count(hand) == 0, 'out', 'in')`. (`x if condition else y` doesn't work in steps.)
 - **Text with numbers in it:** `'bid %d, score %d' % [team_bid_1, team_score_1]`, handy in [`status`](#status).
 - **Lists:** `[1, 2]`, joined with `+` (`finish_order + [player]`) and read by position from 0 (`ranking[0]`).
 - **Math:** `abs`, `min`, `max`, `floor`, `ceil`, `round`, and `int` (which also turns `true`/`false` into `1`/`0`, e.g. `5 * int(team_winning)`).
@@ -579,6 +580,8 @@ Wherever a building block takes `cards`, you can pass a zone, a single card, or 
 - **Look at `games/gin_rummy.json`** for a full game: turn phases, knocking, scoring, and a match to 100. `games/solitaire.json` shows columns, stacks, and groups of zones. `games/cribbage.json` scores combinations, and `games/spades.json` has teams.
 
 ## Deck reference
+
+`decks/standard_deck.csv` is an ordinary 52-card deck: `name` (`A♠`), `rank` (`A`, `2` ... `10`, `J`, `Q`, `K`), `suit`, `color` (`Red`/`Black`) and `value` (1 for an ace up to 13 for a king). Most card games can start from it, adding their own numbers with [`columns`](#zones) rather than making a new deck.
 
 - **First row:** column names. Each row after it is one card; every column becomes readable as `card.data.<column>`.
 - **`name`:** the card's title in the log.

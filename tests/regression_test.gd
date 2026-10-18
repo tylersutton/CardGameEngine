@@ -14,6 +14,7 @@ func _init() -> void:
 	hearts()
 	color_match()
 	solitaire()
+	card_effects()
 	print("REGRESSION: ", "all passed" if problems.is_empty() else "FAILED %s" % problems)
 	quit(0 if problems.is_empty() else 1)
 
@@ -102,3 +103,14 @@ func solitaire() -> void:
 	check(game.variables.result == "You win!", "solitaire auto-finish wins")
 	game.undo()
 	check(Actions.cards_in(game.zone_groups.foundation).is_empty(), "solitaire undo")
+
+
+## run_effect replays a card's effect (Dominion's Throne Room): a Smithy's should draw 3.
+func card_effects() -> void:
+	var game := Game.new("res://games/dominion.json")
+	watch(game)
+	game.start()
+	var smithy: Card = game.cards.filter(func(card: Card) -> bool: return card.title == "Smithy")[0]
+	var hand_before: int = game.zones.hand_1.cards.size()
+	Actions.new(game).run_effect(smithy, "play")
+	check(game.zones.hand_1.cards.size() == hand_before + 3, "run_effect: Smithy drew %d" % (game.zones.hand_1.cards.size() - hand_before))

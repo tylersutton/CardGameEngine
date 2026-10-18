@@ -6,11 +6,13 @@ extends RefCounted
 const CONDITIONAL_KEYS := ["if", "then", "else"]
 const LOOP_KEYS := ["for", "in", "do"]
 const WHILE_KEYS := ["while", "do"]
-const KEYWORDS := ["true", "false", "null", "and", "or", "not", "if", "else"]
+const KEYWORDS := ["true", "false", "null", "and", "or", "not"]
+## Godot's Expression reads "x if c else y" as just x, so it's refused with a pointer to either().
+const TERNARY_WORDS := ["if", "else"]
 const MATH_FUNCTIONS := ["abs", "min", "max", "floor", "ceil", "round", "int"]
 const VIEWER_BLOCK := "viewer("
 const ZONE_KEYS := ["label", "labels", "outline", "layout", "face", "anchor", "anchors", "width", "rotation", "rotations", "cards",
-	"on_click", "on_double_click", "spread", "drag", "per_player", "copies", "grid", "group", "covered_by"]
+	"on_click", "on_double_click", "spread", "drag", "per_player", "copies", "grid", "group", "covered_by", "columns"]
 const CARD_FACE_KEYS := ["corner", "title", "body", "text", "color", "zoom"]
 const TYPE_DESCRIPTIONS := {TYPE_STRING: "text", TYPE_ARRAY: "a list", TYPE_FLOAT: "a number", TYPE_BOOL: "true or false"}
 
@@ -45,6 +47,11 @@ func check_zone_definitions() -> void:
 		for key in definition:
 			if key not in ZONE_KEYS:
 				errors.append("Zone \"%s\": unknown key \"%s\"" % [zone_kind, key])
+		var columns: Variant = definition.get("columns", {})
+		if columns is not Dictionary or columns.values().any(func(formula: Variant) -> bool: return formula is not String):
+			errors.append("Zone \"%s\": \"columns\" should be column names with expressions, e.g. { \"points\": \"min(card.value, 10)\" }" % zone_kind)
+		elif columns and not definition.has("cards"):
+			errors.append("Zone \"%s\": \"columns\" works out columns for its \"cards\", so it needs \"cards\"" % zone_kind)
 		var face: Variant = definition.get("face", Zone.FACE_UP)
 		if face not in Zone.FACES and face not in Zone.PRIVATE_ALIASES:
 			errors.append("Zone \"%s\": \"face\" should be %s" % [zone_kind, ", ".join(Zone.FACES)])
@@ -189,6 +196,8 @@ func _compile_all_steps() -> void:
 		conditions.append(rule.get("when", ""))
 	conditions.append_array(rules.status.values())
 	conditions.append_array(rules.conditions.values())
+	for zone: Variant in rules.zones.values():
+		conditions.append_array(zone.get("columns", {}).values())
 	conditions.append(rules.bot.get("prefer", ""))
 	for zone: Zone in game.zones.values():
 		step_lists.append(zone.on_click)
@@ -398,6 +407,10 @@ func _problems_in(step: String, input_names: PackedStringArray) -> Array[String]
 		var name := found.get_string(1)
 		var is_call := found.get_string(2) != ""
 		if name in KEYWORDS or (is_call and name in MATH_FUNCTIONS):
+			continue
+		if name in TERNARY_WORDS:
+			if "either" not in problems.reduce(func(text: String, problem: String) -> String: return text + problem, ""):
+				problems.append("\"x if condition else y\" doesn't work in steps: use either(condition, x, y)")
 			continue
 		if is_call and name not in building_blocks:
 			problems.append("unknown building block \"%s\"" % name)
