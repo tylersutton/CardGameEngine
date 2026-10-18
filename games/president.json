@@ -3,7 +3,7 @@
 	"description": "Four players, you against three bots. Play a single, pair, triple or four of a kind that beats or matches the last one (matching skips the next player), or pass. 2s are high, and a single 2 beats anything (except as the first play of a hand). Get rid of your cards first to become President.",
 	"players": 4,
 	"player_names": ["You", "West", "North", "East"],
-	"seats": [[0.236, 0.86]],
+	"seats": [[0.215, 0.86]],
 	"zones": {
 		"deck": { "outline": false, "layout": "pile", "face": "down", "anchor": [0.7, 0.5], "cards": "res://decks/president_deck.csv" },
 		"hand": {

@@ -4,7 +4,7 @@
 	"players": 4,
 	"player_names": ["You", "West", "North", "East"],
 	"teams": [[1, 3], [2, 4]],
-	"seats": [[0.236, 0.86]],
+	"seats": [[0.215, 0.86]],
 	"zones": {
 		"deck": { "outline": false, "layout": "pile", "face": "down", "anchor": [0.5, 0.5], "cards": "res://decks/spades_deck.csv" },
 		"hand": {
@@ -23,8 +23,10 @@
 	"show_variables": ["phase", "result"],
 	"status": {
 		"bids": "'%s %d, %s %d, %s %d, %s %d' % [name_of(1), bid_1, name_of(2), bid_2, name_of(3), bid_3, name_of(4), bid_4]",
-		"team 1": "'%s & %s: bid %d, won %d, score %d, bags %d' % [name_of(1), name_of(3), team_bid_1, count(won_1) / 4 + count(won_3) / 4, team_score_1, bags_1]",
-		"team 2": "'%s & %s: bid %d, won %d, score %d, bags %d' % [name_of(2), name_of(4), team_bid_2, count(won_2) / 4 + count(won_4) / 4, team_score_2, bags_2]"
+		"team 1": "'%s & %s: bid %d, won %d' % [name_of(1), name_of(3), team_bid_1, count(won_1) / 4 + count(won_3) / 4]",
+		"team 1 score": "'%d (%d bags)' % [team_score_1, bags_1]",
+		"team 2": "'%s & %s: bid %d, won %d' % [name_of(2), name_of(4), team_bid_2, count(won_2) / 4 + count(won_4) / 4]",
+		"team 2 score": "'%d (%d bags)' % [team_score_2, bags_2]"
 	},
 	"bot": { "players": [2, 3, 4], "prefer": "10 * count(team_won) + 5 * int(team_winning) - 0.2 * sum(played, 'value')" },
 	"conditions": {
