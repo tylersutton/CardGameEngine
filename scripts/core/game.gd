@@ -392,6 +392,13 @@ func zone_empty(zone: Zone) -> void:
 	variables[PLAYER_VARIABLE] = turn
 
 
+## Whether any of the copies listed in the zone's "covered_by" still holds a card (Pyramid, TriPeaks).
+func covered(zone: Zone) -> bool:
+	return zone.covered_by.any(func(number: float) -> bool:
+		var covering: Zone = zones.get("%s_%d" % [zone.kind, int(number)])
+		return covering != null and not covering.is_empty())
+
+
 func matching(cards: Array, condition: String) -> Array:
 	if condition not in rules.conditions:
 		report_failure("No condition named \"%s\" in \"conditions\"" % condition)
@@ -801,6 +808,8 @@ func _rules_between(source: Zone, destination: Zone) -> Array:
 
 
 func _names(rule_zone: Variant, zone: Zone) -> bool:
+	if rule_zone is Array:
+		return rule_zone.any(func(each: Variant) -> bool: return _names(each, zone))
 	return rule_zone == null or _resolve(rule_zone) == zone.name or (rule_zone in zone_groups and zone in zone_groups[rule_zone])
 
 
@@ -1030,6 +1039,9 @@ func _copies_of(zone_kind: String, definition: Dictionary) -> int:
 	if grid != null and not (grid is Dictionary and grid.get("columns") is float and grid.get("spacing") is Array and grid.spacing.size() == 2):
 		errors.append("Zone \"%s\": \"grid\" should look like { \"columns\": 5, \"spacing\": [0.09, 0.19] }" % zone_kind)
 		return 0
+	var covering: Variant = definition.get("covered_by")
+	if covering != null and not (covering is Array and covering.size() == copies and covering.all(func(each: Variant) -> bool: return each is Array)):
+		errors.append("Zone \"%s\": \"covered_by\" needs one list of copy numbers per copy (%d)" % [zone_kind, copies])
 	if definition.has("group") and copies == 0:
 		errors.append("Zone \"%s\": \"group\" needs \"copies\" or \"per_player\"" % zone_kind)
 	if copies and definition.has("anchors") and definition.anchors.size() < copies:
@@ -1095,11 +1107,12 @@ func _check_actions_and_moves() -> void:
 				errors.append("Action \"%s\": \"%s\" needs \"choose\"" % [action_name, key])
 	for rule in rules.moves:
 		var label := "Move %s" % JSON.stringify(rule)
-		_check_entry(label, rule, {"from": TYPE_STRING, "to": TYPE_STRING, "when": TYPE_STRING, "then": TYPE_ARRAY})
+		_check_entry(label, rule, {"from": [TYPE_STRING, TYPE_ARRAY], "to": [TYPE_STRING, TYPE_ARRAY], "when": TYPE_STRING, "then": TYPE_ARRAY})
 		for end in ["from", "to"]:
-			var zone_name: Variant = rule.get(end) if rule is Dictionary else null
-			if zone_name is String and zone_name not in zones and zone_name not in _aliases() and zone_name not in zone_groups:
-				errors.append("%s: unknown zone \"%s\"" % [label, zone_name])
+			var zone_names: Variant = rule.get(end) if rule is Dictionary else null
+			for zone_name: Variant in zone_names if zone_names is Array else [zone_names]:
+				if zone_name is String and zone_name not in zones and zone_name not in _aliases() and zone_name not in zone_groups:
+					errors.append("%s: unknown zone \"%s\"" % [label, zone_name])
 	for list_name in ["seats", "player_names"]:
 		var list: Array = rules.get(list_name)
 		if list and list.size() < rules.players:

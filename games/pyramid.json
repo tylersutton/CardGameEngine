@@ -1,0 +1,44 @@
+{
+	"title": "Pyramid",
+	"description": "Solitaire. Clear the pyramid by pairing two uncovered cards that add up to 13: drag one onto the other. Kings are 13 on their own: click them. Queens are 12, Jacks 11, Aces 1. Click the stock to turn a card onto the waste; you can go through the stock three times.",
+	"zones": {
+		"stock": { "label": "Stock", "layout": "pile", "face": "down", "anchor": [0.12, 0.85], "cards": "res://decks/standard_deck.csv", "on_click": ["trigger('turn_card')"] },
+		"waste": { "label": "Waste", "layout": "pile", "anchor": [0.24, 0.85], "on_click": ["trigger('king')"] },
+		"box": { "outline": false, "layout": "pile", "anchor": [-0.3, 0.5] },
+		"removed": { "label": "Removed", "layout": "pile", "face": "down", "anchor": [0.88, 0.85] },
+		"pyramid": {
+			"copies": 28, "layout": "pile", "outline": false,
+			"anchors": [[0.5, 0.1], [0.4625, 0.185], [0.5375, 0.185], [0.425, 0.27], [0.5, 0.27], [0.575, 0.27], [0.3875, 0.355], [0.4625, 0.355], [0.5375, 0.355], [0.6125, 0.355], [0.35, 0.44], [0.425, 0.44], [0.5, 0.44], [0.575, 0.44], [0.65, 0.44], [0.3125, 0.525], [0.3875, 0.525], [0.4625, 0.525], [0.5375, 0.525], [0.6125, 0.525], [0.6875, 0.525], [0.275, 0.61], [0.35, 0.61], [0.425, 0.61], [0.5, 0.61], [0.575, 0.61], [0.65, 0.61], [0.725, 0.61]],
+			"covered_by": [[2, 3], [4, 5], [5, 6], [7, 8], [8, 9], [9, 10], [11, 12], [12, 13], [13, 14], [14, 15], [16, 17], [17, 18], [18, 19], [19, 20], [20, 21], [22, 23], [23, 24], [24, 25], [25, 26], [26, 27], [27, 28], [], [], [], [], [], [], []],
+			"on_click": ["trigger('king')"]
+		}
+	},
+	"variables": { "passes": 1, "result": "" },
+	"status": { "cards left in the pyramid": "count(pyramid)" },
+	"conditions": {
+		"free": "not covered(card)",
+		"makes_13": "number(card, 'value') + number(top(to), 'value') == 13"
+	},
+	"moves": [
+		{
+			"from": ["pyramid", "waste"], "to": ["pyramid", "waste"],
+			"when": "free and count(to) > 0 and not covered(to) and makes_13",
+			"then": ["move(card, removed)", "move(top(to), removed)", "trigger('check_win')"]
+		}
+	],
+	"triggers": {
+		"start": [
+			"move(where(stock, 'name', 'Joker'), box)",
+			"shuffle(stock)",
+			{ "for": "spot", "in": "pyramid", "do": ["draw(stock, spot)"] }
+		],
+		"turn_card": [
+			{ "if": "count(stock) > 0", "then": ["draw(stock, waste)"], "else": [
+				{ "if": "passes < 3", "then": ["draw(waste, stock, count(waste))", "assign('passes', passes + 1)"] }
+			] }
+		],
+		"king": [{ "if": "number(card, 'value') == 13 and free", "then": ["move(card, removed)", "trigger('check_win')"] }],
+		"check_win": [{ "if": "count(pyramid) == 0", "then": ["assign('result', 'You win!')"] }]
+	},
+	"card_face": { "corner": "name", "title": "name", "body": ["suit"], "color": "color" }
+}

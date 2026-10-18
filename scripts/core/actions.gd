@@ -164,6 +164,11 @@ func movable(cards: Variant, to: Variant) -> Array:
 	return game.movable(cards_in(cards), zones_in(to))
 
 
+func covered(zone_or_card: Variant) -> bool:
+	var zone: Zone = game.zone_of(zone_or_card) if zone_or_card is Card else zone_or_card
+	return zone != null and game.covered(zone)
+
+
 func matching(cards: Variant, condition: String) -> Array:
 	return game.matching(cards_in(cards), condition)
 

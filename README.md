@@ -11,6 +11,7 @@ Included games:
 | Hearts | `games/hearts.json`, `decks/hearts_deck.csv` | Four players (you and three bots), passing three cards in a rotating direction, following suit, winning tricks, shooting the moon, a game to 100 |
 | Spades | `games/spades.json`, `decks/spades_deck.csv` | Partnerships (`teams`): bidding, team scores and bags, trump, nil bids, a game to 500 |
 | Cribbage | `games/cribbage.json`, `decks/cribbage_deck.csv` | Scoring combinations: fifteens, pairs and runs in pegging and in the show, the crib, go, nobs and flushes, a game to 121 |
+| Pyramid | `games/pyramid.json`, `decks/standard_deck.csv` | Solitaire with overlapping cards (`covered_by`): pair uncovered cards that add up to 13 by dragging one onto the other |
 | Goofspiel | `games/goofspiel.json`, `decks/standard_deck.csv` | Everyone bids at once (`ask_all`): secret face-down bids, a reveal, ties carrying the prize over |
 | Fireworks | `games/fireworks.json`, `decks/fireworks_deck.csv` | A cooperative Hanabi-style game: you hold your cards facing away (`face: "others"`), clues `mark` your partner's cards, and the bot partner reasons only from what it's been told |
 | President | `games/president.json`, `decks/president_deck.csv` | Playing several cards at once (`allow` checks they're a valid set), a single 2 that beats anything and clears the table, matching the last play to skip the next player, passing, finishing order and titles, the card exchange between President and Scum |
@@ -240,6 +241,7 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 | `anchors` | With `per_player` or `copies`, one `[x, y]` position each | |
 | `labels` | With `per_player` or `copies`, one label each, e.g. `["Red", "Yellow", "Green"]` | |
 | `rotations` | With `per_player` or `copies`, one rotation each, e.g. `[0, 90, 180, 270]` for four players around a table | |
+| `covered_by` | With `copies`, which copies lie on top of each one, as one list of copy numbers per copy, e.g. Pyramid's `[[2, 3], [4, 5], ...]` (copy 1 is covered by 2 and 3). `covered(zone)` is then true while any of those still hold a card | |
 | `grid` | With `copies`, instead of `anchors`: lay the copies out in rows from `anchor`, e.g. `{ "columns": 5, "spacing": [0.09, -0.19] }` puts 5 per row, 0.09 apart, each row 0.19 higher than the last | |
 | `group` | With `copies`, also put them in a group with this name, shared with other zones that name it. Dominion's `basic_pile` and `kingdom_pile` copies are both in `"group": "supply"`, so `tops(supply)` and `"from": "supply"` cover all 17 piles | |
 
@@ -267,7 +269,7 @@ A list of allowed drags. Each rule has:
 
 | Key | Meaning |
 |---|---|
-| `from`, `to` | Zone names, or the name of a group of `copies` to match any of them. Leave one out to mean "any zone". |
+| `from`, `to` | Zone names, or the name of a group of `copies` to match any of them, or a list of those (`["pyramid", "waste"]`). Leave one out to mean "any zone". |
 | `when` | Condition that must be true. |
 | `then` | Steps to run after the move. |
 
@@ -522,6 +524,7 @@ To repeat steps while something is true, use a `while` step:
 | `tops(zones)` | The top card of each zone in a list or group, e.g. `matching(tops(supply), 'costs_up_to_4')` to choose a card to gain |
 | `matching(cards, 'condition')` | The cards for which a named [condition](#conditions) holds, checked with each card as `card`, e.g. `matching(hand, 'is_treasure')` with `"is_treasure": "card.data.type == 'Treasure'"` |
 | `face_down(cards)` | The cards that are face down, e.g. `flip(face_down(top(from)))` turns the new top card up only if it's down |
+| `covered(zone)` | Whether a card lies on it, by the zone's [`covered_by`](#zones). Also takes a card, meaning the zone it's in: `not covered(card)` in a move rule means "only uncovered cards" |
 | `mark_of(card, 'key')` | A card's mark, or `null` if it has none, e.g. `mark_of(card, 'damage') >= 3` |
 | `last(cards, amount)` | The last `amount` cards of a zone or list (the top of a pile), e.g. the cards just played: `last(pegging, 3)` |
 | `team(player)` | A player's team number (needs [`teams`](#players-variables-player_variables)) |

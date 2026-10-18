@@ -24,6 +24,7 @@ var drags_stack: bool
 var spread: int
 var on_click: Array
 var on_double_click: Array
+var covered_by: Array = []
 var cards: Array[Card] = []
 var sort_columns: Array[String] = []
 
@@ -50,6 +51,9 @@ func _init(zone_kind: String, definition: Dictionary, number := 0) -> void:
 	spread = int(definition.get("spread", 0))
 	on_click = definition.get("on_click", [])
 	on_double_click = definition.get("on_double_click", [])
+	var covering: Array = definition.get("covered_by", [])
+	if number and covering.size() >= number:
+		covered_by = covering[number - 1]
 
 
 func add(card: Card) -> void:
