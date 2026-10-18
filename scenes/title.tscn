@@ -120,6 +120,12 @@ custom_minimum_size = Vector2(120, 44)
 layout_mode = 2
 text = "Edit file"
 
+[node name="OpenEditorButton" type="Button" parent="Margin/Column/Panes/Details/DetailsMargin/DetailsColumn/DetailsButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 44)
+layout_mode = 2
+text = "Open in editor"
+
 [node name="Play" type="Button" parent="Margin/Column/Panes/Details/DetailsMargin/DetailsColumn/DetailsButtons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 44)

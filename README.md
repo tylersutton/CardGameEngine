@@ -58,6 +58,17 @@ Press **Play online...** on the title screen.
 
 During the match each player sees the table from their own seat: their hand and zones at the bottom, where seat 1's are in the game file, and everyone else moved round the table to match (so in Hearts the next player is always on your left). Each player sees only their own hidden cards, and acts only on their own turn. Bots are named by seat ("Player 2 (bot)"). Bots run on the host's computer. **Undo** asks everyone else at the table first. Reload and Sandbox are off. If someone drops out, their seat shows "(away)" and the game waits; they get their seat back by joining again with the same name. Pressing **Games** leaves the match (if the host leaves, it ends for everyone).
 
+## The game editor
+
+Select a game on the title screen and press **Open in editor** (**New game...** opens its new game there too). The editor changes the same game file you'd edit by hand, keeping your comments and layout, and only writes it when you press **Save**.
+
+- **Left:** the sections of the game file, and the entries in the chosen one (e.g. the zones in **Table**).
+- **Middle:** the table. In **Table**, every zone is outlined and named: click one to select it, drag it to move it. A per-player zone moves seat 1's spot (the others follow round the table), and a grid of copies moves as a whole. Switch on **Play** to play the game as it stands, unsaved changes included.
+- **Right:** everything about the selected entry, with a line of help under each setting. **×** takes a setting out, back to its default. A zone's **note** is the `//` comment above it in the file.
+- **Deck:** the deck as a table, one row per card, with the selected card drawn using the game's card face. Add, copy and remove cards and columns; the card face settings are beside it.
+- **Bottom:** problems with the game, checked as you edit. Double-click one to go to what it's about.
+- **Undo** and **Redo** (Ctrl+Z, Ctrl+Y) step through your edits. **Games** goes back to the title screen (asking first if there are unsaved changes).
+
 ## Tutorial: making a game
 
 We'll build **Color Match**, a small UNO-like game. It's in the project already, so you can compare as you go. (For a quicker start on your own idea, **New game...** on the title screen writes a small playable game file to change, using the same pieces.)
@@ -614,6 +625,7 @@ Other places to look:
 - `scripts/ui/`: the table and side panel.
 - `scripts/net/net.gd`: online play (the `Net` autoload): the lobby, sending inputs through the host, undo requests, rejoining.
 - `tests/regression_test.gd`: loads every game and plays a few with bots. Run it after changing rules or the engine: `godot --headless -s tests/regression_test.gd`.
+- `tests/editor_test.gd`: checks the editor keeps game files exactly as written while editing them. Run `godot --headless -s tests/editor_test.gd`.
 - `tests/ui_test.tscn`: opens the title screen, the lobby, and every game on the real table with bots playing. Run `godot --headless res://tests/ui_test.tscn`.
 - `tests/determinism_test.gd`: plays every game and checks matches replay exactly. Run it after engine changes: `godot --headless -s tests/determinism_test.gd`.
 - `tests/net_test.tscn`: a host and a guest play a hand of Hearts over the network, with an undo, a rejoin and a catch-up. Run `godot --headless res://tests/net_test.tscn -- host` and, in a second terminal, the same with `-- guest`; the two final state numbers must match.

@@ -46,6 +46,32 @@ static func _column_named(headers: PackedStringArray, wanted: String) -> String:
 	return wanted
 
 
+## A deck's rows as lists of text (the first row is the column names), e.g. for the editor's deck table.
+static func rows(text: String) -> Array[PackedStringArray]:
+	var path := RECEIVED_DECK % OS.get_process_id()
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	file.store_string(text)
+	file.close()
+	file = FileAccess.open(path, FileAccess.READ)
+	var found: Array[PackedStringArray] = []
+	while not file.eof_reached():
+		var row := file.get_csv_line()
+		if not (row.size() == 1 and row[0].is_empty()):
+			found.append(row)
+	file.close()
+	DirAccess.remove_absolute(path)
+	return found
+
+
+## Rows back into CSV text, quoting values that need it.
+static func to_csv(table: Array) -> String:
+	var lines := table.map(func(row: PackedStringArray) -> String:
+		return ",".join(Array(row).map(func(value: String) -> String:
+			var needs_quotes := value.contains(",") or value.contains("\"") or value.contains("\n")
+			return "\"%s\"" % value.replace("\"", "\"\"") if needs_quotes else value)))
+	return "\n".join(lines) + "\n"
+
+
 ## For a deck received as text: Godot only reads CSV (with its quoted fields) from files, so it goes through one.
 ## Each running copy uses its own file, since copies on one computer share user://.
 static func parse_csv(text: String) -> Array[Card]:

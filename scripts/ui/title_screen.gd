@@ -2,6 +2,7 @@ extends Control
 
 const MAIN_SCENE := preload("res://scenes/main.tscn")
 const LOBBY_SCENE := "res://scenes/lobby.tscn"
+const EDITOR_SCENE := preload("res://scenes/editor.tscn")
 const DECKS_FOLDER := "res://decks/"
 const TEMPLATES := {1: "res://templates/new_solo_game.jsonc", 2: "res://templates/new_game.jsonc"}
 const MAX_PLAYERS := 6
@@ -20,6 +21,7 @@ func _ready() -> void:
 	%OnlineButton.pressed.connect(func() -> void: get_tree().change_scene_to_file(LOBBY_SCENE))
 	%NewGameButton.pressed.connect(_ask_for_new_game)
 	%EditButton.pressed.connect(func() -> void: OS.shell_open(ProjectSettings.globalize_path(selected_path)))
+	%OpenEditorButton.pressed.connect(func() -> void: _open_editor(selected_path))
 	_list_games()
 
 
@@ -86,7 +88,7 @@ func _create_game(title: String, players: int, deck: String) -> void:
 		player_names = JSON.stringify(SEAT_NAMES.slice(0, players)), bot_players = JSON.stringify(range(2, players + 1)),
 	}))
 	file.close()
-	_list_games(path)
+	_open_editor(path)
 
 
 func _fit_window_to_screen() -> void:
@@ -138,6 +140,14 @@ static func _selected_box() -> StyleBoxFlat:
 	box.set_corner_radius_all(4)
 	box.content_margin_left = 4
 	return box
+
+
+func _open_editor(path: String) -> void:
+	var editor := EDITOR_SCENE.instantiate()
+	editor.file_path = path
+	get_tree().root.add_child(editor)
+	get_tree().current_scene = editor
+	queue_free()
 
 
 func _play(path: String) -> void:

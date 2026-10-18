@@ -258,7 +258,7 @@ func _on_card_dropped(view: CardView) -> void:
 func _gui_input(event: InputEvent) -> void:
 	if game and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		for zone: Zone in game.zones.values():
-			if zone.is_empty() and _slot(zone).has_point(event.position):
+			if zone.is_empty() and slot_rect(zone).has_point(event.position):
 				submit.call({type = "click_empty", zone = zone.name})
 
 
@@ -329,7 +329,8 @@ func _seat_spot(seat: int) -> Vector2:
 	return Vector2(seats[seat - 1][0], seats[seat - 1][1])
 
 
-func _slot(zone: Zone) -> Rect2:
+## Where a zone sits on the table, as the outline drawn for it (also used by the editor to drag zones).
+func slot_rect(zone: Zone) -> Rect2:
 	var slot_size := Vector2(CardView.SIZE.y, CardView.SIZE.x) if _is_sideways(zone) else CardView.SIZE
 	return Rect2(_anchor(zone) * size - slot_size / 2, slot_size)
 
@@ -342,7 +343,7 @@ func _draw() -> void:
 	for zone: Zone in game.zones.values():
 		if not zone.has_outline or zone.layout == "melds" and zone.is_empty():
 			continue
-		var slot := _slot(zone)
+		var slot := slot_rect(zone)
 		var is_current := game.rules.players > 1 and zone.owner == game.current_player()
 		draw_style_box(current_slot_style if is_current else slot_style, slot)
 		if zone.label:
@@ -353,7 +354,7 @@ func _draw() -> void:
 			var name_text := "%s (%d)" % [zone.name, zone.cards.size()]
 			draw_string(font, name_position, name_text, HORIZONTAL_ALIGNMENT_CENTER, slot.size.x + LABEL_OVERHANG * 2, LABEL_FONT_SIZE, LABEL_COLOR)
 	if hover_zone:
-		draw_style_box(CardView.allowed_style if hover_allowed else CardView.refused_style, _slot(hover_zone).grow(CardView.HIGHLIGHT_WIDTH / 2.0))
+		draw_style_box(CardView.allowed_style if hover_allowed else CardView.refused_style, slot_rect(hover_zone).grow(CardView.HIGHLIGHT_WIDTH / 2.0))
 	_draw_seats(font)
 
 

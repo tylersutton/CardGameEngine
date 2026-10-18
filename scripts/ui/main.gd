@@ -11,15 +11,21 @@ var bot: Bot
 var bot_waiting := false
 ## Modified times of the game file and its decks, to reload when one is saved.
 var watched_files: Dictionary = {}
+## Game and deck text to play instead of the files on disk (the editor's unsaved edits).
+var given_files: Dictionary = {}
+## Inside the editor: no Games or Reload buttons, and no reloading when files change (the editor reloads it).
+var embedded := false
 
 
 func _ready() -> void:
 	%GamesButton.pressed.connect(_leave)
-	%ReloadButton.pressed.connect(_load_game)
+	%ReloadButton.pressed.connect(load_game)
 	%UndoButton.pressed.connect(func() -> void: if game: _submit({type = "undo"}))
 	%SandboxToggle.toggled.connect(_set_sandbox)
 	%ZoneNamesToggle.toggled.connect(_show_zone_names)
-	if not Net.online:
+	%GamesButton.visible = not embedded
+	%ReloadButton.visible = not embedded
+	if not Net.online and not embedded:
 		var watcher := Timer.new()
 		watcher.timeout.connect(_reload_if_changed)
 		add_child(watcher)
@@ -27,11 +33,16 @@ func _ready() -> void:
 	if Net.online:
 		%ReloadButton.disabled = true
 		%SandboxToggle.disabled = true
-		Net.match_started.connect(_load_game)
+		Net.match_started.connect(load_game)
 		Net.undo_asked.connect(_ask_undo)
 		Net.notice.connect(%LogView.add)
 		Net.disconnected.connect(_leave)
-	_load_game()
+	load_game()
+
+
+## The variables and log beside the table (the editor hides them while you arrange the table).
+func show_side_panel(shown: bool) -> void:
+	$Layout/LogPanel.visible = shown
 
 
 ## Offline the table changes the game directly; online, inputs go through the session.
@@ -59,13 +70,13 @@ func _ask_undo(asker: String) -> void:
 func _reload_if_changed() -> void:
 	for path in watched_files:
 		if FileAccess.get_modified_time(path) != watched_files[path]:
-			_load_game()
+			load_game()
 			%LogView.add("[reloaded: %s changed]" % path.get_file())
 			return
 
 
-func _load_game() -> void:
-	var new_game := Net.game if Net.online else Game.new(rules_path)
+func load_game() -> void:
+	var new_game := Net.game if Net.online else Game.new(rules_path, -1, given_files)
 	watched_files.clear()
 	for path in new_game.rules.files_used(rules_path):
 		watched_files[path] = FileAccess.get_modified_time(path)
