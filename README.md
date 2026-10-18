@@ -11,6 +11,7 @@ Included games:
 | Hearts | `games/hearts.json`, `decks/hearts_deck.csv` | Four players (you and three bots), passing three cards in a rotating direction, following suit, winning tricks, shooting the moon, a game to 100 |
 | Spades | `games/spades.json`, `decks/spades_deck.csv` | Partnerships (`teams`): bidding, team scores and bags, trump, nil bids, a game to 500 |
 | Cribbage | `games/cribbage.json`, `decks/cribbage_deck.csv` | Scoring combinations: fifteens, pairs and runs in pegging and in the show, the crib, go, nobs and flushes, a game to 121 |
+| Goofspiel | `games/goofspiel.json`, `decks/standard_deck.csv` | Everyone bids at once (`ask_all`): secret face-down bids, a reveal, ties carrying the prize over |
 | Fireworks | `games/fireworks.json`, `decks/fireworks_deck.csv` | A cooperative Hanabi-style game: you hold your cards facing away (`face: "others"`), clues `mark` your partner's cards, and the bot partner reasons only from what it's been told |
 | President | `games/president.json`, `decks/president_deck.csv` | Playing several cards at once (`allow` checks they're a valid set), a single 2 that beats anything and clears the table, matching the last play to skip the next player, passing, finishing order and titles, the card exchange between President and Scum |
 | Color Match | `games/color_match.json`, `decks/color_match.csv` | A small two-player game with a custom deck, hidden hands, card effects, and wild cards that ask for a color. Built step by step in the tutorial below |
@@ -497,6 +498,7 @@ To repeat steps while something is true, use a `while` step:
 | `end_turn()` | Pass the turn to the next player and fire `turn_start`. |
 | `trigger('name')` | Run a step list from `triggers`. |
 | `ask('Action name', player)` | Start that action (usually a `choose`) once the current move finishes, e.g. from a wild card's effect. Several asks wait in line: each starts when the previous choice is finished. With a player number, that player makes the choice: it's their turn until they've chosen (so `hand` means their hand, and a bot answers by itself), then the turn goes back. A choice started by `ask` must be made: clicking elsewhere doesn't cancel it, and other buttons and drags wait. |
+| `ask_all('Action name', 'trigger')` | Everyone makes that choice at the same time, e.g. a secret bid: people choose first (so nobody waits on the bots), then each bot, then the trigger runs, e.g. to turn the bids over. Put the choices somewhere face down (`move(choice, bid)` with a face-down `bid` zone) so nobody, bots included, sees them before the reveal. Real-time play (Speed, Slapjack) isn't possible. |
 | `run_effect(card, 'play')` | Run a card's `on_play` effect again, e.g. Throne Room playing an action twice |
 
 **Questions**

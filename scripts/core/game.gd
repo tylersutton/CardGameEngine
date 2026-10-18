@@ -155,6 +155,19 @@ func ask(action_name: String, player := 0) -> void:
 		report_failure("No action named \"%s\" to ask for" % action_name)
 
 
+## Everyone makes the same choice, people first so nobody waits on the bots, then then_trigger runs.
+## Choices go somewhere hidden (like a face-down zone), so nobody sees the others' until the trigger reveals them.
+func ask_all(action_name: String, then_trigger: String) -> void:
+	if then_trigger and then_trigger not in rules.triggers:
+		report_failure("No trigger named \"%s\" in \"triggers\"" % then_trigger)
+		return
+	var players := range(1, rules.players + 1)
+	for player in players.filter(func(each: int) -> bool: return not is_bot(each)) + players.filter(is_bot):
+		ask(action_name, player)
+	if then_trigger:
+		asked.append({trigger = then_trigger})
+
+
 func choosing_cards() -> bool:
 	return choosing != "" and choices.all(func(option: Variant) -> bool: return option is Card)
 
@@ -261,6 +274,9 @@ func _perform_asked() -> void:
 	performing_asked = true
 	while nesting == 0 and asked and not choosing:
 		var request: Dictionary = asked.pop_front()
+		if request.has("trigger"):
+			trigger(request.trigger)
+			continue
 		var turn := current_player()
 		var history_size := history.size()
 		if request.player and request.player != turn:

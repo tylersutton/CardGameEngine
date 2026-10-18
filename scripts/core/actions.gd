@@ -89,6 +89,10 @@ func ask(action: String, player: int = 0) -> void:
 	game.ask(action, player)
 
 
+func ask_all(action: String, then_trigger: String = "") -> void:
+	game.ask_all(action, then_trigger)
+
+
 func next_player(seats: int = 1) -> int:
 	return posmod(game.current_player() - 1 + seats, game.rules.players) + 1
 
