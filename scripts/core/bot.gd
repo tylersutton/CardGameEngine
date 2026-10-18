@@ -30,7 +30,7 @@ func take_input() -> bool:
 	if game.choosing:
 		prefer = game.rules.actions[game.choosing].get("prefer", prefer)
 	for move in game.legal_moves():
-		var value: Variant = game.try_out(move, prefer, deals)
+		var value: Variant = try_out(move, prefer, deals)
 		if (value is float or value is int) and value > best_value:
 			best_move = move
 			best_value = value
@@ -48,7 +48,7 @@ func take_input() -> bool:
 ## (Cards held facing away from it, face "others", could be anything it can't see.)
 func _deals() -> Array:
 	var player := game.current_player()
-	var hidden := game.hidden_from(player)
+	var hidden := hidden_from(player)
 	if game.rules.bot.get("peek", false) or hidden.is_empty():
 		return []
 	var known_set := func(card: Card) -> bool:
@@ -77,3 +77,68 @@ static func _fits_marks(data: Dictionary, card: Card) -> bool:
 		if key in data and data[key] != Game.format_value(card.marks[key]):
 			return false
 	return true
+
+
+## Cards whose identity the player can't know: face down (even their own, like their deck's order),
+## or in a zone hidden from them.
+func hidden_from(player: int) -> Array[Card]:
+	var hidden: Array[Card] = []
+	for card in game.cards:
+		if not game.can_see(player, card):
+			hidden.append(card)
+	return hidden
+
+
+## Runs the move silently, measures the result as the current player, then undoes it.
+## Returns null if the move changed nothing (e.g. only reordered cards). With deals (card -> data),
+## hidden cards are given those identities for each try and the results averaged, so the measure can't peek.
+func try_out(move: Array, measure: String, deals: Array = []) -> Variant:
+	if deals.is_empty():
+		return _try_once(move, measure)
+	var total := 0.0
+	for deal: Dictionary in deals:
+		var real_data := {}
+		for card: Card in deal:
+			real_data[card] = card.data
+			card.data = deal[card]
+		var value: Variant = _try_once(move, measure)
+		for card: Card in real_data:
+			card.data = real_data[card]
+		if value is not float and value is not int:
+			return null
+		total += value
+	return total / deals.size()
+
+
+func _try_once(move: Array, measure: String) -> Variant:
+	var player := game.current_player()
+	var before := Snapshot.take(game)
+	var contents_before := Snapshot.contents(game)
+	var history_size := game.history.size()
+	var was_quiet := game.is_blocking_signals()
+	game.game_log.flush()
+	game.set_quiet(true)
+	for input: Dictionary in move:
+		game.run_input(input)
+	var value: Variant = null
+	if game.choosing and not before.choice.choosing and game.current_player() == player:
+		value = _best_choice_value(measure)
+	elif Snapshot.contents(game) != contents_before or game.current_player() != player:
+		if Game.PLAYER_VARIABLE in game.variables:
+			game.variables[Game.PLAYER_VARIABLE] = player
+		value = game.evaluate(measure)
+	Snapshot.restore(game, before)
+	game.history.resize(history_size)
+	game.game_log.discard()
+	game.set_quiet(was_quiet)
+	return value
+
+
+## When a move opens a choice (e.g. playing Chapel), it's worth what the best way of making that choice is worth.
+func _best_choice_value(measure: String) -> Variant:
+	var best: Variant = null
+	for choice_move in game.legal_moves():
+		var value: Variant = _try_once(choice_move, measure)
+		if (value is float or value is int) and (best == null or value > best):
+			best = value
+	return best

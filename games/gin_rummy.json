@@ -129,8 +129,8 @@
 	},
 	"triggers": {
 		"start": [
-			"sort(hand_1, ['suit', 'value'])",
-			"sort(hand_2, ['suit', 'value'])",
+			"sort(hand_1, ['value', 'suit'])",
+			"sort(hand_2, ['value', 'suit'])",
 			"trigger('deal')"
 		],
 		"deal": [

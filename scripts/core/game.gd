@@ -1,7 +1,6 @@
 class_name Game
 extends RefCounted
 
-signal logged(text: String)
 signal failed(text: String)
 signal variables_changed
 signal state_changed
@@ -18,22 +17,11 @@ const OPPONENT_PREFIX := "opponent_"
 const TEAM_PREFIX := "team_"
 const CARD_EFFECT_PREFIX := "on_"
 const HIDDEN_CARD := "a hidden card"
-const VIEWER_BLOCK := "viewer("
 const CARD_EFFECT_SEPARATOR := ";"
-const KEYWORDS := ["true", "false", "null", "and", "or", "not", "if", "else"]
-const MATH_FUNCTIONS := ["abs", "min", "max", "floor", "ceil", "round", "int"]
-const CONDITIONAL_KEYS := ["if", "then", "else"]
-const LOOP_KEYS := ["for", "in", "do"]
 const LOOP_NUMBER_SUFFIX := "_number"
-const WHILE_KEYS := ["while", "do"]
 const MAX_REPEATS := 1000
-const TYPE_DESCRIPTIONS := {TYPE_STRING: "text", TYPE_ARRAY: "a list", TYPE_FLOAT: "a number", TYPE_BOOL: "true or false"}
 const MAX_NESTING := 50
 
-static var building_blocks := _building_blocks()
-static var failed_call := RegEx.create_from_string(r"On call to '(\w+)'")
-static var string_literal := RegEx.create_from_string("'[^']*'|\"[^\"]*\"")
-static var name_in_code := RegEx.create_from_string(r"(?<![.\w])([A-Za-z_]\w*)\s*(\()?")
 
 var rules: GameRules
 var rules_path: String
@@ -66,9 +54,7 @@ var choice_asked := false
 var return_player := 0
 var performing_asked := false
 var history: Array[Dictionary] = []
-var pending_log: Dictionary = {}
-var pending_line := ""
-var pending_line_repeats := 0
+var game_log := GameLog.new()
 var move_from: Zone
 var move_to: Zone
 var checking_moves := false
@@ -88,9 +74,13 @@ func _init(path: String, seed := -1, files := {}) -> void:
 	if rules.error:
 		errors.append(rules.error)
 		return
+	var compiler := StepCompiler.new(self)
+	compiler.check_zone_definitions()
+	if errors:
+		return
 	for zone_kind in rules.zones:
 		var definition: Dictionary = rules.zones[zone_kind]
-		var copies := _copies_of(zone_kind, definition)
+		var copies := _copies_of(definition)
 		if copies == 0:
 			_add_zone(Zone.new(zone_kind, definition), definition)
 			continue
@@ -121,18 +111,13 @@ func _init(path: String, seed := -1, files := {}) -> void:
 			if team_variable in variables:
 				errors.append("\"%s\" is used as more than one zone or variable name" % team_variable)
 			variables[team_variable] = rules.team_variables[name]
-	_check_teams()
 	meld_rules = Melds.new(rules.melds)
-	_check_names_are_unique()
-	_check_actions_and_moves()
-	_check_melds()
-	if errors.is_empty():
-		_compile_all_steps()
+	compiler.check_and_compile()
 
 
 func start() -> void:
 	trigger("start")
-	_flush_log()
+	game_log.flush()
 	_perform_asked()
 	state_changed.emit()
 
@@ -140,7 +125,7 @@ func start() -> void:
 func can_perform(action_name: String) -> bool:
 	if sandbox:
 		return true
-	return not waiting_for_choice() and _holds(rules.actions[action_name].get("when", ""))
+	return not waiting_for_choice() and holds(rules.actions[action_name].get("when", ""))
 
 
 ## A choice a rule asked for (e.g. "discard down to 3") must be made before anything else happens.
@@ -152,7 +137,7 @@ func perform(action_name: String) -> void:
 	if not can_perform(action_name):
 		return
 	cancel_choice()
-	var before := _snapshot()
+	var before := Snapshot.take(self)
 	var action: Dictionary = rules.actions[action_name]
 	log_line("[action] " + action_name)
 	if action.has("choose"):
@@ -174,9 +159,9 @@ func apply(input: Dictionary) -> bool:
 	var player := int(input.get("player", local_seat))
 	if player and not may_act(player, input):
 		log_line("[refused] %s can't do that now: %s" % [player_name(player), input.type])
-		_flush_log()
+		game_log.flush()
 		return false
-	if not _apply_input(input):
+	if not run_input(input):
 		return false
 	inputs.append(input.duplicate())
 	input_applied.emit(inputs.back())
@@ -225,7 +210,8 @@ func _is_well_formed(input: Dictionary) -> bool:
 	return false
 
 
-func _apply_input(input: Dictionary) -> bool:
+## Carries out an input without checking who sent it or recording it (apply does both; bots trying moves out don't).
+func run_input(input: Dictionary) -> bool:
 	var card: Card = cards[int(input.card)] if input.has("card") else null
 	match input.type:
 		"drag":
@@ -254,6 +240,11 @@ func _apply_input(input: Dictionary) -> bool:
 	return true
 
 
+## Everything that decides what happens next, as one number, so two copies of a match can be compared.
+func state_hash() -> int:
+	return Snapshot.state_hash(self)
+
+
 ## A match is its rules, seed and inputs; replaying them rebuilds it exactly.
 func record() -> Dictionary:
 	return {rules = rules_path, seed = match_seed, inputs = inputs.duplicate(true)}
@@ -267,31 +258,6 @@ static func replay(match_record: Dictionary) -> Game:
 	return game
 
 
-## Everything that decides what happens next, as one number, so two copies of a match can be compared.
-func state_hash() -> int:
-	var state := {variables = _plain(variables), choice = _plain(_snapshot().choice), rng = rng.state, zones = {}, marks = {}}
-	for name in zones:
-		state.zones[name] = zones[name].cards.map(func(card: Card) -> int: return card.id if card.face_up else -1 - card.id)
-		for card in zones[name].cards:
-			if card.marks:
-				state.marks[str(card.id)] = _plain(card.marks)
-	return JSON.stringify(state).hash()
-
-
-static func _plain(value: Variant) -> Variant:
-	if value is Card:
-		return "card %d" % value.id
-	if value is Array:
-		return value.map(_plain)
-	if value is Dictionary:
-		var plain := {}
-		for key in value:
-			plain[key] = _plain(value[key])
-		return plain
-	return value
-
-
-## Queues an action; with a player, that player makes its choice (it's their turn until they have).
 func ask(action_name: String, player := 0) -> void:
 	if action_name in rules.actions:
 		asked.append({action = action_name, player = player})
@@ -332,7 +298,7 @@ func choosing_cards() -> bool:
 func choose_option(option: Variant) -> void:
 	if choosing_cards() or option not in choices:
 		return
-	var before := _snapshot()
+	var before := Snapshot.take(self)
 	_complete_choice(option)
 	_finish_input(before)
 
@@ -340,13 +306,13 @@ func choose_option(option: Variant) -> void:
 func finish_choice() -> void:
 	if not choosing_cards() or pick_exact:
 		return
-	var before := _snapshot()
+	var before := Snapshot.take(self)
 	_complete_choice(selected.duplicate())
 	_finish_input(before)
 
 
 func _start_choice(action_name: String, action: Dictionary) -> void:
-	choices = _choice_list(_evaluate(action.choose, null))
+	choices = _choice_list(evaluate(action.choose, null))
 	var rule := _pick_rule(action, choices.size())
 	pick_count = rule[0]
 	pick_exact = rule[1]
@@ -368,10 +334,10 @@ func _start_choice(action_name: String, action: Dictionary) -> void:
 ## How many to pick: [count, exactly]. "up_to" (a number or an expression) allows anything from none to that many.
 func _pick_rule(action: Dictionary, option_count: int) -> Array:
 	if action.has("up_to"):
-		var limit: Variant = action.up_to if action.up_to is float else _evaluate(action.up_to, null)
+		var limit: Variant = action.up_to if action.up_to is float else evaluate(action.up_to, null)
 		return [mini(int(limit), option_count), false]
 	var pick: Variant = action.get("pick", 1.0)
-	return [int(pick if pick is float else _evaluate(pick, null)), true]
+	return [int(pick if pick is float else evaluate(pick, null)), true]
 
 
 func _complete_choice(choice: Variant) -> void:
@@ -397,7 +363,7 @@ func _allows(action_name: String, choice: Variant) -> bool:
 		return true
 	var outer_choice: Variant = chosen
 	chosen = choice
-	var allowed := _holds(allow, choice if choice is Card else null)
+	var allowed := holds(allow, choice if choice is Card else null)
 	chosen = outer_choice
 	return allowed
 
@@ -418,7 +384,7 @@ func describe(value: Variant) -> String:
 
 
 func _finish_input(before: Dictionary) -> void:
-	_flush_log()
+	game_log.flush()
 	_perform_asked()
 	_remember(before)
 	state_changed.emit()
@@ -465,15 +431,15 @@ func _clear_choice() -> void:
 func drag(card: Card, destination: Zone, index := -1) -> bool:
 	if waiting_for_choice() and not sandbox:
 		log_line("[waiting] %s must finish \"%s\" first" % [player_name(current_player()), choosing])
-		_flush_log()
+		game_log.flush()
 		return false
 	cancel_choice()
-	var before := _snapshot()
+	var before := Snapshot.take(self)
 	var source := zone_of(card)
 	var rule := {} if sandbox else _matching_move(card, source, destination)
 	if rule.is_empty() and not can_move(card, destination):
 		log_line("[not allowed] %s: %s → %s (%s)" % [card.title, source.name, destination.name, _refusal_reason(source, destination)])
-		_flush_log()
+		game_log.flush()
 		return false
 	_during_move(source, destination, func() -> void:
 		for carried_card in carried(card):
@@ -521,12 +487,12 @@ func _during_move(source: Zone, destination: Zone, action: Callable) -> Variant:
 
 
 func reorder(card: Card, index: int) -> void:
-	var before := _snapshot()
+	var before := Snapshot.take(self)
 	var zone := zone_of(card)
 	zone.reorder(card, index)
 	_remember(before)
 	log_line("  %s: position %d in %s (manual order)" % [card.title, index + 1, zone.name])
-	_flush_log()
+	game_log.flush()
 	state_changed.emit()
 
 
@@ -560,7 +526,7 @@ func matching(cards: Array, condition: String) -> Array:
 	if condition not in rules.conditions:
 		report_failure("No condition named \"%s\" in \"conditions\"" % condition)
 		return []
-	return cards.filter(func(card: Card) -> bool: return _holds(rules.conditions[condition], card))
+	return cards.filter(func(card: Card) -> bool: return holds(rules.conditions[condition], card))
 
 
 func current_player() -> int:
@@ -584,7 +550,7 @@ func end_turn() -> void:
 
 
 func click(card: Card) -> void:
-	var before := _snapshot()
+	var before := Snapshot.take(self)
 	var zone := zone_of(card)
 	if choosing_cards() and card in choices:
 		_select(card)
@@ -608,7 +574,7 @@ func _select(card: Card) -> void:
 
 
 func double_click(card: Card) -> void:
-	var before := _snapshot()
+	var before := Snapshot.take(self)
 	cancel_choice()
 	var zone := zone_of(card)
 	if zone.on_double_click:
@@ -618,7 +584,7 @@ func double_click(card: Card) -> void:
 
 
 func click_empty(zone: Zone) -> void:
-	var before := _snapshot()
+	var before := Snapshot.take(self)
 	cancel_choice()
 	if zone.on_click:
 		log_line("[click] " + zone.name)
@@ -629,11 +595,11 @@ func click_empty(zone: Zone) -> void:
 func undo() -> void:
 	if history.is_empty():
 		return
-	_restore(history.pop_back())
+	Snapshot.restore(self, history.pop_back())
 	while is_bot_turn() and history:
-		_restore(history.pop_back())
+		Snapshot.restore(self, history.pop_back())
 	log_line("[undo]")
-	_flush_log()
+	game_log.flush()
 	variables_changed.emit()
 	state_changed.emit()
 
@@ -687,13 +653,13 @@ func legal_moves() -> Array[Array]:
 	for action_name: String in rules.actions:
 		var action: Dictionary = rules.actions[action_name]
 		var only_asked: bool = not action.get("button", true)
-		if action.get("human_only", false) or only_asked or not _holds(action.get("when", "")):
+		if action.get("human_only", false) or only_asked or not holds(action.get("when", "")):
 			continue
 		var press := {type = "perform", action = action_name}
 		if not action.has("choose"):
 			moves.append([press])
 			continue
-		var options := _choice_list(_evaluate(action.choose, null))
+		var options := _choice_list(evaluate(action.choose, null))
 		var rule := _pick_rule(action, options.size())
 		for choice_move in _choice_moves(action_name, options, rule[0], rule[1]):
 			moves.append([press] + choice_move)
@@ -705,19 +671,6 @@ static func _reachable_cards(zone: Zone) -> Array[Card]:
 	if zone.layout == "pile":
 		return [zone.cards.back()] if zone.cards else []
 	return zone.cards
-
-
-## Cards whose identity the player can't know: face down (even their own, like their deck's order),
-## or in another player's hidden hand.
-func hidden_from(player: int) -> Array[Card]:
-	var hidden: Array[Card] = []
-	for zone: Zone in zones.values():
-		var hidden_zone := (zone.owner != player and zone.face in [Zone.FACE_OWNER, Zone.FACE_HUMAN]) \
-			or (zone.owner == player and zone.face == Zone.FACE_OTHERS)
-		for card in zone.cards:
-			if not card.face_up or hidden_zone:
-				hidden.append(card)
-	return hidden
 
 
 func _choice_moves(action_name: String, options: Array, pick: int, exactly: bool) -> Array[Array]:
@@ -756,115 +709,14 @@ static func _combinations(items: Array, size: int) -> Array:
 	return with_first + _combinations(rest, size)
 
 
-## Runs the input silently, measures the result as the current player, then undoes it.
-## Returns null if the input only reordered cards. With deals (card -> data), hidden cards are
-## given those identities for each try and the results averaged, so the measure can't peek.
-func try_out(move: Array, measure: String, deals: Array = []) -> Variant:
-	if deals.is_empty():
-		return _try_once(move, measure)
-	var total := 0.0
-	for deal: Dictionary in deals:
-		var real_data := {}
-		for card: Card in deal:
-			real_data[card] = card.data
-			card.data = deal[card]
-		var value: Variant = _try_once(move, measure)
-		for card: Card in real_data:
-			card.data = real_data[card]
-		if value is not float and value is not int:
-			return null
-		total += value
-	return total / deals.size()
-
-
-func _try_once(move: Array, measure: String) -> Variant:
-	var player := current_player()
-	var before := _snapshot()
-	var contents_before := _contents()
-	var history_size := history.size()
-	var was_quiet := is_blocking_signals()
-	_flush_log()
-	_set_quiet(true)
-	for input: Dictionary in move:
-		_apply_input(input)
-	var value: Variant = null
-	if choosing and not before.choice.choosing and current_player() == player:
-		value = _best_choice_value(measure)
-	elif _contents() != contents_before or current_player() != player:
-		if PLAYER_VARIABLE in variables:
-			variables[PLAYER_VARIABLE] = player
-		value = _evaluate(measure, null)
-	_restore(before)
-	history.resize(history_size)
-	pending_log.clear()
-	pending_line = ""
-	_set_quiet(was_quiet)
-	return value
-
-
-## When an input opens a choice (e.g. playing Chapel), it's worth what the best way of making that choice is worth.
-func _best_choice_value(measure: String) -> Variant:
-	var best: Variant = null
-	for choice_move in legal_moves():
-		var value: Variant = _try_once(choice_move, measure)
-		if (value is float or value is int) and (best == null or value > best):
-			best = value
-	return best
-
-
-func _restore(snapshot: Dictionary) -> void:
-	for name in zones:
-		zones[name].restore(snapshot.zones[name], snapshot.sort_columns[name])
-	for card: Card in snapshot.faces:
-		card.face_up = snapshot.faces[card]
-		card.marks = snapshot.marks.get(card, {}).duplicate()
-	variables.clear()
-	variables.merge(snapshot.variables.duplicate(true))
-	choosing = snapshot.choice.choosing
-	choices = snapshot.choice.choices.duplicate()
-	pick_count = snapshot.choice.pick_count
-	pick_exact = snapshot.choice.pick_exact
-	selected.assign(snapshot.choice.selected)
-	asked.assign(snapshot.choice.asked.duplicate(true))
-	choice_asked = snapshot.choice.choice_asked
-	return_player = snapshot.choice.return_player
-	rng.state = snapshot.rng
-
-
-func _contents() -> Dictionary:
-	var contents := {variables = variables.duplicate(true), marks = {}}
-	for name in zones:
-		var face_up_ids := zones[name].cards.map(func(card: Card) -> int: return card.get_instance_id() * (1 if card.face_up else -1))
-		face_up_ids.sort()
-		contents[name] = face_up_ids
-		for card in zones[name].cards:
-			if card.marks:
-				contents.marks[card.get_instance_id()] = card.marks.duplicate()
-	return contents
-
-
-func _set_quiet(quiet: bool) -> void:
+func set_quiet(quiet: bool) -> void:
 	set_block_signals(quiet)
 	for zone: Zone in zones.values():
 		zone.set_block_signals(quiet)
 
 
-func _snapshot() -> Dictionary:
-	var choice := {choosing = choosing, choices = choices.duplicate(), pick_count = pick_count, pick_exact = pick_exact,
-		selected = selected.duplicate(), asked = asked.duplicate(true), choice_asked = choice_asked, return_player = return_player}
-	var snapshot := {zones = {}, sort_columns = {}, faces = {}, marks = {}, variables = variables.duplicate(true), choice = choice, rng = rng.state}
-	for name in zones:
-		snapshot.zones[name] = zones[name].cards.duplicate()
-		snapshot.sort_columns[name] = zones[name].sort_columns.duplicate()
-		for card in zones[name].cards:
-			snapshot.faces[card] = card.face_up
-			if card.marks:
-				snapshot.marks[card] = card.marks.duplicate()
-	return snapshot
-
-
 func _remember(before: Dictionary) -> void:
-	if nesting == 0 and before != _snapshot():
+	if nesting == 0 and before != Snapshot.take(self):
 		history.append(before)
 
 
@@ -889,8 +741,8 @@ func _run_steps(steps: Array, card: Card) -> bool:
 				return false
 			continue
 		var text: String = step["if"] if step is Dictionary else step
-		var result: Variant = _evaluate(text, card)
-		_flush_moves()
+		var result: Variant = evaluate(text, card)
+		game_log.flush_items()
 		if evaluation_failed:
 			return false
 		if step is Dictionary:
@@ -902,7 +754,7 @@ func _run_steps(steps: Array, card: Card) -> bool:
 
 
 func _run_loop(loop: Dictionary, card: Card) -> bool:
-	var items: Variant = _evaluate(loop.in, card)
+	var items: Variant = evaluate(loop.in, card)
 	if evaluation_failed:
 		return false
 	var item_list: Variant = _loop_items(items)
@@ -939,7 +791,7 @@ func _loop_value(name: String) -> Variant:
 
 func _run_while(loop: Dictionary, card: Card) -> bool:
 	for repeats in MAX_REPEATS:
-		if not _holds(loop.while, card):
+		if not holds(loop.while, card):
 			log_line("  while %s: repeated %d times" % [loop.while, repeats])
 			return not evaluation_failed
 		if not run(loop.get("do", []), card):
@@ -958,17 +810,17 @@ func _loop_items(items: Variant) -> Variant:
 	return null
 
 
-func _holds(condition: String, card: Card = null) -> bool:
+func holds(condition: String, card: Card = null) -> bool:
 	if condition.is_empty():
 		return true
-	var result: Variant = _evaluate(condition, card)
+	var result: Variant = evaluate(condition, card)
 	return not evaluation_failed and (true if result else false)
 
 
 func _matching_move(card: Card, source: Zone, destination: Zone) -> Dictionary:
 	return _during_move(source, destination, func() -> Dictionary:
 		for rule: Dictionary in _rules_between(source, destination):
-			if _holds(rule.get("when", ""), card):
+			if holds(rule.get("when", ""), card):
 				return rule
 		return {})
 
@@ -994,11 +846,11 @@ func _refusal_reason(source: Zone, destination: Zone) -> String:
 func status_values() -> Dictionary:
 	var values := {}
 	for label in rules.status:
-		values[label] = format_value(_evaluate(rules.status[label], null))
+		values[label] = format_value(evaluate(rules.status[label], null))
 	return values
 
 
-func _evaluate(text: String, card: Card) -> Variant:
+func evaluate(text: String, card: Card = null) -> Variant:
 	var failure := {}
 	var result: Variant = _evaluate_logic(logic.get(text, text), card, failure)
 	evaluation_failed = not failure.is_empty()
@@ -1013,7 +865,7 @@ func _evaluate_logic(node: Variant, card: Card, failure: Dictionary) -> Variant:
 		var expression := expressions[node]
 		var result: Variant = expression.execute(_input_values(card), Actions.new(self))
 		if expression.has_execute_failed():
-			failure.message = _failure_message(expression)
+			failure.message = StepCompiler.failure_message(expression)
 		return result
 	if node.op == "not":
 		var value: Variant = _evaluate_logic(node.term, card, failure)
@@ -1028,95 +880,59 @@ func _evaluate_logic(node: Variant, card: Card, failure: Dictionary) -> Variant:
 	return not stops_on
 
 
-static func _failure_message(expression: Expression) -> String:
-	var message := expression.get_error_text()
-	var call := failed_call.search(message)
-	if call and call.get_string(1) in building_blocks:
-		message += " wrong kind of argument, expected " + signature(call.get_string(1))
-	return message
-
-
 func move(card: Card, destination: Zone) -> void:
 	var source := zone_of(card)
 	var seen_before := shows_face(card)
 	source.remove(card)
 	destination.add(card)
-	_log_item("%s → %s" % [source.name, destination.name], card.title if seen_before or shows_face(card) else "")
-	run(_card_effect(card, destination.kind), card)
+	game_log.item("%s → %s" % [source.name, destination.name], card.title if seen_before or shows_face(card) else "")
+	run(card_effect(card, destination.kind), card)
 
 
 func mark(card: Card, key: String, value: Variant) -> void:
 	card.marks[key] = value
-	_log_item("mark %s = %s" % [key, format_value(value)], describe(card))
+	game_log.item("mark %s = %s" % [key, format_value(value)], describe(card))
 
 
 func unmark(card: Card, key: String) -> void:
 	if card.marks.erase(key):
-		_log_item("unmark " + key, describe(card))
+		game_log.item("unmark " + key, describe(card))
 
 
 func flip(card: Card) -> void:
 	card.face_up = not card.face_up
 	var zone := zone_of(card)
 	var seen := shows_face(card) or (not card.face_up and zone.face != Zone.FACE_DOWN)
-	_log_item("face %s in %s" % ["up" if card.face_up else "down", zone.name], card.title if seen else "")
+	game_log.item("face %s in %s" % ["up" if card.face_up else "down", zone.name], card.title if seen else "")
 	zone.changed.emit(zone)
 
 
-## Identical lines in a row are logged once with a count, e.g. "if count(pile) == 0 → else (×17)".
 func log_line(text: String) -> void:
-	if text == pending_line and pending_log.is_empty():
-		pending_line_repeats += 1
-		return
-	_flush_log()
-	pending_line = text
-	pending_line_repeats = 1
-
-
-## Card moves and flips are collected and logged one line per kind, e.g. "deck → hand_1: 2♦, 7♥".
-func _log_item(kind: String, item: String) -> void:
-	_flush_line()
-	if kind not in pending_log:
-		pending_log[kind] = []
-	pending_log[kind].append(item)
-
-
-func _flush_log() -> void:
-	_flush_line()
-	_flush_moves()
-
-
-func _flush_moves() -> void:
-	for kind: String in pending_log:
-		var names: Array = pending_log[kind].filter(func(item: String) -> bool: return item != "")
-		var hidden: int = pending_log[kind].size() - names.size()
-		if hidden:
-			names.append("%d hidden card%s" % [hidden, "" if hidden == 1 else "s"])
-		logged.emit("  %s: %s" % [kind, ", ".join(names)])
-	pending_log.clear()
+	game_log.line(text)
 
 
 func report_failure(text: String) -> void:
-	_flush_log()
+	game_log.flush()
 	failed.emit(text)
 
 
-func _flush_line() -> void:
-	if pending_line:
-		logged.emit(pending_line + (" (×%d)" % pending_line_repeats if pending_line_repeats > 1 else ""))
-	pending_line = ""
-
-
+## Whether this screen shows the card's face.
 func shows_face(card: Card) -> bool:
+	return can_see(viewer(), card)
+
+
+## Whether that player can see the card's face: not if it's face down, nor in another player's private zone
+## ("owner" or "human"), nor in their own zone held facing away from them ("others").
+func can_see(player: int, card: Card) -> bool:
+	if not card.face_up:
+		return false
 	var zone := zone_of(card)
 	match zone.face:
-		Zone.FACE_OWNER:
-			return card.face_up and zone.owner == (local_seat if local_seat else current_player())
-		Zone.FACE_HUMAN:
-			return card.face_up and (zone.owner == local_seat if local_seat else not is_bot(zone.owner))
+		Zone.FACE_OWNER, Zone.FACE_HUMAN:
+			return zone.owner == player
 		Zone.FACE_OTHERS:
-			return card.face_up and zone.owner != viewer()
-	return card.face_up
+			return zone.owner != player
+	return true
 
 
 ## Who the table is shown to: this screen's seat when playing online; otherwise the only human at a table
@@ -1157,7 +973,7 @@ func zone_of(card: Card) -> Zone:
 	return null
 
 
-func _aliases() -> Dictionary:
+func aliases() -> Dictionary:
 	var aliases := {}
 	for name in per_player_names:
 		aliases[name] = "%s_%d" % [name, current_player()]
@@ -1182,16 +998,16 @@ func _team_groups() -> Dictionary:
 
 
 func _resolve(name: String) -> String:
-	return _aliases().get(name, name)
+	return aliases().get(name, name)
 
 
-func _input_names() -> PackedStringArray:
-	return PackedStringArray(zones.keys() + variables.keys() + _aliases().keys() + zone_groups.keys() + _team_groups().keys() + loop_names \
+func input_names() -> PackedStringArray:
+	return PackedStringArray(zones.keys() + variables.keys() + aliases().keys() + zone_groups.keys() + _team_groups().keys() + loop_names \
 		+ [CARD_VARIABLE, FROM_VARIABLE, TO_VARIABLE, CHOICE_VARIABLE, PLAYERS_VARIABLE])
 
 
 func _input_values(card: Card) -> Array:
-	var aliased := _aliases().values().map(func(name: String) -> Variant:
+	var aliased := aliases().values().map(func(name: String) -> Variant:
 		return zones[name] if name in zones else variables[name])
 	var looped := loop_names.map(func(name: String) -> Variant: return loop_values.get(name))
 	return zones.values() + variables.values() + aliased + zone_groups.values() + _team_groups().values() + looped \
@@ -1204,46 +1020,8 @@ func _add_zone(zone: Zone, definition: Dictionary) -> void:
 	zones[zone.name] = zone
 
 
-func _copies_of(zone_kind: String, definition: Dictionary) -> int:
-	var per_player: bool = definition.get("per_player", false)
-	if per_player and definition.has("copies"):
-		errors.append("Zone \"%s\": use \"per_player\" or \"copies\", not both" % zone_kind)
-	var copies: int = rules.players if per_player else int(definition.get("copies", 0))
-	var grid: Variant = definition.get("grid")
-	if grid != null and not (grid is Dictionary and grid.get("columns") is float and grid.get("spacing") is Array and grid.spacing.size() == 2):
-		errors.append("Zone \"%s\": \"grid\" should look like { \"columns\": 5, \"spacing\": [0.09, 0.19] }" % zone_kind)
-		return 0
-	var covering: Variant = definition.get("covered_by")
-	if covering != null and not (covering is Array and covering.size() == copies and covering.all(func(each: Variant) -> bool: return each is Array)):
-		errors.append("Zone \"%s\": \"covered_by\" needs one list of copy numbers per copy (%d)" % [zone_kind, copies])
-	if definition.has("group") and copies == 0:
-		errors.append("Zone \"%s\": \"group\" needs \"copies\" or \"per_player\"" % zone_kind)
-	if copies and definition.has("anchors") and definition.anchors.size() < copies:
-		errors.append("Zone \"%s\" needs %d anchors in \"anchors\" (one per %s)" % [zone_kind, copies, "player" if per_player else "copy"])
-		return 0
-	return copies
-
-
-func _check_teams() -> void:
-	if rules.team_variables and rules.teams.is_empty():
-		errors.append("\"team_variables\" needs \"teams\", e.g. [[1, 3], [2, 4]]")
-	for player in range(1, rules.players + 1):
-		var team_count := rules.teams.filter(func(team: Variant) -> bool: return team is Array and team.has(float(player))).size()
-		if rules.teams and team_count != 1:
-			errors.append("teams: player %d should be on exactly one team" % player)
-
-
-func _check_names_are_unique() -> void:
-	var seen := {}
-	for name in _input_names():
-		if name in seen:
-			errors.append("\"%s\" is used as more than one zone or variable name" % name)
-		seen[name] = true
-	for name in rules.conditions:
-		if name in seen or name in building_blocks:
-			errors.append("Condition \"%s\" has the same name as a zone, variable or building block" % name)
-		elif rules.conditions[name] is not String:
-			errors.append("Condition \"%s\" should be an expression in text" % name)
+func _copies_of(definition: Dictionary) -> int:
+	return rules.players if definition.get("per_player", false) else int(definition.get("copies", 0))
 
 
 func _load_cards(zone: Zone, path: String) -> void:
@@ -1257,11 +1035,11 @@ func _load_cards(zone: Zone, path: String) -> void:
 		errors.append("Deck not found: " + path)
 
 
-func run_card_effect(card: Card, zone_kind: String) -> void:
-	run(_card_effect(card, zone_kind), card)
+func runcard_effect(card: Card, zone_kind: String) -> void:
+	run(card_effect(card, zone_kind), card)
 
 
-func _card_effect(card: Card, zone_kind: String) -> Array:
+func card_effect(card: Card, zone_kind: String) -> Array:
 	var steps: String = card.data.get(CARD_EFFECT_PREFIX + zone_kind, "").strip_edges()
 	if steps.begins_with("["):
 		var json_steps: Variant = JSON.parse_string(steps)
@@ -1276,336 +1054,3 @@ func _card_effect(card: Card, zone_kind: String) -> Array:
 	return step_list
 
 
-func _check_actions_and_moves() -> void:
-	for action_name in rules.actions:
-		_check_entry("Action \"%s\"" % action_name, rules.actions[action_name], {"when": TYPE_STRING, "choose": TYPE_STRING, "pick": [TYPE_FLOAT, TYPE_STRING], "up_to": [TYPE_FLOAT, TYPE_STRING], "allow": TYPE_STRING, "human_only": TYPE_BOOL, "button": TYPE_BOOL, "prefer": TYPE_STRING, "steps": TYPE_ARRAY})
-		var action: Variant = rules.actions[action_name]
-		for key in ["pick", "up_to", "allow"]:
-			if action is Dictionary and action.has(key) and not action.has("choose"):
-				errors.append("Action \"%s\": \"%s\" needs \"choose\"" % [action_name, key])
-	for rule in rules.moves:
-		var label := "Move %s" % JSON.stringify(rule)
-		_check_entry(label, rule, {"from": [TYPE_STRING, TYPE_ARRAY], "to": [TYPE_STRING, TYPE_ARRAY], "when": TYPE_STRING, "then": TYPE_ARRAY})
-		for end in ["from", "to"]:
-			var zone_names: Variant = rule.get(end) if rule is Dictionary else null
-			for zone_name: Variant in zone_names if zone_names is Array else [zone_names]:
-				if zone_name is String and zone_name not in zones and zone_name not in _aliases() and zone_name not in zone_groups:
-					errors.append("%s: unknown zone \"%s\"" % [label, zone_name])
-	for list_name in ["seats", "player_names"]:
-		var list: Array = rules.get(list_name)
-		if list and list.size() < rules.players:
-			errors.append("\"%s\" needs one entry per player (%d)" % [list_name, rules.players])
-	if rules.bot:
-		_check_entry("bot", rules.bot, {"players": TYPE_ARRAY, "prefer": TYPE_STRING, "peek": TYPE_BOOL, "samples": TYPE_FLOAT})
-		if not rules.bot.has("prefer"):
-			errors.append("bot needs \"prefer\": an expression the bot tries to make as high as possible")
-	for effect_name in rules.effects:
-		if rules.effects[effect_name] is not Array:
-			errors.append("Effect \"%s\" should be a list of steps" % effect_name)
-	for name in rules.show_variables:
-		if name not in variables:
-			errors.append("show_variables: unknown variable \"%s\"" % name)
-	for label in rules.status:
-		if rules.status[label] is not String:
-			errors.append("Status \"%s\" should be an expression in text" % label)
-
-
-func _check_melds() -> void:
-	if rules.melds.is_empty():
-		return
-	_check_entry("melds", rules.melds, {"types": TYPE_ARRAY, "points": TYPE_STRING})
-	for type in rules.melds.get("types", []):
-		var label := "Meld type %s" % JSON.stringify(type)
-		_check_entry(label, type, {"same": TYPE_STRING, "sequence": TYPE_STRING, "min": TYPE_FLOAT})
-		if type is Dictionary and not type.has("same"):
-			errors.append("%s needs \"same\"" % label)
-
-
-func _check_entry(label: String, entry: Variant, field_types: Dictionary) -> void:
-	if entry is not Dictionary:
-		errors.append("%s should be an object" % label)
-		return
-	for key in entry:
-		if key not in field_types:
-			errors.append("%s: unknown key \"%s\"" % [label, key])
-			continue
-		var allowed: Array = field_types[key] if field_types[key] is Array else [field_types[key]]
-		if typeof(entry[key]) not in allowed:
-			var descriptions := allowed.map(func(type: int) -> String: return TYPE_DESCRIPTIONS[type])
-			errors.append("%s: \"%s\" should be %s" % [label, key, " or ".join(descriptions)])
-
-
-func _compile_all_steps() -> void:
-	var step_lists: Array = rules.triggers.values() + rules.effects.values()
-	var conditions: Array = []
-	for action: Dictionary in rules.actions.values():
-		step_lists.append(action.get("steps", []))
-		conditions.append(action.get("when", ""))
-		conditions.append(action.get("choose", ""))
-		for key in ["pick", "up_to", "allow", "prefer"]:
-			if action.get(key) is String:
-				conditions.append(action[key])
-	for rule: Dictionary in rules.moves:
-		step_lists.append(rule.get("then", []))
-		conditions.append(rule.get("when", ""))
-	conditions.append_array(rules.status.values())
-	conditions.append_array(rules.conditions.values())
-	conditions.append(rules.bot.get("prefer", ""))
-	for zone: Zone in zones.values():
-		step_lists.append(zone.on_click)
-		step_lists.append(zone.on_double_click)
-		for card in zone.cards:
-			for destination: Zone in zones.values():
-				step_lists.append(_card_effect(card, destination.kind))
-	var unique_steps := {}
-	for steps: Array in step_lists:
-		_collect_steps(steps, unique_steps)
-	for condition: String in conditions:
-		if condition:
-			unique_steps[condition] = true
-	for step: String in unique_steps:
-		_compile(step)
-		if step not in rules.status.values() and step not in rules.conditions.values() and VIEWER_BLOCK in _with_conditions(step):
-			errors.append("Step \"%s\": viewer() only works in \"status\" (each screen has its own, so rules can't depend on it)" % step)
-
-
-func _collect_steps(steps: Array, into: Dictionary) -> void:
-	for step in steps:
-		if step is String:
-			into[step] = true
-		elif _is_valid_conditional(step):
-			into[step["if"]] = true
-			_collect_steps(step.get("then", []), into)
-			_collect_steps(step.get("else", []), into)
-		elif _is_valid_loop(step):
-			_add_loop_name(step.for)
-			into[step.in] = true
-			_collect_steps(step.get("do", []), into)
-		elif _is_valid_while(step):
-			into[step.while] = true
-			_collect_steps(step.get("do", []), into)
-		else:
-			errors.append("Invalid step %s: use a string, { \"if\": ..., \"then\": [...], \"else\": [...] }, { \"for\": \"name\", \"in\": ..., \"do\": [...] }, or { \"while\": ..., \"do\": [...] }" % JSON.stringify(step))
-
-
-func _add_loop_name(name: String) -> void:
-	var names := [name, name + LOOP_NUMBER_SUFFIX]
-	if name == PLAYER_VARIABLE:
-		names.pop_front()
-		if PLAYER_VARIABLE not in variables:
-			errors.append("Looping over \"player\" needs \"players\" of 2 or more")
-	for loop_name in names:
-		if loop_name in loop_names:
-			continue
-		if loop_name in _input_names() or loop_name in rules.conditions:
-			errors.append("Loop name \"%s\" is already used by a zone, variable or condition" % loop_name)
-		else:
-			loop_names.append(loop_name)
-
-
-func _is_valid_conditional(step: Variant) -> bool:
-	return step is Dictionary \
-		and step.get("if") is String \
-		and step.keys().all(func(key: String) -> bool: return key in CONDITIONAL_KEYS) \
-		and step.get("then", []) is Array \
-		and step.get("else", []) is Array
-
-
-func _is_valid_loop(step: Variant) -> bool:
-	return step is Dictionary \
-		and step.get("for") is String and step.for.is_valid_identifier() \
-		and step.get("in") is String \
-		and step.keys().all(func(key: String) -> bool: return key in LOOP_KEYS) \
-		and step.get("do", []) is Array
-
-
-func _is_valid_while(step: Variant) -> bool:
-	return step is Dictionary 		and step.get("while") is String 		and step.keys().all(func(key: String) -> bool: return key in WHILE_KEYS) 		and step.get("do", []) is Array
-
-
-func _compile(step: String) -> void:
-	var input_names := _input_names()
-	var code := _with_conditions(step)
-	if code.is_empty():
-		return
-	var expression := Expression.new()
-	if expression.parse(code, input_names) != OK:
-		errors.append("Could not parse step \"%s\": %s" % [step, expression.get_error_text()])
-		return
-	var problems := _problems_in(code, input_names)
-	if problems:
-		errors.append("Step \"%s\": %s" % [step, ", ".join(problems)])
-		return
-	expressions[step] = expression
-	var tree: Variant = _logic_tree(code)
-	if tree is Dictionary:
-		logic[step] = tree
-		_compile_logic_parts(tree, input_names)
-
-
-func _compile_logic_parts(node: Variant, input_names: PackedStringArray) -> void:
-	if node is Dictionary:
-		for term: Variant in node.get("terms", [node.get("term")]):
-			_compile_logic_parts(term, input_names)
-	elif node not in expressions:
-		var expression := Expression.new()
-		expression.parse(node, input_names)
-		expressions[node] = expression
-
-
-## Splits an expression on its outermost "or", then "and", then "not", into a tree evaluated left to right.
-func _logic_tree(code: String) -> Variant:
-	code = code.strip_edges()
-	for keyword in ["or", "and"]:
-		var parts := _split_top_level(code, keyword)
-		if parts.size() > 1:
-			return {op = keyword, terms = parts.map(_logic_tree)}
-	if _is_word_at(code, 0, "not"):
-		return {op = "not", term = _logic_tree(code.substr(3))}
-	if code.begins_with("(") and _top_level_end(code, 0) == code.length() - 1:
-		var inner: Variant = _logic_tree(code.substr(1, code.length() - 2))
-		if inner is Dictionary:
-			return inner
-	return code
-
-
-static func _split_top_level(code: String, keyword: String) -> Array[String]:
-	var parts: Array[String] = []
-	var start := 0
-	var i := 0
-	while i < code.length():
-		var next := _top_level_end(code, i)
-		if next != i:
-			i = next + 1
-		elif _is_word_at(code, i, keyword):
-			parts.append(code.substr(start, i - start))
-			i += keyword.length()
-			start = i
-		else:
-			i += 1
-	parts.append(code.substr(start))
-	return parts
-
-
-## If code[i] opens a bracket or quote, the index of its closing partner; otherwise i.
-static func _top_level_end(code: String, i: int) -> int:
-	var opening := code[i]
-	if opening in "'\"":
-		var closing := code.find(opening, i + 1)
-		return closing if closing != -1 else code.length() - 1
-	if opening not in "([{":
-		return i
-	var depth := 0
-	var j := i
-	while j < code.length():
-		if code[j] in "'\"":
-			j = _top_level_end(code, j)
-		elif code[j] in "([{":
-			depth += 1
-		elif code[j] in ")]}":
-			depth -= 1
-			if depth == 0:
-				return j
-		j += 1
-	return code.length() - 1
-
-
-static func _is_word_at(code: String, i: int, word: String) -> bool:
-	var end := i + word.length()
-	return code.substr(i, word.length()) == word \
-		and (i == 0 or not _is_word_character(code[i - 1])) \
-		and (end >= code.length() or not _is_word_character(code[end]))
-
-
-static func _is_word_character(character: String) -> bool:
-	return character == "_" or character.is_valid_int() or character.to_lower() != character.to_upper()
-
-
-## Replaces each condition name with its expression in brackets, including conditions inside conditions.
-func _with_conditions(step: String) -> String:
-	var code := step
-	for depth in MAX_NESTING:
-		var expanded := _expand_conditions_once(code)
-		if expanded == code:
-			return code
-		code = expanded
-	errors.append("Step \"%s\": its conditions refer to each other in a circle" % step)
-	return ""
-
-
-func _expand_conditions_once(code: String) -> String:
-	var literals := string_literal.search_all(code)
-	var expanded := ""
-	var copied_up_to := 0
-	for found in name_in_code.search_all(code):
-		var name := found.get_string(1)
-		var inside_literal := literals.any(func(literal: RegExMatch) -> bool:
-			return found.get_start(1) >= literal.get_start() and found.get_start(1) < literal.get_end())
-		if name not in rules.conditions or found.get_string(2) != "" or inside_literal:
-			continue
-		expanded += code.substr(copied_up_to, found.get_start(1) - copied_up_to) + "(%s)" % rules.conditions[name]
-		copied_up_to = found.get_end(1)
-	return expanded + code.substr(copied_up_to)
-
-
-func _problems_in(step: String, input_names: PackedStringArray) -> Array[String]:
-	var problems: Array[String] = []
-	var code := string_literal.sub(step, "''", true)
-	for found in name_in_code.search_all(code):
-		var name := found.get_string(1)
-		var is_call := found.get_string(2) != ""
-		if name in KEYWORDS or (is_call and name in MATH_FUNCTIONS):
-			continue
-		if is_call and name not in building_blocks:
-			problems.append("unknown building block \"%s\"" % name)
-		elif is_call:
-			var problem := _argument_count_problem(name, _argument_count(code, found.get_end()))
-			if problem:
-				problems.append(problem)
-		elif name not in input_names:
-			var problem := "unknown effect \"%s\" (define it in \"effects\")" if step == name else "unknown zone or variable \"%s\""
-			problems.append(problem % name)
-	return problems
-
-
-static func _argument_count_problem(building_block: String, given: int) -> String:
-	var method: Dictionary = building_blocks[building_block]
-	var most: int = method.args.size()
-	var fewest: int = most - method.default_args.size()
-	if given >= fewest and given <= most:
-		return ""
-	var expected := str(most) if fewest == most else "%d to %d" % [fewest, most]
-	var noun := "argument" if expected == "1" else "arguments"
-	return "%s takes %s %s, got %d (expected %s)" % [building_block, expected, noun, given, signature(building_block)]
-
-
-static func _argument_count(code: String, after_open_paren: int) -> int:
-	var depth := 0
-	var commas := 0
-	for i in range(after_open_paren, code.length()):
-		var character := code[i]
-		if character in "([{":
-			depth += 1
-		elif character in ")]}" and depth > 0:
-			depth -= 1
-		elif character == ")":
-			var has_arguments := not code.substr(after_open_paren, i - after_open_paren).strip_edges().is_empty()
-			return commas + 1 if has_arguments else 0
-		elif character == "," and depth == 0:
-			commas += 1
-	return commas + 1
-
-
-static func signature(building_block: String) -> String:
-	var method: Dictionary = building_blocks[building_block]
-	var parameters: Array = method.args.map(func(argument: Dictionary) -> String: return argument.name)
-	return "%s(%s)" % [building_block, ", ".join(parameters)]
-
-
-static func _building_blocks() -> Dictionary:
-	var actions_script: Script = Actions
-	var blocks := {}
-	for method: Dictionary in actions_script.get_script_method_list():
-		if not method.name.begins_with("_") and not method.flags & METHOD_FLAG_STATIC:
-			blocks[method.name] = method
-	return blocks

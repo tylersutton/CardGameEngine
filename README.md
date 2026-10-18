@@ -606,9 +606,10 @@ func discard_hand(zone: Zone, to: Zone) -> void:
 ```
 
 Other places to look:
-- `scripts/core/`: the game logic. `Game` runs the rules, `Zone` holds cards, `Melds` finds melds, `Bot` picks moves.
+- `scripts/core/`: the game logic. `Game` runs the rules, `StepCompiler` checks a game file as it loads, `Zone` holds cards, `Melds` finds melds, `Bot` picks moves, `Snapshot` saves state for undo, `GameLog` writes the log.
 - `scripts/ui/`: the table and side panel.
 - `scripts/net/net.gd`: online play (the `Net` autoload): the lobby, sending inputs through the host, undo requests, rejoining.
+- `tests/regression_test.gd`: loads every game and plays a few with bots. Run it after changing rules or the engine: `godot --headless -s tests/regression_test.gd`.
 - `tests/determinism_test.gd`: plays every game and checks matches replay exactly. Run it after engine changes: `godot --headless -s tests/determinism_test.gd`.
 - `tests/net_test.tscn`: a host and a guest play a hand of Hearts over the network, with an undo, a rejoin and a catch-up. Run `godot --headless res://tests/net_test.tscn -- host` and, in a second terminal, the same with `-- guest`; the two final state numbers must match.
 

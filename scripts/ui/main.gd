@@ -56,7 +56,7 @@ func _load_game() -> void:
 	game = new_game
 	game.sandbox = %SandboxToggle.button_pressed
 	%LogView.clear()
-	game.logged.connect(%LogView.add)
+	game.game_log.logged.connect(%LogView.add)
 	game.failed.connect(%LogView.add_error)
 	game.state_changed.connect(_refresh_action_buttons)
 	game.state_changed.connect(_refresh_choice_bar)
