@@ -13,7 +13,7 @@ var bot_waiting := false
 func _ready() -> void:
 	%GamesButton.pressed.connect(func() -> void: get_tree().change_scene_to_file(TITLE_SCENE))
 	%ReloadButton.pressed.connect(_load_game)
-	%UndoButton.pressed.connect(func() -> void: if game: game.undo())
+	%UndoButton.pressed.connect(func() -> void: if game: game.apply({type = "undo"}))
 	%SandboxToggle.toggled.connect(_set_sandbox)
 	%ZoneNamesToggle.toggled.connect(_show_zone_names)
 	_load_game()
@@ -59,7 +59,7 @@ func _add_action_buttons() -> void:
 			continue
 		var button := Button.new()
 		button.text = action_name
-		button.pressed.connect(game.perform.bind(action_name))
+		button.pressed.connect(func() -> void: game.apply({type = "perform", action = action_name}))
 		%ActionButtons.add_child(button)
 
 
@@ -74,7 +74,7 @@ func _refresh_choice_bar() -> void:
 		%ChoiceBar.remove_child(child)
 		child.queue_free()
 	var picking_cards := game.choosing_cards() and not game.pick_exact
-	%ChoiceMargin.visible = game.choosing != "" and (picking_cards or not game.choosing_cards()) and not game.is_bot_turn()
+	%ChoiceMargin.visible = game.choosing != "" and (picking_cards or not game.choosing_cards()) and game.is_local_turn()
 	if not %ChoiceMargin.visible:
 		return
 	var prompt := Label.new()
@@ -83,10 +83,10 @@ func _refresh_choice_bar() -> void:
 		prompt.text += " choose up to %d (%d selected)" % [game.pick_count, game.selected.size()]
 	%ChoiceBar.add_child(prompt)
 	if picking_cards:
-		_add_choice_button("Done", game.finish_choice)
+		_add_choice_button("Done", func() -> void: game.apply({type = "finish"}))
 	else:
 		for option in game.choices:
-			_add_choice_button(Game.format_value(option), game.choose_option.bind(option))
+			_add_choice_button(Game.format_value(option), func() -> void: game.apply({type = "choose", option = option}))
 
 
 func _add_choice_button(text: String, on_pressed: Callable) -> void:

@@ -66,7 +66,7 @@ func flip(cards: Variant) -> void:
 
 
 func shuffle(zone: Zone) -> void:
-	zone.shuffle()
+	zone.shuffle(game.rng)
 	game.log_line("  shuffle " + zone.name)
 
 
@@ -121,12 +121,12 @@ func numbers(low: int, high: int) -> Array:
 
 
 func random(low: int, high: int) -> int:
-	return randi_range(low, high)
+	return game.rng.randi_range(low, high)
 
 
 func one_of(items: Variant) -> Variant:
 	var list: Array = items if items is Array and not items.any(func(item: Variant) -> bool: return item is Card or item is Zone) else cards_in(items)
-	return list.pick_random() if list else null
+	return list[game.rng.randi_range(0, list.size() - 1)] if list else null
 
 
 func trigger(event: String) -> void:

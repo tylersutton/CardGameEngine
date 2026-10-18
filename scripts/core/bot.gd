@@ -23,22 +23,22 @@ func take_input() -> bool:
 	if inputs_this_turn >= MAX_INPUTS_PER_TURN:
 		game.report_failure("Bot %d stopped after %d inputs this turn (is \"prefer\" pushing it in circles?)" % [turn_player, MAX_INPUTS_PER_TURN])
 		return false
-	var best_input: Callable
+	var best_move: Array = []
 	var best_value := -INF
 	var deals := _deals()
 	var prefer: String = game.rules.bot.prefer
 	if game.choosing:
 		prefer = game.rules.actions[game.choosing].get("prefer", prefer)
-	for input in game.legal_inputs():
-		var value: Variant = game.try_out(input, prefer, deals)
+	for move in game.legal_moves():
+		var value: Variant = game.try_out(move, prefer, deals)
 		if (value is float or value is int) and value > best_value:
-			best_input = input
+			best_move = move
 			best_value = value
-	if not best_input.is_valid():
+	if best_move.is_empty():
 		return false
 	inputs_this_turn += 1
 	game.log_line("[bot %d]" % turn_player)
-	best_input.call()
+	game.apply_move(best_move, turn_player)
 	history_after_last_input = game.history.size()
 	return true
 

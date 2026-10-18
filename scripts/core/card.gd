@@ -3,6 +3,7 @@ extends RefCounted
 
 const TITLE_COLUMN := "name"
 
+var id := -1
 var data: Dictionary
 var face_up := true
 var marks: Dictionary = {}

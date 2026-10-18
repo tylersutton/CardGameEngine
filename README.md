@@ -593,3 +593,13 @@ func discard_hand(zone: Zone, to: Zone) -> void:
 Other places to look:
 - `scripts/core/`: the game logic. `Game` runs the rules, `Zone` holds cards, `Melds` finds melds, `Bot` picks moves.
 - `scripts/ui/`: the table and side panel.
+- `tests/determinism_test.gd`: plays every game and checks matches replay exactly. Run it after engine changes: `godot --headless -s tests/determinism_test.gd`.
+
+### Inputs, seeds and replays
+
+Everything a player does reaches the game as plain data through `Game.apply(input)`, e.g. `{type = "drag", card = 12, to = "pile"}` or `{type = "perform", action = "Pass"}` (card numbers are the order cards were loaded in). The table, the bots and (later) online play all go through it, and the game keeps the list in `Game.inputs`.
+
+- **Seeds:** `Game.new(path, seed)` makes a match repeatable. Every shuffle, `random` and `one_of` uses that seed's random numbers, so the same seed and inputs always produce the same game.
+- **Replays:** `Game.record()` gives `{rules, seed, inputs}`, and `Game.replay(record)` rebuilds the match from it. `Game.state_hash()` sums up the whole state as one number, for checking two copies agree.
+- **Turns:** an input with a `player` is refused unless that player may act: it's their turn or their choice, any person may press a `human_only` button, anyone may rearrange their own cards.
+- **Seats:** `Game.local_seat` is the player this screen belongs to (0, the default, means people share the screen). With a seat set, `owner` and `human` zones are only shown to their owner, and only that seat's turn is "your turn".

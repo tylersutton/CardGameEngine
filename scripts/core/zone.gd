@@ -95,8 +95,13 @@ func sorted_index(card: Card) -> int:
 	return cards.filter(func(other: Card) -> bool: return other != card and not _precedes(card, other)).size()
 
 
-func shuffle() -> void:
-	cards.shuffle()
+## Shuffles with the match's own random numbers, so a match replays the same from its seed.
+func shuffle(rng: RandomNumberGenerator) -> void:
+	for i in range(cards.size() - 1, 0, -1):
+		var j := rng.randi_range(0, i)
+		var swapped := cards[i]
+		cards[i] = cards[j]
+		cards[j] = swapped
 	changed.emit(self)
 
 

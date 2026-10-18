@@ -93,7 +93,7 @@ func _groups(zone: Zone) -> Array:
 func _refresh_views() -> void:
 	for card in views:
 		views[card].face_up = game.shows_face(card)
-		views[card].highlighted = card in game.choices and not game.is_bot_turn()
+		views[card].highlighted = card in game.choices and game.is_local_turn()
 		views[card].selected = card in game.selected
 		views[card].marks_text = " ".join(card.marks.values().map(Game.format_value))
 
@@ -222,13 +222,13 @@ func _on_card_clicked(view: CardView) -> void:
 		_layout_zone(preview_zone)
 		preview_zone = null
 	var zone := game.zone_of(view.card)
-	game.click(view.card)
+	game.apply({type = "click", card = view.card.id})
 	_layout_zone(zone)
 
 
 func _on_card_double_clicked(view: CardView) -> void:
 	var zone := game.zone_of(view.card)
-	game.double_click(view.card)
+	game.apply({type = "double_click", card = view.card.id})
 	_layout_zone(zone)
 
 
@@ -241,8 +241,8 @@ func _on_card_dropped(view: CardView) -> void:
 	preview_zone = null
 	_show_drop_hint(view, null)
 	if destination == source and _makes_room(source):
-		game.reorder(view.card, index)
-	elif destination == source or not game.drag(view.card, destination, index):
+		game.apply({type = "reorder", card = view.card.id, index = index})
+	elif destination == source or not game.apply({type = "drag", card = view.card.id, to = destination.name, index = index}):
 		_layout_zone(source)
 		_layout_zone(destination)
 
@@ -251,7 +251,7 @@ func _gui_input(event: InputEvent) -> void:
 	if game and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		for zone: Zone in game.zones.values():
 			if zone.is_empty() and _slot(zone).has_point(event.position):
-				game.click_empty(zone)
+				game.apply({type = "click_empty", zone = zone.name})
 
 
 func _nearest_slot(zone: Zone, point: Vector2, slots: int) -> int:

@@ -34,6 +34,12 @@ static var string_literal := RegEx.create_from_string("'[^']*'|\"[^\"]*\"")
 static var name_in_code := RegEx.create_from_string(r"(?<![.\w])([A-Za-z_]\w*)\s*(\()?")
 
 var rules: GameRules
+var rules_path: String
+var match_seed: int
+var rng := RandomNumberGenerator.new()
+var cards: Array[Card] = []
+var inputs: Array[Dictionary] = []
+var local_seat := 0
 var zones: Dictionary[String, Zone] = {}
 var variables: Dictionary = {}
 var per_player_names: Array[String] = []
@@ -68,7 +74,11 @@ var loop_names: Array[String] = []
 var loop_values: Dictionary = {}
 
 
-func _init(rules_path: String) -> void:
+## A seed makes the match repeatable: the same seed and inputs always give the same game.
+func _init(path: String, seed := -1) -> void:
+	rules_path = path
+	match_seed = seed if seed >= 0 else randi()
+	rng.seed = match_seed
 	rules = GameRules.load_json(rules_path)
 	if rules.error:
 		errors.append(rules.error)
@@ -145,6 +155,134 @@ func perform(action_name: String) -> void:
 	else:
 		run(action.get("steps", []))
 	_finish_input(before)
+
+
+## The one way in for people, bots and (later) the network. An input is plain data, so it can be sent,
+## recorded and replayed: {type = "drag", card = 12, to = "pile", index = -1}, {type = "perform", action = "Pass"},
+## {type = "click", card = 7}, {type = "double_click", card = 7}, {type = "click_empty", zone = "stock"},
+## {type = "choose", option = "Red"}, {type = "finish"}, {type = "reorder", card = 3, index = 0}, {type = "undo"}.
+## With "player", it's refused unless that player may act now; without, it's someone at this screen.
+func apply(input: Dictionary) -> bool:
+	if not _is_well_formed(input):
+		report_failure("Ignored a malformed input: " + JSON.stringify(input))
+		return false
+	var player := int(input.get("player", local_seat))
+	if player and not may_act(player, input):
+		log_line("[refused] %s can't do that now: %s" % [player_name(player), input.type])
+		_flush_log()
+		return false
+	if not _apply_input(input):
+		return false
+	inputs.append(input.duplicate())
+	return true
+
+
+## Applies each input of a move (e.g. press an action, then click the card to choose), as that player.
+func apply_move(move: Array, player := 0) -> void:
+	for input: Dictionary in move:
+		var sent := input.duplicate()
+		if player:
+			sent.player = player
+		apply(sent)
+
+
+## Who may make an input: the player whose turn (or choice) it is. Human-only buttons are for any person,
+## anyone may rearrange their own cards, and undo is for the table to agree on.
+func may_act(player: int, input: Dictionary) -> bool:
+	match input.type:
+		"undo":
+			return true
+		"reorder":
+			return zone_of(cards[int(input.card)]).owner in [0, player]
+		"perform":
+			if rules.actions[input.action].get("human_only", false):
+				return not is_bot(player)
+	return sandbox or player == current_player()
+
+
+func _is_well_formed(input: Dictionary) -> bool:
+	if input.has("card") and not (input.card is float or input.card is int) or int(input.get("card", 0)) not in range(cards.size()):
+		return false
+	match input.get("type"):
+		"drag":
+			return input.has("card") and input.get("to") in zones
+		"click", "double_click", "reorder":
+			return input.has("card")
+		"click_empty":
+			return input.get("zone") in zones
+		"perform":
+			return input.get("action") in rules.actions
+		"choose":
+			return input.has("option")
+		"finish", "undo":
+			return true
+	return false
+
+
+func _apply_input(input: Dictionary) -> bool:
+	var card: Card = cards[int(input.card)] if input.has("card") else null
+	match input.type:
+		"drag":
+			return drag(card, zones[input.to], int(input.get("index", -1)))
+		"click":
+			click(card)
+		"double_click":
+			double_click(card)
+		"click_empty":
+			click_empty(zones[input.zone])
+		"perform":
+			perform(input.action)
+		"choose":
+			# Sent numbers arrive as decimals (4.0), so match options by value.
+			var matches := choices.filter(func(option: Variant) -> bool: return typeof(option) == typeof(input.option) and option == input.option \
+				or (option is int or option is float) and (input.option is int or input.option is float) and option == input.option)
+			if matches.is_empty():
+				return false
+			choose_option(matches[0])
+		"finish":
+			finish_choice()
+		"reorder":
+			reorder(card, int(input.index))
+		"undo":
+			undo()
+	return true
+
+
+## A match is its rules, seed and inputs; replaying them rebuilds it exactly.
+func record() -> Dictionary:
+	return {rules = rules_path, seed = match_seed, inputs = inputs.duplicate(true)}
+
+
+static func replay(match_record: Dictionary) -> Game:
+	var game := Game.new(match_record.rules, int(match_record.seed))
+	game.start()
+	for input: Dictionary in match_record.inputs:
+		game.apply(input)
+	return game
+
+
+## Everything that decides what happens next, as one number, so two copies of a match can be compared.
+func state_hash() -> int:
+	var state := {variables = _plain(variables), choice = _plain(_snapshot().choice), rng = rng.state, zones = {}, marks = {}}
+	for name in zones:
+		state.zones[name] = zones[name].cards.map(func(card: Card) -> int: return card.id if card.face_up else -1 - card.id)
+		for card in zones[name].cards:
+			if card.marks:
+				state.marks[str(card.id)] = _plain(card.marks)
+	return JSON.stringify(state).hash()
+
+
+static func _plain(value: Variant) -> Variant:
+	if value is Card:
+		return "card %d" % value.id
+	if value is Array:
+		return value.map(_plain)
+	if value is Dictionary:
+		var plain := {}
+		for key in value:
+			plain[key] = _plain(value[key])
+		return plain
+	return value
 
 
 ## Queues an action; with a player, that player makes its choice (it's their turn until they have).
@@ -498,6 +636,11 @@ func is_bot_turn() -> bool:
 	return is_bot(current_player())
 
 
+## Whether the person at this screen acts now: online, only on their seat's turn; sharing a screen, on any person's.
+func is_local_turn() -> bool:
+	return current_player() == local_seat if local_seat else not is_bot_turn()
+
+
 func player_name(player: int) -> String:
 	var name: String = rules.player_names[player - 1] if player <= rules.player_names.size() else "Player %d" % player
 	return name + " (bot)" if is_bot(player) else name
@@ -507,38 +650,39 @@ func is_bot(player: int) -> bool:
 	return rules.bot.get("players", []).any(func(bot_player: float) -> bool: return int(bot_player) == player)
 
 
-func legal_inputs() -> Array[Callable]:
+## Every move the current player could make, for bots. A move is a list of inputs (see apply), e.g.
+## pressing an action and then clicking the cards to choose.
+func legal_moves() -> Array[Array]:
 	if choosing:
-		return _choice_inputs(choosing, choices, pick_count, pick_exact)
-	var inputs: Array[Callable] = []
+		return _choice_moves(choosing, choices, pick_count, pick_exact)
+	var moves: Array[Array] = []
 	for source: Zone in zones.values():
 		for card in _reachable_cards(source):
 			for destination: Zone in zones.values():
 				if destination != source and not _matching_move(card, source, destination).is_empty():
-					inputs.append(drag.bind(card, destination))
+					moves.append([{type = "drag", card = card.id, to = destination.name}])
 		if source.on_click and source.is_empty():
-			inputs.append(click_empty.bind(source))
+			moves.append([{type = "click_empty", zone = source.name}])
 		elif source.on_click:
 			for card in _reachable_cards(source):
-				inputs.append(click.bind(card))
+				moves.append([{type = "click", card = card.id}])
 		if source.on_double_click:
 			for card in _reachable_cards(source):
-				inputs.append(double_click.bind(card))
+				moves.append([{type = "double_click", card = card.id}])
 	for action_name: String in rules.actions:
 		var action: Dictionary = rules.actions[action_name]
 		var only_asked: bool = not action.get("button", true)
 		if action.get("human_only", false) or only_asked or not _holds(action.get("when", "")):
 			continue
+		var press := {type = "perform", action = action_name}
 		if not action.has("choose"):
-			inputs.append(perform.bind(action_name))
+			moves.append([press])
 			continue
 		var options := _choice_list(_evaluate(action.choose, null))
 		var rule := _pick_rule(action, options.size())
-		for complete_choice in _choice_inputs(action_name, options, rule[0], rule[1]):
-			inputs.append(func() -> void:
-				perform(action_name)
-				complete_choice.call())
-	return inputs
+		for choice_move in _choice_moves(action_name, options, rule[0], rule[1]):
+			moves.append([press] + choice_move)
+	return moves
 
 
 ## What a player could pick up: only the top card of a pile.
@@ -561,33 +705,30 @@ func hidden_from(player: int) -> Array[Card]:
 	return hidden
 
 
-func _choice_inputs(action_name: String, options: Array, pick: int, exactly: bool) -> Array[Callable]:
-	var inputs: Array[Callable] = []
+func _choice_moves(action_name: String, options: Array, pick: int, exactly: bool) -> Array[Array]:
+	var moves: Array[Array] = []
 	if options.size() < pick:
-		return inputs
+		return moves
+	var clicks := func(chosen_cards: Array) -> Array:
+		return chosen_cards.map(func(card: Card) -> Dictionary: return {type = "click", card = card.id})
 	if not exactly:
 		for size in range(pick + 1):
 			for combination: Array in _combinations(options, size):
 				if _allows(action_name, combination):
-					inputs.append(func() -> void:
-						for card: Card in combination:
-							click(card)
-						finish_choice())
+					moves.append(clicks.call(combination) + [{type = "finish"}])
 	elif not options.all(func(option: Variant) -> bool: return option is Card):
 		for option in options:
 			if _allows(action_name, option):
-				inputs.append(choose_option.bind(option))
+				moves.append([{type = "choose", option = option}])
 	elif pick == 1:
 		for card: Card in options:
 			if _allows(action_name, card):
-				inputs.append(click.bind(card))
+				moves.append(clicks.call([card]))
 	else:
 		for combination: Array in _combinations(options, pick):
 			if _allows(action_name, combination):
-				inputs.append(func() -> void:
-					for card: Card in combination:
-						click(card))
-	return inputs
+				moves.append(clicks.call(combination))
+	return moves
 
 
 static func _combinations(items: Array, size: int) -> Array:
@@ -603,16 +744,16 @@ static func _combinations(items: Array, size: int) -> Array:
 ## Runs the input silently, measures the result as the current player, then undoes it.
 ## Returns null if the input only reordered cards. With deals (card -> data), hidden cards are
 ## given those identities for each try and the results averaged, so the measure can't peek.
-func try_out(input: Callable, measure: String, deals: Array = []) -> Variant:
+func try_out(move: Array, measure: String, deals: Array = []) -> Variant:
 	if deals.is_empty():
-		return _try_once(input, measure)
+		return _try_once(move, measure)
 	var total := 0.0
 	for deal: Dictionary in deals:
 		var real_data := {}
 		for card: Card in deal:
 			real_data[card] = card.data
 			card.data = deal[card]
-		var value: Variant = _try_once(input, measure)
+		var value: Variant = _try_once(move, measure)
 		for card: Card in real_data:
 			card.data = real_data[card]
 		if value is not float and value is not int:
@@ -621,7 +762,7 @@ func try_out(input: Callable, measure: String, deals: Array = []) -> Variant:
 	return total / deals.size()
 
 
-func _try_once(input: Callable, measure: String) -> Variant:
+func _try_once(move: Array, measure: String) -> Variant:
 	var player := current_player()
 	var before := _snapshot()
 	var contents_before := _contents()
@@ -629,7 +770,8 @@ func _try_once(input: Callable, measure: String) -> Variant:
 	var was_quiet := is_blocking_signals()
 	_flush_log()
 	_set_quiet(true)
-	input.call()
+	for input: Dictionary in move:
+		_apply_input(input)
 	var value: Variant = null
 	if choosing and not before.choice.choosing and current_player() == player:
 		value = _best_choice_value(measure)
@@ -648,8 +790,8 @@ func _try_once(input: Callable, measure: String) -> Variant:
 ## When an input opens a choice (e.g. playing Chapel), it's worth what the best way of making that choice is worth.
 func _best_choice_value(measure: String) -> Variant:
 	var best: Variant = null
-	for choice_input in legal_inputs():
-		var value: Variant = _try_once(choice_input, measure)
+	for choice_move in legal_moves():
+		var value: Variant = _try_once(choice_move, measure)
 		if (value is float or value is int) and (best == null or value > best):
 			best = value
 	return best
@@ -671,6 +813,7 @@ func _restore(snapshot: Dictionary) -> void:
 	asked.assign(snapshot.choice.asked.duplicate(true))
 	choice_asked = snapshot.choice.choice_asked
 	return_player = snapshot.choice.return_player
+	rng.state = snapshot.rng
 
 
 func _contents() -> Dictionary:
@@ -694,7 +837,7 @@ func _set_quiet(quiet: bool) -> void:
 func _snapshot() -> Dictionary:
 	var choice := {choosing = choosing, choices = choices.duplicate(), pick_count = pick_count, pick_exact = pick_exact,
 		selected = selected.duplicate(), asked = asked.duplicate(true), choice_asked = choice_asked, return_player = return_player}
-	var snapshot := {zones = {}, sort_columns = {}, faces = {}, marks = {}, variables = variables.duplicate(true), choice = choice}
+	var snapshot := {zones = {}, sort_columns = {}, faces = {}, marks = {}, variables = variables.duplicate(true), choice = choice, rng = rng.state}
 	for name in zones:
 		snapshot.zones[name] = zones[name].cards.duplicate()
 		snapshot.sort_columns[name] = zones[name].sort_columns.duplicate()
@@ -953,16 +1096,19 @@ func shows_face(card: Card) -> bool:
 	var zone := zone_of(card)
 	match zone.face:
 		Zone.FACE_OWNER:
-			return card.face_up and zone.owner == current_player()
+			return card.face_up and zone.owner == (local_seat if local_seat else current_player())
 		Zone.FACE_HUMAN:
-			return card.face_up and not is_bot(zone.owner)
+			return card.face_up and (zone.owner == local_seat if local_seat else not is_bot(zone.owner))
 		Zone.FACE_OTHERS:
 			return card.face_up and zone.owner != viewer()
 	return card.face_up
 
 
-## Who the table is shown to: the only human at a table of bots, otherwise whoever's turn it is (sharing one screen).
+## Who the table is shown to: this screen's seat when playing online; otherwise the only human at a table
+## of bots, or whoever's turn it is (sharing one screen).
 func viewer() -> int:
+	if local_seat:
+		return local_seat
 	var humans := range(1, rules.players + 1).filter(func(player: int) -> bool: return not is_bot(player))
 	return humans[0] if humans.size() == 1 else current_player()
 
@@ -1087,7 +1233,11 @@ func _check_names_are_unique() -> void:
 
 func _load_cards(zone: Zone, path: String) -> void:
 	if FileAccess.file_exists(path):
-		zone.add_all(DeckLoader.load_csv(path))
+		var deck := DeckLoader.load_csv(path)
+		for card in deck:
+			card.id = cards.size()
+			cards.append(card)
+		zone.add_all(deck)
 	else:
 		errors.append("Deck not found: " + path)
 
