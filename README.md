@@ -11,6 +11,7 @@ Included games:
 | Hearts | `games/hearts.json`, `decks/hearts_deck.csv` | Four players (you and three bots), passing three cards in a rotating direction, following suit, winning tricks, shooting the moon, a game to 100 |
 | Spades | `games/spades.json`, `decks/spades_deck.csv` | Partnerships (`teams`): bidding, team scores and bags, trump, nil bids, a game to 500 |
 | Cribbage | `games/cribbage.json`, `decks/cribbage_deck.csv` | Scoring combinations: fifteens, pairs and runs in pegging and in the show, the crib, go, nobs and flushes, a game to 121 |
+| Kaboom | `games/kaboom.json`, `decks/kaboom_deck.csv` | Responding to other players' cards (`ask_others`): Nope chains, Steal (the target picks what to give), Peek, and a bomb-dodging elimination game |
 | Pyramid | `games/pyramid.json`, `decks/standard_deck.csv` | Solitaire with overlapping cards (`covered_by`): pair uncovered cards that add up to 13 by dragging one onto the other |
 | Goofspiel | `games/goofspiel.json`, `decks/standard_deck.csv` | Everyone bids at once (`ask_all`): secret face-down bids, a reveal, ties carrying the prize over |
 | Fireworks | `games/fireworks.json`, `decks/fireworks_deck.csv` | A cooperative Hanabi-style game: you hold your cards facing away (`face: "others"`), clues `mark` your partner's cards, and the bot partner reasons only from what it's been told |
@@ -427,6 +428,7 @@ You can use:
 - **`choice`**: what was picked in a `choose` action: a card, a list of cards, or a value.
 - **Card columns,** as `card.data.<column>`.
 - **Operators:** `==`, `!=`, `<`, `>`, `<=`, `>=`, `+`, `-`, `*`, `/`, `and`, `or`, `not`, and parentheses.
+- **Either-or values:** `'out' if count(hand) == 0 else 'in'`. Put parentheses around a condition that uses `and`/`or`.
 - **Text with numbers in it:** `'bid %d, score %d' % [team_bid_1, team_score_1]`, handy in [`status`](#status).
 - **Lists:** `[1, 2]`, joined with `+` (`finish_order + [player]`) and read by position from 0 (`ranking[0]`).
 - **Math:** `abs`, `min`, `max`, `floor`, `ceil`, `round`, and `int` (which also turns `true`/`false` into `1`/`0`, e.g. `5 * int(team_winning)`).
@@ -501,6 +503,7 @@ To repeat steps while something is true, use a `while` step:
 | `trigger('name')` | Run a step list from `triggers`. |
 | `ask('Action name', player)` | Start that action (usually a `choose`) once the current move finishes, e.g. from a wild card's effect. Several asks wait in line: each starts when the previous choice is finished. With a player number, that player makes the choice: it's their turn until they've chosen (so `hand` means their hand, and a bot answers by itself), then the turn goes back. A choice started by `ask` must be made: clicking elsewhere doesn't cancel it, and other buttons and drags wait. |
 | `ask_all('Action name', 'trigger')` | Everyone makes that choice at the same time, e.g. a secret bid: people choose first (so nobody waits on the bots), then each bot, then the trigger runs, e.g. to turn the bids over. Put the choices somewhere face down (`move(choice, bid)` with a face-down `bid` zone) so nobody, bots included, sees them before the reveal. Real-time play (Speed, Slapjack) isn't possible. |
+| `ask_others('Action name', 'trigger')` | A chance to respond: every other player, in turn order, is asked that action (players whose `when` is false are skipped), then the trigger runs. If someone responds by calling `ask_others` again, the rest of the first round is called off and a new round starts around them, so the trigger runs once, after a round where nobody responds. That's how Kaboom's Nope works, including a Nope on a Nope: see `games/kaboom.json`. |
 | `run_effect(card, 'play')` | Run a card's `on_play` effect again, e.g. Throne Room playing an action twice |
 
 **Questions**
@@ -512,6 +515,7 @@ To repeat steps while something is true, use a `while` step:
 | `highest(cards, 'column')`, `lowest(cards, 'column')` | The card with the biggest or smallest number in that column, e.g. the winner of a trick: `highest(where(all_played, 'suit', lead), 'value')` |
 | `owner(card)` | The number of the player whose zone the card is in (0 for shared zones), e.g. `assign('player', owner(highest(...)))` |
 | `next_player(seats)` | The player that many seats after the current one, wrapping around: `next_player(1)` is next, `next_player(-1)` is previous |
+| `variable_of('name', player)` | Another player's player variable, e.g. `variable_of('alive', next_player())` |
 | `zone('kind', player)` | That player's zone, e.g. `zone('hand', next_player(2))` for the player across the table |
 | `numbers(low, high)` | The list of whole numbers from `low` to `high`, e.g. for bids: `"choose": "numbers(0, 13)"` |
 | `count(cards)` | How many cards |

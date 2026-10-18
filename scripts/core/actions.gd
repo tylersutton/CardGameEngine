@@ -93,8 +93,19 @@ func ask_all(action: String, then_trigger: String = "") -> void:
 	game.ask_all(action, then_trigger)
 
 
+func ask_others(action: String, then_trigger: String = "") -> void:
+	game.ask_others(action, then_trigger)
+
+
 func next_player(seats: int = 1) -> int:
 	return posmod(game.current_player() - 1 + seats, game.rules.players) + 1
+
+
+func variable_of(name: String, player: int) -> Variant:
+	var variable := "%s_%d" % [name, player]
+	if variable not in game.variables:
+		game.report_failure("No player variable \"%s\"" % variable)
+	return game.variables.get(variable)
 
 
 func zone(kind: String, player: int) -> Zone:

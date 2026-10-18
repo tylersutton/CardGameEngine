@@ -18,7 +18,7 @@ const TEAM_PREFIX := "team_"
 const CARD_EFFECT_PREFIX := "on_"
 const HIDDEN_CARD := "a hidden card"
 const CARD_EFFECT_SEPARATOR := ";"
-const KEYWORDS := ["true", "false", "null", "and", "or", "not"]
+const KEYWORDS := ["true", "false", "null", "and", "or", "not", "if", "else"]
 const MATH_FUNCTIONS := ["abs", "min", "max", "floor", "ceil", "round", "int"]
 const CONDITIONAL_KEYS := ["if", "then", "else"]
 const LOOP_KEYS := ["for", "in", "do"]
@@ -166,6 +166,19 @@ func ask_all(action_name: String, then_trigger: String) -> void:
 		ask(action_name, player)
 	if then_trigger:
 		asked.append({trigger = then_trigger})
+
+
+## A response window: each other player in turn order is asked, then then_trigger runs. A response that opens
+## a new window (a "Nope" to a "Nope") calls off the rest of this one, so the trigger runs once, when nobody responds.
+func ask_others(action_name: String, then_trigger: String) -> void:
+	if then_trigger and then_trigger not in rules.triggers:
+		report_failure("No trigger named \"%s\" in \"triggers\"" % then_trigger)
+		return
+	asked.assign(asked.filter(func(request: Dictionary) -> bool: return not request.get("window", false)))
+	for seat in range(1, rules.players):
+		asked.append({action = action_name, player = (current_player() - 1 + seat) % rules.players + 1, window = true})
+	if then_trigger:
+		asked.append({trigger = then_trigger, window = true})
 
 
 func choosing_cards() -> bool:
