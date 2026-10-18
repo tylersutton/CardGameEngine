@@ -23,3 +23,5 @@ Laboratory,5,Action,1,,2,1,,,"+2 Cards, +1 Action",#222222,10,action
 Council Room,5,Action,1,,4,,1,,"+4 Cards, +1 Buy. Each other player draws a card.",#222222,10,action; council_room
 Witch,5,Action,1,,2,,,,+2 Cards. Each other player gains a Curse.,#222222,10,action; witch
 Mine,5,Action,1,,,,,,You may trash a Treasure from your hand. Gain a Treasure to your hand costing up to $3 more than it.,#222222,10,action; mine
+Moat,2,Action-Reaction,1,,2,,,,"+2 Cards. When another player plays an Attack, you may first reveal this from your hand, to be unaffected by it.",#1565c0,10,action
+Militia,4,Action-Attack,1,2,,,,,"+$2. Each other player discards down to 3 cards in hand.",#222222,10,action; militia

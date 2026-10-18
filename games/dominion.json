@@ -22,7 +22,7 @@
 		"attacker": 0, "empty_piles": 0, "gain_limit": 0, "merchants": 0, "silver_played": false
 	},
 	"show_variables": ["phase", "actions", "buys", "coins", "result"],
-	"player_variables": { "score": 0 },
+	"player_variables": { "score": 0, "immune": false },
 	"status": {
 		"your victory points": "sum([deck_1, hand_1, play_1, discard_1], 'vp')",
 		"bot's victory points": "sum([deck_2, hand_2, play_2, discard_2], 'vp')"
@@ -30,7 +30,9 @@
 	"bot": { "players": [2], "prefer": "20 * (sum(my_cards, 'coins') - count(matching(my_cards, 'is_copper'))) / count(my_cards) + sum(my_cards, 'vp') + 0.01 * coins" },
 	"conditions": {
 		"basics": "['Copper', 'Silver', 'Gold', 'Estate', 'Duchy', 'Province', 'Curse']",
-		"kingdom": "['Cellar', 'Chapel', 'Merchant', 'Village', 'Workshop', 'Remodel', 'Smithy', 'Throne Room', 'Market', 'Mine']",
+		"kingdom": "['Cellar', 'Moat', 'Merchant', 'Village', 'Workshop', 'Militia', 'Remodel', 'Smithy', 'Market', 'Mine']",
+		"is_moat": "card.data.name == 'Moat'",
+		"attacked": "player != attacker and not immune",
 		"within_limit": "number(card, 'cost') <= gain_limit",
 		"treasure_within_limit": "is_treasure and within_limit",
 		"is_action": "number(card, 'action') == 1",
@@ -61,10 +63,8 @@
 		"remodel": ["ask('Remodel')"],
 		"mine": ["ask('Mine')"],
 		"throne_room": ["ask('Throne Room')"],
-		"witch": [
-			"assign('attacker', player)",
-			{ "for": "player", "in": "players", "do": [{ "if": "player != attacker", "then": ["move(top(zone('supply', 7)), discard)"] }] }
-		]
+		"militia": ["assign('attacker', player)", "trigger('reactions')", "ask('Militia attack')"],
+		"witch": ["assign('attacker', player)", "trigger('reactions')", "ask('Witch attack')"]
 	},
 	"moves": [
 		{
@@ -106,6 +106,29 @@
 			"button": false, "choose": "matching(hand, 'is_action')", "up_to": 1,
 			"steps": [{ "if": "count(choice) == 1", "then": ["move(choice, play)", "run_effect(top(choice), 'play')"] }]
 		},
+		"Reveal Moat?": {
+			"button": false, "choose": "['Reveal Moat', 'Keep it hidden']",
+			"steps": [{ "if": "choice == 'Reveal Moat'", "then": ["assign('immune', true)"] }]
+		},
+		"Militia attack": {
+			"button": false,
+			"steps": [{ "for": "player", "in": "players", "do": [
+				{ "if": "attacked and count(hand) > 3", "then": ["ask('Discard down to 3', player)"] },
+				"assign('immune', false)"
+			] }]
+		},
+		"Discard down to 3": {
+			"button": false, "choose": "hand", "pick": "count(hand) - 3",
+			"prefer": "sum(hand, 'coins') + count(matching(hand, 'is_action'))",
+			"steps": ["move(choice, discard)"]
+		},
+		"Witch attack": {
+			"button": false,
+			"steps": [{ "for": "player", "in": "players", "do": [
+				{ "if": "attacked", "then": ["move(top(zone('supply', 7)), discard)"] },
+				"assign('immune', false)"
+			] }]
+		},
 		"Gain a card": { "button": false, "choose": "matching(tops(supply), 'within_limit')", "steps": ["move(choice, discard)"] },
 		"Gain a treasure": { "button": false, "choose": "matching(tops(supply), 'treasure_within_limit')", "steps": ["move(choice, hand)"] }
 	},
@@ -118,6 +141,9 @@
 			{ "for": "player", "in": "players", "do": ["sort(hand, ['type', 'cost'])", "shuffle(deck)", "draw(deck, hand, 5)"] }
 		],
 		"deck_empty": ["move(discard, deck)", "shuffle(deck)"],
+		"reactions": [{ "for": "player", "in": "players", "do": [
+			{ "if": "player != attacker and count(matching(hand, 'is_moat')) > 0", "then": ["ask('Reveal Moat?', player)"] }
+		] }],
 		"cleanup": [
 			"move(play, discard)",
 			"move(hand, discard)",
