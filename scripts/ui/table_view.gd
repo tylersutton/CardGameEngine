@@ -219,23 +219,23 @@ func _dragged_views(view: CardView) -> Array[CardView]:
 
 
 func _on_card_clicked(view: CardView) -> void:
+	_press(view, "click")
+
+
+## Two quick clicks on a zone with no double-click steps (like a solitaire stock) are two clicks, not one double-click.
+func _on_card_double_clicked(view: CardView) -> void:
+	_press(view, "double_click" if game.zone_of(view.card).on_double_click else "click")
+
+
+## A click ends the little pick-up that every press starts, then goes to the game.
+func _press(view: CardView, input_type: String) -> void:
 	carried_views.clear()
 	_show_drop_hint(view, null)
 	if preview_zone:
 		_layout_zone(preview_zone)
 		preview_zone = null
 	var zone := game.zone_of(view.card)
-	submit.call({type = "click", card = view.card.id})
-	_layout_zone(zone)
-
-
-## Two quick clicks on a zone with no double-click steps (like a solitaire stock) are two clicks, not one double-click.
-func _on_card_double_clicked(view: CardView) -> void:
-	var zone := game.zone_of(view.card)
-	if zone.on_double_click:
-		submit.call({type = "double_click", card = view.card.id})
-	else:
-		submit.call({type = "click", card = view.card.id})
+	submit.call({type = input_type, card = view.card.id})
 	_layout_zone(zone)
 
 

@@ -68,6 +68,8 @@ var tween: Tween
 ## Off for cards this screen's player can't move (another player's, online): they can still be clicked.
 var movable := true
 var grabbed := false
+## The press was the second of a double-click; it counts as one when the button comes up, like any click.
+var pressed_twice := false
 var grab_start: Vector2
 var grab_offset: Vector2
 
@@ -92,9 +94,8 @@ func move_to(target_position: Vector2, target_rotation: float) -> void:
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.double_click:
-			double_clicked.emit(self)
-		elif event.pressed:
+		if event.pressed:
+			pressed_twice = event.double_click
 			_grab()
 		elif grabbed:
 			_release()
@@ -121,7 +122,7 @@ func stop_moving() -> void:
 func _release() -> void:
 	grabbed = false
 	if get_global_mouse_position().distance_to(grab_start) < CLICK_DISTANCE:
-		clicked.emit(self)
+		(double_clicked if pressed_twice else clicked).emit(self)
 	elif movable:
 		dropped.emit(self)
 
