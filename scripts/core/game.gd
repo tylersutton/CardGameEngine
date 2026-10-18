@@ -86,6 +86,8 @@ func _init(rules_path: String) -> void:
 			var zone := Zone.new(zone_kind, definition, number)
 			_add_zone(zone, definition)
 			zone_groups[group_name].append(zone)
+			if definition.has("group"):
+				zone_groups.get_or_add(definition.group, []).append(zone)
 	variables = rules.variables.duplicate(true)
 	if rules.players > 1:
 		variables[PLAYER_VARIABLE] = 1
@@ -772,7 +774,7 @@ func _rules_between(source: Zone, destination: Zone) -> Array:
 
 
 func _names(rule_zone: Variant, zone: Zone) -> bool:
-	return rule_zone == null or _resolve(rule_zone) == zone.name or (rule_zone in zone_groups and zone.kind == rule_zone)
+	return rule_zone == null or _resolve(rule_zone) == zone.name or (rule_zone in zone_groups and zone in zone_groups[rule_zone])
 
 
 func _refusal_reason(source: Zone, destination: Zone) -> String:
@@ -973,6 +975,12 @@ func _copies_of(zone_kind: String, definition: Dictionary) -> int:
 	if per_player and definition.has("copies"):
 		errors.append("Zone \"%s\": use \"per_player\" or \"copies\", not both" % zone_kind)
 	var copies: int = rules.players if per_player else int(definition.get("copies", 0))
+	var grid: Variant = definition.get("grid")
+	if grid != null and not (grid is Dictionary and grid.get("columns") is float and grid.get("spacing") is Array and grid.spacing.size() == 2):
+		errors.append("Zone \"%s\": \"grid\" should look like { \"columns\": 5, \"spacing\": [0.09, 0.19] }" % zone_kind)
+		return 0
+	if definition.has("group") and copies == 0:
+		errors.append("Zone \"%s\": \"group\" needs \"copies\" or \"per_player\"" % zone_kind)
 	if copies and definition.has("anchors") and definition.anchors.size() < copies:
 		errors.append("Zone \"%s\" needs %d anchors in \"anchors\" (one per %s)" % [zone_kind, copies, "player" if per_player else "copy"])
 		return 0

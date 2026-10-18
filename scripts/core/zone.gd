@@ -37,6 +37,10 @@ func _init(zone_kind: String, definition: Dictionary, number := 0) -> void:
 	face = definition.get("face", "up")
 	var anchor_values: Array = definition.anchors[number - 1] if number and definition.has("anchors") else definition.get("anchor", [0.5, 0.5])
 	anchor = Vector2(anchor_values[0], anchor_values[1])
+	if number and definition.has("grid"):
+		var columns := int(definition.grid.columns)
+		var spacing: Array = definition.grid.spacing
+		anchor += Vector2((number - 1) % columns * spacing[0], (number - 1) / columns * spacing[1])
 	width = definition.get("width", 0.0)
 	var rotations: Array = definition.get("rotations", [])
 	rotation = rotations[number - 1] if number and rotations.size() >= number else definition.get("rotation", 0.0)

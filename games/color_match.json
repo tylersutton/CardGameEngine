@@ -29,7 +29,7 @@
 		{
 			"from": "deck", "to": "hand",
 			"when": "winner == null",
-			"then": ["end_turn()"]
+			"then": [{ "if": "count(deck) == 0", "then": ["trigger('deck_empty')"] }, "end_turn()"]
 		}
 	],
 	"actions": {
@@ -48,6 +48,7 @@
 			"sort(hand_2, ['color', 'number'])",
 			"shuffle(deck)",
 			"deal(deck, all_hand, 7)",
+			{ "while": "text(top(deck), 'on_pile') != ''", "do": ["shuffle(deck)"] },
 			"move(top(deck), pile)",
 			"assign('active_color', top(pile).data.color)"
 		],

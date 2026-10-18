@@ -74,7 +74,7 @@ func _refresh_choice_bar() -> void:
 		%ChoiceBar.remove_child(child)
 		child.queue_free()
 	var picking_cards := game.choosing_cards() and not game.pick_exact
-	%ChoiceMargin.visible = game.choosing != "" and (picking_cards or not game.choosing_cards())
+	%ChoiceMargin.visible = game.choosing != "" and (picking_cards or not game.choosing_cards()) and not game.is_bot_turn()
 	if not %ChoiceMargin.visible:
 		return
 	var prompt := Label.new()

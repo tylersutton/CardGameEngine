@@ -93,7 +93,7 @@ func _groups(zone: Zone) -> Array:
 func _refresh_views() -> void:
 	for card in views:
 		views[card].face_up = game.shows_face(card)
-		views[card].highlighted = card in game.choices
+		views[card].highlighted = card in game.choices and not game.is_bot_turn()
 		views[card].selected = card in game.selected
 
 

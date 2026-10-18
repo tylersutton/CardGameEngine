@@ -8,7 +8,7 @@ Included games:
 |---|---|---|
 | Gin Rummy (default) | `games/gin_rummy.json`, `decks/gin_deck.csv` | Turn phases, melds, scoring, a match to 100, a bot opponent |
 | Dominion | `games/dominion.json`, `decks/dominion.csv` | Deckbuilding: a supply of 7 basic and 10 kingdom piles (pick the kingdom from 17 cards in the game file), per-player decks that reshuffle, actions/buys/coins, choices like Cellar, Chapel, Remodel, Mine and Throne Room, attacks (Militia, Witch) answered by the other player, Moat reactions, rules text with hover zoom, and a Big Money bot. The default kingdom is the official First Game set |
-| Hearts | `games/hearts.json`, `decks/hearts_deck.csv` | Four players (you and three bots), passing three cards, following suit, winning tricks |
+| Hearts | `games/hearts.json`, `decks/hearts_deck.csv` | Four players (you and three bots), passing three cards in a rotating direction, following suit, winning tricks, shooting the moon, a game to 100 |
 | Spades | `games/spades.json`, `decks/spades_deck.csv` | Partnerships (`teams`): bidding, team scores and bags, trump, nil bids, a game to 500 |
 | Cribbage | `games/cribbage.json`, `decks/cribbage_deck.csv` | Scoring combinations: fifteens, pairs and runs in pegging and in the show, the crib, go, nobs and flushes, a game to 121 |
 | President | `games/president.json`, `decks/president_deck.csv` | Playing several cards at once (`allow` checks they're a valid set), a single 2 that beats anything and clears the table, matching the last play to skip the next player, passing, finishing order and titles, the card exchange between President and Scum |
@@ -122,7 +122,7 @@ Run the project and pick **Color Match** on the title screen (it's listed becaus
 
 `deal(deck, all_hand, 7)` deals 7 cards to every hand, one card at a time around the table. `all_hand` means every player's hand (`hand_1`, `hand_2`).
 
-`deck_empty` runs when someone tries to draw from an empty deck. Here it shuffles the pile, minus its top card, back into the deck.
+`deck_empty` runs when `draw` needs a card from an empty deck. Here it shuffles the pile, minus its top card, back into the deck. Color Match draws by dragging rather than with `draw`, so its move rule (below) triggers `deck_empty` itself when the last card is taken.
 
 ### 4. Write the rules for moves
 
@@ -139,14 +139,14 @@ Without a `moves` list, any drag is allowed. Once you add one, only the drags it
 	{
 		"from": "deck", "to": "hand",
 		"when": "winner == null",
-		"then": ["end_turn()"]
+		"then": [{ "if": "count(deck) == 0", "then": ["trigger('deck_empty')"] }, "end_turn()"]
 	}
 ]
 ```
 
 - `hand` means **the current player's** hand, so you can only play your own cards. (`opponent_hand` is the other player's.)
 - `when` must be true for the move to be allowed. `card` is the card being dragged, and `card.data.color` reads its `color` column.
-- `then` runs after the move. Here: if your hand is now empty you win, otherwise the turn passes.
+- `then` runs after the move. Here: if your hand is now empty you win, otherwise the turn passes. Taking the last card from the deck refills it from the pile.
 - `winner` is a **variable** we declared. Variables show in the side panel, and are changed with `assign`.
 
 To make clicking the deck draw a card too, add `"on_click": ["try_move(top(deck), hand)"]` to the deck zone. `try_move` follows the same move rules as dragging.
@@ -207,6 +207,7 @@ The finished `color_match.json` goes one step further: Wild cards that let you c
 - Because `choose` lists values instead of cards, they appear as buttons above the table. The picked one is `choice`.
 - `"button": false` keeps the action out of the toolbar, since it only happens when asked.
 - The play rule now matches `active_color` instead of the top card's color, and doesn't end the turn after a Wild (choosing the color does).
+- So the first card turned up can't be a Wild or a +2 (whose effects would fire before anyone has played), `start` shuffles until the top card has no effect: `{ "while": "text(top(deck), 'on_pile') != ''", "do": ["shuffle(deck)"] }`.
 
 ## Game file reference
 
@@ -236,6 +237,8 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 | `copies` | A number: makes that many zones, e.g. `"copies": 7` makes `tableau_1` ... `tableau_7` | |
 | `anchors` | With `per_player` or `copies`, one `[x, y]` position each | |
 | `rotations` | With `per_player` or `copies`, one rotation each, e.g. `[0, 90, 180, 270]` for four players around a table | |
+| `grid` | With `copies`, instead of `anchors`: lay the copies out in rows from `anchor`, e.g. `{ "columns": 5, "spacing": [0.09, -0.19] }` puts 5 per row, 0.09 apart, each row 0.19 higher than the last | |
+| `group` | With `copies`, also put them in a group with this name, shared with other zones that name it. Dominion's `basic_pile` and `kingdom_pile` copies are both in `"group": "supply"`, so `tops(supply)` and `"from": "supply"` cover all 17 piles | |
 
 **Per-player zones and copies** are named the same way but mean different things in rules and steps:
 - **Per-player:** `hand` means the current player's hand, and `opponent_hand` the next player's. `all_hand` is every player's hand, as a list (e.g. `count(all_played) == 4`).
