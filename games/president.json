@@ -1,6 +1,6 @@
 {
 	"title": "President",
-	"description": "Four players, you against three bots. Play a single, pair, triple or four of a kind that beats the last one, or pass; 2s are high. Get rid of your cards first to become President.",
+	"description": "Four players, you against three bots. Play a single, pair, triple or four of a kind that beats the last one, or pass. 2s are high, and a single 2 beats anything (except as the first play of a hand). Get rid of your cards first to become President.",
 	"players": 4,
 	"player_names": ["You", "West", "North", "East"],
 	"seats": [[0.236, 0.86], [0.09, 0.247], [0.78, 0.14], [0.91, 0.753]],
@@ -15,7 +15,7 @@
 		"table": { "label": "To beat", "layout": "row", "width": 0.2, "anchor": [0.54, 0.5] }
 	},
 	"variables": {
-		"phase": "play", "set_size": 0, "top_order": 0, "last_played": 0, "passes": 0,
+		"phase": "play", "first_play": true, "set_size": 0, "top_order": 0, "last_played": 0, "passes": 0,
 		"finish_order": [], "ranking": [], "result": ""
 	},
 	"player_variables": { "title": "", "score": 0 },
@@ -26,11 +26,14 @@
 		"North": "'%s (%d points)' % [title_3, score_3]",
 		"East": "'%s (%d points)' % [title_4, score_4]"
 	},
-	"bot": { "players": [2, 3, 4], "prefer": "-10 * count(hand) - top_order" },
+	"bot": { "players": [2, 3, 4], "prefer": "-10 * count(hand) + 0.5 * sum(hand, 'order')" },
 	"conditions": {
-		"can_beat": "number(card, 'order') > top_order and count(where(hand, 'rank', card.data.rank)) >= max(set_size, 1)",
+		"is_two": "card.data.rank == '2'",
+		"can_beat": "(is_two and not first_play) or (not is_two and number(card, 'order') > top_order and count(where(hand, 'rank', card.data.rank)) >= max(set_size, 1))",
 		"one_rank": "size(groups(choice, 'rank')) == 1",
 		"right_size": "set_size == 0 or count(choice) == set_size",
+		"single_two": "count(choice) == 1 and text(top(choice), 'rank') == '2'",
+		"unbeatable": "top_order == 13",
 		"round_over": "set_size > 0 and passes >= count(tops(all_hand)) - int(count(zone('hand', last_played)) > 0)",
 		"last_one_left": "owner(top(tops(all_hand)))"
 	},
@@ -38,7 +41,7 @@
 		"Play": {
 			"when": "phase == 'play' and count(hand) > 0",
 			"choose": "matching(hand, 'can_beat')", "up_to": 4,
-			"allow": "count(choice) > 0 and one_rank and right_size",
+			"allow": "count(choice) > 0 and one_rank and (right_size or single_two)",
 			"steps": [
 				"move(table, beaten)",
 				"move(choice, table)",
@@ -46,8 +49,11 @@
 				"assign('top_order', number(top(choice), 'order'))",
 				"assign('last_played', player)",
 				"assign('passes', 0)",
+				"assign('first_play', false)",
 				{ "if": "count(hand) == 0", "then": ["trigger('finished')"] },
-				{ "if": "size(finish_order) == 3", "then": ["assign('player', last_one_left)", "trigger('finished')", "trigger('hand_over')"], "else": ["trigger('next')"] }
+				{ "if": "size(finish_order) == 3", "then": ["assign('player', last_one_left)", "trigger('finished')", "trigger('hand_over')"], "else": [
+					{ "if": "unbeatable", "then": ["trigger('clear')", { "if": "count(hand) == 0", "then": ["trigger('next')"] }], "else": ["trigger('next')"] }
+				] }
 			]
 		},
 		"Pass": {
@@ -55,7 +61,7 @@
 			"steps": [
 				"assign('passes', passes + 1)",
 				"trigger('next')",
-				{ "if": "round_over", "then": ["move([table, beaten], deck)", "assign('set_size', 0)", "assign('top_order', 0)", "assign('passes', 0)"] }
+				{ "if": "round_over", "then": ["trigger('clear')"] }
 			]
 		},
 		"Give 2 back": {
@@ -78,6 +84,7 @@
 			"shuffle(deck)",
 			"deal(deck, all_hand, 13)",
 			"assign('finish_order', [])",
+			"assign('first_play', true)",
 			"assign('set_size', 0)",
 			"assign('top_order', 0)",
 			"assign('passes', 0)",
@@ -96,6 +103,7 @@
 			"ask('Give 2 back', ranking[0])",
 			"ask('Give 1 back', ranking[1])"
 		],
+		"clear": ["move([table, beaten], deck)", "assign('set_size', 0)", "assign('top_order', 0)", "assign('passes', 0)"],
 		"next": [
 			"end_turn()",
 			{ "while": "count(hand) == 0", "do": ["end_turn()"] }
