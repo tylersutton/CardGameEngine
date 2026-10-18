@@ -577,6 +577,7 @@ Wherever a building block takes `cards`, you can pass a zone, a single card, or 
 - **`and`/`or` stop as soon as the answer is known**, so `count(to) > 0 and top(to).data.color == 'Red'` is safe on an empty zone: the second half isn't checked when the first is false.
 - **Numbers in the JSON are decimals.** A variable starting at `0` displays as `0` but is stored as `0.0`. Comparisons work normally.
 - **To deal the same way in several places,** put the steps in a custom trigger and call `trigger('deal')`.
+- **Triggers don't know the card.** Inside a trigger `card` is `null`, so steps about the clicked or dragged card ("if it's a King, remove it") belong in the zone's `on_click` or the move rule's `then`, not in a trigger they call.
 - **"Draw only if you can't play"** is a move rule like `{ "from": "deck", "to": "hand", "when": "count(movable(hand, pile)) == 0" }`. (A rule can't use `movable` to check moves into its own destination; that inner check counts as "no moves" and the log says so.)
 - **To repeat a check,** give it a name in [`conditions`](#conditions). **To repeat a step,** use a [loop](#loops), or [repeat until](#repeat-until) something changes.
 - **Look at `games/gin_rummy.json`** for a full game: turn phases, knocking, scoring, and a match to 100. `games/solitaire.json` shows columns, stacks, and groups of zones. `games/cribbage.json` scores combinations, and `games/spades.json` has teams.
