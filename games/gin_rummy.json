@@ -86,8 +86,8 @@
 						}
 					]
 				},
-				"move(melds(hand), table)",
-				"move(melds(opponent_hand), opponent_table)",
+				"move(hand, table)",
+				"move(opponent_hand, opponent_table)",
 				"trigger('hand_over')"
 			]
 		}
@@ -114,8 +114,8 @@
 				"assign('result', 'big gin')",
 				"assign('score', score + 31 + defender_deadwood)",
 				"assign('hands_won', hands_won + 1)",
-				"move(melds(hand), table)",
-				"move(melds(opponent_hand), opponent_table)",
+				"move(hand, table)",
+				"move(opponent_hand, opponent_table)",
 				"trigger('hand_over')"
 			]
 		},
