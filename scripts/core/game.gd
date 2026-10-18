@@ -944,13 +944,13 @@ func shows_face(card: Card) -> bool:
 
 
 ## Whether that player can see the card's face: not if it's face down, nor in another player's private zone
-## ("owner" or "human"), nor in their own zone held facing away from them ("others").
+## ("private"), nor in their own zone held facing away from them ("others").
 func can_see(player: int, card: Card) -> bool:
 	if not card.face_up:
 		return false
 	var zone := zone_of(card)
 	match zone.face:
-		Zone.FACE_OWNER, Zone.FACE_HUMAN:
+		Zone.FACE_PRIVATE:
 			return zone.owner == player
 		Zone.FACE_OTHERS:
 			return zone.owner != player

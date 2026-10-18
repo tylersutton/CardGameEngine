@@ -101,7 +101,7 @@ Create `games/color_match.json`. Start with the **zones**: the named places card
 	"zones": {
 		"deck": { "label": "Deck", "layout": "pile", "face": "down", "anchor": [0.4, 0.5], "cards": "res://decks/color_match.csv" },
 		"pile": { "label": "Pile", "layout": "pile", "anchor": [0.6, 0.5] },
-		"hand": { "per_player": true, "layout": "fan", "face": "owner", "anchors": [[0.5, 0.83], [0.5, 0.16]] }
+		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchors": [[0.5, 0.83], [0.5, 0.16]] }
 	},
 	"card_face": { "corner": "number", "title": "number", "body": ["color"], "color": "ink" }
 }
@@ -112,7 +112,7 @@ Create `games/color_match.json`. Start with the **zones**: the named places card
 - `layout` is how the cards spread out: `pile` (stacked), `row`, or `fan`.
 - `"cards"` puts the whole deck in that zone at the start.
 - `"per_player": true` makes one hand per player, `hand_1` and `hand_2`, placed at the two `anchors`.
-- `"face": "owner"` shows each hand only on its owner's turn, so two people can share a screen.
+- `"face": "private"` shows each hand only to its owner: when two people share a screen, only on its owner's turn; against bots, only yours; online, only on its owner's screen.
 - `card_face` picks which columns appear on the card. `color` is the column holding each card's text color.
 
 Run the project and pick **Color Match** on the title screen (it's listed because it's in `games/`). You should see a face-down deck. Nothing is dealt yet.
@@ -240,7 +240,7 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 | `label` | Text shown inside the zone's outline while it's empty, e.g. `"Discard"`, or `"K"` for an empty solitaire column. In per-player zones and copies, `#` becomes the number: `"Tricks #"` shows "Tricks 1", "Tricks 2", ... | none |
 | `outline` | `false` draws no outline or label, for zones that are only used in passing (e.g. the deck in Hearts) | `true` |
 | `layout` | `pile`, `row`, `fan`, `column` (cascading downward from the anchor, face-down cards overlapping more, squeezing to fit; for solitaire), or `melds` (groups the cards into their melds; for rummy tables) | `row` |
-| `face` | `up`, `down`, `owner` (face up only on the owning player's turn), `human` (face up unless a bot owns it), or `others` (face up for everyone except its owner, like holding cards facing out in Hanabi; bots can't see their own either). Cards take this face when they enter the zone. | `up` |
+| `face` | `up`, `down`, `private` (seen only by its owner: on their turn when people share a screen, always against bots, on their own screen online), or `others` (face up for everyone except its owner, like holding cards facing out in Hanabi; bots can't see their own either). Cards take this face when they enter the zone. (`owner` and `human` are older names for `private`.) | `up` |
 | `anchor` | Position on the table as `[x, y]` fractions. In a `per_player` zone, it's seat 1's spot (usually the bottom of the table), and the other seats' are worked out round the table: with 4 players, seat 2 on the left, seat 3 across the top, seat 4 on the right, with the side seats' cards turned sideways. | `[0.5, 0.5]` |
 | `width` | Widest a `row`/`fan` may spread, as a fraction of the table width (of its height, for a zone turned sideways) | 800 pixels |
 | `rotation` | Turn the zone, in degrees, e.g. `90` for a hand on the left side of the table | `0` |
@@ -436,11 +436,10 @@ With `prefer`, on a bot's turn, it tries every legal input: each allowed drag, e
 
 Write `prefer` as "how good is this position for me?". Things to know:
 - **It only looks one input ahead.**
-- **It doesn't peek.** Cards it couldn't see (face down, even its own, like the order of its deck; or in another player's `owner`/`human` hand) are shuffled among themselves before each try, several times, and the results averaged. So drawing from the deck is judged on what it might get, not what's really there. Its own hidden cards are only shuffled among themselves: it knows what's in its deck, just not the order.
+- **It doesn't peek.** Cards it couldn't see (face down, even its own, like the order of its deck; or in another player's `private` hand) are shuffled among themselves before each try, several times, and the results averaged. So drawing from the deck is judged on what it might get, not what's really there. Its own hidden cards are only shuffled among themselves: it knows what's in its deck, just not the order.
   - `"samples": 4` sets how many shuffles (more is fairer but slower).
   - `"peek": true` lets the bot see everything, which is stronger and faster.
 - **It never makes inputs that only reorder cards,** such as sorting.
-- **Use `face: "human"` for hands in bot games.** It shows your hand and hides the bots'. (`owner` would reveal each bot's hand on its turn.)
 
 ## Steps
 
@@ -622,6 +621,7 @@ Other places to look:
 - `scripts/ui/`: the table and side panel.
 - `scripts/net/net.gd`: online play (the `Net` autoload): the lobby, sending inputs through the host, undo requests, rejoining.
 - `tests/regression_test.gd`: loads every game and plays a few with bots. Run it after changing rules or the engine: `godot --headless -s tests/regression_test.gd`.
+- `tests/ui_test.tscn`: opens the title screen, the lobby, and every game on the real table with bots playing. Run `godot --headless res://tests/ui_test.tscn`.
 - `tests/determinism_test.gd`: plays every game and checks matches replay exactly. Run it after engine changes: `godot --headless -s tests/determinism_test.gd`.
 - `tests/net_test.tscn`: a host and a guest play a hand of Hearts over the network, with an undo, a rejoin and a catch-up. Run `godot --headless res://tests/net_test.tscn -- host` and, in a second terminal, the same with `-- guest`; the two final state numbers must match.
 
@@ -632,4 +632,4 @@ Everything a player does reaches the game as plain data through `Game.apply(inpu
 - **Seeds:** `Game.new(path, seed)` makes a match repeatable. Every shuffle, `random` and `one_of` uses that seed's random numbers, so the same seed and inputs always produce the same game.
 - **Replays:** `Game.record()` gives `{rules, seed, inputs}`, and `Game.replay(record)` rebuilds the match from it. `Game.state_hash()` sums up the whole state as one number, for checking two copies agree.
 - **Turns:** an input with a `player` is refused unless that player may act: it's their turn or their choice, any person may press a `human_only` button, anyone may rearrange their own cards.
-- **Seats:** `Game.local_seat` is the player this screen belongs to (0, the default, means people share the screen). With a seat set, `owner` and `human` zones are only shown to their owner, and only that seat's turn is "your turn".
+- **Seats:** `Game.local_seat` is the player this screen belongs to (0, the default, means people share the screen). With a seat set, `private` zones are only shown to their owner, and only that seat's turn is "your turn".

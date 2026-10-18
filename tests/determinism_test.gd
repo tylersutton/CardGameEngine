@@ -4,7 +4,6 @@ extends SceneTree
 ## Any step that fails along the way is reported too. Then checks that replaying the match's record, sent through JSON like a network message, ends in the same state, and that out-of-turn inputs are refused.
 ## Run: godot --headless -s tests/determinism_test.gd
 
-const GAMES_FOLDER := "res://games/"
 const SEED := 1234
 const STEPS := 150
 const BOT_MOVES := 15
@@ -14,9 +13,8 @@ var failures: Array[String] = []
 
 
 func _init() -> void:
-	for file in DirAccess.get_files_at(GAMES_FOLDER):
-		if file.get_extension() == "json":
-			_check_game(GAMES_FOLDER + file)
+	for path in GameRules.game_paths():
+		_check_game(path)
 	_check_turns()
 	print("DETERMINISM: ", "all passed" if failures.is_empty() else "FAILED\n  " + "\n  ".join(failures))
 	quit(0 if failures.is_empty() else 1)

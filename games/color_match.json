@@ -10,7 +10,7 @@
 			"on_click": ["try_move(top(deck), hand)"]
 		},
 		"pile": { "label": "Pile", "layout": "pile", "anchor": [0.6, 0.5] },
-		"hand": { "per_player": true, "layout": "fan", "face": "owner", "anchors": [[0.5, 0.83], [0.5, 0.16]] }
+		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchors": [[0.5, 0.83], [0.5, 0.16]] }
 	},
 	"variables": { "winner": null, "active_color": "" },
 	"effects": {

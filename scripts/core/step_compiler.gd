@@ -45,6 +45,9 @@ func check_zone_definitions() -> void:
 		for key in definition:
 			if key not in ZONE_KEYS:
 				errors.append("Zone \"%s\": unknown key \"%s\"" % [zone_kind, key])
+		var face: Variant = definition.get("face", Zone.FACE_UP)
+		if face not in Zone.FACES and face not in Zone.PRIVATE_ALIASES:
+			errors.append("Zone \"%s\": \"face\" should be %s" % [zone_kind, ", ".join(Zone.FACES)])
 		var per_player: bool = definition.get("per_player", false)
 		if per_player and definition.has("copies"):
 			errors.append("Zone \"%s\": use \"per_player\" or \"copies\", not both" % zone_kind)

@@ -9,7 +9,7 @@
 		"prizes": { "label": "Prizes", "layout": "pile", "face": "down", "anchor": [0.38, 0.32] },
 		"prize": { "label": "Prize", "layout": "row", "width": 0.2, "anchor": [0.53, 0.32] },
 		"hand": {
-			"per_player": true, "layout": "fan", "face": "human", "width": 0.45,
+			"per_player": true, "layout": "fan", "face": "private", "width": 0.45,
 			"anchors": [[0.5, 0.86], [0.09, 0.5], [0.91, 0.5]],
 			"rotations": [0, 90, 270]
 		},

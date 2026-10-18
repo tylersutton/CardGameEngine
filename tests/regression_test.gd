@@ -6,8 +6,7 @@ var problems := []
 
 
 func _init() -> void:
-	for file in DirAccess.get_files_at("res://games/"):
-		var path := "res://games/" + file
+	for path in GameRules.game_paths():
 		var game := Game.new(path)
 		game.start()
 		check(game.errors.is_empty(), "%s loads: %s" % [path.get_file(), game.errors])

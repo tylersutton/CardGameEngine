@@ -4,9 +4,12 @@ extends RefCounted
 signal changed(zone: Zone)
 
 const FACE_DOWN := "down"
-const FACE_OWNER := "owner"
-const FACE_HUMAN := "human"
+const FACE_UP := "up"
+const FACE_PRIVATE := "private"
 const FACE_OTHERS := "others"
+## Older names for "private", still accepted.
+const PRIVATE_ALIASES := ["owner", "human"]
+const FACES := [FACE_UP, FACE_DOWN, FACE_PRIVATE, FACE_OTHERS]
 const DRAG_STACK := "stack"
 const LABEL_NUMBER := "#"
 
@@ -38,7 +41,9 @@ func _init(zone_kind: String, definition: Dictionary, number := 0, seats := 1) -
 	label = labels[number - 1] if number and labels.size() >= number else definition.get("label", "").replace(LABEL_NUMBER, str(number))
 	has_outline = definition.get("outline", true)
 	layout = definition.get("layout", "row")
-	face = definition.get("face", "up")
+	face = definition.get("face", FACE_UP)
+	if face in PRIVATE_ALIASES:
+		face = FACE_PRIVATE
 	var anchor_values: Array = definition.anchors[number - 1] if number and definition.has("anchors") else definition.get("anchor", [0.5, 0.5])
 	anchor = Vector2(anchor_values[0], anchor_values[1])
 	if number and definition.has("grid"):

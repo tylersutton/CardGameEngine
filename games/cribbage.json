@@ -11,7 +11,7 @@
 		"pegged": { "label": "Played", "layout": "pile", "face": "down", "anchor": [0.81, 0.5] },
 		"crib": { "label": "Crib", "layout": "pile", "face": "down", "anchor": [0.92, 0.5] },
 		"shown": { "label": "Counted", "per_player": true, "layout": "row", "width": 0.3, "anchors": [[0.78, 0.85], [0.78, 0.15]] },
-		"hand": { "per_player": true, "layout": "fan", "face": "human", "anchors": [[0.4, 0.85], [0.4, 0.15]], "on_click": ["try_move(card, pegging)"] }
+		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchors": [[0.4, 0.85], [0.4, 0.15]], "on_click": ["try_move(card, pegging)"] }
 	},
 	"variables": {
 		"phase": "discard", "dealer": 2, "discarded": 0, "total": 0, "counted": 0,

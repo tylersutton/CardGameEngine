@@ -1,6 +1,5 @@
 extends Control
 
-const GAMES_FOLDER := "res://games/"
 const MAIN_SCENE := preload("res://scenes/main.tscn")
 const LOBBY_SCENE := "res://scenes/lobby.tscn"
 const SELECTED_COLOR := Color(1, 0.85, 0.4)
@@ -16,7 +15,7 @@ func _ready() -> void:
 	%Play.pressed.connect(func() -> void: _play(selected_path))
 	%OnlineButton.pressed.connect(func() -> void: get_tree().change_scene_to_file(LOBBY_SCENE))
 	var group := ButtonGroup.new()
-	var games := _game_paths().map(func(path: String) -> Array: return [path, GameRules.load_json(path)])
+	var games := GameRules.game_paths().map(func(path: String) -> Array: return [path, GameRules.load_json(path)])
 	games.sort_custom(func(a: Array, b: Array) -> bool: return _title(a[0], a[1]).naturalnocasecmp_to(_title(b[0], b[1])) < 0)
 	for game: Array in games:
 		_add_game(game[0], game[1], group)
@@ -31,14 +30,6 @@ func _fit_window_to_screen() -> void:
 	var window := DisplayServer.window_get_size()
 	if window.x > screen.x or window.y > screen.y:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
-
-
-func _game_paths() -> Array[String]:
-	var paths: Array[String] = []
-	for file in DirAccess.get_files_at(GAMES_FOLDER):
-		if file.get_extension() == "json":
-			paths.append(GAMES_FOLDER + file)
-	return paths
 
 
 ## Selecting a game (click, or arrow keys) shows its description; double-click or Play starts it.

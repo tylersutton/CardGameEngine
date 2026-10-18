@@ -3,7 +3,6 @@ extends Control
 
 const TITLE_SCENE := "res://scenes/title.tscn"
 const MAIN_SCENE := "res://scenes/main.tscn"
-const GAMES_FOLDER := "res://games/"
 const OPEN_SEAT_COLOR := Color(1, 1, 1, 0.5)
 
 
@@ -12,10 +11,9 @@ func _ready() -> void:
 	%PlayerName.text = Net.my_name
 	%HostPort.value = Net.DEFAULT_PORT
 	%JoinPort.value = Net.DEFAULT_PORT
-	for file in DirAccess.get_files_at(GAMES_FOLDER):
-		if file.get_extension() == "json":
-			%GamePicker.add_item(GameRules.load_json(GAMES_FOLDER + file).title)
-			%GamePicker.set_item_metadata(%GamePicker.item_count - 1, GAMES_FOLDER + file)
+	for path in GameRules.game_paths():
+		%GamePicker.add_item(GameRules.load_json(path).title)
+		%GamePicker.set_item_metadata(%GamePicker.item_count - 1, path)
 	%HostButton.pressed.connect(_host)
 	%JoinButton.pressed.connect(_join)
 	%GamePicker.item_selected.connect(func(index: int) -> void: Net.choose_game(%GamePicker.get_item_metadata(index)))

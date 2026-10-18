@@ -27,7 +27,17 @@ var error: String
 
 const KEYS := ["title", "description", "players", "player_names", "seats", "teams", "zones", "variables", "player_variables",
 	"team_variables", "show_variables", "status", "conditions", "effects", "moves", "actions", "triggers", "melds", "bot", "card_face"]
+const GAMES_FOLDER := "res://games/"
 const DEFAULT_CARD_FACE := {"corner": "name", "title": "name"}
+
+
+## Every game file in games/.
+static func game_paths() -> Array[String]:
+	var paths: Array[String] = []
+	for file in DirAccess.get_files_at(GAMES_FOLDER):
+		if file.get_extension() == "json":
+			paths.append(GAMES_FOLDER + file)
+	return paths
 
 
 static func load_json(path: String, files := {}) -> GameRules:

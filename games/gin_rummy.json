@@ -12,7 +12,7 @@
 		"discard": { "label": "Discard", "layout": "pile", "anchor": [0.19, 0.5], "on_click": ["try_move(top(discard), hand)"] },
 		"knock": { "label": "Knock", "layout": "pile", "face": "down", "anchor": [0.3, 0.5] },
 		"table": { "per_player": true, "layout": "melds", "anchors": [[0.68, 0.63], [0.68, 0.37]] },
-		"hand": { "per_player": true, "layout": "fan", "face": "human", "anchors": [[0.5, 0.83], [0.5, 0.16]] }
+		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchors": [[0.5, 0.83], [0.5, 0.16]] }
 	},
 	"variables": {
 		"phase": "upcard",
