@@ -120,6 +120,15 @@ func numbers(low: int, high: int) -> Array:
 	return range(low, high + 1)
 
 
+func random(low: int, high: int) -> int:
+	return randi_range(low, high)
+
+
+func one_of(items: Variant) -> Variant:
+	var list: Array = items if items is Array and not items.any(func(item: Variant) -> bool: return item is Card or item is Zone) else cards_in(items)
+	return list.pick_random() if list else null
+
+
 func trigger(event: String) -> void:
 	if event in game.rules.triggers:
 		game.trigger(event)

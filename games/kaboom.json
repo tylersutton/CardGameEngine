@@ -94,7 +94,8 @@
 			"deal(deck, all_hand, 4)",
 			"move(where(box, 'kind', 'defuse'), deck)",
 			"move(where(box, 'kind', 'bomb'), deck)",
-			"shuffle(deck)"
+			"shuffle(deck)",
+			"assign('player', random(1, 3))"
 		],
 		"resolve": [
 			{ "if": "not noped", "then": ["trigger(pending)"] },

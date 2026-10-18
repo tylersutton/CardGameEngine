@@ -517,6 +517,8 @@ To repeat steps while something is true, use a `while` step:
 | `next_player(seats)` | The player that many seats after the current one, wrapping around: `next_player(1)` is next, `next_player(-1)` is previous |
 | `variable_of('name', player)` | Another player's player variable, e.g. `variable_of('alive', next_player())` |
 | `zone('kind', player)` | That player's zone, e.g. `zone('hand', next_player(2))` for the player across the table |
+| `random(low, high)` | A random whole number from `low` to `high`, e.g. a die roll `random(1, 6)` or a random first player `assign('player', random(1, 4))` |
+| `one_of(items)` | A random card from a zone or list (`move(one_of(opponent_hand), hand)` steals a random card), or a random item from a list of values (`one_of(['Red', 'Blue'])`); `null` if there are none |
 | `numbers(low, high)` | The list of whole numbers from `low` to `high`, e.g. for bids: `"choose": "numbers(0, 13)"` |
 | `count(cards)` | How many cards |
 | `number(card, 'column')` | A card's column as a number, for comparing, e.g. `number(card, 'value') > 5` (`0` if `card` is `null` or the column isn't a number) |
