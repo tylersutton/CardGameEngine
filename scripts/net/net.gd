@@ -21,7 +21,6 @@ var names: Dictionary = {}
 ## The chosen game and one {peer, bot, name} per seat; name stays after a disconnect so the player can rejoin.
 var lobby: Dictionary = {}
 var game: Game
-var game_names: Array = []
 var match_package: Dictionary = {}
 var waiting_inputs: Array = []
 var table_ready := false
@@ -177,13 +176,14 @@ func _on_peer_disconnected(peer: int) -> void:
 	_share_lobby()
 
 
-## Seat tags show each person's name, with "(away)" while they're disconnected; bots keep the game's names.
+## Seat tags show each person's name, with "(away)" while they're disconnected. Bots are "Player 2" and so on:
+## the game's own names (You, West...) describe one fixed point of view, and online each screen has its own.
 func _seat_names() -> Array:
 	var seat_names := []
 	for i in lobby.seats.size():
 		var seat: Dictionary = lobby.seats[i]
 		if seat.bot:
-			seat_names.append(game_names[i] if i < game_names.size() else "Player %d" % (i + 1))
+			seat_names.append("Player %d" % (i + 1))
 		else:
 			seat_names.append(seat.name + ("" if seat.peer in names else " (away)"))
 	return seat_names
@@ -218,7 +218,6 @@ func _begin_match(package: Dictionary, inputs_so_far: Array) -> void:
 		notice.emit("Couldn't load the host's game: " + "; ".join(new_game.errors))
 		return
 	new_game.rules.bot.players = package.bots
-	game_names = new_game.rules.player_names.duplicate()
 	new_game.rules.player_names = _seat_names()
 	var seat := my_seat()
 	new_game.local_seat = seat if seat else new_game.rules.players + 1

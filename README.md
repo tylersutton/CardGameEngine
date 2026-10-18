@@ -54,7 +54,7 @@ Press **Play online...** on the title screen.
 2. **Join:** the others enter the host's address and press **Join**. On the same network that's the host computer's local address (e.g. `192.168.1.20`); over the internet the host has to forward the port, or everyone can use a virtual network like Tailscale or ZeroTier. Nobody else needs the game's files: the host sends the rules and decks.
 3. **Seats:** everyone presses **Sit here** on a seat. The host can tick **Bot** on any empty seat (if the game has a bot), then press **Start**.
 
-During the match each player sees only their own hidden cards, and acts only on their own turn. Bots run on the host's computer. **Undo** asks everyone else at the table first. Reload and Sandbox are off. If someone drops out, their seat shows "(away)" and the game waits; they get their seat back by joining again with the same name. Pressing **Games** leaves the match (if the host leaves, it ends for everyone).
+During the match each player sees the table from their own seat: their hand and zones at the bottom, where seat 1's are in the game file, and everyone else moved round the table to match (so in Hearts the next player is always on your left). Each player sees only their own hidden cards, and acts only on their own turn. Bots are named by seat ("Player 2 (bot)"). Bots run on the host's computer. **Undo** asks everyone else at the table first. Reload and Sandbox are off. If someone drops out, their seat shows "(away)" and the game waits; they get their seat back by joining again with the same name. Pressing **Games** leaves the match (if the host leaves, it ends for everyone).
 
 ## Tutorial: making a game
 

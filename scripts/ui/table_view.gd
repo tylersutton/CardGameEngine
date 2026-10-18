@@ -61,8 +61,8 @@ func _layout_all() -> void:
 
 ## With an incoming card, the other cards make room for it at that index (the incoming card itself is being dragged).
 func _layout_zone(zone: Zone, incoming: Card = null, index := 0) -> void:
-	var center := zone.anchor * size
-	var turn := deg_to_rad(zone.rotation)
+	var center := _anchor(zone) * size
+	var turn := deg_to_rad(_rotation(zone))
 	var groups := _groups(zone)
 	if incoming:
 		var arranged := zone.cards.filter(func(card: Card) -> bool: return card != incoming)
@@ -259,7 +259,7 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func _nearest_slot(zone: Zone, point: Vector2, slots: int) -> int:
-	var offset := (point - zone.anchor * size).rotated(-deg_to_rad(zone.rotation)).x
+	var offset := (point - _anchor(zone) * size).rotated(-deg_to_rad(_rotation(zone))).x
 	var nearest := 0
 	var nearest_distance := INF
 	for i in slots:
@@ -272,19 +272,19 @@ func _nearest_slot(zone: Zone, point: Vector2, slots: int) -> int:
 
 func _max_spread(zone: Zone) -> float:
 	if zone.layout == "column":
-		return size.y * (1 - zone.anchor.y) - CardView.SIZE.y / 2 - BOTTOM_MARGIN
+		return size.y * (1 - _anchor(zone).y) - CardView.SIZE.y / 2 - BOTTOM_MARGIN
 	return zone.width * (size.y if _is_sideways(zone) else size.x) if zone.width else ZoneLayout.MAX_WIDTH
 
 
 func _is_sideways(zone: Zone) -> bool:
-	return is_equal_approx(absf(sin(deg_to_rad(zone.rotation))), 1.0)
+	return is_equal_approx(absf(sin(deg_to_rad(_rotation(zone)))), 1.0)
 
 
 func _nearest_zone(point: Vector2, ignored_views: Array[CardView]) -> Zone:
 	var nearest: Zone
 	var nearest_distance := INF
 	for zone: Zone in game.zones.values():
-		var centers: Array[Vector2] = [zone.anchor * size]
+		var centers: Array[Vector2] = [_anchor(zone) * size]
 		for card in zone.cards:
 			if views[card] not in ignored_views:
 				centers.append(views[card].position + CardView.SIZE / 2)
@@ -295,9 +295,31 @@ func _nearest_zone(point: Vector2, ignored_views: Array[CardView]) -> Zone:
 	return nearest
 
 
+## Online, each screen puts its own seat at the bottom, where seat 1 is in the game file: every player's
+## zones and name tag move round the table by the same number of seats. Shared zones stay put.
+func _seat_on_screen(player: int) -> int:
+	if not game.local_seat or not player or game.local_seat > game.rules.players:
+		return player
+	return posmod(player - game.local_seat, game.rules.players) + 1
+
+
+## The zone whose place on the table this one takes on this screen.
+func _place_of(zone: Zone) -> Zone:
+	var seat := _seat_on_screen(zone.owner)
+	return game.zones.get("%s_%d" % [zone.kind, seat], zone) if seat != zone.owner else zone
+
+
+func _anchor(zone: Zone) -> Vector2:
+	return _place_of(zone).anchor
+
+
+func _rotation(zone: Zone) -> float:
+	return _place_of(zone).rotation
+
+
 func _slot(zone: Zone) -> Rect2:
 	var slot_size := Vector2(CardView.SIZE.y, CardView.SIZE.x) if _is_sideways(zone) else CardView.SIZE
-	return Rect2(zone.anchor * size - slot_size / 2, slot_size)
+	return Rect2(_anchor(zone) * size - slot_size / 2, slot_size)
 
 
 func _draw() -> void:
@@ -328,7 +350,8 @@ func _draw_seats(font: Font) -> void:
 		var is_current := player == game.current_player()
 		var text := game.player_name(player)
 		var text_size := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, LABEL_FONT_SIZE)
-		var seat := Vector2(game.rules.seats[player - 1][0], game.rules.seats[player - 1][1]) * size
+		var place: Array = game.rules.seats[_seat_on_screen(player) - 1]
+		var seat := Vector2(place[0], place[1]) * size
 		var tag := Rect2(seat - text_size / 2 - SEAT_PADDING, text_size + SEAT_PADDING * 2)
 		draw_style_box(current_seat_style if is_current else seat_style, tag)
 		var baseline := Vector2(tag.position.x + SEAT_PADDING.x, tag.position.y + SEAT_PADDING.y + font.get_ascent(LABEL_FONT_SIZE))
