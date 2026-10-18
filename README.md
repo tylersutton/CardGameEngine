@@ -6,25 +6,25 @@ Included games:
 
 | Game | Files | Shows off |
 |---|---|---|
-| Gin Rummy (default) | `games/gin_rummy.json`, `decks/standard_deck.csv` | Turn phases, melds, scoring, a match to 100, a bot opponent |
-| Dominion | `games/dominion.json`, `decks/dominion.csv` | Deckbuilding: a supply of 7 basic and 10 kingdom piles (pick the kingdom from 17 cards in the game file), per-player decks that reshuffle, actions/buys/coins, choices like Cellar, Chapel, Remodel, Mine and Throne Room, attacks (Militia, Witch) answered by the other player, Moat reactions, rules text with hover zoom, and a Big Money bot. The default kingdom is the official First Game set |
-| Hearts | `games/hearts.json`, `decks/standard_deck.csv` | Four players (you and three bots), passing three cards in a rotating direction, following suit, winning tricks, shooting the moon, a game to 100 |
-| Spades | `games/spades.json`, `decks/standard_deck.csv` | Partnerships (`teams`): bidding, team scores and bags, trump, nil bids, a game to 500 |
-| Cribbage | `games/cribbage.json`, `decks/standard_deck.csv` | Scoring combinations: fifteens, pairs and runs in pegging and in the show, the crib, go, nobs and flushes, a game to 121 |
-| Kaboom | `games/kaboom.json`, `decks/kaboom_deck.csv` | Responding to other players' cards (`ask_others`): Nope chains, Steal (the target picks what to give), Peek, and a bomb-dodging elimination game |
-| Pyramid | `games/pyramid.json`, `decks/standard_deck.csv` | Solitaire with overlapping cards (`covered_by`): pair uncovered cards that add up to 13 by dragging one onto the other |
-| Goofspiel | `games/goofspiel.json`, `decks/standard_deck.csv` | Everyone bids at once (`ask_all`): secret face-down bids, a reveal, ties carrying the prize over |
-| Fireworks | `games/fireworks.json`, `decks/fireworks_deck.csv` | A cooperative Hanabi-style game: you hold your cards facing away (`face: "others"`), clues `mark` your partner's cards, and the bot partner reasons only from what it's been told |
-| President | `games/president.json`, `decks/standard_deck.csv` | Playing several cards at once (`allow` checks they're a valid set), a single 2 that beats anything and clears the table, matching the last play to skip the next player, passing, finishing order and titles, the card exchange between President and Scum |
-| Color Match | `games/color_match.json`, `decks/color_match.csv` | A small two-player game with a custom deck, hidden hands, card effects, and wild cards that ask for a color. Built step by step in the tutorial below |
-| Solitaire (Klondike) | `games/solitaire.json`, `decks/standard_deck.csv` | Cascading columns, dragging whole stacks, groups of zones (7 columns, 4 foundations), double-click to send a card up, draw one or three |
-| Standard deck | `games/standard.json`, `decks/standard_deck.csv` | A free-play sandbox: draw, play, discard, sort |
+| Gin Rummy (default) | `games/gin_rummy.jsonc`, `decks/standard_deck.csv` | Turn phases, melds, scoring, a match to 100, a bot opponent |
+| Dominion | `games/dominion.jsonc`, `decks/dominion.csv` | Deckbuilding: a supply of 7 basic and 10 kingdom piles (pick the kingdom from 17 cards in the game file), per-player decks that reshuffle, actions/buys/coins, choices like Cellar, Chapel, Remodel, Mine and Throne Room, attacks (Militia, Witch) answered by the other player, Moat reactions, rules text with hover zoom, and a Big Money bot. The default kingdom is the official First Game set |
+| Hearts | `games/hearts.jsonc`, `decks/standard_deck.csv` | Four players (you and three bots), passing three cards in a rotating direction, following suit, winning tricks, shooting the moon, a game to 100 |
+| Spades | `games/spades.jsonc`, `decks/standard_deck.csv` | Partnerships (`teams`): bidding, team scores and bags, trump, nil bids, a game to 500 |
+| Cribbage | `games/cribbage.jsonc`, `decks/standard_deck.csv` | Scoring combinations: fifteens, pairs and runs in pegging and in the show, the crib, go, nobs and flushes, a game to 121 |
+| Kaboom | `games/kaboom.jsonc`, `decks/kaboom_deck.csv` | Responding to other players' cards (`ask_others`): Nope chains, Steal (the target picks what to give), Peek, and a bomb-dodging elimination game |
+| Pyramid | `games/pyramid.jsonc`, `decks/standard_deck.csv` | Solitaire with overlapping cards (`covered_by`): pair uncovered cards that add up to 13 by dragging one onto the other |
+| Goofspiel | `games/goofspiel.jsonc`, `decks/standard_deck.csv` | Everyone bids at once (`ask_all`): secret face-down bids, a reveal, ties carrying the prize over |
+| Fireworks | `games/fireworks.jsonc`, `decks/fireworks_deck.csv` | A cooperative Hanabi-style game: you hold your cards facing away (`face: "others"`), clues `mark` your partner's cards, and the bot partner reasons only from what it's been told |
+| President | `games/president.jsonc`, `decks/standard_deck.csv` | Playing several cards at once (`allow` checks they're a valid set), a single 2 that beats anything and clears the table, matching the last play to skip the next player, passing, finishing order and titles, the card exchange between President and Scum |
+| Color Match | `games/color_match.jsonc`, `decks/color_match.csv` | A small two-player game with a custom deck, hidden hands, card effects, and wild cards that ask for a color. Built step by step in the tutorial below |
+| Solitaire (Klondike) | `games/solitaire.jsonc`, `decks/standard_deck.csv` | Cascading columns, dragging whole stacks, groups of zones (7 columns, 4 foundations), double-click to send a card up, draw one or three |
+| Standard deck | `games/standard.jsonc`, `decks/standard_deck.csv` | A free-play sandbox: draw, play, discard, sort |
 
 ## Quick start
 
 1. Open the project folder in Godot 4.7.
 2. Press **F5** (Run Project).
-3. Pick a game from the title screen. Every `.json` file in `games/` is listed there, so a new game appears automatically.
+3. Pick a game from the title screen. Every `.jsonc` file in `games/` is listed there, so a new game appears automatically.
 
 **To start your own game,** press **New game...**: give it a name, a player count and a deck, and it writes a playable game file (draw a card, discard a card, random bots in the other seats) with comments explaining each part. Press **Edit file** to open it in your editor; every save reloads the table.
 
@@ -87,7 +87,7 @@ Save it in `decks/` and that's all. (The `decks/` folder holds an empty `.gdigno
 
 ### 2. Lay out the table
 
-Create `games/color_match.json`. Start with the **zones**: the named places cards can be.
+Create `games/color_match.jsonc`. Start with the **zones**: the named places cards can be.
 
 ```json
 {
@@ -195,7 +195,7 @@ When a drag is refused, the log shows the rule's condition so you can see which 
 
 ### 8. Add wild cards
 
-The finished `color_match.json` goes one step further: Wild cards that let you choose the color to match. Four `Wild` rows in the deck have `wild` in their `on_pile` column, and the game file adds:
+The finished `color_match.jsonc` goes one step further: Wild cards that let you choose the color to match. Four `Wild` rows in the deck have `wild` in their `on_pile` column, and the game file adds:
 
 ```json
 "variables": { "winner": null, "active_color": "" },
@@ -223,13 +223,13 @@ The finished `color_match.json` goes one step further: Wild cards that let you c
 
 Everything a game file can contain. Only `zones` is required. A misspelled key (`"trigers"`, `"anchr"`) is reported when the game loads, rather than quietly ignored.
 
-**Comments:** `//` starts a comment that runs to the end of the line, e.g. `"players": 2, // you and a bot`. (Inside quoted text it's just text, so `"res://decks/..."` is fine.)
+**File format:** game files are **JSONC** (`.jsonc`): JSON that also allows comments and trailing commas, so most editors and linters understand them. `//` starts a comment that runs to the end of the line, e.g. `"players": 2, // you and a bot`, and `/* ... */` can span lines. (Inside quoted text it's just text, so `"res://decks/..."` is fine.) A comma after the last item of a list or object is allowed. Plain `.json` files work too. To export the project as a standalone game, add `games/*.jsonc` to the export filter, as for decks.
 
 **Lists of steps:** wherever a list of steps goes (`then`, `else`, `do`, `steps`, triggers, `on_click`), a single step will do: `"then": "end_turn()"`.
 
 ### `title`, `description`
 
-The name and one-line description shown on the title screen, e.g. `"title": "Gin Rummy"`. Without a title, the file name is used (`gin_rummy.json` → "Gin Rummy").
+The name and one-line description shown on the title screen, e.g. `"title": "Gin Rummy"`. Without a title, the file name is used (`gin_rummy.jsonc` → "Gin Rummy").
 
 ### `zones`
 
@@ -516,7 +516,7 @@ To repeat steps while something is true, use a `while` step:
 | `trigger('name')` | Run a step list from `triggers`. It runs with the same `card` as the step that called it. |
 | `ask('Action name', player)` | Start that action (usually a `choose`) once the current move finishes, e.g. from a wild card's effect. Several asks wait in line: each starts when the previous choice is finished. With a player number, that player makes the choice: it's their turn until they've chosen (so `hand` means their hand, and a bot answers by itself), then the turn goes back. A choice started by `ask` must be made: clicking elsewhere doesn't cancel it, and other buttons and drags wait. |
 | `ask_all('Action name', 'trigger')` | Everyone makes that choice at the same time, e.g. a secret bid: people choose first (so nobody waits on the bots), then each bot, then the trigger runs, e.g. to turn the bids over. Put the choices somewhere face down (`move(choice, bid)` with a face-down `bid` zone) so nobody, bots included, sees them before the reveal. Real-time play (Speed, Slapjack) isn't possible. |
-| `ask_others('Action name', 'trigger')` | A chance to respond: every other player, in turn order, is asked that action (players whose `when` is false are skipped), then the trigger runs. If someone responds by calling `ask_others` again, the rest of the first round is called off and a new round starts around them, so the trigger runs once, after a round where nobody responds. That's how Kaboom's Nope works, including a Nope on a Nope: see `games/kaboom.json`. |
+| `ask_others('Action name', 'trigger')` | A chance to respond: every other player, in turn order, is asked that action (players whose `when` is false are skipped), then the trigger runs. If someone responds by calling `ask_others` again, the rest of the first round is called off and a new round starts around them, so the trigger runs once, after a round where nobody responds. That's how Kaboom's Nope works, including a Nope on a Nope: see `games/kaboom.jsonc`. |
 | `run_effect(card, 'play')` | Run a card's `on_play` effect again, e.g. Throne Room playing an action twice |
 
 **Questions**
@@ -582,7 +582,7 @@ Wherever a building block takes `cards`, you can pass a zone, a single card, or 
 - **To deal the same way in several places,** put the steps in a custom trigger and call `trigger('deal')`.
 - **"Draw only if you can't play"** is a move rule like `{ "from": "deck", "to": "hand", "when": "count(movable(hand, pile)) == 0" }`. (A rule can't use `movable` to check moves into its own destination; that inner check counts as "no moves" and the log says so.)
 - **To repeat a check,** give it a name in [`conditions`](#conditions). **To repeat a step,** use a [loop](#loops), or [repeat until](#repeat-until) something changes.
-- **Look at `games/gin_rummy.json`** for a full game: turn phases, knocking, scoring, and a match to 100. `games/solitaire.json` shows columns, stacks, and groups of zones. `games/cribbage.json` scores combinations, and `games/spades.json` has teams.
+- **Look at `games/gin_rummy.jsonc`** for a full game: turn phases, knocking, scoring, and a match to 100. `games/solitaire.jsonc` shows columns, stacks, and groups of zones. `games/cribbage.jsonc` scores combinations, and `games/spades.jsonc` has teams.
 
 ## Deck reference
 

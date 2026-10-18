@@ -29,7 +29,7 @@ func watch(game: Game) -> void:
 
 
 func gin() -> void:
-	var game := Game.new("res://games/gin_rummy.json")
+	var game := Game.new("res://games/gin_rummy.jsonc")
 	watch(game)
 	game.start()
 	var bot := Bot.new(game)
@@ -45,7 +45,7 @@ func gin() -> void:
 
 
 func hearts() -> void:
-	var game := Game.new("res://games/hearts.json")
+	var game := Game.new("res://games/hearts.jsonc")
 	watch(game)
 	game.start()
 	var bot := Bot.new(game)
@@ -65,7 +65,7 @@ func hearts() -> void:
 
 
 func color_match() -> void:
-	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://games/color_match.json"))
+	var data: Dictionary = GameRules.read_file("res://games/color_match.jsonc")
 	data.bot = {"players": [1, 2], "prefer": "count(opponent_hand) - count(hand)"}
 	var file := FileAccess.open("user://color_bots.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
@@ -82,7 +82,7 @@ func color_match() -> void:
 
 
 func solitaire() -> void:
-	var game := Game.new("res://games/solitaire.json")
+	var game := Game.new("res://games/solitaire.jsonc")
 	watch(game)
 	game.start()
 	var z := game.zones
@@ -107,7 +107,7 @@ func solitaire() -> void:
 
 ## run_effect replays a card's effect (Dominion's Throne Room): a Smithy's should draw 3.
 func card_effects() -> void:
-	var game := Game.new("res://games/dominion.json")
+	var game := Game.new("res://games/dominion.jsonc")
 	watch(game)
 	game.start()
 	var smithy: Card = game.cards.filter(func(card: Card) -> bool: return card.title == "Smithy")[0]

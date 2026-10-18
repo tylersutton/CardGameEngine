@@ -3,7 +3,7 @@ extends Control
 const MAIN_SCENE := preload("res://scenes/main.tscn")
 const LOBBY_SCENE := "res://scenes/lobby.tscn"
 const DECKS_FOLDER := "res://decks/"
-const TEMPLATES := {1: "res://templates/new_solo_game.json", 2: "res://templates/new_game.json"}
+const TEMPLATES := {1: "res://templates/new_solo_game.jsonc", 2: "res://templates/new_game.jsonc"}
 const MAX_PLAYERS := 6
 const SEAT_NAMES := ["You", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6"]
 const SELECTED_COLOR := Color(1, 0.85, 0.4)
@@ -74,10 +74,10 @@ func _ask_for_new_game() -> void:
 
 func _create_game(title: String, players: int, deck: String) -> void:
 	var base_name := title.to_snake_case().validate_filename() if title else "my_game"
-	var path := GameRules.GAMES_FOLDER + base_name + ".json"
+	var path := GameRules.GAMES_FOLDER + base_name + ".jsonc"
 	var number := 2
 	while FileAccess.file_exists(path):
-		path = GameRules.GAMES_FOLDER + "%s_%d.json" % [base_name, number]
+		path = GameRules.GAMES_FOLDER + "%s_%d.jsonc" % [base_name, number]
 		number += 1
 	var template := FileAccess.get_file_as_string(TEMPLATES[mini(players, 2)])
 	var file := FileAccess.open(path, FileAccess.WRITE)

@@ -7,7 +7,7 @@ extends Node
 ##   godot --headless res://tests/net_test.tscn -- guest
 
 const PORT := 7790
-const GAME := "res://games/hearts.json"
+const GAME := "res://games/hearts.jsonc"
 const TIME_LIMIT := 240.0
 const UNDO_AT := 20
 const REJOIN_AT := 40

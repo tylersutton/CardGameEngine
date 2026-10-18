@@ -64,14 +64,14 @@ func _random_move(game: Game, chooser: RandomNumberGenerator) -> bool:
 
 
 func _check_turns() -> void:
-	var game := Game.new("res://games/gin_rummy.json", SEED)
+	var game := Game.new("res://games/gin_rummy.jsonc", SEED)
 	game.start()
 	var move: Array = game.legal_moves()[0]
 	var not_their_turn: Dictionary = move[0].duplicate()
 	not_their_turn.player = 2
 	if game.apply(not_their_turn):
-		failures.append("gin_rummy.json: player 2 acted on player 1's turn")
+		failures.append("gin_rummy.jsonc: player 2 acted on player 1's turn")
 	var their_turn: Dictionary = move[0].duplicate()
 	their_turn.player = 1
 	if not game.apply(their_turn):
-		failures.append("gin_rummy.json: player 1 couldn't act on their own turn")
+		failures.append("gin_rummy.jsonc: player 1 couldn't act on their own turn")

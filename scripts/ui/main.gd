@@ -1,6 +1,6 @@
 extends Control
 
-@export_file("*.json") var rules_path := "res://games/gin_rummy.json"
+@export_file("*.jsonc", "*.json") var rules_path := "res://games/gin_rummy.jsonc"
 
 const BOT_DELAY := 0.6
 const TITLE_SCENE := "res://scenes/title.tscn"

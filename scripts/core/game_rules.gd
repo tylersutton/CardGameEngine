@@ -28,6 +28,8 @@ var error: String
 const KEYS := ["title", "description", "players", "player_names", "seats", "teams", "zones", "variables", "player_variables",
 	"team_variables", "show_variables", "status", "conditions", "effects", "moves", "actions", "triggers", "melds", "bot", "card_face"]
 const GAMES_FOLDER := "res://games/"
+## Game files are .jsonc (JSON with comments); plain .json works too.
+const GAME_EXTENSIONS := ["jsonc", "json"]
 const DEFAULT_CARD_FACE := {"corner": "name", "title": "name"}
 
 
@@ -35,7 +37,7 @@ const DEFAULT_CARD_FACE := {"corner": "name", "title": "name"}
 static func game_paths() -> Array[String]:
 	var paths: Array[String] = []
 	for file in DirAccess.get_files_at(GAMES_FOLDER):
-		if file.get_extension() == "json":
+		if file.get_extension() in GAME_EXTENSIONS:
 			paths.append(GAMES_FOLDER + file)
 	return paths
 
@@ -46,7 +48,7 @@ static func load_json(path: String, files := {}) -> GameRules:
 		rules.error = "Game file not found: " + path
 		return rules
 	var json := JSON.new()
-	if json.parse(_without_comments(files[path] if path in files else FileAccess.get_file_as_string(path))) != OK:
+	if json.parse(plain_json(files[path] if path in files else FileAccess.get_file_as_string(path))) != OK:
 		rules.error = "%s, line %d: %s" % [path.get_file(), json.get_error_line() + 1, json.get_error_message()]
 		return rules
 	var data: Dictionary = json.data
@@ -90,28 +92,61 @@ static func load_json(path: String, files := {}) -> GameRules:
 	return rules
 
 
-## Game files may have comments: "//" to the end of the line, except inside quoted text (so "res://..." is safe).
-## Line breaks are kept, so error line numbers still match the file.
-static func _without_comments(text: String) -> String:
+## Game files are JSONC: JSON plus // and /* */ comments and trailing commas ([1, 2,]). This turns the text into
+## plain JSON for Godot's parser. Quoted text is left alone (so "res://..." is safe), and line breaks are kept so
+## error line numbers still match the file.
+static func plain_json(text: String) -> String:
 	var kept := ""
 	var in_text := false
 	var i := 0
 	while i < text.length():
 		var character := text[i]
-		if in_text and character == "\\":
-			kept += text.substr(i, 2)
-			i += 2
-			continue
-		if character == "\"":
-			in_text = not in_text
-		elif not in_text and text.substr(i, 2) == "//":
-			var line_end := text.find("
-", i)
+		if in_text:
+			if character == "\\":
+				kept += text.substr(i, 2)
+				i += 2
+				continue
+			in_text = character != "\""
+		elif character == "\"":
+			in_text = true
+		elif text.substr(i, 2) == "//":
+			var line_end := text.find("\n", i)
 			i = text.length() if line_end == -1 else line_end
+			continue
+		elif text.substr(i, 2) == "/*":
+			var comment_end := text.find("*/", i + 2)
+			var comment := text.substr(i, (text.length() if comment_end == -1 else comment_end + 2) - i)
+			kept += "\n".repeat(comment.count("\n"))
+			i += comment.length()
+			continue
+		elif character == "," and _closes_next(text, i + 1):
+			i += 1
 			continue
 		kept += character
 		i += 1
 	return kept
+
+
+## Whether only spaces and comments stand between here and a closing ] or }, making a comma before it trailing.
+static func _closes_next(text: String, from: int) -> bool:
+	var i := from
+	while i < text.length():
+		if text[i] in " \t\r\n":
+			i += 1
+		elif text.substr(i, 2) == "//":
+			var line_end := text.find("\n", i)
+			i = text.length() if line_end == -1 else line_end
+		elif text.substr(i, 2) == "/*":
+			var comment_end := text.find("*/", i + 2)
+			i = text.length() if comment_end == -1 else comment_end + 2
+		else:
+			return text[i] in "]}"
+	return false
+
+
+## A game file's contents as data (or null if it isn't valid), e.g. for tests that adjust a game before loading it.
+static func read_file(path: String) -> Variant:
+	return JSON.parse_string(plain_json(FileAccess.get_file_as_string(path)))
 
 
 ## Every file a game reads: the game file and its decks (for reloading when one changes).
