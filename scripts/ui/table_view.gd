@@ -229,9 +229,13 @@ func _on_card_clicked(view: CardView) -> void:
 	_layout_zone(zone)
 
 
+## Two quick clicks on a zone with no double-click steps (like a solitaire stock) are two clicks, not one double-click.
 func _on_card_double_clicked(view: CardView) -> void:
 	var zone := game.zone_of(view.card)
-	submit.call({type = "double_click", card = view.card.id})
+	if zone.on_double_click:
+		submit.call({type = "double_click", card = view.card.id})
+	else:
+		submit.call({type = "click", card = view.card.id})
 	_layout_zone(zone)
 
 

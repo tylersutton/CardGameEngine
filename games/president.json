@@ -72,8 +72,8 @@
 	},
 	"triggers": {
 		"start": [
-			{ "for": "player", "in": "players", "do": ["sort(hand, ['order', 'suit'])"] },
-			"trigger('deal')"
+			"trigger('deal')",
+			{ "for": "player", "in": "players", "do": ["sort(hand, ['order', 'suit'])"] }
 		],
 		"deal": [
 			"move([all_hand, table, beaten], deck)",
