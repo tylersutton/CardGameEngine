@@ -66,9 +66,12 @@ Select a game on the title screen and press **Open in editor** (**New game...** 
 - **Middle:** the table. In **Table**, every zone is outlined and named: click one to select it, drag it to move it. A per-player zone moves seat 1's spot (the others follow round the table), and a grid of copies moves as a whole. Switch on **Play** to play the game as it stands, unsaved changes included.
 - **Right:** everything about the selected entry, with a line of help under each setting. **×** takes a setting out, back to its default. A zone's **note** is the `//` comment above it in the file.
 - **Deck:** the deck as a table, one row per card, with the selected card drawn using the game's card face. Add, copy and remove cards and columns; the card face settings are beside it.
+- **Players:** how many, their names, where their name tags sit, teams, and which seats bots play (with `prefer` to make them play well).
 - **Variables:** the game's, each player's and each team's variables, with their starting values written as in the file (`5`, `"draw"`, `true`, `[]`).
 - **Moves, Buttons, Triggers, Conditions:** one entry each. Moves are tried in order, so **Up** and **Down** reorder them. A button written as just a list of steps gets the full form (when, choose, pick...) with **More settings**.
 - **Steps** are edited as a list: plain steps, **if** blocks (with an optional **else**), **for each** and **repeat while**, each foldable with ▾. **⋮** moves or removes a step, **+ Add** adds one, and **Edit as text** shows the whole list as JSONC. While typing, a step box suggests zones, variables, card columns (after `card.`) and building blocks, shows the signature of the building block you're in, and flags problems such as an unknown name.
+- **Scoring:** the `status` readouts (a name and what it shows) and which variables the side panel lists. **Melds:** the kinds of meld for rummy-style games.
+- **Add recipe** adds a ready-made piece of game: a draw-then-discard turn, dealing to each player, reshuffling the discard, playing a matching card, following suit and taking tricks, or bots. It adds what's missing (zones, variables, moves, buttons, trigger steps) and leaves what the game already has; a note then says what to adjust. Recipes are game files in `templates/recipes/`: add your own there, with `//` lines at the top saying what it does.
 - **Bottom:** problems with the game, checked as you edit. Double-click one to go to what it's about.
 - **Undo** and **Redo** (Ctrl+Z, Ctrl+Y) step through your edits. **Games** goes back to the title screen (asking first if there are unsaved changes).
 
@@ -628,7 +631,7 @@ Other places to look:
 - `scripts/ui/`: the table and side panel.
 - `scripts/net/net.gd`: online play (the `Net` autoload): the lobby, sending inputs through the host, undo requests, rejoining.
 - `tests/regression_test.gd`: loads every game and plays a few with bots. Run it after changing rules or the engine: `godot --headless -s tests/regression_test.gd`.
-- `tests/editor_test.gd`: checks the editor keeps game files exactly as written while editing them. Run `godot --headless -s tests/editor_test.gd`.
+- `tests/editor_test.gd`: checks the editor keeps game files exactly as written while editing them, can rebuild every game from an empty file, and that the recipes load. Run `godot --headless -s tests/editor_test.gd`.
 - `tests/ui_test.tscn`: opens the title screen, the lobby, and every game on the real table with bots playing. Run `godot --headless res://tests/ui_test.tscn`.
 - `tests/determinism_test.gd`: plays every game and checks matches replay exactly. Run it after engine changes: `godot --headless -s tests/determinism_test.gd`.
 - `tests/net_test.tscn`: a host and a guest play a hand of Hearts over the network, with an undo, a rejoin and a catch-up. Run `godot --headless res://tests/net_test.tscn -- host` and, in a second terminal, the same with `-- guest`; the two final state numbers must match.

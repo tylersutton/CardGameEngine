@@ -1,0 +1,11 @@
+// Deal to each player: at the start, shuffle the deck and deal 7 cards to every hand. Change the 7 under Triggers, start.
+{
+	"players": 2,
+	"zones": {
+		"deck": { "label": "Deck", "layout": "pile", "face": "down", "anchor": [0.4, 0.5], "cards": "res://decks/standard_deck.csv" },
+		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchor": [0.5, 0.84] }
+	},
+	"triggers": {
+		"start": ["shuffle(deck)", "deal(deck, all_hand, 7)"]
+	}
+}

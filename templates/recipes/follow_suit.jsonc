@@ -1,0 +1,25 @@
+// Follow suit and take tricks: each player plays a card, following the suit led if they can. When everyone has
+// played, the highest card of the suit led wins the trick; press Collect trick and the winner leads next.
+// Uses the deck's suit and value columns.
+{
+	"players": 4,
+	"zones": {
+		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchor": [0.5, 0.84] },
+		"played": { "per_player": true, "layout": "pile", "anchor": [0.5, 0.62] },
+		"won": { "label": "Tricks", "per_player": true, "layout": "pile", "face": "down", "anchor": [0.79, 0.86] }
+	},
+	"variables": { "phase": "play", "lead": "" },
+	"moves": [
+		{
+			"from": "hand", "to": "played", "phase": "play",
+			"when": "follows_suit(card, hand, lead)",
+			"then": [
+				{ "if": "lead == ''", "then": "assign('lead', card.suit)" },
+				{ "if": "count(all_played) == players.size()", "then": ["assign('phase', 'trick done')", "assign('player', owner(trick_winner(all_played, lead)))"], "else": "end_turn()" }
+			]
+		}
+	],
+	"actions": {
+		"Collect trick": { "phase": "trick done", "human_only": true, "steps": ["move(all_played, won)", "assign('lead', '')", "assign('phase', 'play')"] }
+	}
+}

@@ -11,6 +11,7 @@ func _init() -> void:
 		_check_round_trips(path)
 		_check_rebuilding(path)
 	_check_editing()
+	_check_recipes()
 	print("EDITOR: ", "all passed" if failures.is_empty() else "FAILED\n  " + "\n  ".join(failures))
 	quit(0 if failures.is_empty() else 1)
 
@@ -97,6 +98,23 @@ func _check_editing() -> void:
 	check(document.text.contains('"long": {\n\t\t\t"a":'), "long values go one entry per line:\n" + document.text)
 	check(GameDocument.format(document.get_value(["zones", "long"])) == GameDocument.format(long_value), "long value reads back")
 	check(start != document.text, "edits happened")
+
+
+## Every recipe added in turn to an empty game makes a game that loads cleanly; adding them again changes nothing.
+func _check_recipes() -> void:
+	var document := GameDocument.new()
+	document.path = "res://games/recipe_test.jsonc"
+	document.set_text("{\n}\n")
+	for recipe: String in Recipes.paths():
+		Recipes.add_to(document, recipe)
+		check(document.parse_error == "", "%s: %s" % [recipe.get_file(), document.parse_error])
+		check(not Recipes.description(recipe).is_empty(), "%s: no description at the top" % recipe.get_file())
+	var all_added := document.text
+	for recipe: String in Recipes.paths():
+		Recipes.add_to(document, recipe)
+	check(document.text == all_added, "adding the recipes twice changed the game:\n" + _difference(all_added, document.text))
+	var game := Game.new(document.path, 1, {document.path: document.text})
+	check(game.errors.is_empty(), "the recipes together have problems: %s\n%s" % [game.errors, document.text])
 
 
 ## The first differing line of two texts, for failure messages.

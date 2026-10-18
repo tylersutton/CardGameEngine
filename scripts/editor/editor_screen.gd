@@ -6,12 +6,13 @@ extends Control
 
 const MAIN_SCENE := preload("res://scenes/main.tscn")
 const TITLE_SCENE := "res://scenes/title.tscn"
-const SECTIONS := ["Game", "Table", "Deck", "Variables", "Moves", "Buttons", "Triggers", "Conditions"]
+const SECTIONS := ["Game", "Table", "Deck", "Players", "Variables", "Moves", "Buttons", "Triggers", "Conditions", "Scoring", "Melds"]
 ## Changes to the same setting within this long count as one step for Undo (e.g. dragging a number).
 const MERGE_TIME := 1500
 const RELOAD_DELAY := 0.3
 const NEW_ZONE := {"layout": "pile", "anchor": [0.5, 0.5]}
 const NEW_MOVE := {"from": "hand", "to": "discard"}
+const NEW_MELD_TYPE := {"same": "rank", "min": 3}
 ## Sections listing named entries: where they live in the file, what one is called, and what a new one holds.
 const NAMED := {
 	"Table": {key = "zones", noun = "zone", new = NEW_ZONE},
@@ -28,7 +29,8 @@ const VARIABLE_TABLES := [
 const SECTION_OF := {
 	"title": "Game", "description": "Game", "zones": "Table", "card_face": "Deck", "variables": "Variables",
 	"player_variables": "Variables", "team_variables": "Variables", "moves": "Moves", "actions": "Buttons",
-	"triggers": "Triggers", "conditions": "Conditions",
+	"triggers": "Triggers", "conditions": "Conditions", "players": "Players", "player_names": "Players", "seats": "Players",
+	"teams": "Players", "bot": "Players", "status": "Scoring", "show_variables": "Scoring", "melds": "Melds",
 }
 const TRIGGER_HELP := {
 	"start": "Runs when the game begins (and on Reload): deal the cards, set things up.",
@@ -51,6 +53,7 @@ var preview: Control
 var dragger: ZoneDragger
 var deck_table := DeckTable.new()
 var reload_timer := Timer.new()
+var recipe_added := AcceptDialog.new()
 ## The game as last checked, for suggesting names and checking steps as they're typed.
 var checked_game: Game
 
@@ -63,6 +66,13 @@ func _ready() -> void:
 	%UndoButton.pressed.connect(undo)
 	%RedoButton.pressed.connect(redo)
 	%PlayToggle.toggled.connect(_set_playing)
+	var recipes := Recipes.paths()
+	for recipe: String in recipes:
+		%RecipesButton.get_popup().add_item(Recipes.title(recipe))
+	%RecipesButton.get_popup().index_pressed.connect(func(index: int) -> void: add_recipe(recipes[index]))
+	recipe_added.dialog_autowrap = true
+	recipe_added.min_size.x = 480
+	add_child(recipe_added)
 	%SectionList.item_selected.connect(func(index: int) -> void: select_section(SECTIONS[index]))
 	%EntryList.item_selected.connect(func(index: int) -> void: select_entry(%EntryList.get_item_metadata(index)))
 	%Problems.item_activated.connect(func(index: int) -> void: _go_to_problem(%Problems.get_item_text(index)))
@@ -118,6 +128,14 @@ func edit(how: Callable) -> void:
 	_remember([])
 	how.call()
 	_changed(true)
+
+
+## Adds a ready-made piece of game (Recipes), then says what it does and what to adjust.
+func add_recipe(recipe: String) -> void:
+	edit(func() -> void: Recipes.add_to(document, recipe))
+	recipe_added.title = "Added: " + Recipes.title(recipe)
+	recipe_added.dialog_text = Recipes.description(recipe)
+	recipe_added.popup_centered()
 
 
 func undo() -> void:
@@ -385,7 +403,43 @@ func _show_details() -> void:
 			for table: Array in VARIABLE_TABLES:
 				_add_heading(table[1])
 				_add_help(table[2])
-				_add_variable_table(table[0])
+				_add_name_table(table[0])
+		"Players":
+			_add_heading("Players")
+			_add_form([], EditorFields.PLAYERS)
+			_add_heading("Bots")
+			_add_note(["bot"])
+			_add_form(["bot"], EditorFields.BOT)
+		"Scoring":
+			_add_heading("Status")
+			_add_help("Live readouts in the side panel, recalculated after every change. Name players with name_of(1), and use viewer() for anything personal (\"your points\").")
+			_add_name_table("status", true)
+			_add_form([], EditorFields.SCORING)
+		"Melds":
+			_show_melds()
+
+
+## Rummy-style melds: a list of kinds of meld (sets, runs), each with its own small form.
+func _show_melds() -> void:
+	_add_heading("Melds")
+	_add_help("Which groups of cards count as melds; this turns on melds(), deadwood() and layoff().")
+	var types: Array = document.get_value(["melds", "types"], [])
+	for i in types.size():
+		_add_heading("Meld type %d" % (i + 1))
+		_add_form(["melds", "types", i], EditorFields.MELD_TYPE, _deck_columns())
+		var remove := Button.new()
+		remove.text = "Remove meld type %d" % (i + 1)
+		remove.pressed.connect(func() -> void: edit(func() -> void: document.remove(["melds", "types", i])))
+		%Details.add_child(remove)
+	var add := Button.new()
+	add.text = "+ Add meld type"
+	add.pressed.connect(func() -> void: edit(func() -> void:
+		if document.has(["melds", "types"]):
+			document.insert(["melds", "types"], types.size(), NEW_MELD_TYPE)
+		else:
+			document.set_value(["melds", "types"], [NEW_MELD_TYPE])))
+	%Details.add_child(add)
+	_add_form(["melds"], EditorFields.MELDS, _deck_columns())
 
 
 ## A button written as just a list of steps gets the full form once it needs more than steps.
@@ -407,7 +461,8 @@ func _show_button() -> void:
 
 
 ## Name and starting value of each variable; values are written as in the file (5, "draw", true, []).
-func _add_variable_table(key: String) -> void:
+## Readouts (status) instead pair any name with an expression.
+func _add_name_table(key: String, readouts := false) -> void:
 	var grid := GridContainer.new()
 	grid.columns = 3
 	for name: String in document.get_value([key], {}):
@@ -415,14 +470,20 @@ func _add_variable_table(key: String) -> void:
 		name_box.text = name
 		name_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		name_box.text_submitted.connect(func(new_name: String) -> void:
-			if new_name.is_valid_identifier() and not document.has([key, new_name]):
+			if _good_table_name(key, new_name, readouts):
 				edit(func() -> void: document.rename_key([key, name], new_name)))
-		var value_box := LineEdit.new()
-		value_box.text = GameDocument.format(document.get_value([key, name]))
+		var value_box: Control
+		if readouts:
+			value_box = smart_field(str(document.get_value([key, name])))
+			value_box.committed.connect(func(text: String) -> void: change([key, name], text))
+		else:
+			var line := LineEdit.new()
+			line.text = GameDocument.format(document.get_value([key, name]))
+			var send := func(_text: Variant = null) -> void: change([key, name], _value_from_text(line.text))
+			line.text_submitted.connect(send)
+			line.focus_exited.connect(send)
+			value_box = line
 		value_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var send := func(_text: Variant = null) -> void: change([key, name], _value_from_text(value_box.text))
-		value_box.text_submitted.connect(send)
-		value_box.focus_exited.connect(send)
 		var remove := Button.new()
 		remove.text = "×"
 		remove.flat = true
@@ -432,10 +493,15 @@ func _add_variable_table(key: String) -> void:
 	%Details.add_child(grid)
 	var add := Button.new()
 	add.text = "+ Add"
-	add.pressed.connect(func() -> void: _ask("New variable", "", func(name: String) -> void:
-		if name.is_valid_identifier() and not document.has([key, name]):
-			edit(func() -> void: document.set_value([key, name], 0))))
+	add.pressed.connect(func() -> void: _ask("New readout" if readouts else "New variable", "", func(name: String) -> void:
+		if _good_table_name(key, name, readouts):
+			edit(func() -> void: document.set_value([key, name], "''" if readouts else 0))))
 	%Details.add_child(add)
+
+
+## Variables are used in steps, so their names must be single words; readouts are labels and can say anything.
+func _good_table_name(key: String, name: String, readouts: bool) -> bool:
+	return (not name.is_empty() if readouts else name.is_valid_identifier()) and not document.has([key, name])
 
 
 ## 5, true, [] and "text" as written in the file; anything that isn't valid there is taken as text.

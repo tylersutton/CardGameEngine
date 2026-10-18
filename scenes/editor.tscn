@@ -50,6 +50,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Redo"
 
+[node name="RecipesButton" type="MenuButton" parent="Layout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add recipe"
+flat = false
+
 [node name="FileLabel" type="Label" parent="Layout/Toolbar"]
 unique_name_in_owner = true
 layout_mode = 2

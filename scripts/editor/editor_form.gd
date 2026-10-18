@@ -81,12 +81,13 @@ func _control_for(field: Dictionary, path: Array, value: Variant) -> Control:
 			return _choice(path, value, _options(field))
 		"spot":
 			return _spot(path, value)
-		"columns", "list":
+		"columns", "list", "names", "numbers":
 			var line := LineEdit.new()
-			line.text = ", ".join(value) if value is Array else _as_text(value)
+			line.text = ", ".join(value.map(_as_text)) if value is Array else _as_text(value)
 			line.placeholder_text = "comma-separated" + (": " + ", ".join(columns) if field.kind == "columns" and columns else "")
 			var commit := func(_text: Variant = null) -> void:
-				var items := Array(line.text.split(",", false)).map(func(item: String) -> String: return item.strip_edges())
+				var items := Array(line.text.split(",", false)).map(func(item: String) -> Variant:
+					return item.strip_edges().to_int() if field.kind == "numbers" else item.strip_edges())
 				var one_allowed: bool = field.kind == "list" and items.size() == 1
 				changed.emit(path, null if items.is_empty() else (items[0] if one_allowed else items))
 			line.text_submitted.connect(commit)

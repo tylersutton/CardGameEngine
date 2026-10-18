@@ -1,7 +1,8 @@
 class_name EditorFields
 ## What each part of a game file can hold, for the editor's forms: the key, the kind of control, and a line of help
 ## (the same as README's game file reference). Kinds: text, long_text, number, whole, yes_no, choice (with options),
-## spot ([x, y] on the table), list (comma-separated), column (a deck column), columns, json (anything else, as text).
+## spot ([x, y] on the table), list (comma-separated; one item stays text), names and numbers (comma-separated lists),
+## column (a deck column), columns, expression and steps (checked as typed), zones, json (anything else, as text).
 
 const GAME := [
 	{key = "title", kind = "text", help = "The name on the title screen."},
@@ -61,4 +62,32 @@ const CARD_FACE := [
 	{key = "color", kind = "text", help = "Text color: a column holding each card's color, or one color for every card (#333333)."},
 	{key = "background", kind = "text", help = "Face color: a column, or one color for every card (#f3e9d2). White if not given."},
 	{key = "zoom", kind = "number", help = "e.g. 2.4: hovering a card shows an enlarged copy, so small text can be read."},
+]
+
+const PLAYERS := [
+	{key = "players", kind = "whole", help = "How many players. Turns pass with end_turn(); player is whose turn it is."},
+	{key = "player_names", kind = "names", help = "Names on the seat tags, in seat order (comma-separated). Otherwise Player 1, Player 2, ..."},
+	{key = "seats", kind = "json", help = "Where the name tags go: [[x, y]] for seat 1 (the rest go round the table), or one [x, y] per player."},
+	{key = "teams", kind = "json", help = "Partnerships, e.g. [[1, 3], [2, 4]]: every player on exactly one team."},
+]
+
+const BOT := [
+	{key = "players", kind = "numbers", help = "Seats the computer plays (comma-separated, e.g. 2, 3, 4). Without prefer, bots play random legal moves."},
+	{key = "prefer", kind = "expression", help = "How good a position is for the bot, e.g. score - opponent_score. It tries every legal input and takes the best."},
+	{key = "samples", kind = "whole", help = "How many ways to shuffle the cards it can't see when judging a move. More is fairer but slower."},
+	{key = "peek", kind = "yes_no", help = "Let the bot see every card: stronger and faster."},
+]
+
+const SCORING := [
+	{key = "show_variables", kind = "names", help = "Variables listed in the side panel, in this order (comma-separated). Empty: all of them."},
+]
+
+const MELDS := [
+	{key = "points", kind = "column", help = "The column counted as deadwood (cards left out of melds)."},
+]
+
+const MELD_TYPE := [
+	{key = "same", kind = "column", help = "Cards in the meld share this column's value (rank for sets, suit for runs)."},
+	{key = "sequence", kind = "column", help = "For runs: this column's numbers must also follow on one from another."},
+	{key = "min", kind = "whole", help = "The fewest cards in the meld."},
 ]

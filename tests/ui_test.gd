@@ -50,10 +50,26 @@ func _edit(path: String) -> void:
 	if editor.document.text != original or editor.deck_texts:
 		problems.append("%s: undoing every edit didn't give back the file" % name)
 	_check_rule_editing(editor, name)
+	_check_recipes(editor, name)
 	editor.get_node("%PlayToggle").button_pressed = true
 	await get_tree().process_frame
 	editor.queue_free()
 	await get_tree().process_frame
+
+
+## Milestone 3: the players, scoring and melds sections open, and every recipe can be added and undone.
+func _check_recipes(editor: Node, name: String) -> void:
+	for section_name in ["Players", "Scoring", "Melds"]:
+		editor.select_section(section_name)
+	var before: String = editor.document.text
+	for recipe: String in Recipes.paths():
+		editor.add_recipe(recipe)
+		if editor.document.parse_error:
+			problems.append("%s: adding %s broke the file: %s" % [name, recipe.get_file(), editor.document.parse_error])
+	for recipe in Recipes.paths():
+		editor.undo()
+	if editor.document.text != before:
+		problems.append("%s: undoing the recipes didn't give back the file" % name)
 
 
 ## Milestone 2: steps are checked and suggested as they're typed, and step lists can be added to and changed.
