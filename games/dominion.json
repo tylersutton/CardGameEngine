@@ -45,7 +45,8 @@
 		"is_copper": "card.data.name == 'Copper'",
 		"my_cards": "[deck, hand, play, discard]",
 		"gardens_vp": "count(matching(my_cards, 'is_gardens')) * (count(my_cards) / 10)",
-		"affordable": "buys > 0 and coins >= number(card, 'cost')"
+		"affordable": "buys > 0 and coins >= number(card, 'cost')",
+		"nothing_left": "buys == 0 and (actions == 0 or phase == 'buy')"
 	},
 	"effects": {
 		"treasure": ["assign('coins', coins + number(card, 'coins'))"],
@@ -84,7 +85,12 @@
 		{
 			"from": "supply", "to": "discard",
 			"when": "phase == 'buy' and affordable",
-			"then": ["assign('buys', buys - 1)", "assign('coins', coins - number(card, 'cost'))", "assign('phase', 'buy')"]
+			"then": [
+				"assign('buys', buys - 1)",
+				"assign('coins', coins - number(card, 'cost'))",
+				"assign('phase', 'buy')",
+				{ "if": "nothing_left", "then": ["trigger('cleanup')"] }
+			]
 		}
 	],
 	"actions": {
