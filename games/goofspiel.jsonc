@@ -116,12 +116,11 @@
 		}
 	},
 	"variables": {
-		"phase": "bid",
 		"stake": 0,
 		"high": 0
 	},
 	"show_variables": [
-		"phase"
+		"stake"
 	],
 	"status": {
 		"points": "'%s %d, %s %d, %s %d' % [name_of(1), sum(won_1, 'value'), name_of(2), sum(won_2, 'value'), name_of(3), sum(won_3, 'value')]",
@@ -149,19 +148,7 @@
 		},
 		"Next round": {
 			"human_only": true,
-			"when": "phase == 'revealed'",
-			"steps": [
-				"move(all_bid, box)",
-				{
-					"if": "count(prizes) > 0",
-					"then": [
-						"trigger('round')"
-					],
-					"else": [
-						"trigger('game_over')"
-					]
-				}
-			]
+			"steps": []
 		}
 	},
 	"triggers": {
@@ -181,7 +168,6 @@
 		"round": [
 			"move(top(prizes), prize)",
 			"stake = sum(prize, 'value')",
-			"phase = 'bid'",
 			"ask_all('Bid', 'reveal')"
 		],
 		"reveal": [
@@ -193,11 +179,20 @@
 					"move(prize, won[owner(top(high_bids))])"
 				]
 			},
-			"phase = 'revealed'"
+			"offer('Next round')",
+			"move(all_bid, box)",
+			{
+				"if": "count(prizes) > 0",
+				"then": [
+					"trigger('round')"
+				],
+				"else": [
+					"trigger('game_over')"
+				]
+			}
 		],
 		"game_over": [
 			"move(prize, box)",
-			"phase = 'over'",
 			"end_game(players_with_most('prize_points'))"
 		]
 	},

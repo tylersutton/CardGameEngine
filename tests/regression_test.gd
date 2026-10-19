@@ -39,14 +39,14 @@ func gin() -> void:
 	game.start()
 	var bot := Bot.new(game)
 	for turn in 300:
-		if game.variables.phase in ["over", "match over"]:
+		if "Next hand" in game.offered or game.over:
 			break
 		if game.current_player() == 1:
 			game.apply_move(game.legal_moves().pick_random())
 		else:
 			while bot.take_input():
 				pass
-	check(game.variables.phase in ["over", "match over"], "gin hand ends (%s)" % game.variables.phase)
+	check("Next hand" in game.offered or game.over, "gin hand ends (offered: %s)" % [game.offered])
 
 
 func hearts() -> void:
@@ -55,9 +55,9 @@ func hearts() -> void:
 	game.start()
 	var bot := Bot.new(game)
 	for step in 400:
-		if game.variables.phase == "hand over":
+		if "Next hand" in game.offered or game.over:
 			break
-		if game.variables.phase == "trick done":
+		if "Collect trick" in game.offered:
 			game.perform("Collect trick")
 		elif game.is_bot_turn():
 			bot.take_input()

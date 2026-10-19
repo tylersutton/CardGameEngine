@@ -104,7 +104,7 @@ func game_over_and_endless_turns() -> void:
 	check(game.over and game.offered.is_empty() and game.variables.turns == 4, "end_game() stops the turns after 4 (%d)" % game.variables.turns)
 	check(not game.apply({type = "perform", action = "Pass"}) or game.variables.turns == 4, "offered actions can't be done once the game is over")
 	game = game_with({"turn": ["end_turn()"]}, false)
-	check(game.runner.turns_stopped, "turns that never wait for anyone are stopped")
+	check(game.over, "a whole round of turns where nobody can do anything ends the game")
 
 
 func load_errors() -> void:

@@ -50,7 +50,7 @@ static func restore(game: Game, snapshot: Dictionary) -> void:
 ## What's where (cards, faces, marks, variables) as plain data. With every_detail, also the order cards sit in,
 ## any choice in progress and the random numbers' state; without, just enough to tell whether a move changed anything.
 static func describe(game: Game, every_detail := true) -> Dictionary:
-	var state := {variables = _plain(game.variables), zones = {}, marks = {}}
+	var state := {variables = _plain(game.variables), zones = {}, marks = {}, over = game.over, winners = game.winners.duplicate()}
 	if every_detail:
 		state.merge({choice = _plain(take(game).choice), rng = game.rng.state})
 	for name in game.zones:

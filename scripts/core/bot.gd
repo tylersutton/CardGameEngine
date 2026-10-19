@@ -49,11 +49,16 @@ func _best_move(prefer: String) -> Array:
 	return best_move
 
 
-## With no "prefer", any legal move: enough to play a prototype through. Picked with the bot's own random
-## numbers, not the match's, so a bot's thinking never changes the match (or online copies would differ).
+## With no "prefer", any legal move that changes something (not one that only sorts, say): enough to play a
+## prototype through. Picked with the bot's own random numbers, not the match's, so a bot's thinking never changes
+## the match (or online copies would differ).
 func _any_move() -> Array:
 	var moves := game.legal_moves()
-	return moves.pick_random() if moves else []
+	moves.shuffle()
+	for move in moves:
+		if try_out(move, "0") != null:
+			return move
+	return []
 
 
 ## Random identities for the cards this bot can't see, shared by every input it compares.

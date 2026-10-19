@@ -105,14 +105,14 @@
 		}
 	},
 	"variables": {
-		"phase": "play",
 		"pending": "",
 		"actor": 0,
 		"target": 0,
 		"noped": false
 	},
 	"show_variables": [
-		"phase"
+		"pending",
+		"noped"
 	],
 	"status": {
 		"on the table": "'' if pending == '' else '%s by %s%s' % [pending, name_of(actor), (' (Noped)' if noped else '')]",
@@ -135,7 +135,7 @@
 				"from": "hand",
 				"to": "pile"
 			},
-			"when": "phase == 'play' and card.data.kind == 'action' and pending == ''",
+			"when": "card.data.kind == 'action' and pending == ''",
 			"steps": [
 				"pending = card.data.name",
 				"actor = player",
@@ -149,7 +149,7 @@
 				"from": "deck",
 				"to": "hand"
 			},
-			"when": "phase == 'play' and pending == ''",
+			"when": "pending == ''",
 			"steps": [
 				{
 					"if": "card.data.kind == 'bomb'",
@@ -167,12 +167,7 @@
 						}
 					]
 				},
-				{
-					"if": "phase == 'play'",
-					"then": [
-						"end_turn()"
-					]
-				}
+				"end_turn()"
 			]
 		},
 		"Nope?": {
@@ -200,6 +195,9 @@
 			]
 		}
 	},
+	"turn": [
+		"offer_until('Play an action', 'Draw')"
+	],
 	"triggers": {
 		"start": [
 			{
@@ -259,7 +257,6 @@
 			{
 				"if": "size(players_left()) == 1",
 				"then": [
-					"phase = 'over'",
 					"end_game(players_left())"
 				]
 			}

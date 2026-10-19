@@ -57,7 +57,6 @@
 		}
 	},
 	"variables": {
-		"phase": "play",
 		"first_play": true,
 		"set_size": 0,
 		"top_order": 0,
@@ -65,16 +64,14 @@
 		"last_played": 0,
 		"passes": 0,
 		"finish_order": [],
-		"ranking": [],
-		"result": ""
+		"ranking": []
 	},
 	"player_variables": {
 		"title": "",
 		"score": 0
 	},
 	"show_variables": [
-		"phase",
-		"result"
+		"passes"
 	],
 	"status": {
 		"seat 1": "'%s: %s (%d points)' % [name_of(1), title_1, score_1]",
@@ -105,7 +102,7 @@
 			"choose": "matching(hand, 'can_beat')",
 			"up_to": 4,
 			"allow": "count(choice) > 0 and one_rank and (right_size or single_two)",
-			"when": "phase == 'play' and count(hand) > 0",
+			"when": "count(hand) > 0",
 			"steps": [
 				"move(table, beaten)",
 				"move(choice, table)",
@@ -155,7 +152,7 @@
 			]
 		},
 		"Pass": {
-			"when": "phase == 'play' and set_size > 0",
+			"when": "set_size > 0",
 			"steps": [
 				"trigger('pass')"
 			]
@@ -174,18 +171,19 @@
 			"choose": "hand",
 			"prefer": "sum(hand, 'order')",
 			"steps": [
-				"move(choice, hand[ranking[2]])",
-				"phase = 'play'"
+				"move(choice, hand[ranking[2]])"
 			]
 		},
 		"Next hand": {
 			"human_only": true,
-			"when": "phase == 'hand over'",
 			"steps": [
 				"trigger('deal')"
 			]
 		}
 	},
+	"turn": [
+		"offer(['Play', 'Pass'])"
+	],
 	"triggers": {
 		"start": [
 			"trigger('deal')",
@@ -206,7 +204,6 @@
 			{
 				"if": "size(ranking) == 0",
 				"then": [
-					"phase = 'play'",
 					"player = owner(top(where(all_hand, 'name', '3♣')))"
 				],
 				"else": [
@@ -215,7 +212,6 @@
 			}
 		],
 		"exchange": [
-			"phase = 'exchange'",
 			"move(highest(hand[ranking[3]], 'order'), hand[ranking[0]])",
 			"move(highest(hand[ranking[3]], 'order'), hand[ranking[0]])",
 			"move(highest(hand[ranking[2]], 'order'), hand[ranking[1]])",
@@ -245,7 +241,7 @@
 		],
 		"hand_over": [
 			"ranking = finish_order",
-			"phase = 'hand over'"
+			"offer('Next hand')"
 		]
 	},
 	"card_face": {

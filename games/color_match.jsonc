@@ -98,12 +98,7 @@
 	},
 	"turn": [
 		"offer(['Play a card', 'Draw'])",
-		{
-			"if": "winner == null",
-			"then": [
-				"end_turn()"
-			]
-		}
+		"end_turn()"
 	],
 	"triggers": {
 		"draw_two": [

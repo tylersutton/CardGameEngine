@@ -99,21 +99,19 @@
 		}
 	},
 	"variables": {
-		"phase": "discard",
 		"dealer": 2,
 		"discarded": 0,
 		"total": 0,
-		"counted": 0,
 		"points": 0,
 		"pair_points": 0,
-		"run_points": 0
+		"run_points": 0,
+		"counting_crib": false
 	},
 	"player_variables": {
 		"score": 0,
 		"kept": []
 	},
 	"show_variables": [
-		"phase",
 		"total",
 		"points"
 	],
@@ -130,7 +128,6 @@
 	"conditions": {
 		"playable": "number(card, 'value') <= 31 - total",
 		"with_starter": "[shown, starter]",
-		"counting_crib": "counted == 2",
 		"hand_flush": "4 * int(size(groups(shown, 'suit')) == 1) + int(size(groups(with_starter, 'suit')) == 1)",
 		"crib_flush": "5 * int(size(groups(with_starter, 'suit')) == 1)",
 		"flush_points": "int(not counting_crib) * hand_flush + int(counting_crib) * crib_flush",
@@ -146,7 +143,7 @@
 				"to": "pegging"
 			},
 			"click": true,
-			"when": "phase == 'pegging' and playable",
+			"when": "playable",
 			"steps": [
 				"total += number(card, 'value')",
 				"points = 0",
@@ -248,44 +245,34 @@
 		},
 		"Count hand": {
 			"human_only": true,
-			"when": "phase == 'show'",
 			"steps": [
-				{
-					"if": "counting_crib",
-					"then": [
-						"move(shown, deck)",
-						"move(crib, shown)"
-					],
-					"else": [
-						"move(kept, shown)"
-					]
-				},
+				"move(kept, shown)",
 				"points = hand_points",
 				"score += points",
-				"counted += 1",
-				"trigger('check_win')",
-				{
-					"if": "counted == 1",
-					"then": [
-						"end_turn()"
-					]
-				},
-				{
-					"if": "counted == 3 and phase != 'over'",
-					"then": [
-						"phase = 'hand over'"
-					]
-				}
+				"trigger('check_win')"
+			]
+		},
+		"Count crib": {
+			"human_only": true,
+			"steps": [
+				"move(shown, deck)",
+				"move(crib, shown)",
+				"counting_crib = true",
+				"points = hand_points",
+				"score += points",
+				"trigger('check_win')"
 			]
 		},
 		"Next hand": {
 			"human_only": true,
-			"when": "phase == 'hand over'",
 			"steps": [
 				"trigger('deal')"
 			]
 		}
 	},
+	"turn": [
+		"offer('Peg a card')"
+	],
 	"triggers": {
 		"start": [
 			{
@@ -303,10 +290,7 @@
 			"player = dealer",
 			"dealer = next_player()",
 			"deal(deck, all_hand, 6)",
-			"phase = 'discard'",
-			"discarded = 0",
-			"counted = 0",
-			"total = 0",
+			"reset(['discarded', 'total', 'counting_crib'])",
 			"ask('Discard to crib', 1)",
 			"ask('Discard to crib', 2)"
 		],
@@ -325,31 +309,23 @@
 				"do": [
 					"kept = all(hand)"
 				]
-			},
-			{
-				"if": "phase != 'over'",
-				"then": [
-					"phase = 'pegging'"
-				]
 			}
 		],
 		"show": [
 			"move(pegging, pegged)",
 			"total = 0",
-			{
-				"if": "phase != 'over'",
-				"then": [
-					"phase = 'show'"
-				]
-			},
 			"player = dealer",
-			"player = next_player()"
+			"player = next_player()",
+			"offer('Count hand')",
+			"player = dealer",
+			"offer('Count hand')",
+			"offer('Count crib')",
+			"offer('Next hand')"
 		],
 		"check_win": [
 			{
-				"if": "phase != 'over' and most('score') >= 121",
+				"if": "most('score') >= 121",
 				"then": [
-					"phase = 'over'",
 					"end_game(players_with_most('score'))"
 				]
 			}

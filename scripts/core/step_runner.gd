@@ -9,7 +9,7 @@ extends RefCounted
 ## root (true for a whole trigger, action or rule; false for an "if" branch or loop body inside one), context
 ## (from, to, clicked_zone and choice when it started), locals (names set with = that aren't game variables, and
 ## loop items), answers (choices already made for the step at index), kind ("list", "loop" or "while")}, and
-## turn = true for the "turn" steps.
+## turn = true for the "turn" steps (and the "if" branches and loops inside them).
 ## A loop frame also has loop_name, items, position and outer_player; a while frame has condition, repeats and checked.
 ##
 ## A step that starts more steps (trigger('deal'), a card's effect, try_move's rule) schedules them: they run, in
@@ -17,8 +17,6 @@ extends RefCounted
 
 const MAX_REPEATS := 1000
 const MAX_DEPTH := 50
-## Turns in a row that end without waiting for anyone before the turns are stopped as an endless loop.
-const MAX_IDLE_TURNS := 100
 
 ## Held weakly: the game holds its runner, and a reference each way would keep both alive forever.
 var game: Game:
@@ -38,6 +36,7 @@ var holding := 0
 ## scheduled on top of it (an action that was never offered, done while an offer waits).
 var waiting := false
 var waited_since_turn := false
+var turns_run := 0
 var idle_turns := 0
 var turns_stopped := false
 
@@ -180,17 +179,20 @@ func _run_frames(base: int) -> bool:
 	return true
 
 
-## Starts the "turn" steps again, if the game has them and nothing else is due (Game.next_turn_due). Turns that
-## keep ending without waiting for anyone are stopped, as an endless loop.
+## Starts the "turn" steps again, if the game has them and nothing else is due (Game.next_turn_due). When a whole
+## round of turns goes by without anyone able to do anything (every offer had nothing possible), it's a stalemate,
+## and the game is over.
 func _start_turn() -> bool:
 	if turns_stopped or not game.next_turn_due():
 		return false
-	idle_turns = 0 if waited_since_turn else idle_turns + 1
+	if turns_run > 0:
+		idle_turns = 0 if waited_since_turn else idle_turns + 1
 	waited_since_turn = false
-	if idle_turns > MAX_IDLE_TURNS:
-		game.report_failure("Turns stopped: %d turns in a row ended without waiting for anyone (call end_game() when the game is over)" % MAX_IDLE_TURNS)
-		turns_stopped = true
+	if idle_turns >= maxi(game.players_left().size(), 1):
+		game.log_line("Nobody could do anything for a whole round of turns, so the game is over")
+		game.end_game()
 		return false
+	turns_run += 1
 	game.log_line("[turn] " + game.player_name(game.current_player()))
 	var turn := _frame(game.rules.turn, null, 0, true, game.move_context(), {})
 	turn.turn = true
@@ -206,6 +208,10 @@ func _push_scheduled() -> void:
 
 
 func _run_step(frame: Dictionary) -> void:
+	if game.over and frame.get("turn", false):
+		# The game ended (in this turn, or in an action done in it): the rest of the turn doesn't happen.
+		_end_script(_root_index(), false)
+		return
 	game.set_move_context(frame.context)
 	if frame.kind == "while" and not frame.checked:
 		_check_while(frame)
@@ -252,6 +258,7 @@ func _work_out(frame: Dictionary, text: String) -> Variant:
 
 func _body(parent: Dictionary, steps: Array, extra: Dictionary) -> Dictionary:
 	var body := _frame(steps, parent.card, parent.depth, false, parent.context, {})
+	body.turn = parent.get("turn", false)
 	body.merge(extra, true)
 	return body
 
@@ -314,8 +321,8 @@ func _finish_list(frame: Dictionary) -> void:
 
 ## Stops the running trigger or rule (after a failure): its frames from index on are dropped. A failure in the
 ## turn stops the turns, rather than failing again every turn.
-func _end_script(index: int) -> void:
-	if index < frames.size() and frames[index].get("turn", false):
+func _end_script(index: int, failed := true) -> void:
+	if failed and index < frames.size() and frames[index].get("turn", false):
 		game.report_failure("Turns stopped after that failure; fix the step and press Reload")
 		turns_stopped = true
 	while frames.size() > index:

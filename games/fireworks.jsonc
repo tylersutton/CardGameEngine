@@ -83,7 +83,6 @@
 		}
 	},
 	"variables": {
-		"phase": "play",
 		"clues": 8,
 		"fuses": 3,
 		"final_turns": -1,
@@ -117,7 +116,6 @@
 				"from": "hand",
 				"to": "play"
 			},
-			"when": "phase == 'play'",
 			"steps": [
 				{
 					"if": "playable",
@@ -135,8 +133,7 @@
 						"fuses -= 1"
 					]
 				},
-				"draw(deck, hand)",
-				"trigger('end_of_turn')"
+				"draw(deck, hand)"
 			]
 		},
 		"Discard": {
@@ -144,32 +141,33 @@
 				"from": "hand",
 				"to": "discard"
 			},
-			"when": "phase == 'play' and clues < 8",
+			"when": "clues < 8",
 			"steps": [
 				"clues += 1",
-				"draw(deck, hand)",
-				"trigger('end_of_turn')"
+				"draw(deck, hand)"
 			]
 		},
 		"Clue color": {
 			"choose": "opponent_hand",
-			"when": "phase == 'play' and clues > 0",
+			"when": "clues > 0",
 			"steps": [
 				"mark(where(opponent_hand, 'color', text(choice, 'color')), 'color', text(choice, 'color'))",
-				"clues -= 1",
-				"trigger('end_of_turn')"
+				"clues -= 1"
 			]
 		},
 		"Clue number": {
 			"choose": "opponent_hand",
-			"when": "phase == 'play' and clues > 0",
+			"when": "clues > 0",
 			"steps": [
 				"mark(where(opponent_hand, 'number', text(choice, 'number')), 'number', text(choice, 'number'))",
-				"clues -= 1",
-				"trigger('end_of_turn')"
+				"clues -= 1"
 			]
 		}
 	},
+	"turn": [
+		"offer(['Play', 'Discard', 'Clue color', 'Clue number'])",
+		"trigger('end_of_turn')"
+	],
 	"triggers": {
 		"start": [
 			"shuffle(deck)",
@@ -199,7 +197,7 @@
 			}
 		],
 		"game_over": [
-			"phase = 'over'",
+			"end_game()",
 			{
 				"if": "fuses == 0",
 				"then": [

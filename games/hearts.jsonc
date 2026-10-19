@@ -59,7 +59,6 @@
 		}
 	},
 	"variables": {
-		"phase": "pass",
 		"hand_number": 0,
 		"pass_to": 1,
 		"lead": "",
@@ -70,7 +69,6 @@
 		"score": 0
 	},
 	"show_variables": [
-		"phase",
 		"hearts_broken",
 		"score_1",
 		"score_2",
@@ -101,7 +99,7 @@
 				"from": "hand",
 				"to": "played"
 			},
-			"when": "phase == 'play' and follows_suit(card, hand, lead) and hearts_allowed and two_of_clubs_leads",
+			"when": "follows_suit(card, hand, lead) and hearts_allowed and two_of_clubs_leads",
 			"steps": [
 				{
 					"if": "lead == ''",
@@ -114,45 +112,44 @@
 					"then": [
 						"hearts_broken = true"
 					]
-				},
-				{
-					"if": "count(all_played) == 4",
-					"then": [
-						"phase = 'trick done'",
-						"player = owner(trick_winner(all_played, lead))"
-					],
-					"else": [
-						"end_turn()"
-					]
 				}
 			]
 		},
 		"Collect trick": {
 			"human_only": true,
-			"when": "phase == 'trick done'",
 			"steps": [
 				"move(all_played, won)",
 				"lead = ''",
-				"tricks += 1",
-				{
-					"if": "count(all_hand) == 0",
-					"then": [
-						"trigger('score_hand')"
-					],
-					"else": [
-						"phase = 'play'"
-					]
-				}
+				"tricks += 1"
 			]
 		},
 		"Next hand": {
 			"human_only": true,
-			"when": "phase == 'hand over'",
 			"steps": [
 				"trigger('deal')"
 			]
 		}
 	},
+	"turn": [
+		"offer('Play a card')",
+		{
+			"if": "count(all_played) < 4",
+			"then": [
+				"end_turn()"
+			],
+			"else": [
+				"player = owner(trick_winner(all_played, lead))",
+				"offer('Collect trick')",
+				{
+					"if": "count(all_hand) == 0",
+					"then": [
+						"trigger('score_hand')",
+						"offer('Next hand')"
+					]
+				}
+			]
+		}
+	],
 	"triggers": {
 		"start": [
 			{
@@ -170,7 +167,6 @@
 			"move([all_hand, all_played, all_won], deck)",
 			"shuffle(deck)",
 			"deal(deck, all_hand, 13)",
-			"phase = 'pass'",
 			"reset(['tricks', 'lead', 'hearts_broken'])",
 			"player = 1",
 			{
@@ -203,7 +199,6 @@
 			"trigger('first_lead')"
 		],
 		"first_lead": [
-			"phase = 'play'",
 			"player = owner(top(where(all_hand, 'name', '2♣')))"
 		],
 		"score_hand": [
@@ -228,11 +223,9 @@
 					}
 				]
 			},
-			"phase = 'hand over'",
 			{
 				"if": "most('score') >= 100",
 				"then": [
-					"phase = 'over'",
 					"end_game(players_with_least('score'))"
 				]
 			}

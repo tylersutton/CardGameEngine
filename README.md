@@ -6,7 +6,7 @@ Included games:
 
 | Game | Files | Shows off |
 |---|---|---|
-| Gin Rummy (default) | `games/gin_rummy.jsonc`, `decks/standard_deck.csv` | Turn phases, melds, scoring, a match to 100, a bot opponent |
+| Gin Rummy (default) | `games/gin_rummy.jsonc`, `decks/standard_deck.csv` | A turn of offers (take or pass the upcard, draw, then discard or knock), melds, scoring, a match to 100, a bot opponent |
 | Dominion | `games/dominion.jsonc`, `decks/dominion.csv` | Deckbuilding: a supply of 7 basic and 10 kingdom piles (pick the kingdom from 17 cards in the game file), per-player decks that reshuffle, actions/buys/coins, choices like Cellar, Chapel, Remodel, Mine and Throne Room, attacks (Militia, Witch) answered by the other player, Moat reactions, rules text with hover zoom, and a Big Money bot. The default kingdom is the official First Game set |
 | Hearts | `games/hearts.jsonc`, `decks/standard_deck.csv` | Four players (you and three bots), passing three cards in a rotating direction, following suit, winning tricks, shooting the moon, a game to 100 |
 | Spades | `games/spades.jsonc`, `decks/standard_deck.csv` | Partnerships (`teams`): bidding, team scores and bags, trump, nil bids, a game to 500 |
@@ -183,14 +183,11 @@ Once a game has drag actions, only the drags they allow can be made.
 The **turn** says what a player does on their turn, in order. It runs again and again, for whoever's turn it is:
 
 ```json
-"turn": [
-	"offer(['Play a card', 'Draw'])",
-	{ "if": "winner == null", "then": ["end_turn()"] }
-]
+"turn": ["offer(['Play a card', 'Draw'])", "end_turn()"]
 ```
 
 - `offer(...)` waits until the current player does one of those actions, by dragging or clicking. Until then, nothing else in the turn happens. Play a card and Draw can *only* be done while they're offered, so nobody can play out of turn or twice.
-- `end_turn()` passes the turn to the next player, and the turn starts again for them.
+- `end_turn()` passes the turn to the next player, and the turn starts again for them. Once the game is over (`end_game`), the rest of the turn doesn't happen.
 
 ### 6. Define card effects
 
@@ -357,7 +354,8 @@ Sea Salt + Paper's turn:
 - **Who plays:** whoever's turn it is when the steps start (`player`). Steps can change it (`player = owner(best_card)`) before ending, so the winner of a trick leads.
 - **Starting:** after `start`, and again whenever nothing else is running or being chosen.
 - **Without a `turn`,** players do whatever their actions allow, whenever they allow it: right for solitaire, or games that handle turns in their actions' steps with `end_turn()`.
-- **Safety:** turns that keep ending without waiting for anyone (100 in a row) stop with an error rather than freezing the game, as do turns after a step in them fails.
+- **Nobody can play:** when a whole round of turns goes by with nothing possible for anyone (every offer gave `null`), it's a stalemate: the game is over, and the log says so.
+- **Safety:** a step that fails in the turn stops the turns, rather than failing again every turn.
 
 ### `triggers`
 
@@ -370,7 +368,7 @@ Named step lists:
 | `<zone>_empty` | A `draw` needs a card from that zone and it's empty, e.g. `deck_empty`. For a per-player zone (`deck_2`), `deck_empty` runs as that zone's owner, so `["move(discard, deck)", "shuffle(deck)"]` refills whoever ran out. |
 | any other name | You call it with `trigger('name')`, or a card names it in its `on_<zone>` column (a **card effect**). Handy for routines used in several places, like a `deal`. |
 
-As a card effect, a trigger runs with `card` as the card that moved, e.g. `"wild": [{ "if": "count(hand) > 1", "then": ["phase = 'choose_color'"] }]`. Every trigger is checked when the game loads, even ones nothing uses yet. (Older game files put card effects in a separate `"effects"` section; that still works.)
+As a card effect, a trigger runs with `card` as the card that moved, e.g. `"wild": [{ "if": "count(hand) > 0", "then": ["active_color = choose(['Red', 'Blue', 'Green', 'Yellow'])"] }]`. Every trigger is checked when the game loads, even ones nothing uses yet. (Older game files put card effects in a separate `"effects"` section; that still works.)
 
 ### `conditions`
 
@@ -672,7 +670,7 @@ Wherever a building block takes `cards`, you can pass a zone, a single card, or 
 - **To deal the same way in several places,** put the steps in a custom trigger and call `trigger('deal')`.
 - **"Draw only if you can't play"** is a drag action like `{ "drag": { "from": "deck", "to": "hand" }, "when": "count(movable(hand, pile)) == 0" }`. (An action can't use `movable` to check drags into its own destination; that inner check counts as "none" and the log says so.)
 - **To repeat a check,** give it a name in [`conditions`](#conditions). **To repeat a step,** use a [loop](#loops), or [repeat until](#repeat-until) something changes.
-- **Look at `games/color_match.jsonc` and `games/sea_salt_+_paper.jsonc`** for turns made of offers. `games/gin_rummy.jsonc` is a full game: turn phases, knocking, scoring, and a match to 100. `games/solitaire.jsonc` shows columns, stacks, and groups of zones. `games/cribbage.jsonc` scores combinations, and `games/spades.jsonc` has teams.
+- **Look at `games/color_match.jsonc` and `games/sea_salt_+_paper.jsonc`** for turns made of offers. `games/gin_rummy.jsonc` is a full game: the upcard, knocking, scoring, and a match to 100; `games/hearts.jsonc` plays tricks hand after hand. `games/solitaire.jsonc` shows columns, stacks, and groups of zones. `games/cribbage.jsonc` scores combinations, and `games/spades.jsonc` has teams.
 
 ## Deck reference
 
@@ -705,6 +703,7 @@ Other places to look:
 - `tests/regression_test.gd`: loads every game and plays a few with bots. Run it after changing rules or the engine: `godot --headless -s tests/regression_test.gd`.
 - `tests/editor_test.gd`: checks the editor keeps game files exactly as written while editing them, can rebuild every game from an empty file, and that the recipes load. Run `godot --headless -s tests/editor_test.gd`.
 - `tests/ui_test.tscn`: opens the title screen, the lobby, and every game on the real table with bots playing. Run `godot --headless res://tests/ui_test.tscn`.
+- `tests/playthrough_test.gd`: plays every game to its end with bots in every seat, and checks it ends (with `end_game`) without failing. Run it after changing a game or turns: `godot --headless -s tests/playthrough_test.gd`.
 - `tests/players_test.gd`: checks a player's own variables and zones (`score[2]`), comparing players, knocking out, `reset` and winners. Run it after changing players: `godot --headless -s tests/players_test.gd`.
 - `tests/turn_test.gd`: checks turns, offers and actions done by drags, clicks and buttons, plus the load errors for older game files. Run it after changing turns or actions: `godot --headless -s tests/turn_test.gd`.
 - `tests/choose_test.gd`: checks steps that wait for a choice: cards, zones and values, loops, triggers, undo, bots and replays. Run it after changing `StepRunner` or choices: `godot --headless -s tests/choose_test.gd`.
