@@ -12,6 +12,7 @@ const PLAYERS_VARIABLE := "players"
 const ALL_PREFIX := "all_"
 const FROM_VARIABLE := "from"
 const TO_VARIABLE := "to"
+const CLICKED_ZONE_VARIABLE := "clicked_zone"
 const PLAYER_VARIABLE := "player"
 const OPPONENT_PREFIX := "opponent_"
 const TEAM_PREFIX := "team_"
@@ -61,6 +62,7 @@ var history: Array[Dictionary] = []
 var game_log := GameLog.new()
 var move_from: Zone
 var move_to: Zone
+var clicked_zone: Zone
 var checking_moves := false
 var checked_itself := false
 var loop_names: Array[String] = []
@@ -566,7 +568,7 @@ func click(card: Card) -> void:
 		cancel_choice()
 	elif zone.on_click:
 		log_line("[click] %s in %s" % [card.title, zone.name])
-		run(zone.on_click, card)
+		_run_clicked(zone, zone.on_click, card)
 	_finish_input(before)
 
 
@@ -587,7 +589,7 @@ func double_click(card: Card) -> void:
 	var zone := zone_of(card)
 	if zone.on_double_click:
 		log_line("[double-click] %s in %s" % [card.title, zone.name])
-		run(zone.on_double_click, card)
+		_run_clicked(zone, zone.on_double_click, card)
 	_finish_input(before)
 
 
@@ -596,8 +598,14 @@ func click_empty(zone: Zone) -> void:
 	cancel_choice()
 	if zone.on_click:
 		log_line("[click] " + zone.name)
-		run(zone.on_click)
+		_run_clicked(zone, zone.on_click)
 	_finish_input(before)
+
+
+func _run_clicked(zone: Zone, steps: Array, card: Card = null) -> void:
+	clicked_zone = zone
+	run(steps, card)
+	clicked_zone = null
 
 
 func undo() -> void:
@@ -1053,7 +1061,7 @@ func _resolve(name: String) -> String:
 
 func input_names() -> PackedStringArray:
 	return PackedStringArray(zones.keys() + variables.keys() + aliases().keys() + zone_groups.keys() + _team_groups().keys() + loop_names \
-		+ [CARD_VARIABLE, FROM_VARIABLE, TO_VARIABLE, CHOICE_VARIABLE, PLAYERS_VARIABLE])
+		+ [CARD_VARIABLE, FROM_VARIABLE, TO_VARIABLE, CLICKED_ZONE_VARIABLE, CHOICE_VARIABLE, PLAYERS_VARIABLE])
 
 
 func _input_values(card: Card) -> Array:
@@ -1061,7 +1069,7 @@ func _input_values(card: Card) -> Array:
 		return zones[name] if name in zones else variables[name])
 	var looped := loop_names.map(func(name: String) -> Variant: return loop_values.get(name))
 	return zones.values() + variables.values() + aliased + zone_groups.values() + _team_groups().values() + looped \
-		+ [card, move_from, move_to, chosen, range(1, rules.players + 1)]
+		+ [card, move_from, move_to, clicked_zone, chosen, range(1, rules.players + 1)]
 
 
 func _add_zone(zone: Zone, definition: Dictionary) -> void:

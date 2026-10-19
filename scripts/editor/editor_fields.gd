@@ -24,7 +24,7 @@ const ZONE := [
 	{key = "spread", kind = "whole", help = "For a pile: fan out its top few cards (3 for a draw-three waste)."},
 	{key = "drag", kind = "choice", options = ["stack"], help = "stack: dragging a card also carries every card on top of it."},
 	{key = "group", kind = "text", help = "With copies: also put them in a group with this name, shared with other zones."},
-	{key = "on_click", kind = "steps", help = "Steps run when a card here (or the empty zone) is clicked; card is the clicked card."},
+	{key = "on_click", kind = "steps", help = "Steps run when a card here (or the empty zone) is clicked; card is the clicked card, clicked_zone the zone (one copy, not the group)."},
 	{key = "on_double_click", kind = "steps", help = "Steps run when a card here is double-clicked."},
 	{key = "columns", kind = "json", example = "{ \"points\": \"min(card.value, 10)\" }", help = "With cards: columns to add or change on every card, e.g. { \"points\": \"min(card.value, 10)\" }."},
 	{key = "anchors", kind = "json", example = "[[0.5, 0.85], [0.5, 0.15]]", help = "With per_player or copies: one [x, y] spot each, to place them yourself."},

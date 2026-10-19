@@ -261,7 +261,7 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 | `rotation` | Turn the zone, in degrees, e.g. `90` for a hand on the left side of the table | `0` |
 | `cards` | A deck to start with, e.g. `"res://decks/my_deck.csv"` | empty |
 | `columns` | With `cards`: columns to add or change on every card as the game loads, each an expression about `card`, worked out in order. E.g. Hearts uses the standard deck with `{ "value": "either(card.rank == 'A', 14, card.value)", "points": "either(card.name == 'Q♠', 13, int(card.suit == 'Hearts'))" }` (aces high, and the scoring cards) | |
-| `on_click` | Steps run when a card in this zone is clicked (`card` is the clicked card), or when the empty zone is clicked (`card` is `null`) | none |
+| `on_click` | Steps run when a card in this zone is clicked (`card` is the clicked card), or when the empty zone is clicked (`card` is `null`). `clicked_zone` is the zone clicked, which tells copies apart: `try_move(top(deck), clicked_zone)` | none |
 | `on_double_click` | Steps run when a card in this zone is double-clicked, e.g. solitaire's `["try_move(card, foundation)"]`. (The first click of a double-click also counts as a single click.) | none |
 | `spread` | For a `pile`: fan out its top few cards sideways so they can be read, e.g. `3` for a draw-three solitaire waste | `0` |
 | `drag` | `"stack"`: dragging a card also carries every card on top of it | one card |
@@ -454,6 +454,7 @@ A step is one line of text that does something or calculates something, like `dr
 You can use:
 - **Zone and variable names** directly.
 - **`card`**: the card involved (dragged, clicked, chosen, or whose effect is running). It's `null` when there isn't one.
+- **`clicked_zone`**: in `on_click` and `on_double_click`, the zone that was clicked (one copy, not the whole group). It's `null` elsewhere.
 - **`choice`**: what was picked in a `choose` action: a card, a list of cards, or a value.
 - **Card columns,** as `card.<column>`, e.g. `card.suit == lead` or `card.value > 5`. Capitals don't matter: `card.color` reads a column headed `Color`. A column where every card has a number (`value`) gives numbers; a column with any text in it (`rank`: 2 ... 10, J, Q, K, A) gives text for every card, so `card.rank == 'A'` and `card.rank == '10'` both work. `card.data.<column>` is always the text as written.
 - **Operators:** `==`, `!=`, `<`, `>`, `<=`, `>=`, `+`, `-`, `*`, `/`, `and`, `or`, `not`, and parentheses.
