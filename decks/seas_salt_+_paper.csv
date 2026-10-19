@@ -1,0 +1,47 @@
+Kind,Color,Count,Text,Background,cardtype
+Anchor,Light Pink,1,,#FEA1BF,Set
+Anchor,Orange,1,,#FF6F3C,Set
+Boat,Black,2,,#222222,Duo
+Boat,Dark Blue,2,,#1D2D50,Duo
+Boat,Light Blue,2,,#528AAE,Duo
+Boat,Yellow,2,,#F4D160,Duo
+Crab,Black,1,,#222222,Duo
+Crab,Dark Blue,2,,#1D2D50,Duo
+Crab,Light Blue,2,,#528AAE,Duo
+Crab,Light Green,1,,#4E9F3D,Duo
+Crab,Light Grey,1,,#C0C4C7,Duo
+Crab,Yellow,2,,#F4D160,Duo
+Fish,Black,2,,#222222,Duo
+Fish,Dark Blue,2,,#1D2D50,Duo
+Fish,Light Blue,1,,#528AAE,Duo
+Fish,Light Green,1,,#4E9F3D,Duo
+Fish,Yellow,1,,#F4D160,Duo
+Mermaid,White,4,,#FFFFFF,Set
+3/Anchor,Light Orange,1,,#F9B208,Multiplier
+1/Fish,Light Grey,1,,#C0C4C7,Multiplier
+2/Penguin,Light Green,1,,#4E9F3D,Multiplier
+2/Boat,Purple,1,,#845EC2,Multiplier
+Octopus,Light Blue,1,,#528AAE,Set
+Octopus,Light Green,1,,#4E9F3D,Set
+Octopus,Light Grey,1,,#C0C4C7,Set
+Octopus,Purple,1,,#845EC2,Set
+Octopus,Yellow,1,,#F4D160,Set
+Penguin,Light Orange,1,,#F9B208,Set
+Penguin,Light Pink,1,,#FEA1BF,Set
+Penguin,Purple,1,,#845EC2,Set
+Shark,Black,1,,#222222,Duo
+Shark,Dark Blue,1,,#1D2D50,Duo
+Shark,Light Blue,1,,#528AAE,Duo
+Shark,Light Green,1,,#4E9F3D,Duo
+Shark,Purple,1,,#845EC2,Duo
+Shell,Black,1,,#222222,Set
+Shell,Dark Blue,1,,#1D2D50,Set
+Shell,Light Blue,1,,#528AAE,Set
+Shell,Light Green,1,,#4E9F3D,Set
+Shell,Light Grey,1,,#C0C4C7,Set
+Shell,Yellow,1,,#F4D160,Set
+Swimmer,Black,1,,#222222,Duo
+Swimmer,Dark Blue,1,,#1D2D50,Duo
+Swimmer,Light Blue,1,,#528AAE,Duo
+Swimmer,Light Orange,1,,#F9B208,Duo
+Swimmer,Yellow,1,,#F4D160,

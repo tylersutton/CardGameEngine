@@ -1,0 +1,256 @@
+{
+	// A starting point made by "New game...". Change anything and save: the table reloads by itself.
+	// Every key is explained in README.md, under "Game file reference".
+	"title": "Sea Salt + Paper",
+	"description": "2 players. Describe your game here.",
+	"players": 2,
+	"player_names": [
+		"You",
+		"Player 2",
+		"Player 3",
+		"Player 4"
+	],
+	"zones": {
+		// Click the deck to draw, or drag from it.
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.39,
+				0.5
+			],
+			"cards": "res://decks/seas_salt_+_paper.csv",
+			"columns": {
+				"ink": "either(card.color == 'White', '#000000', '#ffffff')"
+			},
+			"on_click": [
+				{
+					"if": "phase == 'draw'",
+					"then": [
+						"trigger('draw')"
+					]
+				}
+			]
+		},
+		"discard_piles": {
+			"label": "Discard",
+			"layout": "pile",
+			"copies": 2,
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"grid": {
+				"columns": 2,
+				"spacing": [
+					0.11,
+					0
+				]
+			},
+			"on_click": [
+				{
+					"if": "phase == 'discard'",
+					"then": [
+						"try_move(top(preview), clicked_zone)"
+					]
+				},
+				{
+					"if": "phase == 'draw'",
+					"then": [
+						"try_move(card, hand)",
+						"assign('phase', 'duo')"
+					]
+				}
+			]
+		},
+		// One hand per player. The anchor is seat 1's (the bottom); the other seats go round the table.
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.9
+			]
+		},
+		// Where drawn cards are previewed for selection.
+		"preview": {
+			"layout": "row",
+			"anchor": [
+				0.5,
+				0.7
+			],
+			"face": "private",
+			"per_player": true,
+			"on_click": [
+				{
+					"if": "phase == 'select' or phase == 'preview'",
+					"then": [
+						"try_move(card, hand)",
+						{
+							"if": "count(preview) > 0",
+							"then": [
+								"assign('phase', 'discard')"
+							],
+							"else": [
+								"assign('phase', 'duo')"
+							]
+						}
+					]
+				}
+			]
+		},
+		"played": {
+			"layout": "pile",
+			"anchor": [
+				0.75,
+				0.84
+			],
+			"label": "Duos Played",
+			"per_player": true,
+			"face": "up"
+		}
+	},
+	"seats": [
+		[
+			0.22,
+			0.86
+		]
+	],
+	// The other seats are bots that play random legal moves. Add "prefer" to make them try to win.
+	"bot": {
+		"players": [
+			2
+		]
+	},
+	// A turn: draw a card, then discard one.
+	"variables": {
+		"phase": "draw"
+	},
+	"moves": [
+		{
+			"from": "deck",
+			"to": "preview",
+			"phase": "draw",
+			"then": [
+				"trigger('draw')",
+				{
+					"if": "count(deck) == 0",
+					"then": "trigger('deck_empty')"
+				}
+			],
+			"when": "!is_preview_full and phase == 'draw'"
+		},
+		{
+			"from": "discard_piles",
+			"to": "hand",
+			"phase": "draw",
+			"then": [
+				"assign('phase', 'duo')"
+			]
+		},
+		{
+			"from": "preview",
+			"to": "hand",
+			"phase": [
+				"preview",
+				"select"
+			],
+			"then": [
+				{
+					"if": "phase == 'preview'",
+					"then": [
+						"assign('phase', 'discard')"
+					],
+					"else": [
+						"assign('phase','duo')"
+					]
+				}
+			],
+			"when": "count(preview) > 0"
+		},
+		{
+			"from": "preview",
+			"to": "discard_piles",
+			"phase": [
+				"preview",
+				"discard"
+			],
+			"then": [
+				{
+					"if": "phase == 'preview'",
+					"then": [
+						"assign('phase', 'select')"
+					],
+					"else": [
+						"assign('phase','duo')"
+					]
+				}
+			]
+		}
+	],
+	"actions": {
+		"Sort hand": {
+			"steps": [
+				"sort(hand, ['name'])"
+			]
+		},
+		"End turn": {
+			"steps": [
+				"assign('phase', 'draw')",
+				"end_turn()"
+			],
+			"phase": "duo"
+		},
+		"Play Duo": {
+			"steps": [
+				"move(choice, played)"
+			],
+			"phase": "duo",
+			"pick": 2,
+			"choose": "matching(hand, 'is_duo')",
+			"allow": "size(groups(choice, 'kind')) == 1"
+		}
+	},
+	"triggers": {
+		"start": [
+			"shuffle(deck)",
+			{
+				"for": "pile",
+				"in": "discard_piles",
+				"do": [
+					"move(top(deck), pile)"
+				]
+			}
+		],
+		"draw": [
+			{
+				"while": "!is_preview_full",
+				"do": [
+					"try_move(top(deck), preview)"
+				]
+			},
+			"assign('phase', 'preview')"
+		]
+	},
+	"card_face": {
+		"corner": "Kind",
+		"title": "Kind",
+		"body": [
+			"Text"
+		],
+		"color": "ink",
+		"background": "Background",
+		"zoom": 0
+	},
+	"conditions": {
+		"is_preview_full": "count(preview) == 2",
+		"is_duo": "card.data.cardtype == 'Duo'",
+		// True if the player's hand contains any playable duos.
+		"has_duos": ""
+	},
+	"status": {
+		"is_preview_full": "is_preview_full"
+	}
+}
