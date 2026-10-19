@@ -15,9 +15,10 @@ func _init() -> void:
 	color_match()
 	solitaire()
 	card_effects()
+	remodel()
 	clicked_copy()
 	pick_and_up_to()
-	print("REGRESSION: ", "all passed" if problems.is_empty() else "FAILED %s" % problems)
+	print("REGRESSION: ", "all passed" if problems.is_empty() else "FAILED %s" % [problems])
 	quit(0 if problems.is_empty() else 1)
 
 
@@ -116,6 +117,26 @@ func card_effects() -> void:
 	var hand_before: int = game.zones.hand_1.cards.size()
 	Actions.new(game).run_effect(smithy, "play")
 	check(game.zones.hand_1.cards.size() == hand_before + 3, "run_effect: Smithy drew %d" % (game.zones.hand_1.cards.size() - hand_before))
+
+
+## Remodel chooses twice in a row: a card to trash, then one to gain costing up to 2 more.
+func remodel() -> void:
+	var game := Game.new("res://games/dominion.jsonc", 4)
+	watch(game)
+	game.start()
+	var named := func(title: String) -> Card: return game.cards.filter(func(card: Card) -> bool: return card.title == title and game.zone_of(card) != game.zones.hand_1)[0]
+	var remodel_card: Card = named.call("Remodel")
+	var estate: Card = named.call("Estate")
+	game.move(remodel_card, game.zones.hand_1)
+	game.move(estate, game.zones.hand_1)
+	game.apply({type = "click", card = remodel_card.id})
+	check(game.choosing.begins_with("Remodel: trash"), "remodel asks for a card to trash: '%s'" % game.choosing)
+	game.apply({type = "click", card = estate.id})
+	check(estate in game.zones.trash.cards and game.choosing.begins_with("Remodel: gain"), "the estate is trashed, then a gain is asked: '%s'" % game.choosing)
+	var silver: Card = game.choices.filter(func(card: Card) -> bool: return card.title == "Silver")[0]
+	check(game.choices.all(func(card: Card) -> bool: return int(card.data.cost) <= 4), "only cards costing up to 4 are offered")
+	game.apply({type = "click", card = silver.id})
+	check(silver in game.zones.discard_1.cards and game.choosing == "", "the silver is gained")
 
 
 ## Clicking one of several copies tells the steps which one it was, even while it's empty.

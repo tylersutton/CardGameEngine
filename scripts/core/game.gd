@@ -21,8 +21,7 @@ const HIDDEN_CARD := "a hidden card"
 const CARD_EFFECT_SEPARATOR := ";"
 const LOOP_NUMBER_SUFFIX := "_number"
 const PHASE_KEY := "phase"
-const MAX_REPEATS := 1000
-const MAX_NESTING := 50
+const CHOOSE_PROMPT := "Choose"
 
 
 var rules: GameRules
@@ -47,8 +46,11 @@ var step_trees: Dictionary[String, Dictionary] = {}
 var evaluation_failed := false
 var errors: Array[String] = []
 var sandbox := false
-var nesting := 0
+var runner: StepRunner
+## The choice being made: what it's called (an action's name, or choose(...)'s prompt), the action whose steps
+## run once it's made ("" for a choose(...) step, which carries on instead), and what can be picked.
 var choosing := ""
+var choice_action := ""
 var choices: Array = []
 var pick_count := 1
 var pick_exact := true
@@ -65,13 +67,14 @@ var move_to: Zone
 var clicked_zone: Zone
 var checking_moves := false
 var checked_itself := false
-var loop_names: Array[String] = []
-var loop_values: Dictionary = {}
+## Names that steps remember without declaring them: loop items (and their _number) and names set with =.
+var local_names: Array[String] = []
 
 
 ## A seed makes the match repeatable: the same seed and inputs always give the same game.
 ## files (path -> text) stands in for the game and deck files, e.g. ones sent by an online host.
 func _init(path: String, seed := -1, files := {}) -> void:
+	runner = StepRunner.new(self)
 	rules_path = path
 	match_seed = seed if seed >= 0 else randi()
 	rng.seed = match_seed
@@ -234,9 +237,10 @@ func run_input(input: Dictionary) -> bool:
 		"perform":
 			perform(input.action)
 		"choose":
-			# Sent numbers arrive as decimals (4.0), so match options by value.
+			# Sent numbers arrive as decimals (4.0), so match options by value; zones are sent by name.
 			var matches := choices.filter(func(option: Variant) -> bool: return typeof(option) == typeof(input.option) and option == input.option \
-				or (option is int or option is float) and (input.option is int or input.option is float) and option == input.option)
+				or (option is int or option is float) and (input.option is int or input.option is float) and option == input.option \
+				or option is Zone and option.name == input.option)
 			if matches.is_empty():
 				return false
 			choose_option(matches[0])
@@ -312,6 +316,34 @@ func choose_option(option: Variant) -> void:
 	_finish_input(before)
 
 
+## What a choice offers: the cards of a zone (or of a mix of zones and cards), the zones of a list of zones (pick
+## a pile), or the items of a list of values (pick a color).
+static func choice_options(options: Variant) -> Array:
+	var offered := []
+	if options is Array and options.size() > 0 and options.all(func(option: Variant) -> bool: return option is Zone):
+		offered.assign(options)
+	elif options is Array and options.any(func(option: Variant) -> bool: return option is not Card and option is not Zone and option is not Array):
+		offered.assign(options)
+	else:
+		# Untyped, so a zone can be looked for among cards (a click on a pile while cards are offered).
+		offered.assign(Actions.cards_in(options))
+	return offered
+
+
+## How an option is written on its button: a zone by its label, or its name when the label doesn't tell it apart.
+func option_text(option: Variant) -> String:
+	if option is Zone:
+		var same_label := choices.filter(func(other: Variant) -> bool: return other is Zone and other.label == option.label)
+		return option.label if option.label and same_label.size() == 1 else option.name
+	return format_value(option)
+
+
+## A choose(...) step is waiting: the current player picks, and must (nothing else happens until they do).
+## The step's answer is a single option, or for several (exactly or up to so many) a list.
+func open_inline_choice(request: Dictionary) -> void:
+	_open_choice(request.prompt if request.prompt else CHOOSE_PROMPT, "", request.options, request.amount, request.exact, true)
+
+
 func finish_choice() -> void:
 	if not choosing_cards() or pick_exact:
 		return
@@ -321,17 +353,22 @@ func finish_choice() -> void:
 
 
 func _start_choice(action_name: String, action: Dictionary) -> void:
-	choices = _choice_list(evaluate(action.choose, null))
-	var rule := _pick_rule(action, choices.size())
-	pick_count = rule[0]
-	pick_exact = rule[1]
-	selected = []
-	if choices.is_empty() or choices.size() < pick_count:
+	var options := choice_options(evaluate(action.choose, null))
+	var rule := _pick_rule(action, options.size())
+	if options.is_empty() or options.size() < rule[0]:
 		log_line("  nothing to choose")
-		choices = []
 		return
-	choosing = action_name
-	choice_asked = performing_asked
+	_open_choice(action_name, action_name, options, rule[0], rule[1], performing_asked)
+
+
+func _open_choice(title: String, action_name: String, options: Array, pick: int, exactly: bool, must: bool) -> void:
+	choosing = title
+	choice_action = action_name
+	choices = options
+	pick_count = pick
+	pick_exact = exactly
+	selected = []
+	choice_asked = must
 	if not choosing_cards():
 		log_line("  choose one: " + ", ".join(choices.map(format_value)))
 	elif pick_exact:
@@ -349,25 +386,32 @@ func _pick_rule(action: Dictionary, option_count: int) -> Array:
 	return [int(pick if pick is float else evaluate(pick, null)), true]
 
 
+## Runs the action's steps with the choice, or carries on the choose(...) step that was waiting for it. The turn
+## goes back to whoever had it once those steps are done (or at the end of a choice they wait for in turn).
 func _complete_choice(choice: Variant) -> void:
-	var action_name := choosing
+	var action_name := choice_action
 	if not _allows(action_name, choice):
 		log_line("[not allowed] %s: requires %s" % [describe(choice), rules.actions[action_name].allow])
 		return
 	var back_to := return_player
+	log_line("[%s] chose %s" % [choosing, describe(choice)])
 	_clear_choice()
-	log_line("[%s] chose %s" % [action_name, describe(choice)])
-	var outer_choice: Variant = chosen
-	chosen = choice
-	run(rules.actions[action_name].get("steps", []), choice if choice is Card else null)
-	chosen = outer_choice
-	if back_to:
+	if action_name:
+		var outer_choice: Variant = chosen
+		chosen = choice
+		run(rules.actions[action_name].get("steps", []), choice if choice is Card else null)
+		chosen = outer_choice
+	else:
+		runner.answer(choice)
+	if back_to and choosing:
+		return_player = back_to
+	elif back_to:
 		set_variable(PLAYER_VARIABLE, back_to)
 
 
 ## "allow" refuses a choice as a whole, e.g. cards that aren't all the same rank.
 func _allows(action_name: String, choice: Variant) -> bool:
-	var allow: String = rules.actions[action_name].get("allow", "")
+	var allow: String = rules.actions.get(action_name, {}).get("allow", "")
 	if allow.is_empty():
 		return true
 	var outer_choice: Variant = chosen
@@ -375,12 +419,6 @@ func _allows(action_name: String, choice: Variant) -> bool:
 	var allowed := holds(allow, choice if choice is Card else null)
 	chosen = outer_choice
 	return allowed
-
-
-func _choice_list(options: Variant) -> Array:
-	var are_values: bool = options is Array and options.any(func(option: Variant) -> bool:
-		return option is not Card and option is not Zone and option is not Array)
-	return options.duplicate() if are_values else Actions.cards_in(options)
 
 
 ## Like format_value, but a card the viewer can't see is "a hidden card", so the log doesn't give away hands.
@@ -404,7 +442,7 @@ func _perform_asked() -> void:
 	if performing_asked:
 		return
 	performing_asked = true
-	while nesting == 0 and asked and not choosing:
+	while not runner.running and asked and not choosing:
 		var request: Dictionary = asked.pop_front()
 		if request.has("trigger"):
 			trigger(request.trigger)
@@ -430,6 +468,7 @@ func cancel_choice() -> void:
 
 func _clear_choice() -> void:
 	choosing = ""
+	choice_action = ""
 	choices = []
 	selected = []
 	choice_asked = false
@@ -513,16 +552,21 @@ func trigger(event: String, card: Card = null) -> void:
 
 
 ## Fires "<zone>_empty"; for a per-player zone with no trigger of its own, fires "<kind>_empty"
-## as its owner, so "deck_empty" can say move(discard, deck) for whoever ran out.
+## as its owner, so "deck_empty" can say move(discard, deck) for whoever ran out. It runs at once,
+## in the middle of the draw that found the zone empty.
 func zone_empty(zone: Zone) -> void:
 	var own_trigger := zone.name + "_empty"
-	if zone.owner == 0 or own_trigger in rules.triggers:
-		trigger(own_trigger)
+	var as_owner := zone.owner != 0 and own_trigger not in rules.triggers
+	var event := zone.kind + "_empty" if as_owner else own_trigger
+	if event not in rules.triggers:
 		return
-	var turn: Variant = variables[PLAYER_VARIABLE]
-	variables[PLAYER_VARIABLE] = zone.owner
-	trigger(zone.kind + "_empty")
-	variables[PLAYER_VARIABLE] = turn
+	log_line("[trigger] " + event)
+	var turn: Variant = variables.get(PLAYER_VARIABLE)
+	if as_owner:
+		variables[PLAYER_VARIABLE] = zone.owner
+	runner.run_now(rules.triggers[event], null)
+	if as_owner:
+		variables[PLAYER_VARIABLE] = turn
 
 
 ## Whether any of the copies listed in the zone's "covered_by" still holds a card (Pyramid, TriPeaks).
@@ -564,6 +608,8 @@ func click(card: Card) -> void:
 	var zone := zone_of(card)
 	if choosing_cards() and card in choices:
 		_select(card)
+	elif zone in choices:
+		_complete_choice(zone)
 	elif choosing:
 		cancel_choice()
 	elif zone.on_click:
@@ -587,7 +633,7 @@ func double_click(card: Card) -> void:
 	var before := Snapshot.take(self)
 	cancel_choice()
 	var zone := zone_of(card)
-	if zone.on_double_click:
+	if zone.on_double_click and not waiting_for_choice():
 		log_line("[double-click] %s in %s" % [card.title, zone.name])
 		_run_clicked(zone, zone.on_double_click, card)
 	_finish_input(before)
@@ -595,17 +641,21 @@ func double_click(card: Card) -> void:
 
 func click_empty(zone: Zone) -> void:
 	var before := Snapshot.take(self)
-	cancel_choice()
-	if zone.on_click:
-		log_line("[click] " + zone.name)
-		_run_clicked(zone, zone.on_click)
+	if zone in choices:
+		_complete_choice(zone)
+	elif not waiting_for_choice():
+		cancel_choice()
+		if zone.on_click:
+			log_line("[click] " + zone.name)
+			_run_clicked(zone, zone.on_click)
 	_finish_input(before)
 
 
 func _run_clicked(zone: Zone, steps: Array, card: Card = null) -> void:
+	var outer_zone := clicked_zone
 	clicked_zone = zone
 	run(steps, card)
-	clicked_zone = null
+	clicked_zone = outer_zone
 
 
 func undo() -> void:
@@ -651,7 +701,7 @@ func is_bot(player: int) -> bool:
 ## pressing an action and then clicking the cards to choose.
 func legal_moves() -> Array[Array]:
 	if choosing:
-		return _choice_moves(choosing, choices, pick_count, pick_exact)
+		return _choice_moves(choice_action, choices, pick_count, pick_exact)
 	var moves: Array[Array] = []
 	for source: Zone in zones.values():
 		for card in _reachable_cards(source):
@@ -675,7 +725,7 @@ func legal_moves() -> Array[Array]:
 		if not action.has("choose"):
 			moves.append([press])
 			continue
-		var options := _choice_list(evaluate(action.choose, null))
+		var options := choice_options(evaluate(action.choose, null))
 		var rule := _pick_rule(action, options.size())
 		for choice_move in _choice_moves(action_name, options, rule[0], rule[1]):
 			moves.append([press] + choice_move)
@@ -703,7 +753,7 @@ func _choice_moves(action_name: String, options: Array, pick: int, exactly: bool
 	elif not options.all(func(option: Variant) -> bool: return option is Card):
 		for option in options:
 			if _allows(action_name, option):
-				moves.append([{type = "choose", option = option}])
+				moves.append([{type = "choose", option = option.name if option is Zone else option}])
 	elif pick == 1:
 		for card: Card in options:
 			if _allows(action_name, card):
@@ -732,100 +782,28 @@ func set_quiet(quiet: bool) -> void:
 
 
 func _remember(before: Dictionary) -> void:
-	if nesting == 0 and before != Snapshot.take(self):
+	if not runner.running and before != Snapshot.take(self):
 		history.append(before)
 
 
-func run(steps: Array, card: Card = null) -> bool:
-	if nesting >= MAX_NESTING:
-		report_failure("Stopped: steps triggered each other %d levels deep (endless loop?)" % MAX_NESTING)
-		return false
-	nesting += 1
-	var completed := _run_steps(steps, card)
-	nesting -= 1
-	return completed
+## Steps started from outside (an input) run at once, up to any choose(...) that waits; steps started by a step
+## (a trigger, a card's effect) run right after it. See StepRunner.
+func run(steps: Array, card: Card = null) -> void:
+	runner.schedule(steps, card)
+	runner.drive()
 
 
-func _run_steps(steps: Array, card: Card) -> bool:
-	for step in steps:
-		if step is String and step.strip_edges().is_empty():
-			continue
-		if step is Dictionary and step.has("for"):
-			if not _run_loop(step, card):
-				return false
-			continue
-		if step is Dictionary and step.has("while"):
-			if not _run_while(step, card):
-				return false
-			continue
-		var text: String = step["if"] if step is Dictionary else step
-		var result: Variant = evaluate(text, card)
-		game_log.flush_items()
-		if evaluation_failed:
-			return false
-		if step is Dictionary:
-			var branch := "then" if result else "else"
-			log_line("  if %s → %s" % [text, branch])
-			if not run(step.get(branch, []), card):
-				return false
-	return true
+## What "from", "to", "clicked_zone" and "choice" mean for the steps being started, so they keep their meaning
+## if those steps wait for a choice.
+func move_context() -> Dictionary:
+	return {from = move_from, to = move_to, clicked_zone = clicked_zone, choice = chosen}
 
 
-func _run_loop(loop: Dictionary, card: Card) -> bool:
-	var items: Variant = evaluate(loop.in, card)
-	if evaluation_failed:
-		return false
-	var item_list: Variant = _loop_items(items)
-	if item_list == null:
-		report_failure("Can't loop over \"%s\": it should be a zone, a list, or a number" % loop.in)
-		return false
-	var name: String = loop.for
-	var number_name := name + LOOP_NUMBER_SUFFIX
-	var outer_values := [_loop_value(name), _loop_value(number_name)]
-	log_line("  for %s in %s (%d)" % [name, loop.in, item_list.size()])
-	var completed := true
-	for i in item_list.size():
-		_set_loop_value(name, item_list[i])
-		_set_loop_value(number_name, i + 1)
-		if not run(loop.get("do", []), card):
-			completed = false
-			break
-	_set_loop_value(name, outer_values[0])
-	_set_loop_value(number_name, outer_values[1])
-	return completed
-
-
-## Looping over "player" changes whose turn it is, so per-player names follow the loop.
-func _set_loop_value(name: String, value: Variant) -> void:
-	if name == PLAYER_VARIABLE:
-		variables[name] = value
-	else:
-		loop_values[name] = value
-
-
-func _loop_value(name: String) -> Variant:
-	return variables.get(name) if name == PLAYER_VARIABLE else loop_values.get(name)
-
-
-func _run_while(loop: Dictionary, card: Card) -> bool:
-	for repeats in MAX_REPEATS:
-		if not holds(loop.while, card):
-			log_line("  while %s: repeated %d times" % [loop.while, repeats])
-			return not evaluation_failed
-		if not run(loop.get("do", []), card):
-			return false
-	report_failure("Stopped: \"while %s\" was still true after %d repeats" % [loop.while, MAX_REPEATS])
-	return false
-
-
-func _loop_items(items: Variant) -> Variant:
-	if items is Zone:
-		return items.cards.duplicate()
-	if items is Array:
-		return items.duplicate()
-	if items is int or items is float:
-		return range(1, int(items) + 1)
-	return null
+func set_move_context(context: Dictionary) -> void:
+	move_from = context.from
+	move_to = context.to
+	clicked_zone = context.clicked_zone
+	chosen = context.choice
 
 
 func holds(condition: String, card: Card = null) -> bool:
@@ -972,6 +950,14 @@ func viewer() -> int:
 	return humans[0] if humans.size() == 1 else current_player()
 
 
+## A step's "name = value": a game variable, or else a name the running steps remember.
+func assign(name: String, value: Variant) -> void:
+	if _resolve(name) in variables:
+		set_variable(name, value)
+	else:
+		runner.set_local(name, value)
+
+
 func set_variable(variable: String, value: Variant) -> void:
 	var name := _resolve(variable)
 	if name not in variables:
@@ -985,6 +971,8 @@ func set_variable(variable: String, value: Variant) -> void:
 static func format_value(value: Variant) -> String:
 	if value is Card:
 		return value.title
+	if value is Zone:
+		return value.name
 	if value is Array:
 		return "[%s]" % ", ".join(value.map(format_value))
 	if value == null:
@@ -1039,20 +1027,21 @@ func _resolve(name: String) -> String:
 
 
 func input_names() -> PackedStringArray:
-	return PackedStringArray(zones.keys() + variables.keys() + aliases().keys() + zone_groups.keys() + _team_groups().keys() + loop_names \
+	return PackedStringArray(zones.keys() + variables.keys() + aliases().keys() + zone_groups.keys() + _team_groups().keys() + local_names \
 		+ [CARD_VARIABLE, FROM_VARIABLE, TO_VARIABLE, CLICKED_ZONE_VARIABLE, CHOICE_VARIABLE, PLAYERS_VARIABLE])
 
 
-## What a name in a step stands for right now (except card, which belongs to the step): a loop's item, a zone or
-## variable (hand and score are the current player's), a group of zones, or what's being moved, clicked or chosen.
+## What a name in a step stands for right now (except card, which belongs to the step): a zone or variable (hand
+## and score are the current player's), a name the running steps remember (a loop's item, pile = ...), a group of
+## zones, or what's being moved, clicked or chosen.
 func value_of(name: String) -> Variant:
 	var resolved := _resolve(name)
 	if resolved in zones:
 		return zones[resolved]
 	if resolved in variables:
 		return variables[resolved]
-	if name in loop_names:
-		return loop_values.get(name)
+	if name in local_names:
+		return runner.local(name) if runner.has_local(name) else null
 	match name:
 		FROM_VARIABLE:
 			return move_from

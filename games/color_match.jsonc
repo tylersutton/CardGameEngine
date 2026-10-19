@@ -60,19 +60,19 @@
 			"to": "pile",
 			"when": "winner == null and (card.data.color == 'Wild' or card.data.color == active_color or card.data.number == top(pile).data.number)",
 			"then": [
-				"active_color = card.data.color",
+				{
+					"if": "card.data.color != 'Wild'",
+					"then": [
+						"active_color = card.data.color"
+					]
+				},
 				{
 					"if": "count(hand) == 0",
 					"then": [
 						"winner = player"
 					],
 					"else": [
-						{
-							"if": "card.data.color != 'Wild'",
-							"then": [
-								"end_turn()"
-							]
-						}
+						"end_turn()"
 					]
 				}
 			]
@@ -93,15 +93,6 @@
 		}
 	],
 	"actions": {
-		"Choose color": {
-			"button": false,
-			"when": "winner == null and active_color == 'Wild'",
-			"choose": "['Red', 'Blue', 'Green', 'Yellow']",
-			"steps": [
-				"active_color = choice",
-				"end_turn()"
-			]
-		},
 		"Sort by color": [
 			"sort(hand, ['color', 'number'])"
 		],
@@ -114,7 +105,7 @@
 			"draw(deck, opponent_hand, 2)"
 		],
 		"wild": [
-			"ask('Choose color')"
+			"active_color = choose(['Red', 'Blue', 'Green', 'Yellow'], 'Choose a color')"
 		],
 		"start": [
 			"sort(hand_1, ['color', 'number'])",

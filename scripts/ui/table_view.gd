@@ -93,6 +93,7 @@ func _groups(zone: Zone) -> Array:
 
 
 func _refresh_views() -> void:
+	queue_redraw()
 	for card in views:
 		views[card].face_up = game.shows_face(card)
 		views[card].highlighted = card in game.choices and game.is_local_turn()
@@ -353,6 +354,10 @@ func _draw() -> void:
 			var name_position := slot.position - Vector2(LABEL_OVERHANG, LABEL_GAP)
 			var name_text := "%s (%d)" % [zone.name, zone.cards.size()]
 			draw_string(font, name_position, name_text, HORIZONTAL_ALIGNMENT_CENTER, slot.size.x + LABEL_OVERHANG * 2, LABEL_FONT_SIZE, LABEL_COLOR)
+	if game.is_local_turn():
+		for option: Variant in game.choices:
+			if option is Zone:
+				draw_style_box(CardView.highlight_style, slot_rect(option).grow(CardView.HIGHLIGHT_WIDTH / 2.0))
 	if hover_zone:
 		draw_style_box(CardView.allowed_style if hover_allowed else CardView.refused_style, slot_rect(hover_zone).grow(CardView.HIGHLIGHT_WIDTH / 2.0))
 	_draw_seats(font)

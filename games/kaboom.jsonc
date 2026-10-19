@@ -216,13 +216,6 @@
 			"steps": [
 				"move(choice, zone('hand', actor))"
 			]
-		},
-		"Put them back": {
-			"button": false,
-			"choose": "['Done']",
-			"steps": [
-				"move(all(peek), deck)"
-			]
 		}
 	},
 	"triggers": {
@@ -267,7 +260,8 @@
 		],
 		"Peek": [
 			"move(last(deck, 3), peek)",
-			"ask('Put them back')"
+			"choose(['Done'], 'Peek: the next three cards, top on the right')",
+			"move(all(peek), deck)"
 		],
 		"Steal": [
 			{

@@ -23,7 +23,7 @@ func _init() -> void:
 	changing_variables()
 	running_mistakes()
 	load_mistakes()
-	print("STEP LANGUAGE: ", "all passed" if problems.is_empty() else "FAILED %s" % problems)
+	print("STEP LANGUAGE: ", "all passed" if problems.is_empty() else "FAILED %s" % [problems])
 	quit(0 if problems.is_empty() else 1)
 
 
@@ -106,7 +106,7 @@ func load_mistakes() -> void:
 	var cases := {
 		"\"total = 1\" as a condition": [{"moves": [{"from": "deck", "to": "pile", "when": "total = 1"}]}, "only works as a step of its own"],
 		"assigning a zone": [{"triggers": {"start": ["pile = 1"]}}, "is a zone"],
-		"assigning an unknown variable": [{"triggers": {"start": ["totl = 1"]}}, "unknown variable \"totl\""],
+		"a misspelled variable": [{"triggers": {"start": ["totl = 1"]}}, "\"totl\" is set but never used"],
 		"double quotes": [{"triggers": {"start": ["move(top(deck), \"pile\")"]}}, "single quotes"],
 		"!": [{"triggers": {"start": ["!deck_full"]}}, "use not instead of !"],
 		"a missing bracket": [{"triggers": {"start": ["draw(deck, pile"]}}, "expected \")\""],

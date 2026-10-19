@@ -96,6 +96,37 @@ func ask_others(action: String, then_trigger: String = "") -> void:
 	game.ask_others(action, then_trigger)
 
 
+## Waits for the current player to pick one option, and gives it: a card of a zone or list, a zone of a list of
+## zones (a pile), or a value of a list (a color), e.g. pile = choose(discard_piles, 'Take from which pile?').
+## With nothing to choose from, it gives null straight away.
+func choose(options: Variant, prompt: String = "") -> Variant:
+	return _wait_for_choice(options, 1, true, true, prompt)
+
+
+## Waits for the current player to pick exactly that many cards, and gives them as a list, e.g.
+## move(choose_exactly(hand, 3, 'Pass three cards'), played). With no more than that many, it gives them all.
+func choose_exactly(cards: Variant, amount: int, prompt: String = "") -> Variant:
+	return _wait_for_choice(cards, amount, true, false, prompt)
+
+
+## Waits for the current player to pick any number of cards up to most and press Done, and gives them as a list
+## (maybe empty), e.g. trashed = choose_up_to(hand, 4, 'Trash up to 4 cards').
+func choose_up_to(cards: Variant, most: int, prompt: String = "") -> Variant:
+	return _wait_for_choice(cards, most, false, false, prompt)
+
+
+func _wait_for_choice(options: Variant, amount: int, exactly: bool, single: bool, prompt: String) -> Variant:
+	var offered := Game.choice_options(options)
+	if not single and offered.any(func(option: Variant) -> bool: return option is not Card):
+		game.report_failure("Only cards can be chosen several at a time; choose(...) picks one zone or value")
+		return []
+	if offered.is_empty() or amount <= 0:
+		return null if single else []
+	if exactly and not single and offered.size() <= amount:
+		return offered
+	return game.runner.answer_or_wait({options = offered, amount = mini(amount, offered.size()), exact = exactly, prompt = prompt})
+
+
 func next_player(seats: int = 1) -> int:
 	return posmod(game.current_player() - 1 + seats, game.rules.players) + 1
 

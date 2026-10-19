@@ -4,8 +4,9 @@ class_name Snapshot
 
 
 static func take(game: Game) -> Dictionary:
-	var choice := {choosing = game.choosing, choices = game.choices.duplicate(), pick_count = game.pick_count, pick_exact = game.pick_exact,
-		selected = game.selected.duplicate(), asked = game.asked.duplicate(true), choice_asked = game.choice_asked, return_player = game.return_player}
+	var choice := {choosing = game.choosing, choice_action = game.choice_action, choices = game.choices.duplicate(), pick_count = game.pick_count,
+		pick_exact = game.pick_exact, selected = game.selected.duplicate(), asked = game.asked.duplicate(true), choice_asked = game.choice_asked,
+		return_player = game.return_player, waiting_steps = StepRunner.copy_frames(game.runner.frames)}
 	var snapshot := {zones = {}, sort_columns = {}, faces = {}, marks = {}, variables = game.variables.duplicate(true), choice = choice, rng = game.rng.state}
 	for name in game.zones:
 		var zone: Zone = game.zones[name]
@@ -27,6 +28,7 @@ static func restore(game: Game, snapshot: Dictionary) -> void:
 	game.variables.clear()
 	game.variables.merge(snapshot.variables.duplicate(true))
 	game.choosing = snapshot.choice.choosing
+	game.choice_action = snapshot.choice.choice_action
 	game.choices = snapshot.choice.choices.duplicate()
 	game.pick_count = snapshot.choice.pick_count
 	game.pick_exact = snapshot.choice.pick_exact
@@ -34,6 +36,7 @@ static func restore(game: Game, snapshot: Dictionary) -> void:
 	game.asked.assign(snapshot.choice.asked.duplicate(true))
 	game.choice_asked = snapshot.choice.choice_asked
 	game.return_player = snapshot.choice.return_player
+	game.runner.frames = StepRunner.copy_frames(snapshot.choice.waiting_steps)
 	game.rng.state = snapshot.rng
 
 
@@ -63,6 +66,8 @@ static func state_hash(game: Game) -> int:
 static func _plain(value: Variant) -> Variant:
 	if value is Card:
 		return "card %d" % value.id
+	if value is Zone:
+		return "zone " + value.name
 	if value is Array:
 		return value.map(_plain)
 	if value is Dictionary:

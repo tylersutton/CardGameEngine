@@ -26,7 +26,7 @@ func take_input() -> bool:
 		return false
 	var prefer: String = game.rules.bot.get("prefer", "")
 	if game.choosing:
-		prefer = game.rules.actions[game.choosing].get("prefer", prefer)
+		prefer = game.rules.actions.get(game.choice_action, {}).get("prefer", prefer)
 	var best_move := _best_move(prefer) if prefer else _any_move()
 	if best_move.is_empty():
 		return false

@@ -7,6 +7,11 @@ const CONDITIONAL_KEYS := ["if", "then", "else"]
 const LOOP_KEYS := ["for", "in", "do"]
 const WHILE_KEYS := ["while", "do"]
 const VIEWER_BLOCK := "viewer"
+const CHOOSE_BLOCKS := ["choose", "choose_exactly", "choose_up_to"]
+## Where a text is used (see _collect_steps), strictest first.
+const EXPRESSION := 0
+const STEP_CONDITION := 1
+const STEP := 2
 const ZONE_KEYS := ["label", "labels", "outline", "layout", "face", "anchor", "anchors", "width", "rotation", "rotations", "cards",
 	"on_click", "on_double_click", "spread", "drag", "per_player", "copies", "grid", "group", "covered_by", "columns"]
 const CARD_FACE_KEYS := ["corner", "title", "body", "text", "color", "background", "zoom"]
@@ -19,6 +24,8 @@ var rules: GameRules
 var errors: Array[String]
 ## Every name a step may use (zones, variables, loop names, conditions...), for quick lookups while checking.
 var known_names := {}
+## Names set with = that aren't game variables (see _learn_remembered_names).
+var remembered_names: Array[String] = []
 
 
 func _init(game_to_check: Game) -> void:
@@ -83,7 +90,7 @@ func problems_with(step: String) -> Array[String]:
 	if parsed.has("error"):
 		return [parsed.error]
 	var problems: Array[String] = []
-	_find_problems(parsed.tree, step, true, problems)
+	_find_problems(parsed.tree, step, STEP, problems)
 	return problems
 
 
@@ -204,47 +211,63 @@ func _compile_all_steps() -> void:
 		for card in zone.cards:
 			for destination: Zone in game.zones.values():
 				step_lists.append(game.card_effect(card, destination.kind))
-	var unique_steps := {}
-	var unique_expressions := {}
+	var places := {}
 	for steps: Array in step_lists:
-		_collect_steps(steps, unique_steps, unique_expressions)
+		_collect_steps(steps, places)
 	for expression: String in expressions:
-		if expression:
-			unique_expressions[expression] = true
+		_note_place(places, expression, EXPRESSION)
+	var trees := {}
+	for text: String in places:
+		var parsed := StepParser.parse(text)
+		if parsed.has("error"):
+			errors.append("Could not read step \"%s\": %s" % [text, parsed.error])
+		else:
+			trees[text] = parsed.tree
+	_learn_remembered_names(trees.values())
 	_learn_names()
 	_check_condition_circles()
 	if errors:
 		return
-	for step: String in unique_steps:
-		_compile(step, true)
-	for expression: String in unique_expressions:
-		if expression not in unique_steps:
-			_compile(expression, false)
-	for text: String in unique_steps.keys() + unique_expressions.keys():
-		if text not in rules.status.values() and text not in rules.conditions.values() and _calls(game.step_trees.get(text, {}), VIEWER_BLOCK):
+	for text: String in trees:
+		var problems: Array[String] = []
+		_find_problems(trees[text], text, places[text], problems)
+		if problems:
+			errors.append("Step \"%s\": %s" % [text, ", ".join(problems)])
+		else:
+			game.step_trees[text] = trees[text]
+	_check_remembered_names_are_used(trees.values())
+	for text: String in trees:
+		if text not in rules.status.values() and text not in rules.conditions.values() and _calls(trees[text], VIEWER_BLOCK):
 			errors.append("Step \"%s\": viewer() only works in \"status\" (each screen has its own, so rules can't depend on it)" % text)
 
 
-## Whole steps may change variables (score += 1); conditions, like an "if" or a loop's "in", only work things out.
-func _collect_steps(steps: Array, into_steps: Dictionary, into_expressions: Dictionary) -> void:
+## Where each text is used, keeping the strictest place: a whole step may change things and wait for a choice,
+## a step's own condition (an "if", a loop's "in", a "while") may wait but not change things, and anything else
+## (a "when", a condition, a status) may do neither.
+func _collect_steps(steps: Array, places: Dictionary) -> void:
 	for step in steps:
 		if step is String:
-			into_steps[step] = true
+			_note_place(places, step, STEP)
 		elif step is Dictionary and _is_blank_condition(step):
 			errors.append("A step %s has nothing to check: fill in its condition, or remove it" % JSON.stringify(step).left(60))
 		elif _is_valid_conditional(step):
-			into_expressions[step["if"]] = true
-			_collect_steps(step.get("then", []), into_steps, into_expressions)
-			_collect_steps(step.get("else", []), into_steps, into_expressions)
+			_note_place(places, step["if"], STEP_CONDITION)
+			_collect_steps(step.get("then", []), places)
+			_collect_steps(step.get("else", []), places)
 		elif _is_valid_loop(step):
 			_add_loop_name(step.for)
-			into_expressions[step.in] = true
-			_collect_steps(step.get("do", []), into_steps, into_expressions)
+			_note_place(places, step.in, STEP_CONDITION)
+			_collect_steps(step.get("do", []), places)
 		elif _is_valid_while(step):
-			into_expressions[step.while] = true
-			_collect_steps(step.get("do", []), into_steps, into_expressions)
+			_note_place(places, step.while, STEP_CONDITION)
+			_collect_steps(step.get("do", []), places)
 		else:
 			errors.append("Invalid step %s: use a string, { \"if\": ..., \"then\": [...], \"else\": [...] }, { \"for\": \"name\", \"in\": ..., \"do\": [...] }, or { \"while\": ..., \"do\": [...] }" % JSON.stringify(step))
+
+
+static func _note_place(places: Dictionary, text: String, place: int) -> void:
+	if text.strip_edges():
+		places[text] = mini(places.get(text, place), place)
 
 
 ## An "if", "for each ... in" or "repeat while" whose condition was left empty (e.g. just added in the editor).
@@ -262,12 +285,12 @@ func _add_loop_name(name: String) -> void:
 		if Game.PLAYER_VARIABLE not in game.variables:
 			errors.append("Looping over \"player\" needs \"players\" of 2 or more")
 	for loop_name in names:
-		if loop_name in game.loop_names:
+		if loop_name in game.local_names:
 			continue
 		if loop_name in game.input_names() or loop_name in rules.conditions:
 			errors.append("Loop name \"%s\" is already used by a zone, variable or condition" % loop_name)
 		else:
-			game.loop_names.append(loop_name)
+			game.local_names.append(loop_name)
 
 
 func _is_valid_conditional(step: Variant) -> bool:
@@ -299,22 +322,7 @@ func _learn_names() -> void:
 		known_names[name] = true
 
 
-func _compile(text: String, is_step: bool) -> void:
-	if text.strip_edges().is_empty():
-		return
-	var parsed := StepParser.parse(text)
-	if parsed.has("error"):
-		errors.append("Could not read step \"%s\": %s" % [text, parsed.error])
-		return
-	var problems: Array[String] = []
-	_find_problems(parsed.tree, text, is_step, problems)
-	if problems:
-		errors.append("Step \"%s\": %s" % [text, ", ".join(problems)])
-		return
-	game.step_trees[text] = parsed.tree
-
-
-func _find_problems(node: Dictionary, text: String, is_step: bool, problems: Array[String]) -> void:
+func _find_problems(node: Dictionary, text: String, place: int, problems: Array[String]) -> void:
 	match node.kind:
 		"name":
 			if node.name not in known_names:
@@ -324,13 +332,38 @@ func _find_problems(node: Dictionary, text: String, is_step: bool, problems: Arr
 			var problem := _call_problem(node.name, node.args.size())
 			if problem:
 				problems.append(problem)
+			if node.name in CHOOSE_BLOCKS and place == EXPRESSION:
+				problems.append("%s waits for a player to choose, so it only works in steps (not in a when, a condition or a status)" % node.name)
 		"assign":
-			if not is_step:
+			if place != STEP:
 				problems.append("= changes a variable, so it only works as a step of its own; to compare, use ==")
-			elif game.aliases().get(node.name, node.name) not in game.variables:
+			elif game.aliases().get(node.name, node.name) not in game.variables and node.name not in game.local_names:
 				problems.append(_assign_problem(node.name))
 	for child in _children(node):
-		_find_problems(child, text, is_step, problems)
+		_find_problems(child, text, place, problems)
+
+
+## A name set with = that isn't a game variable is remembered by the steps that set it (pile = choose(...)).
+## Zones, conditions and the like can't be set, which _find_problems reports.
+func _learn_remembered_names(trees: Array) -> void:
+	for tree: Dictionary in trees:
+		var target: String = tree.name if tree.kind == "assign" else ""
+		if target.is_empty() or target in game.local_names or game.aliases().get(target, target) in game.variables:
+			continue
+		if target not in game.input_names() and target not in rules.conditions and target not in building_blocks:
+			game.local_names.append(target)
+			remembered_names.append(target)
+
+
+## A remembered name that's never read is most likely a misspelled variable (phse = 'draw').
+func _check_remembered_names_are_used(trees: Array) -> void:
+	var read := {}
+	for tree: Dictionary in trees:
+		for name in _names_in(tree):
+			read[name] = true
+	for name in remembered_names:
+		if name not in read:
+			errors.append("\"%s\" is set but never used: is it misspelled? (Values the game keeps go in \"variables\")" % name)
 
 
 static func _children(node: Dictionary) -> Array:

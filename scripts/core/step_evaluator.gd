@@ -9,18 +9,22 @@ const MATH_ARGUMENTS := {"abs": 1, "floor": 1, "ceil": 1, "round": 1, "int": 1, 
 const ZONE_CLASS := "Zone"
 
 var game: Game
+var runner: StepRunner
 var card: Card
 var actions: Actions
 var failure := ""
+## After a failure, or once a choose(...) is waiting for its answer: the rest of the step isn't worked out.
+var stopped := false
 
 
 func _init(game_to_read: Game, card_of_step: Card) -> void:
 	game = game_to_read
+	runner = game.runner
 	card = card_of_step
 
 
 func evaluate(node: Dictionary) -> Variant:
-	if failure:
+	if stopped:
 		return null
 	# The most common kinds first: match tries them in order.
 	match node.kind:
@@ -59,15 +63,18 @@ func _name(name: String) -> Variant:
 		return card
 	if name in game.rules.conditions:
 		return evaluate(game.tree_of(game.rules.conditions[name]))
-	return game.value_of(name)
+	var value: Variant = game.value_of(name)
+	if value == null and name in game.local_names and not runner.has_local(name):
+		return _fail("\"%s\" has no value here: it's remembered only in the list of steps that sets it (with = or a loop)" % name)
+	return value
 
 
 func _assign(node: Dictionary) -> Variant:
 	var value: Variant = evaluate(node.value)
 	if node.op != "=":
-		value = operate(node.op.left(1), game.value_of(node.name), value)
-	if not failure:
-		game.set_variable(node.name, value)
+		value = operate(node.op.left(1), _name(node.name), value)
+	if not stopped:
+		game.assign(node.name, value)
 	return null
 
 
@@ -81,7 +88,7 @@ func _binary(node: Dictionary) -> Variant:
 
 
 func _unary(op: String, value: Variant) -> Variant:
-	if failure:
+	if stopped:
 		return null
 	if op == "not":
 		return not is_true(value)
@@ -93,7 +100,7 @@ func _unary(op: String, value: Variant) -> Variant:
 ## The operators, with their meanings checked first: numbers with numbers (whole numbers stay whole, so 7 / 2
 ## is 3), text joined with + and compared, lists joined with +, and 'text %d' % [values] filled in.
 func operate(op: String, left: Variant, right: Variant) -> Variant:
-	if failure:
+	if stopped:
 		return null
 	if op in ["==", "!="]:
 		if not _comparable(left, right):
@@ -162,7 +169,7 @@ func _format(template: String, values: Variant) -> Variant:
 
 
 func _member(target: Variant, name: String) -> Variant:
-	if failure:
+	if stopped:
 		return null
 	if target == null:
 		return _fail("can't read .%s of nothing (if the card might be missing, text() and number() give '' and 0)" % name)
@@ -178,7 +185,7 @@ func _member(target: Variant, name: String) -> Variant:
 
 
 func _index(target: Variant, index: Variant) -> Variant:
-	if failure:
+	if stopped:
 		return null
 	if target is Array and _is_number(index):
 		var position := int(index)
@@ -194,7 +201,7 @@ func _call(name: String, arg_nodes: Array) -> Variant:
 	var args := []
 	for arg_node: Dictionary in arg_nodes:
 		args.append(evaluate(arg_node))
-	if failure:
+	if stopped:
 		return null
 	if name in MATH_ARGUMENTS:
 		return _math(name, args)
@@ -216,7 +223,9 @@ func _call(name: String, arg_nodes: Array) -> Variant:
 			args[i] = is_true(args[i])
 	if actions == null:
 		actions = Actions.new(game, card)
-	return actions.callv(name, args)
+	var result: Variant = actions.callv(name, args)
+	stopped = not runner.wait_request.is_empty()
+	return result
 
 
 ## Whether the value is the kind of thing the building block's parameter takes (building blocks take zones and
@@ -295,6 +304,7 @@ static func _is_number(value: Variant) -> bool:
 
 
 func _fail(message: String) -> Variant:
+	stopped = true
 	if failure.is_empty():
 		failure = message
 	return null

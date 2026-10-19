@@ -62,7 +62,6 @@
 		"phase": "pass",
 		"hand_number": 0,
 		"pass_to": 1,
-		"passed": 0,
 		"lead": "",
 		"hearts_broken": false,
 		"tricks": 0,
@@ -133,25 +132,6 @@
 		}
 	],
 	"actions": {
-		"Pass 3": {
-			"button": false,
-			"choose": "hand",
-			"pick": 3,
-			"steps": [
-				"move(choice, played)",
-				"flip(choice)",
-				"passed += 1",
-				{
-					"if": "passed == 4",
-					"then": [
-						"trigger('exchange')"
-					],
-					"else": [
-						"end_turn()"
-					]
-				}
-			]
-		},
 		"Collect trick": {
 			"phase": "trick done",
 			"human_only": true,
@@ -196,7 +176,6 @@
 			"shuffle(deck)",
 			"deal(deck, all_hand, 13)",
 			"phase = 'pass'",
-			"passed = 0",
 			"tricks = 0",
 			"lead = ''",
 			"hearts_broken = false",
@@ -207,19 +186,20 @@
 					"trigger('first_lead')"
 				],
 				"else": [
-					"ask('Pass 3')"
-				]
-			}
-		],
-		"turn_start": [
-			{
-				"if": "phase == 'pass'",
-				"then": [
-					"ask('Pass 3')"
+					"trigger('exchange')"
 				]
 			}
 		],
 		"exchange": [
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					"passing = choose_exactly(hand, 3, 'Pass three cards %s' % ['', 'left', 'across', 'right'][int(pass_to)])",
+					"move(passing, played)",
+					"flip(passing)"
+				]
+			},
 			{
 				"for": "player",
 				"in": "players",

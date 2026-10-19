@@ -217,23 +217,13 @@ The finished `color_match.jsonc` goes one step further: Wild cards that let you 
 ```json
 "variables": { "winner": null, "active_color": "" },
 "triggers": {
-	"wild": ["ask('Choose color')"],
+	"wild": ["active_color = choose(['Red', 'Blue', 'Green', 'Yellow'], 'Choose a color')"],
 	...
-},
-"actions": {
-	"Choose color": {
-		"button": false,
-		"when": "winner == null and active_color == 'Wild'",
-		"choose": "['Red', 'Blue', 'Green', 'Yellow']",
-		"steps": ["active_color = choice", "end_turn()"]
-	}
 }
 ```
 
-- `ask('Choose color')` opens that action's choice as soon as the current move finishes.
-- Because `choose` lists values instead of cards, they appear as buttons above the table. The picked one is `choice`.
-- `"button": false` keeps the action out of the toolbar, since it only happens when asked.
-- The play rule now matches `active_color` instead of the top card's color, and doesn't end the turn after a Wild (choosing the color does).
+- `choose(...)` stops the steps and waits for the player to pick one of the colors (buttons above the table, under the prompt "Choose a color"); then `active_color` is set to it and the steps carry on.
+- The card's effect runs, choice and all, before the play rule's `then`, which now keeps the chosen color: it only copies the card's color when the card isn't a Wild (`{ "if": "card.data.color != 'Wild'", "then": ["active_color = card.data.color"] }`), and the play rule matches `active_color` instead of the top card's color.
 - So the first card turned up can't be a Wild or a +2 (whose effects would fire before anyone has played), `start` shuffles until the top card has no effect: `{ "while": "text(top(deck), 'on_pile') != ''", "do": ["shuffle(deck)"] }`.
 
 ## Game file reference
@@ -456,6 +446,7 @@ You can use:
 - **`card`**: the card involved (dragged, clicked, chosen, or whose effect is running). It's `null` when there isn't one.
 - **`clicked_zone`**: in `on_click` and `on_double_click`, the zone that was clicked (one copy, not the whole group). It's `null` elsewhere.
 - **`choice`**: what was picked in a `choose` action: a card, a list of cards, or a value.
+- **Names you set,** like `pile = choose(discard_piles)`: a name that isn't one of the game's `variables` is remembered by the list of steps that sets it (the trigger, button or rule, including its `if`s and loops), for later steps in it to use. Nothing else sees it, and it's gone when they finish. A name that's set but never read is reported when the game loads, since it's most likely a misspelled variable.
 - **Card columns,** as `card.<column>`, e.g. `card.suit == lead` or `card.value > 5`. Capitals don't matter: `card.color` reads a column headed `Color`. A column where every card has a number (`value`) gives numbers; a column with any text in it (`rank`: 2 ... 10, J, Q, K, A) gives text for every card, so `card.rank == 'A'` and `card.rank == '10'` both work. `card.data.<column>` is always the text as written.
 - **Operators:** `==`, `!=`, `<`, `>`, `<=`, `>=`, `+`, `-`, `*`, `/`, `%`, `and`, `or`, `not`, and parentheses. `+` also joins text and lists.
 - **Either-or values:** `'out' if count(hand) == 0 else 'in'`.
@@ -495,7 +486,7 @@ This deals solitaire: for each of the 7 tableau columns, draw as many cards as i
   - a number, to repeat that many times (`"in": "3"`)
 - **Changing what you're looping over is safe:** the loop goes through the items that were there when it started, so `{ "for": "c", "in": "hand", "do": ["move(c, discard)"] }` works.
 - **Nesting:** loops can be nested, and can contain conditional steps.
-- **Each other player chooses:** inside a loop over players, `ask('Discard down to 3', player)` queues that choice for each of them in turn (Militia).
+- **Each other player chooses:** inside a loop over players, `choose(...)` asks each of them in turn: `{ "for": "player", "in": "players", "do": ["move(choose_exactly(hand, 3, 'Pass three cards'), played)"] }` (Hearts). `ask('Discard down to 3', player)` instead queues an action's choice for each of them, to be made after the current steps finish (Militia).
 - **Every player:** `{ "for": "player", "in": "players", "do": [...] }` runs the steps once per player as if it were their turn, so `hand`, `score` and `opponent_hand` follow along: `{ "for": "player", "in": "players", "do": ["score += sum(won, 'points')"] }` scores everyone's won cards. The turn goes back to whoever had it after the loop.
 
 ### Repeat until
@@ -514,6 +505,26 @@ To repeat steps while something is true, use a `while` step:
 { "while": "count(movable(tableau, foundation)) > 0", "do": ["try_move(top(movable(tableau, foundation)), foundation)"] }
 ```
 
+### Choosing in the middle of steps
+
+`choose(...)` stops the steps until the current player picks something, then gives what they picked, so a step can use it straight away:
+
+```json
+"crab": [
+	"pile = choose(discard_piles, 'Look through which pile?')",
+	"move(choose(pile, 'Take a card'), hand)"
+]
+```
+
+- **What can be chosen:** the cards of a zone or list (`hand`, `matching(tops(supply), 'cheap')`), the zones of a list of zones (`discard_piles`, `[deck, discard]`: the player clicks a zone or its button), or values (`['Red', 'Blue']`, `numbers(1, 6)`: buttons above the table). The prompt, if given, is shown above the table.
+- **Several cards:** `choose_exactly(hand, 3, 'Pass three')` waits for exactly 3 and gives a list; `choose_up_to(hand, 4, 'Trash up to 4')` lets the player pick any number up to 4 and press **Done** (the list may be empty).
+- **Who chooses:** the current player. Inside a loop over players (`"for": "player"`), each player in turn.
+- **While waiting** nothing else happens: no buttons, drags or clicks except the choice itself. Undo goes back to before the choice was made.
+- **No real choice:** with nothing to pick, `choose` gives `null` and the others `[]`, without asking; `choose_exactly` with no more cards than it asks for gives them all.
+- **Steps it started:** a trigger (or a card's effect) that chooses holds up the step list that called it, which carries on once it's done: `trigger('crab')`, then the next step.
+- **Not in `when`s, conditions or `status`:** they're checked all the time, and only steps can wait.
+- **When an action is better:** a button the player presses (`"choose"` on an action) can be cancelled by clicking elsewhere, can check the whole choice with `allow`, and can give bots a `prefer` of its own. `choose(...)` can't (yet), so bots judge it by the game's `bot.prefer`.
+
 ### Building blocks
 
 **Changing things**
@@ -530,11 +541,19 @@ To repeat steps while something is true, use a `while` step:
 | `unmark(cards, 'key')` | Remove that mark. |
 | `sort(zone, ['column', ...])` | Keep a zone sorted by these columns, first column first. Numbers sort numerically. `sort(zone, [])` turns sorting off. |
 | `end_turn()` | Pass the turn to the next player and fire `turn_start`. |
-| `trigger('name')` | Run a step list from `triggers`. It runs with the same `card` as the step that called it. |
-| `ask('Action name', player)` | Start that action (usually a `choose`) once the current move finishes, e.g. from a wild card's effect. Several asks wait in line: each starts when the previous choice is finished. With a player number, that player makes the choice: it's their turn until they've chosen (so `hand` means their hand, and a bot answers by itself), then the turn goes back. A choice started by `ask` must be made: clicking elsewhere doesn't cancel it, and other buttons and drags wait. |
+| `trigger('name')` | Run a step list from `triggers`, right after this step (before the next one). It runs with the same `card` as the step that called it. |
+| `ask('Action name', player)` | Start that action (usually a `choose`) once the current move finishes. (To choose in the middle of steps, [`choose(...)`](#choosing-in-the-middle-of-steps) is usually simpler; `ask` is for actions with their own `allow` or bot `prefer`.) Several asks wait in line: each starts when the previous choice is finished. With a player number, that player makes the choice: it's their turn until they've chosen (so `hand` means their hand, and a bot answers by itself), then the turn goes back. A choice started by `ask` must be made: clicking elsewhere doesn't cancel it, and other buttons and drags wait. |
 | `ask_all('Action name', 'trigger')` | Everyone makes that choice at the same time, e.g. a secret bid: people choose first (so nobody waits on the bots), then each bot, then the trigger runs, e.g. to turn the bids over. Put the choices somewhere face down (`move(choice, bid)` with a face-down `bid` zone) so nobody, bots included, sees them before the reveal. Real-time play (Speed, Slapjack) isn't possible. |
 | `ask_others('Action name', 'trigger')` | A chance to respond: every other player, in turn order, is asked that action (players whose `when` is false are skipped), then the trigger runs. If someone responds by calling `ask_others` again, the rest of the first round is called off and a new round starts around them, so the trigger runs once, after a round where nobody responds. That's how Kaboom's Nope works, including a Nope on a Nope: see `games/kaboom.jsonc`. |
 | `run_effect(card, 'play')` | Run a card's `on_play` effect again, e.g. Throne Room playing an action twice |
+
+**Choosing** (see [Choosing in the middle of steps](#choosing-in-the-middle-of-steps))
+
+| Building block | Does |
+|---|---|
+| `choose(options, 'prompt')` | Wait for the current player to pick one card, zone or value from `options`, and give it, e.g. `color = choose(['Red', 'Blue'], 'Choose a color')` |
+| `choose_exactly(cards, amount, 'prompt')` | Wait for exactly that many cards, and give them as a list, e.g. `move(choose_exactly(hand, 3, 'Pass three'), played)` |
+| `choose_up_to(cards, most, 'prompt')` | Wait for any number of cards up to `most` (the player presses **Done**), and give them as a list, e.g. `trashed = choose_up_to(hand, 4, 'Trash up to 4')` |
 
 **Questions**
 
@@ -626,12 +645,13 @@ func discard_hand(zone: Zone, to: Zone) -> void:
 ```
 
 Other places to look:
-- `scripts/core/`: the game logic. `Game` runs the rules, `StepCompiler` checks a game file as it loads, `StepParser` reads each step's text and `StepEvaluator` works it out, `Zone` holds cards, `Melds` finds melds, `Bot` picks moves, `Snapshot` saves state for undo, `GameLog` writes the log.
+- `scripts/core/`: the game logic. `Game` runs the rules, `StepCompiler` checks a game file as it loads, `StepParser` reads each step's text, `StepEvaluator` works it out and `StepRunner` runs lists of steps (pausing at a `choose`), `Zone` holds cards, `Melds` finds melds, `Bot` picks moves, `Snapshot` saves state for undo, `GameLog` writes the log.
 - `scripts/ui/`: the table and side panel.
 - `scripts/net/net.gd`: online play (the `Net` autoload): the lobby, sending inputs through the host, undo requests, rejoining.
 - `tests/regression_test.gd`: loads every game and plays a few with bots. Run it after changing rules or the engine: `godot --headless -s tests/regression_test.gd`.
 - `tests/editor_test.gd`: checks the editor keeps game files exactly as written while editing them, can rebuild every game from an empty file, and that the recipes load. Run `godot --headless -s tests/editor_test.gd`.
 - `tests/ui_test.tscn`: opens the title screen, the lobby, and every game on the real table with bots playing. Run `godot --headless res://tests/ui_test.tscn`.
+- `tests/choose_test.gd`: checks steps that wait for a choice: cards, zones and values, loops, triggers, undo, bots and replays. Run it after changing `StepRunner` or choices: `godot --headless -s tests/choose_test.gd`.
 - `tests/step_language_test.gd`: checks what steps work out to (operators, `x if c else y`, `=` and `+=`) and the messages for mistakes. Run it after changing the step language: `godot --headless -s tests/step_language_test.gd`.
 - `tests/determinism_test.gd`: plays every game and checks matches replay exactly. Run it after engine changes: `godot --headless -s tests/determinism_test.gd`.
 - `tests/net_test.tscn`: a host and a guest play a hand of Hearts over the network, with an undo, a rejoin and a catch-up. Run `godot --headless res://tests/net_test.tscn -- host` and, in a second terminal, the same with `-- guest`; the two final state numbers must match.

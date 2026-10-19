@@ -254,91 +254,6 @@
 				"trigger('cleanup')"
 			]
 		},
-		"Cellar": {
-			"button": false,
-			"choose": "hand",
-			"up_to": "count(hand)",
-			"steps": [
-				"move(choice, discard)",
-				"draw(deck, hand, count(choice))"
-			]
-		},
-		"Chapel": {
-			"button": false,
-			"choose": "hand",
-			"up_to": 4,
-			"steps": [
-				"move(choice, trash)"
-			]
-		},
-		"Remodel": {
-			"button": false,
-			"choose": "hand",
-			"steps": [
-				"move(choice, trash)",
-				"gain_limit = number(choice, 'cost') + 2",
-				"ask('Gain a card')"
-			]
-		},
-		"Mine": {
-			"button": false,
-			"choose": "matching(hand, 'is_treasure')",
-			"up_to": 1,
-			"steps": [
-				{
-					"if": "count(choice) == 1",
-					"then": [
-						"move(choice, trash)",
-						"gain_limit = number(top(choice), 'cost') + 3",
-						"ask('Gain a treasure')"
-					]
-				}
-			]
-		},
-		"Throne Room": {
-			"button": false,
-			"choose": "matching(hand, 'is_action')",
-			"up_to": 1,
-			"steps": [
-				{
-					"if": "count(choice) == 1",
-					"then": [
-						"move(choice, play)",
-						"run_effect(top(choice), 'play')"
-					]
-				}
-			]
-		},
-		"Reveal Moat?": {
-			"button": false,
-			"choose": "['Reveal Moat', 'Keep it hidden']",
-			"steps": [
-				{
-					"if": "choice == 'Reveal Moat'",
-					"then": [
-						"immune = true"
-					]
-				}
-			]
-		},
-		"Militia attack": {
-			"button": false,
-			"steps": [
-				{
-					"for": "player",
-					"in": "players",
-					"do": [
-						{
-							"if": "attacked and count(hand) > 3",
-							"then": [
-								"ask('Discard down to 3', player)"
-							]
-						},
-						"immune = false"
-					]
-				}
-			]
-		},
 		"Discard down to 3": {
 			"button": false,
 			"choose": "hand",
@@ -346,38 +261,6 @@
 			"prefer": "sum(hand, 'coins') + count(matching(hand, 'is_action'))",
 			"steps": [
 				"move(choice, discard)"
-			]
-		},
-		"Witch attack": {
-			"button": false,
-			"steps": [
-				{
-					"for": "player",
-					"in": "players",
-					"do": [
-						{
-							"if": "attacked",
-							"then": [
-								"move(top(zone('basic_pile', 7)), discard)"
-							]
-						},
-						"immune = false"
-					]
-				}
-			]
-		},
-		"Gain a card": {
-			"button": false,
-			"choose": "matching(tops(supply), 'within_limit')",
-			"steps": [
-				"move(choice, discard)"
-			]
-		},
-		"Gain a treasure": {
-			"button": false,
-			"choose": "matching(tops(supply), 'treasure_within_limit')",
-			"steps": [
-				"move(choice, hand)"
 			]
 		}
 	},
@@ -419,33 +302,77 @@
 			"merchants += 1"
 		],
 		"cellar": [
-			"ask('Cellar')"
+			"discarded = choose_up_to(hand, count(hand), 'Cellar: discard any number of cards, then draw that many')",
+			"move(discarded, discard)",
+			"draw(deck, hand, count(discarded))"
 		],
 		"chapel": [
-			"ask('Chapel')"
+			"move(choose_up_to(hand, 4, 'Chapel: trash up to 4 cards'), trash)"
 		],
 		"workshop": [
 			"gain_limit = 4",
-			"ask('Gain a card')"
+			"move(choose(matching(tops(supply), 'within_limit'), 'Workshop: gain a card costing up to 4'), discard)"
 		],
 		"remodel": [
-			"ask('Remodel')"
+			"trashed = choose(hand, 'Remodel: trash a card from your hand')",
+			"move(trashed, trash)",
+			"gain_limit = number(trashed, 'cost') + 2",
+			"move(choose(matching(tops(supply), 'within_limit'), 'Remodel: gain a card costing up to %d' % gain_limit), discard)"
 		],
 		"mine": [
-			"ask('Mine')"
+			"trashed = choose_up_to(matching(hand, 'is_treasure'), 1, 'Mine: trash a treasure from your hand')",
+			{
+				"if": "count(trashed) == 1",
+				"then": [
+					"move(trashed, trash)",
+					"gain_limit = number(top(trashed), 'cost') + 3",
+					"move(choose(matching(tops(supply), 'treasure_within_limit'), 'Mine: gain a treasure costing up to %d into your hand' % gain_limit), hand)"
+				]
+			}
 		],
 		"throne_room": [
-			"ask('Throne Room')"
+			"doubled = choose_up_to(matching(hand, 'is_action'), 1, 'Throne Room: play an action from your hand twice')",
+			{
+				"if": "count(doubled) == 1",
+				"then": [
+					"move(doubled, play)",
+					"run_effect(top(doubled), 'play')"
+				]
+			}
 		],
 		"militia": [
 			"attacker = player",
 			"trigger('reactions')",
-			"ask('Militia attack')"
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					{
+						"if": "attacked and count(hand) > 3",
+						"then": [
+							"ask('Discard down to 3', player)"
+						]
+					},
+					"immune = false"
+				]
+			}
 		],
 		"witch": [
 			"attacker = player",
 			"trigger('reactions')",
-			"ask('Witch attack')"
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					{
+						"if": "attacked",
+						"then": [
+							"move(top(zone('basic_pile', 7)), discard)"
+						]
+					},
+					"immune = false"
+				]
+			}
 		],
 		"start": [
 			{
@@ -494,7 +421,7 @@
 					{
 						"if": "player != attacker and count(matching(hand, 'is_moat')) > 0",
 						"then": [
-							"ask('Reveal Moat?', player)"
+							"immune = choose(['Reveal Moat', 'Keep it hidden'], 'Moat: reveal it to block the attack?') == 'Reveal Moat'"
 						]
 					}
 				]
