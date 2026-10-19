@@ -66,12 +66,12 @@ func is_meld(cards: Array) -> bool:
 func _fits(cards: Array, type: Dictionary) -> bool:
 	if cards.size() < type.get("min", DEFAULT_MIN_SIZE):
 		return false
-	var shared_value: String = cards[0].data.get(type.same, "")
-	if not cards.all(func(card: Card) -> bool: return card.data.get(type.same, "") == shared_value):
+	var shared_value: String = cards[0].column(type.same)
+	if not cards.all(func(card: Card) -> bool: return card.column(type.same) == shared_value):
 		return false
 	if not type.has("sequence"):
 		return true
-	var values := cards.map(func(card: Card) -> int: return int(card.data.get(type.sequence, "0")))
+	var values := cards.map(func(card: Card) -> int: return int(card.column(type.sequence, "0")))
 	values.sort()
 	for i in range(1, values.size()):
 		if values[i] != values[i - 1] + 1:
@@ -85,7 +85,7 @@ func _candidates(cards: Array) -> Array:
 		for group: Array in group_by(cards, type.same).values():
 			var possible_melds := []
 			if type.has("sequence"):
-				group.sort_custom(func(a: Card, b: Card) -> bool: return int(a.data[type.sequence]) < int(b.data[type.sequence]))
+				group.sort_custom(func(a: Card, b: Card) -> bool: return int(a.column(type.sequence)) < int(b.column(type.sequence)))
 				for start in group.size():
 					for end in range(start + 1, group.size() + 1):
 						possible_melds.append(group.slice(start, end))
@@ -117,13 +117,13 @@ func _search(cards: Array, index: int, candidates: Array, used: Dictionary) -> D
 
 
 func _points(card: Card) -> float:
-	return card.data.get(points_column, "0").to_float()
+	return card.column(points_column, "0").to_float()
 
 
 static func group_by(cards: Array, column: String) -> Dictionary:
 	var groups := {}
 	for card: Card in cards:
-		var key: String = card.data.get(column, "")
+		var key: String = card.column(column)
 		if key not in groups:
 			groups[key] = []
 		groups[key].append(card)

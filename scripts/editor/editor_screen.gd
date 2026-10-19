@@ -23,11 +23,12 @@ const VARIABLE_TABLES := [
 	["variables", "Variables", "Shared values, with their starting values, e.g. phase \"draw\" or passes 0."],
 	["player_variables", "Player variables", "One of each per player (score_1, score_2); in steps, score means the current player's."],
 	["team_variables", "Team variables", "One of each per team (needs teams, under Players)."],
+	["constants", "Constants", "Values that never change, e.g. a points table shell_points [0, 0, 2, 4, 6]: read them in steps."],
 ]
 ## Which section each part of the file is edited in.
 const SECTION_OF := {
 	"title": "Game", "description": "Game", "zones": "Table", "card_face": "Deck", "variables": "Variables",
-	"player_variables": "Variables", "team_variables": "Variables", "actions": "Actions", "turn": "Turn",
+	"player_variables": "Variables", "team_variables": "Variables", "constants": "Variables", "actions": "Actions", "turn": "Turn",
 	"triggers": "Triggers", "conditions": "Conditions", "players": "Players", "player_names": "Players", "seats": "Players",
 	"teams": "Players", "bot": "Players", "status": "Scoring", "show_variables": "Scoring", "melds": "Melds",
 }
@@ -334,7 +335,11 @@ func _rename_named(name: String) -> void:
 
 ## Zone, trigger and condition names are used in steps, so they must be single words; actions can say anything.
 func _good_name(name: String) -> bool:
-	return name.is_valid_identifier() if section != "Actions" else not name.is_empty()
+	if section == "Actions":
+		return not name.is_empty()
+	if section == "Conditions":
+		return GameRules.condition_name_pattern.search(name) != null
+	return name.is_valid_identifier()
 
 
 # --- The details panel and the middle ---------------------------------------------------------------------
@@ -373,7 +378,7 @@ func _show_details() -> void:
 			%Details.add_child(StepList.new(self, ["triggers", entry]))
 		"Conditions":
 			_add_heading("Condition: " + entry)
-			_add_help("A named check: write its name in any step or condition, or use matching(cards, '%s') to keep the cards it's true for (card is each card)." % entry)
+			_add_help("A named expression: write its name in any step or condition, or use matching(cards, '%s') to keep the cards it's true for (card is each card). A name like points(cards) takes parameters: use it as points(hand)." % entry)
 			_add_note(["conditions", entry])
 			var field := smart_field(str(document.get_value(["conditions", entry], "")))
 			field.committed.connect(func(text: String) -> void: change(["conditions", entry], text))

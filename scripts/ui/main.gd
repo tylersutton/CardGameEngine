@@ -142,8 +142,13 @@ func _refresh_choice_bar() -> void:
 		%ChoiceBar.remove_child(child)
 		child.queue_free()
 	var picking_cards := game.choosing_cards() and not game.pick_exact
-	%ChoiceMargin.visible = (game.choosing != "" or not game.offered.is_empty()) and game.is_local_turn()
+	%ChoiceMargin.visible = game.over or (game.choosing != "" or not game.offered.is_empty()) and game.is_local_turn()
 	if not %ChoiceMargin.visible:
+		return
+	if game.over:
+		var result := Label.new()
+		result.text = game.result_text()
+		%ChoiceBar.add_child(result)
 		return
 	if game.choosing == "":
 		var offer := Label.new()

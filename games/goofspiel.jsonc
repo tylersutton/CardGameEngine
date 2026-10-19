@@ -118,13 +118,10 @@
 	"variables": {
 		"phase": "bid",
 		"stake": 0,
-		"high": 0,
-		"best": 1,
-		"result": ""
+		"high": 0
 	},
 	"show_variables": [
-		"phase",
-		"result"
+		"phase"
 	],
 	"status": {
 		"points": "'%s %d, %s %d, %s %d' % [name_of(1), sum(won_1, 'value'), name_of(2), sum(won_2, 'value'), name_of(3), sum(won_3, 'value')]",
@@ -138,6 +135,7 @@
 		"prefer": "sum(won, 'value')"
 	},
 	"conditions": {
+		"prize_points": "sum(won, 'value')",
 		"high_bids": "where(all_bid, 'value', high)"
 	},
 	"actions": {
@@ -192,7 +190,7 @@
 			{
 				"if": "count(high_bids) == 1",
 				"then": [
-					"move(prize, zone('won', owner(top(high_bids))))"
+					"move(prize, won[owner(top(high_bids))])"
 				]
 			},
 			"phase = 'revealed'"
@@ -200,20 +198,7 @@
 		"game_over": [
 			"move(prize, box)",
 			"phase = 'over'",
-			"best = 1",
-			{
-				"for": "player",
-				"in": "players",
-				"do": [
-					{
-						"if": "sum(won, 'value') > sum(zone('won', int(best)), 'value')",
-						"then": [
-							"best = player"
-						]
-					}
-				]
-			},
-			"result = 'Winner: ' + name_of(int(best))"
+			"end_game(players_with_most('prize_points'))"
 		]
 	},
 	"card_face": {

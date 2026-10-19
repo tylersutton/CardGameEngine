@@ -109,15 +109,10 @@
 		"pending": "",
 		"actor": 0,
 		"target": 0,
-		"noped": false,
-		"result": ""
-	},
-	"player_variables": {
-		"alive": true
+		"noped": false
 	},
 	"show_variables": [
-		"phase",
-		"result"
+		"phase"
 	],
 	"status": {
 		"on the table": "'' if pending == '' else '%s by %s%s' % [pending, name_of(actor), (' (Noped)' if noped else '')]",
@@ -128,12 +123,11 @@
 			2,
 			3
 		],
-		"prefer": "100 * int(alive) + 20 * count(matching(hand, 'is_defuse')) + 2 * count(hand)"
+		"prefer": "100 * int(player in players_left()) + 20 * count(matching(hand, 'is_defuse')) + 2 * count(hand)"
 	},
 	"conditions": {
 		"is_defuse": "card.data.kind == 'defuse'",
-		"has_nope": "count(where(hand, 'name', 'Nope')) > 0",
-		"living_players": "int(alive_1) + int(alive_2) + int(alive_3)"
+		"has_nope": "count(where(hand, 'name', 'Nope')) > 0"
 	},
 	"actions": {
 		"Play an action": {
@@ -146,19 +140,7 @@
 				"pending = card.data.name",
 				"actor = player",
 				"noped = false",
-				"target = 0",
-				{
-					"for": "seat",
-					"in": "numbers(1, 2)",
-					"do": [
-						{
-							"if": "target == 0 and variable_of('alive', next_player(seat))",
-							"then": [
-								"target = next_player(seat)"
-							]
-						}
-					]
-				},
+				"target = next_player()",
 				"ask_others('Nope?', 'resolve')"
 			]
 		},
@@ -188,14 +170,14 @@
 				{
 					"if": "phase == 'play'",
 					"then": [
-						"trigger('next_turn')"
+						"end_turn()"
 					]
 				}
 			]
 		},
 		"Nope?": {
 			"button": false,
-			"when": "alive and has_nope",
+			"when": "player in players_left() and has_nope",
 			"choose": "['Nope!', 'Let it happen']",
 			"prefer": "10 * int((noped and target == player) or (not noped and actor == player)) + count(hand)",
 			"steps": [
@@ -214,7 +196,7 @@
 			"choose": "hand",
 			"prefer": "20 * count(matching(hand, 'is_defuse')) + 3 * count(where(hand, 'name', 'Nope'))",
 			"steps": [
-				"move(choice, zone('hand', actor))"
+				"move(choice, hand[actor])"
 			]
 		}
 	},
@@ -253,7 +235,7 @@
 			"pending = ''"
 		],
 		"Skip": [
-			"trigger('next_turn')"
+			"end_turn()"
 		],
 		"Shuffle": [
 			"shuffle(deck)"
@@ -271,34 +253,14 @@
 				]
 			}
 		],
-		"next_turn": [
-			"end_turn()",
-			{
-				"while": "not alive",
-				"do": [
-					"end_turn()"
-				]
-			}
-		],
 		"knocked_out": [
-			"alive = false",
+			"knock_out(player)",
 			"move(hand, out)",
 			{
-				"if": "living_players == 1",
+				"if": "size(players_left()) == 1",
 				"then": [
 					"phase = 'over'",
-					{
-						"for": "player",
-						"in": "players",
-						"do": [
-							{
-								"if": "alive",
-								"then": [
-									"result = 'Winner: ' + name_of(player)"
-								]
-							}
-						]
-					}
+					"end_game(players_left())"
 				]
 			}
 		]

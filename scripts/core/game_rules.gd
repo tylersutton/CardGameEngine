@@ -5,7 +5,13 @@ var zones: Dictionary
 var actions: Dictionary
 var triggers: Dictionary
 var effects: Dictionary
+## Named expressions, by name; a condition written "points(cards)" takes parameters, listed by name in
+## condition_parameters (a malformed name is listed in condition_errors).
 var conditions: Dictionary
+var condition_parameters: Dictionary
+var condition_errors: Array[String] = []
+## Named values that never change, e.g. "shell_points": [0, 2, 4, 6, 8, 10].
+var constants: Dictionary
 ## The steps of a turn, run again and again for whoever's turn it is (empty: no turns run by themselves).
 var turn: Array
 var variables: Dictionary
@@ -27,11 +33,13 @@ var error: String
 
 
 const KEYS := ["title", "description", "players", "player_names", "seats", "teams", "zones", "variables", "player_variables",
-	"team_variables", "show_variables", "status", "conditions", "effects", "actions", "turn", "triggers", "melds", "bot", "card_face"]
+	"team_variables", "show_variables", "status", "conditions", "constants", "effects", "actions", "turn", "triggers", "melds", "bot", "card_face"]
 const GAMES_FOLDER := "res://games/"
 ## Game files are .jsonc (JSON with comments); plain .json works too.
 const GAME_EXTENSIONS := ["jsonc", "json"]
 const DEFAULT_CARD_FACE := {"corner": "name", "title": "name"}
+## A condition's name, maybe with parameters: "fits" or "points(cards, color)".
+static var condition_name_pattern := RegEx.create_from_string(r"^\s*([A-Za-z_]\w*)\s*(?:\(([^)]*)\))?\s*$")
 
 
 ## Every game file in games/.
@@ -74,7 +82,8 @@ static func load_json(path: String, files := {}) -> GameRules:
 	for name in rules.effects:
 		if name not in rules.triggers:
 			rules.triggers[name] = rules.effects[name]
-	rules.conditions = data.get("conditions", {})
+	rules._read_conditions(data.get("conditions", {}))
+	rules.constants = _whole_numbers(data.get("constants", {}), true)
 	rules.variables = _whole_numbers(data.get("variables", {}))
 	rules.players = int(data.get("players", 1))
 	rules.seats = data.get("seats", [])
@@ -88,6 +97,18 @@ static func load_json(path: String, files := {}) -> GameRules:
 	rules.bot = data.get("bot", {})
 	rules.card_face = data.get("card_face", DEFAULT_CARD_FACE)
 	return rules
+
+
+## "name" or "name(parameter, ...)" keys: the expressions by name, and each one's parameters.
+func _read_conditions(written: Dictionary) -> void:
+	for key: String in written:
+		var found := condition_name_pattern.search(key)
+		var parameters: Array = Array(found.get_string(2).split(",", false)).map(func(parameter: String) -> String: return parameter.strip_edges()) if found else []
+		if not found or not parameters.all(func(parameter: String) -> bool: return parameter.is_valid_identifier()):
+			condition_errors.append("Condition \"%s\": write a name, or a name with parameters like points(cards)" % key)
+			continue
+		conditions[found.get_string(1)] = written[key]
+		condition_parameters[found.get_string(1)] = parameters
 
 
 ## Game files are JSONC: JSON plus // and /* */ comments and trailing commas ([1, 2,]). This turns the text into
@@ -177,8 +198,15 @@ static func _steps_by_name(lists: Dictionary) -> Dictionary:
 
 
 ## JSON numbers all arrive as decimals; starting values like 0 or 4 become whole numbers, so % and list positions work.
-static func _whole_numbers(values: Dictionary) -> Dictionary:
+static func _whole_numbers(values: Dictionary, inside_lists := false) -> Dictionary:
 	for name in values:
-		if values[name] is float and values[name] == floorf(values[name]):
-			values[name] = int(values[name])
+		values[name] = _whole_number(values[name], inside_lists)
 	return values
+
+
+static func _whole_number(value: Variant, inside_lists: bool) -> Variant:
+	if value is float and value == floorf(value):
+		return int(value)
+	if value is Array and inside_lists:
+		return value.map(func(item: Variant) -> Variant: return _whole_number(item, true))
+	return value

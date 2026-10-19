@@ -17,6 +17,7 @@ func _init() -> void:
 	card_effects()
 	remodel()
 	sea_salt()
+	sea_salt_scoring()
 	clicked_copy()
 	pick_and_up_to()
 	print("REGRESSION: ", "all passed" if problems.is_empty() else "FAILED %s" % [problems])
@@ -151,7 +152,7 @@ func sea_salt() -> void:
 	game.apply({type = "click", card = kept.id})
 	check(kept in game.zones.hand_1.cards and game.choosing == "Discard the other card onto a pile", "the kept card is in hand, then a pile is asked: '%s'" % game.choosing)
 	game.apply({type = "choose", option = "discard_piles_2"})
-	check(game.zones.discard_piles_2.cards.size() == 2 and game.offered == ["Play duo", "End turn"], "the other card is on pile 2, then duos are offered: %s" % [game.offered])
+	check(game.zones.discard_piles_2.cards.size() == 2 and game.offered == ["Play duo", "End turn", "Stop", "Last chance"], "the other card is on pile 2, then duos are offered: %s" % [game.offered])
 	var crabs := game.zones.deck.cards.filter(func(card: Card) -> bool: return card.data.Kind == "Crab").slice(0, 2)
 	for crab: Card in crabs:
 		game.move(crab, game.zones.hand_1)
@@ -164,6 +165,17 @@ func sea_salt() -> void:
 	var taken: Card = game.zones.browsing.cards[0]
 	game.apply({type = "click", card = taken.id})
 	check(taken in game.zones.hand_1.cards and game.zones.discard_piles_2.cards.size() == 1 and game.zones.browsing.is_empty(), "one card is taken, the rest go back")
+
+
+## Three shells (4), two crabs (a duo, 1) and a mermaid with two cards of each color (2) make 7 points.
+func sea_salt_scoring() -> void:
+	var game := Game.new("res://games/sea_salt_+_paper.jsonc", 3)
+	watch(game)
+	game.start()
+	for kind in ["Shell", "Shell", "Shell", "Crab", "Crab", "Mermaid", "Octopus"]:
+		var card: Card = game.cards.filter(func(each: Card) -> bool: return each.data.Kind == kind and game.zone_of(each) != game.zones.hand_1)[0]
+		game.move(card, game.zones.hand_1)
+	check(game.evaluate("my_points") == 7 and game.evaluate("collection_points(hand)") == 4, "sea salt scoring: %s points" % game.evaluate("my_points"))
 
 
 ## Clicking one of several copies tells the steps which one it was, even while it's empty.

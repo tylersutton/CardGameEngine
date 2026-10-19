@@ -140,8 +140,8 @@ func _sort() -> void:
 
 func _precedes(a: Card, b: Card) -> bool:
 	for column in sort_columns:
-		var a_value: String = a.data.get(column, "")
-		var b_value: String = b.data.get(column, "")
+		var a_value: String = a.column(column)
+		var b_value: String = b.column(column)
 		if a_value == b_value:
 			continue
 		if a_value.is_valid_float() and b_value.is_valid_float():

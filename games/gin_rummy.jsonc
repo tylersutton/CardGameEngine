@@ -94,7 +94,7 @@
 		"prefer": "score - opponent_score - sum(deadwood(hand), 'points')"
 	},
 	"status": {
-		"your deadwood": "sum(deadwood(zone('hand', min(viewer(), 2))), 'points')"
+		"your deadwood": "sum(deadwood(hand[min(viewer(), 2)]), 'points')"
 	},
 	"melds": {
 		"types": [
@@ -252,26 +252,13 @@
 			"player = 3 - dealer",
 			"deal(stock, [hand, opponent_hand], 10)",
 			"move(top(stock), discard)",
-			"phase = 'upcard'",
-			"passes = 0",
-			"taken = null",
-			"result = ''",
-			"knocker_deadwood = 0",
-			"defender_deadwood = 0"
+			"reset(['phase', 'passes', 'taken', 'result', 'knocker_deadwood', 'defender_deadwood'])"
 		],
 		"hand_over": [
 			{
-				"if": "score_1 >= 100 or score_2 >= 100",
+				"if": "most('score') >= 100",
 				"then": [
-					{
-						"if": "score_1 >= 100",
-						"then": [
-							"player = 1"
-						],
-						"else": [
-							"player = 2"
-						]
-					},
+					"player = players_with_most('score')[0]",
 					"winner = player",
 					"score += 100 + 25 * hands_won",
 					"opponent_score += 25 * opponent_hands_won",
@@ -282,7 +269,8 @@
 							"result += ', shutout'"
 						]
 					},
-					"phase = 'match over'"
+					"phase = 'match over'",
+					"end_game(player)"
 				]
 			}
 		]

@@ -23,7 +23,7 @@ const RULES := """{
 	"turn": [
 		"turns += 1",
 		"offer(['Draw', 'Pass'])",
-		"offer_until(['Discard', 'Lay down'], 'Discard')",
+		"offer_until('Lay down', 'Discard')",
 		{ "if": "turns >= 4", "then": "end_game()" },
 		"end_turn()"
 	],
@@ -69,12 +69,12 @@ func offers_and_actions() -> void:
 	game.apply({type = "click_empty", zone = "discard"})
 	check(game.variables.taps == 1, "an action done by clicking a zone")
 	game.apply({type = "click", card = game.zones.deck.cards.back().id})
-	check(game.zones.hand_1.cards.size() == 3 and game.offered == ["Discard", "Lay down"], "clicking the deck does Draw, then the turn goes on: %s" % [game.offered])
+	check(game.zones.hand_1.cards.size() == 3 and game.offered == ["Lay down", "Discard"], "clicking the deck does Draw, then the turn goes on: %s" % [game.offered])
 	check(game.can_perform("Lay down"), "Lay down's button works while offered and possible")
 	game.apply({type = "perform", action = "Lay down"})
 	check(game.choosing == "Lay down" and game.choices.size() == 3, "its button asks for a card to do it with")
 	game.apply({type = "click", card = game.choices[0].id})
-	check(game.zones.table_1.cards.size() == 1 and game.offered == ["Discard", "Lay down"], "the card is laid down, and Discard or Lay down is offered again")
+	check(game.zones.table_1.cards.size() == 1 and game.offered == ["Lay down", "Discard"], "the card is laid down, and Discard or Lay down is offered again")
 	check(not game.can_perform("Lay down"), "with 2 cards left, Lay down isn't possible")
 	game.apply({type = "drag", card = game.zones.hand_1.cards[0].id, to = "discard"})
 	check(game.current_player() == 2 and game.offered == ["Draw", "Pass"], "Discard ends the offers, and the turn passes")
@@ -87,7 +87,7 @@ func turns_undo_and_replays() -> void:
 	check(game.current_player() == 2 and game.variables.turns == 2, "player 2's turn")
 	check(not game.apply({type = "perform", action = "Pass", player = 1}), "player 1 can't act on player 2's turn")
 	game.apply({type = "undo"})
-	check(game.current_player() == 1 and game.offered == ["Discard", "Lay down"] and game.variables.turns == 1, "undo goes back into player 1's turn: %s" % [game.offered])
+	check(game.current_player() == 1 and game.offered == ["Lay down", "Discard"] and game.variables.turns == 1, "undo goes back into player 1's turn: %s" % [game.offered])
 	game.apply({type = "drag", card = game.zones.hand_1.cards[1].id, to = "discard"})
 	var replayed := Game.new(game.rules_path, game.match_seed, game.given_files)
 	replayed.start()

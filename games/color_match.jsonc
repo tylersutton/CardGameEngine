@@ -69,7 +69,7 @@
 					"if": "count(hand) == 0",
 					"then": [
 						"winner = player",
-						"end_game()"
+						"end_game(player)"
 					]
 				}
 			]

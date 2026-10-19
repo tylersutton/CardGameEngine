@@ -172,7 +172,7 @@ func _draw_face(rect: Rect2) -> void:
 	draw_string(font, Vector2(MARGIN, title_y), title, HORIZONTAL_ALIGNMENT_CENTER, text_width, _fitting_size(font, title, text_width), ink)
 	var line_y := title_y + (BODY_FONT_SIZE + 6 if rules_text else TITLE_FONT_SIZE)
 	for column in face.get("body", []):
-		draw_string(font, Vector2(MARGIN, line_y), card.data.get(column, ""), HORIZONTAL_ALIGNMENT_CENTER, text_width, BODY_FONT_SIZE, ink)
+		draw_string(font, Vector2(MARGIN, line_y), card.column(column), HORIZONTAL_ALIGNMENT_CENTER, text_width, BODY_FONT_SIZE, ink)
 		line_y += BODY_FONT_SIZE + 4
 	if rules_text:
 		var text_size := _fitting_text_size(font, rules_text, text_width, SIZE.y - MARGIN - line_y)
@@ -212,11 +212,11 @@ func _face_box() -> StyleBoxFlat:
 ## "color" and "background" name a column (each card its own color) or give one color for every card ("#f3e9d2").
 func _color_field(face_part: String) -> String:
 	var setting: String = face.get(face_part, "")
-	return card.data.get(setting, setting)
+	return card.column(setting, setting)
 
 
 func _field(face_part: String) -> String:
-	return card.data.get(face.get(face_part, ""), "")
+	return card.column(face.get(face_part, ""))
 
 
 static func _rounded_box(fill: Color, border: Color) -> StyleBoxFlat:

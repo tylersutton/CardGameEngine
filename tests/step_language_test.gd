@@ -12,7 +12,13 @@ const RULES := """{
 	},
 	"variables": { "phase": "draw", "total": 0, "names": [] },
 	"player_variables": { "score": 0 },
-	"conditions": { "is_ace": "card.rank == 'A'", "deck_full": "count(deck) == 52" }
+	"constants": { "table": [0, 0, 2, 4] },
+	"conditions": {
+		"is_ace": "card.rank == 'A'",
+		"deck_full": "count(deck) == 52",
+		"suited(cards, suit)": "count(where(cards, 'SUIT', suit))",
+		"hearts_and_spades(cards)": "suited(cards, 'Hearts') + suited(cards, 'Spades')"
+	}
 }"""
 
 var problems := []
@@ -69,6 +75,21 @@ func values() -> void:
 	expect(game, "phase != null", true)
 	expect(game, "phase == 'draw' and total == 0", true)
 	expect(game, "score == opponent_score", true)
+	expect(game, "'b' in ['a', 'b']", true)
+	expect(game, "3 not in [1, 2]", true)
+	expect(game, "top(deck) in deck", true)
+	expect(game, "'ell' in 'hello'", true)
+	expect(game, "lookup(table, 3)", 4)
+	expect(game, "lookup(table, 99)", 4)
+	expect(game, "lookup(table, -1)", 0)
+	expect(game, "suited(deck, 'Hearts')", 13)
+	expect(game, "hearts_and_spades(deck)", 26)
+	expect(game, "group_sizes(deck, 'suit')", [13, 13, 13, 13])
+	expect(game, "sum(first(group_sizes(deck, 'color'), 1))", 26.0)
+	expect(game, "first([5, 6, 7], 2) + last([5, 6, 7], 1)", [5, 6, 7])
+	expect(game, "max([3, 9, 4]) + min([3, 9, 4])", 12)
+	expect(game, "sum([1, 2, 3])", 6.0)
+	expect(game, "count(where(deck, 'SUIT', 'Clubs'))", 13)
 	var ace: Card = game.cards.filter(func(card: Card) -> bool: return card.title == "A♠")[0]
 	check(game.evaluate("is_ace", ace) == true, "conditions see the step's card")
 	check(game.evaluate("card.value + 1", ace) == 2, "number columns are numbers")
@@ -114,6 +135,11 @@ func load_mistakes() -> void:
 		"too many arguments": [{"triggers": {"start": ["shuffle(deck, pile)"]}}, "shuffle takes 1 argument, got 2"],
 		"a condition naming itself": [{"conditions": {"a": "b", "b": "not a"}}, "refers to itself"],
 		"viewer() in a rule": [{"triggers": {"start": ["total = viewer()"]}}, "viewer() only works in \"status\""],
+		"changing a constant": [{"triggers": {"start": ["table = []"]}}, "is a constant"],
+		"too few arguments to a condition": [{"triggers": {"start": ["total = suited(deck)"]}}, "suited takes 2 (cards, suit), got 1"],
+		"a condition with parameters used as a name": [{"triggers": {"start": ["total = suited"]}}, "suited needs its cards, suit"],
+		"a condition called with ( )": [{"triggers": {"start": ["total = deck_full()"]}}, "is a condition without parameters"],
+		"a malformed condition name": [{"conditions": {"points(cards": "1"}}, "write a name, or a name with parameters"],
 	}
 	for name: String in cases:
 		var game := game_with(cases[name][0])

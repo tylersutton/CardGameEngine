@@ -145,9 +145,7 @@
 		"actions": 1,
 		"buys": 1,
 		"coins": 0,
-		"result": "",
 		"attacker": 0,
-		"empty_piles": 0,
 		"gain_limit": 0,
 		"merchants": 0,
 		"silver_played": false
@@ -156,11 +154,9 @@
 		"phase",
 		"actions",
 		"buys",
-		"coins",
-		"result"
+		"coins"
 	],
 	"player_variables": {
-		"score": 0,
 		"immune": false
 	},
 	"status": {
@@ -172,9 +168,30 @@
 		],
 		"prefer": "20 * (sum(my_cards, 'coins') - count(matching(my_cards, 'is_copper'))) / count(my_cards) + 4 * min(count(matching(my_cards, 'is_terminal')), floor(count(my_cards) / 10)) + 3 * min(sum(my_cards, 'cards'), count(matching(my_cards, 'is_action'))) / count(my_cards) * 10 + sum(my_cards, 'vp') + 0.01 * coins"
 	},
+	"constants": {
+		"basics": [
+			"Copper",
+			"Silver",
+			"Gold",
+			"Estate",
+			"Duchy",
+			"Province",
+			"Curse"
+		],
+		"kingdom": [
+			"Cellar",
+			"Moat",
+			"Merchant",
+			"Village",
+			"Workshop",
+			"Militia",
+			"Remodel",
+			"Smithy",
+			"Market",
+			"Mine"
+		]
+	},
 	"conditions": {
-		"basics": "['Copper', 'Silver', 'Gold', 'Estate', 'Duchy', 'Province', 'Curse']",
-		"kingdom": "['Cellar', 'Moat', 'Merchant', 'Village', 'Workshop', 'Militia', 'Remodel', 'Smithy', 'Market', 'Mine']",
 		"is_moat": "card.data.name == 'Moat'",
 		"attacked": "player != attacker and not immune",
 		"within_limit": "number(card, 'cost') <= gain_limit",
@@ -186,6 +203,7 @@
 		"is_copper": "card.data.name == 'Copper'",
 		"my_cards": "[deck, hand, play, discard]",
 		"gardens_vp": "count(matching(my_cards, 'is_gardens')) * (count(my_cards) / 10)",
+		"victory_points": "sum(my_cards, 'vp') + gardens_vp",
 		"affordable": "buys > 0 and coins >= number(card, 'cost')",
 		"nothing_left": "buys == 0 and (actions == 0 or phase == 'buy')"
 	},
@@ -442,52 +460,16 @@
 			}
 		],
 		"check_end": [
-			"empty_piles = 0",
 			{
-				"for": "pile",
-				"in": "supply",
-				"do": [
-					{
-						"if": "count(pile) == 0",
-						"then": [
-							"empty_piles += 1"
-						]
-					}
-				]
-			},
-			{
-				"if": "count(zone('basic_pile', 6)) == 0 or empty_piles >= 3",
+				"if": "count(zone('basic_pile', 6)) == 0 or size(supply) - size(tops(supply)) >= 3",
 				"then": [
 					"trigger('final_score')"
 				]
 			}
 		],
 		"final_score": [
-			{
-				"for": "player",
-				"in": "players",
-				"do": [
-					"score = sum(my_cards, 'vp') + gardens_vp"
-				]
-			},
 			"phase = 'over'",
-			{
-				"if": "score_1 > score_2",
-				"then": [
-					"result = 'Winner: ' + name_of(1)"
-				],
-				"else": [
-					{
-						"if": "score_1 < score_2",
-						"then": [
-							"result = 'Winner: ' + name_of(2)"
-						],
-						"else": [
-							"result = 'A tie'"
-						]
-					}
-				]
-			}
+			"end_game(players_with_most('victory_points'))"
 		]
 	},
 	"card_face": {

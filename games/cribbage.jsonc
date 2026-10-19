@@ -106,8 +106,7 @@
 		"counted": 0,
 		"points": 0,
 		"pair_points": 0,
-		"run_points": 0,
-		"result": ""
+		"run_points": 0
 	},
 	"player_variables": {
 		"score": 0,
@@ -116,8 +115,7 @@
 	"show_variables": [
 		"phase",
 		"total",
-		"points",
-		"result"
+		"points"
 	],
 	"status": {
 		"scores": "'%s %d, %s %d' % [name_of(1), score_1, name_of(2), score_2]",
@@ -137,8 +135,9 @@
 		"crib_flush": "5 * int(size(groups(with_starter, 'suit')) == 1)",
 		"flush_points": "int(not counting_crib) * hand_flush + int(counting_crib) * crib_flush",
 		"nobs": "count(where(where(shown, 'rank', 'J'), 'suit', text(top(starter), 'suit')))",
-		"hand_points": "2 * size(sums(with_starter, 'value', 15)) + 2 * size(pairs(with_starter, 'rank')) + count(runs(with_starter, 'order', 3)) + flush_points + nobs",
-		"kept_points": "2 * size(sums(hand, 'value', 15)) + 2 * size(pairs(hand, 'rank')) + count(runs(hand, 'order', 3))"
+		"combo_points(cards)": "2 * size(sums(cards, 'value', 15)) + 2 * size(pairs(cards, 'rank')) + count(runs(cards, 'order', 3))",
+		"hand_points": "combo_points(with_starter) + flush_points + nobs",
+		"kept_points": "combo_points(hand)"
 	},
 	"actions": {
 		"Peg a card": {
@@ -316,13 +315,7 @@
 			{
 				"if": "text(top(starter), 'rank') == 'J'",
 				"then": [
-					{
-						"for": "player",
-						"in": "[dealer]",
-						"do": [
-							"score += 2"
-						]
-					},
+					"score[dealer] += 2",
 					"trigger('check_win')"
 				]
 			},
@@ -354,17 +347,10 @@
 		],
 		"check_win": [
 			{
-				"if": "phase != 'over' and score_1 >= 121",
+				"if": "phase != 'over' and most('score') >= 121",
 				"then": [
-					"result = 'Winner: ' + name_of(1)",
-					"phase = 'over'"
-				]
-			},
-			{
-				"if": "phase != 'over' and score_2 >= 121",
-				"then": [
-					"result = 'Winner: ' + name_of(2)",
-					"phase = 'over'"
+					"phase = 'over'",
+					"end_game(players_with_most('score'))"
 				]
 			}
 		]

@@ -97,7 +97,7 @@
 		"right_size": "set_size == 0 or count(choice) == set_size",
 		"single_two": "count(choice) == 1 and text(top(choice), 'rank') == '2'",
 		"unbeatable": "top_order == 13",
-		"round_over": "set_size > 0 and passes >= count(tops(all_hand)) - int(count(zone('hand', last_played)) > 0)",
+		"round_over": "set_size > 0 and passes >= count(tops(all_hand)) - int(count(hand[last_played]) > 0)",
 		"last_one_left": "owner(top(tops(all_hand)))"
 	},
 	"actions": {
@@ -136,12 +136,12 @@
 								{
 									"if": "count(hand) == 0",
 									"then": [
-										"trigger('next')"
+										"end_turn()"
 									]
 								}
 							],
 							"else": [
-								"trigger('next')",
+								"end_turn()",
 								{
 									"if": "matched",
 									"then": [
@@ -166,7 +166,7 @@
 			"pick": 2,
 			"prefer": "sum(hand, 'order')",
 			"steps": [
-				"move(choice, zone('hand', ranking[3]))"
+				"move(choice, hand[ranking[3]])"
 			]
 		},
 		"Give 1 back": {
@@ -174,7 +174,7 @@
 			"choose": "hand",
 			"prefer": "sum(hand, 'order')",
 			"steps": [
-				"move(choice, zone('hand', ranking[2]))",
+				"move(choice, hand[ranking[2]])",
 				"phase = 'play'"
 			]
 		},
@@ -201,11 +201,8 @@
 			"move([all_hand, table, beaten], deck)",
 			"shuffle(deck)",
 			"deal(deck, all_hand, 13)",
-			"finish_order = []",
-			"first_play = true",
-			"set_size = 0",
-			"top_order = 0",
-			"passes = 0",
+			"bring_back(players)",
+			"reset(['finish_order', 'first_play', 'set_size', 'top_order', 'passes'])",
 			{
 				"if": "size(ranking) == 0",
 				"then": [
@@ -219,22 +216,20 @@
 		],
 		"exchange": [
 			"phase = 'exchange'",
-			"move(highest(zone('hand', ranking[3]), 'order'), zone('hand', ranking[0]))",
-			"move(highest(zone('hand', ranking[3]), 'order'), zone('hand', ranking[0]))",
-			"move(highest(zone('hand', ranking[2]), 'order'), zone('hand', ranking[1]))",
+			"move(highest(hand[ranking[3]], 'order'), hand[ranking[0]])",
+			"move(highest(hand[ranking[3]], 'order'), hand[ranking[0]])",
+			"move(highest(hand[ranking[2]], 'order'), hand[ranking[1]])",
 			"player = ranking[3]",
 			"ask('Give 2 back', ranking[0])",
 			"ask('Give 1 back', ranking[1])"
 		],
 		"clear": [
 			"move([table, beaten], deck)",
-			"set_size = 0",
-			"top_order = 0",
-			"passes = 0"
+			"reset(['set_size', 'top_order', 'passes'])"
 		],
 		"pass": [
 			"passes += 1",
-			"trigger('next')",
+			"end_turn()",
 			{
 				"if": "round_over",
 				"then": [
@@ -242,16 +237,8 @@
 				]
 			}
 		],
-		"next": [
-			"end_turn()",
-			{
-				"while": "count(hand) == 0",
-				"do": [
-					"end_turn()"
-				]
-			}
-		],
 		"finished": [
+			"knock_out(player)",
 			"finish_order += [player]",
 			"title = ['President', 'Vice President', 'Vice Scum', 'Scum'][size(finish_order) - 1]",
 			"score += 4 - size(finish_order)"

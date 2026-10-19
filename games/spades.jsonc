@@ -72,8 +72,7 @@
 		"dealer": 4,
 		"bids": 0,
 		"lead": "",
-		"spades_broken": false,
-		"result": ""
+		"spades_broken": false
 	},
 	"player_variables": {
 		"bid": 0
@@ -84,8 +83,7 @@
 		"bags": 0
 	},
 	"show_variables": [
-		"phase",
-		"result"
+		"phase"
 	],
 	"status": {
 		"bids": "'%s %d, %s %d, %s %d, %s %d' % [name_of(1), bid_1, name_of(2), bid_2, name_of(3), bid_3, name_of(4), bid_4]",
@@ -272,15 +270,15 @@
 			{
 				"if": "team_score_1 >= 500 and team_score_1 > team_score_2",
 				"then": [
-					"result = 'Winners: %s & %s' % [name_of(1), name_of(3)]",
-					"phase = 'over'"
+					"phase = 'over'",
+					"end_game([1, 3])"
 				]
 			},
 			{
 				"if": "team_score_2 >= 500 and team_score_2 > team_score_1",
 				"then": [
-					"result = 'Winners: %s & %s' % [name_of(2), name_of(4)]",
-					"phase = 'over'"
+					"phase = 'over'",
+					"end_game([2, 4])"
 				]
 			}
 		]

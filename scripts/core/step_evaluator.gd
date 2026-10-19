@@ -13,6 +13,8 @@ var runner: StepRunner
 var card: Card
 var actions: Actions
 var failure := ""
+## The parameters of the conditions being worked out (points(cards) called as points(hand)), innermost last.
+var parameters: Array[Dictionary] = []
 ## After a failure, or once a choose(...) is waiting for its answer: the rest of the step isn't worked out.
 var stopped := false
 
@@ -41,6 +43,8 @@ func evaluate(node: Dictionary) -> Variant:
 		"member":
 			return _member(evaluate(node.target), node.name)
 		"index":
+			if node.target.kind == "name" and game.is_per_player(node.target.name):
+				return _numbered(node.target.name, evaluate(node.index))
 			return _index(evaluate(node.target), evaluate(node.index))
 		"unary":
 			return _unary(node.op, evaluate(node.term))
@@ -61,7 +65,11 @@ static func is_true(value: Variant) -> bool:
 func _name(name: String) -> Variant:
 	if name == Game.CARD_VARIABLE:
 		return card
+	if parameters and name in parameters.back():
+		return parameters.back()[name]
 	if name in game.rules.conditions:
+		if game.rules.condition_parameters[name]:
+			return _fail("%s needs its %s, e.g. %s(...)" % [name, ", ".join(game.rules.condition_parameters[name]), name])
 		return evaluate(game.tree_of(game.rules.conditions[name]))
 	var value: Variant = game.value_of(name)
 	if value == null and name in game.local_names and not runner.has_local(name):
@@ -70,12 +78,30 @@ func _name(name: String) -> Variant:
 
 
 func _assign(node: Dictionary) -> Variant:
+	var name: String = node.name
+	if node.has("player"):
+		name = _numbered_name(name, evaluate(node.player))
 	var value: Variant = evaluate(node.value)
-	if node.op != "=":
-		value = operate(node.op.left(1), _name(node.name), value)
+	if node.op != "=" and not stopped:
+		value = operate(node.op.left(1), game.value_of(name) if node.has("player") else _name(name), value)
 	if not stopped:
-		game.assign(node.name, value)
+		game.assign(name, value)
 	return null
+
+
+## hand[2], score[dealer]: that player's (or team's) own zone or variable.
+func _numbered(name: String, number: Variant) -> Variant:
+	var numbered := _numbered_name(name, number)
+	return null if stopped else game.value_of(numbered)
+
+
+func _numbered_name(name: String, number: Variant) -> String:
+	if stopped:
+		return ""
+	if not _is_number(number) or game.numbered_name(name, int(number)).is_empty():
+		_fail("%s[%s]: there's no %s %s" % [name, Game.format_value(number), "team" if name in game.per_team_names else "player", Game.format_value(number)])
+		return ""
+	return game.numbered_name(name, int(number))
 
 
 func _binary(node: Dictionary) -> Variant:
@@ -102,6 +128,8 @@ func _unary(op: String, value: Variant) -> Variant:
 func operate(op: String, left: Variant, right: Variant) -> Variant:
 	if stopped:
 		return null
+	if op in ["in", "not in"]:
+		return _contains(op, left, right)
 	if op in ["==", "!="]:
 		if not _comparable(left, right):
 			return _fail("can't compare %s with %s%s" % [describe(left), describe(right), _quote_hint(left, right)])
@@ -127,6 +155,20 @@ func operate(op: String, left: Variant, right: Variant) -> Variant:
 				return _compare(op, left, right)
 	var hint := _quote_hint(left, right) if op in StepParser.COMPARISONS else ""
 	return _fail("can't work out %s %s %s%s" % [describe(left), op, describe(right), hint])
+
+
+## "x in list": an item of a list, a card in a zone, or text inside text.
+func _contains(op: String, item: Variant, container: Variant) -> Variant:
+	var found: bool
+	if container is Array:
+		found = container.any(func(each: Variant) -> bool: return _comparable(each, item) and each == item)
+	elif container is Zone:
+		found = item is Card and item in container.cards
+	elif container is String and item is String:
+		found = item in container
+	else:
+		return _fail("can't look for %s in %s" % [describe(item), describe(container)])
+	return found == (op == "in")
 
 
 static func _divide(op: String, left: Variant, right: Variant) -> Variant:
@@ -205,6 +247,8 @@ func _call(name: String, arg_nodes: Array) -> Variant:
 		return null
 	if name in MATH_ARGUMENTS:
 		return _math(name, args)
+	if name in game.rules.conditions:
+		return _condition_call(name, args)
 	if name not in StepCompiler.building_blocks:
 		return _fail("unknown building block \"%s\"" % name)
 	var count_problem := StepCompiler.argument_count_problem(name, args.size())
@@ -246,9 +290,29 @@ static func _fits(value: Variant, parameter: Dictionary) -> bool:
 	return true
 
 
+## A condition with parameters, like points(cards), worked out with them set to the arguments.
+func _condition_call(name: String, args: Array) -> Variant:
+	var names: Array = game.rules.condition_parameters[name]
+	if args.size() != names.size():
+		return _fail("%s takes %d (%s), got %d" % [name, names.size(), ", ".join(names), args.size()])
+	if parameters.size() >= Game.MAX_CONDITION_DEPTH:
+		return _fail("%s called itself %d deep" % [name, Game.MAX_CONDITION_DEPTH])
+	var values := {}
+	for i in names.size():
+		values[names[i]] = args[i]
+	parameters.append(values)
+	var result: Variant = evaluate(game.tree_of(game.rules.conditions[name]))
+	parameters.pop_back()
+	return result
+
+
 func _math(name: String, args: Array) -> Variant:
 	if name == "int" and args.size() == 1 and args[0] is bool:
 		return int(args[0])
+	if name in ["min", "max"] and args.size() == 1 and args[0] is Array:
+		if args[0].is_empty():
+			return _fail("%s of an empty list" % name)
+		args = args[0]
 	if not args.all(_is_number):
 		return _fail("%s needs numbers, not %s" % [name, ", ".join(args.map(describe))])
 	match name:

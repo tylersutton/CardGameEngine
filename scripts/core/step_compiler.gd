@@ -124,6 +124,7 @@ func _check_teams() -> void:
 
 
 func _check_names_are_unique() -> void:
+	errors.append_array(rules.condition_errors)
 	var seen := {}
 	for name in game.input_names():
 		if name in seen:
@@ -344,6 +345,9 @@ func _learn_names() -> void:
 	known_names.clear()
 	for name in Array(game.input_names()) + rules.conditions.keys():
 		known_names[name] = true
+	for parameter_names: Array in rules.condition_parameters.values():
+		for name: String in parameter_names:
+			known_names[name] = true
 
 
 func _find_problems(node: Dictionary, text: String, place: int, problems: Array[String]) -> void:
@@ -352,6 +356,8 @@ func _find_problems(node: Dictionary, text: String, place: int, problems: Array[
 			if node.name not in known_names:
 				var problem := "unknown trigger \"%s\" (a card's on_ column names a trigger)" if text.strip_edges() == node.name else "unknown zone or variable \"%s\""
 				problems.append(problem % node.name)
+			elif node.name in rules.conditions and rules.condition_parameters[node.name]:
+				problems.append("%s needs its %s: %s(...)" % [node.name, ", ".join(rules.condition_parameters[node.name]), node.name])
 		"call":
 			var problem := _call_problem(node.name, node.args.size())
 			if problem:
@@ -363,6 +369,9 @@ func _find_problems(node: Dictionary, text: String, place: int, problems: Array[
 		"assign":
 			if place != STEP:
 				problems.append("= changes a variable, so it only works as a step of its own; to compare, use ==")
+			elif node.has("player"):
+				if not game.is_per_player(node.name) or game.numbered_name(node.name, 1) not in game.variables:
+					problems.append("%s[...] = only works for player (or team) variables, like score[2] = 0" % node.name)
 			elif game.aliases().get(node.name, node.name) not in game.variables and node.name not in game.local_names:
 				problems.append(_assign_problem(node.name))
 	for child in _children(node):
@@ -373,7 +382,7 @@ func _find_problems(node: Dictionary, text: String, place: int, problems: Array[
 ## Zones, conditions and the like can't be set, which _find_problems reports.
 func _learn_remembered_names(trees: Array) -> void:
 	for tree: Dictionary in trees:
-		var target: String = tree.name if tree.kind == "assign" else ""
+		var target: String = tree.name if tree.kind == "assign" and not tree.has("player") else ""
 		if target.is_empty() or target in game.local_names or game.aliases().get(target, target) in game.variables:
 			continue
 		if target not in game.input_names() and target not in rules.conditions and target not in building_blocks:
@@ -451,6 +460,13 @@ static func _children(node: Dictionary) -> Array:
 
 
 func _call_problem(name: String, given: int) -> String:
+	if name in rules.conditions:
+		var parameters: Array = rules.condition_parameters[name]
+		if parameters.is_empty():
+			return "%s is a condition without parameters: write it without ( )" % name
+		if given != parameters.size():
+			return "%s takes %d (%s), got %d" % [name, parameters.size(), ", ".join(parameters), given]
+		return ""
 	if name in StepEvaluator.MATH_ARGUMENTS:
 		var needed: int = StepEvaluator.MATH_ARGUMENTS[name]
 		if name in ["min", "max"] and given < needed:
@@ -464,6 +480,8 @@ func _call_problem(name: String, given: int) -> String:
 
 
 func _assign_problem(name: String) -> String:
+	if name in rules.constants:
+		return "\"%s\" is a constant, so = can't change it (make it a variable to change it)" % name
 	if name in known_names and game.value_of(name) is Zone:
 		return "\"%s\" is a zone, so = can't change it (move cards with move or draw)" % name
 	if name in known_names:
@@ -516,10 +534,11 @@ func _condition_path(name: String, path: Array) -> Array:
 	return []
 
 
+## The names a tree reads, and the names it calls (so a condition called with parameters counts).
 static func _names_in(node: Dictionary) -> Array:
 	if node.is_empty():
 		return []
-	var names := [node.name] if node.kind == "name" else []
+	var names := [node.name] if node.kind in ["name", "call"] else []
 	for child in _children(node):
 		names.append_array(_names_in(child))
 	return names

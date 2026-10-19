@@ -34,6 +34,12 @@ func _get(property: StringName) -> Variant:
 	return text.to_float() if "." in text else text.to_int()
 
 
+## A column's text, whatever the capitals ("kind" reads a "Kind" column), or missing if the card has no such column.
+func column(name: String, missing := "") -> String:
+	var found := _column_matching(name)
+	return data[found] if found else missing
+
+
 func _column_matching(property: String) -> String:
 	if property in data:
 		return property

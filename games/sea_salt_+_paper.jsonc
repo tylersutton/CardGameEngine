@@ -1,7 +1,7 @@
 {
 	// Every key is explained in README.md, under "Game file reference".
 	"title": "Sea Salt + Paper",
-	"description": "2 players. Draw two cards and keep one, or take the top of a discard pile; then play duos for their effects. (Ending the round and scoring aren't in yet.)",
+	"description": "2 players, one round. Draw two cards and keep one, or take the top of a discard pile; then play duos for their effects. With 7 points, Stop (most points wins) or call Last chance (everyone else gets one more turn, then you win if you still have the most).",
 	"players": 2,
 	"player_names": [
 		"You",
@@ -94,12 +94,58 @@
 		]
 	},
 	"variables": {
-		"extra_turn": false
+		"extra_turn": false,
+		"last_chance_caller": 0
+	},
+	// Points for a collection, by how many of it you have (0, 1, 2, ...).
+	"constants": {
+		"shell_points": [
+			0,
+			0,
+			2,
+			4,
+			6,
+			8,
+			10
+		],
+		"octopus_points": [
+			0,
+			0,
+			3,
+			6,
+			9,
+			12
+		],
+		"penguin_points": [
+			0,
+			1,
+			3,
+			5
+		],
+		"sailor_points": [
+			0,
+			0,
+			5
+		]
 	},
 	"conditions": {
 		"is_duo": "card.data.cardtype == 'Duo'",
 		"one_kind": "size(groups(choice, 'Kind')) == 1",
-		"shark_and_swimmer": "count(where(choice, 'Kind', 'Shark')) == 1 and count(where(choice, 'Kind', 'Swimmer')) == 1"
+		"shark_and_swimmer": "count(where(choice, 'Kind', 'Shark')) == 1 and count(where(choice, 'Kind', 'Swimmer')) == 1",
+		// How many of the cards are of a kind, e.g. kinds(hand, 'Crab').
+		"kinds(cards, kind)": "count(where(cards, 'Kind', kind))",
+		// Each pair of duo cards is worth 1, played or not.
+		"duo_points(cards)": "kinds(cards, 'Crab') / 2 + kinds(cards, 'Boat') / 2 + kinds(cards, 'Fish') / 2 + min(kinds(cards, 'Shark'), kinds(cards, 'Swimmer'))",
+		"collection_points(cards)": "lookup(shell_points, kinds(cards, 'Shell')) + lookup(octopus_points, kinds(cards, 'Octopus')) + lookup(penguin_points, kinds(cards, 'Penguin')) + lookup(sailor_points, kinds(cards, 'Anchor'))",
+		// A "3/Anchor" card is worth 3 for each Anchor, and so on.
+		"multiplier_points(cards)": "3 * kinds(cards, 'Anchor') * kinds(cards, '3/Anchor') + kinds(cards, 'Fish') * kinds(cards, '1/Fish') + 2 * kinds(cards, 'Penguin') * kinds(cards, '2/Penguin') + 2 * kinds(cards, 'Boat') * kinds(cards, '2/Boat')",
+		// Each mermaid is worth the cards of one color: the first your most common color, the second your next, ...
+		"mermaid_points(cards)": "sum(first(group_sizes(without(cards, where(cards, 'Kind', 'Mermaid')), 'Color'), kinds(cards, 'Mermaid')))",
+		"points(cards)": "duo_points(cards) + collection_points(cards) + multiplier_points(cards) + mermaid_points(cards)",
+		"my_points": "points([hand, played])"
+	},
+	"status": {
+		"your points": "points([hand[viewer()], played[viewer()]])"
 	},
 	"actions": {
 		// Click the deck: keep one of the two cards drawn, and discard the other onto an empty pile if there is one,
@@ -131,20 +177,49 @@
 			]
 		},
 		"End turn": [],
+		// With 7 points or more, end the round now: the most points wins.
+		"Stop": {
+			"when": "my_points >= 7 and last_chance_caller == 0",
+			"steps": [
+				"end_game(players_with_most('my_points'))"
+			]
+		},
+		// Or let everyone else have one more turn first (see the turn).
+		"Last chance": {
+			"when": "my_points >= 7 and last_chance_caller == 0",
+			"steps": [
+				"last_chance_caller = player"
+			]
+		},
 		"Sort hand": [
 			"sort(hand, ['Kind', 'Color'])"
 		]
 	},
-	// A turn: draw (two from the deck, or one from a discard pile), then play any duos, then End turn.
+	// A turn: draw (two from the deck, or one from a discard pile), then play any duos, then end it.
 	"turn": [
-		"offer(['Draw two', 'Take a discard'])",
-		"offer_until(['Play duo', 'End turn'], 'End turn')",
+		// Back round to whoever called Last chance: they win with the most points (a tie included).
 		{
-			"if": "extra_turn",
+			"if": "player == last_chance_caller",
+			"then": [
+				"end_game(player if my_points >= most('my_points') else players_with_most('my_points'))"
+			]
+		},
+		// An empty deck ends the round, and nobody scores.
+		{
+			"if": "count(deck) == 0",
+			"then": [
+				"end_game()"
+			]
+		},
+		"offer(['Draw two', 'Take a discard'])",
+		"ending = offer_until('Play duo', ['End turn', 'Stop', 'Last chance'])",
+		{
+			"if": "extra_turn and ending == 'End turn'",
 			"then": [
 				"extra_turn = false"
 			],
 			"else": [
+				"extra_turn = false",
 				"end_turn()"
 			]
 		}

@@ -21,6 +21,8 @@ const HIDDEN_CARD := "a hidden card"
 const CARD_EFFECT_SEPARATOR := ";"
 const LOOP_NUMBER_SUFFIX := "_number"
 const CHOOSE_PROMPT := "Choose"
+## How deep conditions with parameters may call each other (one calling itself would go on forever).
+const MAX_CONDITION_DEPTH := 50
 ## Ways to do an action other than its toolbar button.
 const DRAG_KEY := "drag"
 const CLICK_KEY := "click"
@@ -69,6 +71,10 @@ var offered: Array = []
 var offered_actions := {}
 ## Set by end_game(): no more turns, and nothing waits for an offer.
 var over := false
+## Who won, as given to end_game(...) (empty: nobody, or not over yet).
+var winners: Array = []
+## Players out of the game (knock_out): turns skip them.
+var knocked_out: Array = []
 var history: Array[Dictionary] = []
 var game_log := GameLog.new()
 var move_from: Zone
@@ -407,10 +413,63 @@ func _accept_offer(action_name: String) -> void:
 
 
 ## The game is over: no more turns, and offers give null straight away.
-func end_game() -> void:
+func end_game(game_winners: Array = []) -> void:
 	over = true
 	offered = []
-	log_line("[game over]")
+	winners = game_winners
+	log_line("[game over] " + result_text())
+
+
+## "Winner: You", "Winners: You and North", or "Game over" when end_game() named nobody.
+func result_text() -> String:
+	if winners.is_empty():
+		return "Game over"
+	var names := winners.map(func(winner: int) -> String: return seat_name(winner))
+	return ("Winner: " if winners.size() == 1 else "Winners: ") + " and ".join(names)
+
+
+func knock_out(players_out: Array) -> void:
+	for player: int in players_out:
+		if player not in knocked_out:
+			knocked_out.append(player)
+			log_line("  %s is out" % player_name(player))
+	aliases_by_player.clear()
+
+
+func bring_back(players_back: Array) -> void:
+	for player: int in players_back:
+		knocked_out.erase(player)
+	aliases_by_player.clear()
+
+
+func players_left() -> Array:
+	return range(1, rules.players + 1).filter(func(player: int) -> bool: return player not in knocked_out)
+
+
+## The player that many seats on from this one (back, if negative), skipping players knocked out.
+func seat_after(player: int, seats: int) -> int:
+	var left := players_left()
+	if left.is_empty():
+		return player
+	var step := 1 if seats >= 0 else -1
+	var seat := player
+	for i in absi(seats):
+		seat = posmod(seat - 1 + step, rules.players) + 1
+		while seat not in left:
+			seat = posmod(seat - 1 + step, rules.players) + 1
+	return seat
+
+
+## Each player's value of a player variable or condition, worked out as if it were their turn: for most(...),
+## players_with_most(...) and players_where(...).
+func player_values(name: String) -> Array:
+	var turn: Variant = variables.get(PLAYER_VARIABLE)
+	var values := []
+	for player in range(1, rules.players + 1):
+		variables[PLAYER_VARIABLE] = player
+		values.append(evaluate(name))
+	variables[PLAYER_VARIABLE] = turn
+	return values
 
 
 ## Whether turns should go on: the "turn" steps start again once nothing else is running, asked or being chosen.
@@ -675,8 +734,8 @@ func covered(zone: Zone) -> bool:
 
 
 func matching(cards: Array, condition: String) -> Array:
-	if condition not in rules.conditions:
-		report_failure("No condition named \"%s\" in \"conditions\"" % condition)
+	if condition not in rules.conditions or rules.condition_parameters[condition]:
+		report_failure("No condition named \"%s\" (without parameters) in \"conditions\"" % condition)
 		return []
 	return cards.filter(func(card: Card) -> bool: return holds(rules.conditions[condition], card))
 
@@ -686,7 +745,7 @@ func current_player() -> int:
 
 
 func next_player() -> int:
-	return current_player() % rules.players + 1
+	return seat_after(current_player(), 1)
 
 
 func team_of(player: int) -> int:
@@ -967,8 +1026,11 @@ func _destination_for(action_name: String, card: Card) -> Zone:
 	if card == null:
 		return null
 	var source := zone_of(card)
+	var drag_zones: Dictionary = rules.actions[action_name][DRAG_KEY]
+	if not _names(drag_zones.get("from"), source):
+		return null
 	for destination: Zone in zones.values():
-		if destination != source and action_name in _drag_actions_between(source, destination) \
+		if destination != source and _names(drag_zones.get("to"), destination) \
 				and _during_move(source, destination, func() -> bool: return holds(rules.actions[action_name].get("when", ""), card)):
 			return destination
 	return null
@@ -1122,6 +1184,19 @@ func viewer() -> int:
 	return humans[0] if humans.size() == 1 else current_player()
 
 
+## Whether name[n] means player n's (or team n's) zone or variable: hand[2], score[dealer].
+func is_per_player(name: String) -> bool:
+	return name in per_player_names or name in per_team_names
+
+
+## Player (or team) number's own zone or variable: the "<name>_<number>" one.
+func numbered_name(name: String, number: int) -> String:
+	var limit: int = rules.teams.size() if name in per_team_names else rules.players
+	if number < 1 or number > limit:
+		return ""
+	return "%s_%d" % [name, number]
+
+
 ## A step's "name = value": a game variable, or else a name the running steps remember.
 func assign(name: String, value: Variant) -> void:
 	if _resolve(name) in variables:
@@ -1199,7 +1274,7 @@ func _resolve(name: String) -> String:
 
 
 func input_names() -> PackedStringArray:
-	return PackedStringArray(zones.keys() + variables.keys() + aliases().keys() + zone_groups.keys() + _team_groups().keys() + local_names \
+	return PackedStringArray(zones.keys() + variables.keys() + aliases().keys() + zone_groups.keys() + _team_groups().keys() + local_names + rules.constants.keys() \
 		+ [CARD_VARIABLE, FROM_VARIABLE, TO_VARIABLE, CLICKED_ZONE_VARIABLE, CHOICE_VARIABLE, PLAYERS_VARIABLE])
 
 
@@ -1212,6 +1287,8 @@ func value_of(name: String) -> Variant:
 		return zones[resolved]
 	if resolved in variables:
 		return variables[resolved]
+	if name in rules.constants:
+		return rules.constants[name]
 	if name in local_names:
 		return runner.local(name) if runner.has_local(name) else null
 	match name:

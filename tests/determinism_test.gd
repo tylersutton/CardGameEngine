@@ -21,6 +21,7 @@ func _init() -> void:
 
 
 func _check_game(path: String) -> void:
+	var started_at := Time.get_ticks_msec()
 	var game := Game.new(path, SEED)
 	var copy := Game.new(path, SEED)
 	game.failed.connect(func(text: String) -> void: failures.append("%s: %s" % [path.get_file(), text]))
@@ -46,7 +47,7 @@ func _check_game(path: String) -> void:
 	var sent_record: Dictionary = JSON.parse_string(JSON.stringify(game.record()))
 	if Game.replay(sent_record).state_hash() != game.state_hash():
 		failures.append("%s: the replay (sent as JSON) ends differently" % path.get_file())
-	print("  %s: %d inputs, %d by bots" % [path.get_file(), game.inputs.size(), bot_moves])
+	print("  %s: %d inputs, %d by bots, %d ms" % [path.get_file(), game.inputs.size(), bot_moves, Time.get_ticks_msec() - started_at])
 
 
 ## A random legal move, or when there are none, a random toolbar button (like Hearts' "Collect trick").
@@ -56,7 +57,7 @@ func _random_move(game: Game, chooser: RandomNumberGenerator) -> bool:
 		game.apply_move(moves[chooser.randi_range(0, moves.size() - 1)])
 		return true
 	var buttons := game.rules.actions.keys().filter(func(action_name: String) -> bool:
-		return game.rules.actions[action_name].get("button", true) and game.can_perform(action_name))
+		return game.shows_button(action_name) and game.can_perform(action_name))
 	if buttons.is_empty():
 		return false
 	game.apply({type = "perform", action = buttons[chooser.randi_range(0, buttons.size() - 1)]})

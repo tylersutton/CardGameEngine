@@ -64,11 +64,7 @@
 		"pass_to": 1,
 		"lead": "",
 		"hearts_broken": false,
-		"tricks": 0,
-		"moon": 0,
-		"best": 0,
-		"best_score": 0,
-		"result": ""
+		"tricks": 0
 	},
 	"player_variables": {
 		"score": 0
@@ -79,11 +75,10 @@
 		"score_1",
 		"score_2",
 		"score_3",
-		"score_4",
-		"result"
+		"score_4"
 	],
 	"status": {
-		"your points this hand": "sum(zone('won', min(viewer(), 4)), 'points')",
+		"your points this hand": "sum(won[min(viewer(), 4)], 'points')",
 		"passing": "['no pass', 'left', 'across', 'right'][int(pass_to)]"
 	},
 	"bot": {
@@ -97,6 +92,7 @@
 	"conditions": {
 		"hearts_allowed": "lead != '' or card.data.suit != 'Hearts' or hearts_broken or count(where(hand, 'suit', 'Hearts')) == count(hand)",
 		"two_of_clubs_leads": "tricks > 0 or lead != '' or card.data.name == '2♣'",
+		"shot_the_moon": "sum(won, 'points') == 26",
 		"played_face_up": "sum(played, 'value') - sum(face_down(played), 'value')"
 	},
 	"actions": {
@@ -175,9 +171,7 @@
 			"shuffle(deck)",
 			"deal(deck, all_hand, 13)",
 			"phase = 'pass'",
-			"tricks = 0",
-			"lead = ''",
-			"hearts_broken = false",
+			"reset(['tricks', 'lead', 'hearts_broken'])",
 			"player = 1",
 			{
 				"if": "pass_to == 0",
@@ -203,7 +197,7 @@
 				"for": "player",
 				"in": "players",
 				"do": [
-					"move(played, zone('hand', next_player(pass_to)))"
+					"move(played, hand[next_player(pass_to)])"
 				]
 			},
 			"trigger('first_lead')"
@@ -213,63 +207,35 @@
 			"player = owner(top(where(all_hand, 'name', '2♣')))"
 		],
 		"score_hand": [
-			"moon = 0",
+			"moon_shooters = players_where('shot_the_moon')",
 			{
 				"for": "player",
 				"in": "players",
 				"do": [
 					{
-						"if": "sum(won, 'points') == 26",
-						"then": [
-							"moon = player"
-						]
-					}
-				]
-			},
-			{
-				"for": "player",
-				"in": "players",
-				"do": [
-					{
-						"if": "moon == 0",
+						"if": "size(moon_shooters) == 0",
 						"then": [
 							"score += sum(won, 'points')"
-						]
-					},
-					{
-						"if": "moon != 0 and moon != player",
-						"then": [
-							"score += 26"
+						],
+						"else": [
+							{
+								"if": "player not in moon_shooters",
+								"then": [
+									"score += 26"
+								]
+							}
 						]
 					}
 				]
 			},
 			"phase = 'hand over'",
 			{
-				"if": "max(max(score_1, score_2), max(score_3, score_4)) >= 100",
+				"if": "most('score') >= 100",
 				"then": [
-					"trigger('game_over')"
+					"phase = 'over'",
+					"end_game(players_with_least('score'))"
 				]
 			}
-		],
-		"game_over": [
-			"phase = 'over'",
-			"best = 1",
-			"best_score = score_1",
-			{
-				"for": "player",
-				"in": "players",
-				"do": [
-					{
-						"if": "score < best_score",
-						"then": [
-							"best = player",
-							"best_score = score"
-						]
-					}
-				]
-			},
-			"result = 'Winner: ' + name_of(int(best))"
 		]
 	},
 	"card_face": {

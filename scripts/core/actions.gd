@@ -122,19 +122,93 @@ func offer(action_names: Variant) -> Variant:
 	return _wait_for_offer(_names_of(action_names))
 
 
-## Offers the actions again and again until the player does the last one, e.g.
-## offer_until(['Play duo', 'End turn'], 'End turn'). It stops early if none of them is possible.
-func offer_until(action_names: Variant, last: String) -> void:
-	var names := _names_of(action_names)
+## Offers the repeated actions and the ending ones together, again and again until the player does an ending
+## one, and gives its name: offer_until('Play duo', 'End turn'), or several ways to end,
+## offer_until('Play duo', ['End turn', 'Stop']). It stops early (null) if none of them is possible.
+func offer_until(repeated: Variant, ending: Variant) -> Variant:
+	var enders := _names_of(ending)
+	var names := _names_of(repeated) + enders
 	while true:
 		var done: Variant = _wait_for_offer(names)
-		if done == null or done == last:
-			return
+		if done == null or done in enders:
+			return done
+	return null
 
 
-## No more turns: the "turn" steps don't start again, and offers give null straight away.
-func end_game() -> void:
-	game.end_game()
+## The game is over: no more turns, offers give null straight away, and the winners (a player, a list of them
+## for a tie, or none) are announced, e.g. end_game(players_with_most('score')).
+func end_game(winners: Variant = null) -> void:
+	game.end_game(_players(winners))
+
+
+## Players out of the game: turns, next_player() and opponent_ skip them. A number or a list.
+func knock_out(players: Variant) -> void:
+	game.knock_out(_players(players))
+
+
+## Players back in the game after knock_out (e.g. everyone, for a new hand: bring_back(players)).
+func bring_back(players: Variant) -> void:
+	game.bring_back(_players(players))
+
+
+## The players not knocked out, e.g. end_game(players_left()) when one is left.
+func players_left() -> Array:
+	return game.players_left()
+
+
+## The highest of a player variable or condition across the players, each worked out as if it were their turn,
+## e.g. most('score') >= 100.
+func most(name: String) -> Variant:
+	return _numbers(game.player_values(name)).max()
+
+
+func least(name: String) -> Variant:
+	return _numbers(game.player_values(name)).min()
+
+
+## The players with the highest value (more than one for a tie), e.g. end_game(players_with_most('score')).
+func players_with_most(name: String) -> Array:
+	return _players_with(name, most(name))
+
+
+func players_with_least(name: String) -> Array:
+	return _players_with(name, least(name))
+
+
+## The players for whom a player variable or condition is true, e.g. players_where('has_cards').
+func players_where(name: String) -> Array:
+	var values := game.player_values(name)
+	return range(1, values.size() + 1).filter(func(player: int) -> bool: return StepEvaluator.is_true(values[player - 1]))
+
+
+## Variables back to their starting values from the game file, e.g. reset(['passes', 'taken', 'lead']). A player
+## or team variable is reset for everyone.
+func reset(names: Variant) -> void:
+	for name: String in names if names is Array else [names]:
+		if name in game.rules.variables:
+			game.set_variable(name, game.rules.variables[name].duplicate(true) if game.rules.variables[name] is Array else game.rules.variables[name])
+		elif name in game.rules.player_variables or name in game.rules.team_variables:
+			var start: Variant = game.rules.player_variables.get(name, game.rules.team_variables.get(name))
+			var count: int = game.rules.players if name in game.rules.player_variables else game.rules.teams.size()
+			for number in range(1, count + 1):
+				game.set_variable("%s_%d" % [name, number], start.duplicate(true) if start is Array else start)
+		else:
+			game.report_failure("reset: no variable \"%s\"" % name)
+
+
+func _players_with(name: String, value: Variant) -> Array:
+	var values := game.player_values(name)
+	return range(1, values.size() + 1).filter(func(player: int) -> bool: return values[player - 1] == value)
+
+
+func _numbers(values: Array) -> Array:
+	return values.map(func(value: Variant) -> Variant: return float(value) if value is bool else value)
+
+
+static func _players(players: Variant) -> Array:
+	if players == null:
+		return []
+	return (players if players is Array else [players]).map(func(player: Variant) -> int: return int(player))
 
 
 func _wait_for_offer(names: Array) -> Variant:
@@ -163,15 +237,9 @@ func _wait_for_choice(options: Variant, amount: int, exactly: bool, single: bool
 	return game.runner.answer_or_wait({options = offered, amount = mini(amount, offered.size()), exact = exactly, prompt = prompt})
 
 
+## The player that many seats after the current one (before, if negative), skipping players knocked out.
 func next_player(seats: int = 1) -> int:
-	return posmod(game.current_player() - 1 + seats, game.rules.players) + 1
-
-
-func variable_of(name: String, player: int) -> Variant:
-	var variable := "%s_%d" % [name, player]
-	if variable not in game.variables:
-		game.report_failure("No player variable \"%s\"" % variable)
-	return game.variables.get(variable)
+	return game.seat_after(game.current_player(), seats)
 
 
 func name_of(player: int) -> String:
@@ -220,19 +288,24 @@ func top(cards: Variant) -> Card:
 	return card_list.back() if card_list else null
 
 
-func sum(cards: Variant, column: String) -> float:
+## The total of a column over cards, or of a list of numbers: sum(hand, 'points'), sum([1, 2, 3]).
+func sum(items: Variant, column: String = "") -> float:
 	var total := 0.0
-	for card: Card in cards_in(cards):
+	if column.is_empty() and items is Array:
+		for item: Variant in items:
+			total += float(item) if item is int or item is float else 0.0
+		return total
+	for card: Card in cards_in(items):
 		total += number(card, column)
 	return total
 
 
 func number(card: Card, column: String) -> float:
-	return card.data.get(column, "0").to_float() if card else 0.0
+	return card.column(column, "0").to_float() if card else 0.0
 
 
 func text(card: Card, column: String) -> String:
-	return card.data.get(column, "") if card else ""
+	return card.column(column) if card else ""
 
 
 func highest(cards: Variant, column: String) -> Card:
@@ -299,12 +372,39 @@ func without(cards: Variant, removed: Variant) -> Array:
 
 
 func where(cards: Variant, column: String, value: Variant) -> Array:
-	return cards_in(cards).filter(func(card: Card) -> bool: return card.data.get(column) == Game.format_value(value))
+	return cards_in(cards).filter(func(card: Card) -> bool: return card.column(column) == Game.format_value(value))
 
 
-func last(cards: Variant, amount: int) -> Array:
-	var card_list := cards_in(cards)
-	return card_list.slice(maxi(card_list.size() - amount, 0))
+## The last amount items of a zone (its top cards) or of a list.
+func last(items: Variant, amount: int) -> Array:
+	var list := _list_of(items)
+	return list.slice(maxi(list.size() - amount, 0))
+
+
+## The first amount items of a zone (its bottom cards) or of a list, e.g. first(group_sizes(hand, 'color'), 2).
+func first(items: Variant, amount: int) -> Array:
+	return _list_of(items).slice(0, maxi(amount, 0))
+
+
+## A list's item at that position (from 0), or its first or last item when the position is outside it: a table
+## of points, e.g. lookup([0, 2, 4, 6, 8, 10], count(shells)).
+func lookup(list: Array, position: int) -> Variant:
+	if list.is_empty():
+		return null
+	return list[clampi(position, 0, list.size() - 1)]
+
+
+## How many cards share each value of a column, biggest first: [3, 2, 1] for three of one color, two of another
+## and one of a third, e.g. first(group_sizes(hand, 'color'), 1) for the most of one color.
+func group_sizes(cards: Variant, column: String) -> Array:
+	return groups(cards, column).map(func(group: Array) -> int: return group.size())
+
+
+## Cards stay cards (a zone gives its cards); any other list is kept as it is.
+static func _list_of(items: Variant) -> Array:
+	if items is Array and items.any(func(item: Variant) -> bool: return item is not Card and item is not Zone and item is not Array):
+		return items
+	return cards_in(items)
 
 
 func size(list: Array) -> int:

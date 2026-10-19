@@ -15,7 +15,7 @@ func _init(game_to_play: Game) -> void:
 
 
 func take_input() -> bool:
-	if not game.is_bot_turn():
+	if not game.is_bot_turn() or game.over:
 		return false
 	if game.current_player() != turn_player or game.history.size() != history_after_last_input:
 		turn_player = game.current_player()

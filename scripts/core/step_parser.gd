@@ -5,9 +5,9 @@ extends RefCounted
 ##
 ## Node kinds: value (a number, text, true, false or null), list, name, call, member (card.suit), index (list[0]),
 ## unary (- and not), binary (+, ==, and, ...), choose (x if condition else y) and assign (=, += and -=, only as
-## a whole step).
+## a whole step; with "player" for score[2] = 0, a player's own variable).
 
-const KEYWORDS := ["and", "or", "not", "if", "else", "true", "false", "null"]
+const KEYWORDS := ["and", "or", "not", "in", "if", "else", "true", "false", "null"]
 const LITERALS := {"true": true, "false": false, "null": null}
 const COMPARISONS := ["==", "!=", "<", ">", "<=", ">="]
 const ASSIGNMENTS := ["=", "+=", "-="]
@@ -105,6 +105,8 @@ func _assignment_or_expression() -> Dictionary:
 	if error or _peek() not in ASSIGNMENTS:
 		return target
 	var op: String = _take()
+	if target.kind == "index" and target.target.kind == "name":
+		return {kind = "assign", name = target.target.name, player = target.index, op = op, value = _expression()}
 	if target.kind != "name":
 		_fail("only a variable can be changed with %s" % op)
 		return {}
@@ -147,10 +149,14 @@ func _not() -> Dictionary:
 	return _comparison()
 
 
+## Comparisons, including "x in list" and "x not in list".
 func _comparison() -> Dictionary:
 	var result := _sum()
-	while not error and _peek() in COMPARISONS:
+	while not error and (_peek() in COMPARISONS or _peek() == "in" or _peek() == "not" and _peek_after() == "in"):
 		var op: String = _take()
+		if op == "not":
+			_take()
+			op = "not in"
 		result = {kind = "binary", op = op, left = result, right = _sum()}
 	return result
 
@@ -248,6 +254,13 @@ func _peek() -> String:
 		return END
 	var token: Dictionary = tokens[position]
 	return token.text if token.has("text") and token.kind != "name" else token.kind
+
+
+func _peek_after() -> String:
+	position += 1
+	var after := _peek()
+	position -= 1
+	return after
 
 
 func _take() -> String:
