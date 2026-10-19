@@ -492,7 +492,7 @@ func _add_name_table(key: String, readouts := false) -> void:
 			value_box.committed.connect(func(text: String) -> void: change([key, name], text))
 		else:
 			var line := LineEdit.new()
-			line.text = GameDocument.format(document.get_value([key, name]))
+			line.text = GameDocument.one_line(document.get_value([key, name]))
 			var send := func(_text: Variant = null) -> void: change([key, name], _value_from_text(line.text))
 			line.text_submitted.connect(send)
 			line.focus_exited.connect(send)

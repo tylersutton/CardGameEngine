@@ -85,7 +85,8 @@ func _create_game(title: String, players: int, deck: String) -> void:
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(template.format({
 		title = title if title else "My Game", players = players, deck = deck,
-		player_names = JSON.stringify(SEAT_NAMES.slice(0, players)), bot_players = JSON.stringify(range(2, players + 1)),
+		player_names = GameDocument.format(SEAT_NAMES.slice(0, players), "\t"),
+		bot_players = GameDocument.format(range(2, players + 1), "\t\t"),
 	}))
 	file.close()
 	_open_editor(path)

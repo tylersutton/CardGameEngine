@@ -2,25 +2,136 @@
 	"title": "Cribbage",
 	"description": "Two players, you against a bot. Discard two cards to the dealer's crib, peg to 31, then count your hand. First to 121 wins.",
 	"players": 2,
-	"player_names": ["You", "Opponent"],
-	"seats": [[0.1, 0.72], [0.1, 0.28]],
+	"player_names": [
+		"You",
+		"Opponent"
+	],
+	"seats": [
+		[
+			0.1,
+			0.72
+		],
+		[
+			0.1,
+			0.28
+		]
+	],
 	"zones": {
-		"deck": { "label": "Deck", "layout": "pile", "face": "down", "anchor": [0.08, 0.5], "cards": "res://decks/standard_deck.csv", "columns": { "order": "card.value", "value": "min(card.value, 10)" } },
-		"starter": { "label": "Starter", "layout": "pile", "anchor": [0.19, 0.5] },
-		"pegging": { "label": "Play to 31", "layout": "row", "width": 0.4, "anchor": [0.5, 0.5] },
-		"pegged": { "label": "Played", "layout": "pile", "face": "down", "anchor": [0.81, 0.5] },
-		"crib": { "label": "Crib", "layout": "pile", "face": "down", "anchor": [0.92, 0.5] },
-		"shown": { "label": "Counted", "per_player": true, "layout": "row", "width": 0.3, "anchors": [[0.78, 0.85], [0.78, 0.15]] },
-		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchors": [[0.4, 0.85], [0.4, 0.15]], "on_click": ["try_move(card, pegging)"] }
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.08,
+				0.5
+			],
+			"cards": "res://decks/standard_deck.csv",
+			"columns": {
+				"order": "card.value",
+				"value": "min(card.value, 10)"
+			}
+		},
+		"starter": {
+			"label": "Starter",
+			"layout": "pile",
+			"anchor": [
+				0.19,
+				0.5
+			]
+		},
+		"pegging": {
+			"label": "Play to 31",
+			"layout": "row",
+			"width": 0.4,
+			"anchor": [
+				0.5,
+				0.5
+			]
+		},
+		"pegged": {
+			"label": "Played",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.81,
+				0.5
+			]
+		},
+		"crib": {
+			"label": "Crib",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.92,
+				0.5
+			]
+		},
+		"shown": {
+			"label": "Counted",
+			"per_player": true,
+			"layout": "row",
+			"width": 0.3,
+			"anchors": [
+				[
+					0.78,
+					0.85
+				],
+				[
+					0.78,
+					0.15
+				]
+			]
+		},
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchors": [
+				[
+					0.4,
+					0.85
+				],
+				[
+					0.4,
+					0.15
+				]
+			],
+			"on_click": [
+				"try_move(card, pegging)"
+			]
+		}
 	},
 	"variables": {
-		"phase": "discard", "dealer": 2, "discarded": 0, "total": 0, "counted": 0,
-		"points": 0, "pair_points": 0, "run_points": 0, "result": ""
+		"phase": "discard",
+		"dealer": 2,
+		"discarded": 0,
+		"total": 0,
+		"counted": 0,
+		"points": 0,
+		"pair_points": 0,
+		"run_points": 0,
+		"result": ""
 	},
-	"player_variables": { "score": 0, "kept": [] },
-	"show_variables": ["phase", "total", "points", "result"],
-	"status": { "scores": "'%s %d, %s %d' % [name_of(1), score_1, name_of(2), score_2]", "dealer": "name_of(int(dealer))" },
-	"bot": { "players": [2], "prefer": "score - opponent_score" },
+	"player_variables": {
+		"score": 0,
+		"kept": []
+	},
+	"show_variables": [
+		"phase",
+		"total",
+		"points",
+		"result"
+	],
+	"status": {
+		"scores": "'%s %d, %s %d' % [name_of(1), score_1, name_of(2), score_2]",
+		"dealer": "name_of(int(dealer))"
+	},
+	"bot": {
+		"players": [
+			2
+		],
+		"prefer": "score - opponent_score"
+	},
 	"conditions": {
 		"playable": "number(card, 'value') <= 31 - total",
 		"with_starter": "[shown, starter]",
@@ -34,65 +145,160 @@
 	},
 	"moves": [
 		{
-			"from": "hand", "to": "pegging",
-			"phase": "pegging", "when": "playable",
+			"from": "hand",
+			"to": "pegging",
+			"phase": "pegging",
+			"when": "playable",
 			"then": [
 				"add('total', number(card, 'value'))",
 				"assign('points', 0)",
-				{ "if": "total == 15 or total == 31", "then": ["assign('points', 2)"] },
+				{
+					"if": "total == 15 or total == 31",
+					"then": [
+						"assign('points', 2)"
+					]
+				},
 				"assign('pair_points', 0)",
-				{ "for": "length", "in": "numbers(2, min(4, count(pegging)))", "do": [
-					{ "if": "size(groups(last(pegging, length), 'rank')) == 1", "then": ["assign('pair_points', length * (length - 1))"] }
-				] },
+				{
+					"for": "length",
+					"in": "numbers(2, min(4, count(pegging)))",
+					"do": [
+						{
+							"if": "size(groups(last(pegging, length), 'rank')) == 1",
+							"then": [
+								"assign('pair_points', length * (length - 1))"
+							]
+						}
+					]
+				},
 				"assign('run_points', 0)",
-				{ "for": "length", "in": "numbers(3, count(pegging))", "do": [
-					{ "if": "size(runs(last(pegging, length), 'order', length)) > 0", "then": ["assign('run_points', length)"] }
-				] },
+				{
+					"for": "length",
+					"in": "numbers(3, count(pegging))",
+					"do": [
+						{
+							"if": "size(runs(last(pegging, length), 'order', length)) > 0",
+							"then": [
+								"assign('run_points', length)"
+							]
+						}
+					]
+				},
 				"add('points', pair_points + run_points)",
 				"add('score', points)",
 				"trigger('check_win')",
-				{ "if": "count(all_hand) == 0", "then": [
-					{ "if": "total != 31", "then": ["add('score', 1)", "trigger('check_win')"] },
-					"trigger('show')"
-				], "else": [
-					{ "if": "count(matching(opponent_hand, 'playable')) > 0", "then": ["end_turn()"], "else": [
-						{ "if": "count(matching(hand, 'playable')) == 0", "then": [
-							{ "if": "total != 31", "then": ["add('score', 1)", "trigger('check_win')"] },
-							"move(pegging, pegged)",
-							"assign('total', 0)",
-							{ "if": "count(opponent_hand) > 0", "then": ["end_turn()"] }
-						] }
-					] }
-				] }
+				{
+					"if": "count(all_hand) == 0",
+					"then": [
+						{
+							"if": "total != 31",
+							"then": [
+								"add('score', 1)",
+								"trigger('check_win')"
+							]
+						},
+						"trigger('show')"
+					],
+					"else": [
+						{
+							"if": "count(matching(opponent_hand, 'playable')) > 0",
+							"then": [
+								"end_turn()"
+							],
+							"else": [
+								{
+									"if": "count(matching(hand, 'playable')) == 0",
+									"then": [
+										{
+											"if": "total != 31",
+											"then": [
+												"add('score', 1)",
+												"trigger('check_win')"
+											]
+										},
+										"move(pegging, pegged)",
+										"assign('total', 0)",
+										{
+											"if": "count(opponent_hand) > 0",
+											"then": [
+												"end_turn()"
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
 			]
 		}
 	],
 	"actions": {
 		"Discard to crib": {
-			"button": false, "choose": "hand", "pick": 2, "prefer": "kept_points",
+			"button": false,
+			"choose": "hand",
+			"pick": 2,
+			"prefer": "kept_points",
 			"steps": [
 				"move(choice, crib)",
 				"add('discarded', 1)",
-				{ "if": "discarded == 2", "then": ["trigger('cut')"] }
+				{
+					"if": "discarded == 2",
+					"then": [
+						"trigger('cut')"
+					]
+				}
 			]
 		},
 		"Count hand": {
-			"phase": "show", "human_only": true,
+			"phase": "show",
+			"human_only": true,
 			"steps": [
-				{ "if": "counting_crib", "then": ["move(shown, deck)", "move(crib, shown)"], "else": ["move(kept, shown)"] },
+				{
+					"if": "counting_crib",
+					"then": [
+						"move(shown, deck)",
+						"move(crib, shown)"
+					],
+					"else": [
+						"move(kept, shown)"
+					]
+				},
 				"assign('points', hand_points)",
 				"add('score', points)",
 				"add('counted', 1)",
 				"trigger('check_win')",
-				{ "if": "counted == 1", "then": ["end_turn()"] },
-				{ "if": "counted == 3 and phase != 'over'", "then": ["assign('phase', 'hand over')"] }
+				{
+					"if": "counted == 1",
+					"then": [
+						"end_turn()"
+					]
+				},
+				{
+					"if": "counted == 3 and phase != 'over'",
+					"then": [
+						"assign('phase', 'hand over')"
+					]
+				}
 			]
 		},
-		"Next hand": { "phase": "hand over", "human_only": true, "steps": ["trigger('deal')"] }
+		"Next hand": {
+			"phase": "hand over",
+			"human_only": true,
+			"steps": [
+				"trigger('deal')"
+			]
+		}
 	},
 	"triggers": {
 		"start": [
-			{ "for": "player", "in": "players", "do": ["sort(hand, ['order', 'suit'])"] },
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					"sort(hand, ['order', 'suit'])"
+				]
+			},
 			"trigger('deal')"
 		],
 		"deal": [
@@ -110,24 +316,68 @@
 		],
 		"cut": [
 			"move(top(deck), starter)",
-			{ "if": "text(top(starter), 'rank') == 'J'", "then": [
-				{ "for": "player", "in": "[dealer]", "do": ["add('score', 2)"] },
-				"trigger('check_win')"
-			] },
-			{ "for": "player", "in": "players", "do": ["assign('kept', all(hand))"] },
-			{ "if": "phase != 'over'", "then": ["assign('phase', 'pegging')"] }
+			{
+				"if": "text(top(starter), 'rank') == 'J'",
+				"then": [
+					{
+						"for": "player",
+						"in": "[dealer]",
+						"do": [
+							"add('score', 2)"
+						]
+					},
+					"trigger('check_win')"
+				]
+			},
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					"assign('kept', all(hand))"
+				]
+			},
+			{
+				"if": "phase != 'over'",
+				"then": [
+					"assign('phase', 'pegging')"
+				]
+			}
 		],
 		"show": [
 			"move(pegging, pegged)",
 			"assign('total', 0)",
-			{ "if": "phase != 'over'", "then": ["assign('phase', 'show')"] },
+			{
+				"if": "phase != 'over'",
+				"then": [
+					"assign('phase', 'show')"
+				]
+			},
 			"assign('player', dealer)",
 			"assign('player', next_player())"
 		],
 		"check_win": [
-			{ "if": "phase != 'over' and score_1 >= 121", "then": ["assign('result', 'Winner: ' + name_of(1))", "assign('phase', 'over')"] },
-			{ "if": "phase != 'over' and score_2 >= 121", "then": ["assign('result', 'Winner: ' + name_of(2))", "assign('phase', 'over')"] }
+			{
+				"if": "phase != 'over' and score_1 >= 121",
+				"then": [
+					"assign('result', 'Winner: ' + name_of(1))",
+					"assign('phase', 'over')"
+				]
+			},
+			{
+				"if": "phase != 'over' and score_2 >= 121",
+				"then": [
+					"assign('result', 'Winner: ' + name_of(2))",
+					"assign('phase', 'over')"
+				]
+			}
 		]
 	},
-	"card_face": { "corner": "name", "title": "name", "body": ["suit"], "color": "color" }
+	"card_face": {
+		"corner": "name",
+		"title": "name",
+		"body": [
+			"suit"
+		],
+		"color": "color"
+	}
 }

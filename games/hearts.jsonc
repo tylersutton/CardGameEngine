@@ -2,26 +2,99 @@
 	"title": "Hearts",
 	"description": "Four players, you against three bots. Pass three cards (left, right, across, then keep), follow suit, and avoid hearts and the queen of spades. Take every point card to shoot the moon. The game ends when someone reaches 100; lowest score wins.",
 	"players": 4,
-	"player_names": ["You", "West", "North", "East"],
-	"seats": [[0.215, 0.86]],
+	"player_names": [
+		"You",
+		"West",
+		"North",
+		"East"
+	],
+	"seats": [
+		[
+			0.215,
+			0.86
+		]
+	],
 	"zones": {
-		"deck": { "outline": false, "layout": "pile", "face": "down", "anchor": [0.5, 0.5], "cards": "res://decks/standard_deck.csv",
-			"columns": { "value": "either(card.rank == 'A', 14, card.value)", "points": "either(card.name == 'Q♠', 13, int(card.suit == 'Hearts'))" } },
-		"hand": {
-			"per_player": true, "layout": "fan", "face": "private", "width": 0.45,
-			"anchor": [0.5, 0.86]
+		"deck": {
+			"outline": false,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"cards": "res://decks/standard_deck.csv",
+			"columns": {
+				"value": "either(card.rank == 'A', 14, card.value)",
+				"points": "either(card.name == 'Q♠', 13, int(card.suit == 'Hearts'))"
+			}
 		},
-		"played": { "per_player": true, "layout": "pile", "anchor": [0.5, 0.62] },
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"width": 0.45,
+			"anchor": [
+				0.5,
+				0.86
+			]
+		},
+		"played": {
+			"per_player": true,
+			"layout": "pile",
+			"anchor": [
+				0.5,
+				0.62
+			]
+		},
 		"won": {
-			"label": "Tricks", "per_player": true, "layout": "pile", "face": "down",
-			"anchor": [0.787, 0.86]
+			"label": "Tricks",
+			"per_player": true,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.787,
+				0.86
+			]
 		}
 	},
-	"variables": { "phase": "pass", "hand_number": 0, "pass_to": 1, "passed": 0, "lead": "", "hearts_broken": false, "tricks": 0, "moon": 0, "best": 0, "best_score": 0, "result": "" },
-	"player_variables": { "score": 0 },
-	"show_variables": ["phase", "hearts_broken", "score_1", "score_2", "score_3", "score_4", "result"],
-	"status": { "your points this hand": "sum(zone('won', min(viewer(), 4)), 'points')", "passing": "['no pass', 'left', 'across', 'right'][int(pass_to)]" },
-	"bot": { "players": [2, 3, 4], "prefer": "-sum(hand, 'value') - 2 * played_face_up - 10 * sum(won, 'points')" },
+	"variables": {
+		"phase": "pass",
+		"hand_number": 0,
+		"pass_to": 1,
+		"passed": 0,
+		"lead": "",
+		"hearts_broken": false,
+		"tricks": 0,
+		"moon": 0,
+		"best": 0,
+		"best_score": 0,
+		"result": ""
+	},
+	"player_variables": {
+		"score": 0
+	},
+	"show_variables": [
+		"phase",
+		"hearts_broken",
+		"score_1",
+		"score_2",
+		"score_3",
+		"score_4",
+		"result"
+	],
+	"status": {
+		"your points this hand": "sum(zone('won', min(viewer(), 4)), 'points')",
+		"passing": "['no pass', 'left', 'across', 'right'][int(pass_to)]"
+	},
+	"bot": {
+		"players": [
+			2,
+			3,
+			4
+		],
+		"prefer": "-sum(hand, 'value') - 2 * played_face_up - 10 * sum(won, 'points')"
+	},
 	"conditions": {
 		"hearts_allowed": "lead != '' or card.data.suit != 'Hearts' or hearts_broken or count(where(hand, 'suit', 'Hearts')) == count(hand)",
 		"two_of_clubs_leads": "tricks > 0 or lead != '' or card.data.name == '2♣'",
@@ -29,40 +102,91 @@
 	},
 	"moves": [
 		{
-			"from": "hand", "to": "played",
-			"phase": "play", "when": "follows_suit(card, hand, lead) and hearts_allowed and two_of_clubs_leads",
+			"from": "hand",
+			"to": "played",
+			"phase": "play",
+			"when": "follows_suit(card, hand, lead) and hearts_allowed and two_of_clubs_leads",
 			"then": [
-				{ "if": "lead == ''", "then": ["assign('lead', card.data.suit)"] },
-				{ "if": "card.data.suit == 'Hearts'", "then": ["assign('hearts_broken', true)"] },
-				{ "if": "count(all_played) == 4", "then": ["assign('phase', 'trick done')", "assign('player', owner(trick_winner(all_played, lead)))"], "else": ["end_turn()"] }
+				{
+					"if": "lead == ''",
+					"then": [
+						"assign('lead', card.data.suit)"
+					]
+				},
+				{
+					"if": "card.data.suit == 'Hearts'",
+					"then": [
+						"assign('hearts_broken', true)"
+					]
+				},
+				{
+					"if": "count(all_played) == 4",
+					"then": [
+						"assign('phase', 'trick done')",
+						"assign('player', owner(trick_winner(all_played, lead)))"
+					],
+					"else": [
+						"end_turn()"
+					]
+				}
 			]
 		}
 	],
 	"actions": {
 		"Pass 3": {
 			"button": false,
-			"choose": "hand", "pick": 3,
+			"choose": "hand",
+			"pick": 3,
 			"steps": [
 				"move(choice, played)",
 				"flip(choice)",
 				"add('passed', 1)",
-				{ "if": "passed == 4", "then": ["trigger('exchange')"], "else": ["end_turn()"] }
+				{
+					"if": "passed == 4",
+					"then": [
+						"trigger('exchange')"
+					],
+					"else": [
+						"end_turn()"
+					]
+				}
 			]
 		},
 		"Collect trick": {
-			"phase": "trick done", "human_only": true,
+			"phase": "trick done",
+			"human_only": true,
 			"steps": [
 				"move(all_played, won)",
 				"assign('lead', '')",
 				"add('tricks', 1)",
-				{ "if": "count(all_hand) == 0", "then": ["trigger('score_hand')"], "else": ["assign('phase', 'play')"] }
+				{
+					"if": "count(all_hand) == 0",
+					"then": [
+						"trigger('score_hand')"
+					],
+					"else": [
+						"assign('phase', 'play')"
+					]
+				}
 			]
 		},
-		"Next hand": { "phase": "hand over", "human_only": true, "steps": ["trigger('deal')"] }
+		"Next hand": {
+			"phase": "hand over",
+			"human_only": true,
+			"steps": [
+				"trigger('deal')"
+			]
+		}
 	},
 	"triggers": {
 		"start": [
-			{ "for": "player", "in": "players", "do": ["sort(hand, ['suit', 'value'])"] },
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					"sort(hand, ['suit', 'value'])"
+				]
+			},
 			"trigger('deal')"
 		],
 		"deal": [
@@ -77,11 +201,32 @@
 			"assign('lead', '')",
 			"assign('hearts_broken', false)",
 			"assign('player', 1)",
-			{ "if": "pass_to == 0", "then": ["trigger('first_lead')"], "else": ["ask('Pass 3')"] }
+			{
+				"if": "pass_to == 0",
+				"then": [
+					"trigger('first_lead')"
+				],
+				"else": [
+					"ask('Pass 3')"
+				]
+			}
 		],
-		"turn_start": [{ "if": "phase == 'pass'", "then": ["ask('Pass 3')"] }],
+		"turn_start": [
+			{
+				"if": "phase == 'pass'",
+				"then": [
+					"ask('Pass 3')"
+				]
+			}
+		],
 		"exchange": [
-			{ "for": "player", "in": "players", "do": ["move(played, zone('hand', next_player(pass_to)))"] },
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					"move(played, zone('hand', next_player(pass_to)))"
+				]
+			},
 			"trigger('first_lead')"
 		],
 		"first_lead": [
@@ -90,21 +235,70 @@
 		],
 		"score_hand": [
 			"assign('moon', 0)",
-			{ "for": "player", "in": "players", "do": [{ "if": "sum(won, 'points') == 26", "then": ["assign('moon', player)"] }] },
-			{ "for": "player", "in": "players", "do": [
-				{ "if": "moon == 0", "then": ["add('score', sum(won, 'points'))"] },
-				{ "if": "moon != 0 and moon != player", "then": ["add('score', 26)"] }
-			] },
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					{
+						"if": "sum(won, 'points') == 26",
+						"then": [
+							"assign('moon', player)"
+						]
+					}
+				]
+			},
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					{
+						"if": "moon == 0",
+						"then": [
+							"add('score', sum(won, 'points'))"
+						]
+					},
+					{
+						"if": "moon != 0 and moon != player",
+						"then": [
+							"add('score', 26)"
+						]
+					}
+				]
+			},
 			"assign('phase', 'hand over')",
-			{ "if": "max(max(score_1, score_2), max(score_3, score_4)) >= 100", "then": ["trigger('game_over')"] }
+			{
+				"if": "max(max(score_1, score_2), max(score_3, score_4)) >= 100",
+				"then": [
+					"trigger('game_over')"
+				]
+			}
 		],
 		"game_over": [
 			"assign('phase', 'over')",
 			"assign('best', 1)",
 			"assign('best_score', score_1)",
-			{ "for": "player", "in": "players", "do": [{ "if": "score < best_score", "then": ["assign('best', player)", "assign('best_score', score)"] }] },
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					{
+						"if": "score < best_score",
+						"then": [
+							"assign('best', player)",
+							"assign('best_score', score)"
+						]
+					}
+				]
+			},
 			"assign('result', 'Winner: ' + name_of(int(best)))"
 		]
 	},
-	"card_face": { "corner": "name", "title": "name", "body": ["suit"], "color": "color" }
+	"card_face": {
+		"corner": "name",
+		"title": "name",
+		"body": [
+			"suit"
+		],
+		"color": "color"
+	}
 }

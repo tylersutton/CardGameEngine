@@ -123,7 +123,7 @@ func _control_for(field: Dictionary, path: Array, value: Variant) -> Control:
 static func _as_text(value: Variant) -> String:
 	if value == null:
 		return ""
-	return GameDocument.format(value) if value is float or value is Array else str(value)
+	return GameDocument.one_line(value) if value is float or value is Array else str(value)
 
 
 ## "3" is the number 3 (for pick and up_to); anything else stays text. Empty takes the key out.

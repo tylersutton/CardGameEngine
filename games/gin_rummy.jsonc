@@ -2,17 +2,82 @@
 	"title": "Gin Rummy",
 	"description": "Two players, you against a bot. Knock with 10 or less deadwood; first to 100 wins the match.",
 	"players": 2,
-	"seats": [[0.1, 0.72], [0.1, 0.28]],
+	"seats": [
+		[
+			0.1,
+			0.72
+		],
+		[
+			0.1,
+			0.28
+		]
+	],
 	"zones": {
-		"stock": { "label": "Stock",
-			"layout": "pile", "face": "down", "anchor": [0.08, 0.5],
-			"cards": "res://decks/standard_deck.csv", "columns": { "points": "min(card.value, 10)" },
-			"on_click": ["try_move(top(stock), hand)"]
+		"stock": {
+			"label": "Stock",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.08,
+				0.5
+			],
+			"cards": "res://decks/standard_deck.csv",
+			"columns": {
+				"points": "min(card.value, 10)"
+			},
+			"on_click": [
+				"try_move(top(stock), hand)"
+			]
 		},
-		"discard": { "label": "Discard", "layout": "pile", "anchor": [0.19, 0.5], "on_click": ["try_move(top(discard), hand)"] },
-		"knock": { "label": "Knock", "layout": "pile", "face": "down", "anchor": [0.3, 0.5] },
-		"table": { "per_player": true, "layout": "melds", "anchors": [[0.68, 0.63], [0.68, 0.37]] },
-		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchors": [[0.5, 0.83], [0.5, 0.16]] }
+		"discard": {
+			"label": "Discard",
+			"layout": "pile",
+			"anchor": [
+				0.19,
+				0.5
+			],
+			"on_click": [
+				"try_move(top(discard), hand)"
+			]
+		},
+		"knock": {
+			"label": "Knock",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.3,
+				0.5
+			]
+		},
+		"table": {
+			"per_player": true,
+			"layout": "melds",
+			"anchors": [
+				[
+					0.68,
+					0.63
+				],
+				[
+					0.68,
+					0.37
+				]
+			]
+		},
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchors": [
+				[
+					0.5,
+					0.83
+				],
+				[
+					0.5,
+					0.16
+				]
+			]
+		}
 	},
 	"variables": {
 		"phase": "upcard",
@@ -24,39 +89,82 @@
 		"dealer": 2,
 		"winner": null
 	},
-	"player_variables": { "score": 0, "hands_won": 0 },
-	"bot": { "players": [2], "prefer": "score - opponent_score - sum(deadwood(hand), 'points')" },
-	"status": { "your deadwood": "sum(deadwood(zone('hand', min(viewer(), 2))), 'points')" },
+	"player_variables": {
+		"score": 0,
+		"hands_won": 0
+	},
+	"bot": {
+		"players": [
+			2
+		],
+		"prefer": "score - opponent_score - sum(deadwood(hand), 'points')"
+	},
+	"status": {
+		"your deadwood": "sum(deadwood(zone('hand', min(viewer(), 2))), 'points')"
+	},
 	"melds": {
 		"types": [
-			{ "same": "rank", "min": 3 },
-			{ "same": "suit", "sequence": "value", "min": 3 }
+			{
+				"same": "rank",
+				"min": 3
+			},
+			{
+				"same": "suit",
+				"sequence": "value",
+				"min": 3
+			}
 		],
 		"points": "points"
 	},
 	"moves": [
 		{
-			"from": "stock", "to": "hand",
-			"phase": ["draw", "stock_only"],
-			"then": ["assign('phase', 'discard')", "assign('taken', null)"]
+			"from": "stock",
+			"to": "hand",
+			"phase": [
+				"draw",
+				"stock_only"
+			],
+			"then": [
+				"assign('phase', 'discard')",
+				"assign('taken', null)"
+			]
 		},
 		{
-			"from": "discard", "to": "hand",
-			"phase": ["draw", "upcard"],
-			"then": ["assign('phase', 'discard')", "assign('taken', card)"]
+			"from": "discard",
+			"to": "hand",
+			"phase": [
+				"draw",
+				"upcard"
+			],
+			"then": [
+				"assign('phase', 'discard')",
+				"assign('taken', card)"
+			]
 		},
 		{
-			"from": "hand", "to": "discard",
-			"phase": "discard", "when": "card != taken",
-			"then": [{
-				"if": "count(stock) <= 2",
-				"then": ["assign('phase', 'over')", "assign('result', 'void: stock ran out')"],
-				"else": ["assign('phase', 'draw')", "end_turn()"]
-			}]
+			"from": "hand",
+			"to": "discard",
+			"phase": "discard",
+			"when": "card != taken",
+			"then": [
+				{
+					"if": "count(stock) <= 2",
+					"then": [
+						"assign('phase', 'over')",
+						"assign('result', 'void: stock ran out')"
+					],
+					"else": [
+						"assign('phase', 'draw')",
+						"end_turn()"
+					]
+				}
+			]
 		},
 		{
-			"from": "hand", "to": "knock",
-			"phase": "discard", "when": "card != taken and sum(deadwood(without(hand, card)), 'points') <= 10",
+			"from": "hand",
+			"to": "knock",
+			"phase": "discard",
+			"when": "card != taken and sum(deadwood(without(hand, card)), 'points') <= 10",
 			"then": [
 				"assign('phase', 'over')",
 				"assign('knocker_deadwood', sum(deadwood(hand), 'points'))",
@@ -95,19 +203,30 @@
 	"actions": {
 		"Pass": {
 			"phase": "upcard",
-			"steps": [{
-				"if": "passes == 0",
-				"then": ["assign('passes', 1)", "end_turn()"],
-				"else": ["assign('phase', 'stock_only')", "end_turn()"]
-			}]
+			"steps": [
+				{
+					"if": "passes == 0",
+					"then": [
+						"assign('passes', 1)",
+						"end_turn()"
+					],
+					"else": [
+						"assign('phase', 'stock_only')",
+						"end_turn()"
+					]
+				}
+			]
 		},
 		"Knock": {
 			"when": "count(movable(hand, knock)) > 0",
 			"choose": "movable(hand, knock)",
-			"steps": ["try_move(card, knock)"]
+			"steps": [
+				"try_move(card, knock)"
+			]
 		},
 		"Big Gin": {
-			"phase": "discard", "when": "count(deadwood(hand)) == 0",
+			"phase": "discard",
+			"when": "count(deadwood(hand)) == 0",
 			"steps": [
 				"assign('phase', 'over')",
 				"assign('defender_deadwood', sum(deadwood(opponent_hand), 'points'))",
@@ -122,10 +241,17 @@
 		"Next hand": {
 			"phase": "over",
 			"human_only": true,
-			"steps": ["assign('dealer', 3 - dealer)", "trigger('deal')"]
+			"steps": [
+				"assign('dealer', 3 - dealer)",
+				"trigger('deal')"
+			]
 		},
-		"Sort by suit": ["sort(hand, ['suit', 'value'])"],
-		"Sort by rank": ["sort(hand, ['value', 'suit'])"]
+		"Sort by suit": [
+			"sort(hand, ['suit', 'value'])"
+		],
+		"Sort by rank": [
+			"sort(hand, ['value', 'suit'])"
+		]
 	},
 	"triggers": {
 		"start": [
@@ -146,17 +272,40 @@
 			"assign('knocker_deadwood', 0)",
 			"assign('defender_deadwood', 0)"
 		],
-		"hand_over": [{
-			"if": "score_1 >= 100 or score_2 >= 100",
-			"then": [
-				{ "if": "score_1 >= 100", "then": ["assign('player', 1)"], "else": ["assign('player', 2)"] },
-				"assign('winner', player)",
-				"add('score', 100 + 25 * hands_won)",
-				"add('opponent_score', 25 * opponent_hands_won)",
-				{ "if": "opponent_hands_won == 0", "then": ["assign('score', score * 2)", "add('result', ', shutout')"] },
-				"assign('phase', 'match over')"
-			]
-		}]
+		"hand_over": [
+			{
+				"if": "score_1 >= 100 or score_2 >= 100",
+				"then": [
+					{
+						"if": "score_1 >= 100",
+						"then": [
+							"assign('player', 1)"
+						],
+						"else": [
+							"assign('player', 2)"
+						]
+					},
+					"assign('winner', player)",
+					"add('score', 100 + 25 * hands_won)",
+					"add('opponent_score', 25 * opponent_hands_won)",
+					{
+						"if": "opponent_hands_won == 0",
+						"then": [
+							"assign('score', score * 2)",
+							"add('result', ', shutout')"
+						]
+					},
+					"assign('phase', 'match over')"
+				]
+			}
+		]
 	},
-	"card_face": { "corner": "name", "title": "name", "body": ["suit"], "color": "color" }
+	"card_face": {
+		"corner": "name",
+		"title": "name",
+		"body": [
+			"suit"
+		],
+		"color": "color"
+	}
 }

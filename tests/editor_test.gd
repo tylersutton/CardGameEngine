@@ -76,12 +76,15 @@ func _set_leaves(document: GameDocument, at: Array, value: Variant) -> void:
 func _check_editing() -> void:
 	var document := GameDocument.new()
 	document.path = "user://editor_test.jsonc"
-	document.set_text('{\n\t// The table\n\t"zones": {\n\t\t"deck": { "label": "Deck", "anchor": [0.4, 0.5] }, // the stock\n\t\t"hand": {}\n\t},\n\t"moves": [\n\t\t{ "from": "deck", "to": "hand" }\n\t]\n}\n')
+	document.set_text('{\n\t// The table\n\t"zones": {\n\t\t"deck": {\n\t\t\t"label": "Deck", // the stock\n\t\t\t"anchor": [\n\t\t\t\t0.4,\n\t\t\t\t0.5\n\t\t\t]\n\t\t},\n\t\t"hand": {}\n\t},\n\t"moves": [\n\t\t{\n\t\t\t"from": "deck",\n\t\t\t"to": "hand"\n\t\t}\n\t]\n}')
 	var start := document.text
 	document.set_value(["zones", "deck", "anchor"], [0.25, 0.75])
-	check(document.text.contains('"anchor": [0.25, 0.75] }, // the stock'), "changing a value keeps its line and comment:\n" + document.text)
+	check(document.text.contains('"label": "Deck", // the stock\n\t\t\t"anchor": [\n\t\t\t\t0.25,\n\t\t\t\t0.75\n\t\t\t]\n'), "changing a value keeps the comment before it:\n" + document.text)
 	document.set_value(["zones", "hand", "layout"], "fan")
-	check(document.text.contains('"hand": { "layout": "fan" }'), "adding to an empty object:\n" + document.text)
+	check(document.text.contains('"hand": {\n\t\t\t"layout": "fan"\n\t\t}'), "adding to an empty object:\n" + document.text)
+	document.remove(["zones", "hand", "layout"])
+	check(document.text.contains('"hand": {}'), "emptying an object:\n" + document.text)
+	document.set_value(["zones", "hand", "layout"], "fan")
 	document.set_value(["title"], "Test")
 	check(document.get_value(["title"]) == "Test" and document.text.contains('"title": "Test"'), "adding a top-level key:\n" + document.text)
 	document.rename_key(["zones", "hand"], "cards")
@@ -92,13 +95,14 @@ func _check_editing() -> void:
 	document.insert(["moves"], 0, {"from": "hand", "to": "deck"})
 	check(document.get_value(["moves", 0, "from"]) == "hand" and document.get_value(["moves", 1, "from"]) == "deck", "inserting at the front:\n" + document.text)
 	document.set_value(["moves", 1, "phase"], "draw")
-	check(document.text.contains('{ "from": "deck", "to": "hand", "phase": "draw" }'), "adding to an object inside a list:\n" + document.text)
+	check(document.text.contains('"to": "hand",\n\t\t\t"phase": "draw"\n\t\t}'), "adding to an object inside a list:\n" + document.text)
 	document.set_value(["zones", "deck", "label"], "Pioche ♠")
 	check(document.text.contains('"Pioche ♠"'), "text with symbols stays readable:\n" + document.text)
-	var long_value := {"a": "a fairly long piece of text to push this past the line width", "b": "and some more text to be sure it wraps", "c": [1, 2, 3]}
-	document.set_value(["zones", "long"], long_value)
-	check(document.text.contains('"long": {\n\t\t\t"a":'), "long values go one entry per line:\n" + document.text)
-	check(GameDocument.format(document.get_value(["zones", "long"])) == GameDocument.format(long_value), "long value reads back")
+	var nested := {"a": "text", "b": [], "c": [1, {"d": true}]}
+	document.set_value(["zones", "nested"], nested)
+	check(document.text.contains('"nested": {\n\t\t\t"a": "text",\n\t\t\t"b": [],\n\t\t\t"c": [\n\t\t\t\t1,\n\t\t\t\t{\n\t\t\t\t\t"d": true\n\t\t\t\t}\n\t\t\t]\n\t\t}'),
+		"values are written one entry per line, as VS Code formats them:\n" + document.text)
+	check(GameDocument.format(document.get_value(["zones", "nested"])) == GameDocument.format(nested), "nested value reads back")
 	check(start != document.text, "edits happened")
 
 

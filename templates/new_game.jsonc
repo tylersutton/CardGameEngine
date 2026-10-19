@@ -5,37 +5,87 @@
 	"description": "{players} players. Describe your game here.",
 	"players": {players},
 	"player_names": {player_names},
-
 	"zones": {
 		// Click the deck to draw, or drag from it.
-		"deck": { "label": "Deck", "layout": "pile", "face": "down", "anchor": [0.4, 0.5], "cards": "res://decks/{deck}",
-			"on_click": "try_move(top(deck), hand)" },
-		"discard": { "label": "Discard", "layout": "pile", "anchor": [0.6, 0.5] },
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.4,
+				0.5
+			],
+			"cards": "res://decks/{deck}",
+			"on_click": "try_move(top(deck), hand)"
+		},
+		"discard": {
+			"label": "Discard",
+			"layout": "pile",
+			"anchor": [
+				0.6,
+				0.5
+			]
+		},
 		// One hand per player. The anchor is seat 1's (the bottom); the other seats go round the table.
-		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchor": [0.5, 0.84] }
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.84
+			]
+		}
 	},
-	"seats": [[0.22, 0.86]],
-
+	"seats": [
+		[
+			0.22,
+			0.86
+		]
+	],
 	// The other seats are bots that play random legal moves. Add "prefer" to make them try to win.
-	"bot": { "players": {bot_players} },
-
+	"bot": {
+		"players": {bot_players}
+	},
 	// A turn: draw a card, then discard one.
-	"variables": { "phase": "draw" },
+	"variables": {
+		"phase": "draw"
+	},
 	"moves": [
 		{
-			"from": "deck", "to": "hand", "phase": "draw",
-			"then": ["assign('phase', 'discard')", { "if": "count(deck) == 0", "then": "trigger('deck_empty')" }]
+			"from": "deck",
+			"to": "hand",
+			"phase": "draw",
+			"then": [
+				"assign('phase', 'discard')",
+				{
+					"if": "count(deck) == 0",
+					"then": "trigger('deck_empty')"
+				}
+			]
 		},
-		{ "from": "hand", "to": "discard", "phase": "discard", "then": ["assign('phase', 'draw')", "end_turn()"] }
+		{
+			"from": "hand",
+			"to": "discard",
+			"phase": "discard",
+			"then": [
+				"assign('phase', 'draw')",
+				"end_turn()"
+			]
+		}
 	],
-
 	"actions": {
 		"Sort hand": "sort(hand, ['name'])"
 	},
-
 	"triggers": {
-		"start": ["shuffle(deck)", "deal(deck, all_hand, 5)"],
+		"start": [
+			"shuffle(deck)",
+			"deal(deck, all_hand, 5)"
+		],
 		// The discard pile, minus its top card, becomes the new deck.
-		"deck_empty": ["move(without(discard, top(discard)), deck)", "shuffle(deck)"]
+		"deck_empty": [
+			"move(without(discard, top(discard)), deck)",
+			"shuffle(deck)"
+		]
 	}
 }

@@ -2,30 +2,94 @@
 	"title": "Color Match",
 	"description": "Two players sharing the screen. Match the color or number; +2 and Wild cards. The README tutorial builds it.",
 	"players": 2,
-	"seats": [[0.15, 0.83], [0.15, 0.16]],
+	"seats": [
+		[
+			0.15,
+			0.83
+		],
+		[
+			0.15,
+			0.16
+		]
+	],
 	"zones": {
-		"deck": { "label": "Deck",
-			"layout": "pile", "face": "down", "anchor": [0.4, 0.5],
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.4,
+				0.5
+			],
 			"cards": "res://decks/color_match.csv",
-			"on_click": ["try_move(top(deck), hand)"]
+			"on_click": [
+				"try_move(top(deck), hand)"
+			]
 		},
-		"pile": { "label": "Pile", "layout": "pile", "anchor": [0.6, 0.5] },
-		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchors": [[0.5, 0.83], [0.5, 0.16]] }
+		"pile": {
+			"label": "Pile",
+			"layout": "pile",
+			"anchor": [
+				0.6,
+				0.5
+			]
+		},
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchors": [
+				[
+					0.5,
+					0.83
+				],
+				[
+					0.5,
+					0.16
+				]
+			]
+		}
 	},
-	"variables": { "winner": null, "active_color": "" },
+	"variables": {
+		"winner": null,
+		"active_color": ""
+	},
 	"moves": [
 		{
-			"from": "hand", "to": "pile",
+			"from": "hand",
+			"to": "pile",
 			"when": "winner == null and (card.data.color == 'Wild' or card.data.color == active_color or card.data.number == top(pile).data.number)",
 			"then": [
 				"assign('active_color', card.data.color)",
-				{ "if": "count(hand) == 0", "then": ["assign('winner', player)"], "else": [{ "if": "card.data.color != 'Wild'", "then": ["end_turn()"] }] }
+				{
+					"if": "count(hand) == 0",
+					"then": [
+						"assign('winner', player)"
+					],
+					"else": [
+						{
+							"if": "card.data.color != 'Wild'",
+							"then": [
+								"end_turn()"
+							]
+						}
+					]
+				}
 			]
 		},
 		{
-			"from": "deck", "to": "hand",
+			"from": "deck",
+			"to": "hand",
 			"when": "winner == null",
-			"then": [{ "if": "count(deck) == 0", "then": ["trigger('deck_empty')"] }, "end_turn()"]
+			"then": [
+				{
+					"if": "count(deck) == 0",
+					"then": [
+						"trigger('deck_empty')"
+					]
+				},
+				"end_turn()"
+			]
 		}
 	],
 	"actions": {
@@ -33,24 +97,50 @@
 			"button": false,
 			"when": "winner == null and active_color == 'Wild'",
 			"choose": "['Red', 'Blue', 'Green', 'Yellow']",
-			"steps": ["assign('active_color', choice)", "end_turn()"]
+			"steps": [
+				"assign('active_color', choice)",
+				"end_turn()"
+			]
 		},
-		"Sort by color": ["sort(hand, ['color', 'number'])"],
-		"Sort by number": ["sort(hand, ['number', 'color'])"]
+		"Sort by color": [
+			"sort(hand, ['color', 'number'])"
+		],
+		"Sort by number": [
+			"sort(hand, ['number', 'color'])"
+		]
 	},
 	"triggers": {
-		"draw_two": ["draw(deck, opponent_hand, 2)"],
-		"wild": ["ask('Choose color')"],
+		"draw_two": [
+			"draw(deck, opponent_hand, 2)"
+		],
+		"wild": [
+			"ask('Choose color')"
+		],
 		"start": [
 			"sort(hand_1, ['color', 'number'])",
 			"sort(hand_2, ['color', 'number'])",
 			"shuffle(deck)",
 			"deal(deck, all_hand, 7)",
-			{ "while": "text(top(deck), 'on_pile') != ''", "do": ["shuffle(deck)"] },
+			{
+				"while": "text(top(deck), 'on_pile') != ''",
+				"do": [
+					"shuffle(deck)"
+				]
+			},
 			"move(top(deck), pile)",
 			"assign('active_color', top(pile).data.color)"
 		],
-		"deck_empty": ["move(without(pile, top(pile)), deck)", "shuffle(deck)"]
+		"deck_empty": [
+			"move(without(pile, top(pile)), deck)",
+			"shuffle(deck)"
+		]
 	},
-	"card_face": { "corner": "number", "title": "number", "body": ["color"], "color": "color" }
+	"card_face": {
+		"corner": "number",
+		"title": "number",
+		"body": [
+			"color"
+		],
+		"color": "color"
+	}
 }

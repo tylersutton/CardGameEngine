@@ -3,28 +3,59 @@
 	// Every key is explained in README.md, under "Game file reference".
 	"title": "{title}",
 	"description": "A one-player game. Describe your game here.",
-
 	"zones": {
 		// Click the deck to draw, or drag from it.
-		"deck": { "label": "Deck", "layout": "pile", "face": "down", "anchor": [0.4, 0.5], "cards": "res://decks/{deck}",
-			"on_click": "try_move(top(deck), hand)" },
-		"discard": { "label": "Discard", "layout": "pile", "anchor": [0.6, 0.5] },
-		"hand": { "label": "Hand", "layout": "fan", "anchor": [0.5, 0.84] }
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.4,
+				0.5
+			],
+			"cards": "res://decks/{deck}",
+			"on_click": "try_move(top(deck), hand)"
+		},
+		"discard": {
+			"label": "Discard",
+			"layout": "pile",
+			"anchor": [
+				0.6,
+				0.5
+			]
+		},
+		"hand": {
+			"label": "Hand",
+			"layout": "fan",
+			"anchor": [
+				0.5,
+				0.84
+			]
+		}
 	},
-
 	// Draw cards and discard them. Add "when" to a move to say when it's allowed.
 	"moves": [
-		{ "from": "deck", "to": "hand" },
-		{ "from": "hand", "to": "discard" }
+		{
+			"from": "deck",
+			"to": "hand"
+		},
+		{
+			"from": "hand",
+			"to": "discard"
+		}
 	],
-
 	"actions": {
 		"Sort hand": "sort(hand, ['name'])"
 	},
-
 	"triggers": {
-		"start": ["shuffle(deck)", "draw(deck, hand, 5)"],
+		"start": [
+			"shuffle(deck)",
+			"draw(deck, hand, 5)"
+		],
 		// The discard pile becomes the new deck.
-		"deck_empty": ["move(discard, deck)", "shuffle(deck)"]
+		"deck_empty": [
+			"move(discard, deck)",
+			"shuffle(deck)"
+		]
 	}
 }

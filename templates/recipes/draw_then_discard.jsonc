@@ -2,14 +2,53 @@
 {
 	"players": 2,
 	"zones": {
-		"deck": { "label": "Deck", "layout": "pile", "face": "down", "anchor": [0.4, 0.5], "cards": "res://decks/standard_deck.csv",
-			"on_click": "try_move(top(deck), hand)" },
-		"discard": { "label": "Discard", "layout": "pile", "anchor": [0.6, 0.5] },
-		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchor": [0.5, 0.84] }
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.4,
+				0.5
+			],
+			"cards": "res://decks/standard_deck.csv",
+			"on_click": "try_move(top(deck), hand)"
+		},
+		"discard": {
+			"label": "Discard",
+			"layout": "pile",
+			"anchor": [
+				0.6,
+				0.5
+			]
+		},
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.84
+			]
+		}
 	},
-	"variables": { "phase": "draw" },
+	"variables": {
+		"phase": "draw"
+	},
 	"moves": [
-		{ "from": "deck", "to": "hand", "phase": "draw", "then": "assign('phase', 'discard')" },
-		{ "from": "hand", "to": "discard", "phase": "discard", "then": ["assign('phase', 'draw')", "end_turn()"] }
+		{
+			"from": "deck",
+			"to": "hand",
+			"phase": "draw",
+			"then": "assign('phase', 'discard')"
+		},
+		{
+			"from": "hand",
+			"to": "discard",
+			"phase": "discard",
+			"then": [
+				"assign('phase', 'draw')",
+				"end_turn()"
+			]
+		}
 	]
 }

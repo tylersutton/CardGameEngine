@@ -1,10 +1,29 @@
 // Reshuffle the discard: when the deck runs out, the discard pile (but its top card) is shuffled into a new deck.
 {
 	"zones": {
-		"deck": { "label": "Deck", "layout": "pile", "face": "down", "anchor": [0.4, 0.5], "cards": "res://decks/standard_deck.csv" },
-		"discard": { "label": "Discard", "layout": "pile", "anchor": [0.6, 0.5] }
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.4,
+				0.5
+			],
+			"cards": "res://decks/standard_deck.csv"
+		},
+		"discard": {
+			"label": "Discard",
+			"layout": "pile",
+			"anchor": [
+				0.6,
+				0.5
+			]
+		}
 	},
 	"triggers": {
-		"deck_empty": ["move(without(discard, top(discard)), deck)", "shuffle(deck)"]
+		"deck_empty": [
+			"move(without(discard, top(discard)), deck)",
+			"shuffle(deck)"
+		]
 	}
 }

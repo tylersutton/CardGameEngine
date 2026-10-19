@@ -3,12 +3,28 @@
 {
 	"players": 2,
 	"zones": {
-		"hand": { "per_player": true, "layout": "fan", "face": "private", "anchor": [0.5, 0.84] },
-		"pile": { "label": "Pile", "layout": "pile", "anchor": [0.6, 0.5] }
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.84
+			]
+		},
+		"pile": {
+			"label": "Pile",
+			"layout": "pile",
+			"anchor": [
+				0.6,
+				0.5
+			]
+		}
 	},
 	"moves": [
 		{
-			"from": "hand", "to": "pile",
+			"from": "hand",
+			"to": "pile",
 			"when": "count(pile) == 0 or card.suit == text(top(pile), 'suit') or card.rank == text(top(pile), 'rank')",
 			"then": "end_turn()"
 		}

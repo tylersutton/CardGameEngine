@@ -4,7 +4,6 @@ extends RefCounted
 ## key order and formatting everywhere else stay exactly as written. Paths name a value: ["zones", "deck", "anchor"],
 ## ["moves", 0, "then"].
 
-const LINE_WIDTH := 110
 const INDENT := "\t"
 
 var path: String
@@ -67,7 +66,7 @@ func set_value(value_path: Array, value: Variant) -> void:
 	if data == null:
 		return
 	if has(value_path):
-		if _single_line(get_value(value_path)) != _single_line(value):
+		if one_line(get_value(value_path)) != one_line(value):
 			var span: Dictionary = spans[_key(value_path)]
 			_replace(span.start, span.end, format(value, _indent_at(span.start)))
 		return
@@ -122,8 +121,17 @@ func remove(value_path: Array) -> void:
 		_replace(_note_start(line_start), mini(line_end + 1, text.length()), "")
 		if comma_before >= 0:
 			_replace(comma_before, comma_before + 1, "")
-		return
-	_replace(comma_before if comma_before >= 0 else from, to, "")
+	else:
+		_replace(comma_before if comma_before >= 0 else from, to, "")
+	_close_up_if_empty(value_path.slice(0, -1))
+
+
+## An object or list left with nothing in it (not even a comment) is written {} or [].
+func _close_up_if_empty(container_path: Array) -> void:
+	var span: Dictionary = spans[_key(container_path)]
+	var inside := text.substr(span.start + 1, span.end - span.start - 2)
+	if inside and inside.strip_edges().is_empty():
+		_replace(span.start + 1, span.end - 1, "")
 
 
 func rename_key(value_path: Array, new_key: String) -> void:
@@ -150,11 +158,10 @@ func set_note(value_path: Array, note_text: String) -> void:
 	_replace(_note_start(line_start), line_start, "".join(lines))
 
 
-## A value written the way the game files are: on one line when it fits, otherwise one entry per line.
+## A value written the way the game files are (VS Code's Format Document): one entry per line.
 static func format(value: Variant, indent: String = "") -> String:
-	var single := _single_line(value)
-	if not (value is Dictionary or value is Array) or value.is_empty() or indent.length() * 4 + single.length() <= LINE_WIDTH:
-		return single
+	if not (value is Dictionary or value is Array) or value.is_empty():
+		return one_line(value)
 	var inner := indent + INDENT
 	var items: Array = value.keys().map(func(key: Variant) -> String: return inner + JSON.stringify(key) + ": " + format(value[key], inner)) \
 		if value is Dictionary else value.map(func(item: Variant) -> String: return inner + format(item, inner))
@@ -162,11 +169,12 @@ static func format(value: Variant, indent: String = "") -> String:
 	return brackets[0] + "\n" + ",\n".join(items) + "\n" + indent + brackets[1]
 
 
-static func _single_line(value: Variant) -> String:
+## A value on one line, for a text box.
+static func one_line(value: Variant) -> String:
 	if value is Dictionary:
-		return "{ %s }" % ", ".join(value.keys().map(func(key: Variant) -> String: return JSON.stringify(key) + ": " + _single_line(value[key]))) if value else "{}"
+		return "{ %s }" % ", ".join(value.keys().map(func(key: Variant) -> String: return JSON.stringify(key) + ": " + one_line(value[key]))) if value else "{}"
 	if value is Array:
-		return "[%s]" % ", ".join(value.map(_single_line))
+		return "[%s]" % ", ".join(value.map(one_line))
 	if value is float and value == floorf(value):
 		return str(int(value))
 	return JSON.stringify(value)
@@ -176,7 +184,8 @@ func _replace(from: int, to: int, new_text: String) -> void:
 	set_text(text.substr(0, from) + new_text + text.substr(to))
 
 
-## Adds a member or item at the end of an object or list, matching its style (one line, or one entry per line).
+## Adds a member or item at the end of an object or list, matching its style (one line, or one entry per line);
+## an empty one gets one entry per line.
 func _add_member(container_path: Array, member: String) -> void:
 	var span: Dictionary = spans[_key(container_path)]
 	var close: int = span.end - 1
@@ -185,12 +194,8 @@ func _add_member(container_path: Array, member: String) -> void:
 		.map(func(child: Variant) -> String: return _key(container_path + [child]))
 	if children.is_empty():
 		var empty_inside := text.substr(span.start + 1, close - span.start - 1)
-		if empty_inside.contains("\n"):
-			var indent := _indent_at(span.start)
-			_replace(span.start + 1, close, empty_inside.strip_edges(false, true) + "\n" + indent + INDENT + member.strip_edges() + "\n" + indent)
-			return
-		var padded := " %s " % member.strip_edges() if text[span.start] == "{" else member.strip_edges()
-		_replace(span.start + 1, close, padded if empty_inside.strip_edges().is_empty() else empty_inside + padded)
+		var indent := _indent_at(span.start)
+		_replace(span.start + 1, close, empty_inside.strip_edges(false, true) + "\n" + indent + INDENT + member.strip_edges() + "\n" + indent)
 		return
 	var last_end: int = children.map(func(key: String) -> int: return spans[key].end).max()
 	var has_comma := _skip_spaces(last_end) < text.length() and text[_skip_spaces(last_end)] == ","
