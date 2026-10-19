@@ -111,12 +111,14 @@
 		"hinted_playable": "playable and (mark_of(card, 'color') != null or mark_of(card, 'number') != null)",
 		"is_five": "card.data.number == '5'"
 	},
-	"moves": [
-		{
-			"from": "hand",
-			"to": "play",
-			"phase": "play",
-			"then": [
+	"actions": {
+		"Play": {
+			"drag": {
+				"from": "hand",
+				"to": "play"
+			},
+			"when": "phase == 'play'",
+			"steps": [
 				{
 					"if": "playable",
 					"then": [
@@ -137,23 +139,21 @@
 				"trigger('end_of_turn')"
 			]
 		},
-		{
-			"from": "hand",
-			"to": "discard",
-			"phase": "play",
-			"when": "clues < 8",
-			"then": [
+		"Discard": {
+			"drag": {
+				"from": "hand",
+				"to": "discard"
+			},
+			"when": "phase == 'play' and clues < 8",
+			"steps": [
 				"clues += 1",
 				"draw(deck, hand)",
 				"trigger('end_of_turn')"
 			]
-		}
-	],
-	"actions": {
+		},
 		"Clue color": {
-			"phase": "play",
-			"when": "clues > 0",
 			"choose": "opponent_hand",
+			"when": "phase == 'play' and clues > 0",
 			"steps": [
 				"mark(where(opponent_hand, 'color', text(choice, 'color')), 'color', text(choice, 'color'))",
 				"clues -= 1",
@@ -161,9 +161,8 @@
 			]
 		},
 		"Clue number": {
-			"phase": "play",
-			"when": "clues > 0",
 			"choose": "opponent_hand",
+			"when": "phase == 'play' and clues > 0",
 			"steps": [
 				"mark(where(opponent_hand, 'number', text(choice, 'number')), 'number', text(choice, 'number'))",
 				"clues -= 1",

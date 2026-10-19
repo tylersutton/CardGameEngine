@@ -6,7 +6,6 @@
 	"players": {players},
 	"player_names": {player_names},
 	"zones": {
-		// Click the deck to draw, or drag from it.
 		"deck": {
 			"label": "Deck",
 			"layout": "pile",
@@ -15,8 +14,7 @@
 				0.4,
 				0.5
 			],
-			"cards": "res://decks/{deck}",
-			"on_click": "try_move(top(deck), hand)"
+			"cards": "res://decks/{deck}"
 		},
 		"discard": {
 			"label": "Discard",
@@ -47,36 +45,34 @@
 	"bot": {
 		"players": {bot_players}
 	},
-	// A turn: draw a card, then discard one.
-	"variables": {
-		"phase": "draw"
-	},
-	"moves": [
-		{
-			"from": "deck",
-			"to": "hand",
-			"phase": "draw",
-			"then": [
-				"phase = 'discard'",
-				{
-					"if": "count(deck) == 0",
-					"then": "trigger('deck_empty')"
-				}
-			]
-		},
-		{
-			"from": "hand",
-			"to": "discard",
-			"phase": "discard",
-			"then": [
-				"phase = 'draw'",
-				"end_turn()"
-			]
-		}
-	],
+	// What players can do. "drag" and "click" say how; an action without them is a button.
 	"actions": {
+		// Click the deck to draw, or drag from it.
+		"Draw": {
+			"drag": {
+				"from": "deck",
+				"to": "hand"
+			},
+			"click": true,
+			"steps": {
+				"if": "count(deck) == 0",
+				"then": "trigger('deck_empty')"
+			}
+		},
+		"Discard": {
+			"drag": {
+				"from": "hand",
+				"to": "discard"
+			}
+		},
 		"Sort hand": "sort(hand, ['name'])"
 	},
+	// A turn: draw a card, then discard one. offer(...) waits for the player to do one of those actions.
+	"turn": [
+		"offer('Draw')",
+		"offer('Discard')",
+		"end_turn()"
+	],
 	"triggers": {
 		"start": [
 			"shuffle(deck)",

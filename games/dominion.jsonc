@@ -58,10 +58,7 @@
 					0.09,
 					0
 				]
-			},
-			"on_click": [
-				"try_move(card, discard)"
-			]
+			}
 		},
 		"kingdom_pile": {
 			"label": "Empty",
@@ -78,10 +75,7 @@
 					0.09,
 					-0.19
 				]
-			},
-			"on_click": [
-				"try_move(card, discard)"
-			]
+			}
 		},
 		"deck": {
 			"label": "Deck",
@@ -113,10 +107,7 @@
 					0.3
 				]
 			],
-			"width": 0.6,
-			"on_click": [
-				"try_move(card, play)"
-			]
+			"width": 0.6
 		},
 		"play": {
 			"per_player": true,
@@ -198,30 +189,37 @@
 		"affordable": "buys > 0 and coins >= number(card, 'cost')",
 		"nothing_left": "buys == 0 and (actions == 0 or phase == 'buy')"
 	},
-	"moves": [
-		{
-			"from": "hand",
-			"to": "play",
-			"phase": "action",
-			"when": "actions > 0 and is_action",
-			"then": [
+	"actions": {
+		"Play an action": {
+			"drag": {
+				"from": "hand",
+				"to": "play"
+			},
+			"click": true,
+			"when": "phase == 'action' and actions > 0 and is_action",
+			"steps": [
 				"actions -= 1"
 			]
 		},
-		{
-			"from": "hand",
-			"to": "play",
+		"Play a treasure": {
+			"drag": {
+				"from": "hand",
+				"to": "play"
+			},
+			"click": true,
 			"when": "phase != 'over' and is_treasure",
-			"then": [
+			"steps": [
 				"phase = 'buy'"
 			]
 		},
-		{
-			"from": "supply",
-			"to": "discard",
-			"phase": "buy",
-			"when": "affordable",
-			"then": [
+		"Buy": {
+			"drag": {
+				"from": "supply",
+				"to": "discard"
+			},
+			"click": true,
+			"when": "phase == 'buy' and affordable",
+			"steps": [
 				"buys -= 1",
 				"coins -= number(card, 'cost')",
 				"phase = 'buy'",
@@ -232,9 +230,7 @@
 					]
 				}
 			]
-		}
-	],
-	"actions": {
+		},
 		"Play treasures": {
 			"when": "phase == 'action' or count(matching(hand, 'is_treasure')) > 0 and phase == 'buy'",
 			"steps": [

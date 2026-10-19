@@ -109,13 +109,14 @@
 		"team_tricks": "count(team_won) / 4",
 		"likely_winner": "card.data.rank == 'A' or card.data.rank == 'K' or (card.data.suit == 'Spades' and number(card, 'value') >= 11)"
 	},
-	"moves": [
-		{
-			"from": "hand",
-			"to": "played",
-			"phase": "play",
-			"when": "follows_suit(card, hand, lead) and spades_allowed",
-			"then": [
+	"actions": {
+		"Play a card": {
+			"drag": {
+				"from": "hand",
+				"to": "played"
+			},
+			"when": "phase == 'play' and follows_suit(card, hand, lead) and spades_allowed",
+			"steps": [
 				{
 					"if": "lead == ''",
 					"then": [
@@ -139,9 +140,7 @@
 					]
 				}
 			]
-		}
-	],
-	"actions": {
+		},
 		"Bid": {
 			"button": false,
 			"choose": "numbers(0, 13)",
@@ -163,8 +162,8 @@
 			]
 		},
 		"Collect trick": {
-			"phase": "trick done",
 			"human_only": true,
+			"when": "phase == 'trick done'",
 			"steps": [
 				"move(all_played, won)",
 				"lead = ''",
@@ -180,8 +179,8 @@
 			]
 		},
 		"Next hand": {
-			"phase": "hand over",
 			"human_only": true,
+			"when": "phase == 'hand over'",
 			"steps": [
 				"trigger('deal')"
 			]

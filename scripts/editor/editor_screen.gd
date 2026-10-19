@@ -6,17 +6,16 @@ extends Control
 
 const MAIN_SCENE := preload("res://scenes/main.tscn")
 const TITLE_SCENE := "res://scenes/title.tscn"
-const SECTIONS := ["Game", "Table", "Deck", "Players", "Variables", "Moves", "Buttons", "Triggers", "Conditions", "Scoring", "Melds"]
+const SECTIONS := ["Game", "Table", "Deck", "Players", "Variables", "Actions", "Turn", "Triggers", "Conditions", "Scoring", "Melds"]
 ## Changes to the same setting within this long count as one step for Undo (e.g. dragging a number).
 const MERGE_TIME := 1500
 const RELOAD_DELAY := 0.3
 const NEW_ZONE := {"layout": "pile", "anchor": [0.5, 0.5]}
-const NEW_MOVE := {"from": "hand", "to": "discard"}
 const NEW_MELD_TYPE := {"same": "rank", "min": 3}
 ## Sections listing named entries: where they live in the file, what one is called, and what a new one holds.
 const NAMED := {
 	"Table": {key = "zones", noun = "zone", new = NEW_ZONE},
-	"Buttons": {key = "actions", noun = "button", new = {"steps": []}},
+	"Actions": {key = "actions", noun = "action", new = {"steps": []}},
 	"Triggers": {key = "triggers", noun = "trigger", new = []},
 	"Conditions": {key = "conditions", noun = "condition", new = "true"},
 }
@@ -28,7 +27,7 @@ const VARIABLE_TABLES := [
 ## Which section each part of the file is edited in.
 const SECTION_OF := {
 	"title": "Game", "description": "Game", "zones": "Table", "card_face": "Deck", "variables": "Variables",
-	"player_variables": "Variables", "team_variables": "Variables", "moves": "Moves", "actions": "Buttons",
+	"player_variables": "Variables", "team_variables": "Variables", "actions": "Actions", "turn": "Turn",
 	"triggers": "Triggers", "conditions": "Conditions", "players": "Players", "player_names": "Players", "seats": "Players",
 	"teams": "Players", "bot": "Players", "status": "Scoring", "show_variables": "Scoring", "melds": "Melds",
 }
@@ -284,19 +283,7 @@ func _entries() -> Array:
 	match section:
 		"Deck":
 			return _decks_used().map(func(deck: String) -> Array: return [deck, deck.get_file()])
-		"Moves":
-			var moves: Array = document.get_value(["moves"], [])
-			return range(moves.size()).map(func(i: int) -> Array: return [str(i), "%d. %s" % [i + 1, _move_label(moves[i])]])
 	return []
-
-
-static func _move_label(rule: Variant) -> String:
-	if rule is not Dictionary:
-		return "?"
-	var ends: Array = ["from", "to"].map(func(end: String) -> String:
-		var zones: Variant = rule.get(end, "anywhere")
-		return ", ".join(zones) if zones is Array else str(zones))
-	return "%s → %s" % ends
 
 
 func _decks_used() -> Array:
@@ -321,14 +308,6 @@ func _fill_entries() -> void:
 		_add_entry_button("Add", func() -> void: _ask("New " + kind, "", _add_named))
 		_add_entry_button("Rename", func() -> void: if entry: _ask("Rename %s (steps using the old name aren't changed)" % kind, entry, _rename_named))
 		_add_entry_button("Remove", func() -> void: if entry: edit(func() -> void: document.remove([NAMED[section].key, entry])))
-	elif section == "Moves":
-		_add_entry_button("Add", func() -> void:
-			var count: int = document.get_value(["moves"], []).size()
-			edit(func() -> void: document.insert(["moves"], count, NEW_MOVE))
-			select_entry(str(count)))
-		_add_entry_button("Up", _move_rule.bind(-1))
-		_add_entry_button("Down", _move_rule.bind(1))
-		_add_entry_button("Remove", func() -> void: if entry: edit(func() -> void: document.remove(["moves", int(entry)])))
 
 
 func _add_entry_button(text: String, pressed: Callable) -> void:
@@ -353,23 +332,9 @@ func _rename_named(name: String) -> void:
 		select_entry(name)
 
 
-## Zone, trigger and condition names are used in steps, so they must be single words; buttons can say anything.
+## Zone, trigger and condition names are used in steps, so they must be single words; actions can say anything.
 func _good_name(name: String) -> bool:
-	return name.is_valid_identifier() if section != "Buttons" else not name.is_empty()
-
-
-## Move rules are tried in order, so their order matters.
-func _move_rule(step: int) -> void:
-	var moves: Array = document.get_value(["moves"], [])
-	var from := int(entry)
-	var to := from + step
-	if entry.is_empty() or to < 0 or to >= moves.size():
-		return
-	edit(func() -> void:
-		var rule: Variant = document.get_value(["moves", from])
-		document.remove(["moves", from])
-		document.insert(["moves"], to, rule))
-	select_entry(str(to))
+	return name.is_valid_identifier() if section != "Actions" else not name.is_empty()
 
 
 # --- The details panel and the middle ---------------------------------------------------------------------
@@ -379,7 +344,7 @@ func _show_details() -> void:
 		child.queue_free()
 	preview.visible = section != "Deck"
 	deck_table.visible = section == "Deck"
-	if section in ["Table", "Deck", "Moves", "Buttons", "Triggers", "Conditions"] and entry.is_empty():
+	if section in ["Table", "Deck", "Actions", "Triggers", "Conditions"] and entry.is_empty():
 		_add_heading("Nothing here yet: press Add." if section != "Deck" else "No deck yet: in Table, pick a zone and choose its cards.")
 		return
 	match section:
@@ -394,13 +359,13 @@ func _show_details() -> void:
 			deck_table.show_deck(text, document.get_value(["card_face"], GameRules.DEFAULT_CARD_FACE))
 			_add_heading("Card face")
 			_add_form(["card_face"], EditorFields.CARD_FACE, _deck_columns())
-		"Moves":
-			_add_heading("Move " + _move_label(document.get_value(["moves", int(entry)])))
-			_add_help("A drag is allowed when a rule matches its zones (and phase and when); the first matching rule's then steps run.")
-			_add_note(["moves", int(entry)])
-			_add_form(["moves", int(entry)], EditorFields.MOVE)
-		"Buttons":
-			_show_button()
+		"Actions":
+			_show_action()
+		"Turn":
+			_add_heading("Turn")
+			_add_help("Steps run again and again for whoever's turn it is (end_turn() passes it on). offer(['Play a card', 'Draw']) waits for the player to do one of those actions; actions never offered can be done any time. Leave it empty for games without turns, like solitaire.")
+			_add_note(["turn"])
+			%Details.add_child(StepList.new(self, ["turn"]))
 		"Triggers":
 			_add_heading("Trigger: " + entry)
 			_add_help(TRIGGER_HELP.get(entry, "Runs when a step calls trigger('%s'), or when a card names it in an on_<zone> column (then card is that card)." % entry))
@@ -456,18 +421,19 @@ func _show_melds() -> void:
 	_add_form(["melds"], EditorFields.MELDS, _deck_columns())
 
 
-## A button written as just a list of steps gets the full form once it needs more than steps.
-func _show_button() -> void:
+## An action written as just a list of steps (a button) gets the full form once it needs more than steps.
+func _show_action() -> void:
 	var path: Array = ["actions", entry]
-	_add_heading("Button: " + entry)
+	_add_heading("Action: " + entry)
 	_add_note(path)
 	if document.get_value(path) is Dictionary:
+		_add_help("Done by a drag or click if it says so, otherwise by its button. For a drag or click, the first action in the file that allows it is done.")
 		_add_form(path, EditorFields.ACTION)
 		return
 	_add_help("What the button does:")
 	%Details.add_child(StepList.new(self, path))
 	var more := Button.new()
-	more.text = "More settings (when, choose, ...)"
+	more.text = "More settings (drag, click, when, choose, ...)"
 	more.pressed.connect(func() -> void: edit(func() -> void:
 		var steps: Variant = document.get_value(path)
 		document.set_value(path, {"steps": steps if steps is Array else [steps]})))

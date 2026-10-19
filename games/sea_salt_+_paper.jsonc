@@ -10,7 +10,6 @@
 		"Player 4"
 	],
 	"zones": {
-		// Click the deck to draw two cards and keep one.
 		"deck": {
 			"label": "Deck",
 			"layout": "pile",
@@ -22,17 +21,8 @@
 			"cards": "res://decks/seas_salt_+_paper.csv",
 			"columns": {
 				"ink": "'#000000' if card.color == 'White' else '#ffffff'"
-			},
-			"on_click": [
-				{
-					"if": "phase == 'draw'",
-					"then": [
-						"trigger('draw_two')"
-					]
-				}
-			]
+			}
 		},
-		// Click (or drag) the top card of a pile to take it instead.
 		"discard_piles": {
 			"label": "Discard #",
 			"layout": "pile",
@@ -47,10 +37,7 @@
 					0.11,
 					0
 				]
-			},
-			"on_click": [
-				"try_move(card, hand)"
-			]
+			}
 		},
 		// The two cards just drawn, seen only by the player choosing which to keep.
 		"drawn": {
@@ -106,9 +93,7 @@
 			2
 		]
 	},
-	// A turn: "draw" (two from the deck, or one from a discard pile), then "duos" (play any, then End turn).
 	"variables": {
-		"phase": "draw",
 		"extra_turn": false
 	},
 	"conditions": {
@@ -116,19 +101,26 @@
 		"one_kind": "size(groups(choice, 'Kind')) == 1",
 		"shark_and_swimmer": "count(where(choice, 'Kind', 'Shark')) == 1 and count(where(choice, 'Kind', 'Swimmer')) == 1"
 	},
-	"moves": [
-		{
-			"from": "discard_piles",
-			"to": "hand",
-			"phase": "draw",
-			"then": [
-				"phase = 'duos'"
-			]
-		}
-	],
 	"actions": {
+		// Click the deck: keep one of the two cards drawn, and discard the other onto an empty pile if there is one,
+		// otherwise onto either.
+		"Draw two": {
+			"click": "deck",
+			"steps": [
+				"draw(deck, drawn, 2)",
+				"move(choose(drawn, 'Keep one card'), hand)",
+				"move(drawn, discard_piles_1 if count(discard_piles_1) == 0 else discard_piles_2 if count(discard_piles_2) == 0 else choose(discard_piles, 'Discard the other card onto a pile'))"
+			]
+		},
+		// Or click (or drag) the top card of a discard pile.
+		"Take a discard": {
+			"drag": {
+				"from": "discard_piles",
+				"to": "hand"
+			},
+			"click": true
+		},
 		"Play duo": {
-			"phase": "duos",
 			"when": "count(matching(hand, 'is_duo')) >= 2",
 			"choose": "matching(hand, 'is_duo')",
 			"pick": 2,
@@ -138,25 +130,25 @@
 				"trigger('duo_' + text(top(choice), 'Kind'))"
 			]
 		},
-		"End turn": {
-			"phase": "duos",
-			"steps": [
-				"phase = 'draw'",
-				{
-					"if": "extra_turn",
-					"then": [
-						"extra_turn = false"
-					],
-					"else": [
-						"end_turn()"
-					]
-				}
-			]
-		},
+		"End turn": [],
 		"Sort hand": [
 			"sort(hand, ['Kind', 'Color'])"
 		]
 	},
+	// A turn: draw (two from the deck, or one from a discard pile), then play any duos, then End turn.
+	"turn": [
+		"offer(['Draw two', 'Take a discard'])",
+		"offer_until(['Play duo', 'End turn'], 'End turn')",
+		{
+			"if": "extra_turn",
+			"then": [
+				"extra_turn = false"
+			],
+			"else": [
+				"end_turn()"
+			]
+		}
+	],
 	"triggers": {
 		"start": [
 			"shuffle(deck)",
@@ -167,13 +159,6 @@
 					"move(top(deck), pile)"
 				]
 			}
-		],
-		// Keep one of the two, and discard the other onto an empty pile if there is one, otherwise onto either.
-		"draw_two": [
-			"draw(deck, drawn, 2)",
-			"move(choose(drawn, 'Keep one card'), hand)",
-			"move(drawn, discard_piles_1 if count(discard_piles_1) == 0 else discard_piles_2 if count(discard_piles_2) == 0 else choose(discard_piles, 'Discard the other card onto a pile'))",
-			"phase = 'duos'"
 		],
 		// Two crabs: look through a discard pile and take one card from it.
 		"duo_Crab": [

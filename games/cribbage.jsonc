@@ -95,9 +95,6 @@
 					0.4,
 					0.15
 				]
-			],
-			"on_click": [
-				"try_move(card, pegging)"
 			]
 		}
 	},
@@ -143,13 +140,15 @@
 		"hand_points": "2 * size(sums(with_starter, 'value', 15)) + 2 * size(pairs(with_starter, 'rank')) + count(runs(with_starter, 'order', 3)) + flush_points + nobs",
 		"kept_points": "2 * size(sums(hand, 'value', 15)) + 2 * size(pairs(hand, 'rank')) + count(runs(hand, 'order', 3))"
 	},
-	"moves": [
-		{
-			"from": "hand",
-			"to": "pegging",
-			"phase": "pegging",
-			"when": "playable",
-			"then": [
+	"actions": {
+		"Peg a card": {
+			"drag": {
+				"from": "hand",
+				"to": "pegging"
+			},
+			"click": true,
+			"when": "phase == 'pegging' and playable",
+			"steps": [
 				"total += number(card, 'value')",
 				"points = 0",
 				{
@@ -231,9 +230,7 @@
 					]
 				}
 			]
-		}
-	],
-	"actions": {
+		},
 		"Discard to crib": {
 			"button": false,
 			"choose": "hand",
@@ -251,8 +248,8 @@
 			]
 		},
 		"Count hand": {
-			"phase": "show",
 			"human_only": true,
+			"when": "phase == 'show'",
 			"steps": [
 				{
 					"if": "counting_crib",
@@ -283,8 +280,8 @@
 			]
 		},
 		"Next hand": {
-			"phase": "hand over",
 			"human_only": true,
+			"when": "phase == 'hand over'",
 			"steps": [
 				"trigger('deal')"
 			]

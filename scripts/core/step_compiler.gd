@@ -7,15 +7,24 @@ const CONDITIONAL_KEYS := ["if", "then", "else"]
 const LOOP_KEYS := ["for", "in", "do"]
 const WHILE_KEYS := ["while", "do"]
 const VIEWER_BLOCK := "viewer"
-const CHOOSE_BLOCKS := ["choose", "choose_exactly", "choose_up_to"]
+## Building blocks that wait for a player, so they only work in steps.
+const WAITING_BLOCKS := ["choose", "choose_exactly", "choose_up_to", "offer", "offer_until"]
+const OFFER_BLOCKS := ["offer", "offer_until"]
+## Keys that are gone, with what to use instead.
+const REPLACED_KEYS := {
+	"moves": "\"moves\" are now actions with \"drag\": { \"from\": ..., \"to\": ... } (see README, \"actions\")",
+	"on_click": "zones no longer have \"on_click\": make an action with \"click\": \"<zone>\" (or \"click\": true on a drag action)",
+	"on_double_click": "zones no longer have \"on_double_click\": make an action with \"double_click\": \"<zone>\" (or true on a drag action)",
+	"phase": "\"phase\" on actions is gone: offer the action from the \"turn\" steps with offer(...), or check a variable in \"when\"",
+}
 ## Where a text is used (see _collect_steps), strictest first.
 const EXPRESSION := 0
 const STEP_CONDITION := 1
 const STEP := 2
 const ZONE_KEYS := ["label", "labels", "outline", "layout", "face", "anchor", "anchors", "width", "rotation", "rotations", "cards",
-	"on_click", "on_double_click", "spread", "drag", "per_player", "copies", "grid", "group", "covered_by", "columns"]
+	"spread", "drag", "per_player", "copies", "grid", "group", "covered_by", "columns"]
 const CARD_FACE_KEYS := ["corner", "title", "body", "text", "color", "background", "zoom"]
-const TYPE_DESCRIPTIONS := {TYPE_STRING: "text", TYPE_ARRAY: "a list", TYPE_FLOAT: "a number", TYPE_BOOL: "true or false"}
+const TYPE_DESCRIPTIONS := {TYPE_STRING: "text", TYPE_ARRAY: "a list", TYPE_FLOAT: "a number", TYPE_BOOL: "true or false", TYPE_DICTIONARY: "an object"}
 
 static var building_blocks := _building_blocks()
 
@@ -37,7 +46,10 @@ func _init(game_to_check: Game) -> void:
 ## Before any zone is made: misspelled keys, and settings that would stop the zones being built at all.
 func check_zone_definitions() -> void:
 	for key in rules.unknown_keys:
-		errors.append("Unknown key \"%s\" at the top of the game file" % key)
+		if key == "turn":
+			errors.append("\"turn\" should be a list of steps")
+		else:
+			errors.append(REPLACED_KEYS[key] if key in REPLACED_KEYS else "Unknown key \"%s\" at the top of the game file" % key)
 	for key in rules.card_face:
 		if key not in CARD_FACE_KEYS:
 			errors.append("card_face: unknown key \"%s\" (it has %s)" % [key, ", ".join(CARD_FACE_KEYS)])
@@ -47,7 +59,9 @@ func check_zone_definitions() -> void:
 			errors.append("Zone \"%s\" should be an object" % zone_kind)
 			continue
 		for key in definition:
-			if key not in ZONE_KEYS:
+			if key in REPLACED_KEYS:
+				errors.append("Zone \"%s\": %s" % [zone_kind, REPLACED_KEYS[key]])
+			elif key not in ZONE_KEYS:
 				errors.append("Zone \"%s\": unknown key \"%s\"" % [zone_kind, key])
 		var columns: Variant = definition.get("columns", {})
 		if columns is not Dictionary or columns.values().any(func(formula: Variant) -> bool: return formula is not String):
@@ -77,7 +91,7 @@ func check_zone_definitions() -> void:
 func check_and_compile() -> void:
 	_check_teams()
 	_check_names_are_unique()
-	_check_actions_and_moves()
+	_check_actions()
 	_check_melds()
 	if errors.is_empty():
 		_compile_all_steps()
@@ -122,26 +136,34 @@ func _check_names_are_unique() -> void:
 			errors.append("Condition \"%s\" should be an expression in text" % name)
 
 
-func _check_actions_and_moves() -> void:
+func _check_actions() -> void:
 	for action_name in rules.actions:
-		_check_entry("Action \"%s\"" % action_name, rules.actions[action_name], {"when": TYPE_STRING, "choose": TYPE_STRING, "pick": [TYPE_FLOAT, TYPE_STRING], "up_to": [TYPE_FLOAT, TYPE_STRING], "allow": TYPE_STRING, "human_only": TYPE_BOOL, "button": TYPE_BOOL, "prefer": TYPE_STRING, "steps": TYPE_ARRAY, "phase": [TYPE_STRING, TYPE_ARRAY]})
-		var action: Variant = rules.actions[action_name]
+		var label := "Action \"%s\"" % action_name
+		var action: Dictionary = rules.actions[action_name]
+		if action.has("phase"):
+			errors.append("%s: %s" % [label, REPLACED_KEYS.phase])
+			continue
+		_check_entry(label, action, {"when": TYPE_STRING, "choose": TYPE_STRING, "pick": [TYPE_FLOAT, TYPE_STRING], "up_to": [TYPE_FLOAT, TYPE_STRING], "allow": TYPE_STRING,
+			"human_only": TYPE_BOOL, "button": TYPE_BOOL, "prefer": TYPE_STRING, "steps": TYPE_ARRAY, "drag": TYPE_DICTIONARY,
+			"click": [TYPE_BOOL, TYPE_STRING, TYPE_ARRAY], "double_click": [TYPE_BOOL, TYPE_STRING, TYPE_ARRAY]})
 		for key in ["pick", "up_to", "allow"]:
-			if action is Dictionary and action.has(key) and not action.has("choose"):
-				errors.append("Action \"%s\": \"%s\" needs \"choose\"" % [action_name, key])
-		if action is Dictionary and action.has("pick") and action.has("up_to"):
-			errors.append("Action \"%s\": use \"pick\" (exactly that many) or \"up_to\" (any number up to it), not both" % action_name)
-	for rule in rules.moves:
-		var label := "Move %s" % JSON.stringify(rule)
-		_check_entry(label, rule, {"from": [TYPE_STRING, TYPE_ARRAY], "to": [TYPE_STRING, TYPE_ARRAY], "when": TYPE_STRING, "then": TYPE_ARRAY, "phase": [TYPE_STRING, TYPE_ARRAY]})
-		for end in ["from", "to"]:
-			var zone_names: Variant = rule.get(end) if rule is Dictionary else null
-			for zone_name: Variant in zone_names if zone_names is Array else [zone_names]:
-				if zone_name is String and zone_name not in game.zones and zone_name not in game.aliases() and zone_name not in game.zone_groups:
-					errors.append("%s: unknown zone \"%s\"" % [label, zone_name])
-	var uses_phase := (rules.actions.values() + rules.moves).any(func(entry: Variant) -> bool: return entry is Dictionary and entry.has(Game.PHASE_KEY))
-	if uses_phase and Game.PHASE_KEY not in game.variables:
-		errors.append("\"phase\" on a move or action needs a variable named phase, e.g. \"variables\": { \"phase\": \"draw\" }")
+			if action.has(key) and not action.has("choose"):
+				errors.append("%s: \"%s\" needs \"choose\"" % [label, key])
+		if action.has("pick") and action.has("up_to"):
+			errors.append("%s: use \"pick\" (exactly that many) or \"up_to\" (any number up to it), not both" % label)
+		if action.has("choose") and (action.has(Game.DRAG_KEY) or action.has(Game.CLICK_KEY) or action.has(Game.DOUBLE_CLICK_KEY)):
+			errors.append("%s: \"choose\" is for buttons; an action done by a drag or click already has its card" % label)
+		if action.get(Game.DRAG_KEY) is Dictionary:
+			_check_entry("%s: \"drag\"" % label, action.drag, {"from": [TYPE_STRING, TYPE_ARRAY], "to": [TYPE_STRING, TYPE_ARRAY]})
+			_check_zone_names(label, action.drag.get("from"))
+			_check_zone_names(label, action.drag.get("to"))
+		for key in [Game.CLICK_KEY, Game.DOUBLE_CLICK_KEY]:
+			if action.get(key) is bool and not action.has(Game.DRAG_KEY):
+				errors.append("%s: \"%s\": true means clicking does its drag, so it needs \"drag\"; to click a zone, name it: \"%s\": \"deck\"" % [label, key, key])
+			elif action.has(key) and action.has(Game.DRAG_KEY) and action[key] is not bool:
+				errors.append("%s: with \"drag\", \"%s\" is true (clicking the card does the drag)" % [label, key])
+			elif action.get(key) is not bool:
+				_check_zone_names(label, action.get(key))
 	if rules.seats.size() not in [0, 1, rules.players]:
 		errors.append("\"seats\" needs one spot per player (%d), or just seat 1's to place the rest round the table" % rules.players)
 	if rules.player_names and rules.player_names.size() < rules.players:
@@ -160,6 +182,12 @@ func _check_actions_and_moves() -> void:
 	for label in rules.status:
 		if rules.status[label] is not String:
 			errors.append("Status \"%s\" should be an expression in text" % label)
+
+
+func _check_zone_names(label: String, zone_names: Variant) -> void:
+	for zone_name: Variant in zone_names if zone_names is Array else [zone_names]:
+		if zone_name is String and zone_name not in game.zones and zone_name not in game.aliases() and zone_name not in game.zone_groups:
+			errors.append("%s: unknown zone \"%s\"" % [label, zone_name])
 
 
 func _check_melds() -> void:
@@ -188,7 +216,7 @@ func _check_entry(label: String, entry: Variant, field_types: Dictionary) -> voi
 
 
 func _compile_all_steps() -> void:
-	var step_lists: Array = rules.triggers.values()
+	var step_lists: Array = rules.triggers.values() + [rules.turn]
 	var expressions: Array = []
 	for action: Dictionary in rules.actions.values():
 		step_lists.append(action.get("steps", []))
@@ -197,17 +225,12 @@ func _compile_all_steps() -> void:
 		for key in ["pick", "up_to", "allow", "prefer"]:
 			if action.get(key) is String:
 				expressions.append(action[key])
-	for rule: Dictionary in rules.moves:
-		step_lists.append(rule.get("then", []))
-		expressions.append(rule.get("when", ""))
 	expressions.append_array(rules.status.values())
 	expressions.append_array(rules.conditions.values())
 	for zone: Variant in rules.zones.values():
 		expressions.append_array(zone.get("columns", {}).values())
 	expressions.append(rules.bot.get("prefer", ""))
 	for zone: Zone in game.zones.values():
-		step_lists.append(zone.on_click)
-		step_lists.append(zone.on_double_click)
 		for card in zone.cards:
 			for destination: Zone in game.zones.values():
 				step_lists.append(game.card_effect(card, destination.kind))
@@ -236,6 +259,7 @@ func _compile_all_steps() -> void:
 		else:
 			game.step_trees[text] = trees[text]
 	_check_remembered_names_are_used(trees.values())
+	_learn_offered_actions(trees.values())
 	for text: String in trees:
 		if text not in rules.status.values() and text not in rules.conditions.values() and _calls(trees[text], VIEWER_BLOCK):
 			errors.append("Step \"%s\": viewer() only works in \"status\" (each screen has its own, so rules can't depend on it)" % text)
@@ -332,8 +356,10 @@ func _find_problems(node: Dictionary, text: String, place: int, problems: Array[
 			var problem := _call_problem(node.name, node.args.size())
 			if problem:
 				problems.append(problem)
-			if node.name in CHOOSE_BLOCKS and place == EXPRESSION:
-				problems.append("%s waits for a player to choose, so it only works in steps (not in a when, a condition or a status)" % node.name)
+			if node.name in WAITING_BLOCKS and place == EXPRESSION:
+				problems.append("%s waits for a player, so it only works in steps (not in a when, a condition or a status)" % node.name)
+			if node.name in OFFER_BLOCKS:
+				problems.append_array(_offer_problems(node))
 		"assign":
 			if place != STEP:
 				problems.append("= changes a variable, so it only works as a step of its own; to compare, use ==")
@@ -353,6 +379,43 @@ func _learn_remembered_names(trees: Array) -> void:
 		if target not in game.input_names() and target not in rules.conditions and target not in building_blocks:
 			game.local_names.append(target)
 			remembered_names.append(target)
+
+
+## offer(...) names actions in quotes, so the game knows which actions wait to be offered (Game.offered_actions).
+func _offer_problems(node: Dictionary) -> Array[String]:
+	var problems: Array[String] = []
+	for name: Variant in _offered_names(node):
+		if name is not String:
+			problems.append("%s needs action names in quotes, e.g. offer(['Play a card', 'Draw'])" % node.name)
+		elif name not in rules.actions:
+			problems.append("%s: no action named \"%s\"" % [node.name, name])
+	return problems
+
+
+## The names an offer(...) or offer_until(...) gives: its first argument, a name or a list of names (null for
+## anything that isn't a name in quotes), plus offer_until's last one.
+static func _offered_names(node: Dictionary) -> Array:
+	var given: Array = node.args.slice(0, 2 if node.name == "offer_until" else 1)
+	var names := []
+	for arg: Dictionary in given:
+		for item: Dictionary in arg.items if arg.kind == "list" else [arg]:
+			names.append(item.value if item.kind == "value" and item.value is String else null)
+	return names
+
+
+func _learn_offered_actions(trees: Array) -> void:
+	for tree: Dictionary in trees:
+		for node in _calls_in(tree, OFFER_BLOCKS):
+			for name: Variant in _offered_names(node):
+				if name is String:
+					game.offered_actions[name] = true
+
+
+static func _calls_in(node: Dictionary, names: Array) -> Array:
+	var found := [node] if node.kind == "call" and node.name in names else []
+	for child in _children(node):
+		found.append_array(_calls_in(child, names))
+	return found
 
 
 ## A remembered name that's never read is most likely a misspelled variable (phse = 'draw').

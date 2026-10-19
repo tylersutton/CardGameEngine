@@ -20,8 +20,11 @@ const CARD_EFFECT_PREFIX := "on_"
 const HIDDEN_CARD := "a hidden card"
 const CARD_EFFECT_SEPARATOR := ";"
 const LOOP_NUMBER_SUFFIX := "_number"
-const PHASE_KEY := "phase"
 const CHOOSE_PROMPT := "Choose"
+## Ways to do an action other than its toolbar button.
+const DRAG_KEY := "drag"
+const CLICK_KEY := "click"
+const DOUBLE_CLICK_KEY := "double_click"
 
 
 var rules: GameRules
@@ -60,6 +63,12 @@ var asked: Array[Dictionary] = []
 var choice_asked := false
 var return_player := 0
 var performing_asked := false
+## The actions a waiting offer(...) lets the current player do; and every action named in an offer anywhere
+## (filled in by StepCompiler), which can only be done while offered. See is_offered_now.
+var offered: Array = []
+var offered_actions := {}
+## Set by end_game(): no more turns, and nothing waits for an offer.
+var over := false
 var history: Array[Dictionary] = []
 var game_log := GameLog.new()
 var move_from: Zone
@@ -69,6 +78,10 @@ var checking_moves := false
 var checked_itself := false
 ## Names that steps remember without declaring them: loop items (and their _number) and names set with =.
 var local_names: Array[String] = []
+## The actions done by dragging (with "drag"), and by clicking or double-clicking (by name, or true on a drag
+## action), in the file's order.
+var drag_action_names: Array[String] = []
+var click_action_names := {CLICK_KEY: [], DOUBLE_CLICK_KEY: []}
 
 
 ## A seed makes the match repeatable: the same seed and inputs always give the same game.
@@ -83,6 +96,12 @@ func _init(path: String, seed := -1, files := {}) -> void:
 	if rules.error:
 		errors.append(rules.error)
 		return
+	for action_name: String in rules.actions:
+		if rules.actions[action_name].get(DRAG_KEY) is Dictionary:
+			drag_action_names.append(action_name)
+		for click_key in click_action_names:
+			if rules.actions[action_name].has(click_key):
+				click_action_names[click_key].append(action_name)
 	var compiler := StepCompiler.new(self)
 	compiler.check_zone_definitions()
 	if errors:
@@ -134,10 +153,43 @@ func start() -> void:
 	state_changed.emit()
 
 
+## Whether a toolbar button can be pressed now. A drag or click action with "button": true needs a card it
+## could be done with, which pressing the button then asks for.
 func can_perform(action_name: String) -> bool:
 	if sandbox:
 		return true
-	return not waiting_for_choice() and applies(rules.actions[action_name])
+	if waiting_for_choice() or not is_offered_now(action_name):
+		return false
+	if _is_card_action(rules.actions[action_name]):
+		return not playable_cards(action_name).is_empty()
+	return holds(rules.actions[action_name].get("when", ""))
+
+
+## Actions named in an offer(...) can only be done while an offer naming them is waiting; the others whenever
+## their "when" holds.
+func is_offered_now(action_name: String) -> bool:
+	return action_name not in offered_actions or action_name in offered
+
+
+## Whether the current player could do the action now if it were offered, by whichever means it has: what
+## offer(...) checks before waiting.
+func can_do(action_name: String) -> bool:
+	if not rules.actions.has(action_name):
+		return false
+	var action: Dictionary = rules.actions[action_name]
+	if _is_card_action(action):
+		return not playable_cards(action_name).is_empty() or _clickable_empty_zones(action_name).size() > 0
+	return holds(action.get("when", ""))
+
+
+static func _is_card_action(action: Dictionary) -> bool:
+	return action.has(DRAG_KEY) or action.has(CLICK_KEY) or action.has(DOUBLE_CLICK_KEY)
+
+
+## Toolbar buttons: actions done by pressing them (not by a drag or click, unless they also say "button": true).
+func shows_button(action_name: String) -> bool:
+	var action: Dictionary = rules.actions[action_name]
+	return action.get("button", not _is_card_action(action))
 
 
 ## A choice a rule asked for (e.g. "discard down to 3") must be made before anything else happens.
@@ -154,7 +206,10 @@ func perform(action_name: String) -> void:
 	log_line("[action] " + action_name)
 	if action.has("choose"):
 		_start_choice(action_name, action)
+	elif _is_card_action(action):
+		_open_choice(action_name, action_name, playable_cards(action_name), 1, true, performing_asked)
 	else:
+		_accept_offer(action_name)
 		run(action.get("steps", []))
 	_finish_input(before)
 
@@ -338,6 +393,31 @@ func option_text(option: Variant) -> String:
 	return format_value(option)
 
 
+## An offer(...) step is waiting: the current player may do one of these actions (and anything not offered).
+func open_offer(request: Dictionary) -> void:
+	offered = request.actions
+	log_line("  %s may: %s" % [player_name(current_player()), ", ".join(offered)])
+
+
+## The waiting offer gets its answer (the action being done), so the steps carry on once the action's steps run.
+func _accept_offer(action_name: String) -> void:
+	if action_name in offered:
+		offered = []
+		runner.accept(action_name)
+
+
+## The game is over: no more turns, and offers give null straight away.
+func end_game() -> void:
+	over = true
+	offered = []
+	log_line("[game over]")
+
+
+## Whether turns should go on: the "turn" steps start again once nothing else is running, asked or being chosen.
+func next_turn_due() -> bool:
+	return not rules.turn.is_empty() and not over and asked.is_empty() and choosing == ""
+
+
 ## A choose(...) step is waiting: the current player picks, and must (nothing else happens until they do).
 ## The step's answer is a single option, or for several (exactly or up to so many) a list.
 func open_inline_choice(request: Dictionary) -> void:
@@ -396,7 +476,10 @@ func _complete_choice(choice: Variant) -> void:
 	var back_to := return_player
 	log_line("[%s] chose %s" % [choosing, describe(choice)])
 	_clear_choice()
-	if action_name:
+	if action_name and _is_card_action(rules.actions[action_name]):
+		_play_card_action(action_name, choice)
+	elif action_name:
+		_accept_offer(action_name)
 		var outer_choice: Variant = chosen
 		chosen = choice
 		run(rules.actions[action_name].get("steps", []), choice if choice is Card else null)
@@ -458,6 +541,7 @@ func _perform_asked() -> void:
 		elif current_player() != turn:
 			set_variable(PLAYER_VARIABLE, turn)
 	performing_asked = false
+	runner.drive()
 
 
 func cancel_choice() -> void:
@@ -476,31 +560,45 @@ func _clear_choice() -> void:
 	state_changed.emit()
 
 
+## A card dragged onto a zone: done by the first drag action that allows it (see _drag_action). With no drag
+## actions in the game at all, any drag is allowed.
 func drag(card: Card, destination: Zone, index := -1) -> bool:
 	if waiting_for_choice() and not sandbox:
 		log_line("[waiting] %s must finish \"%s\" first" % [player_name(current_player()), choosing])
 		game_log.flush()
 		return false
 	cancel_choice()
-	var before := Snapshot.take(self)
 	var source := zone_of(card)
-	var rule := {} if sandbox else _matching_move(card, source, destination)
-	if rule.is_empty() and not can_move(card, destination):
+	var action_name := "" if sandbox else _drag_action(card, source, destination)
+	if action_name.is_empty() and not can_move(card, destination):
 		log_line("[not allowed] %s: %s → %s (%s)" % [card.title, source.name, destination.name, _refusal_reason(source, destination)])
 		game_log.flush()
 		return false
-	_during_move(source, destination, func() -> void:
-		for carried_card in carried(card):
-			move(carried_card, destination)
-		if index >= 0 and destination.sort_columns.is_empty() and card in destination.cards:
-			destination.reorder(card, mini(index, destination.cards.size() - 1))
-		run(rule.get("then", []), card))
+	var before := Snapshot.take(self)
+	_drag_by(action_name, card, destination, index)
 	_finish_input(before)
 	return true
 
 
 func can_move(card: Card, destination: Zone) -> bool:
-	return sandbox or rules.moves.is_empty() or not _matching_move(card, zone_of(card), destination).is_empty()
+	return sandbox or drag_action_names.is_empty() or not _drag_action(card, zone_of(card), destination).is_empty()
+
+
+## Moves the card (and any carried with it), then runs the action's steps; card effects run first, as each card
+## arrives. They're all held back until the cards have moved, so an effect that waits for a choice holds up the rest.
+func _drag_by(action_name: String, card: Card, destination: Zone, index := -1) -> void:
+	if action_name:
+		log_line("[action] " + action_name)
+		_accept_offer(action_name)
+	runner.hold()
+	_during_move(zone_of(card), destination, func() -> void:
+		for carried_card in carried(card):
+			move(carried_card, destination)
+		if index >= 0 and destination.sort_columns.is_empty() and card in destination.cards:
+			destination.reorder(card, mini(index, destination.cards.size() - 1))
+		if action_name:
+			run(rules.actions[action_name].get("steps", []), card))
+	runner.release()
 
 
 func movable(cards: Array, destinations: Array) -> Array:
@@ -612,9 +710,8 @@ func click(card: Card) -> void:
 		_complete_choice(zone)
 	elif choosing:
 		cancel_choice()
-	elif zone.on_click:
-		log_line("[click] %s in %s" % [card.title, zone.name])
-		_run_clicked(zone, zone.on_click, card)
+	else:
+		_click_by(_click_action(zone, card, CLICK_KEY), zone, card)
 	_finish_input(before)
 
 
@@ -633,9 +730,8 @@ func double_click(card: Card) -> void:
 	var before := Snapshot.take(self)
 	cancel_choice()
 	var zone := zone_of(card)
-	if zone.on_double_click and not waiting_for_choice():
-		log_line("[double-click] %s in %s" % [card.title, zone.name])
-		_run_clicked(zone, zone.on_double_click, card)
+	if not waiting_for_choice():
+		_click_by(_click_action(zone, card, DOUBLE_CLICK_KEY), zone, card)
 	_finish_input(before)
 
 
@@ -645,10 +741,26 @@ func click_empty(zone: Zone) -> void:
 		_complete_choice(zone)
 	elif not waiting_for_choice():
 		cancel_choice()
-		if zone.on_click:
-			log_line("[click] " + zone.name)
-			_run_clicked(zone, zone.on_click)
+		_click_by(_click_action(zone, null, CLICK_KEY), zone, null)
 	_finish_input(before)
+
+
+## A click found an action (see _click_action): a drag action drags the card to its destination; any other
+## action runs its steps, with card and clicked_zone.
+func _click_by(found: Dictionary, zone: Zone, card: Card) -> void:
+	if found.is_empty():
+		return
+	if found.has("destination"):
+		_drag_by(found.action, card, found.destination)
+		return
+	log_line("[action] " + found.action)
+	_accept_offer(found.action)
+	_run_clicked(zone, rules.actions[found.action].get("steps", []), card)
+
+
+## Whether double-clicking a card in the zone does something (otherwise two quick clicks are two clicks).
+func has_double_click(zone: Zone) -> bool:
+	return click_action_names[DOUBLE_CLICK_KEY].any(func(action_name: String) -> bool: return _binds(rules.actions[action_name], DOUBLE_CLICK_KEY, zone))
 
 
 func _run_clicked(zone: Zone, steps: Array, card: Card = null) -> void:
@@ -706,20 +818,17 @@ func legal_moves() -> Array[Array]:
 	for source: Zone in zones.values():
 		for card in _reachable_cards(source):
 			for destination: Zone in zones.values():
-				if destination != source and not _matching_move(card, source, destination).is_empty():
+				if destination != source and not _drag_action(card, source, destination).is_empty():
 					moves.append([{type = "drag", card = card.id, to = destination.name}])
-		if source.on_click and source.is_empty():
-			moves.append([{type = "click_empty", zone = source.name}])
-		elif source.on_click:
-			for card in _reachable_cards(source):
+			if not _click_action(source, card, CLICK_KEY).is_empty():
 				moves.append([{type = "click", card = card.id}])
-		if source.on_double_click:
-			for card in _reachable_cards(source):
+			if not _click_action(source, card, DOUBLE_CLICK_KEY).is_empty():
 				moves.append([{type = "double_click", card = card.id}])
+		if source.is_empty() and not _click_action(source, null, CLICK_KEY).is_empty():
+			moves.append([{type = "click_empty", zone = source.name}])
 	for action_name: String in rules.actions:
 		var action: Dictionary = rules.actions[action_name]
-		var only_asked: bool = not action.get("button", true)
-		if action.get("human_only", false) or only_asked or not applies(action):
+		if _is_card_action(action) or not shows_button(action_name) or action.get("human_only", false) or not can_perform(action_name):
 			continue
 		var press := {type = "perform", action = action_name}
 		if not action.has("choose"):
@@ -732,7 +841,6 @@ func legal_moves() -> Array[Array]:
 	return moves
 
 
-## What a player could pick up: only the top card of a pile.
 static func _reachable_cards(zone: Zone) -> Array[Card]:
 	if zone.layout == "pile":
 		return [zone.cards.back()] if zone.cards else []
@@ -813,17 +921,96 @@ func holds(condition: String, card: Card = null) -> bool:
 	return not evaluation_failed and (true if result else false)
 
 
-func _matching_move(card: Card, source: Zone, destination: Zone) -> Dictionary:
-	return _during_move(source, destination, func() -> Dictionary:
-		for rule: Dictionary in _rules_between(source, destination):
-			if applies(rule, card):
-				return rule
-		return {})
+## The first drag action (in the file's order) that allows this card from source to destination now, or "".
+func _drag_action(card: Card, source: Zone, destination: Zone) -> String:
+	return _during_move(source, destination, func() -> String:
+		for action_name in _drag_actions_between(source, destination):
+			if is_offered_now(action_name) and holds(rules.actions[action_name].get("when", ""), card):
+				return action_name
+		return "")
 
 
-func _rules_between(source: Zone, destination: Zone) -> Array:
-	return rules.moves.filter(func(rule: Dictionary) -> bool:
-		return _names(rule.get("from"), source) and _names(rule.get("to"), destination))
+func _drag_actions_between(source: Zone, destination: Zone) -> Array:
+	return drag_action_names.filter(func(action_name: String) -> bool:
+		var drag_zones: Dictionary = rules.actions[action_name][DRAG_KEY]
+		return _names(drag_zones.get("from"), source) and _names(drag_zones.get("to"), destination))
+
+
+## What clicking (or double-clicking) the card does, as {action} (an action clicked on that zone) or
+## {action, destination} (a drag action that says "click": true, dragging the card to its first allowed zone).
+## The first action in the file that allows it now wins; {} if none.
+func _click_action(zone: Zone, card: Card, click_key: String) -> Dictionary:
+	for action_name: String in click_action_names[click_key]:
+		var action: Dictionary = rules.actions[action_name]
+		if not is_offered_now(action_name) or not _binds(action, click_key, zone):
+			continue
+		if action.has(DRAG_KEY):
+			var destination := _destination_for(action_name, card)
+			if destination:
+				return {action = action_name, destination = destination}
+		elif _clicked_with(zone, func() -> bool: return holds(action.get("when", ""), card)):
+			return {action = action_name}
+	return {}
+
+
+## Whether a click (or double-click) on the zone is one of the action's: its "click" names the zone, or it's a
+## drag from the zone with "click": true.
+func _binds(action: Dictionary, click_key: String, zone: Zone) -> bool:
+	var binding: Variant = action.get(click_key)
+	if binding is bool:
+		return binding and action.has(DRAG_KEY) and _names(action[DRAG_KEY].get("from"), zone)
+	return binding != null and _names(binding, zone)
+
+
+## The first zone a drag action would take the card to now, or null.
+func _destination_for(action_name: String, card: Card) -> Zone:
+	if card == null:
+		return null
+	var source := zone_of(card)
+	for destination: Zone in zones.values():
+		if destination != source and action_name in _drag_actions_between(source, destination) \
+				and _during_move(source, destination, func() -> bool: return holds(rules.actions[action_name].get("when", ""), card)):
+			return destination
+	return null
+
+
+## The cards the action could be done with now: dragged somewhere it allows, or clicked.
+func playable_cards(action_name: String) -> Array:
+	var action: Dictionary = rules.actions[action_name]
+	var playable := []
+	for zone: Zone in zones.values():
+		for card in _reachable_cards(zone):
+			var can_click: bool = not action.has(DRAG_KEY) and (_binds(action, CLICK_KEY, zone) or _binds(action, DOUBLE_CLICK_KEY, zone)) \
+				and _clicked_with(zone, func() -> bool: return holds(action.get("when", ""), card))
+			if can_click or action.has(DRAG_KEY) and _destination_for(action_name, card) != null:
+				playable.append(card)
+	return playable
+
+
+## Empty zones whose click the action is, while its "when" holds with no card.
+func _clickable_empty_zones(action_name: String) -> Array:
+	var action: Dictionary = rules.actions[action_name]
+	return zones.values().filter(func(zone: Zone) -> bool:
+		return zone.is_empty() and not action.has(DRAG_KEY) and _binds(action, CLICK_KEY, zone) \
+			and _clicked_with(zone, func() -> bool: return holds(action.get("when", ""), null)))
+
+
+## The action done with this card from a "button": true press: dragged to its first allowed zone, or clicked.
+func _play_card_action(action_name: String, card: Card) -> void:
+	var destination := _destination_for(action_name, card)
+	if destination:
+		_drag_by(action_name, card, destination)
+	else:
+		_click_by({action = action_name}, zone_of(card), card)
+
+
+## Works something out with clicked_zone set, as an action's "when" sees it.
+func _clicked_with(zone: Zone, work: Callable) -> Variant:
+	var outer_zone := clicked_zone
+	clicked_zone = zone
+	var result: Variant = work.call()
+	clicked_zone = outer_zone
+	return result
 
 
 func _names(rule_zone: Variant, zone: Zone) -> bool:
@@ -832,29 +1019,14 @@ func _names(rule_zone: Variant, zone: Zone) -> bool:
 	return rule_zone == null or _resolve(rule_zone) == zone.name or (rule_zone in zone_groups and zone in zone_groups[rule_zone])
 
 
-## Whether a move rule or action applies now: in its "phase" (one or a list), if it has one, and while "when" holds.
-func applies(entry: Dictionary, card: Card = null) -> bool:
-	if entry.has(PHASE_KEY):
-		var phases: Array = entry.phase if entry.phase is Array else [entry.phase]
-		if variables.get(PHASE_KEY) not in phases:
-			return false
-	return holds(entry.get("when", ""), card)
-
-
-static func _requirements(entry: Dictionary) -> String:
-	var parts: Array[String] = []
-	if entry.has(PHASE_KEY):
-		parts.append("phase is " + (entry.phase if entry.phase is String else " or ".join(entry.phase)))
-	if entry.get("when", ""):
-		parts.append(entry.when)
-	return " and ".join(parts) if parts else "always"
-
-
 func _refusal_reason(source: Zone, destination: Zone) -> String:
-	var conditions: Array = _rules_between(source, destination).map(_requirements)
-	if conditions.is_empty():
-		return "no move rule allows this"
-	return "requires: " + " OR ".join(conditions)
+	var reasons: Array = _drag_actions_between(source, destination).map(func(action_name: String) -> String:
+		if not is_offered_now(action_name):
+			return "%s: not offered now" % action_name
+		return "%s: %s" % [action_name, rules.actions[action_name].get("when", "always")])
+	if reasons.is_empty():
+		return "no action drags from %s to %s" % [source.name, destination.name]
+	return "requires " + " OR ".join(reasons)
 
 
 func status_values() -> Dictionary:

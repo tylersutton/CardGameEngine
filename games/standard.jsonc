@@ -10,10 +10,7 @@
 				0.42,
 				0.5
 			],
-			"cards": "res://decks/standard_deck.csv",
-			"on_click": [
-				"draw(deck, hand)"
-			]
+			"cards": "res://decks/standard_deck.csv"
 		},
 		"discard": {
 			"label": "Discard",
@@ -40,6 +37,12 @@
 		}
 	},
 	"actions": {
+		"Draw from the deck": {
+			"click": "deck",
+			"steps": [
+				"draw(deck, hand)"
+			]
+		},
 		"Shuffle": [
 			"shuffle(deck)"
 		],

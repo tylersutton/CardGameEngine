@@ -150,8 +150,8 @@
 			]
 		},
 		"Next round": {
-			"phase": "revealed",
 			"human_only": true,
+			"when": "phase == 'revealed'",
 			"steps": [
 				"move(all_bid, box)",
 				{

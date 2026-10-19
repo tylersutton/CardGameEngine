@@ -225,7 +225,7 @@ func _on_card_clicked(view: CardView) -> void:
 
 ## Two quick clicks on a zone with no double-click steps (like a solitaire stock) are two clicks, not one double-click.
 func _on_card_double_clicked(view: CardView) -> void:
-	_press(view, "double_click" if game.zone_of(view.card).on_double_click else "click")
+	_press(view, "double_click" if game.has_double_click(game.zone_of(view.card)) else "click")
 
 
 ## A click ends the little pick-up that every press starts, then goes to the game.

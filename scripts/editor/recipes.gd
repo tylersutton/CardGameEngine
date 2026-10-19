@@ -1,7 +1,7 @@
 class_name Recipes
 ## Ready-made pieces of a game (templates/recipes/*.jsonc), added into the game being edited. What the game
-## already has is kept: new zones, variables, buttons and settings are added, new moves and trigger steps go
-## after the existing ones, and anything else the game already sets is left as it is.
+## already has is kept: new zones, variables, actions and settings are added, new trigger steps go after the
+## existing ones, and anything else the game already sets (including its turn) is left as it is.
 
 const FOLDER := "res://templates/recipes/"
 
@@ -41,7 +41,7 @@ static func _merge(document: GameDocument, path: Array, value: Variant) -> void:
 	if existing is Dictionary and value is Dictionary:
 		for key: String in value:
 			_merge(document, path + [key], value[key])
-	elif path == ["moves"] or (path.size() == 2 and path[0] == "triggers"):
+	elif path.size() == 2 and path[0] == "triggers":
 		if existing is String:
 			document.set_value(path, [existing])
 		for item: Variant in value if value is Array else [value]:

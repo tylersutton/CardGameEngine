@@ -1,5 +1,5 @@
 // Play a matching card: play a card from your hand onto the pile if it matches the top card's suit or rank,
-// then the turn passes. Change suit and rank (under Moves) to your deck's columns.
+// then the turn passes. Change suit and rank (in the action's "when") to your deck's columns.
 {
 	"players": 2,
 	"zones": {
@@ -21,12 +21,17 @@
 			]
 		}
 	},
-	"moves": [
-		{
-			"from": "hand",
-			"to": "pile",
-			"when": "count(pile) == 0 or card.suit == text(top(pile), 'suit') or card.rank == text(top(pile), 'rank')",
-			"then": "end_turn()"
+	"actions": {
+		"Play a card": {
+			"drag": {
+				"from": "hand",
+				"to": "pile"
+			},
+			"when": "count(pile) == 0 or card.suit == text(top(pile), 'suit') or card.rank == text(top(pile), 'rank')"
 		}
+	},
+	"turn": [
+		"offer('Play a card')",
+		"end_turn()"
 	]
 }

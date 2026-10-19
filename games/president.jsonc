@@ -102,11 +102,10 @@
 	},
 	"actions": {
 		"Play": {
-			"phase": "play",
-			"when": "count(hand) > 0",
 			"choose": "matching(hand, 'can_beat')",
 			"up_to": 4,
 			"allow": "count(choice) > 0 and one_rank and (right_size or single_two)",
+			"when": "phase == 'play' and count(hand) > 0",
 			"steps": [
 				"move(table, beaten)",
 				"move(choice, table)",
@@ -156,8 +155,7 @@
 			]
 		},
 		"Pass": {
-			"phase": "play",
-			"when": "set_size > 0",
+			"when": "phase == 'play' and set_size > 0",
 			"steps": [
 				"trigger('pass')"
 			]
@@ -181,8 +179,8 @@
 			]
 		},
 		"Next hand": {
-			"phase": "hand over",
 			"human_only": true,
+			"when": "phase == 'hand over'",
 			"steps": [
 				"trigger('deal')"
 			]

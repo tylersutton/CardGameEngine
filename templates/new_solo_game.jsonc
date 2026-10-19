@@ -4,7 +4,6 @@
 	"title": "{title}",
 	"description": "A one-player game. Describe your game here.",
 	"zones": {
-		// Click the deck to draw, or drag from it.
 		"deck": {
 			"label": "Deck",
 			"layout": "pile",
@@ -13,8 +12,7 @@
 				0.4,
 				0.5
 			],
-			"cards": "res://decks/{deck}",
-			"on_click": "try_move(top(deck), hand)"
+			"cards": "res://decks/{deck}"
 		},
 		"discard": {
 			"label": "Discard",
@@ -33,18 +31,22 @@
 			]
 		}
 	},
-	// Draw cards and discard them. Add "when" to a move to say when it's allowed.
-	"moves": [
-		{
-			"from": "deck",
-			"to": "hand"
-		},
-		{
-			"from": "hand",
-			"to": "discard"
-		}
-	],
+	// Draw cards and discard them. "drag" and "click" say how an action is done; add "when" to say when it's allowed.
 	"actions": {
+		// Click the deck to draw, or drag from it.
+		"Draw": {
+			"drag": {
+				"from": "deck",
+				"to": "hand"
+			},
+			"click": true
+		},
+		"Discard": {
+			"drag": {
+				"from": "hand",
+				"to": "discard"
+			}
+		},
 		"Sort hand": "sort(hand, ['name'])"
 	},
 	"triggers": {

@@ -115,7 +115,43 @@ func choose_up_to(cards: Variant, most: int, prompt: String = "") -> Variant:
 	return _wait_for_choice(cards, most, false, false, prompt)
 
 
+## Waits until the current player does one of these actions (by its drag, click or button), and gives its name,
+## e.g. offer(['Play a card', 'Draw']). While it waits, those actions can be done, as well as any action that's
+## never offered. With none of them possible now, it gives null straight away.
+func offer(action_names: Variant) -> Variant:
+	return _wait_for_offer(_names_of(action_names))
+
+
+## Offers the actions again and again until the player does the last one, e.g.
+## offer_until(['Play duo', 'End turn'], 'End turn'). It stops early if none of them is possible.
+func offer_until(action_names: Variant, last: String) -> void:
+	var names := _names_of(action_names)
+	while true:
+		var done: Variant = _wait_for_offer(names)
+		if done == null or done == last:
+			return
+
+
+## No more turns: the "turn" steps don't start again, and offers give null straight away.
+func end_game() -> void:
+	game.end_game()
+
+
+func _wait_for_offer(names: Array) -> Variant:
+	if game.runner.has_answer():
+		return game.runner.answer_or_wait({})
+	if game.over or not names.any(game.can_do):
+		return null
+	return game.runner.answer_or_wait({kind = "offer", actions = names})
+
+
+static func _names_of(action_names: Variant) -> Array:
+	return action_names if action_names is Array else [action_names]
+
+
 func _wait_for_choice(options: Variant, amount: int, exactly: bool, single: bool, prompt: String) -> Variant:
+	if game.runner.has_answer():
+		return game.runner.answer_or_wait({})
 	var offered := Game.choice_options(options)
 	if not single and offered.any(func(option: Variant) -> bool: return option is not Card):
 		game.report_failure("Only cards can be chosen several at a time; choose(...) picks one zone or value")

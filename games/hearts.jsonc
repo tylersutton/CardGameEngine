@@ -99,13 +99,14 @@
 		"two_of_clubs_leads": "tricks > 0 or lead != '' or card.data.name == '2♣'",
 		"played_face_up": "sum(played, 'value') - sum(face_down(played), 'value')"
 	},
-	"moves": [
-		{
-			"from": "hand",
-			"to": "played",
-			"phase": "play",
-			"when": "follows_suit(card, hand, lead) and hearts_allowed and two_of_clubs_leads",
-			"then": [
+	"actions": {
+		"Play a card": {
+			"drag": {
+				"from": "hand",
+				"to": "played"
+			},
+			"when": "phase == 'play' and follows_suit(card, hand, lead) and hearts_allowed and two_of_clubs_leads",
+			"steps": [
 				{
 					"if": "lead == ''",
 					"then": [
@@ -129,12 +130,10 @@
 					]
 				}
 			]
-		}
-	],
-	"actions": {
+		},
 		"Collect trick": {
-			"phase": "trick done",
 			"human_only": true,
+			"when": "phase == 'trick done'",
 			"steps": [
 				"move(all_played, won)",
 				"lead = ''",
@@ -151,8 +150,8 @@
 			]
 		},
 		"Next hand": {
-			"phase": "hand over",
 			"human_only": true,
+			"when": "phase == 'hand over'",
 			"steps": [
 				"trigger('deal')"
 			]

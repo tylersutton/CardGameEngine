@@ -2,7 +2,7 @@ class_name GameDocument
 extends RefCounted
 ## A game file being edited. It keeps the file's own text and changes only the part being edited, so comments,
 ## key order and formatting everywhere else stay exactly as written. Paths name a value: ["zones", "deck", "anchor"],
-## ["moves", 0, "then"].
+## ["turn", 0].
 
 const INDENT := "\t"
 

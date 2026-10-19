@@ -151,7 +151,7 @@ func sea_salt() -> void:
 	game.apply({type = "click", card = kept.id})
 	check(kept in game.zones.hand_1.cards and game.choosing == "Discard the other card onto a pile", "the kept card is in hand, then a pile is asked: '%s'" % game.choosing)
 	game.apply({type = "choose", option = "discard_piles_2"})
-	check(game.zones.discard_piles_2.cards.size() == 2 and game.variables.phase == "duos", "the other card is on pile 2")
+	check(game.zones.discard_piles_2.cards.size() == 2 and game.offered == ["Play duo", "End turn"], "the other card is on pile 2, then duos are offered: %s" % [game.offered])
 	var crabs := game.zones.deck.cards.filter(func(card: Card) -> bool: return card.data.Kind == "Crab").slice(0, 2)
 	for crab: Card in crabs:
 		game.move(crab, game.zones.hand_1)
@@ -169,7 +169,8 @@ func sea_salt() -> void:
 ## Clicking one of several copies tells the steps which one it was, even while it's empty.
 func clicked_copy() -> void:
 	var rules := '{ "zones": { "deck": { "layout": "pile", "cards": "res://decks/standard_deck.csv" },' \
-		+ ' "pile": { "layout": "pile", "copies": 2, "on_click": "move(top(deck), clicked_zone)" } } }'
+		+ ' "pile": { "layout": "pile", "copies": 2 } },' \
+		+ ' "actions": { "Deal here": { "click": "pile", "steps": "move(top(deck), clicked_zone)" } } }'
 	var game := Game.new("res://clicked_copy_test.jsonc", 1, {"res://clicked_copy_test.jsonc": rules})
 	watch(game)
 	game.start()

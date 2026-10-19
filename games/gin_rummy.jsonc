@@ -24,10 +24,7 @@
 			"cards": "res://decks/standard_deck.csv",
 			"columns": {
 				"points": "min(card.value, 10)"
-			},
-			"on_click": [
-				"try_move(top(stock), hand)"
-			]
+			}
 		},
 		"discard": {
 			"label": "Discard",
@@ -35,9 +32,6 @@
 			"anchor": [
 				0.19,
 				0.5
-			],
-			"on_click": [
-				"try_move(top(discard), hand)"
 			]
 		},
 		"knock": {
@@ -116,37 +110,38 @@
 		],
 		"points": "points"
 	},
-	"moves": [
-		{
-			"from": "stock",
-			"to": "hand",
-			"phase": [
-				"draw",
-				"stock_only"
-			],
-			"then": [
+	"actions": {
+		"Draw from the stock": {
+			"drag": {
+				"from": "stock",
+				"to": "hand"
+			},
+			"click": true,
+			"when": "phase == 'draw' or phase == 'stock_only'",
+			"steps": [
 				"phase = 'discard'",
 				"taken = null"
 			]
 		},
-		{
-			"from": "discard",
-			"to": "hand",
-			"phase": [
-				"draw",
-				"upcard"
-			],
-			"then": [
+		"Take the discard": {
+			"drag": {
+				"from": "discard",
+				"to": "hand"
+			},
+			"click": true,
+			"when": "phase == 'draw' or phase == 'upcard'",
+			"steps": [
 				"phase = 'discard'",
 				"taken = card"
 			]
 		},
-		{
-			"from": "hand",
-			"to": "discard",
-			"phase": "discard",
-			"when": "card != taken",
-			"then": [
+		"Discard": {
+			"drag": {
+				"from": "hand",
+				"to": "discard"
+			},
+			"when": "phase == 'discard' and card != taken",
+			"steps": [
 				{
 					"if": "count(stock) <= 2",
 					"then": [
@@ -160,12 +155,14 @@
 				}
 			]
 		},
-		{
-			"from": "hand",
-			"to": "knock",
-			"phase": "discard",
-			"when": "card != taken and sum(deadwood(without(hand, card)), 'points') <= 10",
-			"then": [
+		"Knock": {
+			"drag": {
+				"from": "hand",
+				"to": "knock"
+			},
+			"button": true,
+			"when": "phase == 'discard' and card != taken and sum(deadwood(without(hand, card)), 'points') <= 10",
+			"steps": [
 				"phase = 'over'",
 				"knocker_deadwood = sum(deadwood(hand), 'points')",
 				{
@@ -198,11 +195,9 @@
 				"move(opponent_hand, opponent_table)",
 				"trigger('hand_over')"
 			]
-		}
-	],
-	"actions": {
+		},
 		"Pass": {
-			"phase": "upcard",
+			"when": "phase == 'upcard'",
 			"steps": [
 				{
 					"if": "passes == 0",
@@ -217,16 +212,8 @@
 				}
 			]
 		},
-		"Knock": {
-			"when": "count(movable(hand, knock)) > 0",
-			"choose": "movable(hand, knock)",
-			"steps": [
-				"try_move(card, knock)"
-			]
-		},
 		"Big Gin": {
-			"phase": "discard",
-			"when": "count(deadwood(hand)) == 0",
+			"when": "phase == 'discard' and count(deadwood(hand)) == 0",
 			"steps": [
 				"phase = 'over'",
 				"defender_deadwood = sum(deadwood(opponent_hand), 'points')",
@@ -239,8 +226,8 @@
 			]
 		},
 		"Next hand": {
-			"phase": "over",
 			"human_only": true,
+			"when": "phase == 'over'",
 			"steps": [
 				"dealer = 3 - dealer",
 				"trigger('deal')"

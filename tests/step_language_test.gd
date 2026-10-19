@@ -104,7 +104,7 @@ func running_mistakes() -> void:
 
 func load_mistakes() -> void:
 	var cases := {
-		"\"total = 1\" as a condition": [{"moves": [{"from": "deck", "to": "pile", "when": "total = 1"}]}, "only works as a step of its own"],
+		"\"total = 1\" as a condition": [{"actions": {"Play": {"drag": {"from": "deck", "to": "pile"}, "when": "total = 1"}}}, "only works as a step of its own"],
 		"assigning a zone": [{"triggers": {"start": ["pile = 1"]}}, "is a zone"],
 		"a misspelled variable": [{"triggers": {"start": ["totl = 1"]}}, "\"totl\" is set but never used"],
 		"double quotes": [{"triggers": {"start": ["move(top(deck), \"pile\")"]}}, "single quotes"],

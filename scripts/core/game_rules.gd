@@ -6,7 +6,8 @@ var actions: Dictionary
 var triggers: Dictionary
 var effects: Dictionary
 var conditions: Dictionary
-var moves: Array
+## The steps of a turn, run again and again for whoever's turn it is (empty: no turns run by themselves).
+var turn: Array
 var variables: Dictionary
 var players: int
 var seats: Array
@@ -26,7 +27,7 @@ var error: String
 
 
 const KEYS := ["title", "description", "players", "player_names", "seats", "teams", "zones", "variables", "player_variables",
-	"team_variables", "show_variables", "status", "conditions", "effects", "moves", "actions", "triggers", "melds", "bot", "card_face"]
+	"team_variables", "show_variables", "status", "conditions", "effects", "actions", "turn", "triggers", "melds", "bot", "card_face"]
 const GAMES_FOLDER := "res://games/"
 ## Game files are .jsonc (JSON with comments); plain .json works too.
 const GAME_EXTENSIONS := ["jsonc", "json"]
@@ -56,20 +57,17 @@ static func load_json(path: String, files := {}) -> GameRules:
 	rules.title = data.get("title", path.get_file().get_basename().capitalize())
 	rules.description = data.get("description", "")
 	rules.zones = data.get("zones", {})
-	for zone: Variant in rules.zones.values():
-		for key in ["on_click", "on_double_click"]:
-			if zone is Dictionary and zone.has(key):
-				zone[key] = _as_steps(zone[key])
 	var actions: Dictionary = data.get("actions", {})
 	for action_name in actions:
 		var action: Variant = actions[action_name]
 		rules.actions[action_name] = action if action is Dictionary else {"steps": action}
 		if rules.actions[action_name].has("steps"):
 			rules.actions[action_name].steps = _as_steps(rules.actions[action_name].steps)
-	rules.moves = data.get("moves", [])
-	for rule: Variant in rules.moves:
-		if rule is Dictionary and rule.has("then"):
-			rule.then = _as_steps(rule.then)
+	var turn: Variant = _as_steps(data.get("turn", []))
+	if turn is Array:
+		rules.turn = turn
+	else:
+		rules.unknown_keys.append("turn")
 	rules.triggers = _steps_by_name(data.get("triggers", {}))
 	# "effects" is the older name for triggers that cards name in their on_<zone> column.
 	rules.effects = _steps_by_name(data.get("effects", {}))
@@ -160,8 +158,8 @@ func files_used(path: String) -> Array[String]:
 
 ## Wherever a list of steps goes, a single step will do: "then": "end_turn()".
 static func _as_steps(steps: Variant) -> Variant:
-	if steps is String:
-		return [steps]
+	if steps is String or steps is Dictionary:
+		return _as_steps([steps])
 	if steps is not Array:
 		return steps
 	for step: Variant in steps:

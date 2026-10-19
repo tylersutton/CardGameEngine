@@ -21,10 +21,7 @@
 				0.4,
 				0.5
 			],
-			"cards": "res://decks/color_match.csv",
-			"on_click": [
-				"try_move(top(deck), hand)"
-			]
+			"cards": "res://decks/color_match.csv"
 		},
 		"pile": {
 			"label": "Pile",
@@ -54,12 +51,14 @@
 		"winner": null,
 		"active_color": ""
 	},
-	"moves": [
-		{
-			"from": "hand",
-			"to": "pile",
-			"when": "winner == null and (card.data.color == 'Wild' or card.data.color == active_color or card.data.number == top(pile).data.number)",
-			"then": [
+	"actions": {
+		"Play a card": {
+			"drag": {
+				"from": "hand",
+				"to": "pile"
+			},
+			"when": "card.data.color == 'Wild' or card.data.color == active_color or card.data.number == top(pile).data.number",
+			"steps": [
 				{
 					"if": "card.data.color != 'Wild'",
 					"then": [
@@ -69,30 +68,27 @@
 				{
 					"if": "count(hand) == 0",
 					"then": [
-						"winner = player"
-					],
-					"else": [
-						"end_turn()"
+						"winner = player",
+						"end_game()"
 					]
 				}
 			]
 		},
-		{
-			"from": "deck",
-			"to": "hand",
-			"when": "winner == null",
-			"then": [
+		"Draw": {
+			"drag": {
+				"from": "deck",
+				"to": "hand"
+			},
+			"click": true,
+			"steps": [
 				{
 					"if": "count(deck) == 0",
 					"then": [
 						"trigger('deck_empty')"
 					]
-				},
-				"end_turn()"
+				}
 			]
-		}
-	],
-	"actions": {
+		},
 		"Sort by color": [
 			"sort(hand, ['color', 'number'])"
 		],
@@ -100,6 +96,15 @@
 			"sort(hand, ['number', 'color'])"
 		]
 	},
+	"turn": [
+		"offer(['Play a card', 'Draw'])",
+		{
+			"if": "winner == null",
+			"then": [
+				"end_turn()"
+			]
+		}
+	],
 	"triggers": {
 		"draw_two": [
 			"draw(deck, opponent_hand, 2)"

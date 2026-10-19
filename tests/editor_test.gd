@@ -32,17 +32,17 @@ func _check_round_trips(path: String) -> void:
 	for zone in document.get_value(["zones"], {}):
 		document.set_value(["zones", zone], document.get_value(["zones", zone]))
 	check(document.text == original, "%s: setting values to themselves changed the text" % name)
-	# Adding then removing a zone, a move and a trigger leaves the file as it was.
+	# Adding then removing a zone, a turn step and a trigger leaves the file as it was.
 	document.set_value(["zones", "test_zone"], {"layout": "pile", "anchor": [0.5, 0.5]})
 	check(document.get_value(["zones", "test_zone", "layout"]) == "pile", "%s: added zone not readable" % name)
 	document.remove(["zones", "test_zone"])
 	check(document.text == original, "%s: add + remove zone changed the text:\n%s" % [name, _difference(original, document.text)])
-	if document.get_value(["moves"]) is Array:
-		var count: int = document.get_value(["moves"]).size()
-		document.insert(["moves"], count, {"from": "a", "to": "b"})
-		check(document.get_value(["moves"]).size() == count + 1, "%s: move not added" % name)
-		document.remove(["moves", count])
-		check(document.text == original, "%s: add + remove move changed the text:\n%s" % [name, _difference(original, document.text)])
+	if document.get_value(["turn"]) is Array:
+		var count: int = document.get_value(["turn"]).size()
+		document.insert(["turn"], count, "end_turn()")
+		check(document.get_value(["turn"]).size() == count + 1, "%s: turn step not added" % name)
+		document.remove(["turn", count])
+		check(document.text == original, "%s: add + remove turn step changed the text:\n%s" % [name, _difference(original, document.text)])
 	document.set_value(["triggers", "test_trigger"], ["shuffle(deck)"])
 	document.remove(["triggers", "test_trigger"])
 	check(document.text == original, "%s: add + remove trigger changed the text:\n%s" % [name, _difference(original, document.text)])

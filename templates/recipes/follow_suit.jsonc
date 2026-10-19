@@ -33,40 +33,37 @@
 		}
 	},
 	"variables": {
-		"phase": "play",
 		"lead": ""
 	},
-	"moves": [
-		{
-			"from": "hand",
-			"to": "played",
-			"phase": "play",
-			"when": "follows_suit(card, hand, lead)",
-			"then": [
-				{
-					"if": "lead == ''",
-					"then": "lead = card.suit"
-				},
-				{
-					"if": "count(all_played) == size(players)",
-					"then": [
-						"phase = 'trick done'",
-						"player = owner(trick_winner(all_played, lead))"
-					],
-					"else": "end_turn()"
-				}
-			]
-		}
-	],
 	"actions": {
+		"Play a card": {
+			"drag": {
+				"from": "hand",
+				"to": "played"
+			},
+			"when": "follows_suit(card, hand, lead)",
+			"steps": {
+				"if": "lead == ''",
+				"then": "lead = card.suit"
+			}
+		},
 		"Collect trick": {
-			"phase": "trick done",
 			"human_only": true,
 			"steps": [
 				"move(all_played, won)",
-				"lead = ''",
-				"phase = 'play'"
+				"lead = ''"
 			]
 		}
-	}
+	},
+	"turn": [
+		"offer('Play a card')",
+		{
+			"if": "count(all_played) == size(players)",
+			"then": [
+				"player = owner(trick_winner(all_played, lead))",
+				"offer('Collect trick')"
+			],
+			"else": "end_turn()"
+		}
+	]
 }

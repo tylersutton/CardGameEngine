@@ -6,7 +6,8 @@ class_name Snapshot
 static func take(game: Game) -> Dictionary:
 	var choice := {choosing = game.choosing, choice_action = game.choice_action, choices = game.choices.duplicate(), pick_count = game.pick_count,
 		pick_exact = game.pick_exact, selected = game.selected.duplicate(), asked = game.asked.duplicate(true), choice_asked = game.choice_asked,
-		return_player = game.return_player, waiting_steps = StepRunner.copy_frames(game.runner.frames)}
+		return_player = game.return_player, waiting_steps = StepRunner.copy_frames(game.runner.frames), offered = game.offered.duplicate(),
+		over = game.over}
 	var snapshot := {zones = {}, sort_columns = {}, faces = {}, marks = {}, variables = game.variables.duplicate(true), choice = choice, rng = game.rng.state}
 	for name in game.zones:
 		var zone: Zone = game.zones[name]
@@ -37,6 +38,9 @@ static func restore(game: Game, snapshot: Dictionary) -> void:
 	game.choice_asked = snapshot.choice.choice_asked
 	game.return_player = snapshot.choice.return_player
 	game.runner.frames = StepRunner.copy_frames(snapshot.choice.waiting_steps)
+	game.runner.waiting = not game.runner.frames.is_empty()
+	game.offered = snapshot.choice.offered.duplicate()
+	game.over = snapshot.choice.over
 	game.rng.state = snapshot.rng
 
 

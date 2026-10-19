@@ -119,7 +119,7 @@ func _add_action_buttons() -> void:
 	for button in %ActionButtons.get_children():
 		button.free()
 	for action_name in game.rules.actions:
-		if not game.rules.actions[action_name].get("button", true):
+		if not game.shows_button(action_name):
 			continue
 		var button := Button.new()
 		button.text = action_name
@@ -142,8 +142,13 @@ func _refresh_choice_bar() -> void:
 		%ChoiceBar.remove_child(child)
 		child.queue_free()
 	var picking_cards := game.choosing_cards() and not game.pick_exact
-	%ChoiceMargin.visible = game.choosing != "" and game.is_local_turn()
+	%ChoiceMargin.visible = (game.choosing != "" or not game.offered.is_empty()) and game.is_local_turn()
 	if not %ChoiceMargin.visible:
+		return
+	if game.choosing == "":
+		var offer := Label.new()
+		offer.text = "Your turn: " + " or ".join(game.offered)
+		%ChoiceBar.add_child(offer)
 		return
 	var prompt := Label.new()
 	prompt.text = game.choosing + ":"

@@ -135,13 +135,14 @@
 		"has_nope": "count(where(hand, 'name', 'Nope')) > 0",
 		"living_players": "int(alive_1) + int(alive_2) + int(alive_3)"
 	},
-	"moves": [
-		{
-			"from": "hand",
-			"to": "pile",
-			"phase": "play",
-			"when": "card.data.kind == 'action' and pending == ''",
-			"then": [
+	"actions": {
+		"Play an action": {
+			"drag": {
+				"from": "hand",
+				"to": "pile"
+			},
+			"when": "phase == 'play' and card.data.kind == 'action' and pending == ''",
+			"steps": [
 				"pending = card.data.name",
 				"actor = player",
 				"noped = false",
@@ -161,12 +162,13 @@
 				"ask_others('Nope?', 'resolve')"
 			]
 		},
-		{
-			"from": "deck",
-			"to": "hand",
-			"phase": "play",
-			"when": "pending == ''",
-			"then": [
+		"Draw": {
+			"drag": {
+				"from": "deck",
+				"to": "hand"
+			},
+			"when": "phase == 'play' and pending == ''",
+			"steps": [
 				{
 					"if": "card.data.kind == 'bomb'",
 					"then": [
@@ -190,9 +192,7 @@
 					]
 				}
 			]
-		}
-	],
-	"actions": {
+		},
 		"Nope?": {
 			"button": false,
 			"when": "alive and has_nope",

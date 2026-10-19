@@ -1,13 +1,15 @@
 class_name StepRunner
 extends RefCounted
 ## Runs a game's lists of steps one step at a time from a stack of frames (innermost last), so that a step can
-## wait for a player's choice (choose(...)) and carry on once it's made. Frames are plain data, so undo, bots and
-## the state hash copy them like the rest of the game.
+## wait for a player (choose(...) or offer(...)) and carry on once they've answered. Frames are plain data, so
+## undo, bots and the state hash copy them like the rest of the game. When nothing is left to run, the game's
+## "turn" steps start again (see _start_turn).
 ##
 ## A frame is one list of steps being run: {steps, index (the next step), card, depth (how many triggers deep),
 ## root (true for a whole trigger, action or rule; false for an "if" branch or loop body inside one), context
 ## (from, to, clicked_zone and choice when it started), locals (names set with = that aren't game variables, and
-## loop items), answers (choices already made for the step at index), kind ("list", "loop" or "while")}.
+## loop items), answers (choices already made for the step at index), kind ("list", "loop" or "while")}, and
+## turn = true for the "turn" steps.
 ## A loop frame also has loop_name, items, position and outer_player; a while frame has condition, repeats and checked.
 ##
 ## A step that starts more steps (trigger('deal'), a card's effect, try_move's rule) schedules them: they run, in
@@ -15,6 +17,8 @@ extends RefCounted
 
 const MAX_REPEATS := 1000
 const MAX_DEPTH := 50
+## Turns in a row that end without waiting for anyone before the turns are stopped as an endless loop.
+const MAX_IDLE_TURNS := 100
 
 ## Held weakly: the game holds its runner, and a reference each way would keep both alive forever.
 var game: Game:
@@ -26,8 +30,16 @@ var running := false
 ## The frame whose step is being worked out, and how many of its answers that step has used so far.
 var stepping: Dictionary = {}
 var answers_used := 0
-## Set by choose(...) when its step has no answer yet: what to ask for.
+## Set by choose(...) or offer(...) when its step has no answer yet: what to ask for.
 var wait_request: Dictionary = {}
+## While above 0, steps are only scheduled (see hold).
+var holding := 0
+## A step is waiting for its answer (the innermost frame's): nothing runs until it gets one, or until steps are
+## scheduled on top of it (an action that was never offered, done while an offer waits).
+var waiting := false
+var waited_since_turn := false
+var idle_turns := 0
+var turns_stopped := false
 
 
 func _init(game_to_run: Game) -> void:
@@ -49,20 +61,26 @@ func schedule(steps: Array, card: Card) -> void:
 	scheduled.append(_frame(steps, card, depth, true, game.move_context(), {}))
 
 
-## Runs frames until none are left or a choice is waited for. While a choice is waited for, steps started from
-## outside (e.g. a move rule after a card effect that asks) wait their turn after everything already running.
+## Runs frames until none are left or a step waits. A step that was waiting is worked out again on the way,
+## so it waits again (or carries on, if it has its answer now).
 func drive() -> void:
-	if running:
+	if running or holding > 0 or waiting and scheduled.is_empty():
 		return
-	if is_waiting():
-		# The bottom frame runs last, so each one goes beneath those scheduled before it.
-		for frame in scheduled:
-			frames.insert(0, frame)
-		scheduled.clear()
-		return
+	waiting = false
 	running = true
 	_run_frames(0)
 	running = false
+
+
+## Steps started until release() are only scheduled, then run together in order: a drag's card effects and its
+## action's steps, so an effect that waits for a choice holds up the rest.
+func hold() -> void:
+	holding += 1
+
+
+func release() -> void:
+	holding -= 1
+	drive()
 
 
 ## Runs steps to the end at once, e.g. "deck_empty" in the middle of a draw. They can't wait for a choice.
@@ -84,10 +102,19 @@ func run_now(steps: Array, card: Card) -> void:
 
 ## The player's choice for the waiting step: that step runs again, and choose(...) gives this answer.
 func answer(choice: Variant) -> void:
-	frames.back().answers.append(choice)
-	running = true
-	_run_frames(0)
-	running = false
+	accept(choice)
+	drive()
+
+
+## Gives the waiting step its answer without running it yet, e.g. an offer's action, whose steps run first.
+func accept(answer_given: Variant) -> void:
+	frames.back().answers.append(answer_given)
+	waiting = false
+
+
+## Whether the step being worked out already has an answer for its next choose(...) or offer(...).
+func has_answer() -> bool:
+	return not stepping.is_empty() and answers_used < stepping.answers.size()
 
 
 ## choose(...) during a step: the answer already given, or null after asking for one (the step then stops).
@@ -132,19 +159,42 @@ func _frame(steps: Array, card: Card, depth: int, root: bool, context: Dictionar
 	return {steps = steps, index = 0, card = card, depth = depth, root = root, context = context, locals = locals, answers = [], kind = "list"}
 
 
-## Runs the frames above base until they're done (true) or a step waits for a choice (false).
+## Runs the frames above base until they're done (true) or a step waits (false).
 func _run_frames(base: int) -> bool:
 	_push_scheduled()
-	while frames.size() > base:
+	while frames.size() > base or base == 0 and _start_turn():
 		_run_step(frames.back())
 		if not wait_request.is_empty():
 			var request := wait_request
 			wait_request = {}
 			if base > 0:
 				return false
-			game.open_inline_choice(request)
+			waiting = true
+			waited_since_turn = true
+			if request.get("kind") == "offer":
+				game.open_offer(request)
+			else:
+				game.open_inline_choice(request)
 			return false
 		_push_scheduled()
+	return true
+
+
+## Starts the "turn" steps again, if the game has them and nothing else is due (Game.next_turn_due). Turns that
+## keep ending without waiting for anyone are stopped, as an endless loop.
+func _start_turn() -> bool:
+	if turns_stopped or not game.next_turn_due():
+		return false
+	idle_turns = 0 if waited_since_turn else idle_turns + 1
+	waited_since_turn = false
+	if idle_turns > MAX_IDLE_TURNS:
+		game.report_failure("Turns stopped: %d turns in a row ended without waiting for anyone (call end_game() when the game is over)" % MAX_IDLE_TURNS)
+		turns_stopped = true
+		return false
+	game.log_line("[turn] " + game.player_name(game.current_player()))
+	var turn := _frame(game.rules.turn, null, 0, true, game.move_context(), {})
+	turn.turn = true
+	frames.append(turn)
 	return true
 
 
@@ -262,8 +312,12 @@ func _finish_list(frame: Dictionary) -> void:
 		_pop()
 
 
-## Stops the running trigger or rule (after a failure): its frames from index on are dropped.
+## Stops the running trigger or rule (after a failure): its frames from index on are dropped. A failure in the
+## turn stops the turns, rather than failing again every turn.
 func _end_script(index: int) -> void:
+	if index < frames.size() and frames[index].get("turn", false):
+		game.report_failure("Turns stopped after that failure; fix the step and press Reload")
+		turns_stopped = true
 	while frames.size() > index:
 		_pop()
 

@@ -10,8 +10,7 @@
 				0.4,
 				0.5
 			],
-			"cards": "res://decks/standard_deck.csv",
-			"on_click": "try_move(top(deck), hand)"
+			"cards": "res://decks/standard_deck.csv"
 		},
 		"discard": {
 			"label": "Discard",
@@ -31,24 +30,24 @@
 			]
 		}
 	},
-	"variables": {
-		"phase": "draw"
-	},
-	"moves": [
-		{
-			"from": "deck",
-			"to": "hand",
-			"phase": "draw",
-			"then": "phase = 'discard'"
+	"actions": {
+		"Draw": {
+			"drag": {
+				"from": "deck",
+				"to": "hand"
+			},
+			"click": true
 		},
-		{
-			"from": "hand",
-			"to": "discard",
-			"phase": "discard",
-			"then": [
-				"phase = 'draw'",
-				"end_turn()"
-			]
+		"Discard": {
+			"drag": {
+				"from": "hand",
+				"to": "discard"
+			}
 		}
+	},
+	"turn": [
+		"offer('Draw')",
+		"offer('Discard')",
+		"end_turn()"
 	]
 }
