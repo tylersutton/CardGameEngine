@@ -85,8 +85,9 @@ func _ready() -> void:
 	preview.rules_path = file_path
 	preview.embedded = true
 	preview.given_files = _files()
-	preview.set_anchors_preset(Control.PRESET_FULL_RECT)
+	preview.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	%Center.add_child(preview)
+	%Center.resized.connect(_fit_preview)
 	preview.show_play_controls(false)
 	var table: TableView = preview.get_node("%TableView")
 	dragger = ZoneDragger.new(table)
@@ -233,6 +234,16 @@ func _leave() -> void:
 	dialog.confirmed.connect(func() -> void: get_tree().change_scene_to_file(TITLE_SCENE))
 	add_child(dialog)
 	dialog.popup_centered()
+
+
+## The game is laid out at the play screen's size and shrunk to fit, so it looks as it will when played
+## (only smaller) instead of crowding full-size cards together.
+func _fit_preview() -> void:
+	var play_size := Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height"))
+	var shrink := minf(1.0, minf(%Center.size.x / play_size.x, %Center.size.y / play_size.y))
+	preview.size = play_size
+	preview.scale = Vector2(shrink, shrink)
+	preview.position = (%Center.size - play_size * shrink) / 2
 
 
 func _set_playing(playing: bool) -> void:

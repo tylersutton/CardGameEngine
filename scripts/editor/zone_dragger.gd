@@ -25,19 +25,23 @@ func _init(table_to_edit: TableView) -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	z_index = 20
+	# Clicks go to the last child, whatever its z_index, so stay in front of card views as they're made.
+	table.child_entered_tree.connect(func(_child: Node) -> void: move_to_front.call_deferred())
 
 
 func _draw() -> void:
 	if not table.game:
 		return
 	var font := get_theme_default_font()
+	# The editor shrinks the table to fit; names stay readable at their usual size.
+	var font_size := roundi(FONT_SIZE / get_global_transform().get_scale().x)
 	for zone: Zone in table.game.zones.values():
 		var rect := table.slot_rect(zone)
 		if zone == dragging:
 			rect.position = drag_center - rect.size / 2
 		var color := SELECTED if zone.kind == selected_kind else OUTLINE
 		draw_rect(rect, color, false, 3.0 if zone.kind == selected_kind else 1.5)
-		draw_string(font, rect.position + Vector2(2, -4), zone.name, HORIZONTAL_ALIGNMENT_LEFT, -1, FONT_SIZE, NAME_COLOR)
+		draw_string(font, rect.position + Vector2(2, -4), zone.name, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, NAME_COLOR)
 
 
 func _gui_input(event: InputEvent) -> void:
