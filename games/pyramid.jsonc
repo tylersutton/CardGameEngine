@@ -314,7 +314,7 @@
 						"if": "passes < 3",
 						"then": [
 							"draw(waste, stock, count(waste))",
-							"add('passes', 1)"
+							"passes += 1"
 						]
 					}
 				]
@@ -324,7 +324,7 @@
 			{
 				"if": "count(pyramid) == 0",
 				"then": [
-					"assign('result', 'You win!')"
+					"result = 'You win!'"
 				]
 			}
 		]

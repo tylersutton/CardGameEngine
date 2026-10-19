@@ -22,7 +22,7 @@
 			],
 			"cards": "res://decks/seas_salt_+_paper.csv",
 			"columns": {
-				"ink": "either(card.color == 'White', '#000000', '#ffffff')"
+				"ink": "'#000000' if card.color == 'White' else '#ffffff'"
 			},
 			"on_click": [
 				{
@@ -59,7 +59,7 @@
 					"if": "phase == 'draw'",
 					"then": [
 						"try_move(card, hand)",
-						"assign('phase', 'duo')"
+						"phase = 'duo'"
 					]
 				}
 			]
@@ -91,10 +91,10 @@
 						{
 							"if": "count(preview) > 0",
 							"then": [
-								"assign('phase', 'discard')"
+								"phase = 'discard'"
 							],
 							"else": [
-								"assign('phase', 'duo')"
+								"phase = 'duo'"
 							]
 						}
 					]
@@ -140,14 +140,14 @@
 					"then": "trigger('deck_empty')"
 				}
 			],
-			"when": "!is_preview_full and phase == 'draw'"
+			"when": "not is_preview_full and phase == 'draw'"
 		},
 		{
 			"from": "discard_piles",
 			"to": "hand",
 			"phase": "draw",
 			"then": [
-				"assign('phase', 'duo')"
+				"phase = 'duo'"
 			]
 		},
 		{
@@ -161,10 +161,10 @@
 				{
 					"if": "phase == 'preview'",
 					"then": [
-						"assign('phase', 'discard')"
+						"phase = 'discard'"
 					],
 					"else": [
-						"assign('phase','duo')"
+						"phase = 'duo'"
 					]
 				}
 			],
@@ -181,10 +181,10 @@
 				{
 					"if": "phase == 'preview'",
 					"then": [
-						"assign('phase', 'select')"
+						"phase = 'select'"
 					],
 					"else": [
-						"assign('phase','duo')"
+						"phase = 'duo'"
 					]
 				}
 			]
@@ -198,7 +198,7 @@
 		},
 		"End turn": {
 			"steps": [
-				"assign('phase', 'draw')",
+				"phase = 'draw'",
 				"end_turn()"
 			],
 			"phase": "duo"
@@ -226,12 +226,12 @@
 		],
 		"draw": [
 			{
-				"while": "!is_preview_full",
+				"while": "not is_preview_full",
 				"do": [
 					"try_move(top(deck), preview)"
 				]
 			},
-			"assign('phase', 'preview')"
+			"phase = 'preview'"
 		]
 	},
 	"card_face": {

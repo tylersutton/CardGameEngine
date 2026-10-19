@@ -80,14 +80,6 @@ func sort(zone: Zone, columns: Array) -> void:
 	game.log_line("  sort %s by %s" % [zone.name, ", ".join(column_names)] if column_names else "  %s: manual order" % zone.name)
 
 
-func assign(variable: String, value: Variant) -> void:
-	game.set_variable(variable, value)
-
-
-func add(variable: String, amount: Variant) -> void:
-	game.add_to(variable, amount)
-
-
 func end_turn() -> void:
 	game.end_turn()
 
@@ -134,10 +126,6 @@ func zone(kind: String, player: int) -> Zone:
 
 func numbers(low: int, high: int) -> Array:
 	return range(low, high + 1)
-
-
-func either(condition: bool, if_true: Variant, if_false: Variant) -> Variant:
-	return if_true if condition else if_false
 
 
 func random(low: int, high: int) -> int:

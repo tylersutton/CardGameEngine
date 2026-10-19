@@ -42,8 +42,8 @@ var aliases_by_player: Dictionary = {}
 var team_groups_by_team: Dictionary = {}
 var zone_groups: Dictionary[String, Array] = {}
 var meld_rules: Melds
-var expressions: Dictionary[String, Expression] = {}
-var logic: Dictionary = {}
+## Each step's text, parsed by StepParser.
+var step_trees: Dictionary[String, Dictionary] = {}
 var evaluation_failed := false
 var errors: Array[String] = []
 var sandbox := false
@@ -887,33 +887,20 @@ func status_values() -> Dictionary:
 
 
 func evaluate(text: String, card: Card = null) -> Variant:
-	var failure := {}
-	var result: Variant = _evaluate_logic(logic.get(text, text), card, failure)
-	evaluation_failed = not failure.is_empty()
+	var evaluator := StepEvaluator.new(self, card)
+	var result: Variant = evaluator.evaluate(tree_of(text))
+	evaluation_failed = not evaluator.failure.is_empty()
 	if evaluation_failed:
-		report_failure("Step failed: \"%s\": %s" % [text, failure.message])
+		report_failure("Step failed: \"%s\": %s" % [text, evaluator.failure])
 	return result
 
 
-## "and"/"or" stop as soon as the answer is known, so "count(to) > 0 and top(to).data.x" is safe on an empty zone.
-func _evaluate_logic(node: Variant, card: Card, failure: Dictionary) -> Variant:
-	if node is String:
-		var expression := expressions[node]
-		var result: Variant = expression.execute(_input_values(card), Actions.new(self, card))
-		if expression.has_execute_failed():
-			failure.message = StepCompiler.failure_message(expression)
-		return result
-	if node.op == "not":
-		var value: Variant = _evaluate_logic(node.term, card, failure)
-		return null if failure else not value
-	var stops_on: bool = node.op == "or"
-	for term: Variant in node.terms:
-		var value: Variant = _evaluate_logic(term, card, failure)
-		if failure:
-			return null
-		if (true if value else false) == stops_on:
-			return stops_on
-	return not stops_on
+## Steps are parsed when the game loads (StepCompiler); one that wasn't (it had a load error) is parsed now.
+func tree_of(text: String) -> Dictionary:
+	if text not in step_trees:
+		var parsed := StepParser.parse(text)
+		step_trees[text] = parsed.get("tree", {kind = "unreadable", error = parsed.get("error", "")})
+	return step_trees[text]
 
 
 func move(card: Card, destination: Zone) -> void:
@@ -983,14 +970,6 @@ func viewer() -> int:
 		return local_seat
 	var humans := range(1, rules.players + 1).filter(func(player: int) -> bool: return not is_bot(player))
 	return humans[0] if humans.size() == 1 else current_player()
-
-
-func add_to(variable: String, amount: Variant) -> void:
-	var name := _resolve(variable)
-	if name not in variables:
-		report_failure("Unknown variable \"%s\" (declare it in \"variables\")" % name)
-		return
-	set_variable(variable, variables[name] + amount)
 
 
 func set_variable(variable: String, value: Variant) -> void:
@@ -1064,12 +1043,30 @@ func input_names() -> PackedStringArray:
 		+ [CARD_VARIABLE, FROM_VARIABLE, TO_VARIABLE, CLICKED_ZONE_VARIABLE, CHOICE_VARIABLE, PLAYERS_VARIABLE])
 
 
-func _input_values(card: Card) -> Array:
-	var aliased := aliases().values().map(func(name: String) -> Variant:
-		return zones[name] if name in zones else variables[name])
-	var looped := loop_names.map(func(name: String) -> Variant: return loop_values.get(name))
-	return zones.values() + variables.values() + aliased + zone_groups.values() + _team_groups().values() + looped \
-		+ [card, move_from, move_to, clicked_zone, chosen, range(1, rules.players + 1)]
+## What a name in a step stands for right now (except card, which belongs to the step): a loop's item, a zone or
+## variable (hand and score are the current player's), a group of zones, or what's being moved, clicked or chosen.
+func value_of(name: String) -> Variant:
+	var resolved := _resolve(name)
+	if resolved in zones:
+		return zones[resolved]
+	if resolved in variables:
+		return variables[resolved]
+	if name in loop_names:
+		return loop_values.get(name)
+	match name:
+		FROM_VARIABLE:
+			return move_from
+		TO_VARIABLE:
+			return move_to
+		CLICKED_ZONE_VARIABLE:
+			return clicked_zone
+		CHOICE_VARIABLE:
+			return chosen
+		PLAYERS_VARIABLE:
+			return range(1, rules.players + 1)
+	if name in zone_groups:
+		return zone_groups[name]
+	return _team_groups().get(name)
 
 
 func _add_zone(zone: Zone, definition: Dictionary) -> void:

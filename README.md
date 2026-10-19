@@ -159,7 +159,7 @@ Without a `moves` list, any drag is allowed. Once you add one, only the drags it
 	{
 		"from": "hand", "to": "pile",
 		"when": "winner == null and (card.data.color == top(pile).data.color or card.data.number == top(pile).data.number)",
-		"then": [{ "if": "count(hand) == 0", "then": ["assign('winner', player)"], "else": ["end_turn()"] }]
+		"then": [{ "if": "count(hand) == 0", "then": ["winner = player"], "else": ["end_turn()"] }]
 	},
 	{
 		"from": "deck", "to": "hand",
@@ -172,7 +172,7 @@ Without a `moves` list, any drag is allowed. Once you add one, only the drags it
 - `hand` means **the current player's** hand, so you can only play your own cards. (`opponent_hand` is the other player's.)
 - `when` must be true for the move to be allowed. `card` is the card being dragged, and `card.data.color` reads its `color` column (`card.color` works too; see [Steps](#steps)).
 - `then` runs after the move. Here: if your hand is now empty you win, otherwise the turn passes. Taking the last card from the deck refills it from the pile.
-- `winner` is a **variable** we declared. Variables show in the side panel, and are changed with `assign`.
+- `winner` is a **variable** we declared. Variables show in the side panel, and a step like `winner = player` changes one.
 
 To make clicking the deck draw a card too, add `"on_click": ["try_move(top(deck), hand)"]` to the deck zone. `try_move` follows the same move rules as dragging.
 
@@ -225,7 +225,7 @@ The finished `color_match.jsonc` goes one step further: Wild cards that let you 
 		"button": false,
 		"when": "winner == null and active_color == 'Wild'",
 		"choose": "['Red', 'Blue', 'Green', 'Yellow']",
-		"steps": ["assign('active_color', choice)", "end_turn()"]
+		"steps": ["active_color = choice", "end_turn()"]
 	}
 }
 ```
@@ -260,7 +260,7 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 | `width` | Widest a `row`/`fan` may spread, as a fraction of the table width (of its height, for a zone turned sideways) | 800 pixels |
 | `rotation` | Turn the zone, in degrees, e.g. `90` for a hand on the left side of the table | `0` |
 | `cards` | A deck to start with, e.g. `"res://decks/my_deck.csv"` | empty |
-| `columns` | With `cards`: columns to add or change on every card as the game loads, each an expression about `card`, worked out in order. E.g. Hearts uses the standard deck with `{ "value": "either(card.rank == 'A', 14, card.value)", "points": "either(card.name == 'Q♠', 13, int(card.suit == 'Hearts'))" }` (aces high, and the scoring cards) | |
+| `columns` | With `cards`: columns to add or change on every card as the game loads, each an expression about `card`, worked out in order. E.g. Hearts uses the standard deck with `{ "value": "14 if card.rank == 'A' else card.value", "points": "13 if card.name == 'Q♠' else int(card.suit == 'Hearts')" }` (aces high, and the scoring cards) | |
 | `on_click` | Steps run when a card in this zone is clicked (`card` is the clicked card), or when the empty zone is clicked (`card` is `null`). `clicked_zone` is the zone clicked, which tells copies apart: `try_move(top(deck), clicked_zone)` | none |
 | `on_double_click` | Steps run when a card in this zone is double-clicked, e.g. solitaire's `["try_move(card, foundation)"]`. (The first click of a double-click also counts as a single click.) | none |
 | `spread` | For a `pile`: fan out its top few cards sideways so they can be read, e.g. `3` for a draw-three solitaire waste | `0` |
@@ -280,7 +280,7 @@ The name and one-line description shown on the title screen, e.g. `"title": "Gin
 
 ### `players`, `variables`, `player_variables`
 
-- `"players": 2` turns on turns. The `player` variable holds whose turn it is (starting at 1); `end_turn()` passes the turn to the next player. To jump to a specific player, `assign('player', ...)`, e.g. the winner of a trick.
+- `"players": 2` turns on turns. The `player` variable holds whose turn it is (starting at 1); `end_turn()` passes the turn to the next player. To jump to a specific player, `player = ...`, e.g. the winner of a trick.
 - `"seats": [[0.24, 0.86]]` (optional) draws a name tag for each player: give seat 1's spot and the others go round the table like `per_player` zones, or one `[x, y]` per player to place them yourself. The current player's tag is highlighted, and bots' tags say "(bot)".
 - `"player_names": ["You", "West", "North", "East"]` (optional) names the players on their tags; otherwise they're "Player 1", "Player 2", ...
 - `players` is the list of player numbers (`[1, 2, 3, 4]`). Loop over it with `"for": "player"` to do something for every player as if it were their turn (see [Loops](#loops)).
@@ -357,7 +357,7 @@ Named step lists:
 | `<zone>_empty` | A `draw` needs a card from that zone and it's empty, e.g. `deck_empty`. For a per-player zone (`deck_2`), `deck_empty` runs as that zone's owner, so `["move(discard, deck)", "shuffle(deck)"]` refills whoever ran out. |
 | any other name | You call it with `trigger('name')`, or a card names it in its `on_<zone>` column (a **card effect**). Handy for routines used in several places, like a `deal`. |
 
-As a card effect, a trigger runs with `card` as the card that moved, e.g. `"wild": [{ "if": "count(hand) > 1", "then": ["assign('phase', 'choose_color')"] }]`. Every trigger is checked when the game loads, even ones nothing uses yet. (Older game files put card effects in a separate `"effects"` section; that still works.)
+As a card effect, a trigger runs with `card` as the card that moved, e.g. `"wild": [{ "if": "count(hand) > 1", "then": ["phase = 'choose_color'"] }]`. Every trigger is checked when the game loads, even ones nothing uses yet. (Older game files put card effects in a separate `"effects"` section; that still works.)
 
 ### `conditions`
 
@@ -457,12 +457,13 @@ You can use:
 - **`clicked_zone`**: in `on_click` and `on_double_click`, the zone that was clicked (one copy, not the whole group). It's `null` elsewhere.
 - **`choice`**: what was picked in a `choose` action: a card, a list of cards, or a value.
 - **Card columns,** as `card.<column>`, e.g. `card.suit == lead` or `card.value > 5`. Capitals don't matter: `card.color` reads a column headed `Color`. A column where every card has a number (`value`) gives numbers; a column with any text in it (`rank`: 2 ... 10, J, Q, K, A) gives text for every card, so `card.rank == 'A'` and `card.rank == '10'` both work. `card.data.<column>` is always the text as written.
-- **Operators:** `==`, `!=`, `<`, `>`, `<=`, `>=`, `+`, `-`, `*`, `/`, `and`, `or`, `not`, and parentheses.
-- **Either-or values:** `either(count(hand) == 0, 'out', 'in')`. (`x if condition else y` doesn't work in steps.)
+- **Operators:** `==`, `!=`, `<`, `>`, `<=`, `>=`, `+`, `-`, `*`, `/`, `%`, `and`, `or`, `not`, and parentheses. `+` also joins text and lists.
+- **Either-or values:** `'out' if count(hand) == 0 else 'in'`.
+- **Changing a variable:** a step of its own like `phase = 'discard'`, `score += 10` or `passes -= 1`. `score` is the current player's, as everywhere; `score_2` is player 2's. Only declared [variables](#players-variables-player_variables) can be changed, and only in steps, not in conditions like `when` (where `=` is a mistake for `==`).
 - **Text with numbers in it:** `'bid %d, score %d' % [team_bid_1, team_score_1]`, handy in [`status`](#status).
 - **Lists:** `[1, 2]`, joined with `+` (`finish_order + [player]`) and read by position from 0 (`ranking[0]`).
 - **Math:** `abs`, `min`, `max`, `floor`, `ceil`, `round`, and `int` (which also turns `true`/`false` into `1`/`0`, e.g. `5 * int(team_winning)`).
-- **Text in single quotes,** e.g. `'discard'`. The JSON itself uses double quotes.
+- **Text in single quotes,** e.g. `'discard'`. The JSON itself uses double quotes. A quote inside text takes a backslash, `'King\'s Court'`, which the game file's JSON doubles: `"where(box, 'name', 'King\\'s Court')"` (in a deck's cell, one backslash is enough).
 
 Every step is checked when the game loads (spelling, unknown names, wrong number of arguments), so most mistakes show up right away. If a step fails while running, the rest of its list is skipped and the log says why.
 
@@ -471,7 +472,7 @@ Every step is checked when the game loads (spelling, unknown names, wrong number
 There's no inline "if" in a step, so use a conditional step anywhere a list of steps is allowed:
 
 ```json
-{ "if": "count(hand) > 7", "then": ["assign('phase', 'discard')"], "else": ["assign('phase', 'draw')"] }
+{ "if": "count(hand) > 7", "then": ["phase = 'discard'"], "else": ["phase = 'draw'"] }
 ```
 
 `else` is optional, and conditional steps can be nested.
@@ -495,7 +496,7 @@ This deals solitaire: for each of the 7 tableau columns, draw as many cards as i
 - **Changing what you're looping over is safe:** the loop goes through the items that were there when it started, so `{ "for": "c", "in": "hand", "do": ["move(c, discard)"] }` works.
 - **Nesting:** loops can be nested, and can contain conditional steps.
 - **Each other player chooses:** inside a loop over players, `ask('Discard down to 3', player)` queues that choice for each of them in turn (Militia).
-- **Every player:** `{ "for": "player", "in": "players", "do": [...] }` runs the steps once per player as if it were their turn, so `hand`, `score` and `opponent_hand` follow along: `{ "for": "player", "in": "players", "do": ["assign('score', score + sum(won, 'points'))"] }` scores everyone's won cards. The turn goes back to whoever had it after the loop.
+- **Every player:** `{ "for": "player", "in": "players", "do": [...] }` runs the steps once per player as if it were their turn, so `hand`, `score` and `opponent_hand` follow along: `{ "for": "player", "in": "players", "do": ["score += sum(won, 'points')"] }` scores everyone's won cards. The turn goes back to whoever had it after the loop.
 
 ### Repeat until
 
@@ -528,8 +529,6 @@ To repeat steps while something is true, use a `while` step:
 | `mark(cards, 'key', value)` | Put a note on cards, e.g. a clue `mark(where(opponent_hand, 'color', 'Red'), 'color', 'Red')`, a counter `mark(card, 'damage', 2)`, or `mark(card, 'tapped', 'tapped')`. Marks are drawn on the card (on its back too) and last until it moves to another zone. A mark named after a column (here `color`) tells bots what that card is, even when they can't see it. |
 | `unmark(cards, 'key')` | Remove that mark. |
 | `sort(zone, ['column', ...])` | Keep a zone sorted by these columns, first column first. Numbers sort numerically. `sort(zone, [])` turns sorting off. |
-| `assign('variable', value)` | Change a variable. |
-| `add('variable', amount)` | Add to a number variable, e.g. `add('score', 10)` or `add('passes', -1)` |
 | `end_turn()` | Pass the turn to the next player and fire `turn_start`. |
 | `trigger('name')` | Run a step list from `triggers`. It runs with the same `card` as the step that called it. |
 | `ask('Action name', player)` | Start that action (usually a `choose`) once the current move finishes, e.g. from a wild card's effect. Several asks wait in line: each starts when the previous choice is finished. With a player number, that player makes the choice: it's their turn until they've chosen (so `hand` means their hand, and a bot answers by itself), then the turn goes back. A choice started by `ask` must be made: clicking elsewhere doesn't cancel it, and other buttons and drags wait. |
@@ -546,13 +545,13 @@ To repeat steps while something is true, use a `while` step:
 | `highest(cards, 'column')`, `lowest(cards, 'column')` | The card with the biggest or smallest number in that column, e.g. the winner of a trick: `highest(where(all_played, 'suit', lead), 'value')` |
 | `follows_suit(card, hand, lead)` | Whether playing the card follows suit: nothing led yet (`lead` is `''`), it's the suit led, or the hand has none of it. Uses the `suit` column |
 | `trick_winner(cards, lead, trump)` | The card taking a trick: the highest trump played, if any, otherwise the highest of the suit led, e.g. `owner(trick_winner(all_played, lead, 'Spades'))` is who won. `trump` is optional. Uses the `suit` and `value` columns |
-| `owner(card)` | The number of the player whose zone the card is in (0 for shared zones), e.g. `assign('player', owner(highest(...)))` |
+| `owner(card)` | The number of the player whose zone the card is in (0 for shared zones), e.g. `player = owner(highest(...))` |
 | `next_player(seats)` | The player that many seats after the current one, wrapping around: `next_player(1)` is next, `next_player(-1)` is previous |
-| `name_of(player)` | A player's name: from `player_names` ("You", "West"), or online the name they joined with. Use it instead of writing names into text, e.g. `assign('result', 'Winner: ' + name_of(best))`, so the text is right on every screen |
+| `name_of(player)` | A player's name: from `player_names` ("You", "West"), or online the name they joined with. Use it instead of writing names into text, e.g. `result = 'Winner: ' + name_of(best)`, so the text is right on every screen |
 | `viewer()` | The seat this screen belongs to (the person playing here), e.g. `"your deadwood": "sum(deadwood(zone('hand', viewer())), 'points')"`. Only allowed in `status`: each screen has its own, so rules can't depend on it |
 | `variable_of('name', player)` | Another player's player variable, e.g. `variable_of('alive', next_player())` |
 | `zone('kind', player)` | That player's zone, e.g. `zone('hand', next_player(2))` for the player across the table |
-| `random(low, high)` | A random whole number from `low` to `high`, e.g. a die roll `random(1, 6)` or a random first player `assign('player', random(1, 4))` |
+| `random(low, high)` | A random whole number from `low` to `high`, e.g. a die roll `random(1, 6)` or a random first player `player = random(1, 4)` |
 | `one_of(items)` | A random card from a zone or list (`move(one_of(opponent_hand), hand)` steals a random card), or a random item from a list of values (`one_of(['Red', 'Blue'])`); `null` if there are none |
 | `numbers(low, high)` | The list of whole numbers from `low` to `high`, e.g. for bids: `"choose": "numbers(0, 13)"` |
 | `count(cards)` | How many cards |
@@ -616,7 +615,6 @@ Wherever a building block takes `cards`, you can pass a zone, a single card, or 
   - An effect that keeps triggering itself is stopped with an error instead of freezing the game.
 - **Commas and quotes:** cells containing commas need quotes around them. Spreadsheet programs do this automatically when exporting CSV.
 - **Saving:** save the file as UTF-8 so symbols like ♠ survive.
-- **The `.import` file:** remember it (see [Make the deck](#1-make-the-deck)).
 
 ## Extending the engine
 
@@ -628,12 +626,13 @@ func discard_hand(zone: Zone, to: Zone) -> void:
 ```
 
 Other places to look:
-- `scripts/core/`: the game logic. `Game` runs the rules, `StepCompiler` checks a game file as it loads, `Zone` holds cards, `Melds` finds melds, `Bot` picks moves, `Snapshot` saves state for undo, `GameLog` writes the log.
+- `scripts/core/`: the game logic. `Game` runs the rules, `StepCompiler` checks a game file as it loads, `StepParser` reads each step's text and `StepEvaluator` works it out, `Zone` holds cards, `Melds` finds melds, `Bot` picks moves, `Snapshot` saves state for undo, `GameLog` writes the log.
 - `scripts/ui/`: the table and side panel.
 - `scripts/net/net.gd`: online play (the `Net` autoload): the lobby, sending inputs through the host, undo requests, rejoining.
 - `tests/regression_test.gd`: loads every game and plays a few with bots. Run it after changing rules or the engine: `godot --headless -s tests/regression_test.gd`.
 - `tests/editor_test.gd`: checks the editor keeps game files exactly as written while editing them, can rebuild every game from an empty file, and that the recipes load. Run `godot --headless -s tests/editor_test.gd`.
 - `tests/ui_test.tscn`: opens the title screen, the lobby, and every game on the real table with bots playing. Run `godot --headless res://tests/ui_test.tscn`.
+- `tests/step_language_test.gd`: checks what steps work out to (operators, `x if c else y`, `=` and `+=`) and the messages for mistakes. Run it after changing the step language: `godot --headless -s tests/step_language_test.gd`.
 - `tests/determinism_test.gd`: plays every game and checks matches replay exactly. Run it after engine changes: `godot --headless -s tests/determinism_test.gd`.
 - `tests/net_test.tscn`: a host and a guest play a hand of Hearts over the network, with an undo, a rejoin and a catch-up. Run `godot --headless res://tests/net_test.tscn -- host` and, in a second terminal, the same with `-- guest`; the two final state numbers must match.
 

@@ -113,7 +113,7 @@
 	},
 	"actions": {
 		"Draw 1/3": [
-			"assign('draw_count', 4 - draw_count)"
+			"draw_count = 4 - draw_count"
 		],
 		"Auto-finish": {
 			"when": "result == '' and count(stock) + count(waste) == 0 and count(face_down(tableau)) == 0",
@@ -180,7 +180,7 @@
 			{
 				"if": "count(foundation) == 52",
 				"then": [
-					"assign('result', 'You win!')"
+					"result = 'You win!'"
 				]
 			}
 		]

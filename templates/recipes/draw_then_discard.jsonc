@@ -39,14 +39,14 @@
 			"from": "deck",
 			"to": "hand",
 			"phase": "draw",
-			"then": "assign('phase', 'discard')"
+			"then": "phase = 'discard'"
 		},
 		{
 			"from": "hand",
 			"to": "discard",
 			"phase": "discard",
 			"then": [
-				"assign('phase', 'draw')",
+				"phase = 'draw'",
 				"end_turn()"
 			]
 		}

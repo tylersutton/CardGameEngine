@@ -35,7 +35,7 @@
 			],
 			"cards": "res://decks/standard_deck.csv",
 			"columns": {
-				"value": "either(card.rank == 'A', 14, card.value)"
+				"value": "14 if card.rank == 'A' else card.value"
 			}
 		},
 		"hand": {
@@ -119,20 +119,20 @@
 				{
 					"if": "lead == ''",
 					"then": [
-						"assign('lead', card.data.suit)"
+						"lead = card.data.suit"
 					]
 				},
 				{
 					"if": "card.data.suit == 'Spades'",
 					"then": [
-						"assign('spades_broken', true)"
+						"spades_broken = true"
 					]
 				},
 				{
 					"if": "count(all_played) == 4",
 					"then": [
-						"assign('phase', 'trick done')",
-						"assign('player', owner(best_card))"
+						"phase = 'trick done'",
+						"player = owner(best_card)"
 					],
 					"else": [
 						"end_turn()"
@@ -147,14 +147,14 @@
 			"choose": "numbers(0, 13)",
 			"prefer": "-abs(bid - max(1, count(matching(hand, 'likely_winner'))))",
 			"steps": [
-				"assign('bid', choice)",
-				"add('team_bid', choice)",
-				"add('bids', 1)",
+				"bid = choice",
+				"team_bid += choice",
+				"bids += 1",
 				{
 					"if": "bids == 4",
 					"then": [
-						"assign('phase', 'play')",
-						"assign('player', next_player())"
+						"phase = 'play'",
+						"player = next_player()"
 					],
 					"else": [
 						"end_turn()"
@@ -167,14 +167,14 @@
 			"human_only": true,
 			"steps": [
 				"move(all_played, won)",
-				"assign('lead', '')",
+				"lead = ''",
 				{
 					"if": "count(all_hand) == 0",
 					"then": [
 						"trigger('score_hand')"
 					],
 					"else": [
-						"assign('phase', 'play')"
+						"phase = 'play'"
 					]
 				}
 			]
@@ -196,27 +196,27 @@
 					"sort(hand, ['suit', 'value'])"
 				]
 			},
-			"assign('dealer', random(1, 4))",
+			"dealer = random(1, 4)",
 			"trigger('deal')"
 		],
 		"deal": [
 			"move([all_hand, all_played, all_won], deck)",
 			"shuffle(deck)",
 			"deal(deck, all_hand, 13)",
-			"assign('player', dealer)",
-			"assign('dealer', next_player())",
-			"assign('phase', 'bid')",
-			"assign('bids', 0)",
-			"assign('lead', '')",
-			"assign('spades_broken', false)",
+			"player = dealer",
+			"dealer = next_player()",
+			"phase = 'bid'",
+			"bids = 0",
+			"lead = ''",
+			"spades_broken = false",
 			{
 				"for": "player",
 				"in": "[1, 2]",
 				"do": [
-					"assign('team_bid', 0)"
+					"team_bid = 0"
 				]
 			},
-			"assign('player', next_player(2))",
+			"player = next_player(2)",
 			"ask('Bid')"
 		],
 		"turn_start": [
@@ -235,18 +235,18 @@
 					{
 						"if": "team_tricks >= team_bid",
 						"then": [
-							"add('team_score', 10 * team_bid + team_tricks - team_bid)",
-							"add('bags', team_tricks - team_bid)"
+							"team_score += 10 * team_bid + team_tricks - team_bid",
+							"bags += team_tricks - team_bid"
 						],
 						"else": [
-							"add('team_score', -(10 * team_bid))"
+							"team_score -= 10 * team_bid"
 						]
 					},
 					{
 						"if": "bags >= 10",
 						"then": [
-							"add('team_score', -100)",
-							"add('bags', -10)"
+							"team_score -= 100",
+							"bags -= 10"
 						]
 					}
 				]
@@ -258,30 +258,30 @@
 					{
 						"if": "bid == 0 and count(won) == 0",
 						"then": [
-							"add('team_score', 100)"
+							"team_score += 100"
 						]
 					},
 					{
 						"if": "bid == 0 and count(won) > 0",
 						"then": [
-							"add('team_score', -100)"
+							"team_score -= 100"
 						]
 					}
 				]
 			},
-			"assign('phase', 'hand over')",
+			"phase = 'hand over'",
 			{
 				"if": "team_score_1 >= 500 and team_score_1 > team_score_2",
 				"then": [
-					"assign('result', 'Winners: %s & %s' % [name_of(1), name_of(3)])",
-					"assign('phase', 'over')"
+					"result = 'Winners: %s & %s' % [name_of(1), name_of(3)]",
+					"phase = 'over'"
 				]
 			},
 			{
 				"if": "team_score_2 >= 500 and team_score_2 > team_score_1",
 				"then": [
-					"assign('result', 'Winners: %s & %s' % [name_of(2), name_of(4)])",
-					"assign('phase', 'over')"
+					"result = 'Winners: %s & %s' % [name_of(2), name_of(4)]",
+					"phase = 'over'"
 				]
 			}
 		]

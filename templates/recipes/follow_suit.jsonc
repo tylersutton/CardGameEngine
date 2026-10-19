@@ -45,13 +45,13 @@
 			"then": [
 				{
 					"if": "lead == ''",
-					"then": "assign('lead', card.suit)"
+					"then": "lead = card.suit"
 				},
 				{
-					"if": "count(all_played) == players.size()",
+					"if": "count(all_played) == size(players)",
 					"then": [
-						"assign('phase', 'trick done')",
-						"assign('player', owner(trick_winner(all_played, lead)))"
+						"phase = 'trick done'",
+						"player = owner(trick_winner(all_played, lead))"
 					],
 					"else": "end_turn()"
 				}
@@ -64,8 +64,8 @@
 			"human_only": true,
 			"steps": [
 				"move(all_played, won)",
-				"assign('lead', '')",
-				"assign('phase', 'play')"
+				"lead = ''",
+				"phase = 'play'"
 			]
 		}
 	}

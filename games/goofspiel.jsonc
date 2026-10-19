@@ -182,25 +182,25 @@
 		],
 		"round": [
 			"move(top(prizes), prize)",
-			"assign('stake', sum(prize, 'value'))",
-			"assign('phase', 'bid')",
+			"stake = sum(prize, 'value')",
+			"phase = 'bid'",
 			"ask_all('Bid', 'reveal')"
 		],
 		"reveal": [
 			"flip(all_bid)",
-			"assign('high', number(highest(all_bid, 'value'), 'value'))",
+			"high = number(highest(all_bid, 'value'), 'value')",
 			{
 				"if": "count(high_bids) == 1",
 				"then": [
 					"move(prize, zone('won', owner(top(high_bids))))"
 				]
 			},
-			"assign('phase', 'revealed')"
+			"phase = 'revealed'"
 		],
 		"game_over": [
 			"move(prize, box)",
-			"assign('phase', 'over')",
-			"assign('best', 1)",
+			"phase = 'over'",
+			"best = 1",
 			{
 				"for": "player",
 				"in": "players",
@@ -208,12 +208,12 @@
 					{
 						"if": "sum(won, 'value') > sum(zone('won', int(best)), 'value')",
 						"then": [
-							"assign('best', player)"
+							"best = player"
 						]
 					}
 				]
 			},
-			"assign('result', 'Winner: ' + name_of(int(best)))"
+			"result = 'Winner: ' + name_of(int(best))"
 		]
 	},
 	"card_face": {

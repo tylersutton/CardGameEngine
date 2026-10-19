@@ -8,7 +8,6 @@ signal committed(text: String)
 
 const HINT_COLOR := Color(1, 1, 1, 0.6)
 const PROBLEM_COLOR := Color(1, 0.5, 0.45)
-const WORDS := ["and", "or", "not", "true", "false", "null"]
 
 var code := CodeEdit.new()
 var hint := Label.new()
@@ -75,7 +74,7 @@ func _suggest() -> void:
 			if column.to_lower().begins_with(typed.to_lower()):
 				code.add_code_completion_option(CodeEdit.KIND_MEMBER, column, column)
 	elif not before.trim_suffix(typed).ends_with("."):
-		for name: String in names + WORDS:
+		for name: String in names + StepParser.KEYWORDS:
 			if name.begins_with(typed):
 				code.add_code_completion_option(CodeEdit.KIND_VARIABLE, name, name)
 		for block: String in StepCompiler.building_blocks:

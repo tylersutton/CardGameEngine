@@ -205,7 +205,7 @@
 			"phase": "action",
 			"when": "actions > 0 and is_action",
 			"then": [
-				"add('actions', -1)"
+				"actions -= 1"
 			]
 		},
 		{
@@ -213,7 +213,7 @@
 			"to": "play",
 			"when": "phase != 'over' and is_treasure",
 			"then": [
-				"assign('phase', 'buy')"
+				"phase = 'buy'"
 			]
 		},
 		{
@@ -222,9 +222,9 @@
 			"phase": "buy",
 			"when": "affordable",
 			"then": [
-				"add('buys', -1)",
-				"add('coins', -(number(card, 'cost')))",
-				"assign('phase', 'buy')",
+				"buys -= 1",
+				"coins -= number(card, 'cost')",
+				"phase = 'buy'",
 				{
 					"if": "nothing_left",
 					"then": [
@@ -245,7 +245,7 @@
 						"try_move(treasure, play)"
 					]
 				},
-				"assign('phase', 'buy')"
+				"phase = 'buy'"
 			]
 		},
 		"End turn": {
@@ -276,7 +276,7 @@
 			"choose": "hand",
 			"steps": [
 				"move(choice, trash)",
-				"assign('gain_limit', number(choice, 'cost') + 2)",
+				"gain_limit = number(choice, 'cost') + 2",
 				"ask('Gain a card')"
 			]
 		},
@@ -289,7 +289,7 @@
 					"if": "count(choice) == 1",
 					"then": [
 						"move(choice, trash)",
-						"assign('gain_limit', number(top(choice), 'cost') + 3)",
+						"gain_limit = number(top(choice), 'cost') + 3",
 						"ask('Gain a treasure')"
 					]
 				}
@@ -316,7 +316,7 @@
 				{
 					"if": "choice == 'Reveal Moat'",
 					"then": [
-						"assign('immune', true)"
+						"immune = true"
 					]
 				}
 			]
@@ -334,7 +334,7 @@
 								"ask('Discard down to 3', player)"
 							]
 						},
-						"assign('immune', false)"
+						"immune = false"
 					]
 				}
 			]
@@ -361,7 +361,7 @@
 								"move(top(zone('basic_pile', 7)), discard)"
 							]
 						},
-						"assign('immune', false)"
+						"immune = false"
 					]
 				}
 			]
@@ -383,16 +383,16 @@
 	},
 	"triggers": {
 		"treasure": [
-			"add('coins', number(card, 'coins'))"
+			"coins += number(card, 'coins')"
 		],
 		"action": [
 			"draw(deck, hand, number(card, 'cards'))",
-			"add('actions', number(card, 'actions'))",
-			"add('buys', number(card, 'buys'))",
-			"add('coins', number(card, 'coins'))"
+			"actions += number(card, 'actions')",
+			"buys += number(card, 'buys')",
+			"coins += number(card, 'coins')"
 		],
 		"council_room": [
-			"assign('attacker', player)",
+			"attacker = player",
 			{
 				"for": "player",
 				"in": "players",
@@ -410,13 +410,13 @@
 			{
 				"if": "not silver_played",
 				"then": [
-					"add('coins', merchants)",
-					"assign('silver_played', true)"
+					"coins += merchants",
+					"silver_played = true"
 				]
 			}
 		],
 		"merchant": [
-			"add('merchants', 1)"
+			"merchants += 1"
 		],
 		"cellar": [
 			"ask('Cellar')"
@@ -425,7 +425,7 @@
 			"ask('Chapel')"
 		],
 		"workshop": [
-			"assign('gain_limit', 4)",
+			"gain_limit = 4",
 			"ask('Gain a card')"
 		],
 		"remodel": [
@@ -438,12 +438,12 @@
 			"ask('Throne Room')"
 		],
 		"militia": [
-			"assign('attacker', player)",
+			"attacker = player",
 			"trigger('reactions')",
 			"ask('Militia attack')"
 		],
 		"witch": [
-			"assign('attacker', player)",
+			"attacker = player",
 			"trigger('reactions')",
 			"ask('Witch attack')"
 		],
@@ -504,12 +504,12 @@
 			"move(play, discard)",
 			"move(hand, discard)",
 			"draw(deck, hand, 5)",
-			"assign('actions', 1)",
-			"assign('buys', 1)",
-			"assign('coins', 0)",
-			"assign('phase', 'action')",
-			"assign('merchants', 0)",
-			"assign('silver_played', false)",
+			"actions = 1",
+			"buys = 1",
+			"coins = 0",
+			"phase = 'action'",
+			"merchants = 0",
+			"silver_played = false",
 			"trigger('check_end')",
 			{
 				"if": "phase != 'over'",
@@ -519,7 +519,7 @@
 			}
 		],
 		"check_end": [
-			"assign('empty_piles', 0)",
+			"empty_piles = 0",
 			{
 				"for": "pile",
 				"in": "supply",
@@ -527,7 +527,7 @@
 					{
 						"if": "count(pile) == 0",
 						"then": [
-							"add('empty_piles', 1)"
+							"empty_piles += 1"
 						]
 					}
 				]
@@ -544,23 +544,23 @@
 				"for": "player",
 				"in": "players",
 				"do": [
-					"assign('score', sum(my_cards, 'vp') + gardens_vp)"
+					"score = sum(my_cards, 'vp') + gardens_vp"
 				]
 			},
-			"assign('phase', 'over')",
+			"phase = 'over'",
 			{
 				"if": "score_1 > score_2",
 				"then": [
-					"assign('result', 'Winner: ' + name_of(1))"
+					"result = 'Winner: ' + name_of(1)"
 				],
 				"else": [
 					{
 						"if": "score_1 < score_2",
 						"then": [
-							"assign('result', 'Winner: ' + name_of(2))"
+							"result = 'Winner: ' + name_of(2)"
 						],
 						"else": [
-							"assign('result', 'A tie')"
+							"result = 'A tie'"
 						]
 					}
 				]

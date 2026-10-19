@@ -1,30 +1,24 @@
 class_name StepCompiler
 extends RefCounted
-## Checks a game file when it loads and compiles every step and condition into an Expression, so mistakes
-## (unknown names, wrong argument counts, misspelled keys) show up before anything runs. Used once per load.
+## Checks a game file when it loads and parses every step and condition (StepParser), so mistakes (unknown names,
+## wrong argument counts, misspelled keys) show up before anything runs. Used once per load.
 
 const CONDITIONAL_KEYS := ["if", "then", "else"]
 const LOOP_KEYS := ["for", "in", "do"]
 const WHILE_KEYS := ["while", "do"]
-const KEYWORDS := ["true", "false", "null", "and", "or", "not"]
-## Godot's Expression reads "x if c else y" as just x, so it's refused with a pointer to either().
-const TERNARY_WORDS := ["if", "else"]
-const MATH_FUNCTIONS := ["abs", "min", "max", "floor", "ceil", "round", "int"]
-const VIEWER_BLOCK := "viewer("
+const VIEWER_BLOCK := "viewer"
 const ZONE_KEYS := ["label", "labels", "outline", "layout", "face", "anchor", "anchors", "width", "rotation", "rotations", "cards",
 	"on_click", "on_double_click", "spread", "drag", "per_player", "copies", "grid", "group", "covered_by", "columns"]
 const CARD_FACE_KEYS := ["corner", "title", "body", "text", "color", "background", "zoom"]
 const TYPE_DESCRIPTIONS := {TYPE_STRING: "text", TYPE_ARRAY: "a list", TYPE_FLOAT: "a number", TYPE_BOOL: "true or false"}
 
 static var building_blocks := _building_blocks()
-static var failed_call := RegEx.create_from_string(r"On call to '(\w+)'")
-static var unknown_name := RegEx.create_from_string(r"Invalid named index '(\w+)'")
-static var string_literal := RegEx.create_from_string("'[^']*'|\"[^\"]*\"")
-static var name_in_code := RegEx.create_from_string(r"(?<![.\w])([A-Za-z_]\w*)\s*(\()?")
 
 var game: Game
 var rules: GameRules
 var errors: Array[String]
+## Every name a step may use (zones, variables, loop names, conditions...), for quick lookups while checking.
+var known_names := {}
 
 
 func _init(game_to_check: Game) -> void:
@@ -84,23 +78,13 @@ func check_and_compile() -> void:
 
 ## Problems with one step or condition on its own, e.g. for the editor as it's typed.
 func problems_with(step: String) -> Array[String]:
-	var code := _with_conditions(step)
-	var expression := Expression.new()
-	if expression.parse(code, game.input_names()) != OK:
-		return [expression.get_error_text()]
-	return _problems_in(code, game.input_names())
-
-
-## A failed step's error, with the building block's parameters when it was given the wrong kind of argument.
-static func failure_message(expression: Expression) -> String:
-	var message := expression.get_error_text()
-	var unknown := unknown_name.search(message)
-	if unknown:
-		message += " (no column \"%s\" in this card's deck)" % unknown.get_string(1)
-	var call := failed_call.search(message)
-	if call and call.get_string(1) in building_blocks:
-		message += " wrong kind of argument, expected " + signature(call.get_string(1))
-	return message
+	_learn_names()
+	var parsed := StepParser.parse(step)
+	if parsed.has("error"):
+		return [parsed.error]
+	var problems: Array[String] = []
+	_find_problems(parsed.tree, step, true, problems)
+	return problems
 
 
 static func signature(building_block: String) -> String:
@@ -198,22 +182,22 @@ func _check_entry(label: String, entry: Variant, field_types: Dictionary) -> voi
 
 func _compile_all_steps() -> void:
 	var step_lists: Array = rules.triggers.values()
-	var conditions: Array = []
+	var expressions: Array = []
 	for action: Dictionary in rules.actions.values():
 		step_lists.append(action.get("steps", []))
-		conditions.append(action.get("when", ""))
-		conditions.append(action.get("choose", ""))
+		expressions.append(action.get("when", ""))
+		expressions.append(action.get("choose", ""))
 		for key in ["pick", "up_to", "allow", "prefer"]:
 			if action.get(key) is String:
-				conditions.append(action[key])
+				expressions.append(action[key])
 	for rule: Dictionary in rules.moves:
 		step_lists.append(rule.get("then", []))
-		conditions.append(rule.get("when", ""))
-	conditions.append_array(rules.status.values())
-	conditions.append_array(rules.conditions.values())
+		expressions.append(rule.get("when", ""))
+	expressions.append_array(rules.status.values())
+	expressions.append_array(rules.conditions.values())
 	for zone: Variant in rules.zones.values():
-		conditions.append_array(zone.get("columns", {}).values())
-	conditions.append(rules.bot.get("prefer", ""))
+		expressions.append_array(zone.get("columns", {}).values())
+	expressions.append(rules.bot.get("prefer", ""))
 	for zone: Zone in game.zones.values():
 		step_lists.append(zone.on_click)
 		step_lists.append(zone.on_double_click)
@@ -221,34 +205,44 @@ func _compile_all_steps() -> void:
 			for destination: Zone in game.zones.values():
 				step_lists.append(game.card_effect(card, destination.kind))
 	var unique_steps := {}
+	var unique_expressions := {}
 	for steps: Array in step_lists:
-		_collect_steps(steps, unique_steps)
-	for condition: String in conditions:
-		if condition:
-			unique_steps[condition] = true
+		_collect_steps(steps, unique_steps, unique_expressions)
+	for expression: String in expressions:
+		if expression:
+			unique_expressions[expression] = true
+	_learn_names()
+	_check_condition_circles()
+	if errors:
+		return
 	for step: String in unique_steps:
-		_compile(step)
-		if step not in rules.status.values() and step not in rules.conditions.values() and VIEWER_BLOCK in _with_conditions(step):
-			errors.append("Step \"%s\": viewer() only works in \"status\" (each screen has its own, so rules can't depend on it)" % step)
+		_compile(step, true)
+	for expression: String in unique_expressions:
+		if expression not in unique_steps:
+			_compile(expression, false)
+	for text: String in unique_steps.keys() + unique_expressions.keys():
+		if text not in rules.status.values() and text not in rules.conditions.values() and _calls(game.step_trees.get(text, {}), VIEWER_BLOCK):
+			errors.append("Step \"%s\": viewer() only works in \"status\" (each screen has its own, so rules can't depend on it)" % text)
 
 
-func _collect_steps(steps: Array, into: Dictionary) -> void:
+## Whole steps may change variables (score += 1); conditions, like an "if" or a loop's "in", only work things out.
+func _collect_steps(steps: Array, into_steps: Dictionary, into_expressions: Dictionary) -> void:
 	for step in steps:
 		if step is String:
-			into[step] = true
+			into_steps[step] = true
 		elif step is Dictionary and _is_blank_condition(step):
 			errors.append("A step %s has nothing to check: fill in its condition, or remove it" % JSON.stringify(step).left(60))
 		elif _is_valid_conditional(step):
-			into[step["if"]] = true
-			_collect_steps(step.get("then", []), into)
-			_collect_steps(step.get("else", []), into)
+			into_expressions[step["if"]] = true
+			_collect_steps(step.get("then", []), into_steps, into_expressions)
+			_collect_steps(step.get("else", []), into_steps, into_expressions)
 		elif _is_valid_loop(step):
 			_add_loop_name(step.for)
-			into[step.in] = true
-			_collect_steps(step.get("do", []), into)
+			into_expressions[step.in] = true
+			_collect_steps(step.get("do", []), into_steps, into_expressions)
 		elif _is_valid_while(step):
-			into[step.while] = true
-			_collect_steps(step.get("do", []), into)
+			into_expressions[step.while] = true
+			_collect_steps(step.get("do", []), into_steps, into_expressions)
 		else:
 			errors.append("Invalid step %s: use a string, { \"if\": ..., \"then\": [...], \"else\": [...] }, { \"for\": \"name\", \"in\": ..., \"do\": [...] }, or { \"while\": ..., \"do\": [...] }" % JSON.stringify(step))
 
@@ -299,157 +293,143 @@ func _is_valid_while(step: Variant) -> bool:
 		and step.get("do", []) is Array
 
 
-func _compile(step: String) -> void:
-	var input_names := game.input_names()
-	var code := _with_conditions(step)
-	if code.is_empty():
+func _learn_names() -> void:
+	known_names.clear()
+	for name in Array(game.input_names()) + rules.conditions.keys():
+		known_names[name] = true
+
+
+func _compile(text: String, is_step: bool) -> void:
+	if text.strip_edges().is_empty():
 		return
-	var expression := Expression.new()
-	if expression.parse(code, input_names) != OK:
-		errors.append("Could not parse step \"%s\": %s" % [step, expression.get_error_text()])
+	var parsed := StepParser.parse(text)
+	if parsed.has("error"):
+		errors.append("Could not read step \"%s\": %s" % [text, parsed.error])
 		return
-	var problems := _problems_in(code, input_names)
-	if problems:
-		errors.append("Step \"%s\": %s" % [step, ", ".join(problems)])
-		return
-	game.expressions[step] = expression
-	var tree: Variant = _logic_tree(code)
-	if tree is Dictionary:
-		game.logic[step] = tree
-		_compile_logic_parts(tree, input_names)
-
-
-func _compile_logic_parts(node: Variant, input_names: PackedStringArray) -> void:
-	if node is Dictionary:
-		for term: Variant in node.get("terms", [node.get("term")]):
-			_compile_logic_parts(term, input_names)
-	elif node not in game.expressions:
-		var expression := Expression.new()
-		expression.parse(node, input_names)
-		game.expressions[node] = expression
-
-
-## Splits an expression on its outermost "or", then "and", then "not", into a tree evaluated left to right
-## (Game.evaluate), because Expression always evaluates both sides of "and"/"or".
-func _logic_tree(code: String) -> Variant:
-	code = code.strip_edges()
-	for keyword in ["or", "and"]:
-		var parts := _split_top_level(code, keyword)
-		if parts.size() > 1:
-			return {op = keyword, terms = parts.map(_logic_tree)}
-	if _is_word_at(code, 0, "not"):
-		return {op = "not", term = _logic_tree(code.substr(3))}
-	if code.begins_with("(") and _top_level_end(code, 0) == code.length() - 1:
-		var inner: Variant = _logic_tree(code.substr(1, code.length() - 2))
-		if inner is Dictionary:
-			return inner
-	return code
-
-
-static func _split_top_level(code: String, keyword: String) -> Array[String]:
-	var parts: Array[String] = []
-	var start := 0
-	var i := 0
-	while i < code.length():
-		var next := _top_level_end(code, i)
-		if next != i:
-			i = next + 1
-		elif _is_word_at(code, i, keyword):
-			parts.append(code.substr(start, i - start))
-			i += keyword.length()
-			start = i
-		else:
-			i += 1
-	parts.append(code.substr(start))
-	return parts
-
-
-## If code[i] opens a bracket or quote, the index of its closing partner; otherwise i.
-static func _top_level_end(code: String, i: int) -> int:
-	var opening := code[i]
-	if opening in "'\"":
-		var closing := code.find(opening, i + 1)
-		return closing if closing != -1 else code.length() - 1
-	if opening not in "([{":
-		return i
-	var depth := 0
-	var j := i
-	while j < code.length():
-		if code[j] in "'\"":
-			j = _top_level_end(code, j)
-		elif code[j] in "([{":
-			depth += 1
-		elif code[j] in ")]}":
-			depth -= 1
-			if depth == 0:
-				return j
-		j += 1
-	return code.length() - 1
-
-
-static func _is_word_at(code: String, i: int, word: String) -> bool:
-	var end := i + word.length()
-	return code.substr(i, word.length()) == word \
-		and (i == 0 or not _is_word_character(code[i - 1])) \
-		and (end >= code.length() or not _is_word_character(code[end]))
-
-
-static func _is_word_character(character: String) -> bool:
-	return character == "_" or character.is_valid_int() or character.to_lower() != character.to_upper()
-
-
-## Replaces each condition name with its expression in brackets, including conditions inside conditions.
-func _with_conditions(step: String) -> String:
-	var code := step
-	for depth in Game.MAX_NESTING:
-		var expanded := _expand_conditions_once(code)
-		if expanded == code:
-			return code
-		code = expanded
-	errors.append("Step \"%s\": its conditions refer to each other in a circle" % step)
-	return ""
-
-
-func _expand_conditions_once(code: String) -> String:
-	var literals := string_literal.search_all(code)
-	var expanded := ""
-	var copied_up_to := 0
-	for found in name_in_code.search_all(code):
-		var name := found.get_string(1)
-		var inside_literal := literals.any(func(literal: RegExMatch) -> bool:
-			return found.get_start(1) >= literal.get_start() and found.get_start(1) < literal.get_end())
-		if name not in rules.conditions or found.get_string(2) != "" or inside_literal:
-			continue
-		expanded += code.substr(copied_up_to, found.get_start(1) - copied_up_to) + "(%s)" % rules.conditions[name]
-		copied_up_to = found.get_end(1)
-	return expanded + code.substr(copied_up_to)
-
-
-func _problems_in(step: String, input_names: PackedStringArray) -> Array[String]:
 	var problems: Array[String] = []
-	var code := string_literal.sub(step, "''", true)
-	for found in name_in_code.search_all(code):
-		var name := found.get_string(1)
-		var is_call := found.get_string(2) != ""
-		if name in KEYWORDS or (is_call and name in MATH_FUNCTIONS):
-			continue
-		if name in TERNARY_WORDS:
-			if "either" not in problems.reduce(func(text: String, problem: String) -> String: return text + problem, ""):
-				problems.append("\"x if condition else y\" doesn't work in steps: use either(condition, x, y)")
-			continue
-		if is_call and name not in building_blocks:
-			problems.append("unknown building block \"%s\"" % name)
-		elif is_call:
-			var problem := _argument_count_problem(name, _argument_count(code, found.get_end()))
+	_find_problems(parsed.tree, text, is_step, problems)
+	if problems:
+		errors.append("Step \"%s\": %s" % [text, ", ".join(problems)])
+		return
+	game.step_trees[text] = parsed.tree
+
+
+func _find_problems(node: Dictionary, text: String, is_step: bool, problems: Array[String]) -> void:
+	match node.kind:
+		"name":
+			if node.name not in known_names:
+				var problem := "unknown trigger \"%s\" (a card's on_ column names a trigger)" if text.strip_edges() == node.name else "unknown zone or variable \"%s\""
+				problems.append(problem % node.name)
+		"call":
+			var problem := _call_problem(node.name, node.args.size())
 			if problem:
 				problems.append(problem)
-		elif name not in input_names:
-			var problem := "unknown trigger \"%s\" (a card's on_ column names a trigger)" if step == name else "unknown zone or variable \"%s\""
-			problems.append(problem % name)
-	return problems
+		"assign":
+			if not is_step:
+				problems.append("= changes a variable, so it only works as a step of its own; to compare, use ==")
+			elif game.aliases().get(node.name, node.name) not in game.variables:
+				problems.append(_assign_problem(node.name))
+	for child in _children(node):
+		_find_problems(child, text, is_step, problems)
 
 
-static func _argument_count_problem(building_block: String, given: int) -> String:
+static func _children(node: Dictionary) -> Array:
+	match node.kind:
+		"list":
+			return node.items
+		"call":
+			return node.args
+		"member":
+			return [node.target]
+		"index":
+			return [node.target, node.index]
+		"unary":
+			return [node.term]
+		"binary":
+			return [node.left, node.right]
+		"choose":
+			return [node.condition, node.if_true, node.if_false]
+		"assign":
+			return [node.value]
+	return []
+
+
+func _call_problem(name: String, given: int) -> String:
+	if name in StepEvaluator.MATH_ARGUMENTS:
+		var needed: int = StepEvaluator.MATH_ARGUMENTS[name]
+		if name in ["min", "max"] and given < needed:
+			return "%s takes two or more numbers, got %d" % [name, given]
+		if name not in ["min", "max"] and given != needed:
+			return "%s takes one number, got %d" % [name, given]
+		return ""
+	if name not in building_blocks:
+		return "unknown building block \"%s\"" % name
+	return argument_count_problem(name, given)
+
+
+func _assign_problem(name: String) -> String:
+	if name in known_names and game.value_of(name) is Zone:
+		return "\"%s\" is a zone, so = can't change it (move cards with move or draw)" % name
+	if name in known_names:
+		return "\"%s\" can't be changed with =: only variables can (from \"variables\", \"player_variables\" or \"team_variables\")" % name
+	return "unknown variable \"%s\" (declare it in \"variables\")" % name
+
+
+## Whether the tree, or a condition it names, calls that building block.
+func _calls(node: Dictionary, building_block: String, conditions_seen := {}) -> bool:
+	if node.is_empty():
+		return false
+	if node.kind == "call" and node.name == building_block:
+		return true
+	if node.kind == "name" and node.name in rules.conditions and node.name not in conditions_seen:
+		conditions_seen[node.name] = true
+		if _calls(game.step_trees.get(rules.conditions[node.name], {}), building_block, conditions_seen):
+			return true
+	return _children(node).any(func(child: Dictionary) -> bool: return _calls(child, building_block, conditions_seen))
+
+
+## A condition that names itself, directly or through others, would never finish being worked out.
+func _check_condition_circles() -> void:
+	for name: String in rules.conditions:
+		if _condition_names(name, [name]).has(name):
+			errors.append("Condition \"%s\" refers to itself (through %s), so it can never be worked out" % [name, " → ".join(_condition_path(name, [name]))])
+
+
+## Every condition reachable from this one (stopping at any already on the path).
+func _condition_names(name: String, path: Array) -> Dictionary:
+	var reached := {}
+	var parsed := StepParser.parse(rules.conditions[name])
+	for used in _names_in(parsed.get("tree", {})):
+		if used not in rules.conditions:
+			continue
+		reached[used] = true
+		if used not in path:
+			reached.merge(_condition_names(used, path + [used]))
+	return reached
+
+
+func _condition_path(name: String, path: Array) -> Array:
+	var parsed := StepParser.parse(rules.conditions[name])
+	for used in _names_in(parsed.get("tree", {})):
+		if used == path[0]:
+			return path + [used]
+		if used in rules.conditions and used not in path:
+			var found := _condition_path(used, path + [used])
+			if found:
+				return found
+	return []
+
+
+static func _names_in(node: Dictionary) -> Array:
+	if node.is_empty():
+		return []
+	var names := [node.name] if node.kind == "name" else []
+	for child in _children(node):
+		names.append_array(_names_in(child))
+	return names
+
+
+static func argument_count_problem(building_block: String, given: int) -> String:
 	var method: Dictionary = building_blocks[building_block]
 	var most: int = method.args.size()
 	var fewest: int = most - method.default_args.size()
@@ -458,23 +438,6 @@ static func _argument_count_problem(building_block: String, given: int) -> Strin
 	var expected := str(most) if fewest == most else "%d to %d" % [fewest, most]
 	var noun := "argument" if expected == "1" else "arguments"
 	return "%s takes %s %s, got %d (expected %s)" % [building_block, expected, noun, given, signature(building_block)]
-
-
-static func _argument_count(code: String, after_open_paren: int) -> int:
-	var depth := 0
-	var commas := 0
-	for i in range(after_open_paren, code.length()):
-		var character := code[i]
-		if character in "([{":
-			depth += 1
-		elif character in ")]}" and depth > 0:
-			depth -= 1
-		elif character == ")":
-			var has_arguments := not code.substr(after_open_paren, i - after_open_paren).strip_edges().is_empty()
-			return commas + 1 if has_arguments else 0
-		elif character == "," and depth == 0:
-			commas += 1
-	return commas + 1
 
 
 static func _building_blocks() -> Dictionary:

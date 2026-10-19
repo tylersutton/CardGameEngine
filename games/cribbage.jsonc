@@ -150,15 +150,15 @@
 			"phase": "pegging",
 			"when": "playable",
 			"then": [
-				"add('total', number(card, 'value'))",
-				"assign('points', 0)",
+				"total += number(card, 'value')",
+				"points = 0",
 				{
 					"if": "total == 15 or total == 31",
 					"then": [
-						"assign('points', 2)"
+						"points = 2"
 					]
 				},
-				"assign('pair_points', 0)",
+				"pair_points = 0",
 				{
 					"for": "length",
 					"in": "numbers(2, min(4, count(pegging)))",
@@ -166,12 +166,12 @@
 						{
 							"if": "size(groups(last(pegging, length), 'rank')) == 1",
 							"then": [
-								"assign('pair_points', length * (length - 1))"
+								"pair_points = length * (length - 1)"
 							]
 						}
 					]
 				},
-				"assign('run_points', 0)",
+				"run_points = 0",
 				{
 					"for": "length",
 					"in": "numbers(3, count(pegging))",
@@ -179,13 +179,13 @@
 						{
 							"if": "size(runs(last(pegging, length), 'order', length)) > 0",
 							"then": [
-								"assign('run_points', length)"
+								"run_points = length"
 							]
 						}
 					]
 				},
-				"add('points', pair_points + run_points)",
-				"add('score', points)",
+				"points += pair_points + run_points",
+				"score += points",
 				"trigger('check_win')",
 				{
 					"if": "count(all_hand) == 0",
@@ -193,7 +193,7 @@
 						{
 							"if": "total != 31",
 							"then": [
-								"add('score', 1)",
+								"score += 1",
 								"trigger('check_win')"
 							]
 						},
@@ -212,12 +212,12 @@
 										{
 											"if": "total != 31",
 											"then": [
-												"add('score', 1)",
+												"score += 1",
 												"trigger('check_win')"
 											]
 										},
 										"move(pegging, pegged)",
-										"assign('total', 0)",
+										"total = 0",
 										{
 											"if": "count(opponent_hand) > 0",
 											"then": [
@@ -241,7 +241,7 @@
 			"prefer": "kept_points",
 			"steps": [
 				"move(choice, crib)",
-				"add('discarded', 1)",
+				"discarded += 1",
 				{
 					"if": "discarded == 2",
 					"then": [
@@ -264,9 +264,9 @@
 						"move(kept, shown)"
 					]
 				},
-				"assign('points', hand_points)",
-				"add('score', points)",
-				"add('counted', 1)",
+				"points = hand_points",
+				"score += points",
+				"counted += 1",
 				"trigger('check_win')",
 				{
 					"if": "counted == 1",
@@ -277,7 +277,7 @@
 				{
 					"if": "counted == 3 and phase != 'over'",
 					"then": [
-						"assign('phase', 'hand over')"
+						"phase = 'hand over'"
 					]
 				}
 			]
@@ -304,13 +304,13 @@
 		"deal": [
 			"move([all_hand, all_shown, starter, pegging, pegged, crib], deck)",
 			"shuffle(deck)",
-			"assign('player', dealer)",
-			"assign('dealer', next_player())",
+			"player = dealer",
+			"dealer = next_player()",
 			"deal(deck, all_hand, 6)",
-			"assign('phase', 'discard')",
-			"assign('discarded', 0)",
-			"assign('counted', 0)",
-			"assign('total', 0)",
+			"phase = 'discard'",
+			"discarded = 0",
+			"counted = 0",
+			"total = 0",
 			"ask('Discard to crib', 1)",
 			"ask('Discard to crib', 2)"
 		],
@@ -323,7 +323,7 @@
 						"for": "player",
 						"in": "[dealer]",
 						"do": [
-							"add('score', 2)"
+							"score += 2"
 						]
 					},
 					"trigger('check_win')"
@@ -333,41 +333,41 @@
 				"for": "player",
 				"in": "players",
 				"do": [
-					"assign('kept', all(hand))"
+					"kept = all(hand)"
 				]
 			},
 			{
 				"if": "phase != 'over'",
 				"then": [
-					"assign('phase', 'pegging')"
+					"phase = 'pegging'"
 				]
 			}
 		],
 		"show": [
 			"move(pegging, pegged)",
-			"assign('total', 0)",
+			"total = 0",
 			{
 				"if": "phase != 'over'",
 				"then": [
-					"assign('phase', 'show')"
+					"phase = 'show'"
 				]
 			},
-			"assign('player', dealer)",
-			"assign('player', next_player())"
+			"player = dealer",
+			"player = next_player()"
 		],
 		"check_win": [
 			{
 				"if": "phase != 'over' and score_1 >= 121",
 				"then": [
-					"assign('result', 'Winner: ' + name_of(1))",
-					"assign('phase', 'over')"
+					"result = 'Winner: ' + name_of(1)",
+					"phase = 'over'"
 				]
 			},
 			{
 				"if": "phase != 'over' and score_2 >= 121",
 				"then": [
-					"assign('result', 'Winner: ' + name_of(2))",
-					"assign('phase', 'over')"
+					"result = 'Winner: ' + name_of(2)",
+					"phase = 'over'"
 				]
 			}
 		]

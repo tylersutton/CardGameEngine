@@ -57,7 +57,7 @@
 			"to": "hand",
 			"phase": "draw",
 			"then": [
-				"assign('phase', 'discard')",
+				"phase = 'discard'",
 				{
 					"if": "count(deck) == 0",
 					"then": "trigger('deck_empty')"
@@ -69,7 +69,7 @@
 			"to": "discard",
 			"phase": "discard",
 			"then": [
-				"assign('phase', 'draw')",
+				"phase = 'draw'",
 				"end_turn()"
 			]
 		}

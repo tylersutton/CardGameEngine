@@ -110,12 +110,12 @@
 			"steps": [
 				"move(table, beaten)",
 				"move(choice, table)",
-				"assign('set_size', count(choice))",
-				"assign('matched', number(top(choice), 'order') == top_order)",
-				"assign('top_order', number(top(choice), 'order'))",
-				"assign('last_played', player)",
-				"assign('passes', 0)",
-				"assign('first_play', false)",
+				"set_size = count(choice)",
+				"matched = number(top(choice), 'order') == top_order",
+				"top_order = number(top(choice), 'order')",
+				"last_played = player",
+				"passes = 0",
+				"first_play = false",
 				{
 					"if": "count(hand) == 0",
 					"then": [
@@ -125,7 +125,7 @@
 				{
 					"if": "size(finish_order) == 3",
 					"then": [
-						"assign('player', last_one_left)",
+						"player = last_one_left",
 						"trigger('finished')",
 						"trigger('hand_over')"
 					],
@@ -177,7 +177,7 @@
 			"prefer": "sum(hand, 'order')",
 			"steps": [
 				"move(choice, zone('hand', ranking[2]))",
-				"assign('phase', 'play')"
+				"phase = 'play'"
 			]
 		},
 		"Next hand": {
@@ -203,16 +203,16 @@
 			"move([all_hand, table, beaten], deck)",
 			"shuffle(deck)",
 			"deal(deck, all_hand, 13)",
-			"assign('finish_order', [])",
-			"assign('first_play', true)",
-			"assign('set_size', 0)",
-			"assign('top_order', 0)",
-			"assign('passes', 0)",
+			"finish_order = []",
+			"first_play = true",
+			"set_size = 0",
+			"top_order = 0",
+			"passes = 0",
 			{
 				"if": "size(ranking) == 0",
 				"then": [
-					"assign('phase', 'play')",
-					"assign('player', owner(top(where(all_hand, 'name', '3♣'))))"
+					"phase = 'play'",
+					"player = owner(top(where(all_hand, 'name', '3♣')))"
 				],
 				"else": [
 					"trigger('exchange')"
@@ -220,22 +220,22 @@
 			}
 		],
 		"exchange": [
-			"assign('phase', 'exchange')",
+			"phase = 'exchange'",
 			"move(highest(zone('hand', ranking[3]), 'order'), zone('hand', ranking[0]))",
 			"move(highest(zone('hand', ranking[3]), 'order'), zone('hand', ranking[0]))",
 			"move(highest(zone('hand', ranking[2]), 'order'), zone('hand', ranking[1]))",
-			"assign('player', ranking[3])",
+			"player = ranking[3]",
 			"ask('Give 2 back', ranking[0])",
 			"ask('Give 1 back', ranking[1])"
 		],
 		"clear": [
 			"move([table, beaten], deck)",
-			"assign('set_size', 0)",
-			"assign('top_order', 0)",
-			"assign('passes', 0)"
+			"set_size = 0",
+			"top_order = 0",
+			"passes = 0"
 		],
 		"pass": [
-			"add('passes', 1)",
+			"passes += 1",
 			"trigger('next')",
 			{
 				"if": "round_over",
@@ -254,13 +254,13 @@
 			}
 		],
 		"finished": [
-			"add('finish_order', [player])",
-			"assign('title', ['President', 'Vice President', 'Vice Scum', 'Scum'][size(finish_order) - 1])",
-			"add('score', 4 - size(finish_order))"
+			"finish_order += [player]",
+			"title = ['President', 'Vice President', 'Vice Scum', 'Scum'][size(finish_order) - 1]",
+			"score += 4 - size(finish_order)"
 		],
 		"hand_over": [
-			"assign('ranking', finish_order)",
-			"assign('phase', 'hand over')"
+			"ranking = finish_order",
+			"phase = 'hand over'"
 		]
 	},
 	"card_face": {

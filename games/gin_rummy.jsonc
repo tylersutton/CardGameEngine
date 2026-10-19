@@ -125,8 +125,8 @@
 				"stock_only"
 			],
 			"then": [
-				"assign('phase', 'discard')",
-				"assign('taken', null)"
+				"phase = 'discard'",
+				"taken = null"
 			]
 		},
 		{
@@ -137,8 +137,8 @@
 				"upcard"
 			],
 			"then": [
-				"assign('phase', 'discard')",
-				"assign('taken', card)"
+				"phase = 'discard'",
+				"taken = card"
 			]
 		},
 		{
@@ -150,11 +150,11 @@
 				{
 					"if": "count(stock) <= 2",
 					"then": [
-						"assign('phase', 'over')",
-						"assign('result', 'void: stock ran out')"
+						"phase = 'over'",
+						"result = 'void: stock ran out'"
 					],
 					"else": [
-						"assign('phase', 'draw')",
+						"phase = 'draw'",
 						"end_turn()"
 					]
 				}
@@ -166,30 +166,30 @@
 			"phase": "discard",
 			"when": "card != taken and sum(deadwood(without(hand, card)), 'points') <= 10",
 			"then": [
-				"assign('phase', 'over')",
-				"assign('knocker_deadwood', sum(deadwood(hand), 'points'))",
+				"phase = 'over'",
+				"knocker_deadwood = sum(deadwood(hand), 'points')",
 				{
 					"if": "knocker_deadwood == 0",
 					"then": [
-						"assign('defender_deadwood', sum(deadwood(opponent_hand), 'points'))",
-						"assign('result', 'gin')",
-						"add('score', 25 + defender_deadwood)",
-						"add('hands_won', 1)"
+						"defender_deadwood = sum(deadwood(opponent_hand), 'points')",
+						"result = 'gin'",
+						"score += 25 + defender_deadwood",
+						"hands_won += 1"
 					],
 					"else": [
 						"move(layoff(opponent_hand, melds(hand)), table)",
-						"assign('defender_deadwood', sum(deadwood(opponent_hand), 'points'))",
+						"defender_deadwood = sum(deadwood(opponent_hand), 'points')",
 						{
 							"if": "defender_deadwood <= knocker_deadwood",
 							"then": [
-								"assign('result', 'undercut')",
-								"add('opponent_score', 25 + knocker_deadwood - defender_deadwood)",
-								"add('opponent_hands_won', 1)"
+								"result = 'undercut'",
+								"opponent_score += 25 + knocker_deadwood - defender_deadwood",
+								"opponent_hands_won += 1"
 							],
 							"else": [
-								"assign('result', 'knock')",
-								"add('score', defender_deadwood - knocker_deadwood)",
-								"add('hands_won', 1)"
+								"result = 'knock'",
+								"score += defender_deadwood - knocker_deadwood",
+								"hands_won += 1"
 							]
 						}
 					]
@@ -207,11 +207,11 @@
 				{
 					"if": "passes == 0",
 					"then": [
-						"assign('passes', 1)",
+						"passes = 1",
 						"end_turn()"
 					],
 					"else": [
-						"assign('phase', 'stock_only')",
+						"phase = 'stock_only'",
 						"end_turn()"
 					]
 				}
@@ -228,11 +228,11 @@
 			"phase": "discard",
 			"when": "count(deadwood(hand)) == 0",
 			"steps": [
-				"assign('phase', 'over')",
-				"assign('defender_deadwood', sum(deadwood(opponent_hand), 'points'))",
-				"assign('result', 'big gin')",
-				"add('score', 31 + defender_deadwood)",
-				"add('hands_won', 1)",
+				"phase = 'over'",
+				"defender_deadwood = sum(deadwood(opponent_hand), 'points')",
+				"result = 'big gin'",
+				"score += 31 + defender_deadwood",
+				"hands_won += 1",
 				"move(hand, table)",
 				"move(opponent_hand, opponent_table)",
 				"trigger('hand_over')"
@@ -242,7 +242,7 @@
 			"phase": "over",
 			"human_only": true,
 			"steps": [
-				"assign('dealer', 3 - dealer)",
+				"dealer = 3 - dealer",
 				"trigger('deal')"
 			]
 		},
@@ -262,15 +262,15 @@
 		"deal": [
 			"move([hand_1, hand_2, table_1, table_2, discard, knock], stock)",
 			"shuffle(stock)",
-			"assign('player', 3 - dealer)",
+			"player = 3 - dealer",
 			"deal(stock, [hand, opponent_hand], 10)",
 			"move(top(stock), discard)",
-			"assign('phase', 'upcard')",
-			"assign('passes', 0)",
-			"assign('taken', null)",
-			"assign('result', '')",
-			"assign('knocker_deadwood', 0)",
-			"assign('defender_deadwood', 0)"
+			"phase = 'upcard'",
+			"passes = 0",
+			"taken = null",
+			"result = ''",
+			"knocker_deadwood = 0",
+			"defender_deadwood = 0"
 		],
 		"hand_over": [
 			{
@@ -279,23 +279,23 @@
 					{
 						"if": "score_1 >= 100",
 						"then": [
-							"assign('player', 1)"
+							"player = 1"
 						],
 						"else": [
-							"assign('player', 2)"
+							"player = 2"
 						]
 					},
-					"assign('winner', player)",
-					"add('score', 100 + 25 * hands_won)",
-					"add('opponent_score', 25 * opponent_hands_won)",
+					"winner = player",
+					"score += 100 + 25 * hands_won",
+					"opponent_score += 25 * opponent_hands_won",
 					{
 						"if": "opponent_hands_won == 0",
 						"then": [
-							"assign('score', score * 2)",
-							"add('result', ', shutout')"
+							"score = score * 2",
+							"result += ', shutout'"
 						]
 					},
-					"assign('phase', 'match over')"
+					"phase = 'match over'"
 				]
 			}
 		]
