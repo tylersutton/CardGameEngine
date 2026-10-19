@@ -16,6 +16,7 @@ func _init() -> void:
 	solitaire()
 	card_effects()
 	clicked_copy()
+	pick_and_up_to()
 	print("REGRESSION: ", "all passed" if problems.is_empty() else "FAILED %s" % problems)
 	quit(0 if problems.is_empty() else 1)
 
@@ -119,11 +120,20 @@ func card_effects() -> void:
 
 ## Clicking one of several copies tells the steps which one it was, even while it's empty.
 func clicked_copy() -> void:
-	var rules := '{ "zones": { "deck": { "layout": "pile", "cards": "res://decks/standard_deck.csv" },'		+ ' "pile": { "layout": "pile", "copies": 2, "on_click": "move(top(deck), clicked_zone)" } } }'
+	var rules := '{ "zones": { "deck": { "layout": "pile", "cards": "res://decks/standard_deck.csv" },' \
+		+ ' "pile": { "layout": "pile", "copies": 2, "on_click": "move(top(deck), clicked_zone)" } } }'
 	var game := Game.new("res://clicked_copy_test.jsonc", 1, {"res://clicked_copy_test.jsonc": rules})
 	watch(game)
 	game.start()
 	check(game.errors.is_empty(), "clicked_copy loads: %s" % [game.errors])
 	game.apply({type = "click_empty", zone = "pile_2"})
 	game.apply({type = "click", card = game.cards.find(game.zones.pile_2.cards[0])})
-	check(game.zones.pile_1.cards.is_empty() and game.zones.pile_2.cards.size() == 2, "clicked_zone: piles hold %d and %d" 		% [game.zones.pile_1.cards.size(), game.zones.pile_2.cards.size()])
+	check(game.zones.pile_1.cards.is_empty() and game.zones.pile_2.cards.size() == 2, "clicked_zone: piles hold %d and %d" \
+		% [game.zones.pile_1.cards.size(), game.zones.pile_2.cards.size()])
+
+
+func pick_and_up_to() -> void:
+	var rules := '{ "zones": { "hand": { "layout": "fan" } },' \
+		+ ' "actions": { "Pass": { "choose": "hand", "pick": 2, "up_to": 2, "steps": [] } } }'
+	var game := Game.new("res://pick_test.jsonc", 1, {"res://pick_test.jsonc": rules})
+	check(game.errors.any(func(error: String) -> bool: return error.contains("not both")), "pick with up_to is a load error: %s" % [game.errors])

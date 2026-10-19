@@ -138,6 +138,8 @@ func _check_actions_and_moves() -> void:
 		for key in ["pick", "up_to", "allow"]:
 			if action is Dictionary and action.has(key) and not action.has("choose"):
 				errors.append("Action \"%s\": \"%s\" needs \"choose\"" % [action_name, key])
+		if action is Dictionary and action.has("pick") and action.has("up_to"):
+			errors.append("Action \"%s\": use \"pick\" (exactly that many) or \"up_to\" (any number up to it), not both" % action_name)
 	for rule in rules.moves:
 		var label := "Move %s" % JSON.stringify(rule)
 		_check_entry(label, rule, {"from": [TYPE_STRING, TYPE_ARRAY], "to": [TYPE_STRING, TYPE_ARRAY], "when": TYPE_STRING, "then": TYPE_ARRAY, "phase": [TYPE_STRING, TYPE_ARRAY]})

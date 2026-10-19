@@ -340,7 +340,7 @@ or an object with extra options:
 | `when` | The button is disabled while this is false. |
 | `choose` | What to choose from. If it gives cards (e.g. `"hand"`), they're highlighted for you to click. If it gives other values (e.g. `"['Red', 'Blue']"` or `"numbers(0, 13)"`), they appear as buttons above the table. The steps then run with the pick as `choice` (and, for a single card, also as `card`). Clicking anything else cancels. |
 | `pick` | How many cards to choose, e.g. `3` to pass three cards, or an expression like `"count(hand) - 3"`. `choice` is then a list of cards. |
-| `up_to` | Choose any number of cards from none up to this many, then press **Done** in the bar above the table. A number, or an expression like `"count(hand)"` for "any number". `choice` is a list of cards (maybe empty). |
+| `up_to` | Choose any number of cards from none up to this many, then press **Done** in the bar above the table. A number, or an expression like `"count(hand)"` for "any number". `choice` is a list of cards (maybe empty). Use `pick` or `up_to`, not both. |
 | `allow` | A condition the whole choice must meet, checked with the pick as `choice` before the steps run, e.g. President's `"count(choice) > 0 and size(groups(choice, 'rank')) == 1"` (one or more cards, all the same rank). A refused choice stays open and the log says why; bots only consider allowed choices. |
 | `human_only` | `true` means bots never press this button. |
 | `button` | `false` hides it from the toolbar, for actions only started with `ask('name')`. Bots never press these directly either. |
