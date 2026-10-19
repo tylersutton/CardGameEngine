@@ -16,6 +16,7 @@ func _init() -> void:
 	solitaire()
 	card_effects()
 	remodel()
+	sea_salt()
 	clicked_copy()
 	pick_and_up_to()
 	print("REGRESSION: ", "all passed" if problems.is_empty() else "FAILED %s" % [problems])
@@ -137,6 +138,32 @@ func remodel() -> void:
 	check(game.choices.all(func(card: Card) -> bool: return int(card.data.cost) <= 4), "only cards costing up to 4 are offered")
 	game.apply({type = "click", card = silver.id})
 	check(silver in game.zones.discard_1.cards and game.choosing == "", "the silver is gained")
+
+
+## Sea Salt: draw two and keep one, discard the other onto a chosen pile, then two crabs take a card from a pile.
+func sea_salt() -> void:
+	var game := Game.new("res://games/sea_salt_+_paper.jsonc", 2)
+	watch(game)
+	game.start()
+	game.apply({type = "click", card = game.zones.deck.cards.back().id})
+	check(game.choosing == "Keep one card" and game.choices.size() == 2, "drawing offers the two cards: '%s'" % game.choosing)
+	var kept: Card = game.choices[0]
+	game.apply({type = "click", card = kept.id})
+	check(kept in game.zones.hand_1.cards and game.choosing == "Discard the other card onto a pile", "the kept card is in hand, then a pile is asked: '%s'" % game.choosing)
+	game.apply({type = "choose", option = "discard_piles_2"})
+	check(game.zones.discard_piles_2.cards.size() == 2 and game.variables.phase == "duos", "the other card is on pile 2")
+	var crabs := game.zones.deck.cards.filter(func(card: Card) -> bool: return card.data.Kind == "Crab").slice(0, 2)
+	for crab: Card in crabs:
+		game.move(crab, game.zones.hand_1)
+	game.apply({type = "perform", action = "Play duo"})
+	for crab: Card in crabs:
+		game.apply({type = "click", card = crab.id})
+	check(game.choosing == "Crabs: look through which pile?", "two crabs ask for a pile: '%s'" % game.choosing)
+	game.apply({type = "choose", option = "discard_piles_2"})
+	check(game.zones.browsing.cards.size() == 2, "the pile is spread out to look through")
+	var taken: Card = game.zones.browsing.cards[0]
+	game.apply({type = "click", card = taken.id})
+	check(taken in game.zones.hand_1.cards and game.zones.discard_piles_2.cards.size() == 1 and game.zones.browsing.is_empty(), "one card is taken, the rest go back")
 
 
 ## Clicking one of several copies tells the steps which one it was, even while it's empty.

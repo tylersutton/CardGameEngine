@@ -1,8 +1,7 @@
 {
-	// A starting point made by "New game...". Change anything and save: the table reloads by itself.
 	// Every key is explained in README.md, under "Game file reference".
 	"title": "Sea Salt + Paper",
-	"description": "2 players. Describe your game here.",
+	"description": "2 players. Draw two cards and keep one, or take the top of a discard pile; then play duos for their effects. (Ending the round and scoring aren't in yet.)",
 	"players": 2,
 	"player_names": [
 		"You",
@@ -11,7 +10,7 @@
 		"Player 4"
 	],
 	"zones": {
-		// Click the deck to draw, or drag from it.
+		// Click the deck to draw two cards and keep one.
 		"deck": {
 			"label": "Deck",
 			"layout": "pile",
@@ -28,13 +27,14 @@
 				{
 					"if": "phase == 'draw'",
 					"then": [
-						"trigger('draw')"
+						"trigger('draw_two')"
 					]
 				}
 			]
 		},
+		// Click (or drag) the top card of a pile to take it instead.
 		"discard_piles": {
-			"label": "Discard",
+			"label": "Discard #",
 			"layout": "pile",
 			"copies": 2,
 			"anchor": [
@@ -49,19 +49,28 @@
 				]
 			},
 			"on_click": [
-				{
-					"if": "phase == 'discard'",
-					"then": [
-						"try_move(top(preview), clicked_zone)"
-					]
-				},
-				{
-					"if": "phase == 'draw'",
-					"then": [
-						"try_move(card, hand)",
-						"phase = 'duo'"
-					]
-				}
+				"try_move(card, hand)"
+			]
+		},
+		// The two cards just drawn, seen only by the player choosing which to keep.
+		"drawn": {
+			"per_player": true,
+			"layout": "row",
+			"face": "private",
+			"outline": false,
+			"anchor": [
+				0.5,
+				0.7
+			]
+		},
+		// A discard pile spread out, while the crabs look through it.
+		"browsing": {
+			"layout": "row",
+			"outline": false,
+			"width": 0.8,
+			"anchor": [
+				0.5,
+				0.3
 			]
 		},
 		// One hand per player. The anchor is seat 1's (the bottom); the other seats go round the table.
@@ -74,42 +83,15 @@
 				0.9
 			]
 		},
-		// Where drawn cards are previewed for selection.
-		"preview": {
-			"layout": "row",
-			"anchor": [
-				0.5,
-				0.7
-			],
-			"face": "private",
-			"per_player": true,
-			"on_click": [
-				{
-					"if": "phase == 'select' or phase == 'preview'",
-					"then": [
-						"try_move(card, hand)",
-						{
-							"if": "count(preview) > 0",
-							"then": [
-								"phase = 'discard'"
-							],
-							"else": [
-								"phase = 'duo'"
-							]
-						}
-					]
-				}
-			]
-		},
 		"played": {
-			"layout": "pile",
-			"anchor": [
-				0.75,
-				0.84
-			],
-			"label": "Duos Played",
+			"label": "Duos played",
 			"per_player": true,
-			"face": "up"
+			"layout": "row",
+			"width": 0.25,
+			"anchor": [
+				0.8,
+				0.84
+			]
 		}
 	},
 	"seats": [
@@ -124,94 +106,56 @@
 			2
 		]
 	},
-	// A turn: draw a card, then discard one.
+	// A turn: "draw" (two from the deck, or one from a discard pile), then "duos" (play any, then End turn).
 	"variables": {
-		"phase": "draw"
+		"phase": "draw",
+		"extra_turn": false
+	},
+	"conditions": {
+		"is_duo": "card.data.cardtype == 'Duo'",
+		"one_kind": "size(groups(choice, 'Kind')) == 1",
+		"shark_and_swimmer": "count(where(choice, 'Kind', 'Shark')) == 1 and count(where(choice, 'Kind', 'Swimmer')) == 1"
 	},
 	"moves": [
-		{
-			"from": "deck",
-			"to": "preview",
-			"phase": "draw",
-			"then": [
-				"trigger('draw')",
-				{
-					"if": "count(deck) == 0",
-					"then": "trigger('deck_empty')"
-				}
-			],
-			"when": "not is_preview_full and phase == 'draw'"
-		},
 		{
 			"from": "discard_piles",
 			"to": "hand",
 			"phase": "draw",
 			"then": [
-				"phase = 'duo'"
-			]
-		},
-		{
-			"from": "preview",
-			"to": "hand",
-			"phase": [
-				"preview",
-				"select"
-			],
-			"then": [
-				{
-					"if": "phase == 'preview'",
-					"then": [
-						"phase = 'discard'"
-					],
-					"else": [
-						"phase = 'duo'"
-					]
-				}
-			],
-			"when": "count(preview) > 0"
-		},
-		{
-			"from": "preview",
-			"to": "discard_piles",
-			"phase": [
-				"preview",
-				"discard"
-			],
-			"then": [
-				{
-					"if": "phase == 'preview'",
-					"then": [
-						"phase = 'select'"
-					],
-					"else": [
-						"phase = 'duo'"
-					]
-				}
+				"phase = 'duos'"
 			]
 		}
 	],
 	"actions": {
-		"Sort hand": {
+		"Play duo": {
+			"phase": "duos",
+			"when": "count(matching(hand, 'is_duo')) >= 2",
+			"choose": "matching(hand, 'is_duo')",
+			"pick": 2,
+			"allow": "one_kind or shark_and_swimmer",
 			"steps": [
-				"sort(hand, ['name'])"
+				"move(choice, played)",
+				"trigger('duo_' + text(top(choice), 'Kind'))"
 			]
 		},
 		"End turn": {
+			"phase": "duos",
 			"steps": [
 				"phase = 'draw'",
-				"end_turn()"
-			],
-			"phase": "duo"
+				{
+					"if": "extra_turn",
+					"then": [
+						"extra_turn = false"
+					],
+					"else": [
+						"end_turn()"
+					]
+				}
+			]
 		},
-		"Play Duo": {
-			"steps": [
-				"move(choice, played)"
-			],
-			"phase": "duo",
-			"pick": 2,
-			"choose": "matching(hand, 'is_duo')",
-			"allow": "size(groups(choice, 'kind')) == 1"
-		}
+		"Sort hand": [
+			"sort(hand, ['Kind', 'Color'])"
+		]
 	},
 	"triggers": {
 		"start": [
@@ -224,14 +168,34 @@
 				]
 			}
 		],
-		"draw": [
-			{
-				"while": "not is_preview_full",
-				"do": [
-					"try_move(top(deck), preview)"
-				]
-			},
-			"phase = 'preview'"
+		// Keep one of the two, and discard the other onto an empty pile if there is one, otherwise onto either.
+		"draw_two": [
+			"draw(deck, drawn, 2)",
+			"move(choose(drawn, 'Keep one card'), hand)",
+			"move(drawn, discard_piles_1 if count(discard_piles_1) == 0 else discard_piles_2 if count(discard_piles_2) == 0 else choose(discard_piles, 'Discard the other card onto a pile'))",
+			"phase = 'duos'"
+		],
+		// Two crabs: look through a discard pile and take one card from it.
+		"duo_Crab": [
+			"pile = choose(discard_piles, 'Crabs: look through which pile?')",
+			"move(pile, browsing)",
+			"move(choose(browsing, 'Take one card'), hand)",
+			"move(browsing, pile)"
+		],
+		// Two boats: take another turn after this one.
+		"duo_Boat": [
+			"extra_turn = true"
+		],
+		// Two fish: draw the top card of the deck.
+		"duo_Fish": [
+			"draw(deck, hand)"
+		],
+		// A shark and a swimmer: steal a random card from the other player's hand.
+		"duo_Shark": [
+			"move(one_of(opponent_hand), hand)"
+		],
+		"duo_Swimmer": [
+			"trigger('duo_Shark')"
 		]
 	},
 	"card_face": {
@@ -243,14 +207,5 @@
 		"color": "ink",
 		"background": "Background",
 		"zoom": 0
-	},
-	"conditions": {
-		"is_preview_full": "count(preview) == 2",
-		"is_duo": "card.data.cardtype == 'Duo'",
-		// True if the player's hand contains any playable duos.
-		"has_duos": ""
-	},
-	"status": {
-		"is_preview_full": "is_preview_full"
 	}
 }
