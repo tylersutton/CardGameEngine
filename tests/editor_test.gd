@@ -91,6 +91,8 @@ func _check_editing() -> void:
 	check(document.text.contains("\t// Where cards go\n\t\"zones\""), "changing a note:\n" + document.text)
 	document.insert(["moves"], 0, {"from": "hand", "to": "deck"})
 	check(document.get_value(["moves", 0, "from"]) == "hand" and document.get_value(["moves", 1, "from"]) == "deck", "inserting at the front:\n" + document.text)
+	document.set_value(["moves", 1, "phase"], "draw")
+	check(document.text.contains('{ "from": "deck", "to": "hand", "phase": "draw" }'), "adding to an object inside a list:\n" + document.text)
 	document.set_value(["zones", "deck", "label"], "Pioche ♠")
 	check(document.text.contains('"Pioche ♠"'), "text with symbols stays readable:\n" + document.text)
 	var long_value := {"a": "a fairly long piece of text to push this past the line width", "b": "and some more text to be sure it wraps", "c": [1, 2, 3]}

@@ -126,9 +126,10 @@ func _word(text: String) -> Label:
 	return label
 
 
+## The list is read inside edit, after any text still being typed has been sent.
 func _add(step: Variant) -> void:
-	var value: Variant = editor.document.get_value(path)
 	editor.edit(func() -> void:
+		var value: Variant = editor.document.get_value(path)
 		if value is String:
 			editor.document.set_value(path, [value, step])
 		else:
@@ -136,9 +137,8 @@ func _add(step: Variant) -> void:
 
 
 func _move(from: int, to: int) -> void:
-	var steps: Array = editor.document.get_value(path, [])
-	var step: Variant = steps[from]
 	editor.edit(func() -> void:
+		var step: Variant = editor.document.get_value(path + [from])
 		editor.document.remove(path + [from])
 		editor.document.insert(path, to, step))
 

@@ -125,6 +125,8 @@ func change(path: Array, value: Variant) -> void:
 
 ## Bigger edits (adding, renaming, removing), as a function that changes the document.
 func edit(how: Callable) -> void:
+	# Menu buttons don't take focus, so a box being typed in hasn't sent its text yet; it would be lost on rebuild.
+	get_viewport().gui_release_focus()
 	_remember([])
 	how.call()
 	_changed(true)
@@ -352,8 +354,8 @@ func _move_rule(step: int) -> void:
 	var to := from + step
 	if entry.is_empty() or to < 0 or to >= moves.size():
 		return
-	var rule: Variant = moves[from]
 	edit(func() -> void:
+		var rule: Variant = document.get_value(["moves", from])
 		document.remove(["moves", from])
 		document.insert(["moves"], to, rule))
 	select_entry(str(to))
@@ -455,9 +457,9 @@ func _show_button() -> void:
 	%Details.add_child(StepList.new(self, path))
 	var more := Button.new()
 	more.text = "More settings (when, choose, ...)"
-	more.pressed.connect(func() -> void:
+	more.pressed.connect(func() -> void: edit(func() -> void:
 		var steps: Variant = document.get_value(path)
-		edit(func() -> void: document.set_value(path, {"steps": steps if steps is Array else [steps]})))
+		document.set_value(path, {"steps": steps if steps is Array else [steps]})))
 	%Details.add_child(more)
 
 

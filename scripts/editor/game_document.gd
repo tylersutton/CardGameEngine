@@ -63,6 +63,9 @@ func get_value(value_path: Array, default: Variant = null) -> Variant:
 
 ## Sets a value, adding it (and any missing objects above it) if it isn't there yet.
 func set_value(value_path: Array, value: Variant) -> void:
+	# Text that isn't valid JSONC has no values to find, so there's nowhere to put this one.
+	if data == null:
+		return
 	if has(value_path):
 		if _single_line(get_value(value_path)) != _single_line(value):
 			var span: Dictionary = spans[_key(value_path)]
@@ -177,9 +180,9 @@ func _replace(from: int, to: int, new_text: String) -> void:
 func _add_member(container_path: Array, member: String) -> void:
 	var span: Dictionary = spans[_key(container_path)]
 	var close: int = span.end - 1
-	var children := spans.keys().filter(func(key: String) -> bool:
-		var child: Array = JSON.parse_string(key)
-		return child.size() == container_path.size() + 1 and child.slice(0, -1) == container_path)
+	var container: Variant = get_value(container_path)
+	var children: Array = (container.keys() if container is Dictionary else range(container.size())) \
+		.map(func(child: Variant) -> String: return _key(container_path + [child]))
 	if children.is_empty():
 		var empty_inside := text.substr(span.start + 1, close - span.start - 1)
 		if empty_inside.contains("\n"):
