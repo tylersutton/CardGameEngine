@@ -374,7 +374,7 @@ func _find_problems(node: Dictionary, text: String, place: int, problems: Array[
 					problems.append("%s[...] = only works for player (or team) variables, like score[2] = 0" % node.name)
 			elif game.aliases().get(node.name, node.name) not in game.variables and node.name not in game.local_names:
 				problems.append(_assign_problem(node.name))
-	for child in _children(node):
+	for child in children(node):
 		_find_problems(child, text, place, problems)
 
 
@@ -422,7 +422,7 @@ func _learn_offered_actions(trees: Array) -> void:
 
 static func _calls_in(node: Dictionary, names: Array) -> Array:
 	var found := [node] if node.kind == "call" and node.name in names else []
-	for child in _children(node):
+	for child in children(node):
 		found.append_array(_calls_in(child, names))
 	return found
 
@@ -438,7 +438,7 @@ func _check_remembered_names_are_used(trees: Array) -> void:
 			errors.append("\"%s\" is set but never used: is it misspelled? (Values the game keeps go in \"variables\")" % name)
 
 
-static func _children(node: Dictionary) -> Array:
+static func children(node: Dictionary) -> Array:
 	match node.kind:
 		"list":
 			return node.items
@@ -499,7 +499,7 @@ func _calls(node: Dictionary, building_block: String, conditions_seen := {}) -> 
 		conditions_seen[node.name] = true
 		if _calls(game.step_trees.get(rules.conditions[node.name], {}), building_block, conditions_seen):
 			return true
-	return _children(node).any(func(child: Dictionary) -> bool: return _calls(child, building_block, conditions_seen))
+	return children(node).any(func(child: Dictionary) -> bool: return _calls(child, building_block, conditions_seen))
 
 
 ## A condition that names itself, directly or through others, would never finish being worked out.
@@ -539,7 +539,7 @@ static func _names_in(node: Dictionary) -> Array:
 	if node.is_empty():
 		return []
 	var names := [node.name] if node.kind in ["name", "call"] else []
-	for child in _children(node):
+	for child in children(node):
 		names.append_array(_names_in(child))
 	return names
 

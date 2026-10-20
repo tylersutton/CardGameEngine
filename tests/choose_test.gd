@@ -30,12 +30,14 @@ var problems := []
 
 
 func _init() -> void:
+	var script_errors := ScriptErrors.watch()
 	waits_and_carries_on()
 	zones_and_values()
 	several_cards()
 	loops_and_triggers()
 	undo_bots_and_replays()
 	load_mistakes()
+	problems.append_array(script_errors.messages)
 	print("CHOOSE: ", "all passed" if problems.is_empty() else "FAILED %s" % [problems])
 	quit(0 if problems.is_empty() else 1)
 

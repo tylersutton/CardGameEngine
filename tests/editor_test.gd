@@ -7,13 +7,27 @@ var failures: Array[String] = []
 
 
 func _init() -> void:
+	var script_errors := ScriptErrors.watch()
 	for path in GameRules.game_paths():
 		_check_round_trips(path)
 		_check_rebuilding(path)
 	_check_editing()
 	_check_recipes()
+	_check_turn_summary()
+	failures.append_array(script_errors.messages)
 	print("EDITOR: ", "all passed" if failures.is_empty() else "FAILED\n  " + "\n  ".join(failures))
 	quit(0 if failures.is_empty() else 1)
+
+
+## The Turn section's summary spells out Sea Salt's offers, and the actions possible any time.
+func _check_turn_summary() -> void:
+	var lines := TurnSummary.lines(GameRules.load_json("res://games/sea_salt_+_paper.jsonc"))
+	var text := "\n".join(lines)
+	for wanted in ["Offer Draw two (click deck) or Take a discard (drag discard_piles → hand or click it)",
+			"Offer Play duo (button) again and again, until End turn (button) or Stop (button) or Last chance (button)",
+			"If extra_turn and ending == 'End turn':", "Any time: Sort hand (button)"]:
+		check(wanted in text, "turn summary should say \"%s\":\n%s" % [wanted, text])
+	check("No turn" in TurnSummary.lines(GameRules.load_json("res://games/solitaire.jsonc"))[0], "solitaire has no turn")
 
 
 func check(ok: bool, what: String) -> void:

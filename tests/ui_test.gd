@@ -11,6 +11,7 @@ var problems: Array[String] = []
 
 
 func _ready() -> void:
+	var script_errors := ScriptErrors.watch()
 	for path in ["res://scenes/title.tscn", "res://scenes/lobby.tscn"]:
 		var screen: Node = load(path).instantiate()
 		add_child(screen)
@@ -19,6 +20,7 @@ func _ready() -> void:
 	for path in GameRules.game_paths():
 		await _play(path)
 		await _edit(path)
+	problems.append_array(script_errors.messages)
 	print("UI TEST: ", "all passed" if problems.is_empty() else "FAILED\n  " + "\n  ".join(problems))
 	get_tree().quit(0 if problems.is_empty() else 1)
 
@@ -83,6 +85,18 @@ func _check_rule_editing(editor: Node, name: String) -> void:
 	if not options.any(func(text: String) -> bool: return text.begins_with("trigger(")):
 		problems.append("%s: no suggestion for 'tri': %s" % [name, options])
 	field.free()
+	var quoted: SmartField = editor.smart_field("offer('")
+	quoted.code.set_caret_column(7)
+	quoted._suggest()
+	# Inside quotes, Godot shows the suggestions quoted and sorted.
+	var action_options := quoted.code.get_code_completion_options().map(func(option: Dictionary) -> String: return option.display_text.trim_prefix("'").trim_suffix("'"))
+	var actions: Array = editor.checked_game.rules.actions.keys()
+	action_options.sort()
+	actions.sort()
+	if action_options != actions:
+		problems.append("%s: offer(' should suggest the actions: %s" % [name, action_options])
+	quoted.free()
+	editor.select_section("Turn")
 	editor.select_section("Triggers")
 	if not editor.entry:
 		return

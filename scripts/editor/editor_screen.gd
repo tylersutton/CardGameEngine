@@ -370,6 +370,8 @@ func _show_details() -> void:
 			_add_heading("Turn")
 			_add_help("Steps run again and again for whoever's turn it is (end_turn() passes it on). offer(['Play a card', 'Draw']) waits for the player to do one of those actions; actions never offered can be done any time. Leave it empty for games without turns, like solitaire.")
 			_add_note(["turn"])
+			if checked_game:
+				_add_summary(TurnSummary.lines(checked_game.rules))
 			%Details.add_child(StepList.new(self, ["turn"]))
 		"Triggers":
 			_add_heading("Trigger: " + entry)
@@ -496,8 +498,24 @@ static func _value_from_text(text: String) -> Variant:
 
 
 func smart_field(text: String) -> SmartField:
-	var names: Array = Array(checked_game.input_names()) + checked_game.rules.conditions.keys() if checked_game else []
-	return SmartField.new(text, names, _deck_columns(), _check_step)
+	if not checked_game:
+		return SmartField.new(text, [], _deck_columns(), _check_step)
+	var rules := checked_game.rules
+	var names: Array = Array(checked_game.input_names()) + rules.conditions.keys()
+	var plain_conditions := rules.conditions.keys().filter(func(name: String) -> bool: return rules.condition_parameters[name].is_empty())
+	var for_players: Array = rules.player_variables.keys() + plain_conditions
+	var actions := rules.actions.keys()
+	var quoted := {
+		"offer": actions, "offer_until": actions, "ask": actions, "ask_all": actions + rules.triggers.keys(),
+		"ask_others": actions + rules.triggers.keys(), "trigger": rules.triggers.keys(), "matching": plain_conditions,
+		"most": for_players, "least": for_players, "players_with_most": for_players, "players_with_least": for_players,
+		"players_where": for_players, "reset": rules.variables.keys() + rules.player_variables.keys() + rules.team_variables.keys(),
+	}
+	var signatures := {}
+	for name: String in rules.conditions:
+		if rules.condition_parameters[name]:
+			signatures[name] = "%s(%s)" % [name, ", ".join(rules.condition_parameters[name])]
+	return SmartField.new(text, names, _deck_columns(), _check_step, quoted, signatures)
 
 
 func _check_step(text: String) -> Array:
@@ -538,6 +556,16 @@ func _add_help(text: String) -> void:
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	label.add_theme_color_override("font_color", EditorForm.HELP_COLOR)
 	%Details.add_child(label)
+
+
+## The turn in words (TurnSummary), in a box above its steps.
+func _add_summary(lines: Array[String]) -> void:
+	var box := PanelContainer.new()
+	var label := Label.new()
+	label.text = "\n".join(lines)
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	box.add_child(label)
+	%Details.add_child(box)
 
 
 ## The comment lines above an entry in the file, editable as a note.

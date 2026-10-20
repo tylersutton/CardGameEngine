@@ -6,6 +6,7 @@ var problems := []
 
 
 func _init() -> void:
+	var script_errors := ScriptErrors.watch()
 	for path in GameRules.game_paths():
 		var game := Game.new(path)
 		game.start()
@@ -20,6 +21,7 @@ func _init() -> void:
 	sea_salt_scoring()
 	clicked_copy()
 	pick_and_up_to()
+	problems.append_array(script_errors.messages)
 	print("REGRESSION: ", "all passed" if problems.is_empty() else "FAILED %s" % [problems])
 	quit(0 if problems.is_empty() else 1)
 

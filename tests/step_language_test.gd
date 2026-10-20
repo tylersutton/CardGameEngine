@@ -25,10 +25,12 @@ var problems := []
 
 
 func _init() -> void:
+	var script_errors := ScriptErrors.watch()
 	values()
 	changing_variables()
 	running_mistakes()
 	load_mistakes()
+	problems.append_array(script_errors.messages)
 	print("STEP LANGUAGE: ", "all passed" if problems.is_empty() else "FAILED %s" % [problems])
 	quit(0 if problems.is_empty() else 1)
 

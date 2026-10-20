@@ -102,6 +102,8 @@ func _control_for(field: Dictionary, path: Array, value: Variant) -> Control:
 			return smart
 		"steps":
 			return StepList.new(editor, path)
+		"drag":
+			return _drag(path, value)
 		"zones":
 			var zones := LineEdit.new()
 			zones.text = ", ".join(value) if value is Array else _as_text(value)
@@ -176,6 +178,37 @@ func _spot(path: Array, value: Variant) -> HBoxContainer:
 		spin.value_changed.connect(func(_number: float) -> void:
 			changed.emit(path, [snappedf(spins[0].value, 0.001), snappedf(spins[1].value, 0.001)]))
 	return row
+
+
+## A drag's "from" and "to": zone names (comma-separated for several), each left empty for any zone. Both empty
+## takes the drag out.
+func _drag(path: Array, value: Variant) -> GridContainer:
+	var grid := GridContainer.new()
+	grid.columns = 2
+	var ends := {}
+	for end in ["from", "to"]:
+		var label := Label.new()
+		label.text = end
+		grid.add_child(label)
+		var zones := LineEdit.new()
+		var current: Variant = value.get(end) if value is Dictionary else null
+		zones.text = ", ".join(current) if current is Array else _as_text(current)
+		zones.placeholder_text = "any zone" if end == "from" else "e.g. pile, or tableau, foundation"
+		zones.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		grid.add_child(zones)
+		ends[end] = zones
+	var send := func(_text: Variant = null) -> void:
+		var drag := {}
+		for end: String in ends:
+			var names := Array(ends[end].text.split(",", false)).map(func(name: String) -> String: return name.strip_edges())
+			if names:
+				drag[end] = names[0] if names.size() == 1 else names
+		if drag != (value if value is Dictionary else {}):
+			changed.emit(path, drag if drag else null)
+	for zones: LineEdit in ends.values():
+		zones.text_submitted.connect(send)
+		zones.focus_exited.connect(send)
+	return grid
 
 
 ## Anything else, as JSONC text; only sent when it reads correctly.

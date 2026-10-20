@@ -21,11 +21,13 @@ var problems := []
 
 
 func _init() -> void:
+	var script_errors := ScriptErrors.watch()
 	any_players_values()
 	comparing_players()
 	knocking_out()
 	resetting_and_winners()
 	load_mistakes()
+	problems.append_array(script_errors.messages)
 	print("PLAYERS: ", "all passed" if problems.is_empty() else "FAILED %s" % [problems])
 	quit(0 if problems.is_empty() else 1)
 

@@ -34,10 +34,12 @@ var problems := []
 
 
 func _init() -> void:
+	var script_errors := ScriptErrors.watch()
 	offers_and_actions()
 	turns_undo_and_replays()
 	game_over_and_endless_turns()
 	load_errors()
+	problems.append_array(script_errors.messages)
 	print("TURN: ", "all passed" if problems.is_empty() else "FAILED %s" % [problems])
 	quit(0 if problems.is_empty() else 1)
 

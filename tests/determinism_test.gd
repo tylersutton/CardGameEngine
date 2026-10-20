@@ -13,9 +13,11 @@ var failures: Array[String] = []
 
 
 func _init() -> void:
+	var script_errors := ScriptErrors.watch()
 	for path in GameRules.game_paths():
 		_check_game(path)
 	_check_turns()
+	failures.append_array(script_errors.messages)
 	print("DETERMINISM: ", "all passed" if failures.is_empty() else "FAILED\n  " + "\n  ".join(failures))
 	quit(0 if failures.is_empty() else 1)
 

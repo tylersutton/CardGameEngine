@@ -17,8 +17,10 @@ var problems := []
 
 
 func _init() -> void:
+	var script_errors := ScriptErrors.watch()
 	for path in GameRules.game_paths():
 		_play(path)
+	problems.append_array(script_errors.messages)
 	print("PLAYTHROUGH: ", "all passed" if problems.is_empty() else "FAILED\n  " + "\n  ".join(problems))
 	quit(0 if problems.is_empty() else 1)
 

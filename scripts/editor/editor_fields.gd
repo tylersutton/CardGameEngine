@@ -2,8 +2,8 @@ class_name EditorFields
 ## What each part of a game file can hold, for the editor's forms: the key, the kind of control, and a line of help
 ## (the same as README's game file reference). Kinds: text, long_text, number, whole, yes_no, choice (with options),
 ## spot ([x, y] on the table), list (comma-separated; one item stays text), names and numbers (comma-separated lists),
-## column (a deck column), columns, expression and steps (checked as typed), zones, json (anything else, as text,
-## with an example).
+## column (a deck column), columns, expression and steps (checked as typed), zones, drag (its from and to zones),
+## json (anything else, as text, with an example).
 
 const GAME := [
 	{key = "title", kind = "text", help = "The name on the title screen."},
@@ -34,7 +34,7 @@ const ZONE := [
 
 const ACTION := [
 	{key = "steps", kind = "steps", help = "What the action does. card is the card dragged, clicked or chosen; from and to are a drag's zones, clicked_zone a click's; choice is what was chosen."},
-	{key = "drag", kind = "json", example = "{ \"from\": \"hand\", \"to\": \"pile\" }", help = "Done by dragging a card from one zone (or group, or list) to another, e.g. { \"from\": \"hand\", \"to\": \"pile\" }. Leave one out for any zone."},
+	{key = "drag", kind = "drag", help = "Done by dragging a card from one zone (or group of copies) to another: from hand, to pile. Several, comma-separated; leave one empty for any zone."},
 	{key = "click", kind = "json", example = "\"deck\"", help = "Done by clicking a card in this zone (or the empty zone), e.g. \"deck\". On a drag action, true: clicking the card does the drag."},
 	{key = "double_click", kind = "json", example = "true", help = "The same for double-clicking, e.g. true on solitaire's moves to the foundations."},
 	{key = "when", kind = "expression", help = "Only allowed while this is true (the button is greyed out). card, from and to are the drag's."},
