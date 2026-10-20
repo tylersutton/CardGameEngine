@@ -86,7 +86,6 @@ size_flags_horizontal = 3
 
 [node name="ChoiceMargin" type="MarginContainer" parent="Layout/TableColumn" unique_id=1722594352]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
@@ -94,6 +93,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="ChoiceBar" type="HBoxContainer" parent="Layout/TableColumn/ChoiceMargin" unique_id=1607239929]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
 [node name="TableView" type="Control" parent="Layout/TableColumn" unique_id=360531308]

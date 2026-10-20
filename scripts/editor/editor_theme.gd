@@ -103,12 +103,13 @@ static func _containers(theme: Theme) -> void:
 		theme.set_icon("h_grabber", split, ImageTexture.new())
 		theme.set_icon("v_grabber", split, ImageTexture.new())
 		theme.set_stylebox("split_bar_background", split, box(BORDER, Color.TRANSPARENT, [0, 0, 0, 0], 0, Vector2.ZERO))
+	# Scroll bars are 12 pixels wide, so they're easy to grab.
 	for scroll_bar in ["VScrollBar", "HScrollBar"]:
-		theme.set_stylebox("scroll", scroll_bar, _empty(Vector2(2, 2)))
-		theme.set_stylebox("scroll_focus", scroll_bar, _empty(Vector2(2, 2)))
-		theme.set_stylebox("grabber", scroll_bar, box(Color(1, 1, 1, 0.16), Color.TRANSPARENT, [0, 0, 0, 0], 4, Vector2(3, 3)))
-		theme.set_stylebox("grabber_highlight", scroll_bar, box(Color(1, 1, 1, 0.26), Color.TRANSPARENT, [0, 0, 0, 0], 4, Vector2(3, 3)))
-		theme.set_stylebox("grabber_pressed", scroll_bar, box(Color(1, 1, 1, 0.34), Color.TRANSPARENT, [0, 0, 0, 0], 4, Vector2(3, 3)))
+		theme.set_stylebox("scroll", scroll_bar, box(Color(1, 1, 1, 0.03), Color.TRANSPARENT, [0, 0, 0, 0], 0, Vector2(6, 6)))
+		theme.set_stylebox("scroll_focus", scroll_bar, box(Color(1, 1, 1, 0.03), Color.TRANSPARENT, [0, 0, 0, 0], 0, Vector2(6, 6)))
+		theme.set_stylebox("grabber", scroll_bar, box(Color(1, 1, 1, 0.22), Color.TRANSPARENT, [0, 0, 0, 0], 5, Vector2(6, 6)))
+		theme.set_stylebox("grabber_highlight", scroll_bar, box(Color(1, 1, 1, 0.32), Color.TRANSPARENT, [0, 0, 0, 0], 5, Vector2(6, 6)))
+		theme.set_stylebox("grabber_pressed", scroll_bar, box(Color(1, 1, 1, 0.42), Color.TRANSPARENT, [0, 0, 0, 0], 5, Vector2(6, 6)))
 		for arrow in ["increment", "increment_highlight", "increment_pressed", "decrement", "decrement_highlight", "decrement_pressed"]:
 			theme.set_icon(arrow, scroll_bar, ImageTexture.new())
 	theme.set_constant("separation", "HBoxContainer", 4)

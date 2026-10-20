@@ -142,8 +142,9 @@ func _refresh_choice_bar() -> void:
 		%ChoiceBar.remove_child(child)
 		child.queue_free()
 	var picking_cards := game.choice.cards_offered() and not game.choice.exactly
-	%ChoiceMargin.visible = game.over or (game.choice.is_open() or not game.plays.offered.is_empty()) and game.is_local_turn()
-	if not %ChoiceMargin.visible:
+	# The bar keeps its space even when empty, so the table doesn't jump up and down as choices come and go.
+	var shown := game.over or (game.choice.is_open() or not game.plays.offered.is_empty()) and game.is_local_turn()
+	if not shown:
 		return
 	if game.over:
 		var result := Label.new()

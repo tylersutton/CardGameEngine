@@ -21,7 +21,10 @@ func _ready() -> void:
 	search.text_submitted.connect(func(_text: String) -> void: _run(_chosen()))
 	list.custom_minimum_size = Vector2(WIDTH, LIST_HEIGHT)
 	list.focus_mode = Control.FOCUS_NONE
-	list.item_clicked.connect(func(index: int, _at: Vector2, _button: int) -> void: _run(index))
+	# item_clicked also fires for the mouse wheel, which would run whatever was scrolled past.
+	list.item_clicked.connect(func(index: int, _at: Vector2, button: int) -> void:
+		if button == MOUSE_BUTTON_LEFT:
+			_run(index))
 	column.add_child(search)
 	column.add_child(list)
 	add_child(column)
