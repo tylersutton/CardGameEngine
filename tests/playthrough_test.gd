@@ -55,11 +55,11 @@ func _play(path: String) -> void:
 	elif file_name in LONG and next_hands[0] == 0:
 		problems.append("%s didn't finish a hand (%d inputs)" % [file_name, inputs])
 	elif not game.over and not endless and file_name not in LONG:
-		problems.append("%s didn't end (%d inputs; offered %s, choosing '%s')" % [file_name, inputs, game.offered, game.choosing])
+		problems.append("%s didn't end (%d inputs; offered %s, choosing '%s')" % [file_name, inputs, game.plays.offered, game.choice.title])
 
 
 func _random_move(game: Game, chooser: RandomNumberGenerator) -> bool:
-	var moves := game.legal_moves()
+	var moves := game.plays.legal_moves()
 	if moves.is_empty():
 		return false
 	game.apply_move(moves[chooser.randi_range(0, moves.size() - 1)])
@@ -69,7 +69,7 @@ func _random_move(game: Game, chooser: RandomNumberGenerator) -> bool:
 ## A button only people press (Collect trick, Next hand), as the person at the table would.
 func _press_a_button(game: Game) -> bool:
 	for action_name: String in game.rules.actions:
-		if game.rules.actions[action_name].get("human_only", false) and game.can_perform(action_name):
+		if game.rules.actions[action_name].get("human_only", false) and game.plays.can_perform(action_name):
 			game.apply({type = "perform", action = action_name})
 			return true
 	return false

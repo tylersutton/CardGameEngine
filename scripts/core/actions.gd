@@ -39,7 +39,7 @@ func try_move(card: Card, to: Variant) -> void:
 		game.drag(card, to)
 		return
 	for destination: Zone in to:
-		if destination != game.zone_of(card) and game.can_move(card, destination):
+		if destination != game.zone_of(card) and game.plays.can_move(card, destination):
 			game.drag(card, destination)
 			return
 	game.log_line("[not allowed] %s: no move rule allows any of %s" % [card.title, ", ".join(to.map(func(zone: Zone) -> String: return zone.name))])
@@ -85,15 +85,15 @@ func end_turn() -> void:
 
 
 func ask(action: String, player: int = 0) -> void:
-	game.ask(action, player)
+	game.choice.ask(action, player)
 
 
 func ask_all(action: String, then_trigger: String = "") -> void:
-	game.ask_all(action, then_trigger)
+	game.choice.ask_all(action, then_trigger)
 
 
 func ask_others(action: String, then_trigger: String = "") -> void:
-	game.ask_others(action, then_trigger)
+	game.choice.ask_others(action, then_trigger)
 
 
 ## Waits for the current player to pick one option, and gives it: a card of a zone or list, a zone of a list of
@@ -214,7 +214,7 @@ static func _players(players: Variant) -> Array:
 func _wait_for_offer(names: Array) -> Variant:
 	if game.runner.has_answer():
 		return game.runner.answer_or_wait({})
-	if game.over or not names.any(game.can_do):
+	if game.over or not names.any(game.plays.can_do):
 		return null
 	return game.runner.answer_or_wait({kind = "offer", actions = names})
 
@@ -226,7 +226,7 @@ static func _names_of(action_names: Variant) -> Array:
 func _wait_for_choice(options: Variant, amount: int, exactly: bool, single: bool, prompt: String) -> Variant:
 	if game.runner.has_answer():
 		return game.runner.answer_or_wait({})
-	var offered := Game.choice_options(options)
+	var offered := Choice.options_from(options)
 	if not single and offered.any(func(option: Variant) -> bool: return option is not Card):
 		game.report_failure("Only cards can be chosen several at a time; choose(...) picks one zone or value")
 		return []

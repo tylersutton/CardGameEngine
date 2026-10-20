@@ -70,7 +70,7 @@ func _process(_delta: float) -> void:
 	var game := Net.game
 	if not game or not Net.table_ready:
 		return
-	if "Next hand" in game.offered or game.over:
+	if "Next hand" in game.plays.offered or game.over:
 		_finish("hand over")
 		return
 	if game.inputs.size() < waiting_for:
@@ -92,12 +92,12 @@ func _process(_delta: float) -> void:
 		corrupted = true
 		print("  [guest] scribbling on its own copy at %d inputs" % game.inputs.size())
 		game.variables.tricks += 5
-	if hosting and game.can_perform("Collect trick"):
+	if hosting and game.plays.can_perform("Collect trick"):
 		Net.submit({type = "perform", action = "Collect trick"})
 	elif hosting and game.is_bot_turn():
 		bot.take_input()
 	elif game.is_local_turn():
-		var moves := game.legal_moves()
+		var moves := game.plays.legal_moves()
 		if moves.is_empty():
 			return
 		var applied_before := game.inputs.size()
@@ -111,7 +111,7 @@ func _finish(reason: String) -> void:
 	var game := Net.game
 	print("%s: %s after %d inputs, state %d" % [_role().to_upper(), reason, game.inputs.size() if game else 0, game.state_hash() if game else 0])
 	if game and reason == "timed out":
-		print("  stuck: offered %s, player %d, choosing '%s', asked %s, local %s, waiting_for %d, history %d" % [game.offered, game.current_player(), game.choosing, game.asked, game.is_local_turn(), waiting_for, game.history.size()])
+		print("  stuck: offered %s, player %d, choosing '%s', asked %s, local %s, waiting_for %d, history %d" % [game.plays.offered, game.current_player(), game.choice.title, game.choice.asked, game.is_local_turn(), waiting_for, game.history.size()])
 		print("  last inputs: ", game.inputs.slice(-6))
 	set_process(false)
 	await get_tree().create_timer(3.0 if hosting else 0.5).timeout

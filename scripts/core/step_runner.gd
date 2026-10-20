@@ -171,9 +171,9 @@ func _run_frames(base: int) -> bool:
 			waiting = true
 			waited_since_turn = true
 			if request.get("kind") == "offer":
-				game.open_offer(request)
+				game.plays.open_offer(request)
 			else:
-				game.open_inline_choice(request)
+				game.choice.open_inline(request)
 			return false
 		_push_scheduled()
 	return true

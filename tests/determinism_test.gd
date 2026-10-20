@@ -22,6 +22,9 @@ func _init() -> void:
 
 func _check_game(path: String) -> void:
 	var started_at := Time.get_ticks_msec()
+	# Bots pick among hidden cards and (without a prefer) moves with Godot's own random numbers: seeded, the same
+	# moves are played every run, so the times can be compared.
+	seed(SEED)
 	var game := Game.new(path, SEED)
 	var copy := Game.new(path, SEED)
 	game.failed.connect(func(text: String) -> void: failures.append("%s: %s" % [path.get_file(), text]))
@@ -52,12 +55,12 @@ func _check_game(path: String) -> void:
 
 ## A random legal move, or when there are none, a random toolbar button (like Hearts' "Collect trick").
 func _random_move(game: Game, chooser: RandomNumberGenerator) -> bool:
-	var moves := game.legal_moves()
+	var moves := game.plays.legal_moves()
 	if moves:
 		game.apply_move(moves[chooser.randi_range(0, moves.size() - 1)])
 		return true
 	var buttons := game.rules.actions.keys().filter(func(action_name: String) -> bool:
-		return game.shows_button(action_name) and game.can_perform(action_name))
+		return game.plays.shows_button(action_name) and game.plays.can_perform(action_name))
 	if buttons.is_empty():
 		return false
 	game.apply({type = "perform", action = buttons[chooser.randi_range(0, buttons.size() - 1)]})
@@ -67,7 +70,7 @@ func _random_move(game: Game, chooser: RandomNumberGenerator) -> bool:
 func _check_turns() -> void:
 	var game := Game.new("res://games/gin_rummy.jsonc", SEED)
 	game.start()
-	var move: Array = game.legal_moves()[0]
+	var move: Array = game.plays.legal_moves()[0]
 	var not_their_turn: Dictionary = move[0].duplicate()
 	not_their_turn.player = 2
 	if game.apply(not_their_turn):

@@ -25,8 +25,8 @@ func take_input() -> bool:
 		game.report_failure("Bot %d stopped after %d inputs this turn%s" % [turn_player, MAX_INPUTS_PER_TURN, hint])
 		return false
 	var prefer: String = game.rules.bot.get("prefer", "")
-	if game.choosing:
-		prefer = game.rules.actions.get(game.choice_action, {}).get("prefer", prefer)
+	if game.choice.is_open():
+		prefer = game.rules.actions.get(game.choice.action, {}).get("prefer", prefer)
 	var best_move := _best_move(prefer) if prefer else _any_move()
 	if best_move.is_empty():
 		return false
@@ -41,8 +41,9 @@ func _best_move(prefer: String) -> Array:
 	var best_move: Array = []
 	var best_value := -INF
 	var deals := _deals()
-	for move in game.legal_moves():
-		var value: Variant = try_out(move, prefer, deals)
+	var start := _starting_point()
+	for move in game.plays.legal_moves():
+		var value: Variant = try_out(move, prefer, deals, start)
 		if (value is float or value is int) and value > best_value:
 			best_move = move
 			best_value = value
@@ -53,7 +54,7 @@ func _best_move(prefer: String) -> Array:
 ## prototype through. Picked with the bot's own random numbers, not the match's, so a bot's thinking never changes
 ## the match (or online copies would differ).
 func _any_move() -> Array:
-	var moves := game.legal_moves()
+	var moves := game.plays.legal_moves()
 	moves.shuffle()
 	for move in moves:
 		if try_out(move, "0") != null:
@@ -110,16 +111,18 @@ func hidden_from(player: int) -> Array[Card]:
 ## Runs the move silently, measures the result as the current player, then undoes it.
 ## Returns null if the move changed nothing (e.g. only reordered cards). With deals (card -> data),
 ## hidden cards are given those identities for each try and the results averaged, so the measure can't peek.
-func try_out(move: Array, measure: String, deals: Array = []) -> Variant:
+func try_out(move: Array, measure: String, deals: Array = [], start := {}) -> Variant:
+	if start.is_empty():
+		start = _starting_point()
 	if deals.is_empty():
-		return _try_once(move, measure)
+		return _try_once(move, measure, start)
 	var total := 0.0
 	for deal: Dictionary in deals:
 		var real_data := {}
 		for card: Card in deal:
 			real_data[card] = card.data
 			card.data = deal[card]
-		var value: Variant = _try_once(move, measure)
+		var value: Variant = _try_once(move, measure, start)
 		for card: Card in real_data:
 			card.data = real_data[card]
 		if value is not float and value is not int:
@@ -128,18 +131,26 @@ func try_out(move: Array, measure: String, deals: Array = []) -> Variant:
 	return total / deals.size()
 
 
-func _try_once(move: Array, measure: String) -> Variant:
+## The game before trying moves out, shared by every move compared from it: to go back to, and to tell whether a
+## move changed anything.
+func _starting_point() -> Dictionary:
+	return {state = Snapshot.take(game), contents = Snapshot.describe(game, false)}
+
+
+func _try_once(move: Array, measure: String, start: Dictionary) -> Variant:
 	var player := game.current_player()
-	var before := Snapshot.take(game)
-	var contents_before := Snapshot.describe(game, false)
+	var before: Dictionary = start.state
+	var contents_before: Dictionary = start.contents
 	var history_size := game.history.size()
 	var was_quiet := game.is_blocking_signals()
+	var was_remembering := game.remembering
 	game.game_log.flush()
 	game.set_quiet(true)
+	game.remembering = false
 	for input: Dictionary in move:
 		game.run_input(input)
 	var value: Variant = null
-	if game.choosing and not before.choice.choosing and game.current_player() == player:
+	if game.choice.is_open() and before.choice.title == "" and game.current_player() == player:
 		value = _best_choice_value(measure)
 	elif Snapshot.describe(game, false) != contents_before or game.current_player() != player:
 		if Game.PLAYER_VARIABLE in game.variables:
@@ -149,14 +160,16 @@ func _try_once(move: Array, measure: String) -> Variant:
 	game.history.resize(history_size)
 	game.game_log.discard()
 	game.set_quiet(was_quiet)
+	game.remembering = was_remembering
 	return value
 
 
 ## When a move opens a choice (e.g. playing Chapel), it's worth what the best way of making that choice is worth.
 func _best_choice_value(measure: String) -> Variant:
 	var best: Variant = null
-	for choice_move in game.legal_moves():
-		var value: Variant = _try_once(choice_move, measure)
+	var start := _starting_point()
+	for choice_move in game.plays.legal_moves():
+		var value: Variant = _try_once(choice_move, measure, start)
 		if (value is float or value is int) and (best == null or value > best):
 			best = value
 	return best

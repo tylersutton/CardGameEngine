@@ -117,7 +117,7 @@ func _play(path: String) -> void:
 	var bot := Bot.new(game)
 	for move in BOT_MOVES:
 		var buttons := game.rules.actions.keys().filter(func(action: String) -> bool:
-			return game.rules.actions[action].get("human_only", false) and game.can_perform(action))
+			return game.rules.actions[action].get("human_only", false) and game.plays.can_perform(action))
 		if buttons:
 			game.apply({type = "perform", action = buttons[0]})
 		elif not bot.take_input():

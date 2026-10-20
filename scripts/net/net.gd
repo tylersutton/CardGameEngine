@@ -259,7 +259,7 @@ func submit(input: Dictionary) -> bool:
 		return game.apply(sent)
 	_request_input.rpc_id(HOST, input)
 	var may_act := game.may_act(game.local_seat, input)
-	return may_act and (input.type != "drag" or game.can_move(game.cards[input.card], game.zones[input.to]))
+	return may_act and (input.type != "drag" or game.plays.can_move(game.cards[input.card], game.zones[input.to]))
 
 
 @rpc("any_peer", "reliable")

@@ -4,6 +4,8 @@ extends RefCounted
 const TITLE_COLUMN := "name"
 
 var id := -1
+## The zone it's in, by name (Zone keeps it up to date): a name rather than the zone, as a zone holds its cards.
+var zone_name := ""
 var data: Dictionary
 var face_up := true
 var marks: Dictionary = {}

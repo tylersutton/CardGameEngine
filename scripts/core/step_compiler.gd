@@ -152,16 +152,16 @@ func _check_actions() -> void:
 				errors.append("%s: \"%s\" needs \"choose\"" % [label, key])
 		if action.has("pick") and action.has("up_to"):
 			errors.append("%s: use \"pick\" (exactly that many) or \"up_to\" (any number up to it), not both" % label)
-		if action.has("choose") and (action.has(Game.DRAG_KEY) or action.has(Game.CLICK_KEY) or action.has(Game.DOUBLE_CLICK_KEY)):
+		if action.has("choose") and (action.has(Plays.DRAG_KEY) or action.has(Plays.CLICK_KEY) or action.has(Plays.DOUBLE_CLICK_KEY)):
 			errors.append("%s: \"choose\" is for buttons; an action done by a drag or click already has its card" % label)
-		if action.get(Game.DRAG_KEY) is Dictionary:
+		if action.get(Plays.DRAG_KEY) is Dictionary:
 			_check_entry("%s: \"drag\"" % label, action.drag, {"from": [TYPE_STRING, TYPE_ARRAY], "to": [TYPE_STRING, TYPE_ARRAY]})
 			_check_zone_names(label, action.drag.get("from"))
 			_check_zone_names(label, action.drag.get("to"))
-		for key in [Game.CLICK_KEY, Game.DOUBLE_CLICK_KEY]:
-			if action.get(key) is bool and not action.has(Game.DRAG_KEY):
+		for key in [Plays.CLICK_KEY, Plays.DOUBLE_CLICK_KEY]:
+			if action.get(key) is bool and not action.has(Plays.DRAG_KEY):
 				errors.append("%s: \"%s\": true means clicking does its drag, so it needs \"drag\"; to click a zone, name it: \"%s\": \"deck\"" % [label, key, key])
-			elif action.has(key) and action.has(Game.DRAG_KEY) and action[key] is not bool:
+			elif action.has(key) and action.has(Plays.DRAG_KEY) and action[key] is not bool:
 				errors.append("%s: with \"drag\", \"%s\" is true (clicking the card does the drag)" % [label, key])
 			elif action.get(key) is not bool:
 				_check_zone_names(label, action.get(key))
@@ -417,7 +417,7 @@ func _learn_offered_actions(trees: Array) -> void:
 		for node in _calls_in(tree, OFFER_BLOCKS):
 			for name: Variant in _offered_names(node):
 				if name is String:
-					game.offered_actions[name] = true
+					game.plays.offered_actions[name] = true
 
 
 static func _calls_in(node: Dictionary, names: Array) -> Array:

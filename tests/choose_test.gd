@@ -62,22 +62,22 @@ func click(game: Game, card: Card) -> void:
 func waits_and_carries_on() -> void:
 	var game := game_with()
 	game.apply({type = "perform", action = "Play one"})
-	check(game.choosing == "Play a card" and game.choice_action == "" and game.runner.is_waiting(), "Play one waits: '%s'" % game.choosing)
-	check(game.choices.size() == 3, "the hand's 3 cards are offered: %d" % game.choices.size())
+	check(game.choice.title == "Play a card" and game.choice.action == "" and game.runner.is_waiting(), "Play one waits: '%s'" % game.choice.title)
+	check(game.choice.options.size() == 3, "the hand's 3 cards are offered: %d" % game.choice.options.size())
 	check(not game.apply({type = "drag", card = game.zones.deck.cards.back().id, to = "piles_2"}), "nothing else happens while waiting")
 	game.apply({type = "click", card = game.cards.find(game.zones.deck.cards.back())})
 	check(game.runner.is_waiting(), "clicking a card that isn't offered doesn't cancel a choose")
 	var card: Card = game.zones.hand_1.cards[1]
 	click(game, card)
 	check(card in game.zones.piles_1.cards and game.variables.total == 1, "the step carries on with the picked card")
-	check(not game.runner.is_waiting() and game.choosing == "", "nothing is waiting afterwards")
+	check(not game.runner.is_waiting() and not game.choice.is_open(), "nothing is waiting afterwards")
 
 
 func zones_and_values() -> void:
 	var game := game_with()
 	game.apply({type = "perform", action = "Deal to a pile"})
-	check(game.choices == [game.zones.piles_1, game.zones.piles_2], "the piles are offered: %s" % [game.choices])
-	check(game.option_text(game.zones.piles_2) == "Pile 2", "a pile's button shows its label: %s" % game.option_text(game.zones.piles_2))
+	check(game.choice.options == [game.zones.piles_1, game.zones.piles_2], "the piles are offered: %s" % [game.choice.options])
+	check(game.choice.option_text(game.zones.piles_2) == "Pile 2", "a pile's button shows its label: %s" % game.choice.option_text(game.zones.piles_2))
 	game.apply({type = "choose", option = "piles_2"})
 	check(game.zones.piles_2.cards.size() == 1, "choosing a zone by name")
 	game.apply({type = "perform", action = "Deal to a pile"})
@@ -110,7 +110,7 @@ func loops_and_triggers() -> void:
 	check(game.current_player() == 1 and game.runner.is_waiting(), "player 1 chooses first")
 	check(not game.apply({type = "click", card = game.zones.hand_2.cards[0].id, player = 2}), "player 2 waits their turn")
 	click(game, game.zones.hand_1.cards[0])
-	check(game.current_player() == 2 and game.choices == game.zones.hand_2.cards, "then player 2 chooses from their own hand")
+	check(game.current_player() == 2 and game.choice.options == game.zones.hand_2.cards, "then player 2 chooses from their own hand")
 	game.apply({type = "click", card = game.zones.hand_2.cards[0].id, player = 2})
 	check(game.variables.total == 2 and game.current_player() == 1, "both played, and the turn is back with player 1 (total %d)" % game.variables.total)
 	game = game_with()

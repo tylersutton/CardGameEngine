@@ -39,14 +39,14 @@ func gin() -> void:
 	game.start()
 	var bot := Bot.new(game)
 	for turn in 300:
-		if "Next hand" in game.offered or game.over:
+		if "Next hand" in game.plays.offered or game.over:
 			break
 		if game.current_player() == 1:
-			game.apply_move(game.legal_moves().pick_random())
+			game.apply_move(game.plays.legal_moves().pick_random())
 		else:
 			while bot.take_input():
 				pass
-	check("Next hand" in game.offered or game.over, "gin hand ends (offered: %s)" % [game.offered])
+	check("Next hand" in game.plays.offered or game.over, "gin hand ends (offered: %s)" % [game.plays.offered])
 
 
 func hearts() -> void:
@@ -55,14 +55,14 @@ func hearts() -> void:
 	game.start()
 	var bot := Bot.new(game)
 	for step in 400:
-		if "Next hand" in game.offered or game.over:
+		if "Next hand" in game.plays.offered or game.over:
 			break
-		if "Collect trick" in game.offered:
+		if "Collect trick" in game.plays.offered:
 			game.perform("Collect trick")
 		elif game.is_bot_turn():
 			bot.take_input()
 		else:
-			game.apply_move(game.legal_moves().pick_random())
+			game.apply_move(game.plays.legal_moves().pick_random())
 	var total := 0.0
 	for player in range(1, 5):
 		total += game.variables["score_%d" % player]
@@ -132,13 +132,13 @@ func remodel() -> void:
 	game.move(remodel_card, game.zones.hand_1)
 	game.move(estate, game.zones.hand_1)
 	game.apply({type = "click", card = remodel_card.id})
-	check(game.choosing.begins_with("Remodel: trash"), "remodel asks for a card to trash: '%s'" % game.choosing)
+	check(game.choice.title.begins_with("Remodel: trash"), "remodel asks for a card to trash: '%s'" % game.choice.title)
 	game.apply({type = "click", card = estate.id})
-	check(estate in game.zones.trash.cards and game.choosing.begins_with("Remodel: gain"), "the estate is trashed, then a gain is asked: '%s'" % game.choosing)
-	var silver: Card = game.choices.filter(func(card: Card) -> bool: return card.title == "Silver")[0]
-	check(game.choices.all(func(card: Card) -> bool: return int(card.data.cost) <= 4), "only cards costing up to 4 are offered")
+	check(estate in game.zones.trash.cards and game.choice.title.begins_with("Remodel: gain"), "the estate is trashed, then a gain is asked: '%s'" % game.choice.title)
+	var silver: Card = game.choice.options.filter(func(card: Card) -> bool: return card.title == "Silver")[0]
+	check(game.choice.options.all(func(card: Card) -> bool: return int(card.data.cost) <= 4), "only cards costing up to 4 are offered")
 	game.apply({type = "click", card = silver.id})
-	check(silver in game.zones.discard_1.cards and game.choosing == "", "the silver is gained")
+	check(silver in game.zones.discard_1.cards and not game.choice.is_open(), "the silver is gained")
 
 
 ## Sea Salt: draw two and keep one, discard the other onto a chosen pile, then two crabs take a card from a pile.
@@ -147,19 +147,19 @@ func sea_salt() -> void:
 	watch(game)
 	game.start()
 	game.apply({type = "click", card = game.zones.deck.cards.back().id})
-	check(game.choosing == "Keep one card" and game.choices.size() == 2, "drawing offers the two cards: '%s'" % game.choosing)
-	var kept: Card = game.choices[0]
+	check(game.choice.title == "Keep one card" and game.choice.options.size() == 2, "drawing offers the two cards: '%s'" % game.choice.title)
+	var kept: Card = game.choice.options[0]
 	game.apply({type = "click", card = kept.id})
-	check(kept in game.zones.hand_1.cards and game.choosing == "Discard the other card onto a pile", "the kept card is in hand, then a pile is asked: '%s'" % game.choosing)
+	check(kept in game.zones.hand_1.cards and game.choice.title == "Discard the other card onto a pile", "the kept card is in hand, then a pile is asked: '%s'" % game.choice.title)
 	game.apply({type = "choose", option = "discard_piles_2"})
-	check(game.zones.discard_piles_2.cards.size() == 2 and game.offered == ["Play duo", "End turn", "Stop", "Last chance"], "the other card is on pile 2, then duos are offered: %s" % [game.offered])
+	check(game.zones.discard_piles_2.cards.size() == 2 and game.plays.offered == ["Play duo", "End turn", "Stop", "Last chance"], "the other card is on pile 2, then duos are offered: %s" % [game.plays.offered])
 	var crabs := game.zones.deck.cards.filter(func(card: Card) -> bool: return card.data.Kind == "Crab").slice(0, 2)
 	for crab: Card in crabs:
 		game.move(crab, game.zones.hand_1)
 	game.apply({type = "perform", action = "Play duo"})
 	for crab: Card in crabs:
 		game.apply({type = "click", card = crab.id})
-	check(game.choosing == "Crabs: look through which pile?", "two crabs ask for a pile: '%s'" % game.choosing)
+	check(game.choice.title == "Crabs: look through which pile?", "two crabs ask for a pile: '%s'" % game.choice.title)
 	game.apply({type = "choose", option = "discard_piles_2"})
 	check(game.zones.browsing.cards.size() == 2, "the pile is spread out to look through")
 	var taken: Card = game.zones.browsing.cards[0]

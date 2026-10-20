@@ -77,6 +77,7 @@ static func seat_turn(seat: int, seats: int) -> float:
 func add(card: Card) -> void:
 	card.face_up = face != FACE_DOWN
 	card.marks.clear()
+	card.zone_name = name
 	cards.append(card)
 	_sort()
 	changed.emit(self)
@@ -85,6 +86,7 @@ func add(card: Card) -> void:
 func add_all(new_cards: Array[Card]) -> void:
 	for card in new_cards:
 		card.face_up = face != FACE_DOWN
+		card.zone_name = name
 	cards.append_array(new_cards)
 	_sort()
 	changed.emit(self)
@@ -104,6 +106,8 @@ func reorder(card: Card, index: int) -> void:
 
 func restore(saved_cards: Array[Card], saved_sort_columns: Array[String]) -> void:
 	cards.assign(saved_cards)
+	for card in cards:
+		card.zone_name = name
 	sort_columns.assign(saved_sort_columns)
 	changed.emit(self)
 

@@ -96,8 +96,8 @@ func _refresh_views() -> void:
 	queue_redraw()
 	for card in views:
 		views[card].face_up = game.shows_face(card)
-		views[card].highlighted = card in game.choices and game.is_local_turn()
-		views[card].selected = card in game.selected
+		views[card].highlighted = card in game.choice.options and game.is_local_turn()
+		views[card].selected = card in game.choice.selected
 		views[card].movable = game.may_handle(card)
 		views[card].marks_text = " ".join(card.marks.values().map(Game.format_value))
 
@@ -186,7 +186,7 @@ func _on_card_dragged(view: CardView) -> void:
 func _show_drop_hint(view: CardView, target: Zone) -> void:
 	if target != hover_zone:
 		hover_zone = target
-		hover_allowed = target != null and game.can_move(view.card, target)
+		hover_allowed = target != null and game.plays.can_move(view.card, target)
 		queue_redraw()
 	if not hover_zone:
 		view.drop_hint = CardView.DropHint.NONE
@@ -225,7 +225,7 @@ func _on_card_clicked(view: CardView) -> void:
 
 ## Two quick clicks on a zone with no double-click steps (like a solitaire stock) are two clicks, not one double-click.
 func _on_card_double_clicked(view: CardView) -> void:
-	_press(view, "double_click" if game.has_double_click(game.zone_of(view.card)) else "click")
+	_press(view, "double_click" if game.plays.has_double_click(game.zone_of(view.card)) else "click")
 
 
 ## A click ends the little pick-up that every press starts, then goes to the game.
@@ -355,7 +355,7 @@ func _draw() -> void:
 			var name_text := "%s (%d)" % [zone.name, zone.cards.size()]
 			draw_string(font, name_position, name_text, HORIZONTAL_ALIGNMENT_CENTER, slot.size.x + LABEL_OVERHANG * 2, LABEL_FONT_SIZE, LABEL_COLOR)
 	if game.is_local_turn():
-		for option: Variant in game.choices:
+		for option: Variant in game.choice.options:
 			if option is Zone:
 				draw_style_box(CardView.highlight_style, slot_rect(option).grow(CardView.HIGHLIGHT_WIDTH / 2.0))
 	if hover_zone:

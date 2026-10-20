@@ -4,11 +4,10 @@ class_name Snapshot
 
 
 static func take(game: Game) -> Dictionary:
-	var choice := {choosing = game.choosing, choice_action = game.choice_action, choices = game.choices.duplicate(), pick_count = game.pick_count,
-		pick_exact = game.pick_exact, selected = game.selected.duplicate(), asked = game.asked.duplicate(true), choice_asked = game.choice_asked,
-		return_player = game.return_player, waiting_steps = StepRunner.copy_frames(game.runner.frames), offered = game.offered.duplicate(),
-		over = game.over, winners = game.winners.duplicate(), knocked_out = game.knocked_out.duplicate()}
-	var snapshot := {zones = {}, sort_columns = {}, faces = {}, marks = {}, variables = game.variables.duplicate(true), choice = choice, rng = game.rng.state}
+	var flow := {waiting_steps = StepRunner.copy_frames(game.runner.frames), offered = game.plays.offered.duplicate(), over = game.over,
+		winners = game.winners.duplicate(), knocked_out = game.knocked_out.duplicate()}
+	var snapshot := {zones = {}, sort_columns = {}, faces = {}, marks = {}, variables = game.variables.duplicate(true), choice = game.choice.state(),
+		flow = flow, rng = game.rng.state}
 	for name in game.zones:
 		var zone: Zone = game.zones[name]
 		snapshot.zones[name] = zone.cards.duplicate()
@@ -28,22 +27,14 @@ static func restore(game: Game, snapshot: Dictionary) -> void:
 		card.marks = snapshot.marks.get(card, {}).duplicate()
 	game.variables.clear()
 	game.variables.merge(snapshot.variables.duplicate(true))
-	game.choosing = snapshot.choice.choosing
-	game.choice_action = snapshot.choice.choice_action
-	game.choices = snapshot.choice.choices.duplicate()
-	game.pick_count = snapshot.choice.pick_count
-	game.pick_exact = snapshot.choice.pick_exact
-	game.selected.assign(snapshot.choice.selected)
-	game.asked.assign(snapshot.choice.asked.duplicate(true))
-	game.choice_asked = snapshot.choice.choice_asked
-	game.return_player = snapshot.choice.return_player
-	game.runner.frames = StepRunner.copy_frames(snapshot.choice.waiting_steps)
+	game.choice.restore(snapshot.choice)
+	game.runner.frames = StepRunner.copy_frames(snapshot.flow.waiting_steps)
 	game.runner.waiting = not game.runner.frames.is_empty()
-	game.offered = snapshot.choice.offered.duplicate()
-	game.over = snapshot.choice.over
-	game.winners = snapshot.choice.winners.duplicate()
-	game.knocked_out = snapshot.choice.knocked_out.duplicate()
-	game.aliases_by_player.clear()
+	game.plays.offered = snapshot.flow.offered.duplicate()
+	game.over = snapshot.flow.over
+	game.winners = snapshot.flow.winners.duplicate()
+	game.knocked_out = snapshot.flow.knocked_out.duplicate()
+	game.clear_player_caches()
 	game.rng.state = snapshot.rng
 
 
@@ -52,7 +43,8 @@ static func restore(game: Game, snapshot: Dictionary) -> void:
 static func describe(game: Game, every_detail := true) -> Dictionary:
 	var state := {variables = _plain(game.variables), zones = {}, marks = {}, over = game.over, winners = game.winners.duplicate()}
 	if every_detail:
-		state.merge({choice = _plain(take(game).choice), rng = game.rng.state})
+		var snapshot := take(game)
+		state.merge({choice = _plain(snapshot.choice), flow = _plain(snapshot.flow), rng = game.rng.state})
 	for name in game.zones:
 		var ids: Array = game.zones[name].cards.map(func(card: Card) -> int: return card.id if card.face_up else -1 - card.id)
 		if not every_detail:

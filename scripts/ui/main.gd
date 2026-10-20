@@ -119,7 +119,7 @@ func _add_action_buttons() -> void:
 	for button in %ActionButtons.get_children():
 		button.free()
 	for action_name in game.rules.actions:
-		if not game.shows_button(action_name):
+		if not game.plays.shows_button(action_name):
 			continue
 		var button := Button.new()
 		button.text = action_name
@@ -130,7 +130,7 @@ func _add_action_buttons() -> void:
 func _refresh_action_buttons() -> void:
 	%UndoButton.disabled = game.history.is_empty()
 	for button: Button in %ActionButtons.get_children():
-		button.disabled = not game.can_perform(button.text) or not _may_press(button.text)
+		button.disabled = not game.plays.can_perform(button.text) or not _may_press(button.text)
 
 
 func _may_press(action_name: String) -> bool:
@@ -141,8 +141,8 @@ func _refresh_choice_bar() -> void:
 	for child in %ChoiceBar.get_children():
 		%ChoiceBar.remove_child(child)
 		child.queue_free()
-	var picking_cards := game.choosing_cards() and not game.pick_exact
-	%ChoiceMargin.visible = game.over or (game.choosing != "" or not game.offered.is_empty()) and game.is_local_turn()
+	var picking_cards := game.choice.cards_offered() and not game.choice.exactly
+	%ChoiceMargin.visible = game.over or (game.choice.is_open() or not game.plays.offered.is_empty()) and game.is_local_turn()
 	if not %ChoiceMargin.visible:
 		return
 	if game.over:
@@ -150,24 +150,24 @@ func _refresh_choice_bar() -> void:
 		result.text = game.result_text()
 		%ChoiceBar.add_child(result)
 		return
-	if game.choosing == "":
+	if not game.choice.is_open():
 		var offer := Label.new()
-		offer.text = "Your turn: " + " or ".join(game.offered)
+		offer.text = "Your turn: " + " or ".join(game.plays.offered)
 		%ChoiceBar.add_child(offer)
 		return
 	var prompt := Label.new()
-	prompt.text = game.choosing + ":"
+	prompt.text = game.choice.title + ":"
 	if picking_cards:
-		prompt.text += " choose up to %d (%d selected)" % [game.pick_count, game.selected.size()]
-	elif game.choosing_cards():
-		prompt.text += " click %s" % ("a highlighted card" if game.pick_count == 1 else "%d highlighted cards (%d selected)" % [game.pick_count, game.selected.size()])
+		prompt.text += " choose up to %d (%d selected)" % [game.choice.pick, game.choice.selected.size()]
+	elif game.choice.cards_offered():
+		prompt.text += " click %s" % ("a highlighted card" if game.choice.pick == 1 else "%d highlighted cards (%d selected)" % [game.choice.pick, game.choice.selected.size()])
 	%ChoiceBar.add_child(prompt)
 	if picking_cards:
 		_add_choice_button("Done", func() -> void: _submit({type = "finish"}))
-	elif not game.choosing_cards():
-		for option in game.choices:
+	elif not game.choice.cards_offered():
+		for option in game.choice.options:
 			var sent: Variant = option.name if option is Zone else option
-			_add_choice_button(game.option_text(option), func() -> void: _submit({type = "choose", option = sent}))
+			_add_choice_button(game.choice.option_text(option), func() -> void: _submit({type = "choose", option = sent}))
 
 
 func _add_choice_button(text: String, on_pressed: Callable) -> void:
