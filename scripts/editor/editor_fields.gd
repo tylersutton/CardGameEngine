@@ -1,6 +1,6 @@
 class_name EditorFields
 ## What each part of a game file can hold, for the editor's forms: the key, the kind of control, and a line of help
-## (the same as README's game file reference). Kinds: text, long_text, number, whole, yes_no, choice (with options),
+## (the same as docs/reference.md). Kinds: text, long_text, number, whole, yes_no, choice (with options),
 ## spot ([x, y] on the table), list (comma-separated; one item stays text), names and numbers (comma-separated lists),
 ## column (a deck column), columns, expression and steps (checked as typed), zones, drag (its from and to zones),
 ## json (anything else, as text, with an example).

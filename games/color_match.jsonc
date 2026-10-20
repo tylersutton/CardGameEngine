@@ -57,12 +57,12 @@
 				"from": "hand",
 				"to": "pile"
 			},
-			"when": "card.data.color == 'Wild' or card.data.color == active_color or card.data.number == top(pile).data.number",
+			"when": "card.color == 'Wild' or card.color == active_color or card.number == top(pile).number",
 			"steps": [
 				{
-					"if": "card.data.color != 'Wild'",
+					"if": "card.color != 'Wild'",
 					"then": [
-						"active_color = card.data.color"
+						"active_color = card.color"
 					]
 				},
 				{
@@ -119,7 +119,7 @@
 				]
 			},
 			"move(top(deck), pile)",
-			"active_color = top(pile).data.color"
+			"active_color = top(pile).color"
 		],
 		"deck_empty": [
 			"move(without(pile, top(pile)), deck)",
@@ -132,6 +132,6 @@
 		"body": [
 			"color"
 		],
-		"color": "color"
+		"color": "ink"
 	}
 }

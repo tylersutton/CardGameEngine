@@ -1,6 +1,6 @@
 {
 	// A starting point made by "New game...". Change anything and save: the table reloads by itself.
-	// Every key is explained in README.md, under "Game file reference".
+	// Every key is explained in docs/reference.md.
 	"title": "{title}",
 	"description": "A one-player game. Describe your game here.",
 	"zones": {

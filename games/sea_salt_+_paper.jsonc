@@ -1,5 +1,5 @@
 {
-	// Every key is explained in README.md, under "Game file reference".
+	// Every key is explained in docs/reference.md.
 	"title": "Sea Salt + Paper",
 	"description": "2 players, one round. Draw two cards and keep one, or take the top of a discard pile; then play duos for their effects. With 7 points, Stop (most points wins) or call Last chance (everyone else gets one more turn, then you win if you still have the most).",
 	"players": 2,

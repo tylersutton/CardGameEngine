@@ -12,7 +12,7 @@ const WAITING_BLOCKS := ["choose", "choose_exactly", "choose_up_to", "offer", "o
 const OFFER_BLOCKS := ["offer", "offer_until"]
 ## Keys that are gone, with what to use instead.
 const REPLACED_KEYS := {
-	"moves": "\"moves\" are now actions with \"drag\": { \"from\": ..., \"to\": ... } (see README, \"actions\")",
+	"moves": "\"moves\" are now actions with \"drag\": { \"from\": ..., \"to\": ... } (see docs/reference.md, \"actions\")",
 	"on_click": "zones no longer have \"on_click\": make an action with \"click\": \"<zone>\" (or \"click\": true on a drag action)",
 	"on_double_click": "zones no longer have \"on_double_click\": make an action with \"double_click\": \"<zone>\" (or true on a drag action)",
 	"phase": "\"phase\" on actions is gone: offer the action from the \"turn\" steps with offer(...), or check a variable in \"when\"",
