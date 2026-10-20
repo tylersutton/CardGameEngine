@@ -1,16 +1,22 @@
 class_name EditorForm
 extends VBoxContainer
-## A form for one part of a game file (a zone, the card face...), built from EditorFields. Each change is sent as
-## changed(path, value); a value of null means "take the key out" (back to its default).
+## A form for one part of a game file (a zone, the card face...), built from EditorFields: one row per setting,
+## its name on the left and its control on the right, with grouped settings folded away under their heading.
+## Each change is sent as changed(path, value); a value of null means "take the key out" (back to its default).
+## Hovering or focusing a row sends described(key, help), for the inspector's description.
 
 signal changed(path: Array, value: Variant)
+signal described(title: String, help: String)
 
 const DECKS_FOLDER := "res://decks/"
-const HELP_COLOR := Color(1, 1, 1, 0.55)
-const BAD_COLOR := Color(1, 0.45, 0.4)
-const NOT_SET := "(not set)"
+const NOT_SET := "(default)"
 ## Expression settings that may also be a plain number.
 const NUMBER_OR_TEXT := ["pick", "up_to"]
+## Kinds whose control takes the whole width, under the setting's name.
+const WIDE_KINDS := ["long_text", "json", "expression", "steps", "drag"]
+
+## Groups opened or closed by the user, by form and heading, kept while the editor is open.
+static var opened_groups: Dictionary = {}
 
 var editor: Node
 var document: GameDocument
@@ -26,32 +32,90 @@ func show_fields(game_editor: Node, path: Array, fields: Array, deck_columns: Ar
 	columns = deck_columns
 	for child in get_children():
 		child.queue_free()
+	var groups := {}
 	for field: Dictionary in fields:
-		_add_row(field)
+		if field.has("group"):
+			if field.group not in groups:
+				groups[field.group] = []
+			groups[field.group].append(field)
+		else:
+			add_child(_row(field))
+	for group: String in groups:
+		_add_group(group, groups[group])
 
 
-func _add_row(field: Dictionary) -> void:
+## A heading that folds its settings away; it starts open if any of them is set.
+func _add_group(group: String, fields: Array) -> void:
+	var any_set := fields.any(func(field: Dictionary) -> bool: return document.has(base_path + [field.key]))
+	var heading := Button.new()
+	heading.theme_type_variation = &"GroupButton"
+	heading.text = group.to_upper()
+	heading.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	heading.toggle_mode = true
+	var remembered := str(base_path.slice(0, 1)) + group
+	heading.button_pressed = opened_groups.get(remembered, any_set)
+	var rows := VBoxContainer.new()
+	for field: Dictionary in fields:
+		rows.add_child(_row(field))
+	var show_rows := func(open: bool) -> void:
+		rows.visible = open
+		heading.icon = EditorIcons.icon("chevron_down" if open else "chevron_right", Color.WHITE, 0.8)
+	show_rows.call(heading.button_pressed)
+	heading.toggled.connect(func(open: bool) -> void:
+		opened_groups[remembered] = open
+		show_rows.call(open))
+	add_child(heading)
+	add_child(rows)
+
+
+## One setting: its name (bright when it's set in the file) and its control, and a button to take it out.
+func _row(field: Dictionary) -> Control:
 	var path := base_path + [field.key]
-	var heading := HBoxContainer.new()
+	var is_set := document.has(path)
 	var name_label := Label.new()
 	name_label.text = field.key
-	name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	heading.add_child(name_label)
-	if document.has(path):
-		var clear := Button.new()
-		clear.text = "×"
-		clear.flat = true
-		clear.tooltip_text = "Take this out (back to the default)"
-		clear.pressed.connect(func() -> void: changed.emit(path, null))
-		heading.add_child(clear)
-	add_child(heading)
-	add_child(_control_for(field, path, document.get_value(path)))
-	var help := Label.new()
-	help.text = field.help
-	help.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	help.add_theme_color_override("font_color", HELP_COLOR)
-	help.add_theme_font_size_override("font_size", 12)
-	add_child(help)
+	name_label.clip_text = true
+	name_label.tooltip_text = field.help
+	name_label.mouse_filter = Control.MOUSE_FILTER_PASS
+	name_label.add_theme_color_override("font_color", EditorTheme.TEXT if is_set else EditorTheme.TEXT_DIM)
+	var reset := Button.new()
+	reset.theme_type_variation = &"FlatButton"
+	reset.icon = EditorIcons.icon("restart", Color.WHITE, 0.75)
+	reset.tooltip_text = "Take this out (back to the default)"
+	reset.modulate.a = 1.0 if is_set else 0.0
+	reset.disabled = not is_set
+	reset.focus_mode = Control.FOCUS_NONE
+	reset.pressed.connect(func() -> void: changed.emit(path, null))
+	var control := _control_for(field, path, document.get_value(path))
+	var row: Container
+	if field.kind in WIDE_KINDS:
+		row = VBoxContainer.new()
+		var heading := HBoxContainer.new()
+		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		heading.add_child(name_label)
+		heading.add_child(reset)
+		row.add_child(heading)
+		row.add_child(control)
+	else:
+		row = HBoxContainer.new()
+		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		name_label.size_flags_stretch_ratio = 0.7
+		control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(name_label)
+		row.add_child(control)
+		row.add_child(reset)
+	row.mouse_entered.connect(func() -> void: described.emit(field.key, field.help))
+	_on_focus(control, func() -> void: described.emit(field.key, field.help))
+	return row
+
+
+## Calls back when the control, or any box inside it, takes the keyboard focus.
+static func _on_focus(control: Control, then: Callable) -> void:
+	if control.focus_mode != Control.FOCUS_NONE:
+		control.focus_entered.connect(then)
+	for child in control.get_children():
+		if child is Control:
+			_on_focus(child, then)
 
 
 func _control_for(field: Dictionary, path: Array, value: Variant) -> Control:
@@ -59,7 +123,7 @@ func _control_for(field: Dictionary, path: Array, value: Variant) -> Control:
 		"long_text":
 			var box := TextEdit.new()
 			box.text = str(value) if value != null else ""
-			box.custom_minimum_size.y = 70
+			box.custom_minimum_size.y = 54
 			box.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 			box.focus_exited.connect(func() -> void: changed.emit(path, box.text if box.text else null))
 			return box
@@ -75,7 +139,9 @@ func _control_for(field: Dictionary, path: Array, value: Variant) -> Control:
 			var check := CheckBox.new()
 			check.text = "yes" if value else "no"
 			check.button_pressed = value == true
-			check.toggled.connect(func(on: bool) -> void: changed.emit(path, on))
+			check.toggled.connect(func(on: bool) -> void:
+				check.text = "yes" if on else "no"
+				changed.emit(path, on))
 			return check
 		"choice", "column", "deck":
 			return _choice(path, value, _options(field))
@@ -147,16 +213,18 @@ func _options(field: Dictionary) -> Array:
 
 func _choice(path: Array, value: Variant, options: Array) -> OptionButton:
 	var picker := OptionButton.new()
+	picker.fit_to_longest_item = false
+	picker.clip_text = true
 	picker.add_item(NOT_SET)
-	for option: String in options:
-		picker.add_item(option)
-		if option == value:
+	for option: String in options + ([str(value)] if value != null and value not in options else []):
+		# Decks are listed by file name.
+		picker.add_item(option.get_file() if option.begins_with("res://") else option)
+		picker.set_item_metadata(picker.item_count - 1, option)
+		picker.set_item_tooltip(picker.item_count - 1, option)
+		if option == str(value):
 			picker.select(picker.item_count - 1)
-	if value != null and value not in options:
-		picker.add_item(str(value))
-		picker.select(picker.item_count - 1)
 	picker.item_selected.connect(func(index: int) -> void:
-		changed.emit(path, null if index == 0 else picker.get_item_text(index)))
+		changed.emit(path, null if index == 0 else picker.get_item_metadata(index)))
 	return picker
 
 
@@ -169,7 +237,8 @@ func _spot(path: Array, value: Variant) -> HBoxContainer:
 		spin.min_value = -1.0
 		spin.max_value = 2.0
 		spin.step = 0.005
-		spin.prefix = ["across", "down"][i]
+		spin.prefix = ["x", "y"][i]
+		spin.tooltip_text = ["across, from 0 (left) to 1 (right)", "down, from 0 (top) to 1 (bottom)"][i]
 		spin.value = value[i] if value is Array and value.size() == 2 else 0.5
 		spin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		spins.append(spin)
@@ -214,16 +283,17 @@ func _drag(path: Array, value: Variant) -> GridContainer:
 ## Anything else, as JSONC text; only sent when it reads correctly.
 func _json_box(path: Array, value: Variant, example: String) -> TextEdit:
 	var box := TextEdit.new()
-	box.text = GameDocument.format(value) if value != null else ""
-	box.custom_minimum_size.y = 60
+	box.text = GameDocument.one_line(value) if value != null else ""
+	box.scroll_fit_content_height = true
 	box.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
+	box.add_theme_font_override("font", EditorTheme.code_font)
 	box.placeholder_text = "e.g. " + example
 	box.focus_exited.connect(func() -> void:
 		if box.text.strip_edges().is_empty():
 			changed.emit(path, null)
 			return
 		var parsed: Variant = JSON.parse_string(GameRules.plain_json(box.text))
-		box.add_theme_color_override("font_color", BAD_COLOR if parsed == null else Color.WHITE)
+		box.add_theme_color_override("font_color", EditorTheme.ERROR if parsed == null else EditorTheme.TEXT)
 		if parsed != null:
 			changed.emit(path, parsed))
 	return box

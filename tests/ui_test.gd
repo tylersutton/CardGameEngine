@@ -53,10 +53,41 @@ func _edit(path: String) -> void:
 		problems.append("%s: undoing every edit didn't give back the file" % name)
 	_check_rule_editing(editor, name)
 	_check_recipes(editor, name)
-	editor.get_node("%PlayToggle").button_pressed = true
+	_check_outline(editor, name)
+	editor.set_playing(true)
 	await get_tree().process_frame
 	editor.queue_free()
 	await get_tree().process_frame
+
+
+## The outline adds, renames, copies and removes entries; the Game file tab edits the file; the palette finds
+## things. Undoing it all gives the file back.
+func _check_outline(editor: Node, name: String) -> void:
+	var before: String = editor.document.text
+	editor.add_entry("Table")
+	editor._rename("Table", editor.entry, "test_zone")
+	if not editor.document.has(["zones", "test_zone"]):
+		problems.append("%s: adding and renaming a zone didn't work" % name)
+	editor._duplicate("Table", "test_zone")
+	editor._remove("Table", "test_zone_copy")
+	if editor.document.has(["zones", "test_zone_copy"]) or not editor.document.has(["zones", "test_zone"]):
+		problems.append("%s: copying and removing a zone didn't work" % name)
+	editor.add_entry("Actions")
+	editor.show_tab(editor.FILE_TAB)
+	editor._file_edited(editor.document.text.replace("\"test_zone\"", "\"file_zone\""))
+	if not editor.document.has(["zones", "file_zone"]):
+		problems.append("%s: editing the game file's text didn't change the game" % name)
+	editor.show_tab(editor.TABLE_TAB)
+	editor.open_palette()
+	editor.palette.search.text = "file_zone"
+	editor.palette._filter()
+	if editor.palette.shown.is_empty() or editor.palette.shown[0].text != "file_zone":
+		problems.append("%s: the palette didn't find file_zone" % name)
+	editor.palette.hide()
+	while editor.document.text != before and editor.history:
+		editor.undo()
+	if editor.document.text != before:
+		problems.append("%s: undoing the outline edits didn't give back the file" % name)
 
 
 ## Milestone 3: the players, scoring and melds sections open, and every recipe can be added and undone.

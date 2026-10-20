@@ -1,6 +1,11 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/editor/editor_screen.gd" id="1_editor"]
+[ext_resource type="Script" path="res://scripts/editor/game_outline.gd" id="2_outline"]
+[ext_resource type="Script" path="res://scripts/editor/inspector.gd" id="3_inspector"]
+[ext_resource type="Script" path="res://scripts/editor/game_file_view.gd" id="4_file"]
+[ext_resource type="Script" path="res://scripts/editor/recipe_browser.gd" id="5_recipes"]
+[ext_resource type="Script" path="res://scripts/editor/block_browser.gd" id="6_blocks"]
 
 [node name="EditorScreen" type="Control"]
 layout_mode = 3
@@ -26,89 +31,349 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
-[node name="Toolbar" type="HBoxContainer" parent="Layout"]
+[node name="TitleBar" type="PanelContainer" parent="Layout"]
 layout_mode = 2
+theme_type_variation = &"Bar"
 
-[node name="BackButton" type="Button" parent="Layout/Toolbar"]
+[node name="Row" type="HBoxContainer" parent="Layout/TitleBar"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="BackButton" type="Button" parent="Layout/TitleBar/Row"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Games"
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
 
-[node name="SaveButton" type="Button" parent="Layout/Toolbar"]
+[node name="Menus" type="MenuBar" parent="Layout/TitleBar/Row"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Save"
+size_flags_vertical = 4
+flat = true
+prefer_global_menu = false
 
-[node name="UndoButton" type="Button" parent="Layout/Toolbar"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Undo"
-
-[node name="RedoButton" type="Button" parent="Layout/Toolbar"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Redo"
-
-[node name="RecipesButton" type="MenuButton" parent="Layout/Toolbar"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Add recipe"
-flat = false
-
-[node name="FileLabel" type="Label" parent="Layout/Toolbar"]
+[node name="FileLabel" type="Label" parent="Layout/TitleBar/Row"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"DimLabel"
 horizontal_alignment = 1
+clip_text = true
 
-[node name="PlayToggle" type="CheckButton" parent="Layout/Toolbar"]
+[node name="UndoButton" type="Button" parent="Layout/TitleBar/Row"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
+
+[node name="RedoButton" type="Button" parent="Layout/TitleBar/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
+
+[node name="SaveButton" type="Button" parent="Layout/TitleBar/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
+
+[node name="Gap" type="Control" parent="Layout/TitleBar/Row"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="Layout/TitleBar/Row"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
+
+[node name="PlayButton" type="Button" parent="Layout/TitleBar/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"AccentButton"
 text = "Play"
 
-[node name="Panes" type="HSplitContainer" parent="Layout"]
+[node name="RightGap" type="Control" parent="Layout/TitleBar/Row"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Body" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="ActivityBar" type="PanelContainer" parent="Layout/Body"]
+layout_mode = 2
+theme_type_variation = &"ActivityBar"
+
+[node name="Activities" type="VBoxContainer" parent="Layout/Body/ActivityBar"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SidebarSplit" type="HSplitContainer" parent="Layout/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sidebar" type="PanelContainer" parent="Layout/Body/SidebarSplit"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+theme_type_variation = &"SideBar"
+
+[node name="Pages" type="VBoxContainer" parent="Layout/Body/SidebarSplit/Sidebar"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Header" type="MarginContainer" parent="Layout/Body/SidebarSplit/Sidebar/Pages"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 4
+
+[node name="Row" type="HBoxContainer" parent="Layout/Body/SidebarSplit/Sidebar/Pages/Header"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="SidebarTitle" type="Label" parent="Layout/Body/SidebarSplit/Sidebar/Pages/Header/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderLabel"
+text = "OUTLINE"
+
+[node name="AddButton" type="Button" parent="Layout/Body/SidebarSplit/Sidebar/Pages/Header/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+
+[node name="OutlinePage" type="VBoxContainer" parent="Layout/Body/SidebarSplit/Sidebar/Pages"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="FilterMargin" type="MarginContainer" parent="Layout/Body/SidebarSplit/Sidebar/Pages/OutlinePage"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="OutlineFilter" type="LineEdit" parent="Layout/Body/SidebarSplit/Sidebar/Pages/OutlinePage/FilterMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Filter"
+clear_button_enabled = true
+
+[node name="Outline" type="Tree" parent="Layout/Body/SidebarSplit/Sidebar/Pages/OutlinePage"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_outline")
+
+[node name="RecipesPage" type="VBoxContainer" parent="Layout/Body/SidebarSplit/Sidebar/Pages"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("5_recipes")
+
+[node name="BlocksPage" type="VBoxContainer" parent="Layout/Body/SidebarSplit/Sidebar/Pages"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("6_blocks")
+
+[node name="InspectorSplit" type="HSplitContainer" parent="Layout/Body/SidebarSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterSplit" type="VSplitContainer" parent="Layout/Body/SidebarSplit/InspectorSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterArea" type="VBoxContainer" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="TabStrip" type="PanelContainer" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/CenterArea"]
+layout_mode = 2
+theme_type_variation = &"Bar"
+
+[node name="Row" type="HBoxContainer" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/CenterArea/TabStrip"]
+layout_mode = 2
+
+[node name="CenterTabs" type="TabBar" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/CenterArea/TabStrip/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_tabs = false
+
+[node name="TableTools" type="HBoxContainer" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/CenterArea/TabStrip/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Hint" type="Label" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/CenterArea/TabStrip/Row/TableTools"]
+layout_mode = 2
+theme_type_variation = &"DimLabel"
+text = "Drag a zone to move it"
+
+[node name="AddZoneButton" type="Button" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/CenterArea/TabStrip/Row/TableTools"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Add a zone to the table"
+theme_type_variation = &"FlatButton"
+text = "Zone"
+
+[node name="Pages" type="Control" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/CenterArea"]
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Left" type="VBoxContainer" parent="Layout/Panes"]
-custom_minimum_size = Vector2(200, 0)
+[node name="Center" type="Control" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/CenterArea/Pages"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeckPage" type="Control" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/CenterArea/Pages"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NoDeck" type="Label" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/CenterArea/Pages/DeckPage"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"DimLabel"
+text = "No deck yet. Pick a zone under Table and choose its cards, or use Add > Deck to start a new one."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FileView" type="CodeEdit" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/CenterArea/Pages"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_file")
+
+[node name="BottomPanel" type="VBoxContainer" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Header" type="PanelContainer" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/BottomPanel"]
+layout_mode = 2
+theme_type_variation = &"Bar"
+
+[node name="Row" type="HBoxContainer" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/BottomPanel/Header"]
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 
-[node name="SectionList" type="ItemList" parent="Layout/Panes/Left"]
+[node name="Title" type="Label" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/BottomPanel/Header/Row"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "  PROBLEMS"
+
+[node name="ProblemCount" type="Label" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/BottomPanel/Header/Row"]
 unique_name_in_owner = true
 layout_mode = 2
-auto_height = true
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderLabel"
 
-[node name="EntryList" type="ItemList" parent="Layout/Panes/Left"]
+[node name="CloseProblems" type="Button" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/BottomPanel/Header/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Hide the problems (Ctrl+J)"
+theme_type_variation = &"FlatButton"
+
+[node name="Problems" type="Tree" parent="Layout/Body/SidebarSplit/InspectorSplit/CenterSplit/BottomPanel"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+hide_root = true
+scroll_horizontal_enabled = false
 
-[node name="EntryButtons" type="HBoxContainer" parent="Layout/Panes/Left"]
+[node name="Inspector" type="PanelContainer" parent="Layout/Body/SidebarSplit/InspectorSplit"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_type_variation = &"SideBar"
+script = ExtResource("3_inspector")
+
+[node name="StatusBar" type="PanelContainer" parent="Layout"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"StatusBar"
 
-[node name="Middle" type="HSplitContainer" parent="Layout/Panes"]
+[node name="Row" type="HBoxContainer" parent="Layout/StatusBar"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ModeStatus" type="Button" parent="Layout/StatusBar/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"StatusButton"
+
+[node name="ProblemStatus" type="Button" parent="Layout/StatusBar/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+tooltip_text = "Show or hide the problems (Ctrl+J)"
+theme_type_variation = &"StatusButton"
+
+[node name="SaveStatus" type="Label" parent="Layout/StatusBar/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+
+[node name="StatusMessage" type="Label" parent="Layout/StatusBar/Row"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text_overrun_behavior = 3
 
-[node name="Center" type="Control" parent="Layout/Panes/Middle"]
+[node name="SummaryStatus" type="Label" parent="Layout/StatusBar/Row"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+theme_type_variation = &"DimLabel"
 
-[node name="DetailsScroll" type="ScrollContainer" parent="Layout/Panes/Middle"]
-custom_minimum_size = Vector2(440, 0)
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="Details" type="VBoxContainer" parent="Layout/Panes/Middle/DetailsScroll"]
+[node name="PaletteStatus" type="Button" parent="Layout/StatusBar/Row"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Problems" type="ItemList" parent="Layout"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 90)
-layout_mode = 2
+focus_mode = 0
+tooltip_text = "Find any command or part of the game"
+theme_type_variation = &"StatusButton"
+text = "Ctrl+P  Commands"

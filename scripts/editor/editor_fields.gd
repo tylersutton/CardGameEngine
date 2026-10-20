@@ -3,7 +3,7 @@ class_name EditorFields
 ## (the same as docs/reference.md). Kinds: text, long_text, number, whole, yes_no, choice (with options),
 ## spot ([x, y] on the table), list (comma-separated; one item stays text), names and numbers (comma-separated lists),
 ## column (a deck column), columns, expression and steps (checked as typed), zones, drag (its from and to zones),
-## json (anything else, as text, with an example).
+## json (anything else, as text, with an example). Fields with a group are folded away under that heading.
 
 const GAME := [
 	{key = "title", kind = "text", help = "The name on the title screen."},
@@ -18,33 +18,33 @@ const ZONE := [
 	{key = "per_player", kind = "yes_no", help = "One of these zones for each player (hand_1, hand_2, ...)."},
 	{key = "copies", kind = "whole", help = "Make this many of the zone (tableau_1, tableau_2, ...)."},
 	{key = "anchor", kind = "spot", help = "Where it sits, from 0 to 1 across and down. For per-player zones, seat 1's spot; the rest go round the table. Drag zones on the table to move them."},
-	{key = "width", kind = "number", help = "Widest a row or fan may spread, as a share of the table (e.g. 0.45)."},
-	{key = "rotation", kind = "number", help = "Turn the zone, in degrees (90 for the left side of the table)."},
-	{key = "outline", kind = "yes_no", help = "Draw the zone's outline. Default: yes."},
-	{key = "spread", kind = "whole", help = "For a pile: fan out its top few cards (3 for a draw-three waste)."},
-	{key = "drag", kind = "choice", options = ["stack"], help = "stack: dragging a card also carries every card on top of it."},
-	{key = "group", kind = "text", help = "With copies: also put them in a group with this name, shared with other zones."},
-	{key = "columns", kind = "json", example = "{ \"points\": \"min(card.value, 10)\" }", help = "With cards: columns to add or change on every card, e.g. { \"points\": \"min(card.value, 10)\" }."},
-	{key = "anchors", kind = "json", example = "[[0.5, 0.85], [0.5, 0.15]]", help = "With per_player or copies: one [x, y] spot each, to place them yourself."},
-	{key = "rotations", kind = "json", example = "[0, 180]", help = "With per_player or copies: one rotation each."},
-	{key = "labels", kind = "json", example = "[\"You\", \"Them\"]", help = "With per_player or copies: one label each."},
-	{key = "grid", kind = "json", example = "{ \"columns\": 5, \"spacing\": [0.09, 0.19] }", help = "With copies: lay them out in rows, e.g. { \"columns\": 5, \"spacing\": [0.09, 0.19] }."},
-	{key = "covered_by", kind = "json", example = "[[1, 2], [2, 3]]", help = "With copies: which copies lie on top of each one (Pyramid)."},
+	{key = "width", group = "Layout", kind = "number", help = "Widest a row or fan may spread, as a share of the table (e.g. 0.45)."},
+	{key = "rotation", group = "Layout", kind = "number", help = "Turn the zone, in degrees (90 for the left side of the table)."},
+	{key = "outline", group = "Layout", kind = "yes_no", help = "Draw the zone's outline. Default: yes."},
+	{key = "spread", group = "Layout", kind = "whole", help = "For a pile: fan out its top few cards (3 for a draw-three waste)."},
+	{key = "drag", group = "Advanced", kind = "choice", options = ["stack"], help = "stack: dragging a card also carries every card on top of it."},
+	{key = "group", group = "Advanced", kind = "text", help = "With copies: also put them in a group with this name, shared with other zones."},
+	{key = "columns", group = "Advanced", kind = "json", example = "{ \"points\": \"min(card.value, 10)\" }", help = "With cards: columns to add or change on every card, e.g. { \"points\": \"min(card.value, 10)\" }."},
+	{key = "anchors", group = "Advanced", kind = "json", example = "[[0.5, 0.85], [0.5, 0.15]]", help = "With per_player or copies: one [x, y] spot each, to place them yourself."},
+	{key = "rotations", group = "Advanced", kind = "json", example = "[0, 180]", help = "With per_player or copies: one rotation each."},
+	{key = "labels", group = "Advanced", kind = "json", example = "[\"You\", \"Them\"]", help = "With per_player or copies: one label each."},
+	{key = "grid", group = "Advanced", kind = "json", example = "{ \"columns\": 5, \"spacing\": [0.09, 0.19] }", help = "With copies: lay them out in rows, e.g. { \"columns\": 5, \"spacing\": [0.09, 0.19] }."},
+	{key = "covered_by", group = "Advanced", kind = "json", example = "[[1, 2], [2, 3]]", help = "With copies: which copies lie on top of each one (Pyramid)."},
 ]
 
 const ACTION := [
 	{key = "steps", kind = "steps", help = "What the action does. card is the card dragged, clicked or chosen; from and to are a drag's zones, clicked_zone a click's; choice is what was chosen."},
 	{key = "drag", kind = "drag", help = "Done by dragging a card from one zone (or group of copies) to another: from hand, to pile. Several, comma-separated; leave one empty for any zone."},
 	{key = "click", kind = "json", example = "\"deck\"", help = "Done by clicking a card in this zone (or the empty zone), e.g. \"deck\". On a drag action, true: clicking the card does the drag."},
-	{key = "double_click", kind = "json", example = "true", help = "The same for double-clicking, e.g. true on solitaire's moves to the foundations."},
+	{key = "double_click", group = "Advanced", kind = "json", example = "true", help = "The same for double-clicking, e.g. true on solitaire's moves to the foundations."},
 	{key = "when", kind = "expression", help = "Only allowed while this is true (the button is greyed out). card, from and to are the drag's."},
-	{key = "choose", kind = "expression", help = "For a button: something to choose first. Cards (e.g. hand) are clicked; values (e.g. ['Red', 'Blue'], numbers(0, 13)) get buttons."},
-	{key = "pick", kind = "expression", help = "How many cards to choose (a number, or e.g. count(hand) - 3)."},
-	{key = "up_to", kind = "expression", help = "Choose from none up to this many, then press Done."},
-	{key = "allow", kind = "expression", help = "A condition the whole choice must meet, e.g. size(groups(choice, 'rank')) == 1."},
-	{key = "button", kind = "yes_no", help = "Show it in the toolbar. Default: yes, unless it's done by a drag or click (then yes asks for a card to do it with). No: it only happens through ask('name')."},
-	{key = "human_only", kind = "yes_no", help = "Bots never do it (e.g. Next hand)."},
-	{key = "prefer", kind = "expression", help = "For a bot making this choice: what to aim for instead of the bot's usual prefer."},
+	{key = "choose", group = "Choosing", kind = "expression", help = "For a button: something to choose first. Cards (e.g. hand) are clicked; values (e.g. ['Red', 'Blue'], numbers(0, 13)) get buttons."},
+	{key = "pick", group = "Choosing", kind = "expression", help = "How many cards to choose (a number, or e.g. count(hand) - 3)."},
+	{key = "up_to", group = "Choosing", kind = "expression", help = "Choose from none up to this many, then press Done."},
+	{key = "allow", group = "Choosing", kind = "expression", help = "A condition the whole choice must meet, e.g. size(groups(choice, 'rank')) == 1."},
+	{key = "button", group = "Advanced", kind = "yes_no", help = "Show it in the toolbar. Default: yes, unless it's done by a drag or click (then yes asks for a card to do it with). No: it only happens through ask('name')."},
+	{key = "human_only", group = "Advanced", kind = "yes_no", help = "Bots never do it (e.g. Next hand)."},
+	{key = "prefer", group = "Advanced", kind = "expression", help = "For a bot making this choice: what to aim for instead of the bot's usual prefer."},
 ]
 
 const CARD_FACE := [
@@ -60,15 +60,15 @@ const CARD_FACE := [
 const PLAYERS := [
 	{key = "players", kind = "whole", help = "How many players. Turns pass with end_turn(); player is whose turn it is."},
 	{key = "player_names", kind = "names", help = "Names on the seat tags, in seat order (comma-separated). Otherwise Player 1, Player 2, ..."},
-	{key = "seats", kind = "json", example = "[[0.22, 0.86]]", help = "Where the name tags go: [[x, y]] for seat 1 (the rest go round the table), or one [x, y] per player."},
-	{key = "teams", kind = "json", example = "[[1, 3], [2, 4]]", help = "Partnerships, e.g. [[1, 3], [2, 4]]: every player on exactly one team."},
+	{key = "seats", group = "Advanced", kind = "json", example = "[[0.22, 0.86]]", help = "Where the name tags go: [[x, y]] for seat 1 (the rest go round the table), or one [x, y] per player."},
+	{key = "teams", group = "Advanced", kind = "json", example = "[[1, 3], [2, 4]]", help = "Partnerships, e.g. [[1, 3], [2, 4]]: every player on exactly one team."},
 ]
 
 const BOT := [
 	{key = "players", kind = "numbers", help = "Seats the computer plays (comma-separated, e.g. 2, 3, 4). Without prefer, bots play random legal moves."},
 	{key = "prefer", kind = "expression", help = "How good a position is for the bot, e.g. score - opponent_score. It tries every legal input and takes the best."},
-	{key = "samples", kind = "whole", help = "How many ways to shuffle the cards it can't see when judging a move. More is fairer but slower."},
-	{key = "peek", kind = "yes_no", help = "Let the bot see every card: stronger and faster."},
+	{key = "samples", group = "Advanced", kind = "whole", help = "How many ways to shuffle the cards it can't see when judging a move. More is fairer but slower."},
+	{key = "peek", group = "Advanced", kind = "yes_no", help = "Let the bot see every card: stronger and faster."},
 ]
 
 const SCORING := [

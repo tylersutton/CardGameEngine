@@ -48,6 +48,11 @@ func has(value_path: Array) -> bool:
 	return _key(value_path) in spans
 
 
+## Where the value's entry starts in the text (its key, for an object's member).
+func offset_of(value_path: Array) -> int:
+	return spans[_key(value_path)].member_start if has(value_path) else 0
+
+
 func get_value(value_path: Array, default: Variant = null) -> Variant:
 	var value: Variant = data
 	for step: Variant in value_path:

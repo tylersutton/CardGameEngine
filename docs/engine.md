@@ -22,7 +22,7 @@ Then add it to the [reference](reference.md#building-blocks).
   - Steps are read by `StepParser`, checked at load by `StepCompiler`, worked out by `StepEvaluator`, and run by `StepRunner`, which pauses at a `choose` or `offer` and starts each turn.
   - `Bot` picks moves, and `Snapshot` saves the state for undo.
 - **`scripts/ui/`** holds the table and the side panel.
-- **`scripts/editor/`** holds the game editor.
+- **`scripts/editor/`** holds the game editor. `EditorScreen` ties it together; `GameOutline`, `Inspector`, `GameFileView` and the sidebar browsers are its panels; `EditorTheme` and `EditorIcons` are its look. The building-block help comes from this repository's `docs/reference.md` (`BlockHelp`), so an exported build needs `docs/*` in its export filter for that help.
 - **`scripts/net/net.gd`** holds online play: the lobby, inputs sent through the host, and rejoining.
 
 ## Inputs, seeds and replays

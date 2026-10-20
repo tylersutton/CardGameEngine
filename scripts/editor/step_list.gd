@@ -1,10 +1,11 @@
 class_name StepList
 extends VBoxContainer
 ## A list of steps in the editor: plain steps, and "if", "for each" and "repeat while" blocks holding their own
-## steps (folded away with ▾). Steps can be added, moved and removed, or the whole list edited as text.
+## steps (folded away with their arrow) behind an indent line. Steps can be added, moved, copied and removed, or the
+## whole list edited as text.
 ## Edits go straight to the editor, one step at a time, so comments elsewhere in the list survive.
 
-const INDENT := 24
+const INDENT := 14
 const ADD_CHOICES := ["Step", "If", "For each", "Repeat while"]
 const NEW_STEPS := ["", {"if": "", "then": []}, {"for": "item", "in": "", "do": []}, {"while": "", "do": []}]
 
@@ -21,14 +22,19 @@ func _init(game_editor: Node, list_path: Array) -> void:
 		add_child(_row(steps[i], _step_path(value, i), i, steps.size()))
 	var footer := HBoxContainer.new()
 	var add := MenuButton.new()
-	add.text = "+ Add"
-	add.flat = false
+	add.text = "Add step"
+	add.icon = EditorIcons.icon("plus", Color.WHITE, 0.8)
+	add.theme_type_variation = &"FlatButton"
+	add.add_theme_color_override("font_color", EditorTheme.TEXT_DIM)
 	for choice: String in ADD_CHOICES:
 		add.get_popup().add_item(choice)
 	add.get_popup().index_pressed.connect(func(index: int) -> void: _add(NEW_STEPS[index]))
 	footer.add_child(add)
 	var as_text := Button.new()
 	as_text.text = "Edit as text"
+	as_text.icon = EditorIcons.icon("file", Color.WHITE, 0.8)
+	as_text.theme_type_variation = &"FlatButton"
+	as_text.add_theme_color_override("font_color", EditorTheme.TEXT_DIM)
 	as_text.pressed.connect(_edit_as_text)
 	footer.add_child(as_text)
 	add_child(footer)
@@ -67,21 +73,28 @@ func _row(step: Variant, step_path: Array, index: int, count: int) -> Control:
 			inner.add_child(_nested(step_path + ["else"]))
 		else:
 			var add_else := Button.new()
-			add_else.text = "+ else"
-			add_else.flat = true
+			add_else.text = "else"
+			add_else.icon = EditorIcons.icon("plus", Color.WHITE, 0.7)
+			add_else.theme_type_variation = &"FlatButton"
+			add_else.add_theme_color_override("font_color", EditorTheme.TEXT_DIM)
+			add_else.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 			add_else.pressed.connect(func() -> void: editor.edit(func() -> void: editor.document.set_value(step_path + ["else"], [])))
 			inner.add_child(add_else)
-	var fold := Button.new()
-	fold.text = "▾"
-	fold.flat = true
-	fold.pressed.connect(func() -> void:
-		inner.visible = not inner.visible
-		fold.text = "▾" if inner.visible else "▸")
-	block.get_child(0).add_child(fold)
-	block.get_child(0).move_child(fold, 0)
+	var guide := PanelContainer.new()
+	guide.add_theme_stylebox_override("panel", EditorTheme.box(Color.TRANSPARENT, EditorTheme.INPUT_BORDER, [1, 0, 0, 0], 0, Vector2(6, 0)))
 	var margin := MarginContainer.new()
 	margin.add_theme_constant_override("margin_left", INDENT)
-	margin.add_child(inner)
+	margin.add_child(guide)
+	guide.add_child(inner)
+	var fold := Button.new()
+	fold.theme_type_variation = &"FlatButton"
+	fold.icon = EditorIcons.icon("chevron_down", Color.WHITE, 0.8)
+	fold.focus_mode = Control.FOCUS_NONE
+	fold.pressed.connect(func() -> void:
+		margin.visible = not margin.visible
+		fold.icon = EditorIcons.icon("chevron_down" if margin.visible else "chevron_right", Color.WHITE, 0.8))
+	block.get_child(0).add_child(fold)
+	block.get_child(0).move_child(fold, 0)
 	block.add_child(margin)
 	return block
 
@@ -97,32 +110,43 @@ func _field(text: String, field_path: Array) -> SmartField:
 	return field
 
 
-## One line: its words, its text box, and a ⋮ menu to move or remove the step.
+## One line: its words, its text box, and a menu to move, copy or remove the step.
 func _line(parts: Array, field: Control, step_path: Array, index: int, count: int) -> HBoxContainer:
 	var line := HBoxContainer.new()
 	for part: Control in parts:
 		line.add_child(part)
 	line.add_child(field)
 	var menu := MenuButton.new()
-	menu.text = "⋮"
+	menu.theme_type_variation = &"FlatButton"
+	menu.icon = EditorIcons.icon("more", Color.WHITE, 0.8)
+	menu.tooltip_text = "Move, copy or remove this step"
 	var popup := menu.get_popup()
-	popup.add_item("Move up")
-	popup.add_item("Move down")
-	popup.add_item("Remove")
+	popup.add_icon_item(EditorIcons.icon("up"), "Move up")
+	popup.add_icon_item(EditorIcons.icon("down"), "Move down")
+	popup.add_icon_item(EditorIcons.icon("duplicate"), "Duplicate")
+	popup.add_icon_item(EditorIcons.icon("trash"), "Remove")
 	popup.set_item_disabled(0, index == 0)
 	popup.set_item_disabled(1, index == count - 1)
-	popup.index_pressed.connect(func(choice: int) -> void:
-		if choice == 2:
-			editor.edit(func() -> void: editor.document.remove(step_path))
-		else:
-			_move(index, index - 1 if choice == 0 else index + 1))
+	popup.index_pressed.connect(_on_step_menu.bind(index, step_path))
 	line.add_child(menu)
 	return line
+
+
+func _on_step_menu(choice: int, index: int, step_path: Array) -> void:
+	match choice:
+		0, 1:
+			_move(index, index - 1 if choice == 0 else index + 1)
+		2:
+			_copy(index)
+		3:
+			editor.edit(func() -> void: editor.document.remove(step_path))
 
 
 func _word(text: String) -> Label:
 	var label := Label.new()
 	label.text = text
+	label.add_theme_font_override("font", EditorTheme.code_font)
+	label.add_theme_color_override("font_color", EditorTheme.KEYWORD)
 	return label
 
 
@@ -143,12 +167,22 @@ func _move(from: int, to: int) -> void:
 		editor.document.insert(path, to, step))
 
 
+func _copy(index: int) -> void:
+	editor.edit(func() -> void:
+		var value: Variant = editor.document.get_value(path)
+		if value is String:
+			editor.document.set_value(path, [value, value])
+		else:
+			editor.document.insert(path, index + 1, value[index]))
+
+
 ## The whole list as JSONC text, for when a form is more trouble than typing.
 func _edit_as_text() -> void:
 	var dialog := ConfirmationDialog.new()
 	dialog.title = "Steps as text"
-	var box := TextEdit.new()
+	var box := CodeEdit.new()
 	box.custom_minimum_size = Vector2(640, 360)
+	box.gutters_draw_line_numbers = true
 	box.text = GameDocument.format(editor.document.get_value(path, []), "")
 	dialog.add_child(box)
 	dialog.confirmed.connect(func() -> void:

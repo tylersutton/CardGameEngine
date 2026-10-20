@@ -3,12 +3,12 @@ extends VBoxContainer
 ## A box for one step or condition: suggests names as you type (zones, variables, conditions, building blocks,
 ## card columns after "card.", and inside quotes the names a building block takes there, like the actions in
 ## offer('...')), shows a building block's (or a condition's) arguments inside its brackets, and says what's
-## wrong with the text. Sends committed(text) when you leave the box or press Enter.
+## wrong with the text. Building blocks, names, numbers and quoted text are colored. Sends committed(text) when
+## you leave the box or press Enter.
 
 signal committed(text: String)
 
-const HINT_COLOR := Color(1, 1, 1, 0.6)
-const PROBLEM_COLOR := Color(1, 0.5, 0.45)
+const NAME_COLOR := Color("9cdcfe")
 
 var code := CodeEdit.new()
 var hint := Label.new()
@@ -35,7 +35,8 @@ func _init(text: String, known_names: Array, deck_columns: Array, checker: Calla
 	code.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	code.code_completion_enabled = true
 	code.auto_brace_completion_enabled = true
-	code.custom_minimum_size.x = 160
+	code.custom_minimum_size.x = 120
+	code.syntax_highlighter = _highlighter()
 	code.text_changed.connect(_on_text_changed)
 	code.caret_changed.connect(_show_hint)
 	code.focus_exited.connect(_send)
@@ -45,7 +46,7 @@ func _init(text: String, known_names: Array, deck_columns: Array, checker: Calla
 			_send())
 	code.code_completion_requested.connect(_suggest)
 	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	hint.add_theme_font_size_override("font_size", 12)
+	hint.theme_type_variation = &"DimLabel"
 	hint.visible = false
 	add_child(code)
 	add_child(hint)
@@ -103,14 +104,15 @@ func _show_hint() -> void:
 	var lines: Array[String] = []
 	var block := _call_around(_text_before_caret())
 	if block in StepCompiler.building_blocks:
-		lines.append(StepCompiler.signature(block))
+		var help: String = BlockHelp.by_name.get(block, "")
+		lines.append(StepCompiler.signature(block) + (": " + help if help else ""))
 	elif block in signatures:
 		lines.append(signatures[block])
 	var problems: Array = check.call(code.text) if code.text.strip_edges() and check.is_valid() else []
 	lines.append_array(problems)
 	hint.text = "\n".join(lines)
 	hint.visible = not lines.is_empty()
-	hint.add_theme_color_override("font_color", PROBLEM_COLOR if problems else HINT_COLOR)
+	hint.add_theme_color_override("font_color", EditorTheme.ERROR if problems else EditorTheme.TEXT_DIM)
 
 
 ## The name whose brackets the text ends inside, e.g. "draw" in "draw(deck, |", or "".
@@ -133,3 +135,18 @@ func _quoted_block(before: String) -> String:
 		return ""
 	var block := _call_around(before.substr(0, before.rfind("'")))
 	return block if block in quoted_names else ""
+
+
+func _highlighter() -> CodeHighlighter:
+	var colors := CodeHighlighter.new()
+	colors.number_color = EditorTheme.NUMBER
+	colors.symbol_color = EditorTheme.TEXT
+	colors.function_color = EditorTheme.FUNCTION
+	colors.member_variable_color = NAME_COLOR
+	colors.add_color_region("'", "'", EditorTheme.STRING)
+	colors.add_color_region("\"", "\"", EditorTheme.STRING)
+	for name: String in names:
+		colors.add_keyword_color(name, NAME_COLOR)
+	for keyword: String in StepParser.KEYWORDS:
+		colors.add_keyword_color(keyword, EditorTheme.KEYWORD)
+	return colors

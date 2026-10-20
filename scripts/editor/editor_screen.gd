@@ -1,8 +1,8 @@
 extends Control
-## The game editor: sections on the left (each with a list of entries, like the zones), the table in the middle
-## (drag zones in Edit mode, play the game in Play mode), the selected entry's details on the right, and the
-## game's problems along the bottom. Every change edits the game file's text in place (GameDocument), so
-## comments and layout survive; nothing is written to disk until Save.
+## The game editor, laid out like a code editor: a menu bar; on the left an outline of the game (or the recipes,
+## or the building blocks); in the middle the table (drag zones, or Play), the deck or the game file's text, with
+## the problems below; the selected part's settings on the right (Inspector); and a status bar. Every change edits
+## the game file's text in place (GameDocument), so comments and layout survive; nothing is written until Save.
 
 const MAIN_SCENE := preload("res://scenes/main.tscn")
 const TITLE_SCENE := "res://scenes/title.tscn"
@@ -10,21 +10,17 @@ const SECTIONS := ["Game", "Table", "Deck", "Players", "Variables", "Actions", "
 ## Changes to the same setting within this long count as one step for Undo (e.g. dragging a number).
 const MERGE_TIME := 1500
 const RELOAD_DELAY := 0.3
-const NEW_ZONE := {"layout": "pile", "anchor": [0.5, 0.5]}
-const NEW_MELD_TYPE := {"same": "rank", "min": 3}
-## Sections listing named entries: where they live in the file, what one is called, and what a new one holds.
+const MESSAGE_TIME := 5.0
+const DECKS_FOLDER := "res://decks/"
+const NEW_DECK := "name,count\nCard 1,1\n"
+## Sections listing named entries: where they live in the file, what one is called, the name a new one gets, and
+## what it holds.
 const NAMED := {
-	"Table": {key = "zones", noun = "zone", new = NEW_ZONE},
-	"Actions": {key = "actions", noun = "action", new = {"steps": []}},
-	"Triggers": {key = "triggers", noun = "trigger", new = []},
-	"Conditions": {key = "conditions", noun = "condition", new = "true"},
+	"Table": {key = "zones", noun = "zone", first = "new_zone", new = {"layout": "pile", "anchor": [0.5, 0.5]}},
+	"Actions": {key = "actions", noun = "action", first = "New action", new = {"steps": []}},
+	"Triggers": {key = "triggers", noun = "trigger", first = "new_trigger", new = []},
+	"Conditions": {key = "conditions", noun = "condition", first = "new_condition", new = "true"},
 }
-const VARIABLE_TABLES := [
-	["variables", "Variables", "Shared values, with their starting values, e.g. phase \"draw\" or passes 0."],
-	["player_variables", "Player variables", "One of each per player (score_1, score_2); in steps, score means the current player's."],
-	["team_variables", "Team variables", "One of each per team (needs teams, under Players)."],
-	["constants", "Constants", "Values that never change, e.g. a points table shell_points [0, 0, 2, 4, 6]: read them in steps."],
-]
 ## Which section each part of the file is edited in.
 const SECTION_OF := {
 	"title": "Game", "description": "Game", "zones": "Table", "card_face": "Deck", "variables": "Variables",
@@ -32,10 +28,11 @@ const SECTION_OF := {
 	"triggers": "Triggers", "conditions": "Conditions", "players": "Players", "player_names": "Players", "seats": "Players",
 	"teams": "Players", "bot": "Players", "status": "Scoring", "show_variables": "Scoring", "melds": "Melds",
 }
-const TRIGGER_HELP := {
-	"start": "Runs when the game begins (and on Reload): deal the cards, set things up.",
-	"turn_start": "Runs after every end_turn().",
-}
+const TABLE_TAB := 0
+const DECK_TAB := 1
+const FILE_TAB := 2
+const TABS := [["Table", "table"], ["Deck", "deck"], ["Game file", "file"]]
+const SIDEBAR_PAGES := [["Outline", "outline", "OutlinePage"], ["Recipes", "recipes", "RecipesPage"], ["Building blocks", "blocks", "BlocksPage"]]
 
 @export_file("*.jsonc", "*.json") var file_path := "res://games/color_match.jsonc"
 
@@ -49,67 +46,294 @@ var last_change_path: Array = []
 var last_change_time := 0
 var section := ""
 var entry := ""
+var playing := false
 var preview: Control
 var dragger: ZoneDragger
 var deck_table := DeckTable.new()
+var palette := CommandPalette.new()
 var reload_timer := Timer.new()
+var message_timer := Timer.new()
 var recipe_added := AcceptDialog.new()
 ## The game as last checked, for suggesting names and checking steps as they're typed.
 var checked_game: Game
+var problems: Array = []
+## The deck shown in the Deck tab.
+var deck_shown := ""
+## The text box (a step, or the game file) last typed in, where building blocks are inserted.
+var last_code: CodeEdit
+## Every menu command, for the command palette: {text, detail, icon, run}.
+var commands: Array = []
+## The window's scaling before the editor opened, put back when it closes.
+var window_scaling: Array = []
 
 
 func _ready() -> void:
+	theme = EditorTheme.build()
+	_use_screen_pixels()
 	document = GameDocument.open(file_path)
 	saved_state = _state()
-	%BackButton.pressed.connect(_leave)
-	%SaveButton.pressed.connect(save)
-	%UndoButton.pressed.connect(undo)
-	%RedoButton.pressed.connect(redo)
-	%PlayToggle.toggled.connect(_set_playing)
-	var recipes := Recipes.paths()
-	for recipe: String in recipes:
-		%RecipesButton.get_popup().add_item(Recipes.title(recipe))
-	%RecipesButton.get_popup().index_pressed.connect(func(index: int) -> void: add_recipe(recipes[index]))
+	%Inspector.setup(self)
+	_build_menus()
+	_build_bars()
+	_build_sidebar()
+	_build_center()
 	recipe_added.dialog_autowrap = true
-	recipe_added.min_size.x = 480
+	recipe_added.min_size.x = 440
 	add_child(recipe_added)
-	%SectionList.item_selected.connect(func(index: int) -> void: select_section(SECTIONS[index]))
-	%EntryList.item_selected.connect(func(index: int) -> void: select_entry(%EntryList.get_item_metadata(index)))
-	%Problems.item_activated.connect(func(index: int) -> void: _go_to_problem(%Problems.get_item_text(index)))
-	for name in SECTIONS:
-		%SectionList.add_item(name)
+	add_child(palette)
 	reload_timer.one_shot = true
 	reload_timer.timeout.connect(_reload)
 	add_child(reload_timer)
+	message_timer.one_shot = true
+	message_timer.timeout.connect(func() -> void: %StatusMessage.text = "")
+	add_child(message_timer)
+	get_viewport().gui_focus_changed.connect(func(control: Control) -> void:
+		if control is CodeEdit:
+			last_code = control)
+	checked_game = Game.new(file_path, 1, _files())
+	select_section("Table")
+	_reload()
+	_update_title()
+
+
+func _exit_tree() -> void:
+	get_window().content_scale_mode = window_scaling[0]
+	get_window().content_scale_factor = window_scaling[1]
+
+
+## The game scales its table with the window; the editor instead stays at the screen's own size, like any other
+## application, so a bigger window shows more rather than bigger.
+func _use_screen_pixels() -> void:
+	var window := get_window()
+	window_scaling = [window.content_scale_mode, window.content_scale_factor]
+	window.content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
+	window.content_scale_factor = maxf(1.0, snappedf(DisplayServer.screen_get_dpi() / 96.0, 0.25))
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	# Ctrl+Z and Ctrl+Y are the Edit menu's; this catches Ctrl+Shift+Z.
+	if event.is_action_pressed("ui_redo"):
+		redo()
+
+
+# --- Building the screen ----------------------------------------------------------------------------------
+
+func _build_menus() -> void:
+	var recipes := PopupMenu.new()
+	for recipe: String in Recipes.paths():
+		recipes.add_item(Recipes.title(recipe))
+	recipes.index_pressed.connect(func(index: int) -> void: add_recipe(Recipes.paths()[index]))
+	_add_menu("File", [
+		["Save", "save", KEY_MASK_CTRL | KEY_S, save],
+		["Revert to saved", "restart", 0, _revert],
+		[],
+		["Open in text editor", "file", 0, func() -> void: OS.shell_open(ProjectSettings.globalize_path(file_path))],
+		[],
+		["Back to games", "back", KEY_MASK_CTRL | KEY_W, _leave],
+	])
+	_add_menu("Edit", [
+		["Undo", "undo", KEY_MASK_CTRL | KEY_Z, undo],
+		["Redo", "redo", KEY_MASK_CTRL | KEY_Y, redo],
+		[],
+		["Rename selected", "rename", 0, func() -> void: %Outline.start_rename()],
+		["Duplicate selected", "duplicate", KEY_MASK_CTRL | KEY_D, func() -> void: if section in NAMED and entry: _duplicate(section, entry)],
+		["Delete selected", "trash", 0, func() -> void: if section in NAMED and entry: _remove(section, entry)],
+		[],
+		["Command palette", "search", KEY_MASK_CTRL | KEY_P, open_palette],
+	])
+	_add_menu("Add", _add_items() + [[], ["Recipe", recipes]])
+	_add_menu("View", [
+		["Outline", "outline", KEY_MASK_CTRL | KEY_MASK_SHIFT | KEY_E, _show_sidebar_page.bind(0)],
+		["Recipes", "recipes", KEY_MASK_CTRL | KEY_MASK_SHIFT | KEY_R, _show_sidebar_page.bind(1)],
+		["Building blocks", "blocks", KEY_MASK_CTRL | KEY_MASK_SHIFT | KEY_B, _show_sidebar_page.bind(2)],
+		[],
+		["Table", "table", KEY_MASK_CTRL | KEY_1, show_tab.bind(TABLE_TAB)],
+		["Deck", "deck", KEY_MASK_CTRL | KEY_2, show_tab.bind(DECK_TAB)],
+		["Game file", "file", KEY_MASK_CTRL | KEY_3, show_tab.bind(FILE_TAB)],
+		[],
+		["Show or hide sidebar", "panel_left", KEY_MASK_CTRL | KEY_B, func() -> void: %Sidebar.visible = not %Sidebar.visible],
+		["Show or hide inspector", "panel_right", KEY_MASK_CTRL | KEY_MASK_ALT | KEY_B, func() -> void: %Inspector.visible = not %Inspector.visible],
+		["Show or hide problems", "panel_bottom", KEY_MASK_CTRL | KEY_J, _toggle_problems],
+	])
+	_add_menu("Game", [
+		["Play or stop", "play", KEY_F5, func() -> void: set_playing(not playing)],
+		["Restart", "restart", KEY_MASK_CTRL | KEY_R, _restart],
+	])
+	_add_menu("Help", [
+		["Tutorial", "book", 0, _open_doc.bind("res://README.md")],
+		["Game file reference", "book", KEY_F1, _open_doc.bind("res://docs/reference.md")],
+	])
+
+
+## The things the Add menu (and the outline's + button) can add.
+func _add_items() -> Array:
+	return [
+		["Zone", "zone", 0, add_entry.bind("Table")],
+		["Action", "actions", 0, add_entry.bind("Actions")],
+		["Trigger", "triggers", 0, add_entry.bind("Triggers")],
+		["Condition", "conditions", 0, add_entry.bind("Conditions")],
+		["Variable", "variables", 0, _add_variable],
+		["Deck", "deck", 0, _new_deck],
+	]
+
+
+func _add_variable() -> void:
+	select_section("Variables")
+	%Inspector.add_table_entry("variables")
+
+
+## A menu from rows of [label, icon, shortcut, what it does], [] for a line, or [label, submenu].
+func _add_menu(title: String, rows: Array) -> void:
+	var menu := _popup(rows, title)
+	menu.name = title
+	%Menus.add_child(menu)
+
+
+func _popup(rows: Array, title := "") -> PopupMenu:
+	var menu := PopupMenu.new()
+	var actions := []
+	for row: Array in rows:
+		if row.is_empty():
+			menu.add_separator()
+		elif row[1] is PopupMenu:
+			row[1].name = row[0]
+			menu.add_child(row[1])
+			menu.add_submenu_node_item(row[0], row[1])
+		else:
+			menu.add_icon_item(EditorIcons.icon(row[1]), row[0], actions.size(), row[2])
+			actions.append(row[3])
+			if title:
+				var shortcut := OS.get_keycode_string(row[2]) if row[2] else ""
+				commands.append({text = row[0], detail = title + ("  " + shortcut if shortcut else ""), icon = row[1], run = row[3]})
+	menu.id_pressed.connect(func(id: int) -> void: actions[id].call())
+	return menu
+
+
+func _build_bars() -> void:
+	for button: Array in [[%BackButton, "back", "Back to games (Ctrl+W)", _leave], [%UndoButton, "undo", "Undo (Ctrl+Z)", undo],
+			[%RedoButton, "redo", "Redo (Ctrl+Y)", redo], [%SaveButton, "save", "Save (Ctrl+S)", save],
+			[%RestartButton, "restart", "Restart the game (Ctrl+R)", _restart]]:
+		button[0].icon = EditorIcons.icon(button[1])
+		button[0].tooltip_text = button[2]
+		button[0].pressed.connect(button[3])
+	%PlayButton.pressed.connect(func() -> void: set_playing(not playing))
+	%ProblemStatus.pressed.connect(_toggle_problems)
+	%PaletteStatus.pressed.connect(open_palette)
+	%CloseProblems.icon = EditorIcons.icon("close", Color.WHITE, 0.85)
+	%CloseProblems.pressed.connect(_toggle_problems)
+	%Problems.item_activated.connect(func() -> void: _go_to_problem(%Problems.get_selected().get_metadata(0)))
+	%Problems.item_selected.connect(func() -> void: _go_to_problem(%Problems.get_selected().get_metadata(0)))
+	_show_mode()
+
+
+func _build_sidebar() -> void:
+	var group := ButtonGroup.new()
+	group.allow_unpress = true
+	for i in SIDEBAR_PAGES.size():
+		var button := Button.new()
+		button.theme_type_variation = &"ActivityButton"
+		button.icon = EditorIcons.icon(SIDEBAR_PAGES[i][1], Color.WHITE, 1.4)
+		button.tooltip_text = SIDEBAR_PAGES[i][0]
+		button.toggle_mode = true
+		button.button_group = group
+		button.focus_mode = Control.FOCUS_NONE
+		button.pressed.connect(func() -> void:
+			%Sidebar.visible = button.button_pressed
+			if button.button_pressed:
+				_show_sidebar_page(i))
+		%Activities.add_child(button)
+	%Activities.get_child(0).button_pressed = true
+	var add_menu := _popup(_add_items())
+	add_child(add_menu)
+	%AddButton.pressed.connect(func() -> void:
+		add_menu.popup(Rect2i(Vector2i(%AddButton.global_position + Vector2(0, %AddButton.size.y)), Vector2i.ZERO)))
+	%AddButton.icon = EditorIcons.icon("plus")
+	%AddButton.tooltip_text = "Add a zone, action, trigger..."
+	%OutlineFilter.right_icon = EditorIcons.icon("search", EditorTheme.TEXT_DIM)
+	%OutlineFilter.text_changed.connect(func(text: String) -> void:
+		%Outline.filter = text
+		_fill_outline())
+	%Outline.picked.connect(_pick)
+	%Outline.add_asked.connect(add_entry)
+	%Outline.rename_asked.connect(_rename)
+	%Outline.duplicate_asked.connect(_duplicate)
+	%Outline.remove_asked.connect(_remove)
+	%RecipesPage.add_asked.connect(add_recipe)
+	%BlocksPage.insert_asked.connect(_insert_block)
+	_show_sidebar_page(0)
+
+
+func _build_center() -> void:
+	for tab: Array in TABS:
+		%CenterTabs.add_tab(tab[0], EditorIcons.icon(tab[1], Color.WHITE, 0.85))
+	%CenterTabs.tab_changed.connect(_on_tab_changed)
+	%AddZoneButton.icon = EditorIcons.icon("plus", Color.WHITE, 0.85)
+	%AddZoneButton.pressed.connect(add_entry.bind("Table"))
 	preview = MAIN_SCENE.instantiate()
 	preview.rules_path = file_path
 	preview.embedded = true
 	preview.given_files = _files()
+	# The table looks as it does when played, not in the editor's own style.
+	preview.theme = ThemeDB.get_default_theme()
 	preview.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	%Center.add_child(preview)
 	%Center.resized.connect(_fit_preview)
 	preview.show_play_controls(false)
 	var table: TableView = preview.get_node("%TableView")
 	dragger = ZoneDragger.new(table)
-	dragger.zone_picked.connect(func(zone: Zone) -> void:
-		if section != "Table":
-			select_section("Table")
-		select_entry(zone.kind))
+	dragger.zone_picked.connect(func(zone: Zone) -> void: _pick("Table", zone.kind))
 	dragger.zone_moved.connect(_move_zone)
 	table.add_child(dragger)
 	deck_table.set_anchors_preset(Control.PRESET_FULL_RECT)
 	deck_table.edited.connect(_deck_edited)
-	%Center.add_child(deck_table)
-	checked_game = Game.new(file_path, 1, _files())
-	select_section("Table")
-	_reload()
+	deck_table.preview_spot.theme = ThemeDB.get_default_theme()
+	%DeckPage.add_child(deck_table)
+	%FileView.edited.connect(_file_edited)
+	show_tab(TABLE_TAB)
 
 
-func _unhandled_key_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_undo"):
-		undo()
-	elif event.is_action_pressed("ui_redo"):
-		redo()
+func _show_sidebar_page(index: int) -> void:
+	%Sidebar.visible = true
+	%Activities.get_child(index).button_pressed = true
+	%SidebarTitle.text = SIDEBAR_PAGES[index][0].to_upper()
+	for i in SIDEBAR_PAGES.size():
+		get_node("%" + SIDEBAR_PAGES[i][2]).visible = i == index
+	%AddButton.visible = index == 0
+
+
+func show_tab(index: int) -> void:
+	%CenterTabs.current_tab = index
+	_on_tab_changed(index)
+
+
+func _on_tab_changed(index: int) -> void:
+	%Center.visible = index == TABLE_TAB
+	%DeckPage.visible = index == DECK_TAB
+	%FileView.visible = index == FILE_TAB
+	%TableTools.visible = index == TABLE_TAB and not playing
+	if index == DECK_TAB:
+		_show_deck()
+	elif index == FILE_TAB:
+		%FileView.show_text(document.text)
+		_go_to_in_file()
+
+
+func _toggle_problems() -> void:
+	%BottomPanel.visible = not %BottomPanel.visible
+
+
+func _open_doc(path: String) -> void:
+	OS.shell_open(ProjectSettings.globalize_path(path))
+
+
+## The game is laid out at the play screen's size and shrunk to fit, so it looks as it will when played
+## (only smaller) instead of crowding full-size cards together.
+func _fit_preview() -> void:
+	var play_size := Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height"))
+	var shrink := minf(1.0, minf(%Center.size.x / play_size.x, %Center.size.y / play_size.y))
+	preview.size = play_size
+	preview.scale = Vector2(shrink, shrink)
+	preview.position = (%Center.size - play_size * shrink) / 2
 
 
 # --- Changing the game ------------------------------------------------------------------------------------
@@ -154,8 +378,9 @@ func redo() -> void:
 
 
 func save() -> void:
+	get_viewport().gui_release_focus()
 	if document.save() != OK:
-		_show_problems(["Couldn't save " + file_path])
+		show_message("Couldn't save " + file_path)
 		return
 	for path: String in deck_texts:
 		var file := FileAccess.open(path, FileAccess.WRITE)
@@ -163,6 +388,14 @@ func save() -> void:
 		file.close()
 	saved_state = _state()
 	_update_title()
+	show_message("Saved " + file_path.get_file())
+
+
+func _revert() -> void:
+	if _state() != saved_state:
+		_remember([])
+		_restore(saved_state)
+		show_message("Back to the saved file (Ctrl+Z brings your changes back)")
 
 
 func _remember(path: Array) -> void:
@@ -182,21 +415,45 @@ func _restore(state: Dictionary) -> void:
 	document.set_text(state.rules)
 	deck_texts = state.decks.duplicate()
 	last_change_path = []
+	if entry and not _entries(section).any(func(pair: Array) -> bool: return pair[0] == entry):
+		entry = ""
 	_changed(true)
 
 
-## After any change: the lists and title catch up, and the table and problems are checked again shortly.
+## After any change: the outline, title and game file catch up, and the table and problems are checked again
+## shortly.
 func _changed(rebuild_details: bool) -> void:
 	_update_title()
-	_fill_entries()
+	_fill_outline()
 	if rebuild_details:
-		_show_details()
+		%Inspector.show_page()
+	if %FileView.visible:
+		%FileView.show_text(document.text)
+	if %DeckPage.visible and rebuild_details:
+		_show_deck()
 	reload_timer.start(RELOAD_DELAY)
+
+
+func _file_edited(text: String) -> void:
+	_remember(["game file"])
+	document.set_text(text)
+	_changed(true)
 
 
 func _update_title() -> void:
 	var unsaved := _state() != saved_state
-	%FileLabel.text = file_path.get_file() + (" (unsaved)" if unsaved else "")
+	var title: String = document.get_value(["title"], "") if document.get_value(["title"]) is String else ""
+	%FileLabel.text = (title + "  ·  " if title else "") + file_path.get_file() + ("  ●" if unsaved else "")
+	%SaveStatus.text = "Unsaved changes" if unsaved else "Saved"
+	%SaveStatus.add_theme_color_override("font_color", EditorTheme.TEXT if unsaved else EditorTheme.TEXT_DIM)
+	var counts := []
+	for part: Array in [["zones", "zone"], ["actions", "action"], ["triggers", "trigger"]]:
+		var value: Variant = document.get_value([part[0]], {})
+		var count: int = value.size() if value is Dictionary else 0
+		counts.append("%d %s%s" % [count, part[1], "" if count == 1 else "s"])
+	var players: Variant = document.get_value(["players"], 1)
+	counts.append("%s player%s" % [GameDocument.one_line(players), "" if str(players) == "1" else "s"])
+	%SummaryStatus.text = "  ·  ".join(counts)
 
 
 func _files() -> Dictionary:
@@ -214,14 +471,65 @@ func _reload() -> void:
 	else:
 		checked_game = Game.new(file_path, 1, _files())
 		_show_problems(checked_game.errors)
+	var line := RegEx.create_from_string("^line (\\d+)").search(document.parse_error)
+	%FileView.show_error_line(line.get_string(1).to_int() - 1 if line else -1)
 
 
-func _show_problems(problems: Array) -> void:
+func _show_problems(found: Array) -> void:
+	problems = found
 	%Problems.clear()
-	for problem: String in problems:
-		%Problems.add_item(problem)
-	if problems.is_empty():
-		%Problems.add_item("No problems found.")
+	var root: TreeItem = %Problems.create_item()
+	for problem: String in found:
+		var item: TreeItem = %Problems.create_item(root)
+		item.set_text(0, problem)
+		item.set_icon(0, EditorIcons.icon("error", EditorTheme.ERROR))
+		item.set_metadata(0, problem)
+		item.set_tooltip_text(0, problem)
+	if found.is_empty():
+		var none: TreeItem = %Problems.create_item(root)
+		none.set_text(0, "No problems found.")
+		none.set_icon(0, EditorIcons.icon("ok", EditorTheme.GOOD))
+		none.set_selectable(0, false)
+		none.set_metadata(0, "")
+	%ProblemCount.text = str(found.size()) if found else ""
+	%ProblemStatus.text = "%d problem%s" % [found.size(), "" if found.size() == 1 else "s"] if found else "No problems"
+	%ProblemStatus.icon = EditorIcons.icon("error" if found else "ok", EditorTheme.ERROR if found else EditorTheme.TEXT, 0.8)
+	_fill_outline()
+
+
+## A short note in the status bar that goes away by itself.
+func show_message(text: String) -> void:
+	%StatusMessage.text = text
+	message_timer.start(MESSAGE_TIME)
+
+
+func set_playing(on: bool) -> void:
+	playing = on
+	dragger.visible = not on
+	preview.show_play_controls(on)
+	if on:
+		show_tab(TABLE_TAB)
+	%TableTools.visible = %CenterTabs.current_tab == TABLE_TAB and not on
+	_show_mode()
+	_reload()
+
+
+func _restart() -> void:
+	if not playing:
+		set_playing(true)
+	else:
+		_reload()
+
+
+func _show_mode() -> void:
+	%PlayButton.text = "Stop" if playing else "Play"
+	%PlayButton.icon = EditorIcons.icon("stop" if playing else "play")
+	%PlayButton.tooltip_text = ("Stop playing" if playing else "Play the game as it is now, saved or not") + " (F5)"
+	%RestartButton.visible = playing
+	%ModeStatus.text = "Playing" if playing else "Editing"
+	%ModeStatus.icon = EditorIcons.icon("play" if playing else "rename", Color.WHITE, 0.75)
+	%StatusBar.add_theme_stylebox_override("panel", EditorTheme.box(EditorTheme.PLAYING if playing else EditorTheme.PANEL,
+		EditorTheme.BORDER, [0, 1, 0, 0], 0, Vector2(6, 0)))
 
 
 func _leave() -> void:
@@ -236,270 +544,197 @@ func _leave() -> void:
 	dialog.popup_centered()
 
 
-## The game is laid out at the play screen's size and shrunk to fit, so it looks as it will when played
-## (only smaller) instead of crowding full-size cards together.
-func _fit_preview() -> void:
-	var play_size := Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height"))
-	var shrink := minf(1.0, minf(%Center.size.x / play_size.x, %Center.size.y / play_size.y))
-	preview.size = play_size
-	preview.scale = Vector2(shrink, shrink)
-	preview.position = (%Center.size - play_size * shrink) / 2
-
-
-func _set_playing(playing: bool) -> void:
-	dragger.visible = not playing
-	preview.show_play_controls(playing)
-	%Details.get_parent().visible = not playing
-	_reload()
-
-
 # --- Sections and entries ---------------------------------------------------------------------------------
 
+## Shows a section, with its first entry if it has any.
 func select_section(name: String) -> void:
 	section = name
-	%SectionList.select(SECTIONS.find(name))
-	entry = ""
-	_fill_entries()
-	var entries := _entries()
-	if entries:
-		select_entry(entries[0][0])
-	else:
-		_show_details()
+	var entries := _entries(name)
+	entry = entries[0][0] if entries else ""
+	_selection_changed()
 
 
 func select_entry(key: String) -> void:
 	entry = key
-	for index in %EntryList.item_count:
-		if %EntryList.get_item_metadata(index) == key:
-			%EntryList.select(index)
-	dragger.selected_kind = key if section == "Table" else ""
+	_selection_changed()
+
+
+## Picked in the outline or on the table: a section row shows the section on its own (the Deck's first deck).
+func _pick(picked_section: String, picked_entry: String) -> void:
+	if picked_section == "Deck" and picked_entry.is_empty():
+		select_section("Deck")
+		return
+	section = picked_section
+	entry = picked_entry
+	_selection_changed()
+
+
+func _selection_changed() -> void:
+	%Outline.show_selected(section, entry)
+	dragger.selected_kind = entry if section == "Table" else ""
 	dragger.queue_redraw()
-	_show_details()
+	if section == "Deck" and entry:
+		deck_shown = entry
+		if %CenterTabs.current_tab != FILE_TAB:
+			show_tab(DECK_TAB)
+	elif section == "Table" and %CenterTabs.current_tab == DECK_TAB:
+		show_tab(TABLE_TAB)
+	elif %CenterTabs.current_tab == FILE_TAB:
+		_go_to_in_file()
+	%Inspector.show_page()
 
 
-## The section's entries as [key, label] pairs.
-func _entries() -> Array:
-	if section in NAMED:
-		return document.get_value([NAMED[section].key], {}).keys().map(func(name: String) -> Array: return [name, name])
-	match section:
-		"Deck":
-			return _decks_used().map(func(deck: String) -> Array: return [deck, deck.get_file()])
+## The section's entries as [key, label, detail].
+func _entries(of_section: String) -> Array:
+	if of_section in NAMED:
+		var values: Variant = document.get_value([NAMED[of_section].key], {})
+		return values.keys().map(func(name: String) -> Array: return [name, name, _detail(of_section, values[name])]) if values is Dictionary else []
+	if of_section == "Deck":
+		return all_decks().map(func(deck: String) -> Array: return [deck, deck.get_file()])
 	return []
 
 
-func _decks_used() -> Array:
+## A word or two shown beside an entry in the outline: a zone's layout and copies, how an action is done.
+static func _detail(of_section: String, value: Variant) -> String:
+	if not value is Dictionary:
+		return "button" if of_section == "Actions" else ""
+	if of_section == "Table":
+		var copies := " ×P" if value.get("per_player", false) else (" ×%d" % value.copies if value.get("copies") is float else "")
+		return str(value.get("layout", "row")) + copies
+	if of_section == "Actions":
+		for way in ["drag", "click", "double_click"]:
+			if value.has(way):
+				return way.replace("_", " ")
+		return "button" if value.get("button", true) else "ask"
+	return ""
+
+
+func _fill_outline() -> void:
+	var sections := []
+	for name: String in SECTIONS:
+		var part := {name = name, entries = _entries(name)}
+		if name in NAMED:
+			part.noun = NAMED[name].noun
+			part.count = part.entries.size()
+		sections.append(part)
+	var marks := {}
+	for problem: String in problems:
+		var place := _place_of(problem)
+		if place:
+			marks[place[0] + ("/" + place[1] if place[1] else "")] = problem
+			marks[place[0]] = problem
+	%Outline.show_sections(sections, marks, section, entry)
+
+
+func decks_used() -> Array:
 	var decks := []
-	for zone: Variant in document.get_value(["zones"], {}).values():
+	var zones: Variant = document.get_value(["zones"], {})
+	for zone: Variant in zones.values() if zones is Dictionary else []:
 		if zone is Dictionary and zone.get("cards") is String and zone.cards not in decks:
 			decks.append(zone.cards)
 	return decks
 
 
-func _fill_entries() -> void:
-	%EntryList.clear()
-	for pair: Array in _entries():
-		%EntryList.add_item(pair[1])
-		%EntryList.set_item_metadata(%EntryList.item_count - 1, pair[0])
-		if pair[0] == entry:
-			%EntryList.select(%EntryList.item_count - 1)
-	for child in %EntryButtons.get_children():
-		child.queue_free()
-	if section in NAMED:
-		var kind: String = NAMED[section].noun
-		_add_entry_button("Add", func() -> void: _ask("New " + kind, "", _add_named))
-		_add_entry_button("Rename", func() -> void: if entry: _ask("Rename %s (steps using the old name aren't changed)" % kind, entry, _rename_named))
-		_add_entry_button("Remove", func() -> void: if entry: edit(func() -> void: document.remove([NAMED[section].key, entry])))
+## The decks the zones use, and any new ones made here.
+func all_decks() -> Array:
+	var decks := decks_used()
+	for deck: String in deck_texts:
+		if deck not in decks:
+			decks.append(deck)
+	return decks
 
 
-func _add_entry_button(text: String, pressed: Callable) -> void:
-	var button := Button.new()
-	button.text = text
-	button.pressed.connect(pressed)
-	%EntryButtons.add_child(button)
+## Adds an entry with a name not used yet, then lets you type its real name in the outline.
+func add_entry(to_section: String) -> void:
+	var named: Dictionary = NAMED[to_section]
+	var name: String = named.first
+	var number := 1
+	while document.has([named.key, name]):
+		number += 1
+		name = "%s_%d" % [named.first, number] if named.first.is_valid_identifier() else "%s %d" % [named.first, number]
+	section = to_section
+	edit(func() -> void: document.set_value([named.key, name], named.new))
+	select_entry(name)
+	_show_sidebar_page(0)
+	%Outline.start_rename()
 
 
-func _add_named(name: String) -> void:
-	var key: String = NAMED[section].key
-	if _good_name(name) and not document.has([key, name]):
-		edit(func() -> void: document.set_value([key, name], NAMED[section].new))
-		select_entry(name)
+func _rename(of_section: String, old: String, new_name: String) -> void:
+	var key: String = NAMED[of_section].key
+	if not _good_name(of_section, new_name):
+		show_message("%s names must be one word: letters, numbers and _." % NAMED[of_section].noun.capitalize())
+		_fill_outline()
+		return
+	if document.has([key, new_name]):
+		show_message("There's already a %s called %s." % [NAMED[of_section].noun, new_name])
+		_fill_outline()
+		return
+	section = of_section
+	edit(func() -> void: document.rename_key([key, old], new_name))
+	select_entry(new_name)
+	if RegEx.create_from_string("\\b%s\\b" % old).search(document.text):
+		show_message("Renamed. Steps that still say %s need changing too." % old)
 
 
-func _rename_named(name: String) -> void:
-	var key: String = NAMED[section].key
-	if _good_name(name) and not document.has([key, name]):
-		var old := entry
-		edit(func() -> void: document.rename_key([key, old], name))
-		select_entry(name)
+func _duplicate(of_section: String, key: String) -> void:
+	var named: Dictionary = NAMED[of_section]
+	var copy := key + ("_copy" if key.is_valid_identifier() else " copy")
+	while document.has([named.key, copy]):
+		copy += "_copy" if key.is_valid_identifier() else " copy"
+	section = of_section
+	edit(func() -> void: document.set_value([named.key, copy], document.get_value([named.key, key])))
+	select_entry(copy)
+
+
+func _remove(of_section: String, key: String) -> void:
+	section = of_section
+	entry = ""
+	edit(func() -> void: document.remove([NAMED[of_section].key, key]))
+	_selection_changed()
+	show_message("Deleted %s %s (Ctrl+Z to undo)" % [NAMED[of_section].noun, key])
 
 
 ## Zone, trigger and condition names are used in steps, so they must be single words; actions can say anything.
-func _good_name(name: String) -> bool:
-	if section == "Actions":
+func _good_name(of_section: String, name: String) -> bool:
+	if of_section == "Actions":
 		return not name.is_empty()
-	if section == "Conditions":
+	if of_section == "Conditions":
 		return GameRules.condition_name_pattern.search(name) != null
 	return name.is_valid_identifier()
 
 
-# --- The details panel and the middle ---------------------------------------------------------------------
-
-func _show_details() -> void:
-	for child in %Details.get_children():
-		child.queue_free()
-	preview.visible = section != "Deck"
-	deck_table.visible = section == "Deck"
-	if section in ["Table", "Deck", "Actions", "Triggers", "Conditions"] and entry.is_empty():
-		_add_heading("Nothing here yet: press Add." if section != "Deck" else "No deck yet: in Table, pick a zone and choose its cards.")
-		return
-	match section:
-		"Game":
-			_add_form([], EditorFields.GAME)
-		"Table":
-			_add_heading("Zone: " + entry)
-			_add_note(["zones", entry])
-			_add_form(["zones", entry], EditorFields.ZONE)
-		"Deck":
-			var text: String = deck_texts.get(entry, FileAccess.get_file_as_string(entry))
-			deck_table.show_deck(text, document.get_value(["card_face"], GameRules.DEFAULT_CARD_FACE))
-			_add_heading("Card face")
-			_add_form(["card_face"], EditorFields.CARD_FACE, _deck_columns())
-		"Actions":
-			_show_action()
-		"Turn":
-			_add_heading("Turn")
-			_add_help("Steps run again and again for whoever's turn it is (end_turn() passes it on). offer(['Play a card', 'Draw']) waits for the player to do one of those actions; actions never offered can be done any time. Leave it empty for games without turns, like solitaire.")
-			_add_note(["turn"])
-			if checked_game:
-				_add_summary(TurnSummary.lines(checked_game.rules))
-			%Details.add_child(StepList.new(self, ["turn"]))
-		"Triggers":
-			_add_heading("Trigger: " + entry)
-			_add_help(TRIGGER_HELP.get(entry, "Runs when a step calls trigger('%s'), or when a card names it in an on_<zone> column (then card is that card)." % entry))
-			_add_note(["triggers", entry])
-			%Details.add_child(StepList.new(self, ["triggers", entry]))
-		"Conditions":
-			_add_heading("Condition: " + entry)
-			_add_help("A named expression: write its name in any step or condition, or use matching(cards, '%s') to keep the cards it's true for (card is each card). A name like points(cards) takes parameters: use it as points(hand)." % entry)
-			_add_note(["conditions", entry])
-			var field := smart_field(str(document.get_value(["conditions", entry], "")))
-			field.committed.connect(func(text: String) -> void: change(["conditions", entry], text))
-			%Details.add_child(field)
-		"Variables":
-			for table: Array in VARIABLE_TABLES:
-				_add_heading(table[1])
-				_add_help(table[2])
-				_add_name_table(table[0])
-		"Players":
-			_add_heading("Players")
-			_add_form([], EditorFields.PLAYERS)
-			_add_heading("Bots")
-			_add_note(["bot"])
-			_add_form(["bot"], EditorFields.BOT)
-		"Scoring":
-			_add_heading("Status")
-			_add_help("Live readouts in the side panel, recalculated after every change. Name players with name_of(1), and use viewer() for anything personal (\"your points\").")
-			_add_name_table("status", true)
-			_add_form([], EditorFields.SCORING)
-		"Melds":
-			_show_melds()
+## A new deck file (written on Save), for a zone's cards.
+func _new_deck() -> void:
+	var base := DECKS_FOLDER + file_path.get_file().get_basename() + "_deck"
+	var path := base + ".csv"
+	var number := 1
+	while FileAccess.file_exists(path) or path in deck_texts:
+		number += 1
+		path = "%s_%d.csv" % [base, number]
+	_remember([])
+	deck_texts[path] = NEW_DECK
+	_changed(false)
+	section = "Deck"
+	select_entry(path)
+	show_message("New deck %s: give it to a zone as its cards, under Table." % path.get_file())
 
 
-## Rummy-style melds: a list of kinds of meld (sets, runs), each with its own small form.
-func _show_melds() -> void:
-	_add_heading("Melds")
-	_add_help("Which groups of cards count as melds; this turns on melds(), deadwood() and layoff().")
-	var types: Array = document.get_value(["melds", "types"], [])
-	for i in types.size():
-		_add_heading("Meld type %d" % (i + 1))
-		_add_form(["melds", "types", i], EditorFields.MELD_TYPE, _deck_columns())
-		var remove := Button.new()
-		remove.text = "Remove meld type %d" % (i + 1)
-		remove.pressed.connect(func() -> void: edit(func() -> void: document.remove(["melds", "types", i])))
-		%Details.add_child(remove)
-	var add := Button.new()
-	add.text = "+ Add meld type"
-	add.pressed.connect(func() -> void: edit(func() -> void:
-		if document.has(["melds", "types"]):
-			document.insert(["melds", "types"], types.size(), NEW_MELD_TYPE)
-		else:
-			document.set_value(["melds", "types"], [NEW_MELD_TYPE])))
-	%Details.add_child(add)
-	_add_form(["melds"], EditorFields.MELDS, _deck_columns())
+func _show_deck() -> void:
+	var decks := all_decks()
+	if deck_shown not in decks:
+		deck_shown = decks[0] if decks else ""
+	deck_table.visible = not deck_shown.is_empty()
+	%NoDeck.visible = deck_shown.is_empty()
+	if deck_shown:
+		var text: String = deck_texts.get(deck_shown, FileAccess.get_file_as_string(deck_shown))
+		deck_table.show_deck(text, document.get_value(["card_face"], GameRules.DEFAULT_CARD_FACE))
 
 
-## An action written as just a list of steps (a button) gets the full form once it needs more than steps.
-func _show_action() -> void:
-	var path: Array = ["actions", entry]
-	_add_heading("Action: " + entry)
-	_add_note(path)
-	if document.get_value(path) is Dictionary:
-		_add_help("Done by a drag or click if it says so, otherwise by its button. For a drag or click, the first action in the file that allows it is done.")
-		_add_form(path, EditorFields.ACTION)
-		return
-	_add_help("What the button does:")
-	%Details.add_child(StepList.new(self, path))
-	var more := Button.new()
-	more.text = "More settings (drag, click, when, choose, ...)"
-	more.pressed.connect(func() -> void: edit(func() -> void:
-		var steps: Variant = document.get_value(path)
-		document.set_value(path, {"steps": steps if steps is Array else [steps]})))
-	%Details.add_child(more)
-
-
-## Name and starting value of each variable; values are written as in the file (5, "draw", true, []).
-## Readouts (status) instead pair any name with an expression.
-func _add_name_table(key: String, readouts := false) -> void:
-	var grid := GridContainer.new()
-	grid.columns = 3
-	for name: String in document.get_value([key], {}):
-		var name_box := LineEdit.new()
-		name_box.text = name
-		name_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		name_box.text_submitted.connect(func(new_name: String) -> void:
-			if _good_table_name(key, new_name, readouts):
-				edit(func() -> void: document.rename_key([key, name], new_name)))
-		var value_box: Control
-		if readouts:
-			value_box = smart_field(str(document.get_value([key, name])))
-			value_box.committed.connect(func(text: String) -> void: change([key, name], text))
-		else:
-			var line := LineEdit.new()
-			line.text = GameDocument.one_line(document.get_value([key, name]))
-			var send := func(_text: Variant = null) -> void: change([key, name], _value_from_text(line.text))
-			line.text_submitted.connect(send)
-			line.focus_exited.connect(send)
-			value_box = line
-		value_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var remove := Button.new()
-		remove.text = "×"
-		remove.flat = true
-		remove.pressed.connect(func() -> void: edit(func() -> void: document.remove([key, name])))
-		for control: Control in [name_box, value_box, remove]:
-			grid.add_child(control)
-	%Details.add_child(grid)
-	var add := Button.new()
-	add.text = "+ Add"
-	add.pressed.connect(func() -> void: _ask("New readout" if readouts else "New variable", "", func(name: String) -> void:
-		if _good_table_name(key, name, readouts):
-			edit(func() -> void: document.set_value([key, name], "''" if readouts else 0))))
-	%Details.add_child(add)
-
-
-## Variables are used in steps, so their names must be single words; readouts are labels and can say anything.
-func _good_table_name(key: String, name: String, readouts: bool) -> bool:
-	return (not name.is_empty() if readouts else name.is_valid_identifier()) and not document.has([key, name])
-
-
-## 5, true, [] and "text" as written in the file; anything that isn't valid there is taken as text.
-static func _value_from_text(text: String) -> Variant:
-	var value: Variant = JSON.parse_string(text)
-	return text if value == null and text.strip_edges() != "null" else value
-
+# --- Steps, the deck and the table ------------------------------------------------------------------------
 
 func smart_field(text: String) -> SmartField:
 	if not checked_game:
-		return SmartField.new(text, [], _deck_columns(), _check_step)
+		return SmartField.new(text, [], deck_columns(), _check_step)
 	var rules := checked_game.rules
 	var names: Array = Array(checked_game.input_names()) + rules.conditions.keys()
 	var plain_conditions := rules.conditions.keys().filter(func(name: String) -> bool: return rules.condition_parameters[name].is_empty())
@@ -515,16 +750,16 @@ func smart_field(text: String) -> SmartField:
 	for name: String in rules.conditions:
 		if rules.condition_parameters[name]:
 			signatures[name] = "%s(%s)" % [name, ", ".join(rules.condition_parameters[name])]
-	return SmartField.new(text, names, _deck_columns(), _check_step, quoted, signatures)
+	return SmartField.new(text, names, deck_columns(), _check_step, quoted, signatures)
 
 
 func _check_step(text: String) -> Array:
 	return StepCompiler.new(checked_game).problems_with(text) if checked_game else []
 
 
-func _deck_columns() -> Array:
+func deck_columns() -> Array:
 	var columns := []
-	for deck: String in _decks_used():
+	for deck: String in all_decks():
 		var rows := DeckLoader.rows(deck_texts.get(deck, FileAccess.get_file_as_string(deck)))
 		for column in rows[0] if rows else PackedStringArray():
 			if column not in columns:
@@ -532,58 +767,30 @@ func _deck_columns() -> Array:
 	return columns
 
 
-func _add_form(path: Array, fields: Array, columns: Array = []) -> void:
-	var form := EditorForm.new()
-	form.show_fields(self, path, fields, columns)
-	form.changed.connect(func(changed_path: Array, value: Variant) -> void:
-		change(changed_path, value)
-		if value == null or changed_path.back() in ["per_player", "copies", "cards", "from", "to"]:
-			_show_details.call_deferred())
-	%Details.add_child(form)
+## A building block picked in the sidebar goes where a step (or the game file) was last being typed.
+func _insert_block(text: String) -> void:
+	if is_instance_valid(last_code) and last_code.is_visible_in_tree():
+		last_code.grab_focus()
+		last_code.insert_text_at_caret(text)
+	else:
+		DisplayServer.clipboard_set(text)
+		show_message("Copied %s: click into a step and paste it." % text)
 
 
-func _add_heading(text: String) -> void:
-	var label := Label.new()
-	label.text = text
-	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	label.add_theme_font_size_override("font_size", 18)
-	%Details.add_child(label)
-
-
-func _add_help(text: String) -> void:
-	var label := Label.new()
-	label.text = text
-	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	label.add_theme_color_override("font_color", EditorForm.HELP_COLOR)
-	%Details.add_child(label)
-
-
-## The turn in words (TurnSummary), in a box above its steps.
-func _add_summary(lines: Array[String]) -> void:
-	var box := PanelContainer.new()
-	var label := Label.new()
-	label.text = "\n".join(lines)
-	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	box.add_child(label)
-	%Details.add_child(box)
-
-
-## The comment lines above an entry in the file, editable as a note.
-func _add_note(path: Array) -> void:
-	var note := TextEdit.new()
-	note.placeholder_text = "Note (kept as a // comment in the file)"
-	note.text = document.note(path)
-	note.custom_minimum_size.y = 50
-	note.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
-	note.focus_exited.connect(func() -> void:
-		if note.text != document.note(path):
-			edit(func() -> void: document.set_note(path, note.text)))
-	%Details.add_child(note)
+func open_palette() -> void:
+	var entries := commands.duplicate()
+	for name: String in SECTIONS:
+		entries.append({text = name, detail = "Go to", icon = GameOutline.ICONS[name], run = _pick.bind(name, "")})
+		for row: Array in _entries(name):
+			entries.append({text = row[1], detail = name, icon = GameOutline.ICONS[name], run = _pick.bind(name, row[0])})
+	for recipe: String in Recipes.paths():
+		entries.append({text = "Add recipe: " + Recipes.title(recipe), detail = "Recipes", icon = "recipes", run = add_recipe.bind(recipe)})
+	palette.open(entries)
 
 
 func _deck_edited(text: String) -> void:
-	_remember(["deck", entry])
-	deck_texts[entry] = text
+	_remember(["deck", deck_shown])
+	deck_texts[deck_shown] = text
 	_changed(false)
 
 
@@ -604,23 +811,38 @@ func _move_zone(zone: Zone, spot: Vector2) -> void:
 			var start: Array = definition.get("anchor", [0.5, 0.5])
 			spot = Vector2(start[0], start[1]) + spot - zone.anchor
 	change(path, [snappedf(spot.x, 0.005), snappedf(spot.y, 0.005)])
-	_show_details()
+	%Inspector.show_page()
 
 
-## Problems name what they're about: a zone, or a step's text, which is looked up in the file.
+# --- Problems and the game file ---------------------------------------------------------------------------
+
 func _go_to_problem(problem: String) -> void:
+	if problem.is_empty():
+		return
+	if document.parse_error:
+		show_tab(FILE_TAB)
+		%FileView.set_caret_line(maxi(%FileView.error_line, 0))
+		%FileView.center_viewport_to_caret()
+		%FileView.grab_focus()
+		return
+	var place := _place_of(problem)
+	if place:
+		_show_sidebar_page(0)
+		_pick(place[0], place[1])
+
+
+## Problems name what they're about: a zone, or a step's text, which is looked up in the file. Gives
+## [section, entry], or [] if it can't tell.
+func _place_of(problem: String) -> Array:
 	var zone := RegEx.create_from_string("^Zone \"(\\w+)\"").search(problem)
 	if zone:
-		select_section("Table")
-		select_entry(zone.get_string(1))
-		return
+		return ["Table", zone.get_string(1)]
 	var quoted := RegEx.create_from_string("\"([^\"]+)\"").search(problem)
 	var path := _path_holding(document.data, quoted.get_string(1), []) if quoted else []
 	if path.is_empty() or path[0] not in SECTION_OF:
-		return
-	select_section(SECTION_OF[path[0]])
-	if path.size() >= 2 and section not in ["Variables", "Deck", "Game"]:
-		select_entry(str(path[1]))
+		return []
+	var found_section: String = SECTION_OF[path[0]]
+	return [found_section, str(path[1]) if path.size() >= 2 and found_section in NAMED else ""]
 
 
 ## The path of the first value or key in the file equal to the text.
@@ -642,14 +864,15 @@ func _path_holding(value: Variant, text: String, path: Array) -> Array:
 	return []
 
 
-func _ask(title: String, start: String, then: Callable) -> void:
-	var dialog := ConfirmationDialog.new()
-	dialog.title = title
-	var line := LineEdit.new()
-	line.text = start
-	dialog.add_child(line)
-	dialog.register_text_enter(line)
-	dialog.confirmed.connect(func() -> void: then.call(line.text.strip_edges()))
-	add_child(dialog)
-	dialog.popup_centered(Vector2i(420, 80))
-	line.grab_focus()
+## In the Game file tab, shows the selected entry's place in the text.
+func _go_to_in_file() -> void:
+	var path: Array = []
+	if section in NAMED:
+		path = [NAMED[section].key] + ([entry] if entry else [])
+	else:
+		for key: String in SECTION_OF:
+			if SECTION_OF[key] == section and document.has([key]):
+				path = [key]
+				break
+	if path and document.has(path):
+		%FileView.go_to(document.offset_of(path))

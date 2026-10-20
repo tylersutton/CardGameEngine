@@ -15,15 +15,25 @@ var preview: CardView
 
 
 func _init() -> void:
+	add_theme_constant_override("separation", 0)
+	var bar := PanelContainer.new()
+	bar.theme_type_variation = &"Bar"
 	var buttons := HBoxContainer.new()
-	for button: Array in [["Add card", _add_card], ["Duplicate card", _duplicate_card], ["Remove card", _remove_card],
-			["Add column...", _ask.bind("New column", "", _add_column)], ["Rename column...", _rename_selected_column],
-			["Remove column", _remove_column]]:
+	for button: Array in [["Card", "plus", "Add a card", _add_card], ["", "duplicate", "Duplicate the selected card", _duplicate_card],
+			["", "trash", "Remove the selected card", _remove_card], [], ["Column", "plus", "Add a column", _ask.bind("New column", "", _add_column)],
+			["", "rename", "Rename the selected column", _rename_selected_column], ["", "trash", "Remove the selected column", _remove_column]]:
+		if button.is_empty():
+			buttons.add_child(VSeparator.new())
+			continue
 		var widget := Button.new()
+		widget.theme_type_variation = &"FlatButton"
 		widget.text = button[0]
-		widget.pressed.connect(button[1])
+		widget.icon = EditorIcons.icon(button[1], Color.WHITE, 0.85)
+		widget.tooltip_text = button[2]
+		widget.pressed.connect(button[3])
 		buttons.add_child(widget)
-	add_child(buttons)
+	bar.add_child(buttons)
+	add_child(bar)
 	var body := HBoxContainer.new()
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL

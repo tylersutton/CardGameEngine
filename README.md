@@ -61,12 +61,11 @@ Only the host needs the game's files. Each player sees the table from their own 
 
 **Open in editor** on the title screen edits the same game file you would edit by hand. It keeps your comments and layout, and it only writes the file when you press **Save**.
 
-- **Left:** the parts of the game: the table, the deck, players, variables, actions, the turn, triggers, conditions, scoring and melds.
-- **Middle:** the table. Drag zones to move them. Turn on **Play** to try the game as it stands, unsaved changes included.
-- **Right:** the settings of whatever is selected, each with a line of help. Steps are edited as a list, and suggestions appear as you type. Problems, like an unknown name, are flagged as you type too.
-- **Turn:** a summary of the turn in words, above its steps.
-- **Add recipe:** adds a ready-made piece of game, such as a draw-then-discard turn, dealing, reshuffling the discard pile, following suit, or bots. Recipes live in `templates/recipes/`, and you can add your own.
-- **Bottom:** problems with the game. Double-click one to go to it.
+- **Left:** the outline: every part of the game (zones, the deck, players, variables, actions, the turn, triggers, conditions, scoring, melds). **+** adds a zone, action, trigger or condition; double-click, F2 or right-click renames, copies or deletes one. The icons beside it switch to **Recipes** (ready-made pieces of game, such as a draw-then-discard turn, dealing or bots, from `templates/recipes/`) and **Building blocks** (every block with what it does; double-click one to put it in the step you're typing).
+- **Middle:** the **Table** (drag zones to move them; **Play**, or F5, tries the game as it stands, unsaved changes included), the **Deck** as a spreadsheet, and the **Game file** itself, colored and kept in step with everything else.
+- **Right:** the inspector: the settings of whatever is selected, with less-used ones folded away. Point at a setting to read what it does at the bottom. Steps are edited as a list, with suggestions and problems shown as you type; the turn also gets a summary in words.
+- **Bottom:** problems with the game (Ctrl+J shows or hides them). Click one to go to it.
+- **Ctrl+P** finds any command or part of the game. Ctrl+S saves, Ctrl+Z undoes.
 
 ## Tutorial: making a game
 
