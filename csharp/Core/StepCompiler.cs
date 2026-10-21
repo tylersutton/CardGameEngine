@@ -13,7 +13,7 @@ public class StepCompiler
     const string ViewerBlock = "viewer";
     /// Building blocks that wait for a player, so they only work in steps.
     static readonly string[] WaitingBlocks = ["choose", "choose_exactly", "choose_up_to", "offer", "offer_until"];
-    static readonly string[] OfferBlocks = ["offer", "offer_until"];
+    public static readonly string[] OfferBlocks = ["offer", "offer_until"];
     /// Keys that are gone, with what to use instead.
     static readonly Dictionary<string, string> ReplacedKeys = new()
     {

@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Net="*res://scripts/net/net.gd"
+Net="*res://scripts/net/Net.cs"
 
 [display]
 

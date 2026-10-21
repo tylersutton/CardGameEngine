@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cbxrviu5tb00m"]
 
-[ext_resource type="Script" uid="uid://bmvx4otqp7xhv" path="res://scripts/ui/main.gd" id="1_main"]
-[ext_resource type="Script" uid="uid://dmmga7b2iq5l0" path="res://scripts/ui/table_view.gd" id="2_table"]
-[ext_resource type="Script" uid="uid://cbl3yarmriyug" path="res://scripts/ui/log_view.gd" id="3_log"]
-[ext_resource type="Script" uid="uid://bsjaea1ytn71d" path="res://scripts/ui/status_view.gd" id="4_status"]
+[ext_resource type="Script" path="res://scripts/ui/Main.cs" id="1_main"]
+[ext_resource type="Script" path="res://scripts/ui/TableView.cs" id="2_table"]
+[ext_resource type="Script" path="res://scripts/ui/LogView.cs" id="3_log"]
+[ext_resource type="Script" path="res://scripts/ui/StatusView.cs" id="4_status"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_undo"]
 command_or_control_autoremap = true

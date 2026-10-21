@@ -20,6 +20,8 @@ public partial class BuildingBlocks
 
     public bool Has(string name) => methods.ContainsKey(name);
 
+    public IEnumerable<string> Names => methods.Keys;
+
     public ParameterInfo[] Parameters(string name) => methods[name].GetParameters();
 
     public string Signature(string name) => $"{name}({string.Join(", ", Parameters(name).Select(ParameterName))})";

@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/ui/lobby.gd" id="1_lobby"]
+[ext_resource type="Script" path="res://scripts/ui/LobbyScreen.cs" id="1_lobby"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3

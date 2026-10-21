@@ -48,22 +48,7 @@ public class ReplayTests
         Assert.Equal(match.End.Result, game.Over ? game.ResultText() : "");
     }
 
-    static Input InputFrom(JsonElement recorded)
-    {
-        Dictionary<string, object?> fields = (Dictionary<string, object?>)GameRules.Parse(recorded.GetRawText())!;
-        return new((string)fields["type"]!)
-        {
-            Card = WholeNumber(fields.GetValueOrDefault("card")),
-            To = fields.GetValueOrDefault("to") as string,
-            Index = WholeNumber(fields.GetValueOrDefault("index")),
-            Zone = fields.GetValueOrDefault("zone") as string,
-            Action = fields.GetValueOrDefault("action") as string,
-            Option = fields.GetValueOrDefault("option"),
-            Player = WholeNumber(fields.GetValueOrDefault("player")),
-        };
-    }
-
-    static int? WholeNumber(object? value) => value is double number ? (int)number : null;
+    static PlayerInput InputFrom(JsonElement recorded) => PlayerInput.FromPlain((Dictionary<string, object?>)GameRules.Parse(recorded.GetRawText())!);
 
     static string GamePath(string game) => files.GamePaths().Single(path => Path.GetFileNameWithoutExtension(path) == game);
 }

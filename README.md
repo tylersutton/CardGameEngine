@@ -1,6 +1,6 @@
 # Card Game Prototyping Engine
 
-Prototype card games in Godot 4.7 without writing code. The cards come from a spreadsheet (CSV) and the rules from a game file (JSONC). The engine supplies the rest: the table, dragging, turns, choices, scoring, undo, bots, online play and an editor.
+Prototype card games in Godot 4.7 (the .NET build) without writing code. The cards come from a spreadsheet (CSV) and the rules from a game file (JSONC). The engine supplies the rest: the table, dragging, turns, choices, scoring, undo, bots, online play and an editor.
 
 - **This page:** how to play, and a tutorial that builds a small game.
 - **[docs/reference.md](docs/reference.md):** everything a game file and a deck can contain. Look things up there as you need them.
@@ -8,7 +8,7 @@ Prototype card games in Godot 4.7 without writing code. The cards come from a sp
 
 ## Quick start
 
-1. Open the project folder in Godot 4.7 and press **F5**.
+1. Open the project folder in Godot 4.7 (the .NET build, which runs C#) and press **F5**.
 2. Pick a game on the title screen. Every file in `games/` is listed there.
 3. To make your own game, press **New game...**. Give it a name, a player count and a deck, and it writes a small playable game for you to change. That game deals, lets players draw and discard, and puts bots in the other seats, and it has comments explaining each part. Change the game in the editor (**Open in editor**), or by hand (**Edit file**). Saving reloads the table.
 

@@ -1,11 +1,11 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/editor/editor_screen.gd" id="1_editor"]
-[ext_resource type="Script" path="res://scripts/editor/game_outline.gd" id="2_outline"]
-[ext_resource type="Script" path="res://scripts/editor/inspector.gd" id="3_inspector"]
-[ext_resource type="Script" path="res://scripts/editor/game_file_view.gd" id="4_file"]
-[ext_resource type="Script" path="res://scripts/editor/recipe_browser.gd" id="5_recipes"]
-[ext_resource type="Script" path="res://scripts/editor/block_browser.gd" id="6_blocks"]
+[ext_resource type="Script" path="res://scripts/editor/EditorScreen.cs" id="1_editor"]
+[ext_resource type="Script" path="res://scripts/editor/GameOutline.cs" id="2_outline"]
+[ext_resource type="Script" path="res://scripts/editor/Inspector.cs" id="3_inspector"]
+[ext_resource type="Script" path="res://scripts/editor/GameFileView.cs" id="4_file"]
+[ext_resource type="Script" path="res://scripts/editor/RecipeBrowser.cs" id="5_recipes"]
+[ext_resource type="Script" path="res://scripts/editor/BlockBrowser.cs" id="6_blocks"]
 
 [node name="EditorScreen" type="Control"]
 layout_mode = 3

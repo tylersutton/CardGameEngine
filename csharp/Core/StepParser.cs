@@ -9,7 +9,7 @@ public class StepParser
 {
     public static readonly string[] Comparisons = ["==", "!=", "<", ">", "<=", ">="];
 
-    static readonly string[] Keywords = ["and", "or", "not", "in", "if", "else", "true", "false", "null"];
+    public static readonly string[] Keywords = ["and", "or", "not", "in", "if", "else", "true", "false", "null"];
     static readonly Dictionary<string, object?> Literals = new() { ["true"] = true, ["false"] = false, ["null"] = null };
     static readonly string[] Assignments = ["=", "+=", "-="];
     // Longest first, so "==" isn't read as "=" twice.

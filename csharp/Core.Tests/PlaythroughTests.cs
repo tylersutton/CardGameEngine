@@ -101,7 +101,7 @@ public class PlaythroughTests
         Bot bot = new(game);
         Dictionary<string, object?> before = Snapshot.Describe(game);
         lines.Clear();
-        foreach (List<Input> move in game.Plays.LegalMoves())
+        foreach (List<PlayerInput> move in game.Plays.LegalMoves())
         {
             bot.TryOut(move, "0");
         }
@@ -135,7 +135,7 @@ public class PlaythroughTests
 
     static bool RandomMove(Game game, RandomNumbers chooser)
     {
-        List<List<Input>> moves = game.Plays.LegalMoves();
+        List<List<PlayerInput>> moves = game.Plays.LegalMoves();
         if (moves.Count == 0)
         {
             return false;
@@ -151,7 +151,7 @@ public class PlaythroughTests
         {
             if (action.GetValueOrDefault("human_only") is true && game.Plays.CanPerform(actionName))
             {
-                game.Apply(Input.Perform(actionName));
+                game.Apply(PlayerInput.Perform(actionName));
                 return true;
             }
         }

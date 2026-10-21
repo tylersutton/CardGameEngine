@@ -1,10 +1,29 @@
+using System.Text.Json;
 using Core;
 
-/// The game file of the step language test (tests/step_language_test.gd): two players, a standard deck, a pile and
-/// a hand each, variables, a player variable, a constant and conditions.
+/// Games made from a test's own game file text, with changes (JSON) replacing its top-level sections.
+public static class TestGames
+{
+    public static Game Create(string rules, string changes = "{}", long seed = 1, string path = "res://test.jsonc")
+    {
+        Dictionary<string, object?> merged = (Dictionary<string, object?>)GameRules.Parse(rules)!;
+        foreach ((string key, object? value) in (Dictionary<string, object?>)GameRules.Parse(changes)!)
+        {
+            merged[key] = value;
+        }
+        return new(Files(path, JsonSerializer.Serialize(merged)), path, seed);
+    }
+
+    /// The repository's files, with this text as the game file.
+    public static GameFiles Files(string path, string text) => new(RepositoryFiles.PathOf(""), new() { [path] = text });
+
+    public static Card Named(Game game, string title) => game.Cards.First(card => card.Title == title);
+}
+
+/// The game file of the step language test: two players, a standard deck, a pile and a hand each, variables, a
+/// player variable, a constant and conditions.
 public static class StepLanguageGame
 {
-    const string Path = "res://step_language_test.jsonc";
     const string Rules = """
         {
             "players": 2,
@@ -25,15 +44,5 @@ public static class StepLanguageGame
         }
         """;
 
-    /// The game, with changes (JSON) replacing its top-level sections.
-    public static Game Create(string changes = "{}")
-    {
-        Dictionary<string, object?> rules = (Dictionary<string, object?>)GameRules.Parse(Rules)!;
-        foreach ((string key, object? value) in (Dictionary<string, object?>)GameRules.Parse(changes)!)
-        {
-            rules[key] = value;
-        }
-        GameFiles files = new(RepositoryFiles.PathOf(""), new() { [Path] = System.Text.Json.JsonSerializer.Serialize(rules) });
-        return new(files, Path, 1);
-    }
+    public static Game Create(string changes = "{}") => TestGames.Create(Rules, changes, 1, "res://step_language_test.jsonc");
 }

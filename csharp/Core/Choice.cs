@@ -290,10 +290,10 @@ public class Choice(Game game)
     }
 
     /// Every way to make the open choice, for bots: each as the inputs that make it.
-    public List<List<Input>> Moves() => MovesFor(Action, Options, Pick, Exactly);
+    public List<List<PlayerInput>> Moves() => MovesFor(Action, Options, Pick, Exactly);
 
     /// Every way to make a button's choice once pressed (its options worked out now), for bots.
-    public List<List<Input>> MovesForAction(string actionName)
+    public List<List<PlayerInput>> MovesForAction(string actionName)
     {
         Dictionary<string, object?> button = game.Rules.Actions[actionName];
         List<object?> offered = OptionsFrom(game.Evaluate((string)button["choose"]!));
@@ -330,14 +330,14 @@ public class Choice(Game game)
 
     static int WholeNumber(object? value) => Values.IsNumber(value) ? (int)Values.ToDouble(value) : 0;
 
-    List<List<Input>> MovesFor(string actionName, List<object?> options, int howMany, bool onlyExactly)
+    List<List<PlayerInput>> MovesFor(string actionName, List<object?> options, int howMany, bool onlyExactly)
     {
-        List<List<Input>> found = [];
+        List<List<PlayerInput>> found = [];
         if (options.Count < howMany)
         {
             return found;
         }
-        static List<Input> Clicks(List<object?> cards) => cards.Select(card => Input.Click((Card)card!)).ToList();
+        static List<PlayerInput> Clicks(List<object?> cards) => cards.Select(card => PlayerInput.Click((Card)card!)).ToList();
         if (!onlyExactly)
         {
             for (int size = 0; size <= howMany; size++)
@@ -346,7 +346,7 @@ public class Choice(Game game)
                 {
                     if (Allows(actionName, combination))
                     {
-                        found.Add([.. Clicks(combination), Input.Finish()]);
+                        found.Add([.. Clicks(combination), PlayerInput.Finish()]);
                     }
                 }
             }
@@ -357,7 +357,7 @@ public class Choice(Game game)
             {
                 if (Allows(actionName, option))
                 {
-                    found.Add([Input.Choose(option is Zone zone ? zone.Name : option)]);
+                    found.Add([PlayerInput.Choose(option is Zone zone ? zone.Name : option)]);
                 }
             }
         }

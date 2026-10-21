@@ -37,7 +37,8 @@ public partial class GameRules
     public Dictionary<string, object?> Variables { get; private set; } = [];
     public int Players { get; private set; } = 1;
     public List<object?> Seats { get; private set; } = [];
-    public List<object?> PlayerNames { get; private set; } = [];
+    /// Online, each person's name in place of the file's.
+    public List<object?> PlayerNames { get; set; } = [];
     public Dictionary<string, object?> PlayerVariables { get; private set; } = [];
     public List<object?> Teams { get; private set; } = [];
     public Dictionary<string, object?> TeamVariables { get; private set; } = [];

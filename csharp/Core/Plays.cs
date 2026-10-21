@@ -218,13 +218,13 @@ public class Plays
 
     /// Every move the current player could make, for bots. A move is a list of inputs (see Game.Apply), e.g.
     /// pressing an action and then clicking the cards to choose.
-    public List<List<Input>> LegalMoves()
+    public List<List<PlayerInput>> LegalMoves()
     {
         if (game.Choice.IsOpen)
         {
             return game.Choice.Moves();
         }
-        List<List<Input>> moves = [];
+        List<List<PlayerInput>> moves = [];
         foreach (Zone source in game.Zones.Values)
         {
             List<DragRoute> routes = DragRoutes(source);
@@ -234,21 +234,21 @@ public class Plays
                 {
                     if (FirstAllowed(actionNames, card, source, destination).Length > 0)
                     {
-                        moves.Add([Input.Drag(card, destination)]);
+                        moves.Add([PlayerInput.Drag(card, destination)]);
                     }
                 }
                 if (ClickActionFor(source, card, ClickKey) != null)
                 {
-                    moves.Add([Input.Click(card)]);
+                    moves.Add([PlayerInput.Click(card)]);
                 }
                 if (ClickActionFor(source, card, DoubleClickKey) != null)
                 {
-                    moves.Add([Input.DoubleClick(card)]);
+                    moves.Add([PlayerInput.DoubleClick(card)]);
                 }
             }
             if (source.IsEmpty && ClickActionFor(source, null, ClickKey) != null)
             {
-                moves.Add([Input.ClickEmpty(source)]);
+                moves.Add([PlayerInput.ClickEmpty(source)]);
             }
         }
         foreach ((string actionName, Dictionary<string, object?> action) in game.Rules.Actions)
@@ -257,13 +257,13 @@ public class Plays
             {
                 continue;
             }
-            Input press = Input.Perform(actionName);
+            PlayerInput press = PlayerInput.Perform(actionName);
             if (!action.ContainsKey("choose"))
             {
                 moves.Add([press]);
                 continue;
             }
-            foreach (List<Input> choiceMove in game.Choice.MovesForAction(actionName))
+            foreach (List<PlayerInput> choiceMove in game.Choice.MovesForAction(actionName))
             {
                 moves.Add([press, .. choiceMove]);
             }

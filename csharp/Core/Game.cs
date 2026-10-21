@@ -3,7 +3,7 @@ using System.Text.Json;
 namespace Core;
 
 /// A match's rules, seed and inputs: replaying them rebuilds it exactly.
-public record MatchRecord(string Rules, long Seed, List<Input> Inputs);
+public record MatchRecord(string Rules, long Seed, List<PlayerInput> Inputs);
 
 /// A game being played: its zones, cards, variables and players. It carries out inputs (Apply) and runs the
 /// game file's steps (with StepRunner); Plays knows what players can do and Choice is the choice being made.
@@ -24,12 +24,13 @@ public class Game : IStepContext
     public const char CardEffectSeparator = ';';
     public const string LoopNumberSuffix = "_number";
 
-    static readonly BuildingBlocks buildingBlocks = new(typeof(Actions));
+    /// The building blocks steps can call (the methods of Actions).
+    public static readonly BuildingBlocks BuildingBlocks = new(typeof(Actions));
 
     public event Action<string>? Failed;
     public event Action? VariablesChanged;
     public event Action? StateChanged;
-    public event Action<Input>? InputApplied;
+    public event Action<PlayerInput>? InputApplied;
 
     public GameRules Rules { get; } = new();
     public string RulesPath { get; }
@@ -37,7 +38,7 @@ public class Game : IStepContext
     public RandomNumbers Random { get; }
     public GameFiles Files { get; }
     public List<Card> Cards { get; } = [];
-    public List<Input> Inputs { get; } = [];
+    public List<PlayerInput> Inputs { get; } = [];
     /// The player this screen belongs to (0 when people share a screen).
     public int LocalSeat { get; set; }
     public bool Started { get; private set; }
@@ -190,8 +191,8 @@ public class Game : IStepContext
     }
 
     /// The one way in for people, bots and the network. An input is plain data, so it can be sent, recorded and
-    /// replayed (see Input). With a player, it's refused unless that player may act now.
-    public bool Apply(Input input)
+    /// replayed (see PlayerInput). With a player, it's refused unless that player may act now.
+    public bool Apply(PlayerInput input)
     {
         if (!IsWellFormed(input))
         {
@@ -215,9 +216,9 @@ public class Game : IStepContext
     }
 
     /// Applies each input of a move (e.g. press an action, then click the card to choose), as that player.
-    public void ApplyMove(List<Input> move, int player = 0)
+    public void ApplyMove(List<PlayerInput> move, int player = 0)
     {
-        foreach (Input input in move)
+        foreach (PlayerInput input in move)
         {
             Apply(player != 0 ? input with { Player = player } : input);
         }
@@ -225,7 +226,7 @@ public class Game : IStepContext
 
     /// Who may make an input: the player whose turn (or choice) it is. Human-only buttons are for any person,
     /// anyone may rearrange their own cards, and undo is for the table to agree on.
-    public bool MayAct(int player, Input input)
+    public bool MayAct(int player, PlayerInput input)
     {
         switch (input.Type)
         {
@@ -239,7 +240,7 @@ public class Game : IStepContext
         return Sandbox || player == CurrentPlayer();
     }
 
-    bool IsWellFormed(Input input)
+    bool IsWellFormed(PlayerInput input)
     {
         if ((input.Card ?? 0) < 0 || (input.Card ?? 0) >= Cards.Count)
         {
@@ -259,7 +260,7 @@ public class Game : IStepContext
     }
 
     /// Carries out an input without checking who sent it or recording it (Apply does both; bots trying moves out don't).
-    public bool RunInput(Input input)
+    public bool RunInput(PlayerInput input)
     {
         Card? card = input.Card is int id ? Cards[id] : null;
         switch (input.Type)
@@ -320,7 +321,7 @@ public class Game : IStepContext
     {
         Game game = new(files, record.Rules, record.Seed);
         game.Start();
-        foreach (Input input in record.Inputs)
+        foreach (PlayerInput input in record.Inputs)
         {
             game.Apply(input);
         }
@@ -1209,7 +1210,7 @@ public class Game : IStepContext
 
     // What StepEvaluator needs (IStepContext).
 
-    public BuildingBlocks Blocks => buildingBlocks;
+    public BuildingBlocks Blocks => BuildingBlocks;
 
     public bool Waiting => Runner.WaitRequest != null;
 

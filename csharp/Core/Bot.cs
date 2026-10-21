@@ -44,7 +44,7 @@ public class Bot
         {
             prefer = game.Rules.Actions.GetValueOrDefault(game.Choice.Action)?.GetValueOrDefault("prefer") as string ?? prefer;
         }
-        List<Input> bestMove = prefer.Length > 0 ? BestMove(prefer) : AnyMove();
+        List<PlayerInput> bestMove = prefer.Length > 0 ? BestMove(prefer) : AnyMove();
         if (bestMove.Count == 0)
         {
             return false;
@@ -59,7 +59,7 @@ public class Bot
     /// Runs the move silently, measures the result as the current player, then undoes it. Gives null if the move
     /// changed nothing (e.g. only reordered cards). With deals (a guess at each hidden card's data), the move is
     /// tried with each guess and the results averaged, so the measure can't peek.
-    public object? TryOut(List<Input> move, string measure, List<Dictionary<Card, Dictionary<string, string>>>? deals = null, StartingPoint? start = null)
+    public object? TryOut(List<PlayerInput> move, string measure, List<Dictionary<Card, Dictionary<string, string>>>? deals = null, StartingPoint? start = null)
     {
         start ??= StartingPoint.Of(game);
         if (deals == null || deals.Count == 0)
@@ -99,13 +99,13 @@ public class Bot
         public static StartingPoint Of(Game game) => new(Snapshot.Take(game), Snapshot.Describe(game, false));
     }
 
-    List<Input> BestMove(string prefer)
+    List<PlayerInput> BestMove(string prefer)
     {
-        List<Input> bestMove = [];
+        List<PlayerInput> bestMove = [];
         double bestValue = double.NegativeInfinity;
         List<Dictionary<Card, Dictionary<string, string>>> deals = Deals();
         StartingPoint start = StartingPoint.Of(game);
-        foreach (List<Input> move in game.Plays.LegalMoves())
+        foreach (List<PlayerInput> move in game.Plays.LegalMoves())
         {
             object? value = TryOut(move, prefer, deals, start);
             if (Values.IsNumber(value) && Values.ToDouble(value) > bestValue)
@@ -119,9 +119,9 @@ public class Bot
 
     /// With no "prefer", any legal move that changes something (not one that only sorts, say): enough to play a
     /// prototype through.
-    List<Input> AnyMove()
+    List<PlayerInput> AnyMove()
     {
-        List<List<Input>> moves = game.Plays.LegalMoves();
+        List<List<PlayerInput>> moves = game.Plays.LegalMoves();
         Shuffle(moves);
         return moves.FirstOrDefault(move => TryOut(move, "0") != null) ?? [];
     }
@@ -165,7 +165,7 @@ public class Bot
     static bool FitsMarks(Dictionary<string, string> data, Card card) =>
         card.Marks.All(mark => !data.TryGetValue(mark.Key, out string? value) || value == Values.Format(mark.Value));
 
-    object? TryOnce(List<Input> move, string measure, StartingPoint start)
+    object? TryOnce(List<PlayerInput> move, string measure, StartingPoint start)
     {
         int player = game.CurrentPlayer();
         int historySize = game.History.Count;
@@ -174,7 +174,7 @@ public class Bot
         game.GameLog.Flush();
         game.SetQuiet(true);
         game.Remembering = false;
-        foreach (Input input in move)
+        foreach (PlayerInput input in move)
         {
             game.RunInput(input);
         }
@@ -204,7 +204,7 @@ public class Bot
     {
         object? best = null;
         StartingPoint start = StartingPoint.Of(game);
-        foreach (List<Input> choiceMove in game.Plays.LegalMoves())
+        foreach (List<PlayerInput> choiceMove in game.Plays.LegalMoves())
         {
             object? value = TryOnce(choiceMove, measure, start);
             if (Values.IsNumber(value) && (best == null || Values.ToDouble(value) > Values.ToDouble(best)))

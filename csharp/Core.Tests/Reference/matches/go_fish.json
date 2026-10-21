@@ -1,0 +1,6560 @@
+[
+	{
+		"seed": 1,
+		"inputs": [
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "drag",
+				"card": 51,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 12
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "drag",
+				"card": 17,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "drag",
+				"card": 40,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "drag",
+				"card": 29,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "drag",
+				"card": 23,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "click",
+				"card": 4
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 17
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 1
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "click",
+				"card": 32
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 37
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 49
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 32
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 32
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "drag",
+				"card": 10,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 37
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "drag",
+				"card": 16,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "drag",
+				"card": 45,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 24
+			},
+			{
+				"type": "drag",
+				"card": 31,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "drag",
+				"card": 13,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  sort hand_1 by value, suit",
+				"  sort hand_2 by value, suit",
+				"  shuffle deck",
+				"  deck → hand_1: 6♠, A♣, 8♦, 5♣, 7♥, 8♠, 6♥",
+				"  deck → hand_2: 7 hidden cards",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose A♣",
+				"  asked_rank = A",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: K♥",
+				"  got_1 = K♥",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 10",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 6♠",
+				"  asked_rank = 6",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: K♦",
+				"  got_1 = K♦",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 9",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose A♣",
+				"  asked_rank = A",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: K♠",
+				"  got_1 = K♠",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 2",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (8)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×8)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 6♥",
+				"  asked_rank = 6",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 5♥",
+				"  got_1 = 5♥",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 10",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (8)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×8)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose K♥",
+				"  asked_rank = K",
+				"  got_1 = [a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: K♣",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_1 → books_1: K♠, K♣, K♥, K♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 6♠",
+				"  asked_rank = 6",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 4♦",
+				"  got_1 = 4♦",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 2 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 9",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 7♥",
+				"  asked_rank = 7",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 5♠",
+				"  got_1 = 5♠",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = J",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 5♥",
+				"  asked_rank = 5",
+				"  got_1 = [a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: 5♦",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_1 → books_1: 5♠, 5♣, 5♥, 5♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 4♦",
+				"  asked_rank = 4",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 2♦",
+				"  got_1 = 2♦",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 2 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 2",
+				"  got_2 = [2♦]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: 2♦",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: 2♠, 2♣, 2♥, 2♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 9",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 2 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 7♥",
+				"  asked_rank = 7",
+				"  got_1 = [a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: 7♦",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 4♦",
+				"  asked_rank = 4",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: Q♦",
+				"  got_1 = Q♦",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 2 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = J",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 7♦",
+				"  asked_rank = 7",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 8♥",
+				"  got_1 = 8♥",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = J",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 7♦",
+				"  asked_rank = 7",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 8♣",
+				"  got_1 = 8♣",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_1 → books_1: 8♠, 8♣, 8♥, 8♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 9",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → else",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 9",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 2 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 7♥",
+				"  asked_rank = 7",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 3♣",
+				"  got_1 = 3♣",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 10",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 6♠",
+				"  asked_rank = 6",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 6♣",
+				"  got_1 = 6♣",
+				"  if got.rank != asked_rank → else",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose Q♦",
+				"  asked_rank = Q",
+				"  got_1 = [a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: Q♥",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 3♣",
+				"  asked_rank = 3",
+				"  got_1 = [a hidden card, a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: 3♠, 3♥",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 4♦",
+				"  asked_rank = 4",
+				"  got_1 = [a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: 4♣",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 6♥",
+				"  asked_rank = 6",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 4♥",
+				"  got_1 = 4♥",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 5 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 9",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 7♥",
+				"  asked_rank = 7",
+				"  got_1 = [a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: 7♣",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 6♣",
+				"  asked_rank = 6",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: J♦",
+				"  got_1 = J♦",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 2 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 9",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (4)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×4)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose Q♥",
+				"  asked_rank = Q",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 6♦",
+				"  got_1 = 6♦",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_1 → books_1: 6♠, 6♣, 6♥, 6♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 9",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → else",
+				"  for group in groups(hand, 'rank') (4)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: 9♠, 9♣, 9♥, 9♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×3)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 10",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (3)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×3)",
+				"  while go_again: repeated 2 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 3♣",
+				"  asked_rank = 3",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: Q♠",
+				"  got_1 = Q♠",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = A",
+				"  got_2 = [A♣]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: A♣",
+				"  for group in groups(hand, 'rank') (3)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×3)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = J",
+				"  got_2 = [J♦]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: J♦",
+				"  for group in groups(hand, 'rank') (3)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: J♠, J♣, J♥, J♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×2)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = A",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → else",
+				"  for group in groups(hand, 'rank') (2)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: A♠, A♣, A♥, A♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 10",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (2)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×2)",
+				"  while go_again: repeated 4 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 7♥",
+				"  asked_rank = 7",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 10♦",
+				"  got_1 = 10♦",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 10",
+				"  got_2 = [10♦]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: 10♦",
+				"  for group in groups(hand, 'rank') (2)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: 10♠, 10♣, 10♥, 10♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 4",
+				"  got_2 = [4♣, 4♥, 4♦]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: 4♣, 4♥, 4♦",
+				"  for group in groups(hand, 'rank') (1)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: 4♠, 4♣, 4♥, 4♦",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			]
+		],
+		"end": {
+			"zones": {
+				"deck": [
+					"▼7♠",
+					"▼Q♣",
+					"▼3♦"
+				],
+				"hand_1": [
+					"3♠",
+					"3♣",
+					"3♥",
+					"7♣",
+					"7♥",
+					"7♦",
+					"Q♠",
+					"Q♥",
+					"Q♦"
+				],
+				"hand_2": [],
+				"books_1": [
+					"K♠",
+					"K♣",
+					"K♥",
+					"K♦",
+					"5♠",
+					"5♣",
+					"5♥",
+					"5♦",
+					"8♠",
+					"8♣",
+					"8♥",
+					"8♦",
+					"6♠",
+					"6♣",
+					"6♥",
+					"6♦"
+				],
+				"books_2": [
+					"2♠",
+					"2♣",
+					"2♥",
+					"2♦",
+					"9♠",
+					"9♣",
+					"9♥",
+					"9♦",
+					"J♠",
+					"J♣",
+					"J♥",
+					"J♦",
+					"A♠",
+					"A♣",
+					"A♥",
+					"A♦",
+					"10♠",
+					"10♣",
+					"10♥",
+					"10♦",
+					"4♠",
+					"4♣",
+					"4♥",
+					"4♦"
+				]
+			},
+			"variables": {
+				"asked_rank": "4",
+				"starting_hand_size": "7",
+				"player": "2",
+				"player_books_1": "0",
+				"player_books_2": "0",
+				"got_1": "10♦",
+				"got_2": "[4♣, 4♥, 4♦]",
+				"go_again_1": "true",
+				"go_again_2": "true"
+			},
+			"over": false,
+			"result": ""
+		}
+	},
+	{
+		"seed": 2,
+		"inputs": [
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "click",
+				"card": 13
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 49
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 49
+			},
+			{
+				"type": "drag",
+				"card": 32,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 13
+			},
+			{
+				"type": "click",
+				"card": 31
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 28
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "click",
+				"card": 1
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "drag",
+				"card": 50,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 51
+			},
+			{
+				"type": "drag",
+				"card": 47,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 24
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 50
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "drag",
+				"card": 10,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 31
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 50
+			},
+			{
+				"type": "drag",
+				"card": 30,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 37
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "drag",
+				"card": 33,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 45
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "drag",
+				"card": 35,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 13
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "drag",
+				"card": 39,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 49
+			},
+			{
+				"type": "drag",
+				"card": 25,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "drag",
+				"card": 17,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "drag",
+				"card": 16,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "drag",
+				"card": 14,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 28
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 33
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 33
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "click",
+				"card": 4
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 13
+			},
+			{
+				"type": "drag",
+				"card": 42,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "drag",
+				"card": 46,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 13
+			},
+			{
+				"type": "drag",
+				"card": 7,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "drag",
+				"card": 6,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "drag",
+				"card": 19,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "drag",
+				"card": 3,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "drag",
+				"card": 40,
+				"to": "hand_2"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "drag",
+				"card": 23,
+				"to": "hand_1"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "click",
+				"card": 40
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Ask"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  sort hand_1 by value, suit",
+				"  sort hand_2 by value, suit",
+				"  shuffle deck",
+				"  deck → hand_1: 3♠, 6♥, Q♦, 9♠, 3♦, J♣, K♦",
+				"  deck → hand_2: 7 hidden cards",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose K♦",
+				"  asked_rank = K",
+				"  got_1 = [a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: K♣",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 6♥",
+				"  asked_rank = 6",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 8♥",
+				"  got_1 = 8♥",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 2 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 10",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose J♣",
+				"  asked_rank = J",
+				"  got_1 = [a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: J♦",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose J♣",
+				"  asked_rank = J",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 7♦",
+				"  got_1 = 7♦",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (8)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×8)",
+				"  while go_again: repeated 2 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = A",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 3♦",
+				"  asked_rank = 3",
+				"  got_1 = [a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: 3♥",
+				"  for group in groups(hand, 'rank') (8)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×8)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose J♦",
+				"  asked_rank = J",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 2♠",
+				"  got_1 = 2♠",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (9)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×9)",
+				"  while go_again: repeated 2 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 10",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose K♣",
+				"  asked_rank = K",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 9♣",
+				"  got_1 = 9♣",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (9)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×9)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 5",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 3♥",
+				"  asked_rank = 3",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 10♠",
+				"  got_1 = 10♠",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (10)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×10)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = Q",
+				"  got_2 = [Q♦]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: Q♦",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = Q",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 2 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose K♦",
+				"  asked_rank = K",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: J♠",
+				"  got_1 = J♠",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (9)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×9)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 6",
+				"  got_2 = [6♥]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: 6♥",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 6",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → else",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = Q",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 3 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose J♠",
+				"  asked_rank = J",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 6♠",
+				"  got_1 = 6♠",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (9)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×9)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 6",
+				"  got_2 = [6♠]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: 6♠",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: 6♠, 6♣, 6♥, 6♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = Q",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → else",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: Q♠, Q♣, Q♥, Q♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 5",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  while go_again: repeated 3 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 9♠",
+				"  asked_rank = 9",
+				"  got_1 = [a hidden card, a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: 9♥, 9♦",
+				"  for group in groups(hand, 'rank') (8)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_1 → books_1: 9♠, 9♣, 9♥, 9♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose J♠",
+				"  asked_rank = J",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 8♦",
+				"  got_1 = 8♦",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 2 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 5",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 8♥",
+				"  asked_rank = 8",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: A♠",
+				"  got_1 = A♠",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (8)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×8)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 10",
+				"  got_2 = [10♠]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: 10♠",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 10",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → else",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: 10♠, 10♣, 10♥, 10♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×4)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = A",
+				"  got_2 = [A♠]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: A♠",
+				"  for group in groups(hand, 'rank') (4)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×4)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 5",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (4)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×4)",
+				"  while go_again: repeated 4 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose J♣",
+				"  asked_rank = J",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: K♥",
+				"  got_1 = K♥",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = A",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (4)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×4)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose J♠",
+				"  asked_rank = J",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 4♥",
+				"  got_1 = 4♥",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 5",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 3♦",
+				"  asked_rank = 3",
+				"  got_1 = [a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: 3♣",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_1 → books_1: 3♠, 3♣, 3♥, 3♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 8♦",
+				"  asked_rank = 8",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 2♦",
+				"  got_1 = 2♦",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 2 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = A",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 2♦",
+				"  asked_rank = 2",
+				"  got_1 = [a hidden card]",
+				"  if count(got) > 0 → then",
+				"  hand_2 → hand_1: 2♥",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose 8♦",
+				"  asked_rank = 8",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 5♠",
+				"  got_1 = 5♠",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 2 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = A",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (4)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×4)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose K♦",
+				"  asked_rank = K",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 8♣",
+				"  got_1 = 8♣",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = A",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose J♠",
+				"  asked_rank = J",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 7♠",
+				"  got_1 = 7♠",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 4",
+				"  got_2 = [4♥]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: 4♥",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 4",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  while go_again: repeated 2 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by name",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose K♥",
+				"  asked_rank = K",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: 4♠",
+				"  got_1 = 4♠",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×7)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = A",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → then",
+				"  go_again_2 = false",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_2 = true",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose K♥",
+				"  asked_rank = K",
+				"  got_1 = []",
+				"  if count(got) > 0 → else",
+				"  You may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_1: J♥",
+				"  got_1 = J♥",
+				"  if got.rank != asked_rank → then",
+				"  go_again_1 = false",
+				"  for group in groups(hand, 'rank') (7)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_1 → books_1: J♠, J♣, J♥, J♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×6)",
+				"  while go_again: repeated 1 times",
+				"  go_again_1 = true",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 4",
+				"  got_2 = [4♠]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: 4♠",
+				"  for group in groups(hand, 'rank') (6)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: 4♠, 4♣, 4♥, 4♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×5)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 5",
+				"  got_2 = [5♠]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: 5♠",
+				"  for group in groups(hand, 'rank') (5)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: 5♠, 5♣, 5♥, 5♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×4)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = A",
+				"  got_2 = []",
+				"  if count(got) > 0 → else",
+				"  Player 2 (bot) may: Go Fish"
+			],
+			[
+				"[action] Go Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  got_2 = a hidden card",
+				"  if got.rank != asked_rank → else",
+				"  for group in groups(hand, 'rank') (4)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: A♠, A♣, A♥, A♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×3)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 8",
+				"  got_2 = [8♣, 8♥, 8♦]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: 8♣, 8♥, 8♦",
+				"  for group in groups(hand, 'rank') (3)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: 8♠, 8♣, 8♥, 8♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else (×2)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 7",
+				"  got_2 = [7♠, 7♦]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: 7♠, 7♦",
+				"  for group in groups(hand, 'rank') (2)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: 7♠, 7♣, 7♥, 7♦",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → else",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Click the card whose rank you want] chose a hidden card",
+				"  asked_rank = 2",
+				"  got_2 = [2♠, 2♥, 2♦]",
+				"  if count(got) > 0 → then",
+				"  hand_1 → hand_2: 2♠, 2♥, 2♦",
+				"  for group in groups(hand, 'rank') (1)",
+				"  if count(where(hand, 'rank', top(group).rank)) == 4 → then",
+				"  hand_2 → books_2: 2♠, 2♣, 2♥, 2♦",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Ask",
+				"[failed] Step failed: \"asked_rank = choose(hand, 'Click the card whose rank you want').rank\": can't read .rank of nothing (if the card might be missing, text() and number() give '' and 0)",
+				"  for group in groups(hand, 'rank') (0)",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by name",
+				"  Player 2 (bot) may: Ask"
+			]
+		],
+		"end": {
+			"zones": {
+				"deck": [
+					"▼K♠"
+				],
+				"hand_1": [
+					"K♣",
+					"K♥",
+					"K♦"
+				],
+				"hand_2": [],
+				"books_1": [
+					"9♠",
+					"9♣",
+					"9♥",
+					"9♦",
+					"3♠",
+					"3♣",
+					"3♥",
+					"3♦",
+					"J♠",
+					"J♣",
+					"J♥",
+					"J♦"
+				],
+				"books_2": [
+					"6♠",
+					"6♣",
+					"6♥",
+					"6♦",
+					"Q♠",
+					"Q♣",
+					"Q♥",
+					"Q♦",
+					"10♠",
+					"10♣",
+					"10♥",
+					"10♦",
+					"4♠",
+					"4♣",
+					"4♥",
+					"4♦",
+					"5♠",
+					"5♣",
+					"5♥",
+					"5♦",
+					"A♠",
+					"A♣",
+					"A♥",
+					"A♦",
+					"8♠",
+					"8♣",
+					"8♥",
+					"8♦",
+					"7♠",
+					"7♣",
+					"7♥",
+					"7♦",
+					"2♠",
+					"2♣",
+					"2♥",
+					"2♦"
+				]
+			},
+			"variables": {
+				"asked_rank": "2",
+				"starting_hand_size": "7",
+				"player": "2",
+				"player_books_1": "0",
+				"player_books_2": "0",
+				"got_1": "J♥",
+				"got_2": "[2♠, 2♥, 2♦]",
+				"go_again_1": "true",
+				"go_again_2": "true"
+			},
+			"over": false,
+			"result": ""
+		}
+	}
+]

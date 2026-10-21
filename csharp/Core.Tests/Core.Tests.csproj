@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Editing\Editing.csproj" />
   </ItemGroup>
 
 </Project>

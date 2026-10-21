@@ -12,6 +12,10 @@
     <!-- The engine is its own library (csharp/Core), with its tests beside it. -->
     <Compile Remove="csharp/**" />
     <ProjectReference Include="csharp/Core/Core.csproj" />
+    <ProjectReference Include="csharp/Editing/Editing.csproj" />
+    <!-- Godot has its own Timer and FileAccess. -->
+    <Using Remove="System.Threading" />
+    <Using Remove="System.IO" />
   </ItemGroup>
 
 </Project>
