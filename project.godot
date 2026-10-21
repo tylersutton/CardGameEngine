@@ -28,6 +28,10 @@ window/size/window_height_override=900
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[dotnet]
+
+project/assembly_name="CardGamePrototyping"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
