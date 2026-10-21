@@ -1,291 +1,237 @@
 [
 	{
-		"end": {
-			"over": true,
-			"result": "Winner: You",
-			"variables": {
-				"actor": "1",
-				"noped": "false",
-				"pending": "",
-				"player": "1",
-				"target": "2"
-			},
-			"zones": {
-				"box": [],
-				"deck": [
-					"▼Steal"
-				],
-				"hand_1": [
-					"Defuse"
-				],
-				"hand_2": [],
-				"hand_3": [],
-				"out": [
-					"Bomb",
-					"Bomb"
-				],
-				"peek_1": [],
-				"peek_2": [],
-				"peek_3": [],
-				"pile": [
-					"Peek",
-					"Nope",
-					"Skip",
-					"Shuffle",
-					"Shuffle",
-					"Peek",
-					"Nope",
-					"Peek",
-					"Defuse",
-					"Peek",
-					"Nope",
-					"Shuffle",
-					"Nope",
-					"Steal",
-					"Shuffle",
-					"Skip",
-					"Nope",
-					"Steal",
-					"Skip",
-					"Steal",
-					"Defuse",
-					"Skip",
-					"Defuse",
-					"Defuse"
-				]
-			}
-		},
+		"seed": 1,
 		"inputs": [
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Nope!",
-				"type": "choose"
+				"type": "choose",
+				"option": "Nope!"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Nope!",
-				"type": "choose"
+				"type": "choose",
+				"option": "Nope!"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
-				"option": "Done",
-				"type": "choose"
+				"type": "choose",
+				"option": "Done"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "hand_3",
-				"type": "drag"
+				"to": "hand_3"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
-				"option": "Nope!",
-				"type": "choose"
+				"type": "choose",
+				"option": "Nope!"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Nope!",
-				"type": "choose"
+				"type": "choose",
+				"option": "Nope!"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 8,
-				"type": "click"
+				"type": "click",
+				"card": 8
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "hand_3",
-				"type": "drag"
+				"to": "hand_3"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Nope!",
-				"type": "choose"
+				"type": "choose",
+				"option": "Nope!"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			}
 		],
 		"logs": [
@@ -876,33 +822,38 @@
 				"  player = 1"
 			]
 		],
-		"seed": 1
-	},
-	{
 		"end": {
-			"over": true,
-			"result": "Winner: West",
-			"variables": {
-				"actor": "2",
-				"noped": "false",
-				"pending": "",
-				"player": "2",
-				"target": "1"
-			},
 			"zones": {
 				"box": [],
 				"deck": [
-					"▼Peek"
+					"▼Steal"
 				],
-				"hand_1": [],
-				"hand_2": [
+				"pile": [
+					"Peek",
+					"Nope",
+					"Skip",
 					"Shuffle",
+					"Shuffle",
+					"Peek",
+					"Nope",
+					"Peek",
 					"Defuse",
+					"Peek",
+					"Nope",
+					"Shuffle",
+					"Nope",
+					"Steal",
+					"Shuffle",
+					"Skip",
+					"Nope",
+					"Steal",
+					"Skip",
+					"Steal",
 					"Defuse",
+					"Skip",
 					"Defuse",
 					"Defuse"
 				],
-				"hand_3": [],
 				"out": [
 					"Bomb",
 					"Bomb"
@@ -910,217 +861,212 @@
 				"peek_1": [],
 				"peek_2": [],
 				"peek_3": [],
-				"pile": [
-					"Shuffle",
-					"Nope",
-					"Nope",
-					"Peek",
-					"Nope",
-					"Skip",
-					"Steal",
-					"Nope",
-					"Shuffle",
-					"Skip",
-					"Defuse",
-					"Peek",
-					"Peek",
-					"Shuffle",
-					"Nope",
-					"Steal",
-					"Steal",
-					"Skip",
-					"Skip",
-					"Steal"
-				]
-			}
-		},
+				"hand_1": [
+					"Defuse"
+				],
+				"hand_2": [],
+				"hand_3": []
+			},
+			"variables": {
+				"pending": "",
+				"actor": "1",
+				"target": "2",
+				"noped": "false",
+				"player": "1"
+			},
+			"over": true,
+			"result": "Winner: You"
+		}
+	},
+	{
+		"seed": 2,
 		"inputs": [
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
-				"option": "Nope!",
-				"type": "choose"
+				"type": "choose",
+				"option": "Nope!"
 			},
 			{
-				"option": "Nope!",
-				"type": "choose"
+				"type": "choose",
+				"option": "Nope!"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Nope!",
-				"type": "choose"
+				"type": "choose",
+				"option": "Nope!"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "hand_3",
-				"type": "drag"
+				"to": "hand_3"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Nope!",
-				"type": "choose"
+				"type": "choose",
+				"option": "Nope!"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "hand_3",
-				"type": "drag"
+				"to": "hand_3"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Let it happen",
-				"type": "choose"
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Done",
-				"type": "choose"
+				"type": "choose",
+				"option": "Done"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Done",
-				"type": "choose"
+				"type": "choose",
+				"option": "Done"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "hand_3",
-				"type": "drag"
+				"to": "hand_3"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Nope!",
-				"type": "choose"
+				"type": "choose",
+				"option": "Nope!"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "hand_3",
-				"type": "drag"
+				"to": "hand_3"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			}
 		],
 		"logs": [
@@ -1625,6 +1571,60 @@
 				"  player = 2"
 			]
 		],
-		"seed": 2
+		"end": {
+			"zones": {
+				"box": [],
+				"deck": [
+					"▼Peek"
+				],
+				"pile": [
+					"Shuffle",
+					"Nope",
+					"Nope",
+					"Peek",
+					"Nope",
+					"Skip",
+					"Steal",
+					"Nope",
+					"Shuffle",
+					"Skip",
+					"Defuse",
+					"Peek",
+					"Peek",
+					"Shuffle",
+					"Nope",
+					"Steal",
+					"Steal",
+					"Skip",
+					"Skip",
+					"Steal"
+				],
+				"out": [
+					"Bomb",
+					"Bomb"
+				],
+				"peek_1": [],
+				"peek_2": [],
+				"peek_3": [],
+				"hand_1": [],
+				"hand_2": [
+					"Shuffle",
+					"Defuse",
+					"Defuse",
+					"Defuse",
+					"Defuse"
+				],
+				"hand_3": []
+			},
+			"variables": {
+				"pending": "",
+				"actor": "2",
+				"target": "1",
+				"noped": "false",
+				"player": "2"
+			},
+			"over": true,
+			"result": "Winner: West"
+		}
 	}
 ]

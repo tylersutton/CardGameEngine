@@ -1,1370 +1,1287 @@
 [
 	{
-		"end": {
-			"over": false,
-			"result": "",
-			"variables": {
-				"dealer": "2",
-				"defender_deadwood": "0",
-				"hands_won_1": "0",
-				"hands_won_2": "0",
-				"knocker_deadwood": "0",
-				"passes": "1",
-				"player": "2",
-				"result": "void: stock ran out",
-				"score_1": "0",
-				"score_2": "0",
-				"stage": "draw",
-				"taken": "—",
-				"winner": "—"
-			},
-			"zones": {
-				"discard": [
-					"K♠",
-					"6♥",
-					"9♣",
-					"10♥",
-					"10♠",
-					"2♥",
-					"8♠",
-					"5♣",
-					"2♠",
-					"9♠",
-					"A♠",
-					"7♦",
-					"8♦",
-					"5♦",
-					"K♥",
-					"J♠",
-					"J♣",
-					"3♥",
-					"A♣",
-					"4♦",
-					"3♠",
-					"5♥",
-					"10♣",
-					"6♦",
-					"Q♦",
-					"9♥",
-					"4♥",
-					"A♥",
-					"8♥",
-					"K♣"
-				],
-				"hand_1": [
-					"2♣",
-					"4♣",
-					"6♣",
-					"8♣",
-					"A♦",
-					"2♦",
-					"9♦",
-					"J♦",
-					"Q♥",
-					"6♠"
-				],
-				"hand_2": [
-					"3♣",
-					"3♦",
-					"4♠",
-					"5♠",
-					"7♣",
-					"7♥",
-					"10♦",
-					"J♥",
-					"Q♠",
-					"K♦"
-				],
-				"knock": [],
-				"stock": [
-					"▼7♠",
-					"▼Q♣"
-				],
-				"table_1": [],
-				"table_2": []
-			}
-		},
+		"seed": 1,
 		"inputs": [
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "drag",
 				"card": 48,
-				"type": "click"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
+				"type": "drag",
 				"card": 48,
-				"to": "discard",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"card": 48,
-				"to": "hand_2",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 42,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			}
 		],
 		"logs": [
@@ -3316,1385 +3233,1385 @@
 				"  Player 2 (bot) may: Next hand"
 			]
 		],
-		"seed": 1
-	},
-	{
 		"end": {
-			"over": false,
-			"result": "",
-			"variables": {
-				"dealer": "2",
-				"defender_deadwood": "0",
-				"hands_won_1": "0",
-				"hands_won_2": "0",
-				"knocker_deadwood": "0",
-				"passes": "0",
-				"player": "2",
-				"result": "void: stock ran out",
-				"score_1": "0",
-				"score_2": "0",
-				"stage": "draw",
-				"taken": "—",
-				"winner": "—"
-			},
 			"zones": {
+				"stock": [
+					"▼7♠",
+					"▼Q♣"
+				],
 				"discard": [
+					"K♠",
 					"6♥",
-					"K♣",
-					"8♥",
-					"10♥",
-					"3♠",
-					"6♣",
-					"Q♣",
-					"J♣",
-					"J♠",
-					"J♦",
-					"2♠",
-					"7♣",
-					"8♦",
-					"9♦",
-					"10♠",
-					"3♣",
-					"9♥",
-					"K♥",
 					"9♣",
+					"10♥",
+					"10♠",
 					"2♥",
-					"9♠",
-					"3♥",
-					"Q♦",
-					"6♦",
-					"10♦",
-					"5♦",
-					"A♣",
-					"8♣",
-					"4♣",
-					"7♦"
-				],
-				"hand_1": [
-					"2♣",
-					"4♦",
-					"K♦",
-					"A♥",
-					"4♥",
-					"Q♥",
-					"A♠",
-					"4♠",
 					"8♠",
-					"Q♠"
-				],
-				"hand_2": [
 					"5♣",
-					"10♣",
-					"2♦",
-					"3♦",
+					"2♠",
+					"9♠",
+					"A♠",
+					"7♦",
+					"8♦",
+					"5♦",
+					"K♥",
+					"J♠",
+					"J♣",
+					"3♥",
+					"A♣",
+					"4♦",
+					"3♠",
 					"5♥",
-					"7♥",
-					"J♥",
-					"5♠",
-					"6♠",
-					"7♠"
+					"10♣",
+					"6♦",
+					"Q♦",
+					"9♥",
+					"4♥",
+					"A♥",
+					"8♥",
+					"K♣"
 				],
 				"knock": [],
-				"stock": [
-					"▼K♠",
-					"▼A♦"
-				],
 				"table_1": [],
-				"table_2": []
-			}
-		},
+				"table_2": [],
+				"hand_1": [
+					"2♣",
+					"4♣",
+					"6♣",
+					"8♣",
+					"A♦",
+					"2♦",
+					"9♦",
+					"J♦",
+					"Q♥",
+					"6♠"
+				],
+				"hand_2": [
+					"3♣",
+					"3♦",
+					"4♠",
+					"5♠",
+					"7♣",
+					"7♥",
+					"10♦",
+					"J♥",
+					"Q♠",
+					"K♦"
+				]
+			},
+			"variables": {
+				"stage": "draw",
+				"taken": "—",
+				"passes": "1",
+				"result": "void: stock ran out",
+				"knocker_deadwood": "0",
+				"defender_deadwood": "0",
+				"dealer": "2",
+				"winner": "—",
+				"player": "2",
+				"score_1": "0",
+				"score_2": "0",
+				"hands_won_1": "0",
+				"hands_won_2": "0"
+			},
+			"over": false,
+			"result": ""
+		}
+	},
+	{
+		"seed": 2,
 		"inputs": [
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "drag",
 				"card": 30,
-				"type": "click"
+				"to": "discard"
 			},
 			{
-				"card": 30,
-				"to": "discard",
-				"type": "drag"
+				"type": "click",
+				"card": 30
 			},
 			{
-				"card": 30,
-				"type": "click"
-			},
-			{
+				"type": "drag",
 				"card": 50,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 15,
-				"type": "click"
+				"type": "click",
+				"card": 15
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "drag",
 				"card": 39,
-				"type": "click"
+				"to": "discard"
 			},
 			{
-				"card": 39,
-				"to": "discard",
-				"type": "drag"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "click",
+				"card": 39
 			},
 			{
-				"card": 39,
-				"type": "click"
-			},
-			{
+				"type": "drag",
 				"card": 9,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 15,
-				"type": "click"
+				"type": "click",
+				"card": 15
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 27
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 6,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by rank",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by rank"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			}
 		],
 		"logs": [
@@ -6697,6 +6614,89 @@
 				"  Player 2 (bot) may: Next hand"
 			]
 		],
-		"seed": 2
+		"end": {
+			"zones": {
+				"stock": [
+					"▼K♠",
+					"▼A♦"
+				],
+				"discard": [
+					"6♥",
+					"K♣",
+					"8♥",
+					"10♥",
+					"3♠",
+					"6♣",
+					"Q♣",
+					"J♣",
+					"J♠",
+					"J♦",
+					"2♠",
+					"7♣",
+					"8♦",
+					"9♦",
+					"10♠",
+					"3♣",
+					"9♥",
+					"K♥",
+					"9♣",
+					"2♥",
+					"9♠",
+					"3♥",
+					"Q♦",
+					"6♦",
+					"10♦",
+					"5♦",
+					"A♣",
+					"8♣",
+					"4♣",
+					"7♦"
+				],
+				"knock": [],
+				"table_1": [],
+				"table_2": [],
+				"hand_1": [
+					"2♣",
+					"4♦",
+					"K♦",
+					"A♥",
+					"4♥",
+					"Q♥",
+					"A♠",
+					"4♠",
+					"8♠",
+					"Q♠"
+				],
+				"hand_2": [
+					"5♣",
+					"10♣",
+					"2♦",
+					"3♦",
+					"5♥",
+					"7♥",
+					"J♥",
+					"5♠",
+					"6♠",
+					"7♠"
+				]
+			},
+			"variables": {
+				"stage": "draw",
+				"taken": "—",
+				"passes": "0",
+				"result": "void: stock ran out",
+				"knocker_deadwood": "0",
+				"defender_deadwood": "0",
+				"dealer": "2",
+				"winner": "—",
+				"player": "2",
+				"score_1": "0",
+				"score_2": "0",
+				"hands_won_1": "0",
+				"hands_won_2": "0"
+			},
+			"over": false,
+			"result": ""
+		}
 	}
 ]

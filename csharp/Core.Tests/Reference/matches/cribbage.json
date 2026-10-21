@@ -1,951 +1,867 @@
 [
 	{
-		"end": {
-			"over": true,
-			"result": "Winner: You",
-			"variables": {
-				"counting_crib": "false",
-				"dealer": "1",
-				"discarded": "2",
-				"kept_1": "[A♣, A♥, 5♣, K♦]",
-				"kept_2": "[2♥, 7♦, 7♥, 9♦]",
-				"pair_points": "0",
-				"player": "1",
-				"points": "0",
-				"run_points": "0",
-				"score_1": "121",
-				"score_2": "96",
-				"total": "0"
-			},
-			"zones": {
-				"crib": [
-					"▼3♥",
-					"▼8♣",
-					"▼10♥",
-					"▼K♠"
-				],
-				"deck": [
-					"▼7♣",
-					"▼Q♦",
-					"▼5♠",
-					"▼10♦",
-					"▼8♦",
-					"▼4♠",
-					"▼5♦",
-					"▼9♥",
-					"▼Q♣",
-					"▼A♠",
-					"▼4♥",
-					"▼3♠",
-					"▼2♦",
-					"▼6♣",
-					"▼K♥",
-					"▼4♦",
-					"▼J♠",
-					"▼2♣",
-					"▼10♣",
-					"▼8♠",
-					"▼3♦",
-					"▼J♣",
-					"▼2♠",
-					"▼A♦",
-					"▼6♦",
-					"▼Q♥",
-					"▼4♣",
-					"▼6♠",
-					"▼9♣",
-					"▼9♠",
-					"▼8♥",
-					"▼J♦",
-					"▼5♥",
-					"▼J♥",
-					"▼Q♠",
-					"▼10♠",
-					"▼3♣",
-					"▼7♠",
-					"▼6♥"
-				],
-				"hand_1": [],
-				"hand_2": [],
-				"pegged": [
-					"▼2♥",
-					"▼A♥",
-					"▼7♥",
-					"▼K♦",
-					"▼9♦",
-					"▼A♣",
-					"▼7♦",
-					"▼5♣"
-				],
-				"pegging": [],
-				"shown_1": [],
-				"shown_2": [],
-				"starter": [
-					"K♣"
-				]
-			}
-		},
+		"seed": 1,
 		"inputs": [
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 17,
-				"type": "click"
+				"type": "click",
+				"card": 17
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 8,
-				"type": "click"
+				"type": "click",
+				"card": 8
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
-				"card": 50,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
-				"card": 8,
-				"type": "click"
+				"type": "click",
+				"card": 8
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "click",
+				"card": 51
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
-				"card": 50,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 15,
-				"type": "click"
+				"type": "click",
+				"card": 15
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			}
 		],
 		"logs": [
@@ -4266,1041 +4182,1040 @@
 				"  player = 1"
 			]
 		],
-		"seed": 1
-	},
-	{
 		"end": {
-			"over": true,
-			"result": "Winner: Opponent",
-			"variables": {
-				"counting_crib": "false",
-				"dealer": "2",
-				"discarded": "2",
-				"kept_1": "[A♣, A♥, 8♣, 10♦]",
-				"kept_2": "[3♠, 4♠, 10♣, J♣]",
-				"pair_points": "0",
-				"player": "2",
-				"points": "8",
-				"run_points": "0",
-				"score_1": "118",
-				"score_2": "121",
-				"total": "0"
-			},
 			"zones": {
-				"crib": [
-					"▼8♥",
-					"▼Q♣",
-					"▼2♥",
-					"▼7♠"
-				],
 				"deck": [
-					"▼J♥",
-					"▼6♥",
-					"▼Q♥",
-					"▼K♦",
-					"▼A♦",
-					"▼7♦",
-					"▼5♠",
-					"▼8♦",
-					"▼9♠",
-					"▼3♥",
-					"▼6♠",
-					"▼5♥",
-					"▼J♦",
-					"▼K♣",
-					"▼9♥",
-					"▼4♣",
-					"▼4♥",
-					"▼6♦",
-					"▼5♣",
-					"▼2♠",
-					"▼A♠",
-					"▼9♦",
-					"▼Q♦",
-					"▼Q♠",
-					"▼5♦",
-					"▼10♠",
-					"▼3♦",
-					"▼8♠",
-					"▼J♠",
-					"▼K♠",
-					"▼2♦",
-					"▼10♥",
 					"▼7♣",
+					"▼Q♦",
+					"▼5♠",
+					"▼10♦",
+					"▼8♦",
+					"▼4♠",
+					"▼5♦",
+					"▼9♥",
+					"▼Q♣",
+					"▼A♠",
+					"▼4♥",
+					"▼3♠",
+					"▼2♦",
 					"▼6♣",
-					"▼3♣",
-					"▼9♣",
 					"▼K♥",
-					"▼7♥",
-					"▼4♦"
-				],
-				"hand_1": [],
-				"hand_2": [],
-				"pegged": [],
-				"pegging": [],
-				"shown_1": [
-					"A♣",
-					"A♥",
-					"8♣",
-					"10♦"
-				],
-				"shown_2": [
-					"3♠",
-					"4♠",
-					"10♣",
-					"J♣"
+					"▼4♦",
+					"▼J♠",
+					"▼2♣",
+					"▼10♣",
+					"▼8♠",
+					"▼3♦",
+					"▼J♣",
+					"▼2♠",
+					"▼A♦",
+					"▼6♦",
+					"▼Q♥",
+					"▼4♣",
+					"▼6♠",
+					"▼9♣",
+					"▼9♠",
+					"▼8♥",
+					"▼J♦",
+					"▼5♥",
+					"▼J♥",
+					"▼Q♠",
+					"▼10♠",
+					"▼3♣",
+					"▼7♠",
+					"▼6♥"
 				],
 				"starter": [
-					"2♣"
-				]
-			}
-		},
+					"K♣"
+				],
+				"pegging": [],
+				"pegged": [
+					"▼2♥",
+					"▼A♥",
+					"▼7♥",
+					"▼K♦",
+					"▼9♦",
+					"▼A♣",
+					"▼7♦",
+					"▼5♣"
+				],
+				"crib": [
+					"▼3♥",
+					"▼8♣",
+					"▼10♥",
+					"▼K♠"
+				],
+				"shown_1": [],
+				"shown_2": [],
+				"hand_1": [],
+				"hand_2": []
+			},
+			"variables": {
+				"dealer": "1",
+				"discarded": "2",
+				"total": "0",
+				"points": "0",
+				"pair_points": "0",
+				"run_points": "0",
+				"counting_crib": "false",
+				"player": "1",
+				"score_1": "121",
+				"score_2": "96",
+				"kept_1": "[A♣, A♥, 5♣, K♦]",
+				"kept_2": "[2♥, 7♦, 7♥, 9♦]"
+			},
+			"over": true,
+			"result": "Winner: You"
+		}
+	},
+	{
+		"seed": 2,
 		"inputs": [
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
-				"card": 15,
-				"type": "click"
+				"type": "click",
+				"card": 15
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 27
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "click",
+				"card": 51
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
-				"card": 8,
-				"type": "click"
+				"type": "click",
+				"card": 8
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
-				"card": 17,
-				"type": "click"
+				"type": "click",
+				"card": 17
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "click",
+				"card": 51
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 15,
-				"type": "click"
+				"type": "click",
+				"card": 15
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 15,
-				"type": "click"
+				"type": "click",
+				"card": 15
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
+				"type": "drag",
 				"card": 6,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
-				"card": 8,
-				"type": "click"
+				"type": "click",
+				"card": 8
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count crib",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count crib"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
-				"card": 50,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "pegging",
-				"type": "drag"
+				"to": "pegging"
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			},
 			{
-				"action": "Count hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Count hand"
 			}
 		],
 		"logs": [
@@ -8929,6 +8844,91 @@
 				"[game over] Winner: Opponent"
 			]
 		],
-		"seed": 2
+		"end": {
+			"zones": {
+				"deck": [
+					"▼J♥",
+					"▼6♥",
+					"▼Q♥",
+					"▼K♦",
+					"▼A♦",
+					"▼7♦",
+					"▼5♠",
+					"▼8♦",
+					"▼9♠",
+					"▼3♥",
+					"▼6♠",
+					"▼5♥",
+					"▼J♦",
+					"▼K♣",
+					"▼9♥",
+					"▼4♣",
+					"▼4♥",
+					"▼6♦",
+					"▼5♣",
+					"▼2♠",
+					"▼A♠",
+					"▼9♦",
+					"▼Q♦",
+					"▼Q♠",
+					"▼5♦",
+					"▼10♠",
+					"▼3♦",
+					"▼8♠",
+					"▼J♠",
+					"▼K♠",
+					"▼2♦",
+					"▼10♥",
+					"▼7♣",
+					"▼6♣",
+					"▼3♣",
+					"▼9♣",
+					"▼K♥",
+					"▼7♥",
+					"▼4♦"
+				],
+				"starter": [
+					"2♣"
+				],
+				"pegging": [],
+				"pegged": [],
+				"crib": [
+					"▼8♥",
+					"▼Q♣",
+					"▼2♥",
+					"▼7♠"
+				],
+				"shown_1": [
+					"A♣",
+					"A♥",
+					"8♣",
+					"10♦"
+				],
+				"shown_2": [
+					"3♠",
+					"4♠",
+					"10♣",
+					"J♣"
+				],
+				"hand_1": [],
+				"hand_2": []
+			},
+			"variables": {
+				"dealer": "2",
+				"discarded": "2",
+				"total": "0",
+				"points": "8",
+				"pair_points": "0",
+				"run_points": "0",
+				"counting_crib": "false",
+				"player": "2",
+				"score_1": "118",
+				"score_2": "121",
+				"kept_1": "[A♣, A♥, 8♣, 10♦]",
+				"kept_2": "[3♠, 4♠, 10♣, J♣]"
+			},
+			"over": true,
+			"result": "Winner: Opponent"
+		}
 	}
 ]

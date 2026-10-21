@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Globalization;
+using System.Text;
 
 namespace Core;
 
@@ -74,6 +75,90 @@ public static class Values
         double number when number == Math.Floor(number) => ((long)number).ToString(CultureInfo.InvariantCulture),
         _ => Text(value),
     };
+
+    /// GDScript's text order (a < b): character by character, by Unicode number.
+    public static int CompareText(string left, string right)
+    {
+        StringRuneEnumerator rightRunes = right.EnumerateRunes();
+        foreach (Rune leftRune in left.EnumerateRunes())
+        {
+            if (!rightRunes.MoveNext())
+            {
+                return 1;
+            }
+            int order = leftRune.Value.CompareTo(rightRunes.Current.Value);
+            if (order != 0)
+            {
+                return order;
+            }
+        }
+        return rightRunes.MoveNext() ? -1 : 0;
+    }
+
+    /// GDScript's is_valid_float(): digits with an optional sign, decimal point and exponent ("-2", "1.5", "3e4").
+    public static bool IsValidFloat(string text)
+    {
+        int start = text.Length > 0 && text[0] is '+' or '-' ? 1 : 0;
+        bool exponentFound = false;
+        bool pointFound = false;
+        bool exponentSignFound = false;
+        bool exponentDigitsFound = false;
+        bool digitsFound = false;
+        for (int i = start; i < text.Length; i++)
+        {
+            char character = text[i];
+            if (char.IsAsciiDigit(character))
+            {
+                exponentDigitsFound |= exponentFound;
+                digitsFound |= !exponentFound;
+            }
+            else if (digitsFound && !exponentFound && character == 'e')
+            {
+                exponentFound = true;
+            }
+            else if (!pointFound && !exponentFound && character == '.')
+            {
+                pointFound = true;
+            }
+            else if (character is '-' or '+' && exponentFound && !exponentDigitsFound && !exponentSignFound)
+            {
+                exponentSignFound = true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return digitsFound;
+    }
+
+    /// GDScript's to_float(), for text that IsValidFloat allows; anything else is 0.
+    public static double ToFloat(string text) =>
+        double.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out double number) ? number : 0;
+
+    /// GDScript's to_int(): the digits up to any decimal point, ignoring other characters ("2.5" is 2, "1e5" is
+    /// 15), with each minus sign before them flipping the sign ("-7" is -7, "--3" is 3).
+    public static long ToInt(string text)
+    {
+        long number = 0;
+        bool negative = false;
+        foreach (char character in text)
+        {
+            if (character == '.')
+            {
+                break;
+            }
+            if (char.IsAsciiDigit(character))
+            {
+                number = number * 10 + (character - '0');
+            }
+            else if (character == '-' && number == 0)
+            {
+                negative = !negative;
+            }
+        }
+        return negative ? -number : number;
+    }
 
     /// GDScript's str(): what 'text %s' % value fills in.
     public static string Text(object? value) => value switch

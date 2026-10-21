@@ -1,0 +1,824 @@
+{
+	"rules": {
+		"title": "Gin Rummy",
+		"description": "Two players, you against a bot. Knock with 10 or less deadwood; first to 100 wins the match.",
+		"zones": {
+			"stock": {
+				"label": "Stock",
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					0.08,
+					0.5
+				],
+				"cards": "res://decks/standard_deck.csv",
+				"columns": {
+					"points": "min(card.value, 10)"
+				}
+			},
+			"discard": {
+				"label": "Discard",
+				"layout": "pile",
+				"anchor": [
+					0.19,
+					0.5
+				]
+			},
+			"knock": {
+				"label": "Knock",
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					0.3,
+					0.5
+				]
+			},
+			"table": {
+				"per_player": true,
+				"layout": "melds",
+				"anchors": [
+					[
+						0.68,
+						0.63
+					],
+					[
+						0.68,
+						0.37
+					]
+				]
+			},
+			"hand": {
+				"per_player": true,
+				"layout": "fan",
+				"face": "private",
+				"anchors": [
+					[
+						0.5,
+						0.83
+					],
+					[
+						0.5,
+						0.16
+					]
+				]
+			}
+		},
+		"actions": {
+			"Draw from the stock": {
+				"drag": {
+					"from": "stock",
+					"to": "hand"
+				},
+				"click": true,
+				"steps": [
+					"taken = null",
+					"stage = 'draw'"
+				]
+			},
+			"Take the discard": {
+				"drag": {
+					"from": "discard",
+					"to": "hand"
+				},
+				"click": true,
+				"steps": [
+					"taken = card",
+					"stage = 'draw'"
+				]
+			},
+			"Discard": {
+				"drag": {
+					"from": "hand",
+					"to": "discard"
+				},
+				"when": "card != taken"
+			},
+			"Knock": {
+				"drag": {
+					"from": "hand",
+					"to": "knock"
+				},
+				"button": true,
+				"when": "card != taken and sum(deadwood(without(hand, card)), 'points') <= 10",
+				"steps": [
+					"knocker_deadwood = sum(deadwood(hand), 'points')",
+					{
+						"if": "knocker_deadwood == 0",
+						"then": [
+							"defender_deadwood = sum(deadwood(opponent_hand), 'points')",
+							"result = 'gin'",
+							"score += 25 + defender_deadwood",
+							"hands_won += 1"
+						],
+						"else": [
+							"move(layoff(opponent_hand, melds(hand)), table)",
+							"defender_deadwood = sum(deadwood(opponent_hand), 'points')",
+							{
+								"if": "defender_deadwood <= knocker_deadwood",
+								"then": [
+									"result = 'undercut'",
+									"opponent_score += 25 + knocker_deadwood - defender_deadwood",
+									"opponent_hands_won += 1"
+								],
+								"else": [
+									"result = 'knock'",
+									"score += defender_deadwood - knocker_deadwood",
+									"hands_won += 1"
+								]
+							}
+						]
+					},
+					"move(hand, table)",
+					"move(opponent_hand, opponent_table)",
+					"trigger('hand_over')"
+				]
+			},
+			"Pass": {
+				"steps": [
+					"passes += 1",
+					{
+						"if": "passes == 2",
+						"then": [
+							"stage = 'stock_only'"
+						]
+					}
+				]
+			},
+			"Big Gin": {
+				"when": "count(deadwood(hand)) == 0",
+				"steps": [
+					"defender_deadwood = sum(deadwood(opponent_hand), 'points')",
+					"result = 'big gin'",
+					"score += 31 + defender_deadwood",
+					"hands_won += 1",
+					"move(hand, table)",
+					"move(opponent_hand, opponent_table)",
+					"trigger('hand_over')"
+				]
+			},
+			"Next hand": {
+				"human_only": true,
+				"steps": [
+					"dealer = 3 - dealer",
+					"trigger('deal')"
+				]
+			},
+			"Sort by suit": {
+				"steps": [
+					"sort(hand, ['suit', 'value'])"
+				]
+			},
+			"Sort by rank": {
+				"steps": [
+					"sort(hand, ['value', 'suit'])"
+				]
+			}
+		},
+		"triggers": {
+			"start": [
+				"sort(hand_1, ['value', 'suit'])",
+				"sort(hand_2, ['value', 'suit'])",
+				"trigger('deal')"
+			],
+			"deal": [
+				"move([hand_1, hand_2, table_1, table_2, discard, knock], stock)",
+				"shuffle(stock)",
+				"player = 3 - dealer",
+				"deal(stock, [hand, opponent_hand], 10)",
+				"move(top(stock), discard)",
+				"reset(['stage', 'passes', 'taken', 'result', 'knocker_deadwood', 'defender_deadwood'])"
+			],
+			"hand_over": [
+				{
+					"if": "most('score') >= 100",
+					"then": [
+						"player = players_with_most('score')[0]",
+						"winner = player",
+						"score += 100 + 25 * hands_won",
+						"opponent_score += 25 * opponent_hands_won",
+						{
+							"if": "opponent_hands_won == 0",
+							"then": [
+								"score = score * 2",
+								"result += ', shutout'"
+							]
+						},
+						"end_game(player)"
+					]
+				}
+			]
+		},
+		"effects": {},
+		"conditions": {},
+		"condition_parameters": {},
+		"condition_errors": [],
+		"constants": {},
+		"turn": [
+			{
+				"if": "stage == 'upcard'",
+				"then": [
+					"offer(['Take the discard', 'Pass'])"
+				],
+				"else": [
+					{
+						"if": "stage == 'stock_only'",
+						"then": [
+							"offer('Draw from the stock')"
+						],
+						"else": [
+							"offer(['Draw from the stock', 'Take the discard'])"
+						]
+					}
+				]
+			},
+			{
+				"if": "count(hand) == 11",
+				"then": [
+					"ending = offer(['Discard', 'Knock', 'Big Gin'])",
+					{
+						"if": "ending == 'Discard' and count(stock) > 2",
+						"then": [
+							"end_turn()"
+						],
+						"else": [
+							{
+								"if": "ending == 'Discard'",
+								"then": [
+									"result = 'void: stock ran out'"
+								]
+							},
+							"offer('Next hand')"
+						]
+					}
+				],
+				"else": [
+					"end_turn()"
+				]
+			}
+		],
+		"variables": {
+			"stage": "upcard",
+			"taken": null,
+			"passes": 0,
+			"result": "",
+			"knocker_deadwood": 0,
+			"defender_deadwood": 0,
+			"dealer": 2,
+			"winner": null
+		},
+		"players": 2,
+		"seats": [
+			[
+				0.1,
+				0.72
+			],
+			[
+				0.1,
+				0.28
+			]
+		],
+		"player_names": [],
+		"player_variables": {
+			"score": 0,
+			"hands_won": 0
+		},
+		"teams": [],
+		"team_variables": {},
+		"melds": {
+			"types": [
+				{
+					"same": "rank",
+					"min": 3.0
+				},
+				{
+					"same": "suit",
+					"sequence": "value",
+					"min": 3.0
+				}
+			],
+			"points": "points"
+		},
+		"status": {
+			"your deadwood": "sum(deadwood(hand[min(viewer(), 2)]), 'points')"
+		},
+		"show_variables": [],
+		"bot": {
+			"players": [
+				2.0
+			],
+			"prefer": "score - opponent_score - sum(deadwood(hand), 'points')"
+		},
+		"card_face": {
+			"corner": "name",
+			"title": "name",
+			"body": [
+				"suit"
+			],
+			"color": "color"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "stock",
+			"label": "Stock",
+			"has_outline": true,
+			"kind": "stock",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.07999999821186066,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "discard",
+			"label": "Discard",
+			"has_outline": true,
+			"kind": "discard",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.1899999976158142,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "knock",
+			"label": "Knock",
+			"has_outline": true,
+			"kind": "knock",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "table_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "table",
+			"owner": 1,
+			"layout": "melds",
+			"face": "up",
+			"anchor": [
+				0.6800000071525574,
+				0.6299999952316284
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "table_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "table",
+			"owner": 2,
+			"layout": "melds",
+			"face": "up",
+			"anchor": [
+				0.6800000071525574,
+				0.3700000047683716
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 1,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.8299999833106995
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 2,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.1599999964237213
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/standard_deck.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"value"
+			],
+			"cards": [
+				{
+					"name": "A♠",
+					"rank": "A",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "1"
+				},
+				{
+					"name": "2♠",
+					"rank": "2",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "2"
+				},
+				{
+					"name": "3♠",
+					"rank": "3",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "3"
+				},
+				{
+					"name": "4♠",
+					"rank": "4",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "4"
+				},
+				{
+					"name": "5♠",
+					"rank": "5",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "5"
+				},
+				{
+					"name": "6♠",
+					"rank": "6",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "6"
+				},
+				{
+					"name": "7♠",
+					"rank": "7",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "7"
+				},
+				{
+					"name": "8♠",
+					"rank": "8",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "8"
+				},
+				{
+					"name": "9♠",
+					"rank": "9",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "9"
+				},
+				{
+					"name": "10♠",
+					"rank": "10",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "10"
+				},
+				{
+					"name": "J♠",
+					"rank": "J",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "11"
+				},
+				{
+					"name": "Q♠",
+					"rank": "Q",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "12"
+				},
+				{
+					"name": "K♠",
+					"rank": "K",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "13"
+				},
+				{
+					"name": "A♥",
+					"rank": "A",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "1"
+				},
+				{
+					"name": "2♥",
+					"rank": "2",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "2"
+				},
+				{
+					"name": "3♥",
+					"rank": "3",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "3"
+				},
+				{
+					"name": "4♥",
+					"rank": "4",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "4"
+				},
+				{
+					"name": "5♥",
+					"rank": "5",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "5"
+				},
+				{
+					"name": "6♥",
+					"rank": "6",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "6"
+				},
+				{
+					"name": "7♥",
+					"rank": "7",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "7"
+				},
+				{
+					"name": "8♥",
+					"rank": "8",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "8"
+				},
+				{
+					"name": "9♥",
+					"rank": "9",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "9"
+				},
+				{
+					"name": "10♥",
+					"rank": "10",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "10"
+				},
+				{
+					"name": "J♥",
+					"rank": "J",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "11"
+				},
+				{
+					"name": "Q♥",
+					"rank": "Q",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "12"
+				},
+				{
+					"name": "K♥",
+					"rank": "K",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "13"
+				},
+				{
+					"name": "A♦",
+					"rank": "A",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "1"
+				},
+				{
+					"name": "2♦",
+					"rank": "2",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "2"
+				},
+				{
+					"name": "3♦",
+					"rank": "3",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "3"
+				},
+				{
+					"name": "4♦",
+					"rank": "4",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "4"
+				},
+				{
+					"name": "5♦",
+					"rank": "5",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "5"
+				},
+				{
+					"name": "6♦",
+					"rank": "6",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "6"
+				},
+				{
+					"name": "7♦",
+					"rank": "7",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "7"
+				},
+				{
+					"name": "8♦",
+					"rank": "8",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "8"
+				},
+				{
+					"name": "9♦",
+					"rank": "9",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "9"
+				},
+				{
+					"name": "10♦",
+					"rank": "10",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "10"
+				},
+				{
+					"name": "J♦",
+					"rank": "J",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "11"
+				},
+				{
+					"name": "Q♦",
+					"rank": "Q",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "12"
+				},
+				{
+					"name": "K♦",
+					"rank": "K",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "13"
+				},
+				{
+					"name": "A♣",
+					"rank": "A",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "1"
+				},
+				{
+					"name": "2♣",
+					"rank": "2",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "2"
+				},
+				{
+					"name": "3♣",
+					"rank": "3",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "3"
+				},
+				{
+					"name": "4♣",
+					"rank": "4",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "4"
+				},
+				{
+					"name": "5♣",
+					"rank": "5",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "5"
+				},
+				{
+					"name": "6♣",
+					"rank": "6",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "6"
+				},
+				{
+					"name": "7♣",
+					"rank": "7",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "7"
+				},
+				{
+					"name": "8♣",
+					"rank": "8",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "8"
+				},
+				{
+					"name": "9♣",
+					"rank": "9",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "9"
+				},
+				{
+					"name": "10♣",
+					"rank": "10",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "10"
+				},
+				{
+					"name": "J♣",
+					"rank": "J",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "11"
+				},
+				{
+					"name": "Q♣",
+					"rank": "Q",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "12"
+				},
+				{
+					"name": "K♣",
+					"rank": "K",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "13"
+				}
+			]
+		}
+	}
+}

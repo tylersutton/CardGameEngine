@@ -1,1520 +1,1427 @@
 [
 	{
-		"end": {
-			"over": false,
-			"result": "",
-			"variables": {
-				"bags_1": "7",
-				"bags_2": "0",
-				"bid_1": "0",
-				"bid_2": "10",
-				"bid_3": "13",
-				"bid_4": "4",
-				"dealer": "3",
-				"lead": "Clubs",
-				"player": "3",
-				"spades_broken": "false",
-				"team_bid_1": "13",
-				"team_bid_2": "14",
-				"team_score_1": "-283",
-				"team_score_2": "-630"
-			},
-			"zones": {
-				"deck": [],
-				"hand_1": [
-					"6♣",
-					"7♣",
-					"10♣",
-					"K♣",
-					"3♥",
-					"10♥",
-					"Q♥",
-					"K♥",
-					"9♠",
-					"K♠"
-				],
-				"hand_2": [
-					"4♣",
-					"9♣",
-					"4♦",
-					"K♦",
-					"2♥",
-					"4♥",
-					"J♥",
-					"A♥",
-					"4♠"
-				],
-				"hand_3": [
-					"5♣",
-					"5♦",
-					"8♦",
-					"Q♦",
-					"7♥",
-					"3♠",
-					"5♠",
-					"6♠",
-					"10♠",
-					"J♠"
-				],
-				"hand_4": [
-					"8♣",
-					"5♥",
-					"6♥",
-					"8♥",
-					"9♥",
-					"2♠",
-					"7♠",
-					"8♠",
-					"Q♠",
-					"A♠"
-				],
-				"played_1": [],
-				"played_2": [
-					"2♣"
-				],
-				"played_3": [],
-				"played_4": [],
-				"won_1": [],
-				"won_2": [
-					"▼J♣",
-					"▼A♣",
-					"▼Q♣",
-					"▼3♣"
-				],
-				"won_3": [
-					"▼2♦",
-					"▼3♦",
-					"▼J♦",
-					"▼10♦",
-					"▼7♦",
-					"▼9♦",
-					"▼A♦",
-					"▼6♦"
-				],
-				"won_4": []
-			}
-		},
+		"seed": 1,
 		"inputs": [
 			{
-				"option": 13,
-				"type": "choose"
+				"type": "choose",
+				"option": 13
 			},
 			{
-				"option": 0,
-				"type": "choose"
+				"type": "choose",
+				"option": 0
 			},
 			{
-				"option": 5,
-				"type": "choose"
+				"type": "choose",
+				"option": 5
 			},
 			{
-				"option": 8,
-				"type": "choose"
+				"type": "choose",
+				"option": 8
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 6,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"option": 1,
-				"type": "choose"
+				"type": "choose",
+				"option": 1
 			},
 			{
-				"option": 0,
-				"type": "choose"
+				"type": "choose",
+				"option": 0
 			},
 			{
-				"option": 1,
-				"type": "choose"
+				"type": "choose",
+				"option": 1
 			},
 			{
-				"option": 10,
-				"type": "choose"
+				"type": "choose",
+				"option": 10
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 6,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"option": 0,
-				"type": "choose"
+				"type": "choose",
+				"option": 0
 			},
 			{
-				"option": 1,
-				"type": "choose"
+				"type": "choose",
+				"option": 1
 			},
 			{
-				"option": 9,
-				"type": "choose"
+				"type": "choose",
+				"option": 9
 			},
 			{
-				"option": 4,
-				"type": "choose"
+				"type": "choose",
+				"option": 4
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 6,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"option": 9,
-				"type": "choose"
+				"type": "choose",
+				"option": 9
 			},
 			{
-				"option": 5,
-				"type": "choose"
+				"type": "choose",
+				"option": 5
 			},
 			{
-				"option": 9,
-				"type": "choose"
+				"type": "choose",
+				"option": 9
 			},
 			{
-				"option": 1,
-				"type": "choose"
+				"type": "choose",
+				"option": 1
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 6,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"option": 4,
-				"type": "choose"
+				"type": "choose",
+				"option": 4
 			},
 			{
-				"option": 0,
-				"type": "choose"
+				"type": "choose",
+				"option": 0
 			},
 			{
-				"option": 10,
-				"type": "choose"
+				"type": "choose",
+				"option": 10
 			},
 			{
-				"option": 13,
-				"type": "choose"
+				"type": "choose",
+				"option": 13
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			}
 		],
 		"logs": [
@@ -4771,1523 +4678,1524 @@
 				"  North (bot) may: Play a card"
 			]
 		],
-		"seed": 1
-	},
-	{
 		"end": {
-			"over": false,
-			"result": "",
-			"variables": {
-				"bags_1": "2",
-				"bags_2": "0",
-				"bid_1": "10",
-				"bid_2": "4",
-				"bid_3": "0",
-				"bid_4": "13",
-				"dealer": "4",
-				"lead": "Clubs",
-				"player": "4",
-				"spades_broken": "false",
-				"team_bid_1": "10",
-				"team_bid_2": "17",
-				"team_score_1": "-418",
-				"team_score_2": "-560"
-			},
 			"zones": {
 				"deck": [],
 				"hand_1": [
-					"2♣",
 					"6♣",
-					"9♣",
+					"7♣",
 					"10♣",
+					"K♣",
 					"3♥",
+					"10♥",
+					"Q♥",
 					"K♥",
-					"2♠",
-					"8♠",
-					"10♠",
+					"9♠",
 					"K♠"
 				],
 				"hand_2": [
-					"7♣",
-					"J♣",
+					"4♣",
+					"9♣",
 					"4♦",
-					"5♦",
-					"6♦",
-					"A♦",
-					"6♥",
-					"4♠",
-					"7♠",
-					"A♠"
+					"K♦",
+					"2♥",
+					"4♥",
+					"J♥",
+					"A♥",
+					"4♠"
 				],
 				"hand_3": [
-					"2♦",
+					"5♣",
+					"5♦",
+					"8♦",
 					"Q♦",
-					"K♦",
-					"Q♥",
+					"7♥",
 					"3♠",
 					"5♠",
-					"9♠",
-					"J♠",
-					"Q♠"
+					"6♠",
+					"10♠",
+					"J♠"
 				],
 				"hand_4": [
 					"8♣",
-					"Q♣",
-					"3♦",
-					"J♦",
-					"2♥",
 					"5♥",
-					"7♥",
-					"J♥",
-					"A♥",
-					"6♠"
+					"6♥",
+					"8♥",
+					"9♥",
+					"2♠",
+					"7♠",
+					"8♠",
+					"Q♠",
+					"A♠"
 				],
 				"played_1": [],
-				"played_2": [],
-				"played_3": [
-					"K♣"
+				"played_2": [
+					"2♣"
 				],
+				"played_3": [],
 				"played_4": [],
 				"won_1": [],
-				"won_2": [],
-				"won_3": [
-					"▼4♣",
-					"▼3♣",
+				"won_2": [
+					"▼J♣",
 					"▼A♣",
-					"▼5♣",
-					"▼8♥",
-					"▼4♥",
-					"▼10♥",
-					"▼9♥",
-					"▼8♦",
-					"▼7♦",
+					"▼Q♣",
+					"▼3♣"
+				],
+				"won_3": [
+					"▼2♦",
+					"▼3♦",
+					"▼J♦",
 					"▼10♦",
-					"▼9♦"
+					"▼7♦",
+					"▼9♦",
+					"▼A♦",
+					"▼6♦"
 				],
 				"won_4": []
-			}
-		},
+			},
+			"variables": {
+				"dealer": "3",
+				"lead": "Clubs",
+				"spades_broken": "false",
+				"player": "3",
+				"bid_1": "0",
+				"bid_2": "10",
+				"bid_3": "13",
+				"bid_4": "4",
+				"team_bid_1": "13",
+				"team_bid_2": "14",
+				"team_score_1": "-283",
+				"team_score_2": "-630",
+				"bags_1": "7",
+				"bags_2": "0"
+			},
+			"over": false,
+			"result": ""
+		}
+	},
+	{
+		"seed": 2,
 		"inputs": [
 			{
-				"option": 2,
-				"type": "choose"
+				"type": "choose",
+				"option": 2
 			},
 			{
-				"option": 3,
-				"type": "choose"
+				"type": "choose",
+				"option": 3
 			},
 			{
-				"option": 12,
-				"type": "choose"
+				"type": "choose",
+				"option": 12
 			},
 			{
-				"option": 10,
-				"type": "choose"
+				"type": "choose",
+				"option": 10
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 6,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"option": 5,
-				"type": "choose"
+				"type": "choose",
+				"option": 5
 			},
 			{
-				"option": 13,
-				"type": "choose"
+				"type": "choose",
+				"option": 13
 			},
 			{
-				"option": 2,
-				"type": "choose"
+				"type": "choose",
+				"option": 2
 			},
 			{
-				"option": 13,
-				"type": "choose"
+				"type": "choose",
+				"option": 13
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 6,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"option": 2,
-				"type": "choose"
+				"type": "choose",
+				"option": 2
 			},
 			{
-				"option": 4,
-				"type": "choose"
+				"type": "choose",
+				"option": 4
 			},
 			{
-				"option": 3,
-				"type": "choose"
+				"type": "choose",
+				"option": 3
 			},
 			{
-				"option": 10,
-				"type": "choose"
+				"type": "choose",
+				"option": 10
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 6,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"option": 0,
-				"type": "choose"
+				"type": "choose",
+				"option": 0
 			},
 			{
-				"option": 6,
-				"type": "choose"
+				"type": "choose",
+				"option": 6
 			},
 			{
-				"option": 12,
-				"type": "choose"
+				"type": "choose",
+				"option": 12
 			},
 			{
-				"option": 1,
-				"type": "choose"
+				"type": "choose",
+				"option": 1
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 6,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"option": 10,
-				"type": "choose"
+				"type": "choose",
+				"option": 10
 			},
 			{
-				"option": 4,
-				"type": "choose"
+				"type": "choose",
+				"option": 4
 			},
 			{
-				"option": 0,
-				"type": "choose"
+				"type": "choose",
+				"option": 0
 			},
 			{
-				"option": 13,
-				"type": "choose"
+				"type": "choose",
+				"option": 13
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "played_4",
-				"type": "drag"
+				"to": "played_4"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "played_1",
-				"type": "drag"
+				"to": "played_1"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "played_2",
-				"type": "drag"
+				"to": "played_2"
 			},
 			{
-				"action": "Collect trick",
-				"type": "perform"
+				"type": "perform",
+				"action": "Collect trick"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "played_3",
-				"type": "drag"
+				"to": "played_3"
 			}
 		],
 		"logs": [
@@ -9541,6 +9449,98 @@
 				"  East (bot) may: Play a card"
 			]
 		],
-		"seed": 2
+		"end": {
+			"zones": {
+				"deck": [],
+				"hand_1": [
+					"2♣",
+					"6♣",
+					"9♣",
+					"10♣",
+					"3♥",
+					"K♥",
+					"2♠",
+					"8♠",
+					"10♠",
+					"K♠"
+				],
+				"hand_2": [
+					"7♣",
+					"J♣",
+					"4♦",
+					"5♦",
+					"6♦",
+					"A♦",
+					"6♥",
+					"4♠",
+					"7♠",
+					"A♠"
+				],
+				"hand_3": [
+					"2♦",
+					"Q♦",
+					"K♦",
+					"Q♥",
+					"3♠",
+					"5♠",
+					"9♠",
+					"J♠",
+					"Q♠"
+				],
+				"hand_4": [
+					"8♣",
+					"Q♣",
+					"3♦",
+					"J♦",
+					"2♥",
+					"5♥",
+					"7♥",
+					"J♥",
+					"A♥",
+					"6♠"
+				],
+				"played_1": [],
+				"played_2": [],
+				"played_3": [
+					"K♣"
+				],
+				"played_4": [],
+				"won_1": [],
+				"won_2": [],
+				"won_3": [
+					"▼4♣",
+					"▼3♣",
+					"▼A♣",
+					"▼5♣",
+					"▼8♥",
+					"▼4♥",
+					"▼10♥",
+					"▼9♥",
+					"▼8♦",
+					"▼7♦",
+					"▼10♦",
+					"▼9♦"
+				],
+				"won_4": []
+			},
+			"variables": {
+				"dealer": "4",
+				"lead": "Clubs",
+				"spades_broken": "false",
+				"player": "4",
+				"bid_1": "10",
+				"bid_2": "4",
+				"bid_3": "0",
+				"bid_4": "13",
+				"team_bid_1": "10",
+				"team_bid_2": "17",
+				"team_score_1": "-418",
+				"team_score_2": "-560",
+				"bags_1": "2",
+				"bags_2": "0"
+			},
+			"over": false,
+			"result": ""
+		}
 	}
 ]

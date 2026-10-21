@@ -1,531 +1,446 @@
 [
 	{
-		"end": {
-			"over": true,
-			"result": "Winner: Player 2",
-			"variables": {
-				"extra_turn": "false",
-				"last_chance_caller": "2",
-				"player": "2"
-			},
-			"zones": {
-				"browsing": [],
-				"deck": [
-					"▼Penguin",
-					"▼Anchor",
-					"▼Shell",
-					"▼Swimmer",
-					"▼Shell",
-					"▼Fish",
-					"▼1/Fish",
-					"▼Shark",
-					"▼2/Penguin",
-					"▼Fish",
-					"▼Boat",
-					"▼Shell",
-					"▼Mermaid",
-					"▼Shell",
-					"▼Boat",
-					"▼Shark",
-					"▼2/Boat",
-					"▼Crab",
-					"▼Crab",
-					"▼Octopus",
-					"▼Mermaid",
-					"▼Swimmer",
-					"▼Crab",
-					"▼Mermaid",
-					"▼Fish",
-					"▼Shark",
-					"▼Shark",
-					"▼Boat",
-					"▼Crab",
-					"▼Crab",
-					"▼Fish",
-					"▼Penguin",
-					"▼Shell"
-				],
-				"discard_piles_1": [
-					"Swimmer"
-				],
-				"discard_piles_2": [
-					"Shark",
-					"Octopus"
-				],
-				"drawn_1": [],
-				"drawn_2": [],
-				"hand_1": [
-					"3/Anchor",
-					"Anchor",
-					"Boat",
-					"Crab",
-					"Fish",
-					"Mermaid",
-					"Penguin",
-					"Shell",
-					"Swimmer"
-				],
-				"hand_2": [
-					"Crab",
-					"Crab",
-					"Crab",
-					"Octopus",
-					"Octopus",
-					"Octopus",
-					"Swimmer"
-				],
-				"played_1": [
-					"Boat",
-					"Boat"
-				],
-				"played_2": [
-					"Boat",
-					"Boat",
-					"Fish",
-					"Fish"
-				]
-			}
-		},
+		"seed": 1,
 		"inputs": [
 			{
+				"type": "drag",
 				"card": 54,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "click",
+				"card": 17
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "End turn"
+			},
+			{
+				"type": "drag",
 				"card": 9,
-				"type": "click"
+				"to": "hand_2"
 			},
 			{
-				"card": 17,
-				"type": "click"
+				"type": "perform",
+				"action": "Play duo"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "click",
+				"card": 3
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "click",
+				"card": 9
 			},
 			{
-				"card": 9,
-				"to": "hand_2",
-				"type": "drag"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Play duo",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "click",
+				"card": 55
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "choose",
+				"option": "discard_piles_2"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"card": 55,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"option": "discard_piles_2",
-				"type": "choose"
+				"type": "click",
+				"card": 51
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "choose",
+				"option": "discard_piles_1"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"option": "discard_piles_1",
-				"type": "choose"
+				"type": "click",
+				"card": 13
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "click",
+				"card": 13
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "choose",
+				"option": "discard_piles_1"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"option": "discard_piles_1",
-				"type": "choose"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "click",
+				"card": 34
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "click",
+				"card": 6
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
-			},
-			{
-				"action": "Sort hand",
-				"type": "perform"
-			},
-			{
-				"action": "Sort hand",
-				"type": "perform"
-			},
-			{
-				"action": "End turn",
-				"type": "perform"
-			},
-			{
+				"type": "drag",
 				"card": 20,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Play duo",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play duo"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
-				"action": "Play duo",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play duo"
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
-				"action": "Last chance",
-				"type": "perform"
+				"type": "perform",
+				"action": "Last chance"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"option": "discard_piles_2",
-				"type": "choose"
+				"type": "choose",
+				"option": "discard_piles_2"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			}
 		],
 		"logs": [
@@ -1187,375 +1102,378 @@
 				"[game over] Winner: Player 2"
 			]
 		],
-		"seed": 1
-	},
-	{
 		"end": {
-			"over": true,
-			"result": "Winner: You",
-			"variables": {
-				"extra_turn": "false",
-				"last_chance_caller": "1",
-				"player": "1"
-			},
 			"zones": {
-				"browsing": [],
 				"deck": [
 					"▼Penguin",
-					"▼Octopus",
-					"▼3/Anchor",
-					"▼Fish",
+					"▼Anchor",
 					"▼Shell",
-					"▼Octopus",
+					"▼Swimmer",
+					"▼Shell",
+					"▼Fish",
+					"▼1/Fish",
+					"▼Shark",
+					"▼2/Penguin",
+					"▼Fish",
+					"▼Boat",
+					"▼Shell",
+					"▼Mermaid",
+					"▼Shell",
+					"▼Boat",
+					"▼Shark",
 					"▼2/Boat",
+					"▼Crab",
+					"▼Crab",
+					"▼Octopus",
+					"▼Mermaid",
 					"▼Swimmer",
 					"▼Crab",
-					"▼Crab",
+					"▼Mermaid",
+					"▼Fish",
 					"▼Shark",
-					"▼Crab",
-					"▼Shell",
+					"▼Shark",
 					"▼Boat",
-					"▼Shell",
+					"▼Crab",
+					"▼Crab",
+					"▼Fish",
 					"▼Penguin",
-					"▼Boat",
-					"▼Boat",
-					"▼Shark",
-					"▼Mermaid",
-					"▼Octopus",
-					"▼Mermaid",
-					"▼Fish",
-					"▼Octopus",
-					"▼Swimmer",
-					"▼Fish",
-					"▼Shark",
-					"▼Fish",
-					"▼Octopus",
-					"▼Mermaid",
-					"▼Boat",
-					"▼Swimmer",
-					"▼Crab",
-					"▼Shell",
-					"▼Crab",
-					"▼Fish",
-					"▼Boat",
-					"▼Shell",
-					"▼Boat",
-					"▼Crab"
+					"▼Shell"
 				],
-				"discard_piles_1": [],
-				"discard_piles_2": [],
+				"discard_piles_1": [
+					"Swimmer"
+				],
+				"discard_piles_2": [
+					"Shark",
+					"Octopus"
+				],
 				"drawn_1": [],
 				"drawn_2": [],
+				"browsing": [],
 				"hand_1": [
-					"2/Penguin",
+					"3/Anchor",
+					"Anchor",
+					"Boat",
+					"Crab",
 					"Fish",
 					"Mermaid",
 					"Penguin",
-					"Shark",
-					"Shell"
+					"Shell",
+					"Swimmer"
 				],
 				"hand_2": [
-					"1/Fish",
-					"Anchor",
-					"Anchor",
-					"Boat",
-					"Boat",
 					"Crab",
-					"Fish",
-					"Shark"
+					"Crab",
+					"Crab",
+					"Octopus",
+					"Octopus",
+					"Octopus",
+					"Swimmer"
 				],
 				"played_1": [
-					"Swimmer",
-					"Swimmer",
-					"Crab",
-					"Crab"
+					"Boat",
+					"Boat"
 				],
-				"played_2": []
-			}
-		},
+				"played_2": [
+					"Boat",
+					"Boat",
+					"Fish",
+					"Fish"
+				]
+			},
+			"variables": {
+				"extra_turn": "false",
+				"last_chance_caller": "2",
+				"player": "2"
+			},
+			"over": true,
+			"result": "Winner: Player 2"
+		}
+	},
+	{
+		"seed": 2,
 		"inputs": [
 			{
-				"card": 54,
-				"type": "click"
+				"type": "click",
+				"card": 54
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 57,
-				"type": "click"
+				"type": "click",
+				"card": 57
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 57,
-				"type": "click"
+				"type": "click",
+				"card": 57
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
-				"option": "discard_piles_1",
-				"type": "choose"
+				"type": "choose",
+				"option": "discard_piles_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
-				"action": "Play duo",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play duo"
 			},
 			{
-				"card": 54,
-				"type": "click"
+				"type": "click",
+				"card": 54
 			},
 			{
-				"card": 57,
-				"type": "click"
+				"type": "click",
+				"card": 57
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "End turn"
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "Sort hand"
+			},
+			{
+				"type": "perform",
+				"action": "End turn"
+			},
+			{
+				"type": "drag",
 				"card": 0,
-				"type": "click"
+				"to": "hand_2"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "click",
+				"card": 10
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "click",
+				"card": 10
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "perform",
+				"action": "Play duo"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "click",
+				"card": 10
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "click",
+				"card": 12
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "choose",
+				"option": "discard_piles_2"
 			},
 			{
-				"card": 0,
-				"to": "hand_2",
-				"type": "drag"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"action": "Sort hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 8
 			},
 			{
-				"action": "Play duo",
-				"type": "perform"
+				"type": "click",
+				"card": 44
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "perform",
+				"action": "Last chance"
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "perform",
+				"action": "Sort hand"
 			},
 			{
-				"option": "discard_piles_2",
-				"type": "choose"
+				"type": "click",
+				"card": 8
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
-			},
-			{
-				"card": 31,
-				"type": "click"
-			},
-			{
-				"action": "Sort hand",
-				"type": "perform"
-			},
-			{
-				"action": "Sort hand",
-				"type": "perform"
-			},
-			{
-				"action": "End turn",
-				"type": "perform"
-			},
-			{
-				"card": 8,
-				"type": "click"
-			},
-			{
-				"card": 44,
-				"type": "click"
-			},
-			{
-				"action": "Last chance",
-				"type": "perform"
-			},
-			{
-				"action": "Sort hand",
-				"type": "perform"
-			},
-			{
-				"card": 8,
-				"type": "click"
-			},
-			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			}
 		],
 		"logs": [
@@ -2011,6 +1929,88 @@
 				"[game over] Winner: You"
 			]
 		],
-		"seed": 2
+		"end": {
+			"zones": {
+				"deck": [
+					"▼Penguin",
+					"▼Octopus",
+					"▼3/Anchor",
+					"▼Fish",
+					"▼Shell",
+					"▼Octopus",
+					"▼2/Boat",
+					"▼Swimmer",
+					"▼Crab",
+					"▼Crab",
+					"▼Shark",
+					"▼Crab",
+					"▼Shell",
+					"▼Boat",
+					"▼Shell",
+					"▼Penguin",
+					"▼Boat",
+					"▼Boat",
+					"▼Shark",
+					"▼Mermaid",
+					"▼Octopus",
+					"▼Mermaid",
+					"▼Fish",
+					"▼Octopus",
+					"▼Swimmer",
+					"▼Fish",
+					"▼Shark",
+					"▼Fish",
+					"▼Octopus",
+					"▼Mermaid",
+					"▼Boat",
+					"▼Swimmer",
+					"▼Crab",
+					"▼Shell",
+					"▼Crab",
+					"▼Fish",
+					"▼Boat",
+					"▼Shell",
+					"▼Boat",
+					"▼Crab"
+				],
+				"discard_piles_1": [],
+				"discard_piles_2": [],
+				"drawn_1": [],
+				"drawn_2": [],
+				"browsing": [],
+				"hand_1": [
+					"2/Penguin",
+					"Fish",
+					"Mermaid",
+					"Penguin",
+					"Shark",
+					"Shell"
+				],
+				"hand_2": [
+					"1/Fish",
+					"Anchor",
+					"Anchor",
+					"Boat",
+					"Boat",
+					"Crab",
+					"Fish",
+					"Shark"
+				],
+				"played_1": [
+					"Swimmer",
+					"Swimmer",
+					"Crab",
+					"Crab"
+				],
+				"played_2": []
+			},
+			"variables": {
+				"extra_turn": "false",
+				"last_chance_caller": "1",
+				"player": "1"
+			},
+			"over": true,
+			"result": "Winner: You"
+		}
 	}
 ]

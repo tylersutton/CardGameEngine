@@ -1,1652 +1,1230 @@
 [
 	{
-		"end": {
-			"over": true,
-			"result": "Winner: Bot",
-			"variables": {
-				"actions": "1",
-				"attacker": "0",
-				"buys": "1",
-				"coins": "0",
-				"gain_limit": "4",
-				"immune_1": "false",
-				"immune_2": "false",
-				"merchants": "0",
-				"phase": "over",
-				"player": "2",
-				"silver_played": "false"
-			},
-			"zones": {
-				"basic_pile_1": [
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Copper"
-				],
-				"basic_pile_2": [
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver",
-					"Silver"
-				],
-				"basic_pile_3": [
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold",
-					"Gold"
-				],
-				"basic_pile_4": [],
-				"basic_pile_5": [
-					"Duchy",
-					"Duchy",
-					"Duchy",
-					"Duchy",
-					"Duchy",
-					"Duchy",
-					"Duchy",
-					"Duchy"
-				],
-				"basic_pile_6": [
-					"Province",
-					"Province",
-					"Province",
-					"Province",
-					"Province",
-					"Province",
-					"Province",
-					"Province"
-				],
-				"basic_pile_7": [],
-				"box": [
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch"
-				],
-				"chosen": [],
-				"deck_1": [
-					"▼Copper",
-					"▼Moat",
-					"▼Workshop",
-					"▼Curse",
-					"▼Copper",
-					"▼Copper",
-					"▼Cellar",
-					"▼Cellar",
-					"▼Merchant",
-					"▼Copper",
-					"▼Curse",
-					"▼Estate",
-					"▼Copper",
-					"▼Moat",
-					"▼Cellar",
-					"▼Copper",
-					"▼Copper",
-					"▼Copper",
-					"▼Silver",
-					"▼Copper",
-					"▼Village",
-					"▼Copper",
-					"▼Cellar",
-					"▼Estate",
-					"▼Estate",
-					"▼Copper",
-					"▼Copper",
-					"▼Village",
-					"▼Copper",
-					"▼Curse",
-					"▼Estate",
-					"▼Copper",
-					"▼Remodel",
-					"▼Copper",
-					"▼Copper",
-					"▼Moat",
-					"▼Copper",
-					"▼Moat",
-					"▼Estate"
-				],
-				"deck_2": [
-					"▼Copper",
-					"▼Cellar",
-					"▼Cellar",
-					"▼Estate",
-					"▼Estate",
-					"▼Copper",
-					"▼Copper",
-					"▼Copper",
-					"▼Estate",
-					"▼Cellar",
-					"▼Estate",
-					"▼Curse",
-					"▼Moat",
-					"▼Copper",
-					"▼Copper",
-					"▼Copper",
-					"▼Copper",
-					"▼Copper",
-					"▼Workshop",
-					"▼Copper",
-					"▼Cellar",
-					"▼Copper",
-					"▼Copper",
-					"▼Copper",
-					"▼Curse",
-					"▼Copper",
-					"▼Estate",
-					"▼Copper",
-					"▼Copper",
-					"▼Moat",
-					"▼Cellar",
-					"▼Copper",
-					"▼Curse",
-					"▼Estate",
-					"▼Copper",
-					"▼Estate",
-					"▼Copper",
-					"▼Workshop",
-					"▼Copper",
-					"▼Copper",
-					"▼Copper"
-				],
-				"discard_1": [
-					"Moat",
-					"Cellar",
-					"Copper",
-					"Copper",
-					"Moat",
-					"Curse"
-				],
-				"discard_2": [],
-				"hand_1": [
-					"Moat",
-					"Curse",
-					"Curse",
-					"Curse",
-					"Copper"
-				],
-				"hand_2": [
-					"Workshop",
-					"Workshop",
-					"Copper",
-					"Estate",
-					"Estate"
-				],
-				"kingdom_pile_1": [],
-				"kingdom_pile_10": [
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine"
-				],
-				"kingdom_pile_2": [
-					"Moat"
-				],
-				"kingdom_pile_3": [
-					"Merchant",
-					"Merchant",
-					"Merchant",
-					"Merchant",
-					"Merchant",
-					"Merchant",
-					"Merchant",
-					"Merchant",
-					"Merchant"
-				],
-				"kingdom_pile_4": [
-					"Village",
-					"Village",
-					"Village",
-					"Village",
-					"Village",
-					"Village",
-					"Village",
-					"Village"
-				],
-				"kingdom_pile_5": [
-					"Workshop",
-					"Workshop",
-					"Workshop",
-					"Workshop",
-					"Workshop"
-				],
-				"kingdom_pile_6": [
-					"Militia",
-					"Militia",
-					"Militia",
-					"Militia",
-					"Militia",
-					"Militia",
-					"Militia",
-					"Militia",
-					"Militia",
-					"Militia"
-				],
-				"kingdom_pile_7": [
-					"Remodel",
-					"Remodel",
-					"Remodel",
-					"Remodel",
-					"Remodel",
-					"Remodel",
-					"Remodel",
-					"Remodel",
-					"Remodel"
-				],
-				"kingdom_pile_8": [
-					"Smithy",
-					"Smithy",
-					"Smithy",
-					"Smithy",
-					"Smithy",
-					"Smithy",
-					"Smithy",
-					"Smithy",
-					"Smithy",
-					"Smithy"
-				],
-				"kingdom_pile_9": [
-					"Market",
-					"Market",
-					"Market",
-					"Market",
-					"Market",
-					"Market",
-					"Market",
-					"Market",
-					"Market",
-					"Market"
-				],
-				"play_1": [],
-				"play_2": [],
-				"trash": []
-			}
-		},
+		"seed": 1,
 		"inputs": [
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 55,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
-				"card": 58,
-				"type": "click"
+				"type": "click",
+				"card": 58
 			},
 			{
-				"card": 170,
-				"type": "click"
+				"type": "click",
+				"card": 170
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
-				"card": 55,
-				"type": "click"
+				"type": "click",
+				"card": 55
 			},
 			{
-				"card": 171,
-				"type": "click"
+				"type": "click",
+				"card": 171
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 137,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 169,
-				"type": "click"
+				"type": "click",
+				"card": 169
 			},
 			{
+				"type": "drag",
 				"card": 52,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 99,
-				"type": "click"
+				"type": "click",
+				"card": 99
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
-				"card": 59,
-				"type": "click"
+				"type": "click",
+				"card": 59
 			},
 			{
+				"type": "drag",
 				"card": 168,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 54,
-				"type": "click"
+				"type": "click",
+				"card": 54
 			},
 			{
+				"type": "drag",
 				"card": 167,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 171,
-				"type": "click"
+				"type": "click",
+				"card": 171
 			},
 			{
-				"card": 169,
-				"type": "click"
+				"type": "click",
+				"card": 169
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 141,
-				"type": "click"
+				"type": "click",
+				"card": 141
 			},
 			{
 				"type": "finish"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 57,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 336,
-				"type": "click"
+				"type": "click",
+				"card": 336
 			},
 			{
+				"type": "drag",
 				"card": 56,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 172,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
+				"type": "drag",
 				"card": 173,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 52,
-				"type": "click"
+				"type": "click",
+				"card": 52
 			},
 			{
+				"type": "drag",
 				"card": 337,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 166,
-				"type": "click"
+				"type": "click",
+				"card": 166
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 54,
-				"type": "click"
+				"type": "click",
+				"card": 54
 			},
 			{
+				"type": "drag",
 				"card": 338,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 210,
-				"type": "click"
+				"type": "click",
+				"card": 210
 			},
 			{
-				"card": 338,
-				"type": "click"
+				"type": "click",
+				"card": 338
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
+				"type": "drag",
 				"card": 52,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 339,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 172,
-				"type": "click"
+				"type": "click",
+				"card": 172
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 136,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 55,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 165,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 50,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
-				"card": 174,
-				"type": "click"
+				"type": "click",
+				"card": 174
 			},
 			{
-				"card": 173,
-				"type": "click"
+				"type": "click",
+				"card": 173
 			},
 			{
-				"card": 171,
-				"type": "click"
+				"type": "click",
+				"card": 171
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 52,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
-				"card": 164,
-				"type": "click"
+				"type": "click",
+				"card": 164
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 171,
-				"type": "click"
+				"type": "click",
+				"card": 171
 			},
 			{
-				"card": 164,
-				"type": "click"
+				"type": "click",
+				"card": 164
 			},
 			{
-				"card": 166,
-				"type": "click"
+				"type": "click",
+				"card": 166
 			},
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
-				"card": 57,
-				"type": "click"
+				"type": "click",
+				"card": 57
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
+				"type": "drag",
 				"card": 163,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
+				"type": "drag",
 				"card": 54,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 211,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 210,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 200,
-				"type": "click"
+				"type": "click",
+				"card": 200
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 174,
-				"type": "click"
+				"type": "click",
+				"card": 174
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
-				"card": 136,
-				"type": "click"
+				"type": "click",
+				"card": 136
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
-				"card": 162,
-				"type": "click"
+				"type": "click",
+				"card": 162
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 135,
-				"type": "click"
+				"type": "click",
+				"card": 135
 			},
 			{
-				"card": 56,
-				"type": "click"
+				"type": "click",
+				"card": 56
 			},
 			{
+				"type": "drag",
 				"card": 161,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 57,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 160,
-				"type": "click"
+				"type": "click",
+				"card": 160
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 175,
-				"type": "click"
+				"type": "click",
+				"card": 175
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
-				"card": 54,
-				"type": "click"
+				"type": "click",
+				"card": 54
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 339,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 134,
-				"type": "click"
+				"type": "click",
+				"card": 134
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
+				"type": "drag",
 				"card": 212,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 173,
-				"type": "click"
+				"type": "click",
+				"card": 173
 			},
 			{
-				"card": 166,
-				"type": "click"
+				"type": "click",
+				"card": 166
 			},
 			{
-				"card": 165,
-				"type": "click"
+				"type": "click",
+				"card": 165
 			},
 			{
-				"card": 59,
-				"type": "click"
+				"type": "click",
+				"card": 59
 			},
 			{
-				"card": 139,
-				"type": "click"
+				"type": "click",
+				"card": 139
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"card": 55,
-				"type": "click"
+				"type": "click",
+				"card": 55
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 190,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
+				"type": "drag",
 				"card": 54,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 53,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 339,
-				"type": "click"
+				"type": "click",
+				"card": 339
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 176,
-				"type": "click"
+				"type": "click",
+				"card": 176
 			},
 			{
-				"card": 338,
-				"type": "click"
+				"type": "click",
+				"card": 338
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
+				"type": "drag",
 				"card": 171,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 134,
-				"type": "click"
+				"type": "click",
+				"card": 134
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"card": 336,
-				"type": "click"
+				"type": "click",
+				"card": 336
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 174,
-				"type": "click"
+				"type": "click",
+				"card": 174
 			},
 			{
-				"card": 137,
-				"type": "click"
+				"type": "click",
+				"card": 137
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"card": 52,
-				"type": "click"
+				"type": "click",
+				"card": 52
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 133,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
+				"type": "drag",
 				"card": 56,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 132,
-				"type": "click"
+				"type": "click",
+				"card": 132
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 59,
-				"type": "click"
+				"type": "click",
+				"card": 59
 			},
 			{
-				"card": 55,
-				"type": "click"
+				"type": "click",
+				"card": 55
 			},
 			{
+				"type": "drag",
 				"card": 177,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 54,
-				"type": "click"
+				"type": "click",
+				"card": 54
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 213,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 50,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 339,
-				"type": "click"
+				"type": "click",
+				"card": 339
 			},
 			{
-				"card": 57,
-				"type": "click"
+				"type": "click",
+				"card": 57
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 210,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 248,
-				"type": "click"
+				"type": "click",
+				"card": 248
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
-				"card": 54,
-				"type": "click"
+				"type": "click",
+				"card": 54
 			},
 			{
+				"type": "drag",
 				"card": 131,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 336,
-				"type": "click"
+				"type": "click",
+				"card": 336
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 52,
-				"type": "click"
+				"type": "click",
+				"card": 52
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
-				"card": 340,
-				"type": "click"
+				"type": "click",
+				"card": 340
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 130,
-				"type": "click"
+				"type": "click",
+				"card": 130
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 341,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 177,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 200,
-				"type": "click"
+				"type": "click",
+				"card": 200
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
-				"card": 141,
-				"type": "click"
+				"type": "click",
+				"card": 141
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 59,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 342,
-				"type": "click"
+				"type": "click",
+				"card": 342
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 57,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 27
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 175,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
 				"type": "finish"
 			},
 			{
+				"type": "drag",
 				"card": 52,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 214,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 178,
-				"type": "click"
+				"type": "click",
+				"card": 178
 			},
 			{
-				"card": 172,
-				"type": "click"
+				"type": "click",
+				"card": 172
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
 				"type": "finish"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 58,
-				"type": "click"
+				"type": "click",
+				"card": 58
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 210,
-				"type": "click"
+				"type": "click",
+				"card": 210
 			},
 			{
-				"card": 201,
-				"type": "click"
+				"type": "click",
+				"card": 201
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
-				"card": 173,
-				"type": "click"
+				"type": "click",
+				"card": 173
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
-				"card": 141,
-				"type": "click"
+				"type": "click",
+				"card": 141
 			},
 			{
-				"card": 139,
-				"type": "click"
+				"type": "click",
+				"card": 139
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 338,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
+				"type": "drag",
 				"card": 52,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 343,
-				"type": "click"
+				"type": "click",
+				"card": 343
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 176,
-				"type": "click"
+				"type": "click",
+				"card": 176
 			},
 			{
-				"card": 177,
-				"type": "click"
+				"type": "click",
+				"card": 177
 			},
 			{
-				"card": 190,
-				"type": "click"
+				"type": "click",
+				"card": 190
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 344,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 54,
-				"type": "click"
+				"type": "click",
+				"card": 54
 			},
 			{
-				"card": 179,
-				"type": "click"
+				"type": "click",
+				"card": 179
 			}
 		],
 		"logs": [
@@ -5000,30 +4578,99 @@
 				"  if phase != 'over' → else"
 			]
 		],
-		"seed": 1
-	},
-	{
 		"end": {
-			"over": true,
-			"result": "Winner: Bot",
-			"variables": {
-				"actions": "1",
-				"attacker": "0",
-				"buys": "1",
-				"coins": "0",
-				"gain_limit": "4",
-				"immune_1": "false",
-				"immune_2": "false",
-				"merchants": "0",
-				"phase": "over",
-				"player": "1",
-				"silver_played": "false"
-			},
 			"zones": {
+				"box": [
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch"
+				],
+				"chosen": [],
+				"trash": [],
 				"basic_pile_1": [
-					"Copper",
-					"Copper",
-					"Copper",
 					"Copper",
 					"Copper",
 					"Copper",
@@ -5043,6 +4690,8 @@
 					"Copper"
 				],
 				"basic_pile_2": [
+					"Silver",
+					"Silver",
 					"Silver",
 					"Silver",
 					"Silver",
@@ -5135,215 +4784,12 @@
 					"Province"
 				],
 				"basic_pile_7": [],
-				"box": [
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Chapel",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Woodcutter",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Great Hall",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Throne Room",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Gardens",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Festival",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Laboratory",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Council Room",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch",
-					"▼Witch"
-				],
-				"chosen": [],
-				"deck_1": [
-					"▼Curse",
-					"▼Copper",
-					"▼Moat",
-					"▼Estate",
-					"▼Copper",
-					"▼Estate",
-					"▼Copper",
-					"▼Curse",
-					"▼Copper",
-					"▼Estate",
-					"▼Silver",
-					"▼Moat",
-					"▼Copper"
-				],
-				"deck_2": [
-					"▼Copper",
-					"▼Copper",
-					"▼Copper",
-					"▼Estate",
-					"▼Estate",
-					"▼Estate",
-					"▼Copper",
-					"▼Silver"
-				],
-				"discard_1": [
-					"Copper",
-					"Moat",
-					"Copper",
-					"Moat",
-					"Curse",
-					"Curse",
-					"Copper",
-					"Estate",
-					"Copper",
-					"Copper",
-					"Cellar",
-					"Moat",
-					"Curse",
-					"Copper",
-					"Copper",
-					"Moat",
-					"Copper",
-					"Copper",
-					"Cellar",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Cellar",
-					"Copper",
-					"Copper",
-					"Curse",
-					"Copper",
-					"Estate"
-				],
-				"discard_2": [
-					"Moat",
-					"Copper",
-					"Copper",
-					"Merchant",
-					"Copper",
-					"Estate",
-					"Cellar",
-					"Copper",
-					"Copper",
-					"Silver",
-					"Workshop",
-					"Moat",
-					"Cellar",
-					"Copper",
-					"Copper",
-					"Copper",
-					"Curse",
-					"Curse",
-					"Cellar",
-					"Estate",
-					"Cellar",
-					"Copper",
-					"Curse",
-					"Copper",
-					"Copper",
-					"Cellar",
-					"Copper",
-					"Copper",
-					"Village",
-					"Militia",
-					"Estate"
-				],
-				"hand_1": [
-					"Cellar",
-					"Cellar",
-					"Merchant",
-					"Copper",
-					"Estate"
-				],
-				"hand_2": [
-					"Curse",
-					"Copper",
-					"Copper",
-					"Estate",
-					"Estate"
-				],
 				"kingdom_pile_1": [],
-				"kingdom_pile_10": [
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine",
-					"Mine"
-				],
 				"kingdom_pile_2": [
-					"Moat",
 					"Moat"
 				],
 				"kingdom_pile_3": [
+					"Merchant",
 					"Merchant",
 					"Merchant",
 					"Merchant",
@@ -5361,14 +4807,9 @@
 					"Village",
 					"Village",
 					"Village",
-					"Village",
 					"Village"
 				],
 				"kingdom_pile_5": [
-					"Workshop",
-					"Workshop",
-					"Workshop",
-					"Workshop",
 					"Workshop",
 					"Workshop",
 					"Workshop",
@@ -5384,10 +4825,10 @@
 					"Militia",
 					"Militia",
 					"Militia",
+					"Militia",
 					"Militia"
 				],
 				"kingdom_pile_7": [
-					"Remodel",
 					"Remodel",
 					"Remodel",
 					"Remodel",
@@ -5422,1111 +4863,1247 @@
 					"Market",
 					"Market"
 				],
+				"kingdom_pile_10": [
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine"
+				],
+				"deck_1": [
+					"▼Copper",
+					"▼Moat",
+					"▼Workshop",
+					"▼Curse",
+					"▼Copper",
+					"▼Copper",
+					"▼Cellar",
+					"▼Cellar",
+					"▼Merchant",
+					"▼Copper",
+					"▼Curse",
+					"▼Estate",
+					"▼Copper",
+					"▼Moat",
+					"▼Cellar",
+					"▼Copper",
+					"▼Copper",
+					"▼Copper",
+					"▼Silver",
+					"▼Copper",
+					"▼Village",
+					"▼Copper",
+					"▼Cellar",
+					"▼Estate",
+					"▼Estate",
+					"▼Copper",
+					"▼Copper",
+					"▼Village",
+					"▼Copper",
+					"▼Curse",
+					"▼Estate",
+					"▼Copper",
+					"▼Remodel",
+					"▼Copper",
+					"▼Copper",
+					"▼Moat",
+					"▼Copper",
+					"▼Moat",
+					"▼Estate"
+				],
+				"deck_2": [
+					"▼Copper",
+					"▼Cellar",
+					"▼Cellar",
+					"▼Estate",
+					"▼Estate",
+					"▼Copper",
+					"▼Copper",
+					"▼Copper",
+					"▼Estate",
+					"▼Cellar",
+					"▼Estate",
+					"▼Curse",
+					"▼Moat",
+					"▼Copper",
+					"▼Copper",
+					"▼Copper",
+					"▼Copper",
+					"▼Copper",
+					"▼Workshop",
+					"▼Copper",
+					"▼Cellar",
+					"▼Copper",
+					"▼Copper",
+					"▼Copper",
+					"▼Curse",
+					"▼Copper",
+					"▼Estate",
+					"▼Copper",
+					"▼Copper",
+					"▼Moat",
+					"▼Cellar",
+					"▼Copper",
+					"▼Curse",
+					"▼Estate",
+					"▼Copper",
+					"▼Estate",
+					"▼Copper",
+					"▼Workshop",
+					"▼Copper",
+					"▼Copper",
+					"▼Copper"
+				],
+				"hand_1": [
+					"Moat",
+					"Curse",
+					"Curse",
+					"Curse",
+					"Copper"
+				],
+				"hand_2": [
+					"Workshop",
+					"Workshop",
+					"Copper",
+					"Estate",
+					"Estate"
+				],
 				"play_1": [],
 				"play_2": [],
-				"trash": []
-			}
-		},
+				"discard_1": [
+					"Moat",
+					"Cellar",
+					"Copper",
+					"Copper",
+					"Moat",
+					"Curse"
+				],
+				"discard_2": []
+			},
+			"variables": {
+				"phase": "over",
+				"actions": "1",
+				"buys": "1",
+				"coins": "0",
+				"attacker": "0",
+				"gain_limit": "4",
+				"merchants": "0",
+				"silver_played": "false",
+				"player": "2",
+				"immune_1": "false",
+				"immune_2": "false"
+			},
+			"over": true,
+			"result": "Winner: Bot"
+		}
+	},
+	{
+		"seed": 2,
 		"inputs": [
 			{
+				"type": "drag",
 				"card": 59,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 169,
-				"type": "click"
+				"type": "click",
+				"card": 169
 			},
 			{
+				"type": "drag",
 				"card": 52,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 54,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 170,
-				"type": "click"
+				"type": "click",
+				"card": 170
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 168,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
+				"type": "drag",
 				"card": 56,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 137,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 136,
-				"type": "click"
+				"type": "click",
+				"card": 136
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 167,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 166,
-				"type": "click"
+				"type": "click",
+				"card": 166
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 190,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 53,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 56,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 59,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 55,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 165,
-				"type": "click"
+				"type": "click",
+				"card": 165
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 53,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 52,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 54,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 57,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 56,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 190,
-				"type": "click"
+				"type": "click",
+				"card": 190
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
+				"type": "drag",
 				"card": 164,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 59,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
-				"card": 336,
-				"type": "click"
+				"type": "click",
+				"card": 336
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 210,
-				"type": "click"
+				"type": "click",
+				"card": 210
 			},
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
+				"type": "drag",
 				"card": 57,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 55,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 99,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 337,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 200,
-				"type": "click"
+				"type": "click",
+				"card": 200
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 135,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 337,
-				"type": "click"
+				"type": "click",
+				"card": 337
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 191,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 58,
-				"type": "click"
+				"type": "click",
+				"card": 58
 			},
 			{
-				"card": 163,
-				"type": "click"
+				"type": "click",
+				"card": 163
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
+				"type": "drag",
 				"card": 162,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 134,
-				"type": "click"
+				"type": "click",
+				"card": 134
 			},
 			{
+				"type": "drag",
 				"card": 59,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 161,
-				"type": "click"
+				"type": "click",
+				"card": 161
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 160,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 190,
-				"type": "click"
+				"type": "click",
+				"card": 190
 			},
 			{
-				"card": 52,
-				"type": "click"
+				"type": "click",
+				"card": 52
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
+				"type": "drag",
 				"card": 57,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 171,
-				"type": "click"
+				"type": "click",
+				"card": 171
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 336,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 57,
-				"type": "click"
+				"type": "click",
+				"card": 57
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 55,
-				"type": "click"
+				"type": "click",
+				"card": 55
 			},
 			{
+				"type": "drag",
 				"card": 59,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 338,
-				"type": "click"
+				"type": "click",
+				"card": 338
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 53,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 99,
-				"type": "click"
+				"type": "click",
+				"card": 99
 			},
 			{
-				"card": 339,
-				"type": "click"
+				"type": "click",
+				"card": 339
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 133,
-				"type": "click"
+				"type": "click",
+				"card": 133
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 338,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 59,
-				"type": "click"
+				"type": "click",
+				"card": 59
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
+				"type": "drag",
 				"card": 57,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 340,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 210,
-				"type": "click"
+				"type": "click",
+				"card": 210
 			},
 			{
-				"card": 346,
-				"type": "click"
+				"type": "click",
+				"card": 346
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 171,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 139,
-				"type": "click"
+				"type": "click",
+				"card": 139
 			},
 			{
-				"card": 135,
-				"type": "click"
+				"type": "click",
+				"card": 135
 			},
 			{
 				"type": "finish"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 340,
-				"type": "click"
+				"type": "click",
+				"card": 340
 			},
 			{
+				"type": "drag",
 				"card": 53,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
+				"type": "drag",
 				"card": 52,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 132,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 59,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 27
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 131,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "click",
+				"card": 51
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 200,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
-				"card": 130,
-				"type": "click"
+				"type": "click",
+				"card": 130
 			},
 			{
-				"card": 191,
-				"type": "click"
+				"type": "click",
+				"card": 191
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 52,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
-				"card": 341,
-				"type": "click"
+				"type": "click",
+				"card": 341
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 340,
-				"type": "click"
+				"type": "click",
+				"card": 340
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 54,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 172,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"card": 173,
-				"type": "click"
+				"type": "click",
+				"card": 173
 			},
 			{
-				"card": 336,
-				"type": "click"
+				"type": "click",
+				"card": 336
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 341,
-				"type": "click"
+				"type": "click",
+				"card": 341
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 98,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 171,
-				"type": "click"
+				"type": "click",
+				"card": 171
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"card": 57,
-				"type": "click"
+				"type": "click",
+				"card": 57
 			},
 			{
 				"type": "finish"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 55,
-				"type": "click"
+				"type": "click",
+				"card": 55
 			},
 			{
+				"type": "drag",
 				"card": 342,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 57,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 174,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 52,
-				"type": "click"
+				"type": "click",
+				"card": 52
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
+				"type": "drag",
 				"card": 97,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 340,
-				"type": "click"
+				"type": "click",
+				"card": 340
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 53,
-				"type": "click"
+				"type": "click",
+				"card": 53
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 54,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
+				"type": "drag",
 				"card": 56,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"card": 343,
-				"type": "click"
+				"type": "click",
+				"card": 343
 			},
 			{
+				"type": "drag",
 				"card": 59,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
+				"type": "drag",
 				"card": 175,
-				"to": "discard_1",
-				"type": "drag"
+				"to": "discard_1"
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 176,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 338,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 177,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"card": 170,
-				"type": "click"
+				"type": "click",
+				"card": 170
 			},
 			{
-				"card": 173,
-				"type": "click"
+				"type": "click",
+				"card": 173
 			},
 			{
-				"card": 138,
-				"type": "click"
+				"type": "click",
+				"card": 138
 			},
 			{
 				"type": "finish"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "play_2",
-				"type": "drag"
+				"to": "play_2"
 			},
 			{
-				"action": "End turn",
-				"type": "perform"
+				"type": "perform",
+				"action": "End turn"
 			},
 			{
-				"card": 339,
-				"type": "click"
+				"type": "click",
+				"card": 339
 			},
 			{
+				"type": "drag",
 				"card": 53,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
-				"action": "Play treasures",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play treasures"
 			},
 			{
+				"type": "drag",
 				"card": 178,
-				"to": "discard_2",
-				"type": "drag"
+				"to": "discard_2"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "play_1",
-				"type": "drag"
+				"to": "play_1"
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
-				"card": 179,
-				"type": "click"
+				"type": "click",
+				"card": 179
 			}
 		],
 		"logs": [
@@ -9815,6 +9392,429 @@
 				"  if phase != 'over' → else"
 			]
 		],
-		"seed": 2
+		"end": {
+			"zones": {
+				"box": [
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Chapel",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Woodcutter",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Great Hall",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Throne Room",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Gardens",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Festival",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Laboratory",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Council Room",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch",
+					"▼Witch"
+				],
+				"chosen": [],
+				"trash": [],
+				"basic_pile_1": [
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Copper"
+				],
+				"basic_pile_2": [
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver",
+					"Silver"
+				],
+				"basic_pile_3": [
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold",
+					"Gold"
+				],
+				"basic_pile_4": [],
+				"basic_pile_5": [
+					"Duchy",
+					"Duchy",
+					"Duchy",
+					"Duchy",
+					"Duchy",
+					"Duchy",
+					"Duchy",
+					"Duchy"
+				],
+				"basic_pile_6": [
+					"Province",
+					"Province",
+					"Province",
+					"Province",
+					"Province",
+					"Province",
+					"Province",
+					"Province"
+				],
+				"basic_pile_7": [],
+				"kingdom_pile_1": [],
+				"kingdom_pile_2": [
+					"Moat",
+					"Moat"
+				],
+				"kingdom_pile_3": [
+					"Merchant",
+					"Merchant",
+					"Merchant",
+					"Merchant",
+					"Merchant",
+					"Merchant",
+					"Merchant",
+					"Merchant"
+				],
+				"kingdom_pile_4": [
+					"Village",
+					"Village",
+					"Village",
+					"Village",
+					"Village",
+					"Village",
+					"Village",
+					"Village",
+					"Village"
+				],
+				"kingdom_pile_5": [
+					"Workshop",
+					"Workshop",
+					"Workshop",
+					"Workshop",
+					"Workshop",
+					"Workshop",
+					"Workshop",
+					"Workshop",
+					"Workshop"
+				],
+				"kingdom_pile_6": [
+					"Militia",
+					"Militia",
+					"Militia",
+					"Militia",
+					"Militia",
+					"Militia",
+					"Militia",
+					"Militia",
+					"Militia"
+				],
+				"kingdom_pile_7": [
+					"Remodel",
+					"Remodel",
+					"Remodel",
+					"Remodel",
+					"Remodel",
+					"Remodel",
+					"Remodel",
+					"Remodel",
+					"Remodel",
+					"Remodel"
+				],
+				"kingdom_pile_8": [
+					"Smithy",
+					"Smithy",
+					"Smithy",
+					"Smithy",
+					"Smithy",
+					"Smithy",
+					"Smithy",
+					"Smithy",
+					"Smithy",
+					"Smithy"
+				],
+				"kingdom_pile_9": [
+					"Market",
+					"Market",
+					"Market",
+					"Market",
+					"Market",
+					"Market",
+					"Market",
+					"Market",
+					"Market",
+					"Market"
+				],
+				"kingdom_pile_10": [
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine",
+					"Mine"
+				],
+				"deck_1": [
+					"▼Curse",
+					"▼Copper",
+					"▼Moat",
+					"▼Estate",
+					"▼Copper",
+					"▼Estate",
+					"▼Copper",
+					"▼Curse",
+					"▼Copper",
+					"▼Estate",
+					"▼Silver",
+					"▼Moat",
+					"▼Copper"
+				],
+				"deck_2": [
+					"▼Copper",
+					"▼Copper",
+					"▼Copper",
+					"▼Estate",
+					"▼Estate",
+					"▼Estate",
+					"▼Copper",
+					"▼Silver"
+				],
+				"hand_1": [
+					"Cellar",
+					"Cellar",
+					"Merchant",
+					"Copper",
+					"Estate"
+				],
+				"hand_2": [
+					"Curse",
+					"Copper",
+					"Copper",
+					"Estate",
+					"Estate"
+				],
+				"play_1": [],
+				"play_2": [],
+				"discard_1": [
+					"Copper",
+					"Moat",
+					"Copper",
+					"Moat",
+					"Curse",
+					"Curse",
+					"Copper",
+					"Estate",
+					"Copper",
+					"Copper",
+					"Cellar",
+					"Moat",
+					"Curse",
+					"Copper",
+					"Copper",
+					"Moat",
+					"Copper",
+					"Copper",
+					"Cellar",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Cellar",
+					"Copper",
+					"Copper",
+					"Curse",
+					"Copper",
+					"Estate"
+				],
+				"discard_2": [
+					"Moat",
+					"Copper",
+					"Copper",
+					"Merchant",
+					"Copper",
+					"Estate",
+					"Cellar",
+					"Copper",
+					"Copper",
+					"Silver",
+					"Workshop",
+					"Moat",
+					"Cellar",
+					"Copper",
+					"Copper",
+					"Copper",
+					"Curse",
+					"Curse",
+					"Cellar",
+					"Estate",
+					"Cellar",
+					"Copper",
+					"Curse",
+					"Copper",
+					"Copper",
+					"Cellar",
+					"Copper",
+					"Copper",
+					"Village",
+					"Militia",
+					"Estate"
+				]
+			},
+			"variables": {
+				"phase": "over",
+				"actions": "1",
+				"buys": "1",
+				"coins": "0",
+				"attacker": "0",
+				"gain_limit": "4",
+				"merchants": "0",
+				"silver_played": "false",
+				"player": "1",
+				"immune_1": "false",
+				"immune_2": "false"
+			},
+			"over": true,
+			"result": "Winner: Bot"
+		}
 	}
 ]

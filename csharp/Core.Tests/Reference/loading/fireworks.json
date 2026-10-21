@@ -1,0 +1,780 @@
+{
+	"rules": {
+		"title": "Fireworks",
+		"description": "Cooperative, in the style of Hanabi: you and a bot partner build five fireworks (Red, Yellow, Green, Blue, White) from 1 to 5. You can see your partner's cards but not your own. Spend a clue to mark all of your partner's cards of one color or number; play a card by dragging it to Play, or discard it for a clue. Three wrong plays and it's over.",
+		"zones": {
+			"deck": {
+				"label": "Deck",
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					0.07,
+					0.5
+				],
+				"cards": "res://decks/fireworks_deck.csv"
+			},
+			"firework": {
+				"labels": [
+					"Red",
+					"Yellow",
+					"Green",
+					"Blue",
+					"White"
+				],
+				"copies": 5.0,
+				"layout": "pile",
+				"anchor": [
+					0.2,
+					0.5
+				],
+				"grid": {
+					"columns": 5.0,
+					"spacing": [
+						0.09,
+						0.0
+					]
+				}
+			},
+			"play": {
+				"label": "Play",
+				"layout": "pile",
+				"anchor": [
+					0.68,
+					0.5
+				]
+			},
+			"discard": {
+				"label": "Discard",
+				"layout": "row",
+				"width": 0.2,
+				"anchor": [
+					0.86,
+					0.5
+				]
+			},
+			"hand": {
+				"per_player": true,
+				"layout": "row",
+				"face": "others",
+				"anchors": [
+					[
+						0.5,
+						0.84
+					],
+					[
+						0.5,
+						0.16
+					]
+				]
+			}
+		},
+		"actions": {
+			"Play": {
+				"drag": {
+					"from": "hand",
+					"to": "play"
+				},
+				"steps": [
+					{
+						"if": "playable",
+						"then": [
+							"move(card, firework_of_card)",
+							{
+								"if": "is_five and clues < 8",
+								"then": [
+									"clues += 1"
+								]
+							}
+						],
+						"else": [
+							"move(card, discard)",
+							"fuses -= 1"
+						]
+					},
+					"draw(deck, hand)"
+				]
+			},
+			"Discard": {
+				"drag": {
+					"from": "hand",
+					"to": "discard"
+				},
+				"when": "clues < 8",
+				"steps": [
+					"clues += 1",
+					"draw(deck, hand)"
+				]
+			},
+			"Clue color": {
+				"choose": "opponent_hand",
+				"when": "clues > 0",
+				"steps": [
+					"mark(where(opponent_hand, 'color', text(choice, 'color')), 'color', text(choice, 'color'))",
+					"clues -= 1"
+				]
+			},
+			"Clue number": {
+				"choose": "opponent_hand",
+				"when": "clues > 0",
+				"steps": [
+					"mark(where(opponent_hand, 'number', text(choice, 'number')), 'number', text(choice, 'number'))",
+					"clues -= 1"
+				]
+			}
+		},
+		"triggers": {
+			"start": [
+				"shuffle(deck)",
+				"deal(deck, all_hand, 5)"
+			],
+			"end_of_turn": [
+				{
+					"if": "final_turns > 0",
+					"then": [
+						"final_turns -= 1"
+					]
+				},
+				{
+					"if": "final_turns == -1 and count(deck) == 0",
+					"then": [
+						"final_turns = 2"
+					]
+				},
+				{
+					"if": "final_turns == 0 or fuses == 0 or count(firework) == 25",
+					"then": [
+						"trigger('game_over')"
+					],
+					"else": [
+						"end_turn()"
+					]
+				}
+			],
+			"game_over": [
+				"end_game()",
+				{
+					"if": "fuses == 0",
+					"then": [
+						"result = 'Boom! Out of fuses'"
+					],
+					"else": [
+						"result = '%d of 25' % count(firework)"
+					]
+				}
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"firework_of_card": "zone('firework', int(number(card, 'slot')))",
+			"playable": "number(card, 'number') == count(firework_of_card) + 1",
+			"hinted_playable": "playable and (mark_of(card, 'color') != null or mark_of(card, 'number') != null)",
+			"is_five": "card.data.number == '5'"
+		},
+		"condition_parameters": {
+			"firework_of_card": [],
+			"playable": [],
+			"hinted_playable": [],
+			"is_five": []
+		},
+		"condition_errors": [],
+		"constants": {},
+		"turn": [
+			"offer(['Play', 'Discard', 'Clue color', 'Clue number'])",
+			"trigger('end_of_turn')"
+		],
+		"variables": {
+			"clues": 8,
+			"fuses": 3,
+			"final_turns": -1,
+			"result": ""
+		},
+		"players": 2,
+		"seats": [
+			[
+				0.1,
+				0.75
+			],
+			[
+				0.1,
+				0.25
+			]
+		],
+		"player_names": [
+			"You",
+			"Partner"
+		],
+		"player_variables": {},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"score": "count(firework)",
+			"cards left": "count(deck)"
+		},
+		"show_variables": [
+			"clues",
+			"fuses",
+			"result"
+		],
+		"bot": {
+			"players": [
+				2.0
+			],
+			"prefer": "10 * count(firework) - 15 * (3 - fuses) + 0.5 * clues + 3 * count(matching(opponent_hand, 'hinted_playable')) - 4 * count(matching(discard, 'is_five'))",
+			"samples": 20.0
+		},
+		"card_face": {
+			"corner": "number",
+			"title": "number",
+			"body": [
+				"color"
+			],
+			"color": "ink"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "deck",
+			"label": "Deck",
+			"has_outline": true,
+			"kind": "deck",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.07000000029802322,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "firework_1",
+			"label": "Red",
+			"has_outline": true,
+			"kind": "firework",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.20000000298023224,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "firework_2",
+			"label": "Yellow",
+			"has_outline": true,
+			"kind": "firework",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.2900000214576721,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "firework_3",
+			"label": "Green",
+			"has_outline": true,
+			"kind": "firework",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.3799999952316284,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "firework_4",
+			"label": "Blue",
+			"has_outline": true,
+			"kind": "firework",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.4700000286102295,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "firework_5",
+			"label": "White",
+			"has_outline": true,
+			"kind": "firework",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5600000023841858,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "play",
+			"label": "Play",
+			"has_outline": true,
+			"kind": "play",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.6800000071525574,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "discard",
+			"label": "Discard",
+			"has_outline": true,
+			"kind": "discard",
+			"owner": 0,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.8600000143051147,
+				0.5
+			],
+			"width": 0.2,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 1,
+			"layout": "row",
+			"face": "others",
+			"anchor": [
+				0.5,
+				0.8399999737739563
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 2,
+			"layout": "row",
+			"face": "others",
+			"anchor": [
+				0.5,
+				0.1599999964237213
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/fireworks_deck.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"number",
+				"slot"
+			],
+			"cards": [
+				{
+					"name": "Red 1",
+					"color": "Red",
+					"number": "1",
+					"slot": "1",
+					"ink": "#c0392b"
+				},
+				{
+					"name": "Red 1",
+					"color": "Red",
+					"number": "1",
+					"slot": "1",
+					"ink": "#c0392b"
+				},
+				{
+					"name": "Red 1",
+					"color": "Red",
+					"number": "1",
+					"slot": "1",
+					"ink": "#c0392b"
+				},
+				{
+					"name": "Red 2",
+					"color": "Red",
+					"number": "2",
+					"slot": "1",
+					"ink": "#c0392b"
+				},
+				{
+					"name": "Red 2",
+					"color": "Red",
+					"number": "2",
+					"slot": "1",
+					"ink": "#c0392b"
+				},
+				{
+					"name": "Red 3",
+					"color": "Red",
+					"number": "3",
+					"slot": "1",
+					"ink": "#c0392b"
+				},
+				{
+					"name": "Red 3",
+					"color": "Red",
+					"number": "3",
+					"slot": "1",
+					"ink": "#c0392b"
+				},
+				{
+					"name": "Red 4",
+					"color": "Red",
+					"number": "4",
+					"slot": "1",
+					"ink": "#c0392b"
+				},
+				{
+					"name": "Red 4",
+					"color": "Red",
+					"number": "4",
+					"slot": "1",
+					"ink": "#c0392b"
+				},
+				{
+					"name": "Red 5",
+					"color": "Red",
+					"number": "5",
+					"slot": "1",
+					"ink": "#c0392b"
+				},
+				{
+					"name": "Yellow 1",
+					"color": "Yellow",
+					"number": "1",
+					"slot": "2",
+					"ink": "#b7950b"
+				},
+				{
+					"name": "Yellow 1",
+					"color": "Yellow",
+					"number": "1",
+					"slot": "2",
+					"ink": "#b7950b"
+				},
+				{
+					"name": "Yellow 1",
+					"color": "Yellow",
+					"number": "1",
+					"slot": "2",
+					"ink": "#b7950b"
+				},
+				{
+					"name": "Yellow 2",
+					"color": "Yellow",
+					"number": "2",
+					"slot": "2",
+					"ink": "#b7950b"
+				},
+				{
+					"name": "Yellow 2",
+					"color": "Yellow",
+					"number": "2",
+					"slot": "2",
+					"ink": "#b7950b"
+				},
+				{
+					"name": "Yellow 3",
+					"color": "Yellow",
+					"number": "3",
+					"slot": "2",
+					"ink": "#b7950b"
+				},
+				{
+					"name": "Yellow 3",
+					"color": "Yellow",
+					"number": "3",
+					"slot": "2",
+					"ink": "#b7950b"
+				},
+				{
+					"name": "Yellow 4",
+					"color": "Yellow",
+					"number": "4",
+					"slot": "2",
+					"ink": "#b7950b"
+				},
+				{
+					"name": "Yellow 4",
+					"color": "Yellow",
+					"number": "4",
+					"slot": "2",
+					"ink": "#b7950b"
+				},
+				{
+					"name": "Yellow 5",
+					"color": "Yellow",
+					"number": "5",
+					"slot": "2",
+					"ink": "#b7950b"
+				},
+				{
+					"name": "Green 1",
+					"color": "Green",
+					"number": "1",
+					"slot": "3",
+					"ink": "#1e8449"
+				},
+				{
+					"name": "Green 1",
+					"color": "Green",
+					"number": "1",
+					"slot": "3",
+					"ink": "#1e8449"
+				},
+				{
+					"name": "Green 1",
+					"color": "Green",
+					"number": "1",
+					"slot": "3",
+					"ink": "#1e8449"
+				},
+				{
+					"name": "Green 2",
+					"color": "Green",
+					"number": "2",
+					"slot": "3",
+					"ink": "#1e8449"
+				},
+				{
+					"name": "Green 2",
+					"color": "Green",
+					"number": "2",
+					"slot": "3",
+					"ink": "#1e8449"
+				},
+				{
+					"name": "Green 3",
+					"color": "Green",
+					"number": "3",
+					"slot": "3",
+					"ink": "#1e8449"
+				},
+				{
+					"name": "Green 3",
+					"color": "Green",
+					"number": "3",
+					"slot": "3",
+					"ink": "#1e8449"
+				},
+				{
+					"name": "Green 4",
+					"color": "Green",
+					"number": "4",
+					"slot": "3",
+					"ink": "#1e8449"
+				},
+				{
+					"name": "Green 4",
+					"color": "Green",
+					"number": "4",
+					"slot": "3",
+					"ink": "#1e8449"
+				},
+				{
+					"name": "Green 5",
+					"color": "Green",
+					"number": "5",
+					"slot": "3",
+					"ink": "#1e8449"
+				},
+				{
+					"name": "Blue 1",
+					"color": "Blue",
+					"number": "1",
+					"slot": "4",
+					"ink": "#1f5fbf"
+				},
+				{
+					"name": "Blue 1",
+					"color": "Blue",
+					"number": "1",
+					"slot": "4",
+					"ink": "#1f5fbf"
+				},
+				{
+					"name": "Blue 1",
+					"color": "Blue",
+					"number": "1",
+					"slot": "4",
+					"ink": "#1f5fbf"
+				},
+				{
+					"name": "Blue 2",
+					"color": "Blue",
+					"number": "2",
+					"slot": "4",
+					"ink": "#1f5fbf"
+				},
+				{
+					"name": "Blue 2",
+					"color": "Blue",
+					"number": "2",
+					"slot": "4",
+					"ink": "#1f5fbf"
+				},
+				{
+					"name": "Blue 3",
+					"color": "Blue",
+					"number": "3",
+					"slot": "4",
+					"ink": "#1f5fbf"
+				},
+				{
+					"name": "Blue 3",
+					"color": "Blue",
+					"number": "3",
+					"slot": "4",
+					"ink": "#1f5fbf"
+				},
+				{
+					"name": "Blue 4",
+					"color": "Blue",
+					"number": "4",
+					"slot": "4",
+					"ink": "#1f5fbf"
+				},
+				{
+					"name": "Blue 4",
+					"color": "Blue",
+					"number": "4",
+					"slot": "4",
+					"ink": "#1f5fbf"
+				},
+				{
+					"name": "Blue 5",
+					"color": "Blue",
+					"number": "5",
+					"slot": "4",
+					"ink": "#1f5fbf"
+				},
+				{
+					"name": "White 1",
+					"color": "White",
+					"number": "1",
+					"slot": "5",
+					"ink": "#666666"
+				},
+				{
+					"name": "White 1",
+					"color": "White",
+					"number": "1",
+					"slot": "5",
+					"ink": "#666666"
+				},
+				{
+					"name": "White 1",
+					"color": "White",
+					"number": "1",
+					"slot": "5",
+					"ink": "#666666"
+				},
+				{
+					"name": "White 2",
+					"color": "White",
+					"number": "2",
+					"slot": "5",
+					"ink": "#666666"
+				},
+				{
+					"name": "White 2",
+					"color": "White",
+					"number": "2",
+					"slot": "5",
+					"ink": "#666666"
+				},
+				{
+					"name": "White 3",
+					"color": "White",
+					"number": "3",
+					"slot": "5",
+					"ink": "#666666"
+				},
+				{
+					"name": "White 3",
+					"color": "White",
+					"number": "3",
+					"slot": "5",
+					"ink": "#666666"
+				},
+				{
+					"name": "White 4",
+					"color": "White",
+					"number": "4",
+					"slot": "5",
+					"ink": "#666666"
+				},
+				{
+					"name": "White 4",
+					"color": "White",
+					"number": "4",
+					"slot": "5",
+					"ink": "#666666"
+				},
+				{
+					"name": "White 5",
+					"color": "White",
+					"number": "5",
+					"slot": "5",
+					"ink": "#666666"
+				}
+			]
+		}
+	}
+}

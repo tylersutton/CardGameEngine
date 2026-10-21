@@ -1,457 +1,363 @@
 [
 	{
-		"end": {
-			"over": false,
-			"result": "",
-			"variables": {
-				"passes": "3",
-				"result": "You win!"
-			},
-			"zones": {
-				"pyramid_1": [],
-				"pyramid_10": [],
-				"pyramid_11": [],
-				"pyramid_12": [],
-				"pyramid_13": [],
-				"pyramid_14": [],
-				"pyramid_15": [],
-				"pyramid_16": [],
-				"pyramid_17": [],
-				"pyramid_18": [],
-				"pyramid_19": [],
-				"pyramid_2": [],
-				"pyramid_20": [],
-				"pyramid_21": [],
-				"pyramid_22": [],
-				"pyramid_23": [],
-				"pyramid_24": [],
-				"pyramid_25": [],
-				"pyramid_26": [],
-				"pyramid_27": [],
-				"pyramid_28": [],
-				"pyramid_3": [],
-				"pyramid_4": [],
-				"pyramid_5": [],
-				"pyramid_6": [],
-				"pyramid_7": [],
-				"pyramid_8": [],
-				"pyramid_9": [],
-				"removed": [
-					"▼2♦",
-					"▼J♥",
-					"▼4♦",
-					"▼9♠",
-					"▼K♦",
-					"▼5♠",
-					"▼8♥",
-					"▼K♣",
-					"▼10♥",
-					"▼3♥",
-					"▼K♠",
-					"▼J♣",
-					"▼2♣",
-					"▼6♥",
-					"▼7♦",
-					"▼5♦",
-					"▼8♣",
-					"▼5♥",
-					"▼8♠",
-					"▼K♥",
-					"▼2♥",
-					"▼J♦",
-					"▼10♠",
-					"▼3♠",
-					"▼7♥",
-					"▼6♣",
-					"▼8♦",
-					"▼5♣",
-					"▼9♣",
-					"▼4♥",
-					"▼A♣",
-					"▼Q♣",
-					"▼J♠",
-					"▼2♠",
-					"▼Q♥",
-					"▼A♦",
-					"▼6♠",
-					"▼7♠"
-				],
-				"stock": [],
-				"waste": [
-					"Q♦",
-					"A♠",
-					"9♥",
-					"3♣",
-					"4♣",
-					"7♣",
-					"10♣",
-					"6♦",
-					"9♦",
-					"Q♠",
-					"A♥",
-					"4♠",
-					"10♦",
-					"3♦"
-				]
-			}
-		},
+		"seed": 1,
 		"inputs": [
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "pyramid_24",
-				"type": "drag"
+				"to": "pyramid_24"
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "pyramid_26",
-				"type": "drag"
+				"to": "pyramid_26"
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "waste",
-				"type": "drag"
+				"to": "waste"
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "click",
+				"card": 51
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "pyramid_20",
-				"type": "drag"
+				"to": "pyramid_20"
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "pyramid_22",
-				"type": "drag"
+				"to": "pyramid_22"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "pyramid_28",
-				"type": "drag"
+				"to": "pyramid_28"
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "waste",
-				"type": "drag"
+				"to": "waste"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "pyramid_11",
-				"type": "drag"
+				"to": "pyramid_11"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "waste",
-				"type": "drag"
+				"to": "waste"
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
-				"card": 50,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "waste",
-				"type": "drag"
+				"to": "waste"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "waste",
-				"type": "drag"
+				"to": "waste"
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "pyramid_7",
-				"type": "drag"
+				"to": "pyramid_7"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "waste",
-				"type": "drag"
+				"to": "waste"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
-				"card": 50,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "waste",
-				"type": "drag"
+				"to": "waste"
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "drag",
 				"card": 10,
-				"type": "click"
+				"to": "pyramid_4"
 			},
 			{
-				"card": 10,
-				"to": "pyramid_4",
-				"type": "drag"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"card": 26,
-				"type": "click"
-			},
-			{
+				"type": "drag",
 				"card": 24,
-				"to": "waste",
-				"type": "drag"
+				"to": "waste"
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "waste",
-				"type": "drag"
+				"to": "waste"
 			},
 			{
 				"type": "click_empty",
@@ -3188,41 +3094,84 @@
 				"  if passes < 3 → else"
 			]
 		],
-		"seed": 1
-	},
-	{
 		"end": {
-			"over": false,
-			"result": "",
-			"variables": {
-				"passes": "3",
-				"result": ""
-			},
 			"zones": {
-				"pyramid_1": [
-					"3♠"
+				"stock": [],
+				"waste": [
+					"Q♦",
+					"A♠",
+					"9♥",
+					"3♣",
+					"4♣",
+					"7♣",
+					"10♣",
+					"6♦",
+					"9♦",
+					"Q♠",
+					"A♥",
+					"4♠",
+					"10♦",
+					"3♦"
 				],
+				"removed": [
+					"▼2♦",
+					"▼J♥",
+					"▼4♦",
+					"▼9♠",
+					"▼K♦",
+					"▼5♠",
+					"▼8♥",
+					"▼K♣",
+					"▼10♥",
+					"▼3♥",
+					"▼K♠",
+					"▼J♣",
+					"▼2♣",
+					"▼6♥",
+					"▼7♦",
+					"▼5♦",
+					"▼8♣",
+					"▼5♥",
+					"▼8♠",
+					"▼K♥",
+					"▼2♥",
+					"▼J♦",
+					"▼10♠",
+					"▼3♠",
+					"▼7♥",
+					"▼6♣",
+					"▼8♦",
+					"▼5♣",
+					"▼9♣",
+					"▼4♥",
+					"▼A♣",
+					"▼Q♣",
+					"▼J♠",
+					"▼2♠",
+					"▼Q♥",
+					"▼A♦",
+					"▼6♠",
+					"▼7♠"
+				],
+				"pyramid_1": [],
+				"pyramid_2": [],
+				"pyramid_3": [],
+				"pyramid_4": [],
+				"pyramid_5": [],
+				"pyramid_6": [],
+				"pyramid_7": [],
+				"pyramid_8": [],
+				"pyramid_9": [],
 				"pyramid_10": [],
-				"pyramid_11": [
-					"J♣"
-				],
-				"pyramid_12": [
-					"10♥"
-				],
+				"pyramid_11": [],
+				"pyramid_12": [],
 				"pyramid_13": [],
 				"pyramid_14": [],
 				"pyramid_15": [],
-				"pyramid_16": [
-					"A♥"
-				],
-				"pyramid_17": [
-					"7♦"
-				],
+				"pyramid_16": [],
+				"pyramid_17": [],
 				"pyramid_18": [],
 				"pyramid_19": [],
-				"pyramid_2": [
-					"3♥"
-				],
 				"pyramid_20": [],
 				"pyramid_21": [],
 				"pyramid_22": [],
@@ -3231,392 +3180,338 @@
 				"pyramid_25": [],
 				"pyramid_26": [],
 				"pyramid_27": [],
-				"pyramid_28": [],
-				"pyramid_3": [
-					"6♥"
-				],
-				"pyramid_4": [
-					"Q♥"
-				],
-				"pyramid_5": [
-					"Q♦"
-				],
-				"pyramid_6": [],
-				"pyramid_7": [
-					"9♠"
-				],
-				"pyramid_8": [
-					"9♦"
-				],
-				"pyramid_9": [],
-				"removed": [
-					"▼3♣",
-					"▼10♣",
-					"▼7♣",
-					"▼6♣",
-					"▼8♦",
-					"▼5♦",
-					"▼A♠",
-					"▼Q♣",
-					"▼2♥",
-					"▼J♠",
-					"▼6♠",
-					"▼7♥",
-					"▼9♣",
-					"▼4♠",
-					"▼J♥",
-					"▼2♠",
-					"▼5♣",
-					"▼8♥",
-					"▼K♣",
-					"▼K♥",
-					"▼6♦",
-					"▼7♠",
-					"▼K♦",
-					"▼3♦",
-					"▼10♠",
-					"▼2♣",
-					"▼J♦",
-					"▼K♠"
-				],
-				"stock": [],
-				"waste": [
-					"Q♠",
-					"9♥",
-					"10♦",
-					"A♣",
-					"5♥",
-					"4♥",
-					"2♦",
-					"4♦",
-					"5♠",
-					"4♣",
-					"8♣",
-					"8♠",
-					"A♦"
-				]
-			}
-		},
+				"pyramid_28": []
+			},
+			"variables": {
+				"passes": "3",
+				"result": "You win!"
+			},
+			"over": false,
+			"result": ""
+		}
+	},
+	{
+		"seed": 2,
 		"inputs": [
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "pyramid_22",
-				"type": "drag"
+				"to": "pyramid_22"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
+				"type": "click",
+				"card": 45
+			},
+			{
+				"type": "drag",
 				"card": 45,
-				"type": "click"
+				"to": "pyramid_26"
 			},
 			{
-				"card": 45,
-				"to": "pyramid_26",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 33,
-				"to": "pyramid_27",
-				"type": "drag"
+				"to": "pyramid_27"
 			},
 			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "drag",
 				"card": 0,
-				"type": "click"
+				"to": "pyramid_20"
 			},
 			{
-				"card": 0,
-				"to": "pyramid_20",
-				"type": "drag"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 17
 			},
 			{
-				"card": 17,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"type": "click"
+				"to": "pyramid_25"
 			},
 			{
-				"card": 14,
-				"to": "pyramid_25",
-				"type": "drag"
+				"type": "click",
+				"card": 27
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
-				"card": 19,
-				"type": "click"
-			},
-			{
+				"type": "drag",
 				"card": 5,
-				"to": "waste",
-				"type": "drag"
+				"to": "waste"
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "waste",
-				"type": "drag"
+				"to": "waste"
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "drag",
 				"card": 23,
-				"type": "click"
+				"to": "pyramid_19"
 			},
 			{
-				"card": 23,
-				"to": "pyramid_19",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 43,
-				"to": "pyramid_15",
-				"type": "drag"
+				"to": "pyramid_15"
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "click",
+				"card": 51
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"card": 12,
-				"type": "click"
-			},
-			{
-				"type": "click_empty",
-				"zone": "stock"
-			},
-			{
-				"card": 11,
-				"type": "click"
-			},
-			{
-				"card": 21,
-				"type": "click"
-			},
-			{
-				"card": 35,
-				"type": "click"
-			},
-			{
-				"card": 39,
-				"type": "click"
-			},
-			{
-				"card": 25,
-				"type": "click"
-			},
-			{
-				"card": 25,
-				"type": "click"
-			},
-			{
-				"card": 17,
-				"type": "click"
-			},
-			{
-				"card": 16,
-				"type": "click"
-			},
-			{
-				"card": 27,
-				"type": "click"
-			},
-			{
-				"card": 29,
-				"type": "click"
-			},
-			{
-				"card": 4,
-				"type": "click"
-			},
-			{
-				"card": 42,
-				"type": "click"
-			},
-			{
-				"card": 46,
-				"type": "click"
-			},
-			{
-				"card": 7,
-				"type": "click"
-			},
-			{
-				"card": 6,
-				"type": "click"
-			},
-			{
-				"card": 40,
-				"type": "click"
-			},
-			{
-				"card": 26,
-				"type": "click"
-			},
-			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
-				"card": 17,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 17
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 27
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "click",
+				"card": 40
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "click",
+				"card": 12
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "click",
+				"card": 17
+			},
+			{
+				"type": "click",
+				"card": 16
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "click",
+				"card": 4
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "drag",
 				"card": 31,
-				"to": "waste",
-				"type": "drag"
+				"to": "waste"
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "pyramid_23",
-				"type": "drag"
+				"to": "pyramid_23"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "pyramid_6",
-				"type": "drag"
+				"to": "pyramid_6"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"card": 12,
-				"type": "click"
-			},
-			{
-				"type": "click_empty",
-				"zone": "stock"
+				"type": "click",
+				"card": 12
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click",
+				"card": 12
 			},
 			{
 				"type": "click_empty",
@@ -6374,6 +6269,111 @@
 				"  if passes < 3 → else"
 			]
 		],
-		"seed": 2
+		"end": {
+			"zones": {
+				"stock": [],
+				"waste": [
+					"Q♠",
+					"9♥",
+					"10♦",
+					"A♣",
+					"5♥",
+					"4♥",
+					"2♦",
+					"4♦",
+					"5♠",
+					"4♣",
+					"8♣",
+					"8♠",
+					"A♦"
+				],
+				"removed": [
+					"▼3♣",
+					"▼10♣",
+					"▼7♣",
+					"▼6♣",
+					"▼8♦",
+					"▼5♦",
+					"▼A♠",
+					"▼Q♣",
+					"▼2♥",
+					"▼J♠",
+					"▼6♠",
+					"▼7♥",
+					"▼9♣",
+					"▼4♠",
+					"▼J♥",
+					"▼2♠",
+					"▼5♣",
+					"▼8♥",
+					"▼K♣",
+					"▼K♥",
+					"▼6♦",
+					"▼7♠",
+					"▼K♦",
+					"▼3♦",
+					"▼10♠",
+					"▼2♣",
+					"▼J♦",
+					"▼K♠"
+				],
+				"pyramid_1": [
+					"3♠"
+				],
+				"pyramid_2": [
+					"3♥"
+				],
+				"pyramid_3": [
+					"6♥"
+				],
+				"pyramid_4": [
+					"Q♥"
+				],
+				"pyramid_5": [
+					"Q♦"
+				],
+				"pyramid_6": [],
+				"pyramid_7": [
+					"9♠"
+				],
+				"pyramid_8": [
+					"9♦"
+				],
+				"pyramid_9": [],
+				"pyramid_10": [],
+				"pyramid_11": [
+					"J♣"
+				],
+				"pyramid_12": [
+					"10♥"
+				],
+				"pyramid_13": [],
+				"pyramid_14": [],
+				"pyramid_15": [],
+				"pyramid_16": [
+					"A♥"
+				],
+				"pyramid_17": [
+					"7♦"
+				],
+				"pyramid_18": [],
+				"pyramid_19": [],
+				"pyramid_20": [],
+				"pyramid_21": [],
+				"pyramid_22": [],
+				"pyramid_23": [],
+				"pyramid_24": [],
+				"pyramid_25": [],
+				"pyramid_26": [],
+				"pyramid_27": [],
+				"pyramid_28": []
+			},
+			"variables": {
+				"passes": "3",
+				"result": ""
+			},
+			"over": false,
+			"result": ""
+		}
 	}
 ]

@@ -1,1453 +1,1368 @@
 [
 	{
-		"end": {
-			"over": false,
-			"result": "",
-			"variables": {
-				"draw_count": "1",
-				"result": ""
-			},
-			"zones": {
-				"foundation_1": [
-					"A♣"
-				],
-				"foundation_2": [
-					"A♠",
-					"2♠"
-				],
-				"foundation_3": [
-					"A♦",
-					"2♦",
-					"3♦",
-					"4♦"
-				],
-				"foundation_4": [],
-				"stock": [],
-				"tableau_1": [
-					"K♥",
-					"Q♣",
-					"J♦",
-					"10♠",
-					"9♦",
-					"8♣",
-					"7♦"
-				],
-				"tableau_2": [
-					"K♠",
-					"Q♥",
-					"J♣",
-					"10♦",
-					"9♣",
-					"8♦",
-					"7♠",
-					"6♥",
-					"5♠"
-				],
-				"tableau_3": [
-					"K♣",
-					"Q♦"
-				],
-				"tableau_4": [
-					"▼5♣",
-					"▼2♥",
-					"7♥",
-					"6♠",
-					"5♥"
-				],
-				"tableau_5": [
-					"▼8♠",
-					"10♥",
-					"9♠"
-				],
-				"tableau_6": [
-					"5♦",
-					"4♠",
-					"3♥",
-					"2♣",
-					"A♥"
-				],
-				"tableau_7": [
-					"K♦",
-					"Q♠",
-					"J♥"
-				],
-				"waste": [
-					"8♥",
-					"3♠",
-					"9♥",
-					"J♠",
-					"3♣",
-					"4♣",
-					"6♣",
-					"4♥",
-					"7♣",
-					"10♣",
-					"6♦"
-				]
-			}
-		},
+		"seed": 1,
 		"inputs": [
 			{
-				"card": 39,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 39
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "drag",
 				"card": 0,
-				"type": "click"
+				"to": "foundation_2"
 			},
 			{
-				"card": 0,
-				"to": "foundation_2",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 25,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
 				"card": 34,
-				"type": "click"
+				"to": "tableau_4"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"card": 34,
-				"to": "tableau_4",
-				"type": "drag"
+				"type": "click",
+				"card": 3
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
-				"card": 3,
-				"type": "click"
-			},
-			{
-				"card": 50,
-				"type": "click"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 26,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 26
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
-				"card": 13,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 13
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "drag",
 				"card": 35,
-				"type": "click"
+				"to": "tableau_2"
 			},
 			{
-				"card": 35,
-				"to": "tableau_2",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 3,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
-				"card": 1,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 1
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "click",
+				"card": 37
+			},
+			{
+				"type": "drag",
+				"card": 12,
+				"to": "tableau_3"
+			},
+			{
+				"type": "drag",
 				"card": 37,
-				"type": "click"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"card": 37,
-				"to": "tableau_6",
-				"type": "drag"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 12,
-				"to": "tableau_3",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 51,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "foundation_3",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
-				"card": 1,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 1
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
-				"card": 26,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 26
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
-				"card": 27,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 27
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "double_click",
+				"card": 13
+			},
+			{
+				"type": "drag",
+				"card": 49,
+				"to": "tableau_2"
+			},
+			{
+				"type": "drag",
 				"card": 13,
-				"type": "double_click"
+				"to": "tableau_4"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
+				"type": "drag",
+				"card": 50,
+				"to": "tableau_6"
+			},
+			{
+				"type": "drag",
+				"card": 33,
+				"to": "tableau_7"
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
+				"card": 50,
+				"to": "tableau_1"
+			},
+			{
+				"type": "drag",
 				"card": 13,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
+				"card": 33,
+				"to": "tableau_2"
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
+				"card": 1,
+				"to": "foundation_2"
+			},
+			{
+				"type": "click",
+				"card": 45
+			},
+			{
+				"type": "drag",
+				"card": 49,
+				"to": "tableau_3"
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
+				"card": 1,
+				"to": "tableau_4"
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "double_click",
+				"card": 1
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
+				"card": 33,
+				"to": "tableau_7"
+			},
+			{
+				"type": "drag",
 				"card": 50,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
+				"card": 1,
+				"to": "tableau_4"
+			},
+			{
+				"type": "drag",
+				"card": 1,
+				"to": "foundation_2"
+			},
+			{
+				"type": "drag",
+				"card": 1,
+				"to": "tableau_4"
+			},
+			{
+				"type": "drag",
+				"card": 1,
+				"to": "foundation_2"
+			},
+			{
+				"type": "drag",
+				"card": 1,
+				"to": "tableau_4"
+			},
+			{
+				"type": "drag",
+				"card": 1,
+				"to": "foundation_2"
+			},
+			{
+				"type": "click",
+				"card": 31
+			},
+			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
-				"card": 42,
-				"type": "click"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
+				"type": "drag",
 				"card": 50,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"card": 13,
-				"to": "foundation_4",
-				"type": "drag"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"card": 33,
-				"to": "tableau_2",
-				"type": "drag"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 1,
-				"to": "foundation_2",
-				"type": "drag"
-			},
-			{
-				"card": 45,
-				"type": "click"
-			},
-			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "drag",
+				"card": 49,
+				"to": "tableau_2"
 			},
 			{
-				"card": 1,
-				"to": "tableau_4",
-				"type": "drag"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 1,
-				"type": "double_click"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 33,
-				"to": "tableau_7",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 50,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
+				"card": 49,
+				"to": "tableau_3"
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
 				"card": 1,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
-				"card": 1,
-				"to": "foundation_2",
-				"type": "drag"
-			},
-			{
-				"card": 1,
-				"to": "tableau_4",
-				"type": "drag"
-			},
-			{
-				"card": 1,
-				"to": "foundation_2",
-				"type": "drag"
-			},
-			{
-				"card": 1,
-				"to": "tableau_4",
-				"type": "drag"
-			},
-			{
-				"card": 1,
-				"to": "foundation_2",
-				"type": "drag"
-			},
-			{
-				"card": 31,
-				"type": "click"
-			},
-			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
+				"card": 1,
+				"to": "foundation_2"
+			},
+			{
+				"type": "drag",
+				"card": 1,
+				"to": "tableau_4"
+			},
+			{
+				"type": "drag",
+				"card": 1,
+				"to": "foundation_2"
+			},
+			{
+				"type": "drag",
+				"card": 33,
+				"to": "tableau_3"
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "drag",
+				"card": 49,
+				"to": "tableau_2"
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
 				"card": 50,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 49,
-				"to": "tableau_2",
-				"type": "drag"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 49,
-				"to": "tableau_3",
-				"type": "drag"
-			},
-			{
-				"card": 49,
-				"to": "tableau_2",
-				"type": "drag"
-			},
-			{
-				"card": 50,
-				"to": "tableau_6",
-				"type": "drag"
-			},
-			{
-				"card": 49,
-				"to": "tableau_3",
-				"type": "drag"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 1,
-				"to": "tableau_4",
-				"type": "drag"
-			},
-			{
-				"card": 33,
-				"to": "tableau_7",
-				"type": "drag"
-			},
-			{
-				"card": 1,
-				"to": "foundation_2",
-				"type": "drag"
-			},
-			{
-				"card": 1,
-				"to": "tableau_4",
-				"type": "drag"
-			},
-			{
-				"card": 1,
-				"to": "foundation_2",
-				"type": "drag"
-			},
-			{
-				"card": 33,
-				"to": "tableau_3",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 11,
-				"type": "click"
+				"to": "tableau_6"
 			},
 			{
-				"card": 49,
-				"to": "tableau_2",
-				"type": "drag"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 50,
-				"to": "tableau_1",
-				"type": "drag"
-			},
-			{
-				"card": 11,
-				"to": "tableau_6",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 1,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
+				"type": "drag",
 				"card": 6,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"card": 28,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 28
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"card": 13,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 13
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "foundation_2",
-				"type": "drag"
+				"to": "foundation_2"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "foundation_3",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "foundation_1",
-				"type": "drag"
+				"to": "foundation_1"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
-				"card": 29,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 29
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
-				"card": 13,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 13
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "foundation_1",
-				"type": "drag"
+				"to": "foundation_1"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "foundation_3",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
+				"type": "double_click",
+				"card": 1
+			},
+			{
+				"type": "drag",
 				"card": 1,
-				"type": "double_click"
+				"to": "tableau_6"
 			},
 			{
-				"card": 1,
-				"to": "tableau_6",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 13,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 13,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 13
 			},
 			{
-				"card": 1,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 1
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "foundation_3",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
+				"type": "double_click",
+				"card": 13
+			},
+			{
+				"type": "click",
+				"card": 16
+			},
+			{
+				"type": "drag",
 				"card": 13,
-				"type": "double_click"
+				"to": "tableau_6"
 			},
 			{
-				"card": 16,
-				"type": "click"
-			},
-			{
-				"card": 13,
-				"to": "tableau_6",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 23,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "tableau_3",
-				"type": "drag"
+				"to": "tableau_3"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "double_click",
+				"card": 13
+			},
+			{
+				"type": "drag",
 				"card": 13,
-				"type": "double_click"
+				"to": "tableau_6"
 			},
 			{
-				"card": 13,
-				"to": "tableau_6",
-				"type": "drag"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "double_click",
+				"card": 13
 			},
 			{
-				"card": 13,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 1
 			},
 			{
-				"card": 1,
-				"type": "double_click"
-			},
-			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			}
 		],
 		"logs": [
@@ -2824,1447 +2739,1446 @@
 				"  foundation_4 → tableau_6: A♥"
 			]
 		],
-		"seed": 1
-	},
-	{
 		"end": {
-			"over": false,
-			"result": "",
-			"variables": {
-				"draw_count": "3",
-				"result": ""
-			},
 			"zones": {
-				"foundation_1": [],
-				"foundation_2": [
-					"A♦",
-					"2♦",
-					"3♦"
+				"stock": [],
+				"waste": [
+					"8♥",
+					"3♠",
+					"9♥",
+					"J♠",
+					"3♣",
+					"4♣",
+					"6♣",
+					"4♥",
+					"7♣",
+					"10♣",
+					"6♦"
 				],
-				"foundation_3": [
+				"foundation_1": [
 					"A♣"
 				],
-				"foundation_4": [
-					"A♠"
+				"foundation_2": [
+					"A♠",
+					"2♠"
 				],
-				"stock": [
-					"▼K♠",
-					"▼J♥",
-					"▼7♥",
-					"▼7♠",
-					"▼8♠",
-					"▼4♣",
-					"▼5♠",
-					"▼4♦",
-					"▼K♥"
+				"foundation_3": [
+					"A♦",
+					"2♦",
+					"3♦",
+					"4♦"
 				],
+				"foundation_4": [],
 				"tableau_1": [
-					"K♦",
-					"Q♠"
+					"K♥",
+					"Q♣",
+					"J♦",
+					"10♠",
+					"9♦",
+					"8♣",
+					"7♦"
 				],
 				"tableau_2": [
+					"K♠",
+					"Q♥",
+					"J♣",
+					"10♦",
+					"9♣",
+					"8♦",
+					"7♠",
+					"6♥",
+					"5♠"
+				],
+				"tableau_3": [
 					"K♣",
 					"Q♦"
 				],
-				"tableau_3": [
-					"Q♥"
-				],
 				"tableau_4": [
-					"▼9♠",
-					"9♦",
-					"8♣"
+					"▼5♣",
+					"▼2♥",
+					"7♥",
+					"6♠",
+					"5♥"
 				],
 				"tableau_5": [
-					"▼J♣",
+					"▼8♠",
 					"10♥",
-					"9♣",
-					"8♥",
-					"7♣",
-					"6♥",
-					"5♣",
-					"4♥",
-					"3♠",
-					"2♥"
+					"9♠"
 				],
 				"tableau_6": [
-					"▼A♥",
-					"▼7♦",
-					"▼6♦",
-					"▼2♠",
-					"Q♣",
-					"J♦"
-				],
-				"tableau_7": [
-					"▼10♣",
-					"▼10♠",
-					"▼3♣",
-					"▼J♠",
-					"▼6♣",
-					"▼5♦",
-					"6♠",
-					"5♥",
+					"5♦",
 					"4♠",
 					"3♥",
-					"2♣"
+					"2♣",
+					"A♥"
 				],
-				"waste": [
-					"9♥",
-					"8♦",
-					"10♦"
+				"tableau_7": [
+					"K♦",
+					"Q♠",
+					"J♥"
 				]
-			}
-		},
+			},
+			"variables": {
+				"result": "",
+				"draw_count": "1"
+			},
+			"over": false,
+			"result": ""
+		}
+	},
+	{
+		"seed": 2,
 		"inputs": [
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_1",
-				"type": "drag"
+				"to": "foundation_1"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"card": 17,
-				"type": "click"
+				"type": "click",
+				"card": 17
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "drag",
 				"card": 27,
-				"type": "click"
+				"to": "tableau_1"
 			},
 			{
-				"card": 27,
-				"to": "tableau_1",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_1",
-				"type": "drag"
+				"to": "foundation_1"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_2",
-				"type": "drag"
+				"to": "foundation_2"
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_3",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "foundation_2",
-				"type": "drag"
+				"to": "foundation_2"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "double_click",
+				"card": 39
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "tableau_1"
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "foundation_2"
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "tableau_1"
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "foundation_2"
+			},
+			{
+				"type": "drag",
 				"card": 39,
-				"type": "double_click"
+				"to": "tableau_1"
 			},
 			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "double_click",
+				"card": 39
+			},
+			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_2",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_2",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
+				"type": "click",
+				"card": 17
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "tableau_1"
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "double_click",
+				"card": 0
+			},
+			{
+				"type": "drag",
 				"card": 39,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "double_click",
+				"card": 39
 			},
 			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "tableau_1"
+			},
+			{
+				"type": "double_click",
+				"card": 0
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
 				"card": 39,
-				"type": "double_click"
+				"to": "tableau_1"
 			},
 			{
-				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 0,
-				"to": "foundation_3",
-				"type": "drag"
+				"type": "click",
+				"card": 19
 			},
 			{
-				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
-			},
-			{
-				"card": 0,
-				"to": "foundation_4",
-				"type": "drag"
-			},
-			{
-				"card": 17,
-				"type": "click"
-			},
-			{
-				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 29,
-				"type": "click"
-			},
-			{
-				"card": 0,
-				"type": "double_click"
-			},
-			{
+				"type": "drag",
 				"card": 39,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
-				"card": 39,
-				"type": "double_click"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
-			},
-			{
-				"card": 0,
-				"type": "double_click"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 39,
-				"to": "tableau_1",
-				"type": "drag"
-			},
-			{
-				"card": 46,
-				"type": "click"
-			},
-			{
-				"card": 19,
-				"type": "click"
-			},
-			{
-				"card": 39,
-				"to": "foundation_4",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "double_click",
+				"card": 40
+			},
+			{
+				"type": "drag",
 				"card": 40,
-				"type": "double_click"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
 				"card": 40,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_2",
-				"type": "drag"
+				"to": "foundation_2"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_2",
-				"type": "drag"
+				"to": "foundation_2"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_3",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "drag",
 				"card": 26,
-				"type": "click"
+				"to": "foundation_2"
 			},
 			{
-				"card": 26,
-				"to": "foundation_2",
-				"type": "drag"
+				"type": "double_click",
+				"card": 27
 			},
 			{
-				"card": 27,
-				"type": "double_click"
-			},
-			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"card": 27,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 27
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "drag",
+				"card": 40,
+				"to": "tableau_2"
+			},
+			{
+				"type": "drag",
 				"card": 11,
-				"type": "click"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
-				"card": 11,
-				"to": "tableau_5",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 40,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 40,
-				"to": "foundation_4",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "foundation_2",
-				"type": "drag"
+				"to": "foundation_2"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "foundation_2",
-				"type": "drag"
+				"to": "foundation_2"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
+				"type": "double_click",
+				"card": 40
+			},
+			{
+				"type": "drag",
 				"card": 40,
-				"type": "double_click"
+				"to": "tableau_2"
 			},
 			{
-				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 16,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
-				"card": 27,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 27
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
+				"type": "double_click",
+				"card": 40
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "drag",
 				"card": 40,
-				"type": "double_click"
+				"to": "tableau_2"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
-			},
-			{
-				"card": 46,
-				"type": "click"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
+				"type": "drag",
 				"card": 2,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_3",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
-				"card": 40,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 40
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_3",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
+				"type": "double_click",
+				"card": 40
+			},
+			{
+				"type": "drag",
 				"card": 40,
-				"type": "double_click"
+				"to": "tableau_2"
 			},
 			{
-				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "double_click",
+				"card": 40
+			},
+			{
+				"type": "double_click",
+				"card": 0
+			},
+			{
+				"type": "drag",
 				"card": 40,
-				"type": "double_click"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"type": "double_click"
+				"to": "tableau_5"
 			},
 			{
-				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_3",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_1",
-				"type": "drag"
+				"to": "foundation_1"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"card": 40,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 40
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 40,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 40
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"card": 40,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 40
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "double_click",
+				"card": 0
+			},
+			{
+				"type": "drag",
 				"card": 0,
-				"type": "double_click"
+				"to": "tableau_5"
 			},
 			{
-				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "click",
+				"card": 29
 			},
 			{
-				"card": 29,
-				"type": "click"
-			},
-			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
-				"card": 0,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 0
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_1",
-				"type": "drag"
+				"to": "foundation_1"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_3",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
-				"card": 0,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 0
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "tableau_2",
-				"type": "drag"
+				"to": "tableau_2"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
-				"card": 40,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 40
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "foundation_2",
-				"type": "drag"
+				"to": "foundation_2"
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "tableau_4",
-				"type": "drag"
+				"to": "tableau_4"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "foundation_3",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_1",
-				"type": "drag"
+				"to": "foundation_1"
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
+				"type": "double_click",
+				"card": 40
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "tableau_5"
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "foundation_1"
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "tableau_5"
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
+				"card": 36,
+				"to": "tableau_1"
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "foundation_1"
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "tableau_5"
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "foundation_1"
+			},
+			{
+				"type": "drag",
+				"card": 36,
+				"to": "tableau_6"
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
+				"card": 36,
+				"to": "tableau_1"
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "tableau_5"
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "double_click",
+				"card": 0
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "tableau_5"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "perform",
+				"action": "Draw 1/3"
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "foundation_1"
+			},
+			{
+				"type": "drag",
+				"card": 36,
+				"to": "tableau_6"
+			},
+			{
+				"type": "drag",
+				"card": 0,
+				"to": "tableau_5"
+			},
+			{
+				"type": "drag",
 				"card": 40,
-				"type": "double_click"
+				"to": "tableau_7"
 			},
 			{
-				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
-			},
-			{
-				"card": 0,
-				"to": "foundation_1",
-				"type": "drag"
-			},
-			{
-				"card": 21,
-				"type": "click"
-			},
-			{
-				"card": 25,
-				"type": "click"
-			},
-			{
-				"card": 42,
-				"type": "click"
-			},
-			{
-				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 36,
-				"to": "tableau_1",
-				"type": "drag"
-			},
-			{
-				"card": 0,
-				"to": "foundation_1",
-				"type": "drag"
-			},
-			{
-				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
-			},
-			{
-				"card": 0,
-				"to": "foundation_1",
-				"type": "drag"
-			},
-			{
-				"card": 36,
-				"to": "tableau_6",
-				"type": "drag"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 36,
-				"to": "tableau_1",
-				"type": "drag"
-			},
-			{
-				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 0,
-				"type": "double_click"
-			},
-			{
-				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
-			},
-			{
-				"card": 19,
-				"type": "click"
-			},
-			{
-				"action": "Draw 1/3",
-				"type": "perform"
-			},
-			{
-				"card": 0,
-				"to": "foundation_1",
-				"type": "drag"
-			},
-			{
-				"card": 36,
-				"to": "tableau_6",
-				"type": "drag"
-			},
-			{
-				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
-			},
-			{
-				"card": 40,
-				"to": "tableau_7",
-				"type": "drag"
-			},
-			{
-				"card": 0,
-				"type": "double_click"
+				"type": "double_click",
+				"card": 0
 			},
 			{
 				"type": "click_empty",
 				"zone": "stock"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "double_click",
+				"card": 40
+			},
+			{
+				"type": "drag",
 				"card": 40,
-				"type": "double_click"
+				"to": "tableau_7"
 			},
 			{
-				"card": 40,
-				"to": "tableau_7",
-				"type": "drag"
-			},
-			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_1",
-				"type": "drag"
+				"to": "foundation_1"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_1",
-				"type": "drag"
+				"to": "tableau_1"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "tableau_6",
-				"type": "drag"
+				"to": "tableau_6"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "tableau_5",
-				"type": "drag"
+				"to": "tableau_5"
 			},
 			{
+				"type": "double_click",
+				"card": 40
+			},
+			{
+				"type": "drag",
 				"card": 40,
-				"type": "double_click"
+				"to": "tableau_7"
 			},
 			{
-				"card": 40,
-				"to": "tableau_7",
-				"type": "drag"
+				"type": "double_click",
+				"card": 40
 			},
 			{
-				"card": 40,
-				"type": "double_click"
+				"type": "click",
+				"card": 33
 			},
 			{
-				"card": 33,
-				"type": "click"
-			},
-			{
+				"type": "drag",
 				"card": 0,
-				"to": "foundation_4",
-				"type": "drag"
+				"to": "foundation_4"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "foundation_3",
-				"type": "drag"
+				"to": "foundation_3"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "tableau_7",
-				"type": "drag"
+				"to": "tableau_7"
 			},
 			{
-				"action": "Draw 1/3",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw 1/3"
 			}
 		],
 		"logs": [
@@ -5706,6 +5620,92 @@
 				"  draw_count = 3"
 			]
 		],
-		"seed": 2
+		"end": {
+			"zones": {
+				"stock": [
+					"▼K♠",
+					"▼J♥",
+					"▼7♥",
+					"▼7♠",
+					"▼8♠",
+					"▼4♣",
+					"▼5♠",
+					"▼4♦",
+					"▼K♥"
+				],
+				"waste": [
+					"9♥",
+					"8♦",
+					"10♦"
+				],
+				"foundation_1": [],
+				"foundation_2": [
+					"A♦",
+					"2♦",
+					"3♦"
+				],
+				"foundation_3": [
+					"A♣"
+				],
+				"foundation_4": [
+					"A♠"
+				],
+				"tableau_1": [
+					"K♦",
+					"Q♠"
+				],
+				"tableau_2": [
+					"K♣",
+					"Q♦"
+				],
+				"tableau_3": [
+					"Q♥"
+				],
+				"tableau_4": [
+					"▼9♠",
+					"9♦",
+					"8♣"
+				],
+				"tableau_5": [
+					"▼J♣",
+					"10♥",
+					"9♣",
+					"8♥",
+					"7♣",
+					"6♥",
+					"5♣",
+					"4♥",
+					"3♠",
+					"2♥"
+				],
+				"tableau_6": [
+					"▼A♥",
+					"▼7♦",
+					"▼6♦",
+					"▼2♠",
+					"Q♣",
+					"J♦"
+				],
+				"tableau_7": [
+					"▼10♣",
+					"▼10♠",
+					"▼3♣",
+					"▼J♠",
+					"▼6♣",
+					"▼5♦",
+					"6♠",
+					"5♥",
+					"4♠",
+					"3♥",
+					"2♣"
+				]
+			},
+			"variables": {
+				"result": "",
+				"draw_count": "3"
+			},
+			"over": false,
+			"result": ""
+		}
 	}
 ]

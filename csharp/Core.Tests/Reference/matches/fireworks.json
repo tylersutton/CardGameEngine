@@ -1,252 +1,176 @@
 [
 	{
-		"end": {
-			"over": true,
-			"result": "Game over",
-			"variables": {
-				"clues": "0",
-				"final_turns": "-1",
-				"fuses": "0",
-				"player": "1",
-				"result": "Boom! Out of fuses"
-			},
-			"zones": {
-				"deck": [
-					"▼Yellow 5",
-					"▼Yellow 4",
-					"▼White 1",
-					"▼Blue 3",
-					"▼White 3",
-					"▼Yellow 4",
-					"▼Blue 1",
-					"▼Blue 2",
-					"▼Yellow 1",
-					"▼Blue 3",
-					"▼White 1",
-					"▼Yellow 1",
-					"▼Blue 1",
-					"▼Red 2",
-					"▼Green 3",
-					"▼Red 1",
-					"▼Yellow 1",
-					"▼White 2",
-					"▼Blue 2",
-					"▼White 1",
-					"▼Red 1",
-					"▼Green 1",
-					"▼Blue 5",
-					"▼Blue 1",
-					"▼Green 4",
-					"▼Green 1",
-					"▼Yellow 3",
-					"▼Red 3",
-					"▼Green 5",
-					"▼Green 4"
-				],
-				"discard": [
-					"Blue 4",
-					"White 3",
-					"Red 2",
-					"White 4",
-					"White 2",
-					"Red 5",
-					"Yellow 3",
-					"Red 4",
-					"White 5",
-					"Yellow 2"
-				],
-				"firework_1": [],
-				"firework_2": [],
-				"firework_3": [],
-				"firework_4": [],
-				"firework_5": [],
-				"hand_1": [
-					"White 4",
-					"Blue 4",
-					"Red 1",
-					"Red 3",
-					"Green 2"
-				],
-				"hand_2": [
-					"Yellow 2",
-					"Green 3",
-					"Green 1",
-					"Red 4",
-					"Green 2"
-				],
-				"play": []
-			}
-		},
+		"seed": 1,
 		"inputs": [
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "play",
-				"type": "drag"
+				"to": "play"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
-				"action": "Clue color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue color"
 			},
 			{
-				"card": 15,
-				"type": "click"
+				"type": "click",
+				"card": 15
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"action": "Clue color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue color"
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
-				"action": "Clue color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue color"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"action": "Clue color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue color"
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"action": "Clue color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue color"
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "play",
-				"type": "drag"
+				"to": "play"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "play",
-				"type": "drag"
+				"to": "play"
 			}
 		],
 		"logs": [
@@ -636,197 +560,195 @@
 				"  result = Boom! Out of fuses"
 			]
 		],
-		"seed": 1
-	},
-	{
 		"end": {
-			"over": true,
-			"result": "Game over",
-			"variables": {
-				"clues": "3",
-				"final_turns": "-1",
-				"fuses": "0",
-				"player": "1",
-				"result": "Boom! Out of fuses"
-			},
 			"zones": {
 				"deck": [
 					"▼Yellow 5",
-					"▼Yellow 1",
-					"▼Blue 2",
-					"▼Blue 4",
-					"▼Green 2",
-					"▼Red 5",
-					"▼Red 3",
+					"▼Yellow 4",
+					"▼White 1",
+					"▼Blue 3",
 					"▼White 3",
-					"▼Green 3",
-					"▼Green 1",
-					"▼Blue 3",
-					"▼Green 2",
-					"▼White 2",
-					"▼Yellow 3",
-					"▼White 1",
-					"▼White 4",
+					"▼Yellow 4",
 					"▼Blue 1",
+					"▼Blue 2",
+					"▼Yellow 1",
+					"▼Blue 3",
+					"▼White 1",
+					"▼Yellow 1",
+					"▼Blue 1",
+					"▼Red 2",
+					"▼Green 3",
+					"▼Red 1",
+					"▼Yellow 1",
+					"▼White 2",
+					"▼Blue 2",
+					"▼White 1",
+					"▼Red 1",
+					"▼Green 1",
+					"▼Blue 5",
+					"▼Blue 1",
+					"▼Green 4",
+					"▼Green 1",
 					"▼Yellow 3",
 					"▼Red 3",
-					"▼Blue 1",
-					"▼Blue 4",
-					"▼Red 1",
-					"▼Blue 3",
-					"▼Yellow 4",
-					"▼Yellow 4",
-					"▼White 4",
-					"▼Red 2",
-					"▼White 1",
-					"▼Blue 5",
-					"▼Red 1",
+					"▼Green 5",
 					"▼Green 4"
 				],
-				"discard": [
-					"Yellow 2",
-					"Red 4",
-					"Red 4",
-					"Green 5",
-					"Green 3",
-					"Green 4"
-				],
-				"firework_1": [
-					"Red 1",
-					"Red 2"
-				],
+				"firework_1": [],
 				"firework_2": [],
 				"firework_3": [],
-				"firework_4": [
-					"Blue 1"
-				],
+				"firework_4": [],
 				"firework_5": [],
-				"hand_1": [
-					"White 1",
+				"play": [],
+				"discard": [
+					"Blue 4",
+					"White 3",
+					"Red 2",
+					"White 4",
+					"White 2",
+					"Red 5",
+					"Yellow 3",
+					"Red 4",
 					"White 5",
-					"Green 1",
-					"Blue 2",
-					"White 3"
+					"Yellow 2"
+				],
+				"hand_1": [
+					"White 4",
+					"Blue 4",
+					"Red 1",
+					"Red 3",
+					"Green 2"
 				],
 				"hand_2": [
-					"White 2",
-					"Yellow 1",
 					"Yellow 2",
+					"Green 3",
 					"Green 1",
-					"Yellow 1"
-				],
-				"play": []
-			}
-		},
+					"Red 4",
+					"Green 2"
+				]
+			},
+			"variables": {
+				"clues": "0",
+				"fuses": "0",
+				"final_turns": "-1",
+				"result": "Boom! Out of fuses",
+				"player": "1"
+			},
+			"over": true,
+			"result": "Game over"
+		}
+	},
+	{
+		"seed": 2,
 		"inputs": [
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "play",
-				"type": "drag"
+				"to": "play"
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
-				"action": "Clue color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue color"
 			},
 			{
-				"card": 8,
-				"type": "click"
+				"type": "click",
+				"card": 8
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "play",
-				"type": "drag"
+				"to": "play"
 			},
 			{
-				"action": "Clue color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue color"
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "play",
-				"type": "drag"
+				"to": "play"
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
-				"action": "Clue number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Clue number"
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "play",
-				"type": "drag"
+				"to": "play"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "play",
-				"type": "drag"
+				"to": "play"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "discard",
-				"type": "drag"
+				"to": "discard"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "play",
-				"type": "drag"
+				"to": "play"
 			}
 		],
 		"logs": [
@@ -1097,6 +1019,84 @@
 				"  result = Boom! Out of fuses"
 			]
 		],
-		"seed": 2
+		"end": {
+			"zones": {
+				"deck": [
+					"▼Yellow 5",
+					"▼Yellow 1",
+					"▼Blue 2",
+					"▼Blue 4",
+					"▼Green 2",
+					"▼Red 5",
+					"▼Red 3",
+					"▼White 3",
+					"▼Green 3",
+					"▼Green 1",
+					"▼Blue 3",
+					"▼Green 2",
+					"▼White 2",
+					"▼Yellow 3",
+					"▼White 1",
+					"▼White 4",
+					"▼Blue 1",
+					"▼Yellow 3",
+					"▼Red 3",
+					"▼Blue 1",
+					"▼Blue 4",
+					"▼Red 1",
+					"▼Blue 3",
+					"▼Yellow 4",
+					"▼Yellow 4",
+					"▼White 4",
+					"▼Red 2",
+					"▼White 1",
+					"▼Blue 5",
+					"▼Red 1",
+					"▼Green 4"
+				],
+				"firework_1": [
+					"Red 1",
+					"Red 2"
+				],
+				"firework_2": [],
+				"firework_3": [],
+				"firework_4": [
+					"Blue 1"
+				],
+				"firework_5": [],
+				"play": [],
+				"discard": [
+					"Yellow 2",
+					"Red 4",
+					"Red 4",
+					"Green 5",
+					"Green 3",
+					"Green 4"
+				],
+				"hand_1": [
+					"White 1",
+					"White 5",
+					"Green 1",
+					"Blue 2",
+					"White 3"
+				],
+				"hand_2": [
+					"White 2",
+					"Yellow 1",
+					"Yellow 2",
+					"Green 1",
+					"Yellow 1"
+				]
+			},
+			"variables": {
+				"clues": "3",
+				"fuses": "0",
+				"final_turns": "-1",
+				"result": "Boom! Out of fuses",
+				"player": "1"
+			},
+			"over": true,
+			"result": "Game over"
+		}
 	}
 ]

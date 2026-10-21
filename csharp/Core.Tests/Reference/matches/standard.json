@@ -1,661 +1,498 @@
 [
 	{
-		"end": {
-			"over": false,
-			"result": "",
-			"variables": {},
-			"zones": {
-				"deck": [],
-				"discard": [],
-				"hand": [
-					"A♣",
-					"2♣",
-					"3♣",
-					"4♣",
-					"5♣",
-					"6♣",
-					"7♣",
-					"8♣",
-					"9♣",
-					"10♣",
-					"J♣",
-					"Q♣",
-					"K♣",
-					"A♦",
-					"2♦",
-					"3♦",
-					"4♦",
-					"5♦",
-					"6♦",
-					"7♦",
-					"8♦",
-					"9♦",
-					"10♦",
-					"J♦",
-					"Q♦",
-					"K♦",
-					"A♥",
-					"2♥",
-					"3♥",
-					"4♥",
-					"5♥",
-					"6♥",
-					"7♥",
-					"8♥",
-					"9♥",
-					"10♥",
-					"J♥",
-					"Q♥",
-					"K♥",
-					"A♠",
-					"2♠",
-					"3♠",
-					"4♠",
-					"5♠",
-					"6♠",
-					"7♠",
-					"8♠",
-					"9♠",
-					"10♠",
-					"J♠",
-					"Q♠",
-					"K♠"
-				],
-				"table": []
-			}
-		},
+		"seed": 1,
 		"inputs": [
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "click",
+				"card": 51
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 27
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"card": 8,
-				"type": "click"
+				"type": "click",
+				"card": 8
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
 				"type": "click_empty",
@@ -666,76 +503,96 @@
 				"zone": "deck"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
 				"type": "click_empty",
@@ -754,516 +611,596 @@
 				"zone": "deck"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "click_empty",
+				"zone": "deck"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "click_empty",
+				"zone": "deck"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "click_empty",
+				"zone": "deck"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
 			}
 		],
 		"logs": [
@@ -2550,16 +2487,11 @@
 				"  shuffle deck"
 			]
 		],
-		"seed": 1
-	},
-	{
 		"end": {
-			"over": false,
-			"result": "",
-			"variables": {},
 			"zones": {
 				"deck": [],
 				"discard": [],
+				"table": [],
 				"hand": [
 					"A♣",
 					"2♣",
@@ -2613,926 +2545,595 @@
 					"J♠",
 					"Q♠",
 					"K♠"
-				],
-				"table": []
-			}
-		},
+				]
+			},
+			"variables": {},
+			"over": false,
+			"result": ""
+		}
+	},
+	{
+		"seed": 2,
 		"inputs": [
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "click",
+				"card": 51
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
 				"type": "click_empty",
@@ -3543,16 +3144,332 @@
 				"zone": "deck"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "click_empty",
+				"zone": "deck"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
 				"type": "click_empty",
@@ -3563,88 +3480,16 @@
 				"zone": "deck"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
 				"type": "click_empty",
@@ -3655,164 +3500,256 @@
 				"zone": "deck"
 			},
 			{
-				"type": "click_empty",
-				"zone": "deck"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Draw",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by suit",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Shuffle",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Sort by value",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Draw"
 			},
 			{
-				"action": "Sort by suit",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by value"
 			},
 			{
-				"action": "Draw",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
 				"type": "click_empty",
 				"zone": "deck"
 			},
 			{
-				"action": "Shuffle",
-				"type": "perform"
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by value"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by suit"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
+			},
+			{
+				"type": "perform",
+				"action": "Draw"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "perform",
+				"action": "Shuffle"
 			},
 			{
 				"type": "click_empty",
@@ -5092,6 +5029,69 @@
 				"  shuffle deck"
 			]
 		],
-		"seed": 2
+		"end": {
+			"zones": {
+				"deck": [],
+				"discard": [],
+				"table": [],
+				"hand": [
+					"A♣",
+					"2♣",
+					"3♣",
+					"4♣",
+					"5♣",
+					"6♣",
+					"7♣",
+					"8♣",
+					"9♣",
+					"10♣",
+					"J♣",
+					"Q♣",
+					"K♣",
+					"A♦",
+					"2♦",
+					"3♦",
+					"4♦",
+					"5♦",
+					"6♦",
+					"7♦",
+					"8♦",
+					"9♦",
+					"10♦",
+					"J♦",
+					"Q♦",
+					"K♦",
+					"A♥",
+					"2♥",
+					"3♥",
+					"4♥",
+					"5♥",
+					"6♥",
+					"7♥",
+					"8♥",
+					"9♥",
+					"10♥",
+					"J♥",
+					"Q♥",
+					"K♥",
+					"A♠",
+					"2♠",
+					"3♠",
+					"4♠",
+					"5♠",
+					"6♠",
+					"7♠",
+					"8♠",
+					"9♠",
+					"10♠",
+					"J♠",
+					"Q♠",
+					"K♠"
+				]
+			},
+			"variables": {},
+			"over": false,
+			"result": ""
+		}
 	}
 ]

@@ -1,1223 +1,1133 @@
 [
 	{
-		"end": {
-			"over": false,
-			"result": "",
-			"variables": {
-				"finish_order": "[]",
-				"first_play": "false",
-				"last_played": "4",
-				"matched": "false",
-				"passes": "2",
-				"player": "3",
-				"ranking": "[4, 1, 3, 2]",
-				"score_1": "2",
-				"score_2": "0",
-				"score_3": "1",
-				"score_4": "3",
-				"set_size": "1",
-				"title_1": "Vice President",
-				"title_2": "Scum",
-				"title_3": "Vice Scum",
-				"title_4": "President",
-				"top_order": "11"
-			},
-			"zones": {
-				"beaten": [
-					"3♦",
-					"9♠",
-					"10♣",
-					"J♠"
-				],
-				"deck": [
-					"▼2♣",
-					"▼7♥",
-					"▼J♥",
-					"▼K♥",
-					"▼2♦",
-					"▼2♥",
-					"▼2♠",
-					"▼6♣",
-					"▼6♠",
-					"▼9♦",
-					"▼9♥",
-					"▼A♦",
-					"▼A♠",
-					"▼A♥",
-					"▼10♦",
-					"▼10♥",
-					"▼A♣",
-					"▼Q♥",
-					"▼Q♠",
-					"▼Q♦",
-					"▼K♦",
-					"▼Q♣",
-					"▼K♠",
-					"▼6♥",
-					"▼8♦",
-					"▼8♠"
-				],
-				"hand_1": [
-					"3♠",
-					"5♣",
-					"7♣",
-					"7♦",
-					"7♠",
-					"8♥"
-				],
-				"hand_2": [
-					"3♣",
-					"3♥",
-					"4♦",
-					"4♥",
-					"4♠",
-					"5♥",
-					"5♠",
-					"9♣",
-					"J♦"
-				],
-				"hand_3": [
-					"5♦",
-					"6♦",
-					"10♠",
-					"J♣"
-				],
-				"hand_4": [
-					"4♣",
-					"8♣"
-				],
-				"table": [
-					"K♣"
-				]
-			}
-		},
+		"seed": 1,
 		"inputs": [
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"card": 15,
-				"type": "click"
+				"type": "click",
+				"card": 15
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 50,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 27
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "click",
+				"card": 51
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 8,
-				"type": "click"
+				"type": "click",
+				"card": 8
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 17,
-				"type": "click"
+				"type": "click",
+				"card": 17
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 27
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 50,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 8,
-				"type": "click"
+				"type": "click",
+				"card": 8
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "click",
+				"card": 51
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			}
 		],
 		"logs": [
@@ -3755,1220 +3665,1221 @@
 				"  North (bot) may: Play, Pass"
 			]
 		],
-		"seed": 1
-	},
-	{
 		"end": {
-			"over": false,
-			"result": "",
-			"variables": {
-				"finish_order": "[]",
-				"first_play": "false",
-				"last_played": "2",
-				"matched": "false",
-				"passes": "0",
-				"player": "3",
-				"ranking": "[4, 2, 3, 1]",
-				"score_1": "0",
-				"score_2": "2",
-				"score_3": "1",
-				"score_4": "3",
-				"set_size": "1",
-				"title_1": "Scum",
-				"title_2": "Vice President",
-				"title_3": "Vice Scum",
-				"title_4": "President",
-				"top_order": "1"
-			},
 			"zones": {
-				"beaten": [],
 				"deck": [
 					"▼2♣",
-					"▼9♣",
+					"▼7♥",
+					"▼J♥",
+					"▼K♥",
+					"▼2♦",
+					"▼2♥",
+					"▼2♠",
+					"▼6♣",
+					"▼6♠",
 					"▼9♦",
 					"▼9♥",
-					"▼2♥",
-					"▼3♠",
-					"▼7♥",
-					"▼K♥",
 					"▼A♦",
 					"▼A♠",
-					"▼4♠",
-					"▼7♣",
-					"▼7♠",
-					"▼K♠",
-					"▼A♣",
-					"▼3♥",
-					"▼8♣",
-					"▼Q♥",
-					"▼Q♦",
-					"▼Q♠",
+					"▼A♥",
 					"▼10♦",
 					"▼10♥",
-					"▼J♦",
-					"▼2♦",
-					"▼6♣",
+					"▼A♣",
+					"▼Q♥",
+					"▼Q♠",
+					"▼Q♦",
 					"▼K♦",
-					"▼2♠",
-					"▼8♥",
-					"▼J♠",
-					"▼6♦",
+					"▼Q♣",
+					"▼K♠",
 					"▼6♥",
-					"▼5♣",
-					"▼5♦"
+					"▼8♦",
+					"▼8♠"
 				],
 				"hand_1": [
-					"5♠",
-					"8♠"
+					"3♠",
+					"5♣",
+					"7♣",
+					"7♦",
+					"7♠",
+					"8♥"
 				],
 				"hand_2": [
+					"3♣",
+					"3♥",
 					"4♦",
 					"4♥",
-					"10♣",
-					"J♥",
-					"Q♣"
+					"4♠",
+					"5♥",
+					"5♠",
+					"9♣",
+					"J♦"
 				],
 				"hand_3": [
-					"4♣",
-					"5♥",
-					"6♠",
-					"7♦",
-					"8♦",
-					"9♠",
+					"5♦",
+					"6♦",
 					"10♠",
-					"J♣",
-					"K♣"
+					"J♣"
 				],
 				"hand_4": [
+					"4♣",
+					"8♣"
+				],
+				"beaten": [
 					"3♦",
-					"A♥"
+					"9♠",
+					"10♣",
+					"J♠"
 				],
 				"table": [
-					"3♣"
+					"K♣"
 				]
-			}
-		},
+			},
+			"variables": {
+				"first_play": "false",
+				"set_size": "1",
+				"top_order": "11",
+				"matched": "false",
+				"last_played": "4",
+				"passes": "2",
+				"finish_order": "[]",
+				"ranking": "[4, 1, 3, 2]",
+				"player": "3",
+				"title_1": "Vice President",
+				"title_2": "Scum",
+				"title_3": "Vice Scum",
+				"title_4": "President",
+				"score_1": "2",
+				"score_2": "0",
+				"score_3": "1",
+				"score_4": "3"
+			},
+			"over": false,
+			"result": ""
+		}
+	},
+	{
+		"seed": 2,
 		"inputs": [
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "click",
+				"card": 51
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 27
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 50,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 8,
-				"type": "click"
+				"type": "click",
+				"card": 8
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 13,
-				"type": "click"
+				"type": "click",
+				"card": 13
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 15,
-				"type": "click"
+				"type": "click",
+				"card": 15
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 42,
-				"type": "click"
+				"type": "click",
+				"card": 42
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 17,
-				"type": "click"
+				"type": "click",
+				"card": 17
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 4,
-				"type": "click"
+				"type": "click",
+				"card": 4
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 16,
-				"type": "click"
+				"type": "click",
+				"card": 16
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Next hand",
-				"type": "perform"
+				"type": "perform",
+				"action": "Next hand"
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 27
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 47,
-				"type": "click"
+				"type": "click",
+				"card": 47
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 2,
-				"type": "click"
+				"type": "click",
+				"card": 2
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 25,
-				"type": "click"
+				"type": "click",
+				"card": 25
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 14,
-				"type": "click"
+				"type": "click",
+				"card": 14
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 0,
-				"type": "click"
+				"type": "click",
+				"card": 0
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 15,
-				"type": "click"
+				"type": "click",
+				"card": 15
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 35,
-				"type": "click"
+				"type": "click",
+				"card": 35
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 44,
-				"type": "click"
+				"type": "click",
+				"card": 44
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 27
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 1,
-				"type": "click"
+				"type": "click",
+				"card": 1
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
 				"type": "finish"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Pass",
-				"type": "perform"
+				"type": "perform",
+				"action": "Pass"
 			},
 			{
-				"action": "Play",
-				"type": "perform"
+				"type": "perform",
+				"action": "Play"
 			},
 			{
-				"card": 41,
-				"type": "click"
+				"type": "click",
+				"card": 41
 			},
 			{
 				"type": "finish"
@@ -7502,6 +7413,95 @@
 				"  North (bot) may: Play, Pass"
 			]
 		],
-		"seed": 2
+		"end": {
+			"zones": {
+				"deck": [
+					"▼2♣",
+					"▼9♣",
+					"▼9♦",
+					"▼9♥",
+					"▼2♥",
+					"▼3♠",
+					"▼7♥",
+					"▼K♥",
+					"▼A♦",
+					"▼A♠",
+					"▼4♠",
+					"▼7♣",
+					"▼7♠",
+					"▼K♠",
+					"▼A♣",
+					"▼3♥",
+					"▼8♣",
+					"▼Q♥",
+					"▼Q♦",
+					"▼Q♠",
+					"▼10♦",
+					"▼10♥",
+					"▼J♦",
+					"▼2♦",
+					"▼6♣",
+					"▼K♦",
+					"▼2♠",
+					"▼8♥",
+					"▼J♠",
+					"▼6♦",
+					"▼6♥",
+					"▼5♣",
+					"▼5♦"
+				],
+				"hand_1": [
+					"5♠",
+					"8♠"
+				],
+				"hand_2": [
+					"4♦",
+					"4♥",
+					"10♣",
+					"J♥",
+					"Q♣"
+				],
+				"hand_3": [
+					"4♣",
+					"5♥",
+					"6♠",
+					"7♦",
+					"8♦",
+					"9♠",
+					"10♠",
+					"J♣",
+					"K♣"
+				],
+				"hand_4": [
+					"3♦",
+					"A♥"
+				],
+				"beaten": [],
+				"table": [
+					"3♣"
+				]
+			},
+			"variables": {
+				"first_play": "false",
+				"set_size": "1",
+				"top_order": "1",
+				"matched": "false",
+				"last_played": "2",
+				"passes": "0",
+				"finish_order": "[]",
+				"ranking": "[4, 2, 3, 1]",
+				"player": "3",
+				"title_1": "Scum",
+				"title_2": "Vice President",
+				"title_3": "Vice Scum",
+				"title_4": "President",
+				"score_1": "0",
+				"score_2": "2",
+				"score_3": "1",
+				"score_4": "3"
+			},
+			"over": false,
+			"result": ""
+		}
 	}
 ]

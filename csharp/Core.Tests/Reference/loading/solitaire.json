@@ -1,0 +1,839 @@
+{
+	"rules": {
+		"title": "Solitaire",
+		"description": "Klondike: build the foundations from Ace to King. Draw one or three cards at a time.",
+		"zones": {
+			"stock": {
+				"label": "Stock",
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					0.08,
+					0.16
+				],
+				"cards": "res://decks/standard_deck.csv"
+			},
+			"waste": {
+				"label": "Waste",
+				"layout": "pile",
+				"spread": 3.0,
+				"anchor": [
+					0.21,
+					0.16
+				]
+			},
+			"foundation": {
+				"label": "A",
+				"copies": 4.0,
+				"layout": "pile",
+				"anchors": [
+					[
+						0.47,
+						0.16
+					],
+					[
+						0.6,
+						0.16
+					],
+					[
+						0.73,
+						0.16
+					],
+					[
+						0.86,
+						0.16
+					]
+				]
+			},
+			"tableau": {
+				"label": "K",
+				"copies": 7.0,
+				"layout": "column",
+				"drag": "stack",
+				"anchors": [
+					[
+						0.08,
+						0.45
+					],
+					[
+						0.21,
+						0.45
+					],
+					[
+						0.34,
+						0.45
+					],
+					[
+						0.47,
+						0.45
+					],
+					[
+						0.6,
+						0.45
+					],
+					[
+						0.73,
+						0.45
+					],
+					[
+						0.86,
+						0.45
+					]
+				]
+			}
+		},
+		"actions": {
+			"Waste to foundation": {
+				"drag": {
+					"from": "waste",
+					"to": "foundation"
+				},
+				"double_click": true,
+				"when": "top_card and fits_foundation",
+				"steps": [
+					"trigger('check_win')"
+				]
+			},
+			"Tableau to foundation": {
+				"drag": {
+					"from": "tableau",
+					"to": "foundation"
+				},
+				"double_click": true,
+				"when": "top_card and fits_foundation",
+				"steps": [
+					"flip(face_down(top(from)))",
+					"trigger('check_win')"
+				]
+			},
+			"Waste to tableau": {
+				"drag": {
+					"from": "waste",
+					"to": "tableau"
+				},
+				"when": "top_card and fits_tableau",
+				"steps": []
+			},
+			"Tableau to tableau": {
+				"drag": {
+					"from": "tableau",
+					"to": "tableau"
+				},
+				"when": "card.face_up and fits_tableau",
+				"steps": [
+					"flip(face_down(top(from)))"
+				]
+			},
+			"Foundation to tableau": {
+				"drag": {
+					"from": "foundation",
+					"to": "tableau"
+				},
+				"when": "top_card and fits_tableau",
+				"steps": []
+			},
+			"Turn the stock": {
+				"click": "stock",
+				"steps": [
+					{
+						"if": "count(stock) == 0",
+						"then": [
+							"draw(waste, stock, count(waste))"
+						],
+						"else": [
+							"draw(stock, waste, draw_count)"
+						]
+					}
+				]
+			},
+			"Draw 1/3": {
+				"steps": [
+					"draw_count = 4 - draw_count"
+				]
+			},
+			"Auto-finish": {
+				"when": "result == '' and count(stock) + count(waste) == 0 and count(face_down(tableau)) == 0",
+				"steps": [
+					{
+						"while": "count(movable(tableau, foundation)) > 0",
+						"do": [
+							"try_move(top(movable(tableau, foundation)), foundation)"
+						]
+					}
+				]
+			}
+		},
+		"triggers": {
+			"start": [
+				"shuffle(stock)",
+				{
+					"for": "column",
+					"in": "tableau",
+					"do": [
+						"draw(stock, column, column_number)",
+						"flip(without(column, top(column)))"
+					]
+				}
+			],
+			"check_win": [
+				{
+					"if": "count(foundation) == 52",
+					"then": [
+						"result = 'You win!'"
+					]
+				}
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"top_card": "card == top(from)",
+			"fits_foundation": "number(card, 'value') == count(to) + 1 and count(where(to, 'suit', card.data.suit)) == count(to)",
+			"fits_tableau": "(count(to) == 0 and number(card, 'value') == 13) or (number(card, 'value') == number(top(to), 'value') - 1 and card.data.color != text(top(to), 'color'))"
+		},
+		"condition_parameters": {
+			"top_card": [],
+			"fits_foundation": [],
+			"fits_tableau": []
+		},
+		"condition_errors": [],
+		"constants": {},
+		"turn": [],
+		"variables": {
+			"result": "",
+			"draw_count": 1
+		},
+		"players": 1,
+		"seats": [],
+		"player_names": [],
+		"player_variables": {},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"cards on foundations": "count(foundation)",
+			"cards you can move": "count(movable([waste, tableau], [tableau, foundation]))"
+		},
+		"show_variables": [],
+		"bot": {},
+		"card_face": {
+			"corner": "name",
+			"title": "name",
+			"body": [
+				"suit"
+			],
+			"color": "color"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "stock",
+			"label": "Stock",
+			"has_outline": true,
+			"kind": "stock",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.07999999821186066,
+				0.1599999964237213
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "waste",
+			"label": "Waste",
+			"has_outline": true,
+			"kind": "waste",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.20999999344348907,
+				0.1599999964237213
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 3,
+			"covered_by": []
+		},
+		{
+			"name": "foundation_1",
+			"label": "A",
+			"has_outline": true,
+			"kind": "foundation",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.4699999988079071,
+				0.1599999964237213
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "foundation_2",
+			"label": "A",
+			"has_outline": true,
+			"kind": "foundation",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.6000000238418579,
+				0.1599999964237213
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "foundation_3",
+			"label": "A",
+			"has_outline": true,
+			"kind": "foundation",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.7300000190734863,
+				0.1599999964237213
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "foundation_4",
+			"label": "A",
+			"has_outline": true,
+			"kind": "foundation",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.8600000143051147,
+				0.1599999964237213
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "tableau_1",
+			"label": "K",
+			"has_outline": true,
+			"kind": "tableau",
+			"owner": 0,
+			"layout": "column",
+			"face": "up",
+			"anchor": [
+				0.07999999821186066,
+				0.44999998807907104
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": true,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "tableau_2",
+			"label": "K",
+			"has_outline": true,
+			"kind": "tableau",
+			"owner": 0,
+			"layout": "column",
+			"face": "up",
+			"anchor": [
+				0.20999999344348907,
+				0.44999998807907104
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": true,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "tableau_3",
+			"label": "K",
+			"has_outline": true,
+			"kind": "tableau",
+			"owner": 0,
+			"layout": "column",
+			"face": "up",
+			"anchor": [
+				0.3400000035762787,
+				0.44999998807907104
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": true,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "tableau_4",
+			"label": "K",
+			"has_outline": true,
+			"kind": "tableau",
+			"owner": 0,
+			"layout": "column",
+			"face": "up",
+			"anchor": [
+				0.4699999988079071,
+				0.44999998807907104
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": true,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "tableau_5",
+			"label": "K",
+			"has_outline": true,
+			"kind": "tableau",
+			"owner": 0,
+			"layout": "column",
+			"face": "up",
+			"anchor": [
+				0.6000000238418579,
+				0.44999998807907104
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": true,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "tableau_6",
+			"label": "K",
+			"has_outline": true,
+			"kind": "tableau",
+			"owner": 0,
+			"layout": "column",
+			"face": "up",
+			"anchor": [
+				0.7300000190734863,
+				0.44999998807907104
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": true,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "tableau_7",
+			"label": "K",
+			"has_outline": true,
+			"kind": "tableau",
+			"owner": 0,
+			"layout": "column",
+			"face": "up",
+			"anchor": [
+				0.8600000143051147,
+				0.44999998807907104
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": true,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/standard_deck.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"value"
+			],
+			"cards": [
+				{
+					"name": "A♠",
+					"rank": "A",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "1"
+				},
+				{
+					"name": "2♠",
+					"rank": "2",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "2"
+				},
+				{
+					"name": "3♠",
+					"rank": "3",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "3"
+				},
+				{
+					"name": "4♠",
+					"rank": "4",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "4"
+				},
+				{
+					"name": "5♠",
+					"rank": "5",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "5"
+				},
+				{
+					"name": "6♠",
+					"rank": "6",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "6"
+				},
+				{
+					"name": "7♠",
+					"rank": "7",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "7"
+				},
+				{
+					"name": "8♠",
+					"rank": "8",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "8"
+				},
+				{
+					"name": "9♠",
+					"rank": "9",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "9"
+				},
+				{
+					"name": "10♠",
+					"rank": "10",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "10"
+				},
+				{
+					"name": "J♠",
+					"rank": "J",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "11"
+				},
+				{
+					"name": "Q♠",
+					"rank": "Q",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "12"
+				},
+				{
+					"name": "K♠",
+					"rank": "K",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "13"
+				},
+				{
+					"name": "A♥",
+					"rank": "A",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "1"
+				},
+				{
+					"name": "2♥",
+					"rank": "2",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "2"
+				},
+				{
+					"name": "3♥",
+					"rank": "3",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "3"
+				},
+				{
+					"name": "4♥",
+					"rank": "4",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "4"
+				},
+				{
+					"name": "5♥",
+					"rank": "5",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "5"
+				},
+				{
+					"name": "6♥",
+					"rank": "6",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "6"
+				},
+				{
+					"name": "7♥",
+					"rank": "7",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "7"
+				},
+				{
+					"name": "8♥",
+					"rank": "8",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "8"
+				},
+				{
+					"name": "9♥",
+					"rank": "9",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "9"
+				},
+				{
+					"name": "10♥",
+					"rank": "10",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "10"
+				},
+				{
+					"name": "J♥",
+					"rank": "J",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "11"
+				},
+				{
+					"name": "Q♥",
+					"rank": "Q",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "12"
+				},
+				{
+					"name": "K♥",
+					"rank": "K",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "13"
+				},
+				{
+					"name": "A♦",
+					"rank": "A",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "1"
+				},
+				{
+					"name": "2♦",
+					"rank": "2",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "2"
+				},
+				{
+					"name": "3♦",
+					"rank": "3",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "3"
+				},
+				{
+					"name": "4♦",
+					"rank": "4",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "4"
+				},
+				{
+					"name": "5♦",
+					"rank": "5",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "5"
+				},
+				{
+					"name": "6♦",
+					"rank": "6",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "6"
+				},
+				{
+					"name": "7♦",
+					"rank": "7",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "7"
+				},
+				{
+					"name": "8♦",
+					"rank": "8",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "8"
+				},
+				{
+					"name": "9♦",
+					"rank": "9",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "9"
+				},
+				{
+					"name": "10♦",
+					"rank": "10",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "10"
+				},
+				{
+					"name": "J♦",
+					"rank": "J",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "11"
+				},
+				{
+					"name": "Q♦",
+					"rank": "Q",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "12"
+				},
+				{
+					"name": "K♦",
+					"rank": "K",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "13"
+				},
+				{
+					"name": "A♣",
+					"rank": "A",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "1"
+				},
+				{
+					"name": "2♣",
+					"rank": "2",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "2"
+				},
+				{
+					"name": "3♣",
+					"rank": "3",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "3"
+				},
+				{
+					"name": "4♣",
+					"rank": "4",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "4"
+				},
+				{
+					"name": "5♣",
+					"rank": "5",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "5"
+				},
+				{
+					"name": "6♣",
+					"rank": "6",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "6"
+				},
+				{
+					"name": "7♣",
+					"rank": "7",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "7"
+				},
+				{
+					"name": "8♣",
+					"rank": "8",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "8"
+				},
+				{
+					"name": "9♣",
+					"rank": "9",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "9"
+				},
+				{
+					"name": "10♣",
+					"rank": "10",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "10"
+				},
+				{
+					"name": "J♣",
+					"rank": "J",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "11"
+				},
+				{
+					"name": "Q♣",
+					"rank": "Q",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "12"
+				},
+				{
+					"name": "K♣",
+					"rank": "K",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "13"
+				}
+			]
+		}
+	}
+}

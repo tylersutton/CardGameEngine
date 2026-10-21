@@ -22,9 +22,14 @@ public class TestGame : IStepContext
     {
         foreach (string name in new[] { "deck", "pile", "hand_1", "hand_2" })
         {
-            Zones[name] = new Zone(name);
+            Zones[name] = new Zone(name, []);
         }
-        Zones["deck"].Cards.AddRange(StandardDeck());
+        List<Card> deck = DeckLoader.Load(File.ReadAllText(RepositoryFiles.PathOf("decks/standard_deck.csv")));
+        for (int id = 0; id < deck.Count; id++)
+        {
+            deck[id].Id = id;
+        }
+        Zones["deck"].AddAll(deck);
         AddCondition("is_ace", "card.rank == 'A'");
         AddCondition("deck_full", "count(deck) == 52");
         AddCondition("suited(cards, suit)", "count(where(cards, 'SUIT', suit))");
@@ -102,14 +107,6 @@ public class TestGame : IStepContext
         string name = heading.Split('(')[0];
         string[] parameters = heading.Contains('(') ? heading[(name.Length + 1)..^1].Split(", ") : [];
         conditions[name] = new Condition(parameters, StepParser.Parse(expression));
-    }
-
-    static IEnumerable<Card> StandardDeck()
-    {
-        string[] lines = File.ReadAllLines(RepositoryFiles.PathOf("decks/standard_deck.csv"));
-        string[] columns = lines[0].Split(',');
-        HashSet<string> numberColumns = ["value", "count"];
-        return lines.Skip(1).Select((line, id) => new Card(id, columns.Zip(line.Split(',')).ToDictionary(pair => pair.First, pair => pair.Second), numberColumns));
     }
 }
 

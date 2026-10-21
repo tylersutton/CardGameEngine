@@ -1,842 +1,773 @@
 [
 	{
-		"end": {
-			"over": true,
-			"result": "Game over",
-			"variables": {
-				"active_color": "Green",
-				"player": "2",
-				"winner": "—"
-			},
-			"zones": {
-				"deck": [],
-				"hand_1": [
-					"Yellow 1",
-					"Blue +2",
-					"Red +2",
-					"Red 2",
-					"Blue 3",
-					"Blue 3",
-					"Red 3",
-					"Blue 4",
-					"Red 5"
-				],
-				"hand_2": [
-					"Red 1",
-					"Yellow +2",
-					"Red 4",
-					"Red 4",
-					"Yellow 4",
-					"Yellow 4"
-				],
-				"pile": [
-					"Red 2",
-					"Green 2",
-					"Green 4",
-					"Green +2",
-					"Green 1",
-					"Green 5",
-					"Blue 5",
-					"Blue 2",
-					"Yellow 2",
-					"Green 2",
-					"Green 5",
-					"Green +2",
-					"Green 1",
-					"Green 3",
-					"Green 4",
-					"Wild",
-					"Green 3",
-					"Yellow 3",
-					"Wild",
-					"Blue 4",
-					"Blue 1",
-					"Blue 5",
-					"Yellow 5",
-					"Yellow 2",
-					"Yellow 3",
-					"Yellow 1",
-					"Yellow 5",
-					"Yellow +2",
-					"Blue +2",
-					"Blue 1",
-					"Blue 2",
-					"Wild",
-					"Red 3",
-					"Red 5",
-					"Red 1",
-					"Red +2",
-					"Wild"
-				]
-			}
-		},
+		"seed": 1,
 		"inputs": [
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Blue",
-				"type": "choose"
+				"type": "choose",
+				"option": "Blue"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"card": 15,
-				"type": "click"
+				"type": "click",
+				"card": 15
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Blue",
-				"type": "choose"
+				"type": "choose",
+				"option": "Blue"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"card": 23,
-				"type": "click"
+				"type": "click",
+				"card": 23
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 23,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 32,
-				"type": "click"
+				"type": "click",
+				"card": 32
 			},
 			{
-				"card": 37,
-				"type": "click"
+				"type": "click",
+				"card": 37
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"card": 46,
-				"type": "click"
+				"type": "click",
+				"card": 46
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "click",
+				"card": 31
+			},
+			{
+				"type": "perform",
+				"action": "Sort by color"
+			},
+			{
+				"type": "perform",
+				"action": "Sort by number"
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "perform",
+				"action": "Sort by number"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "perform",
+				"action": "Sort by color"
+			},
+			{
+				"type": "drag",
 				"card": 48,
-				"type": "click"
+				"to": "pile"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "choose",
+				"option": "Yellow"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
-			},
-			{
-				"card": 34,
-				"type": "click"
-			},
-			{
-				"action": "Sort by number",
-				"type": "perform"
-			},
-			{
-				"card": 26,
-				"type": "click"
-			},
-			{
-				"action": "Sort by color",
-				"type": "perform"
-			},
-			{
-				"card": 48,
-				"to": "pile",
-				"type": "drag"
-			},
-			{
-				"option": "Yellow",
-				"type": "choose"
-			},
-			{
-				"action": "Sort by color",
-				"type": "perform"
-			},
-			{
+				"type": "drag",
 				"card": 36,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"card": 50,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 3,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"card": 39,
-				"type": "click"
+				"type": "click",
+				"card": 39
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 15,
-				"type": "click"
+				"type": "click",
+				"card": 15
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Green",
-				"type": "choose"
+				"type": "choose",
+				"option": "Green"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Blue",
-				"type": "choose"
+				"type": "choose",
+				"option": "Blue"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
-				"card": 22,
-				"type": "click"
+				"type": "click",
+				"card": 22
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 48,
-				"type": "click"
+				"type": "click",
+				"card": 48
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 17,
-				"type": "click"
+				"type": "click",
+				"card": 17
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Red",
-				"type": "choose"
+				"type": "choose",
+				"option": "Red"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Green",
-				"type": "choose"
+				"type": "choose",
+				"option": "Green"
 			}
 		],
 		"logs": [
@@ -2182,1433 +2113,1432 @@
 				"[game over] Game over"
 			]
 		],
-		"seed": 1
-	},
-	{
 		"end": {
-			"over": false,
-			"result": "",
-			"variables": {
-				"active_color": "Blue",
-				"player": "2",
-				"winner": "—"
-			},
 			"zones": {
-				"deck": [
-					"▼Green +2",
-					"▼Green 1",
-					"▼Wild",
-					"▼Yellow 2",
-					"▼Green 4",
-					"▼Yellow 1",
-					"▼Red 3",
-					"▼Yellow 5",
-					"▼Red 1",
-					"▼Wild",
-					"▼Blue 3",
-					"▼Yellow 1",
-					"▼Blue 5",
-					"▼Green 3",
-					"▼Green 2",
-					"▼Yellow +2",
-					"▼Yellow 2",
-					"▼Wild",
-					"▼Red 5",
-					"▼Yellow 5",
-					"▼Yellow 4",
-					"▼Red 3",
-					"▼Yellow 4",
-					"▼Yellow 3",
-					"▼Green 2"
-				],
-				"hand_1": [
-					"Blue 1",
-					"Green 1",
-					"Blue +2",
-					"Blue 2",
+				"deck": [],
+				"pile": [
+					"Red 2",
+					"Green 2",
+					"Green 4",
 					"Green +2",
-					"Red 2",
-					"Red 2",
-					"Red +2",
-					"Blue 2",
-					"Blue 3",
-					"Blue 4",
+					"Green 1",
+					"Green 5",
 					"Blue 5",
-					"Green 5"
-				],
-				"hand_2": [
-					"Red +2",
+					"Blue 2",
+					"Yellow 2",
+					"Green 2",
+					"Green 5",
+					"Green +2",
+					"Green 1",
+					"Green 3",
+					"Green 4",
+					"Wild",
 					"Green 3",
 					"Yellow 3",
-					"Red 4",
-					"Green 5",
-					"Red 5"
-				],
-				"pile": [
+					"Wild",
+					"Blue 4",
+					"Blue 1",
+					"Blue 5",
+					"Yellow 5",
+					"Yellow 2",
+					"Yellow 3",
+					"Yellow 1",
+					"Yellow 5",
 					"Yellow +2",
 					"Blue +2",
+					"Blue 1",
+					"Blue 2",
 					"Wild",
-					"Green 4",
-					"Blue 4",
-					"Red 4",
+					"Red 3",
+					"Red 5",
 					"Red 1",
-					"Blue 1"
+					"Red +2",
+					"Wild"
+				],
+				"hand_1": [
+					"Yellow 1",
+					"Blue +2",
+					"Red +2",
+					"Red 2",
+					"Blue 3",
+					"Blue 3",
+					"Red 3",
+					"Blue 4",
+					"Red 5"
+				],
+				"hand_2": [
+					"Red 1",
+					"Yellow +2",
+					"Red 4",
+					"Red 4",
+					"Yellow 4",
+					"Yellow 4"
 				]
-			}
-		},
+			},
+			"variables": {
+				"winner": "—",
+				"active_color": "Green",
+				"player": "2"
+			},
+			"over": true,
+			"result": "Game over"
+		}
+	},
+	{
+		"seed": 2,
 		"inputs": [
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 34,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Yellow",
-				"type": "choose"
+				"type": "choose",
+				"option": "Yellow"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Red",
-				"type": "choose"
+				"type": "choose",
+				"option": "Red"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Red",
-				"type": "choose"
+				"type": "choose",
+				"option": "Red"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Red",
-				"type": "choose"
+				"type": "choose",
+				"option": "Red"
 			},
 			{
-				"card": 9,
-				"type": "click"
+				"type": "click",
+				"card": 9
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 32,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"card": 30,
-				"type": "click"
+				"type": "click",
+				"card": 30
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"card": 17,
-				"type": "click"
+				"type": "click",
+				"card": 17
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"card": 27,
-				"type": "click"
+				"type": "click",
+				"card": 27
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 29,
-				"type": "click"
+				"type": "click",
+				"card": 29
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"card": 7,
-				"type": "click"
+				"type": "click",
+				"card": 7
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 3,
-				"type": "click"
+				"type": "click",
+				"card": 3
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 26,
-				"type": "click"
+				"type": "click",
+				"card": 26
 			},
 			{
-				"card": 12,
-				"type": "click"
+				"type": "click",
+				"card": 12
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 19,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 24,
-				"type": "click"
+				"type": "click",
+				"card": 24
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"card": 20,
-				"type": "click"
+				"type": "click",
+				"card": 20
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 49,
-				"type": "click"
+				"type": "click",
+				"card": 49
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 36,
-				"type": "click"
+				"type": "click",
+				"card": 36
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Red",
-				"type": "choose"
+				"type": "choose",
+				"option": "Red"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 9,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "drag",
 				"card": 10,
-				"type": "click"
+				"to": "pile"
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"card": 10,
-				"to": "pile",
-				"type": "drag"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
-			},
-			{
-				"action": "Sort by color",
-				"type": "perform"
-			},
-			{
+				"type": "drag",
 				"card": 6,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Red",
-				"type": "choose"
+				"type": "choose",
+				"option": "Red"
 			},
 			{
-				"card": 38,
-				"type": "click"
+				"type": "click",
+				"card": 38
 			},
 			{
-				"card": 45,
-				"type": "click"
+				"type": "click",
+				"card": 45
 			},
 			{
-				"card": 33,
-				"type": "click"
+				"type": "click",
+				"card": 33
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Blue",
-				"type": "choose"
+				"type": "choose",
+				"option": "Blue"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"card": 34,
-				"type": "click"
+				"type": "click",
+				"card": 34
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 50,
-				"type": "click"
+				"type": "click",
+				"card": 50
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Yellow",
-				"type": "choose"
+				"type": "choose",
+				"option": "Yellow"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 39,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 45,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 38,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"card": 31,
-				"type": "click"
+				"type": "click",
+				"card": 31
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 27,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 49,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Blue",
-				"type": "choose"
+				"type": "choose",
+				"option": "Blue"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"card": 5,
-				"type": "click"
+				"type": "click",
+				"card": 5
 			},
 			{
+				"type": "drag",
 				"card": 0,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 2,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 8,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"card": 43,
-				"type": "click"
+				"type": "click",
+				"card": 43
 			},
 			{
+				"type": "drag",
 				"card": 33,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"card": 40,
-				"type": "click"
+				"type": "click",
+				"card": 40
 			},
 			{
+				"type": "drag",
 				"card": 44,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 43,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 14,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 47,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"card": 10,
-				"type": "click"
+				"type": "click",
+				"card": 10
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 11,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 50,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Yellow",
-				"type": "choose"
+				"type": "choose",
+				"option": "Yellow"
 			},
 			{
+				"type": "drag",
 				"card": 36,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 30,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 35,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 24,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 37,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"card": 51,
-				"type": "click"
+				"type": "click",
+				"card": 51
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 42,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 26,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 20,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
+				"type": "drag",
 				"card": 29,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 5,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 51,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Yellow",
-				"type": "choose"
+				"type": "choose",
+				"option": "Yellow"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"card": 18,
-				"type": "click"
+				"type": "click",
+				"card": 18
 			},
 			{
+				"type": "drag",
 				"card": 40,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"card": 21,
-				"type": "click"
+				"type": "click",
+				"card": 21
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"card": 19,
-				"type": "click"
+				"type": "click",
+				"card": 19
 			},
 			{
+				"type": "drag",
 				"card": 16,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 21,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 17,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 28,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 4,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"action": "Sort by color",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by color"
 			},
 			{
-				"card": 6,
-				"type": "click"
+				"type": "click",
+				"card": 6
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 46,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 25,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 41,
-				"to": "hand_2",
-				"type": "drag"
+				"to": "hand_2"
 			},
 			{
-				"action": "Sort by number",
-				"type": "perform"
+				"type": "perform",
+				"action": "Sort by number"
 			},
 			{
+				"type": "drag",
 				"card": 12,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"card": 28,
-				"type": "click"
+				"type": "click",
+				"card": 28
 			},
 			{
+				"type": "drag",
 				"card": 22,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 48,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
-				"option": "Green",
-				"type": "choose"
+				"type": "choose",
+				"option": "Green"
 			},
 			{
-				"card": 17,
-				"type": "click"
+				"type": "click",
+				"card": 17
 			},
 			{
+				"type": "drag",
 				"card": 31,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 10,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			},
 			{
-				"card": 11,
-				"type": "click"
+				"type": "click",
+				"card": 11
 			},
 			{
+				"type": "drag",
 				"card": 18,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 7,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 1,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 13,
-				"to": "pile",
-				"type": "drag"
+				"to": "pile"
 			},
 			{
+				"type": "drag",
 				"card": 15,
-				"to": "hand_1",
-				"type": "drag"
+				"to": "hand_1"
 			}
 		],
 		"logs": [
@@ -5908,6 +5838,76 @@
 				"  Player 2 may: Play a card, Draw"
 			]
 		],
-		"seed": 2
+		"end": {
+			"zones": {
+				"deck": [
+					"▼Green +2",
+					"▼Green 1",
+					"▼Wild",
+					"▼Yellow 2",
+					"▼Green 4",
+					"▼Yellow 1",
+					"▼Red 3",
+					"▼Yellow 5",
+					"▼Red 1",
+					"▼Wild",
+					"▼Blue 3",
+					"▼Yellow 1",
+					"▼Blue 5",
+					"▼Green 3",
+					"▼Green 2",
+					"▼Yellow +2",
+					"▼Yellow 2",
+					"▼Wild",
+					"▼Red 5",
+					"▼Yellow 5",
+					"▼Yellow 4",
+					"▼Red 3",
+					"▼Yellow 4",
+					"▼Yellow 3",
+					"▼Green 2"
+				],
+				"pile": [
+					"Yellow +2",
+					"Blue +2",
+					"Wild",
+					"Green 4",
+					"Blue 4",
+					"Red 4",
+					"Red 1",
+					"Blue 1"
+				],
+				"hand_1": [
+					"Blue 1",
+					"Green 1",
+					"Blue +2",
+					"Blue 2",
+					"Green +2",
+					"Red 2",
+					"Red 2",
+					"Red +2",
+					"Blue 2",
+					"Blue 3",
+					"Blue 4",
+					"Blue 5",
+					"Green 5"
+				],
+				"hand_2": [
+					"Red +2",
+					"Green 3",
+					"Yellow 3",
+					"Red 4",
+					"Green 5",
+					"Red 5"
+				]
+			},
+			"variables": {
+				"winner": "—",
+				"active_color": "Blue",
+				"player": "2"
+			},
+			"over": false,
+			"result": ""
+		}
 	}
 ]

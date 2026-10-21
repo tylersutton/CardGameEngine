@@ -29,8 +29,8 @@ public class RandomNumbersTests
         {
             Assert.Equal(range[2], random.NextInRange(range[0], range[1]));
         }
-        Zone deck = new("deck");
-        deck.Cards.AddRange(Enumerable.Range(0, 52).Select(id => new Card(id, [], [])));
+        Zone deck = new("deck", []);
+        deck.Cards.AddRange(Enumerable.Range(0, 52).Select(id => new Card([]) { Id = id }));
         deck.Shuffle(random);
         Assert.Equal(wanted.Shuffled, deck.Cards.Select(card => card.Id));
         Assert.Equal(long.Parse(wanted.State), unchecked((long)random.State));
