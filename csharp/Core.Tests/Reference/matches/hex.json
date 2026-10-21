@@ -1,0 +1,2123 @@
+[
+	{
+		"seed": 1,
+		"inputs": [
+			{
+				"type": "click_empty",
+				"zone": "cell_61"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_9"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_18"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_37"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_44"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_24"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_29"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_17"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_50"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_69"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_1"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_58"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_33"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_10"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_51"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_5"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_13"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_57"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_45"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_34"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_15"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_72"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_81"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_36"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_60"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_16"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_28"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_21"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_54"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_14"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_66"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_23"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_64"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_46"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_43"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_65"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_71"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_79"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_76"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_35"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_53"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_74"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_73"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_63"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_3"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_68"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_67"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_48"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_32"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_40"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_42"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_12"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_38"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_39"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_8"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_77"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_31"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_78"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_27"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_6"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_52"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_19"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_7"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_4"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_11"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_20"
+			}
+		],
+		"logs": [
+			[
+				"[turn] Red"
+			],
+			[
+				"  Red may: Place",
+				"[action] Place",
+				"  stones → cell_61: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_9: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_18: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_37: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_44: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_24: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_29: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_17: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_50: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_69: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_1: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_58: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_33: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_10: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_51: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_5: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_13: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_57: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_45: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_34: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_15: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_72: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_81: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_36: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_60: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_16: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_28: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_21: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_54: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_14: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_66: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_23: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_64: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_46: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_43: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_65: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_71: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_79: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_76: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_35: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_53: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_74: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_73: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_63: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_3: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_68: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_67: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_48: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_32: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_40: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_42: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_12: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_38: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_39: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_8: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_77: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_31: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_78: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_27: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_6: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_52: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_19: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_7: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_4: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_11: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_20: Blue",
+				"  if won → then",
+				"[game over] Winner: Blue"
+			]
+		],
+		"end": {
+			"zones": {
+				"cell_1": [
+					"Red"
+				],
+				"cell_2": [],
+				"cell_3": [
+					"Red"
+				],
+				"cell_4": [
+					"Blue"
+				],
+				"cell_5": [
+					"Blue"
+				],
+				"cell_6": [
+					"Blue"
+				],
+				"cell_7": [
+					"Red"
+				],
+				"cell_8": [
+					"Red"
+				],
+				"cell_9": [
+					"Blue"
+				],
+				"cell_10": [
+					"Blue"
+				],
+				"cell_11": [
+					"Red"
+				],
+				"cell_12": [
+					"Blue"
+				],
+				"cell_13": [
+					"Red"
+				],
+				"cell_14": [
+					"Blue"
+				],
+				"cell_15": [
+					"Red"
+				],
+				"cell_16": [
+					"Blue"
+				],
+				"cell_17": [
+					"Blue"
+				],
+				"cell_18": [
+					"Red"
+				],
+				"cell_19": [
+					"Blue"
+				],
+				"cell_20": [
+					"Blue"
+				],
+				"cell_21": [
+					"Blue"
+				],
+				"cell_22": [],
+				"cell_23": [
+					"Blue"
+				],
+				"cell_24": [
+					"Blue"
+				],
+				"cell_25": [],
+				"cell_26": [],
+				"cell_27": [
+					"Red"
+				],
+				"cell_28": [
+					"Red"
+				],
+				"cell_29": [
+					"Red"
+				],
+				"cell_30": [],
+				"cell_31": [
+					"Red"
+				],
+				"cell_32": [
+					"Red"
+				],
+				"cell_33": [
+					"Red"
+				],
+				"cell_34": [
+					"Blue"
+				],
+				"cell_35": [
+					"Blue"
+				],
+				"cell_36": [
+					"Blue"
+				],
+				"cell_37": [
+					"Blue"
+				],
+				"cell_38": [
+					"Red"
+				],
+				"cell_39": [
+					"Blue"
+				],
+				"cell_40": [
+					"Blue"
+				],
+				"cell_41": [],
+				"cell_42": [
+					"Red"
+				],
+				"cell_43": [
+					"Red"
+				],
+				"cell_44": [
+					"Red"
+				],
+				"cell_45": [
+					"Red"
+				],
+				"cell_46": [
+					"Blue"
+				],
+				"cell_47": [],
+				"cell_48": [
+					"Blue"
+				],
+				"cell_49": [],
+				"cell_50": [
+					"Red"
+				],
+				"cell_51": [
+					"Red"
+				],
+				"cell_52": [
+					"Red"
+				],
+				"cell_53": [
+					"Red"
+				],
+				"cell_54": [
+					"Red"
+				],
+				"cell_55": [],
+				"cell_56": [],
+				"cell_57": [
+					"Blue"
+				],
+				"cell_58": [
+					"Blue"
+				],
+				"cell_59": [],
+				"cell_60": [
+					"Red"
+				],
+				"cell_61": [
+					"Red"
+				],
+				"cell_62": [],
+				"cell_63": [
+					"Blue"
+				],
+				"cell_64": [
+					"Red"
+				],
+				"cell_65": [
+					"Blue"
+				],
+				"cell_66": [
+					"Red"
+				],
+				"cell_67": [
+					"Red"
+				],
+				"cell_68": [
+					"Blue"
+				],
+				"cell_69": [
+					"Blue"
+				],
+				"cell_70": [],
+				"cell_71": [
+					"Red"
+				],
+				"cell_72": [
+					"Blue"
+				],
+				"cell_73": [
+					"Red"
+				],
+				"cell_74": [
+					"Blue"
+				],
+				"cell_75": [],
+				"cell_76": [
+					"Red"
+				],
+				"cell_77": [
+					"Blue"
+				],
+				"cell_78": [
+					"Blue"
+				],
+				"cell_79": [
+					"Blue"
+				],
+				"cell_80": [],
+				"cell_81": [
+					"Red"
+				],
+				"stones": [
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Blue",
+					"Blue",
+					"Blue",
+					"Blue",
+					"Blue",
+					"Blue",
+					"Blue",
+					"Blue"
+				]
+			},
+			"variables": {
+				"player": "2"
+			},
+			"over": true,
+			"result": "Winner: Blue"
+		}
+	},
+	{
+		"seed": 2,
+		"inputs": [
+			{
+				"type": "click_empty",
+				"zone": "cell_47"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_44"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_80"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_65"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_67"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_75"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_32"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_62"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_24"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_33"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_41"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_69"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_1"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_77"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_50"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_3"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_6"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_7"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_54"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_76"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_5"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_37"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_2"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_26"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_28"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_63"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_72"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_49"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_64"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_61"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_10"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_20"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_46"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_42"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_58"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_36"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_57"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_16"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_68"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_81"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_71"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_8"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_13"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_78"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_25"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_55"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_48"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_35"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_30"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_53"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_4"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_29"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_22"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_12"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_43"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_38"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_73"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_34"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_14"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_74"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_51"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_11"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_18"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_31"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_27"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_45"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_56"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_19"
+			},
+			{
+				"type": "click_empty",
+				"zone": "cell_23"
+			}
+		],
+		"logs": [
+			[
+				"[turn] Red"
+			],
+			[
+				"  Red may: Place",
+				"[action] Place",
+				"  stones → cell_47: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_44: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_80: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_65: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_67: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_75: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_32: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_62: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_24: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_33: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_41: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_69: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_1: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_77: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_50: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_3: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_6: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_7: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_54: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_76: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_5: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_37: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_2: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_26: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_28: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_63: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_72: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_49: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_64: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_61: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_10: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_20: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_46: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_42: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_58: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_36: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_57: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_16: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_68: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_81: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_71: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_8: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_13: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_78: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_25: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_55: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_48: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_35: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_30: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_53: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_4: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_29: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_22: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_12: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_43: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_38: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_73: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_34: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_14: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_74: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_51: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_11: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_18: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_31: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_27: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_45: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_56: Red",
+				"  if won → else",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_19: Blue",
+				"  if won → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Place"
+			],
+			[
+				"[action] Place",
+				"  stones → cell_23: Red",
+				"  if won → then",
+				"[game over] Winner: Red"
+			]
+		],
+		"end": {
+			"zones": {
+				"cell_1": [
+					"Red"
+				],
+				"cell_2": [
+					"Red"
+				],
+				"cell_3": [
+					"Blue"
+				],
+				"cell_4": [
+					"Red"
+				],
+				"cell_5": [
+					"Red"
+				],
+				"cell_6": [
+					"Red"
+				],
+				"cell_7": [
+					"Blue"
+				],
+				"cell_8": [
+					"Blue"
+				],
+				"cell_9": [],
+				"cell_10": [
+					"Red"
+				],
+				"cell_11": [
+					"Blue"
+				],
+				"cell_12": [
+					"Blue"
+				],
+				"cell_13": [
+					"Red"
+				],
+				"cell_14": [
+					"Red"
+				],
+				"cell_15": [],
+				"cell_16": [
+					"Blue"
+				],
+				"cell_17": [],
+				"cell_18": [
+					"Red"
+				],
+				"cell_19": [
+					"Blue"
+				],
+				"cell_20": [
+					"Blue"
+				],
+				"cell_21": [],
+				"cell_22": [
+					"Red"
+				],
+				"cell_23": [
+					"Red"
+				],
+				"cell_24": [
+					"Red"
+				],
+				"cell_25": [
+					"Red"
+				],
+				"cell_26": [
+					"Blue"
+				],
+				"cell_27": [
+					"Red"
+				],
+				"cell_28": [
+					"Red"
+				],
+				"cell_29": [
+					"Blue"
+				],
+				"cell_30": [
+					"Red"
+				],
+				"cell_31": [
+					"Blue"
+				],
+				"cell_32": [
+					"Red"
+				],
+				"cell_33": [
+					"Blue"
+				],
+				"cell_34": [
+					"Blue"
+				],
+				"cell_35": [
+					"Blue"
+				],
+				"cell_36": [
+					"Blue"
+				],
+				"cell_37": [
+					"Blue"
+				],
+				"cell_38": [
+					"Blue"
+				],
+				"cell_39": [],
+				"cell_40": [],
+				"cell_41": [
+					"Red"
+				],
+				"cell_42": [
+					"Blue"
+				],
+				"cell_43": [
+					"Red"
+				],
+				"cell_44": [
+					"Blue"
+				],
+				"cell_45": [
+					"Blue"
+				],
+				"cell_46": [
+					"Red"
+				],
+				"cell_47": [
+					"Red"
+				],
+				"cell_48": [
+					"Red"
+				],
+				"cell_49": [
+					"Blue"
+				],
+				"cell_50": [
+					"Red"
+				],
+				"cell_51": [
+					"Red"
+				],
+				"cell_52": [],
+				"cell_53": [
+					"Blue"
+				],
+				"cell_54": [
+					"Red"
+				],
+				"cell_55": [
+					"Blue"
+				],
+				"cell_56": [
+					"Red"
+				],
+				"cell_57": [
+					"Red"
+				],
+				"cell_58": [
+					"Red"
+				],
+				"cell_59": [],
+				"cell_60": [],
+				"cell_61": [
+					"Blue"
+				],
+				"cell_62": [
+					"Blue"
+				],
+				"cell_63": [
+					"Blue"
+				],
+				"cell_64": [
+					"Red"
+				],
+				"cell_65": [
+					"Blue"
+				],
+				"cell_66": [],
+				"cell_67": [
+					"Red"
+				],
+				"cell_68": [
+					"Red"
+				],
+				"cell_69": [
+					"Blue"
+				],
+				"cell_70": [],
+				"cell_71": [
+					"Red"
+				],
+				"cell_72": [
+					"Red"
+				],
+				"cell_73": [
+					"Red"
+				],
+				"cell_74": [
+					"Blue"
+				],
+				"cell_75": [
+					"Blue"
+				],
+				"cell_76": [
+					"Blue"
+				],
+				"cell_77": [
+					"Blue"
+				],
+				"cell_78": [
+					"Blue"
+				],
+				"cell_79": [],
+				"cell_80": [
+					"Red"
+				],
+				"cell_81": [
+					"Blue"
+				],
+				"stones": [
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Blue",
+					"Blue",
+					"Blue",
+					"Blue",
+					"Blue",
+					"Blue",
+					"Blue"
+				]
+			},
+			"variables": {
+				"player": "1"
+			},
+			"over": true,
+			"result": "Winner: Red"
+		}
+	}
+]

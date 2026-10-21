@@ -25,9 +25,9 @@ public class StepCompiler
     public static readonly string[] ZoneKeys =
     [
         "label", "labels", "outline", "layout", "face", "anchor", "anchors", "width", "rotation", "rotations", "cards",
-        "spread", "drag", "per_player", "copies", "grid", "group", "covered_by", "columns",
+        "spread", "drag", "per_player", "copies", "grid", "group", "covered_by", "columns", "board",
     ];
-    public static readonly string[] CardFaceKeys = ["corner", "title", "body", "text", "color", "background", "zoom"];
+    public static readonly string[] CardFaceKeys = ["corner", "title", "body", "text", "color", "background", "zoom", "shape", "size", "back"];
 
     /// The kinds of value a setting in the game file can be.
     enum Kind { Text, List, Number, Bool, Object }
@@ -73,6 +73,10 @@ public class StepCompiler
         {
             errors.Add($"card_face: unknown key \"{key}\" (it has {string.Join(", ", CardFaceKeys)})");
         }
+        if (rules.CardFace.GetValueOrDefault("size") is not (null or string or double))
+        {
+            errors.Add("card_face: \"size\" should be a column or a number of pixels");
+        }
         foreach ((string zoneKind, object? value) in rules.Zones)
         {
             if (value is not Dictionary<string, object?> definition)
@@ -111,6 +115,10 @@ public class StepCompiler
                 errors.Add($"Zone \"{zoneKind}\": use \"per_player\" or \"copies\", not both");
             }
             int copies = perPlayer ? rules.Players : WholeNumber(definition.GetValueOrDefault("copies"));
+            if (definition.ContainsKey("board"))
+            {
+                copies = CheckBoard(zoneKind, definition);
+            }
             object? grid = definition.GetValueOrDefault("grid");
             if (grid != null && !(grid is Dictionary<string, object?> gridSettings && gridSettings.GetValueOrDefault("columns") is double
                 && gridSettings.GetValueOrDefault("spacing") is List<object?> { Count: 2 }))
@@ -131,6 +139,24 @@ public class StepCompiler
                 errors.Add($"Zone \"{zoneKind}\" needs {copies} anchors in \"anchors\" (one per {(perPlayer ? "player" : "copy")})");
             }
         }
+    }
+
+    /// A board is a grid of spaces, each a zone: it can't also be per player or have copies. Gives how many spaces it has.
+    int CheckBoard(string zoneKind, Dictionary<string, object?> definition)
+    {
+        foreach (string key in new[] { "per_player", "copies", "grid", "anchors" }.Where(definition.ContainsKey))
+        {
+            errors.Add($"Zone \"{zoneKind}\": a \"board\" makes its own spaces, so it can't have \"{key}\"");
+        }
+        if (definition["board"] is not Dictionary<string, object?> board || WholeNumber(board.GetValueOrDefault("columns")) < 1
+            || WholeNumber(board.GetValueOrDefault("rows")) < 1 || board.GetValueOrDefault("size") is not (null or double)
+            || board.GetValueOrDefault("shape", Board.Square) is not string shape || !Board.Shapes.Contains(shape)
+            || board.Keys.Any(key => key is not ("shape" or "columns" or "rows" or "size")))
+        {
+            errors.Add($"Zone \"{zoneKind}\": \"board\" should look like {{ \"shape\": \"square\", \"columns\": 8, \"rows\": 8, \"size\": 60 }} (shape square or hex; size in pixels)");
+            return 0;
+        }
+        return WholeNumber(board["columns"]) * WholeNumber(board["rows"]);
     }
 
     /// After the zones and variables exist: everything else, then every step is compiled.

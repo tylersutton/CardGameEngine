@@ -46,9 +46,12 @@ public class EditingTests
             document.Remove(["turn", count]);
             AssertSameText(original, document.Text, "add + remove turn step");
         }
-        document.SetValue(["triggers", "test_trigger"], new List<object?> { "shuffle(deck)" });
-        document.Remove(["triggers", "test_trigger"]);
-        AssertSameText(original, document.Text, "add + remove trigger");
+        if (document.GetValue(["triggers"]) != null)
+        {
+            document.SetValue(["triggers", "test_trigger"], new List<object?> { "shuffle(deck)" });
+            document.Remove(["triggers", "test_trigger"]);
+            AssertSameText(original, document.Text, "add + remove trigger");
+        }
     }
 
     /// Builds the game again from an empty file, one setting at a time as the editor's forms do, and checks the result

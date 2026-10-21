@@ -110,7 +110,8 @@ public class Game : IStepContext
         {
             Dictionary<string, object?> definition = (Dictionary<string, object?>)value!;
             bool perPlayer = definition.GetValueOrDefault("per_player") is true;
-            int copies = perPlayer ? Rules.Players : (int)(definition.GetValueOrDefault("copies") as double? ?? 0);
+            Board? board = Board.Of(definition);
+            int copies = perPlayer ? Rules.Players : board?.Spaces ?? (int)(definition.GetValueOrDefault("copies") as double? ?? 0);
             if (copies == 0)
             {
                 AddZone(new(zoneKind, definition), definition);
@@ -124,7 +125,7 @@ public class Game : IStepContext
             ZoneGroups[groupName] = [];
             for (int number = 1; number <= copies; number++)
             {
-                Zone zone = new(zoneKind, definition, number, Rules.Players);
+                Zone zone = new(zoneKind, definition, number, Rules.Players, board);
                 AddZone(zone, definition);
                 ZoneGroups[groupName].Add(zone);
                 if (definition.GetValueOrDefault("group") is string group)
@@ -601,6 +602,28 @@ public class Game : IStepContext
         return cards.Where(card => Holds((string)expression!, card)).ToList();
     }
 
+    /// A condition with one parameter, as a check on any value, e.g. "mine(space)" for each space of a board; null
+    /// (reported) if there's no such condition.
+    public Func<object?, bool>? ConditionFor(string condition)
+    {
+        if (!Rules.ConditionParameters.TryGetValue(condition, out List<string>? parameters) || parameters.Count != 1)
+        {
+            ReportFailure($"No condition named \"{condition}\" with one parameter, e.g. \"{condition}(space)\", in \"conditions\"");
+            return null;
+        }
+        return value =>
+        {
+            StepEvaluator evaluator = new(this, null);
+            object? result = evaluator.Evaluate(new CallNode(condition, [new ValueNode(value)]));
+            if (evaluator.Failure.Length > 0)
+            {
+                ReportFailure($"Step failed: \"{condition}\": {evaluator.Failure}");
+                return false;
+            }
+            return Values.IsTrue(result);
+        };
+    }
+
     public int CurrentPlayer() => (int)Values.ToDouble(Variables.GetValueOrDefault(PlayerVariable, 1L));
 
     public int NextPlayer() => SeatAfter(CurrentPlayer(), 1);
@@ -921,11 +944,11 @@ public class Game : IStepContext
     /// Whether this screen shows the card's face.
     public bool ShowsFace(Card card) => CanSee(Viewer(), card);
 
-    /// Whether that player can see the card's face: not if it's face down, nor in another player's private zone
-    /// ("private"), nor in their own zone held facing away from them ("others").
+    /// Whether that player can see the card's face: not if it's face down (unless both its sides are public), nor in
+    /// another player's private zone ("private"), nor in their own zone held facing away from them ("others").
     public bool CanSee(int player, Card card)
     {
-        if (!card.FaceUp)
+        if (!card.FaceUp && !IsTwoSided(card))
         {
             return false;
         }
@@ -937,6 +960,10 @@ public class Game : IStepContext
             _ => true,
         };
     }
+
+    /// A piece whose back is part of the game, like Reversi's discs: card_face "back" gives it a color, and flip
+    /// shows the other side, which everyone sees.
+    public bool IsTwoSided(Card card) => Rules.CardFace.GetValueOrDefault("back") is string back && card.Column(back, back).Length > 0;
 
     /// Who the table is shown to: this screen's seat when playing online; otherwise the only human at a table
     /// of bots, or whoever's turn it is (sharing one screen).

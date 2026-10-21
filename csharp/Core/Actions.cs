@@ -335,6 +335,62 @@ public class Actions(Game game, Card? stepCard = null)
 
     public List<Card> Matching(object? cards, string condition) => game.Matching(CardsIn(cards), condition);
 
+    /// The zones for which a condition with one parameter holds, e.g. zones_where(square, 'empty') with the condition
+    /// "empty(space)": "count(space) == 0".
+    public List<Zone> ZonesWhere(object? zones, string condition) =>
+        game.ConditionFor(condition) is { } holds ? ZonesIn(zones).Where(zone => holds(zone)).ToList() : [];
+
+    /// The spaces next to a board space: all of them, or on a square board only the 'orthogonal' or 'diagonal' ones.
+    public List<Zone> Neighbors(Zone space, string directions = "")
+    {
+        if (BoardOf(space) is not { } board || !AreDirections(directions))
+        {
+            return [];
+        }
+        return board.Neighbors(space.Number, directions).Select(number => SpaceNumbered(space, number)).ToList();
+    }
+
+    /// The space at that column and row (counting from 1) of a board, or null off the board, e.g. space_at(square, 4, 4).
+    public Zone? SpaceAt(object? board, int column, int row)
+    {
+        Zone? anySpace = ZonesIn(board).FirstOrDefault();
+        if (anySpace == null || BoardOf(anySpace) is not { } found)
+        {
+            return null;
+        }
+        int number = found.Number(column, row);
+        return number > 0 ? SpaceNumbered(anySpace, number) : null;
+    }
+
+    /// The spaces caught in straight lines from the space: in each direction, a run of spaces where between holds,
+    /// ending at one where end holds, e.g. Reversi's flanked(clicked_zone, 'theirs', 'mine').
+    public List<Zone> Flanked(Zone space, string between, string end)
+    {
+        if (BoardOf(space) is not { } board || HoldsAt(space, between) is not { } isBetween || HoldsAt(space, end) is not { } isEnd)
+        {
+            return [];
+        }
+        return board.Flanked(space.Number, isBetween, isEnd).Select(number => SpaceNumbered(space, number)).ToList();
+    }
+
+    /// Whether a path of neighbouring spaces, each where the condition holds, links a space of from to a space of to,
+    /// e.g. Hex's connected(zones_where(cell, 'top_edge'), zones_where(cell, 'bottom_edge'), 'mine').
+    public bool Connected(object? from, object? to, string condition, string directions = "")
+    {
+        List<Zone> starts = ZonesIn(from);
+        if (starts.Count == 0 || BoardOf(starts[0]) is not { } board || !AreDirections(directions) || HoldsAt(starts[0], condition) is not { } holds)
+        {
+            return false;
+        }
+        IEnumerable<int> goals = ZonesIn(to).Where(goal => goal.Kind == starts[0].Kind).Select(goal => goal.Number);
+        return board.Connected(starts.Select(start => start.Number), goals, holds, directions);
+    }
+
+    /// The most spaces in one straight line through the space (counting it) where the condition holds, e.g. Connect
+    /// Four's in_a_row(clicked_zone, 'mine') >= 4.
+    public int InARow(Zone space, string condition) =>
+        BoardOf(space) is { } board && HoldsAt(space, condition) is { } holds ? board.InARow(space.Number, holds) : 0;
+
     public void RunEffect(Card? card, string zoneKind)
     {
         if (card != null)
@@ -462,6 +518,31 @@ public class Actions(Game game, Card? stepCard = null)
         IEnumerable items and not string and not IDictionary => items.Cast<object?>().SelectMany(CardsIn).ToList(),
         _ => [],
     };
+
+    Board? BoardOf(Zone space)
+    {
+        if (space.Board == null)
+        {
+            game.ReportFailure($"{space.Name} isn't a space on a board");
+        }
+        return space.Board;
+    }
+
+    bool AreDirections(string directions)
+    {
+        if (!Board.DirectionKinds.Contains(directions))
+        {
+            game.ReportFailure($"directions should be 'orthogonal' or 'diagonal' (or left out for all), not '{directions}'");
+            return false;
+        }
+        return true;
+    }
+
+    Zone SpaceNumbered(Zone anySpace, int number) => game.Zones[$"{anySpace.Kind}_{number}"];
+
+    /// The condition as a check on the spaces of a board, by their numbers (null if there's no such condition).
+    Func<int, bool>? HoldsAt(Zone anySpace, string condition) =>
+        game.ConditionFor(condition) is { } holds ? number => holds(SpaceNumbered(anySpace, number)) : null;
 
     /// Cards stay cards (a zone gives its cards); any other list is kept as it is.
     static List<object?> ListOf(object? items)

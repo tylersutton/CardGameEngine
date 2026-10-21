@@ -75,7 +75,8 @@ public partial class ZoneDragger : Control
             {
                 if (button.Position.DistanceTo(pressAt) > DragThreshold)
                 {
-                    ZoneMoved?.Invoke(dragging, dragCenter / table.Size);
+                    // A board space moves the board: where its anchor goes, without the space's own offset.
+                    ZoneMoved?.Invoke(dragging, (dragCenter - new Vector2(dragging.Offset.X, dragging.Offset.Y)) / table.Size);
                 }
                 dragging = null;
                 QueueRedraw();

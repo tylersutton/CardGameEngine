@@ -10,6 +10,8 @@ public partial class TableView : Control
     static readonly Color ZoneLabelColor = new(1, 1, 1, 0.45f);
     static readonly Color SlotBorder = new(1, 1, 1, 0.25f);
     static readonly Color CurrentSlotBorder = new(1, 0.85f, 0.4f, 0.8f);
+    static readonly Color SpaceColor = new(0, 0, 0, 0.15f);
+    const float SpaceBorderWidth = 1.5f;
     const int LabelFontSize = 14;
     const float LabelGap = 22;
     const float BottomMargin = 8;
@@ -85,7 +87,7 @@ public partial class TableView : Control
     /// With an incoming card, the other cards make room for it at that index (the incoming card itself is being dragged).
     void LayoutZone(Zone zone, Card? incoming = null, int index = 0)
     {
-        Vector2 center = AnchorOf(zone) * Size;
+        Vector2 center = CenterOf(zone);
         float turn = Mathf.DegToRad((float)RotationOf(zone));
         List<List<Card>> groups = Groups(zone);
         if (incoming != null)
@@ -112,7 +114,7 @@ public partial class TableView : Control
                     ? new(0, new Vector2(0, columnOffsets[i]))
                     : ZoneLayout.Place(zone.Layout, i, group.Count, MaxSpread(zone), zone.Spread);
                 Vector2 offset = (new Vector2(groupCenters[groupIndex], 0) + placement.Origin).Rotated(turn);
-                view.MoveTo(center + offset - CardView.CardSize / 2, placement.Rotation + turn);
+                view.MoveTo(center + offset - view.Size / 2, placement.Rotation + turn);
             }
         }
     }
@@ -151,7 +153,8 @@ public partial class TableView : Control
         {
             return existing;
         }
-        CardView view = new(card, game!.Rules.CardFace) { Position = spawnCenter - CardView.CardSize / 2 };
+        CardView view = new(card, game!.Rules.CardFace);
+        view.Position = spawnCenter - view.Size / 2;
         view.PickedUp += OnCardPickedUp;
         view.Dragged += OnCardDragged;
         view.Clicked += clicked => Press(clicked, "click");
@@ -183,7 +186,7 @@ public partial class TableView : Control
 
     void OnCardHovered(CardView view)
     {
-        if (zoomView == null || !view.FaceUp || view.Grabbed)
+        if (zoomView == null || !view.FaceUp || view.Grabbed || view.IsPiece)
         {
             return;
         }
@@ -342,7 +345,7 @@ public partial class TableView : Control
 
     int NearestSlot(Zone zone, Vector2 point, int slots)
     {
-        float offset = (point - AnchorOf(zone) * Size).Rotated(-Mathf.DegToRad((float)RotationOf(zone))).X;
+        float offset = (point - CenterOf(zone)).Rotated(-Mathf.DegToRad((float)RotationOf(zone))).X;
         int nearest = 0;
         float nearestDistance = float.PositiveInfinity;
         for (int i = 0; i < slots; i++)
@@ -374,7 +377,7 @@ public partial class TableView : Control
         float nearestDistance = float.PositiveInfinity;
         foreach (Zone zone in game!.Zones.Values)
         {
-            List<Vector2> centers = [AnchorOf(zone) * Size, .. zone.Cards.Where(card => !ignoredViews.Contains(views[card])).Select(card => views[card].Position + CardView.CardSize / 2)];
+            List<Vector2> centers = [CenterOf(zone), .. zone.Cards.Where(card => !ignoredViews.Contains(views[card])).Select(card => views[card].Position + views[card].Size / 2)];
             foreach (Vector2 center in centers.Where(center => point.DistanceTo(center) < nearestDistance))
             {
                 nearest = zone;
@@ -404,6 +407,9 @@ public partial class TableView : Control
 
     Vector2 AnchorOf(Zone zone) => ToGodot(PlaceOf(zone).Anchor);
 
+    /// Where the zone's cards gather: its anchor on the table, moved to its own space if it's a board space.
+    Vector2 CenterOf(Zone zone) => AnchorOf(zone) * Size + ToGodot(PlaceOf(zone).Offset);
+
     double RotationOf(Zone zone) => PlaceOf(zone).Rotation;
 
     static Vector2 ToGodot(System.Numerics.Vector2 vector) => new(vector.X, vector.Y);
@@ -418,10 +424,15 @@ public partial class TableView : Control
     }
 
     /// Where a zone sits on the table, as the outline drawn for it (also used by the editor to drag zones).
+    /// A board space's is its square, or on a hex board the middle band of its hexagon, so neighbours don't overlap.
     public Rect2 SlotRect(Zone zone)
     {
         Vector2 slotSize = IsSideways(zone) ? new Vector2(CardView.CardSize.Y, CardView.CardSize.X) : CardView.CardSize;
-        return new(AnchorOf(zone) * Size - slotSize / 2, slotSize);
+        if (zone.Board is { } board)
+        {
+            slotSize = new(board.SpaceSize, board.Shape == Board.Hex ? board.SpaceSize * Mathf.Sqrt(3) / 2 : board.SpaceSize);
+        }
+        return new(CenterOf(zone) - slotSize / 2, slotSize);
     }
 
     public override void _Draw()
@@ -440,7 +451,14 @@ public partial class TableView : Control
             }
             Rect2 slot = SlotRect(zone);
             bool isCurrent = game.Rules.Players > 1 && zone.Owner == game.CurrentPlayer();
-            DrawStyleBox(isCurrent ? currentSlotStyle : slotStyle, slot);
+            if (zone.Board != null)
+            {
+                DrawSpace(zone, slot);
+            }
+            else
+            {
+                DrawStyleBox(isCurrent ? currentSlotStyle : slotStyle, slot);
+            }
             if (zone.Label.Length > 0)
             {
                 Vector2 baseline = new(slot.Position.X, slot.GetCenter().Y + LabelFontSize / 3f);
@@ -464,6 +482,21 @@ public partial class TableView : Control
             DrawStyleBox(hoverAllowed ? CardView.AllowedStyle : CardView.RefusedStyle, SlotRect(hoverZone).Grow(CardView.HighlightWidth / 2f));
         }
         DrawSeats(font);
+    }
+
+    /// Board spaces touch, so they're drawn without the rounded corners of card slots: squares, or pointy-topped hexagons.
+    void DrawSpace(Zone zone, Rect2 slot)
+    {
+        if (zone.Board!.Shape != Board.Hex)
+        {
+            DrawRect(slot, SpaceColor);
+            DrawRect(slot, SlotBorder, false, SpaceBorderWidth);
+            return;
+        }
+        float radius = zone.Board.SpaceSize / Mathf.Sqrt(3);
+        Vector2[] corners = Enumerable.Range(0, 7).Select(corner => slot.GetCenter() + Vector2.FromAngle(Mathf.DegToRad(60 * corner - 90)) * radius).ToArray();
+        DrawColoredPolygon(corners[..6], SpaceColor);
+        DrawPolyline(corners, SlotBorder, SpaceBorderWidth, true);
     }
 
     void DrawSeats(Font font)

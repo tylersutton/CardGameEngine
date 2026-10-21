@@ -11,7 +11,7 @@ A game file is **JSONC**: JSON that also allows `//` and `/* */` comments, and t
 | Key | What it holds |
 |---|---|
 | `title`, `description` | Shown on the title screen. Without a title, the file name is used. |
-| [`zones`](#zones) | The places cards can be: decks, hands, piles. |
+| [`zones`](#zones) | The places cards can be: decks, hands, piles, boards. |
 | [`players`](#players-and-variables), `player_names`, `seats`, `teams` | How many players there are, what they're called, where their name tags sit, and partnerships. |
 | [`variables`](#players-and-variables), `player_variables`, `team_variables` | Values the game keeps track of, with their starting values. |
 | [`actions`](#actions) | What players can do: drag, click, or press a button. |
@@ -51,10 +51,20 @@ Wherever a list of steps goes, a single step will also do: `"then": "end_turn()"
 | `grid` | With `copies`: lays them out in rows from `anchor`, e.g. `{ "columns": 5, "spacing": [0.09, -0.19] }` | |
 | `group` | With `copies`: also puts them in a named group shared with other zones, e.g. Dominion's `"group": "supply"` | |
 | `covered_by` | With `copies`: which copies lie on top of each one, e.g. Pyramid's `[[2, 3], [4, 5], ...]`. `covered(zone)` is then true while any of those holds a card. | |
+| `board` | Makes the zone a board of spaces, centered on `anchor`: `{ "shape": "square", "columns": 8, "rows": 8, "size": 60 }`. See [Boards](#boards). | |
 
 **Per-player zones** are seen from the current player's side. `hand` is the current player's hand, `opponent_hand` is the next player's, `hand[2]` is player 2's, and `all_hand` is every player's hand.
 
 **Copies** are taken all together. In a step, `foundation` is the list of every foundation zone. In an action's `drag`, `"to": "foundation"` means any of them.
+
+### Boards
+
+A zone with a `board` is a grid of spaces, and each space is a zone of its own, numbered across each row from the top: an 8 by 8 `square` board is `square_1` to `square_64`, and `square` is all of them, as with copies. Pieces sit in spaces as cards sit in piles, so actions, steps and bots work on boards unchanged. Reversi places a disc with `"click": "square"`.
+
+- **`shape`:** `square` (the default) or `hex`. A hex board is a rhombus, as in the game Hex: each row sits half a space right of the one above.
+- **`size`:** how far apart neighbouring spaces are, in pixels. Default 60.
+- **A space's place:** `space.column` and `space.row`, counting from 1. `space_at(square, 4, 4)` finds a space by them.
+- **Looking along the board:** the [board building blocks](#building-blocks) take conditions with one parameter, the space, e.g. `"empty(space)": "count(space) == 0"` or Hex's `"mine(space)": "text(top(space), 'name') == my_color"`.
 
 ## players and variables
 
@@ -201,6 +211,8 @@ Name players with `name_of(...)` and use `viewer()` for "you", so a readout is r
 | `zoom` | e.g. `2.4`: hovering over a face-up card shows it enlarged |
 | `color` | Text color: a column holding each card's color (`Red`, `#c0392b`), or one color for every card |
 | `background` | The card's color, given the same way. White if not set. |
+| `shape` | `disc` or `square` draws cards as pieces, `size` pixels across (a column or one number; 50 if not set), in their `background` color with their `title` on top. A column or one shape for every card. |
+| `back` | A piece's other side, as a color: a two-sided piece like Reversi's discs. `flip` turns it over, and both sides are public. |
 
 Without a `card_face`, a card shows its `name`.
 
@@ -238,6 +250,7 @@ A step is one line of text that does something or works something out, like `dra
 | Zones, variables, conditions, constants | `count(hand) > 7` |
 | The card involved: dragged, clicked, chosen, or whose effect is running | `card` (`null` if there isn't one) |
 | A card's columns, with any capitals | `card.suit == lead`, `card.value > 5` |
+| A board space's place | `space.column`, `space.row` |
 | Where a drag goes, and what was clicked or chosen | `from`, `to`, `clicked_zone`, `choice` |
 | Text in single quotes | `'Hearts'`. A quote inside text takes a backslash, `'King\'s Court'`, which is doubled in the game file's JSON: `'King\\'s Court'`. |
 | Lists, read by position from 0 | `[1, 2]`, `ranking[0]`, `finish_order + [player]` |
@@ -345,6 +358,19 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 | `zone('kind', number)` | That copy or player's zone, e.g. `zone('basic_pile', 7)` |
 | `follows_suit(card, hand, lead)` | Whether playing the card follows suit (uses the `suit` column) |
 | `trick_winner(cards, lead, trump)` | The card that takes the trick (uses `suit` and `value`; `trump` is optional) |
+
+**Boards**
+
+See [Boards](#boards). A `'condition'` here is a condition's name in quotes, with one parameter: the space.
+
+| Building block | Gives |
+|---|---|
+| `space_at(board, column, row)` | The space at that column and row, counting from 1, or `null` off the board |
+| `neighbors(space, directions)` | The spaces next to it. On a square board, `directions` can be `'orthogonal'` or `'diagonal'`; left out, it's all eight. |
+| `zones_where(zones, 'condition')` | The zones or spaces for which the condition holds, e.g. `zones_where(square, 'empty')` |
+| `flanked(space, 'between', 'end')` | The spaces caught in straight lines from the space: in each direction, a run where `between` holds, closed by a space where `end` holds. Reversi's captures. |
+| `connected(from, to, 'condition', directions)` | Whether a path of neighbouring spaces, each where the condition holds, joins a space of `from` to a space of `to`. Hex's win. |
+| `in_a_row(space, 'condition')` | The most spaces in one straight line through the space where the condition holds, e.g. `in_a_row(clicked_zone, 'mine') >= 4` |
 
 **Players**
 

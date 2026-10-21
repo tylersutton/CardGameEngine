@@ -198,6 +198,7 @@ public static class Values
         double number => number.ToString(CultureInfo.InvariantCulture),
         long whole => whole.ToString(CultureInfo.InvariantCulture),
         string text => text,
-        _ => Format(value),
+        Card or Zone or List<object?> => Format(value),
+        _ => value.ToString() ?? "",
     };
 }

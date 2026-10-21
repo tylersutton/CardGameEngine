@@ -38,6 +38,7 @@ public static class EditorFields
         new("labels", "json", "With per_player or copies: one label each.", "Advanced", Example: "[\"You\", \"Them\"]"),
         new("grid", "json", "With copies: lay them out in rows, e.g. { \"columns\": 5, \"spacing\": [0.09, 0.19] }.", "Advanced", Example: "{ \"columns\": 5, \"spacing\": [0.09, 0.19] }"),
         new("covered_by", "json", "With copies: which copies lie on top of each one (Pyramid).", "Advanced", Example: "[[1, 2], [2, 3]]"),
+        new("board", "json", "Make it a board: one space per column and row (square_1, square_2, ...), shape square or hex, size in pixels.", "Advanced", Example: "{ \"shape\": \"square\", \"columns\": 8, \"rows\": 8, \"size\": 60 }"),
     ];
 
     public static readonly Field[] Action =
@@ -65,6 +66,9 @@ public static class EditorFields
         new("color", "text", "Text color: a column holding each card's color, or one color for every card (#333333)."),
         new("background", "text", "Face color: a column, or one color for every card (#f3e9d2). White if not given."),
         new("zoom", "number", "e.g. 2.4: hovering a card shows an enlarged copy, so small text can be read."),
+        new("shape", "text", "disc or square draws cards as pieces in their background color: a column, or one shape for every card.", "Pieces"),
+        new("size", "text", "A piece's size in pixels: a column, or one number for every card. Default: 50.", "Pieces"),
+        new("back", "text", "A two-sided piece's other side (Reversi's discs): a column or one color. flip turns it over; both sides are public.", "Pieces"),
     ];
 
     public static readonly Field[] Players =

@@ -1,0 +1,83 @@
+{
+	"title": "Hex",
+	"description": "You play Red against a Blue bot. Take turns placing a stone on any empty cell. Red wins by joining the top and bottom edges with a chain of red stones, Blue by joining the left and right edges. Someone always wins.",
+	"players": 2,
+	"player_names": [
+		"Red",
+		"Blue"
+	],
+	"seats": [
+		[
+			0.5,
+			0.94
+		],
+		[
+			0.12,
+			0.5
+		]
+	],
+	"zones": {
+		"cell": {
+			"board": {
+				"shape": "hex",
+				"columns": 9,
+				"rows": 9,
+				"size": 46
+			},
+			"anchor": [
+				0.5,
+				0.5
+			]
+		},
+		"stones": {
+			"layout": "pile",
+			"outline": false,
+			"anchor": [
+				-0.3,
+				0.5
+			],
+			"cards": "res://decks/hex_stones.csv"
+		}
+	},
+	"conditions": {
+		"my_color": "'Red' if player == 1 else 'Blue'",
+		"mine(space)": "text(top(space), 'name') == my_color",
+		"top_edge(space)": "space.row == 1",
+		"bottom_edge(space)": "space.row == 9",
+		"left_edge(space)": "space.column == 1",
+		"right_edge(space)": "space.column == 9",
+		"won": "connected(zones_where(cell, 'top_edge'), zones_where(cell, 'bottom_edge'), 'mine') if player == 1 else connected(zones_where(cell, 'left_edge'), zones_where(cell, 'right_edge'), 'mine')"
+	},
+	"actions": {
+		"Place": {
+			"click": "cell",
+			"when": "count(clicked_zone) == 0",
+			"steps": [
+				"move(top(where(stones, 'name', my_color)), clicked_zone)",
+				{
+					"if": "won",
+					"then": [
+						"end_game(player)"
+					]
+				}
+			]
+		}
+	},
+	"turn": [
+		"offer(['Place'])",
+		"end_turn()"
+	],
+	"status": {
+		"goal": "'Red joins top and bottom; Blue joins left and right'"
+	},
+	"bot": {
+		"players": [
+			2
+		]
+	},
+	"card_face": {
+		"shape": "disc",
+		"size": 38,
+		"background": "paint"
+	}
+}

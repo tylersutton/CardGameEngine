@@ -67,7 +67,7 @@ public class LoadingTests
         }
     }
 
-    /// The zones as Game builds them: one of each, "copies" of one, or one per player.
+    /// The zones as Game builds them: one of each, "copies" of one, one per player, or one per space of a board.
     static List<Zone> BuildZones(GameRules rules)
     {
         List<Zone> zones = [];
@@ -75,14 +75,15 @@ public class LoadingTests
         {
             Dictionary<string, object?> definition = (Dictionary<string, object?>)value!;
             bool perPlayer = definition.GetValueOrDefault("per_player") is true;
-            int copies = perPlayer ? rules.Players : (int)(double)(definition.GetValueOrDefault("copies") ?? 0.0);
+            Board? board = Board.Of(definition);
+            int copies = perPlayer ? rules.Players : board?.Spaces ?? (int)(double)(definition.GetValueOrDefault("copies") ?? 0.0);
             if (copies == 0)
             {
                 zones.Add(new(kind, definition));
             }
             for (int number = 1; number <= copies; number++)
             {
-                zones.Add(new(kind, definition, number, rules.Players));
+                zones.Add(new(kind, definition, number, rules.Players, board));
             }
         }
         return zones;

@@ -1,11 +1,14 @@
 using Core;
 using Godot;
 
-/// One card on the table: drawn from its deck row and the game's "card_face", picked up and dropped with the mouse,
-/// and tweened to wherever TableView places it.
+/// One card on the table: drawn from its deck row and the game's "card_face" (as a card, or as a piece: a disc or a
+/// square), picked up and dropped with the mouse, and tweened to wherever TableView places it.
 public partial class CardView : Control
 {
     public static readonly Vector2 CardSize = new(100, 140);
+    const float DefaultPieceSize = 50;
+    const string Disc = "disc";
+    const string SquarePiece = "square";
     const float MoveTime = 0.25f;
     const float HoverLift = 16;
     const float ClickDistance = 5;
@@ -25,12 +28,16 @@ public partial class CardView : Control
     static readonly Color RefusedColor = new(0.95f, 0.35f, 0.3f);
     static readonly Color MarksBackground = new(0.1f, 0.1f, 0.1f, 0.8f);
     static readonly Color FaceBorder = new(0.75f, 0.75f, 0.75f);
+    static readonly Color PieceBorder = new(0, 0, 0, 0.45f);
+    static readonly Color PieceShadow = new(0, 0, 0, 0.3f);
+    static readonly Color HiddenPieceColor = new(0.16f, 0.24f, 0.52f);
 
     public enum DropHint { None, Allowed, Refused }
 
     static readonly StyleBoxFlat faceStyle = RoundedBox(Colors.White, FaceBorder);
     /// One face box per background color, shared by every card with that color.
     static readonly Dictionary<Color, StyleBoxFlat> faceStylesByColor = [];
+    static readonly Dictionary<Color, StyleBoxFlat> pieceStylesByColor = [];
     static readonly StyleBoxFlat backStyle = RoundedBox(new(0.16f, 0.24f, 0.52f), Colors.White);
     public static readonly StyleBoxFlat HighlightStyle = OutlineBox(HighlightColor);
     static readonly StyleBoxFlat selectedStyle = OutlineBox(SelectedColor);
@@ -131,8 +138,8 @@ public partial class CardView : Control
     {
         Card = card;
         face = cardFace;
-        Size = CardSize;
-        PivotOffset = CardSize / 2;
+        Size = IsPiece ? Vector2.One * PieceSize() : CardSize;
+        PivotOffset = Size / 2;
         MouseEntered += () =>
         {
             LiftTo(HoverLift);
@@ -213,8 +220,12 @@ public partial class CardView : Control
     public override void _Draw()
     {
         DrawSetTransform(new Vector2(0, -Lift));
-        Rect2 rect = new(Vector2.Zero, CardSize);
-        if (FaceUp)
+        Rect2 rect = new(Vector2.Zero, Size);
+        if (IsPiece)
+        {
+            DrawPiece(rect);
+        }
+        else if (FaceUp)
         {
             DrawFace(rect);
         }
@@ -226,10 +237,65 @@ public partial class CardView : Control
         {
             DrawMarks(rect);
         }
-        if (OutlineStyle() is { } outline)
+        if (OutlineStyle() is { } outline && Shape() == Disc)
         {
-            DrawStyleBox(outline, rect.Grow(HighlightWidth / 2f));
+            DrawArc(rect.GetCenter(), rect.Size.X / 2 + HighlightWidth / 2f, 0, Mathf.Tau, 48, outline.BorderColor, HighlightWidth, true);
         }
+        else if (OutlineStyle() is { } box)
+        {
+            DrawStyleBox(box, rect.Grow(HighlightWidth / 2f));
+        }
+    }
+
+    /// "shape" in card_face: a column or one shape for every card. Anything but a disc or a square is a card.
+    public bool IsPiece => Card != null && Shape() is Disc or SquarePiece;
+
+    string Shape() => ColorField("shape");
+
+    /// "size" in card_face: a column or one number of pixels across (also as text, as the editor writes it).
+    float PieceSize()
+    {
+        object? setting = face.GetValueOrDefault("size");
+        string size = setting is string text ? Card!.Column(text, text) : Values.Format(setting);
+        return Values.IsValidFloat(size) ? (float)Values.ToFloat(size) : DefaultPieceSize;
+    }
+
+    /// A piece shows its color, or its "back" color while it's turned over (both sides are public); a piece this
+    /// screen can't see shows the color of card backs. Its title is written on its face.
+    void DrawPiece(Rect2 rect)
+    {
+        Color fill = !FaceUp ? HiddenPieceColor : Color.FromString(ColorField(Card!.FaceUp ? "background" : "back"), Colors.White);
+        if (Shape() == Disc)
+        {
+            float radius = rect.Size.X / 2;
+            DrawCircle(rect.GetCenter() + new Vector2(0, 2), radius, PieceShadow);
+            DrawCircle(rect.GetCenter(), radius, fill);
+            DrawArc(rect.GetCenter(), radius, 0, Mathf.Tau, 48, PieceBorder, 1.5f, true);
+        }
+        else
+        {
+            DrawStyleBox(PieceBox(fill), rect);
+        }
+        if (FaceUp && Card!.FaceUp)
+        {
+            Font font = GetThemeDefaultFont();
+            string title = Field("title");
+            int fontSize = FittingSize(font, title, rect.Size.X - 4, (int)(rect.Size.Y / 2.5f), MinTextFontSize);
+            Color ink = Color.FromString(ColorField("color"), Colors.Black);
+            DrawString(font, new Vector2(2, rect.GetCenter().Y + fontSize / 3f), title, HorizontalAlignment.Center, rect.Size.X - 4, fontSize, ink);
+        }
+    }
+
+    static StyleBoxFlat PieceBox(Color fill)
+    {
+        if (!pieceStylesByColor.TryGetValue(fill, out StyleBoxFlat? box))
+        {
+            box = new() { BgColor = fill, BorderColor = PieceBorder, ShadowSize = 3, ShadowColor = PieceShadow };
+            box.SetBorderWidthAll(1);
+            box.SetCornerRadiusAll(4);
+            pieceStylesByColor[fill] = box;
+        }
+        return box;
     }
 
     StyleBoxFlat? OutlineStyle()
@@ -317,7 +383,7 @@ public partial class CardView : Control
         return box;
     }
 
-    /// "color" and "background" name a column (each card its own color) or give one color for every card ("#f3e9d2").
+    /// "color", "background", "back" and "shape" name a column (each card its own) or give one for every card ("#f3e9d2").
     string ColorField(string facePart)
     {
         string setting = face.GetValueOrDefault(facePart) as string ?? "";
