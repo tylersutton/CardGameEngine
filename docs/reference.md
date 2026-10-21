@@ -2,7 +2,7 @@
 
 A look-up page: everything a game file and a deck can contain. For a guided start, see the tutorial in the [README](../README.md#tutorial-making-a-game).
 
-**Contents:** [The game file](#the-game-file) · [zones](#zones) · [players and variables](#players-and-variables) · [actions](#actions) · [turn](#turn) · [triggers](#triggers) · [conditions](#conditions) · [constants](#constants) · [status and show_variables](#status-and-show_variables) · [card_face](#card_face) · [melds](#melds) · [bot](#bot) · [Steps](#steps) · [Building blocks](#building-blocks) · [Tips](#tips) · [Decks](#decks)
+**Contents:** [The game file](#the-game-file) · [zones](#zones) · [players and variables](#players-and-variables) · [actions](#actions) · [turn](#turn) · [triggers](#triggers) · [conditions](#conditions) · [constants](#constants) · [status and show_variables](#status-and-show_variables) · [card_face](#card_face) · [melds](#melds) · [bot](#bot) · [Steps](#steps) · [Building blocks](#building-blocks) · [Tips](#tips) · [Decks](#decks) · [Images](#images)
 
 ## The game file
 
@@ -63,6 +63,7 @@ A zone with a `board` is a grid of spaces, and each space is a zone of its own, 
 
 - **`shape`:** `square` (the default) or `hex`. A hex board is a rhombus, as in the game Hex: each row sits half a space right of the one above.
 - **`size`:** how far apart neighbouring spaces are, in pixels. Default 60.
+- **`image`:** a picture stretched over the whole board, under its spaces, e.g. `"boards/reversi.svg"` (see [Images](#images)). Add `"outline": false` to the zone to show the picture alone.
 - **`paint`:** colors for spaces, each by a condition about the space: `{ "top_edge": "#c8443a80", "dark": "#5a3a22" }`. A space takes the first color whose condition holds for it, so Hex shows each player's goal edges and checkers a checkerboard (`"dark(space)": "(space.row + space.column) % 2 == 0"`).
 - **A space's place:** `space.column` and `space.row`, counting from 1. `space_at(square, 4, 4)` finds a space by them.
 - **Looking along the board:** the [board building blocks](#building-blocks) take conditions with one parameter, the space, e.g. `"empty(space)": "count(space) == 0"` or Hex's `"mine(space)": "text(top(space), 'name') == my_color"`.
@@ -212,8 +213,11 @@ Name players with `name_of(...)` and use `viewer()` for "you", so a readout is r
 | `zoom` | e.g. `2.4`: hovering over a face-up card shows it enlarged |
 | `color` | Text color: a column holding each card's color (`Red`, `#c0392b`), or one color for every card |
 | `background` | The card's color, given the same way. White if not set. |
+| `image` | A picture for the card: a column of [image](#images) file names, or one file for every card. |
+| `layout` | `full` (the default): the image covers the whole card, for cards whose picture has everything on it. `art`: the image sits in a box above the title and text. |
+| `card_back` | What face-down cards show: an image or a color, for every card or from a column. A plain blue back if not set. |
 | `shape` | `disc` or `square` draws cards as pieces, `size` pixels across (a column or one number; 50 if not set), in their `background` color with their `title` on top. A column or one shape for every card. |
-| `back` | A piece's other side, as a color: a two-sided piece like Reversi's discs. `flip` turns it over, and both sides are public. |
+| `back` | A piece's other side, as a color or an image: a two-sided piece like Reversi's discs. `flip` turns it over, and both sides are public. |
 
 Without a `card_face`, a card shows its `name`.
 
@@ -422,4 +426,15 @@ A deck is a CSV file in `decks/`. The first row names the columns, and each row 
 - **`count`** is how many copies to make. Leave it blank for 1.
 - **`on_<zone>`** is a card effect: the trigger to run when the card enters that zone, e.g. `draw_two`. Use the per-player zone's plain name: `on_hand`, not `on_hand_1`. A cell can also hold steps, separated by `;`.
 - **Saving:** save the file as UTF-8 so that symbols like ♠ survive. A cell containing a comma needs quotes around it, which spreadsheet programs add for you.
-- **Godot:** the empty `decks/.gdignore` stops Godot from reading the CSVs as translations. Because of it, decks don't appear in Godot's FileSystem panel. To export a standalone build, add `decks/*` and `games/*.jsonc` to the export filter.
+- **Godot:** the empty `decks/.gdignore` stops Godot from reading the CSVs as translations. Because of it, decks don't appear in Godot's FileSystem panel. To export a standalone build, add `decks/*`, `games/*.jsonc` and `images/*` to the export filter.
+
+## Images
+
+Images are files in `images/`: PNG, JPG, WebP or SVG. Game files and decks name them by their path there: `moat.png`, `cards/A_Spades.png`. A full `res://` path works too.
+
+- **On cards:** `card_face`'s `image` names a column of file names, e.g. a deck with an `art` column. A zone's `columns` can make that column from the others, as Solitaire does: `"art": "'cards/' + card.rank + '_' + card.suit + '.png'"`. `card_back` gives the back, and `layout` puts the picture over the whole card or above its text.
+- **On pieces and boards:** a disc or square piece shows its `image` instead of its color, and a board's `image` is drawn under its spaces.
+- **Missing images** are load errors, like missing decks.
+- **Online,** the host sends the game's images with it, so the other players don't need them.
+- **In the editor,** the deck table's **Image** button puts an image in the selected cell; one from outside `images/` is copied in first.
+- **Godot:** the empty `images/.gdignore` keeps Godot from importing the images: the game reads the files itself, so unsaved and online games show them too. The placeholders in `images/cards/` and `images/card_back.svg` are free to use.

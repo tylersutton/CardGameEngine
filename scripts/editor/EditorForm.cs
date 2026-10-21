@@ -402,8 +402,8 @@ public partial class EditorForm : VBoxContainer
 
     static bool NamesZone(object? click) => click is string or List<object?>;
 
-    /// A board's shape, columns, rows and space size, each changed on its own (the first change makes the whole board,
-    /// so it's never half made), and its paint as JSONC text once there's a board.
+    /// A board's shape, columns, rows, space size and picture, each changed on its own (the first change makes the
+    /// whole board, so it's never half made), and its paint as JSONC text once there's a board.
     VBoxContainer Board(List<object> path, object? value)
     {
         Dictionary<string, object?>? board = value as Dictionary<string, object?>;
@@ -439,6 +439,23 @@ public partial class EditorForm : VBoxContainer
             grid.AddChild(new Label { Text = key });
             grid.AddChild(spin);
         }
+        LineEdit image = new()
+        {
+            Text = board?.GetValueOrDefault("image") as string ?? "", PlaceholderText = "a picture under the board, e.g. board.png",
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+        };
+        void SendImage()
+        {
+            string name = image.Text.Trim();
+            if (name != (board?.GetValueOrDefault("image") as string ?? ""))
+            {
+                Send("image", name.Length > 0 ? name : null);
+            }
+        }
+        image.TextSubmitted += _ => SendImage();
+        image.FocusExited += SendImage;
+        grid.AddChild(new Label { Text = "image" });
+        grid.AddChild(image);
         VBoxContainer box = new();
         box.AddChild(grid);
         box.AddChild(new Label { Text = "paint (conditions with their colors)" });

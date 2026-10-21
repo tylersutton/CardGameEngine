@@ -11,7 +11,10 @@
 					0.08,
 					0.16
 				],
-				"cards": "res://decks/standard_deck.csv"
+				"cards": "res://decks/standard_deck.csv",
+				"columns": {
+					"art": "'cards/' + card.rank + '_' + card.suit + '.png'"
+				}
 			},
 			"waste": {
 				"label": "Waste",
@@ -221,7 +224,9 @@
 			"body": [
 				"suit"
 			],
-			"color": "color"
+			"color": "color",
+			"image": "art",
+			"card_back": "card_back.svg"
 		},
 		"unknown_keys": [],
 		"error": ""

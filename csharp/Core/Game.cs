@@ -23,6 +23,8 @@ public class Game : IStepContext
     public const string HiddenCard = "a hidden card";
     public const char CardEffectSeparator = ';';
     public const string LoopNumberSuffix = "_number";
+    /// The parts of card_face that can name images.
+    static readonly string[] CardImageParts = ["image", "back", "card_back"];
 
     /// The building blocks steps can call (the methods of Actions).
     public static readonly BuildingBlocks BuildingBlocks = new(typeof(Actions));
@@ -153,6 +155,7 @@ public class Game : IStepContext
         if (Errors.Count == 0)
         {
             ComputeColumns();
+            CheckImages();
         }
     }
 
@@ -1192,6 +1195,45 @@ public class Game : IStepContext
                     zone.Cards[0].NumberColumns.Remove(column);
                 }
             }
+        }
+    }
+
+    /// Every image the game shows, by res:// path: from card_face (a column or one file, so each card may name its
+    /// own) and board backgrounds. An online host sends them with the game.
+    public List<string> ImagePaths()
+    {
+        SortedSet<string> paths = new(StringComparer.Ordinal);
+        foreach (string facePart in CardImageParts)
+        {
+            if (Rules.CardFace.GetValueOrDefault(facePart) is string setting)
+            {
+                foreach (string value in Cards.Select(card => card.Column(setting, setting)).Where(GameFiles.IsImage))
+                {
+                    paths.Add(GameFiles.ImagePath(value));
+                }
+            }
+        }
+        foreach (Board board in Zones.Values.Select(zone => zone.Board).OfType<Board>().Where(board => board.Image.Length > 0))
+        {
+            paths.Add(GameFiles.ImagePath(board.Image));
+        }
+        return [.. paths];
+    }
+
+    /// card_face's "image" names images only (a column of file names, or one file); "back" and "card_back" may be
+    /// colors too. A missing image is a load error, as a missing deck is.
+    void CheckImages()
+    {
+        if (Rules.CardFace.GetValueOrDefault("image") is string setting)
+        {
+            foreach (string value in Cards.Select(card => card.Column(setting, setting)).Where(value => value.Length > 0 && !GameFiles.IsImage(value)).Distinct())
+            {
+                Errors.Add($"card_face: \"image\" gives \"{value}\", which isn't an image file ({string.Join(", ", GameFiles.ImageExtensions)})");
+            }
+        }
+        foreach (string path in ImagePaths().Where(path => !Files.Exists(path)))
+        {
+            Errors.Add("Image not found: " + path);
         }
     }
 

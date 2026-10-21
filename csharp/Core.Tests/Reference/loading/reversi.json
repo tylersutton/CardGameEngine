@@ -8,12 +8,14 @@
 					"shape": "square",
 					"columns": 8.0,
 					"rows": 8.0,
-					"size": 60.0
+					"size": 60.0,
+					"image": "boards/reversi.svg"
 				},
 				"anchor": [
 					0.5,
 					0.5
-				]
+				],
+				"outline": false
 			},
 			"supply": {
 				"layout": "pile",
@@ -144,7 +146,7 @@
 		{
 			"name": "square_1",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -162,7 +164,7 @@
 		{
 			"name": "square_2",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -180,7 +182,7 @@
 		{
 			"name": "square_3",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -198,7 +200,7 @@
 		{
 			"name": "square_4",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -216,7 +218,7 @@
 		{
 			"name": "square_5",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -234,7 +236,7 @@
 		{
 			"name": "square_6",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -252,7 +254,7 @@
 		{
 			"name": "square_7",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -270,7 +272,7 @@
 		{
 			"name": "square_8",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -288,7 +290,7 @@
 		{
 			"name": "square_9",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -306,7 +308,7 @@
 		{
 			"name": "square_10",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -324,7 +326,7 @@
 		{
 			"name": "square_11",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -342,7 +344,7 @@
 		{
 			"name": "square_12",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -360,7 +362,7 @@
 		{
 			"name": "square_13",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -378,7 +380,7 @@
 		{
 			"name": "square_14",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -396,7 +398,7 @@
 		{
 			"name": "square_15",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -414,7 +416,7 @@
 		{
 			"name": "square_16",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -432,7 +434,7 @@
 		{
 			"name": "square_17",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -450,7 +452,7 @@
 		{
 			"name": "square_18",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -468,7 +470,7 @@
 		{
 			"name": "square_19",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -486,7 +488,7 @@
 		{
 			"name": "square_20",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -504,7 +506,7 @@
 		{
 			"name": "square_21",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -522,7 +524,7 @@
 		{
 			"name": "square_22",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -540,7 +542,7 @@
 		{
 			"name": "square_23",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -558,7 +560,7 @@
 		{
 			"name": "square_24",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -576,7 +578,7 @@
 		{
 			"name": "square_25",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -594,7 +596,7 @@
 		{
 			"name": "square_26",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -612,7 +614,7 @@
 		{
 			"name": "square_27",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -630,7 +632,7 @@
 		{
 			"name": "square_28",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -648,7 +650,7 @@
 		{
 			"name": "square_29",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -666,7 +668,7 @@
 		{
 			"name": "square_30",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -684,7 +686,7 @@
 		{
 			"name": "square_31",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -702,7 +704,7 @@
 		{
 			"name": "square_32",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -720,7 +722,7 @@
 		{
 			"name": "square_33",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -738,7 +740,7 @@
 		{
 			"name": "square_34",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -756,7 +758,7 @@
 		{
 			"name": "square_35",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -774,7 +776,7 @@
 		{
 			"name": "square_36",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -792,7 +794,7 @@
 		{
 			"name": "square_37",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -810,7 +812,7 @@
 		{
 			"name": "square_38",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -828,7 +830,7 @@
 		{
 			"name": "square_39",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -846,7 +848,7 @@
 		{
 			"name": "square_40",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -864,7 +866,7 @@
 		{
 			"name": "square_41",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -882,7 +884,7 @@
 		{
 			"name": "square_42",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -900,7 +902,7 @@
 		{
 			"name": "square_43",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -918,7 +920,7 @@
 		{
 			"name": "square_44",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -936,7 +938,7 @@
 		{
 			"name": "square_45",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -954,7 +956,7 @@
 		{
 			"name": "square_46",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -972,7 +974,7 @@
 		{
 			"name": "square_47",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -990,7 +992,7 @@
 		{
 			"name": "square_48",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1008,7 +1010,7 @@
 		{
 			"name": "square_49",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1026,7 +1028,7 @@
 		{
 			"name": "square_50",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1044,7 +1046,7 @@
 		{
 			"name": "square_51",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1062,7 +1064,7 @@
 		{
 			"name": "square_52",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1080,7 +1082,7 @@
 		{
 			"name": "square_53",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1098,7 +1100,7 @@
 		{
 			"name": "square_54",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1116,7 +1118,7 @@
 		{
 			"name": "square_55",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1134,7 +1136,7 @@
 		{
 			"name": "square_56",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1152,7 +1154,7 @@
 		{
 			"name": "square_57",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1170,7 +1172,7 @@
 		{
 			"name": "square_58",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1188,7 +1190,7 @@
 		{
 			"name": "square_59",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1206,7 +1208,7 @@
 		{
 			"name": "square_60",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1224,7 +1226,7 @@
 		{
 			"name": "square_61",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1242,7 +1244,7 @@
 		{
 			"name": "square_62",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1260,7 +1262,7 @@
 		{
 			"name": "square_63",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",
@@ -1278,7 +1280,7 @@
 		{
 			"name": "square_64",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "square",
 			"owner": 0,
 			"layout": "pile",

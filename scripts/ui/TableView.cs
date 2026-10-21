@@ -32,6 +32,7 @@ public partial class TableView : Control
     public Game? Game => game;
 
     Game? game;
+    ImageCache images = new(ProjectFiles.With());
     readonly Dictionary<Card, CardView> views = [];
     Zone? previewZone;
     CardView? zoomView;
@@ -43,6 +44,7 @@ public partial class TableView : Control
     public override void _Ready()
     {
         Resized += LayoutAll;
+        TextureFilter = TextureFilterEnum.LinearWithMipmaps;
     }
 
     public void ShowGame(Game gameToShow)
@@ -53,6 +55,7 @@ public partial class TableView : Control
         }
         views.Clear();
         game = gameToShow;
+        images = new(game.Files);
         MakeZoomView();
         foreach (Zone zone in game.Zones.Values)
         {
@@ -153,7 +156,7 @@ public partial class TableView : Control
         {
             return existing;
         }
-        CardView view = new(card, game!.Rules.CardFace);
+        CardView view = new(card, game!.Rules.CardFace, images);
         view.Position = spawnCenter - view.Size / 2;
         view.PickedUp += OnCardPickedUp;
         view.Dragged += OnCardDragged;
@@ -177,7 +180,7 @@ public partial class TableView : Control
         {
             return;
         }
-        zoomView = new(null, game.Rules.CardFace)
+        zoomView = new(null, game.Rules.CardFace, images)
         {
             PivotOffset = Vector2.Zero, MouseFilter = MouseFilterEnum.Ignore, ZIndex = 10, Visible = false,
         };
@@ -443,6 +446,7 @@ public partial class TableView : Control
             return;
         }
         Font font = GetThemeDefaultFont();
+        DrawBoardImages();
         foreach (Zone zone in game.Zones.Values)
         {
             if (!zone.HasOutline || zone.Layout == "melds" && zone.IsEmpty)
@@ -498,6 +502,27 @@ public partial class TableView : Control
         Vector2[] corners = HexCorners(zone, 0);
         DrawColoredPolygon(corners[..6], fill);
         DrawPolyline(corners, SlotBorder, SpaceBorderWidth, true);
+    }
+
+    /// Each board's picture, stretched over all its spaces, under them.
+    void DrawBoardImages()
+    {
+        foreach (Zone firstSpace in game!.Zones.Values.Where(zone => zone.Number == 1 && zone.Board is { Image.Length: > 0 }))
+        {
+            if (images.Get(firstSpace.Board!.Image) is { } image)
+            {
+                Rect2 area = game.ZoneGroups[firstSpace.Kind].Select(SpaceArea).Aggregate((all, space) => all.Merge(space));
+                DrawTextureRect(image, area, false);
+            }
+        }
+    }
+
+    /// The whole of a board space: its square, or its hexagon from point to point.
+    Rect2 SpaceArea(Zone space)
+    {
+        float size = space.Board!.SpaceSize;
+        Vector2 extent = new(size, space.Board.Shape == Board.Hex ? size * 2 / Mathf.Sqrt(3) : size);
+        return new(CenterOf(space) - extent / 2, extent);
     }
 
     /// A hex space's corners, going round back to the first (for an outline), grown outward by that many pixels.

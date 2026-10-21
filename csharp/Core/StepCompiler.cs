@@ -27,7 +27,8 @@ public class StepCompiler
         "label", "labels", "outline", "layout", "face", "anchor", "anchors", "width", "rotation", "rotations", "cards",
         "spread", "drag", "per_player", "copies", "grid", "group", "covered_by", "columns", "board",
     ];
-    public static readonly string[] CardFaceKeys = ["corner", "title", "body", "text", "color", "background", "zoom", "shape", "size", "back"];
+    public static readonly string[] CardFaceKeys = ["corner", "title", "body", "text", "color", "background", "zoom", "shape", "size", "back", "image", "layout", "card_back"];
+    public static readonly string[] CardLayouts = ["full", "art"];
 
     /// The kinds of value a setting in the game file can be.
     enum Kind { Text, List, Number, Bool, Object }
@@ -76,6 +77,10 @@ public class StepCompiler
         if (rules.CardFace.GetValueOrDefault("size") is not (null or string or double))
         {
             errors.Add("card_face: \"size\" should be a column or a number of pixels");
+        }
+        if (rules.CardFace.GetValueOrDefault("layout", CardLayouts[0]) is not string layout || !CardLayouts.Contains(layout))
+        {
+            errors.Add($"card_face: \"layout\" should be {string.Join(" or ", CardLayouts)}");
         }
         foreach ((string zoneKind, object? value) in rules.Zones)
         {
@@ -151,7 +156,8 @@ public class StepCompiler
         if (definition["board"] is not Dictionary<string, object?> board || WholeNumber(board.GetValueOrDefault("columns")) < 1
             || WholeNumber(board.GetValueOrDefault("rows")) < 1 || board.GetValueOrDefault("size") is not (null or double)
             || board.GetValueOrDefault("shape", Board.Square) is not string shape || !Board.Shapes.Contains(shape)
-            || board.Keys.Any(key => key is not ("shape" or "columns" or "rows" or "size" or "paint")))
+            || board.GetValueOrDefault("image") is not (null or string)
+            || board.Keys.Any(key => key is not ("shape" or "columns" or "rows" or "size" or "paint" or "image")))
         {
             errors.Add($"Zone \"{zoneKind}\": \"board\" should look like {{ \"shape\": \"square\", \"columns\": 8, \"rows\": 8, \"size\": 60 }} (shape square or hex; size in pixels)");
             return 0;

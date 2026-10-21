@@ -1,11 +1,14 @@
+using System.IO;
 using Core;
 using Godot;
 
 /// The editor's deck: a table of cards (one row per kind of card, one column per CSV column) with the selected card
-/// drawn beside it using the game's card face. Every change is sent as Edited(csvText).
+/// drawn beside it using the game's card face. Cells naming images show them small. Every change is sent as
+/// Edited(csvText).
 public partial class DeckTable : VBoxContainer
 {
     const float PreviewScale = 2;
+    const int ThumbnailWidth = 24;
 
     public event Action<string>? Edited;
 
@@ -19,6 +22,7 @@ public partial class DeckTable : VBoxContainer
         SizeFlagsHorizontal = SizeFlags.ExpandFill, HideRoot = true, ColumnTitlesVisible = true, SelectMode = Tree.SelectModeEnum.Single,
     };
     CardView? preview;
+    readonly ImageCache images = new(ProjectFiles.With());
 
     public DeckTable()
     {
@@ -32,6 +36,8 @@ public partial class DeckTable : VBoxContainer
         AddButton(buttons, "Column", "plus", "Add a column", () => Ask("New column", "", AddColumn));
         AddButton(buttons, "", "rename", "Rename the selected column", RenameSelectedColumn);
         AddButton(buttons, "", "trash", "Remove the selected column", RemoveColumn);
+        buttons.AddChild(new VSeparator());
+        AddButton(buttons, "Image", "image", "Put an image in the selected cell (one from elsewhere is copied into images/)", ChooseImage);
         bar.AddChild(buttons);
         AddChild(bar);
         HBoxContainer body = new() { SizeFlagsVertical = SizeFlags.ExpandFill };
@@ -78,6 +84,8 @@ public partial class DeckTable : VBoxContainer
             {
                 item.SetText(column, column < row.Count ? row[column] : "");
                 item.SetEditable(column, true);
+                item.SetIcon(column, images.Get(item.GetText(column)));
+                item.SetIconMaxWidth(column, ThumbnailWidth);
             }
         }
         ShowPreview();
@@ -195,11 +203,70 @@ public partial class DeckTable : VBoxContainer
         {
             data[rows[0][column]] = column < rows[row].Count ? rows[row][column] : "";
         }
-        preview = new(new Card(data), cardFace)
+        preview = new(new Card(data), cardFace, images)
         {
             Scale = new Vector2(PreviewScale, PreviewScale), PivotOffset = Vector2.Zero, Position = new Vector2(10, 10), MouseFilter = MouseFilterEnum.Ignore,
         };
         PreviewSpot.AddChild(preview);
+    }
+
+    /// Puts an image in the selected cell, by its name in images/.
+    void ChooseImage()
+    {
+        TreeItem? item = grid.GetSelected();
+        int column = grid.GetSelectedColumn();
+        if (item == null || column < 0)
+        {
+            return;
+        }
+        FileDialog dialog = new()
+        {
+            Title = "Choose an image", FileMode = FileDialog.FileModeEnum.OpenFile, Access = FileDialog.AccessEnum.Filesystem,
+            CurrentDir = ProjectSettings.GlobalizePath(GameFiles.ImagesFolder), Filters = ["*.png, *.jpg, *.jpeg, *.webp, *.svg ; Images"],
+        };
+        dialog.FileSelected += file =>
+        {
+            List<string> row = rows[RowOf(item)];
+            while (row.Count < rows[0].Count)
+            {
+                row.Add("");
+            }
+            row[column] = ImageName(file);
+            Fill();
+            Send();
+        };
+        dialog.VisibilityChanged += () =>
+        {
+            if (!dialog.Visible)
+            {
+                dialog.QueueFree();
+            }
+        };
+        AddChild(dialog);
+        dialog.PopupCentered(new Vector2I(800, 500));
+    }
+
+    /// The name game files give an image: its path in images/, once it's there. An image from elsewhere is copied in,
+    /// under a new name if images/ already has a different one by its name.
+    static string ImageName(string file)
+    {
+        string folder = Path.GetFullPath(ProjectSettings.GlobalizePath(GameFiles.ImagesFolder));
+        string source = Path.GetFullPath(file);
+        if (!source.StartsWith(folder))
+        {
+            Directory.CreateDirectory(folder);
+            string copy = Path.Combine(folder, Path.GetFileName(source));
+            for (int number = 2; File.Exists(copy) && !File.ReadAllBytes(copy).SequenceEqual(File.ReadAllBytes(source)); number++)
+            {
+                copy = Path.Combine(folder, $"{Path.GetFileNameWithoutExtension(source)}_{number}{Path.GetExtension(source)}");
+            }
+            if (!File.Exists(copy))
+            {
+                File.Copy(source, copy);
+            }
+            source = copy;
+        }
+        return Path.GetRelativePath(folder, source).Replace('\\', '/');
     }
 
     void Ask(string title, string start, Action<string> then)

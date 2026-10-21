@@ -38,6 +38,7 @@ public static class EditorIcons
         ["table"] = "<rect x='3' y='3' width='18' height='18' rx='2'/><path d='M3 9h18M9 21V9'/>",
         ["zone"] = "<rect x='4' y='4' width='16' height='16' rx='2' stroke-dasharray='3 3'/>",
         ["deck"] = "<rect x='8' y='2' width='12' height='16' rx='2'/><path d='M4 7v13a2 2 0 0 0 2 2h9'/>",
+        ["image"] = "<rect x='3' y='3' width='18' height='18' rx='2'/><circle cx='9' cy='9' r='2'/><path d='m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21'/>",
         ["players"] = "<path d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75'/><circle cx='9' cy='7' r='4'/>",
         ["variables"] = "<path d='M8 21s-4-3-4-9 4-9 4-9M16 3s4 3 4 9-4 9-4 9M15 9l-6 6M9 9l6 6'/>",
         ["actions"] = "<path d='m9 9 5 12 1.8-5.2L21 14ZM7.2 2.2 8 5.1M5.1 8l-2.9-.8M14 4.1 12 6M6 12l-1.9 2'/>",

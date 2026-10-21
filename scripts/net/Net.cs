@@ -265,7 +265,7 @@ public partial class Net : Node
         }
         Godot.Collections.Dictionary package = new()
         {
-            ["path"] = Lobby.Game, ["files"] = MatchFiles(Lobby.Game), ["seed"] = (long)GD.Randi(), ["bots"] = bots,
+            ["path"] = Lobby.Game, ["files"] = MatchFiles(Lobby.Game), ["images"] = MatchImages(Lobby.Game), ["seed"] = (long)GD.Randi(), ["bots"] = bots,
         };
         Rpc(MethodName.BeginMatch, package, new Godot.Collections.Array());
     }
@@ -281,12 +281,25 @@ public partial class Net : Node
         return sent;
     }
 
+    /// The game's images, sent with it so every player sees the same pictures without having them already.
+    static Godot.Collections.Dictionary MatchImages(string path)
+    {
+        GameFiles files = ProjectFiles.With();
+        Godot.Collections.Dictionary sent = [];
+        foreach (string image in new Game(files, path).ImagePaths().Where(files.Exists))
+        {
+            sent[image] = files.ReadBytes(image);
+        }
+        return sent;
+    }
+
     /// Builds this machine's copy of the match. The table calls CatchUp() once it's showing it.
     [Rpc(CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
     void BeginMatch(Godot.Collections.Dictionary package, Godot.Collections.Array inputsSoFar)
     {
         Dictionary<string, string> files = package["files"].AsGodotDictionary().ToDictionary(pair => pair.Key.AsString(), pair => pair.Value.AsString());
-        Game newGame = new(ProjectFiles.With(files), package["path"].AsString(), package["seed"].AsInt64());
+        Dictionary<string, byte[]> images = package["images"].AsGodotDictionary().ToDictionary(pair => pair.Key.AsString(), pair => pair.Value.AsByteArray());
+        Game newGame = new(ProjectFiles.With(files, images), package["path"].AsString(), package["seed"].AsInt64());
         if (newGame.Errors.Count > 0)
         {
             Notice?.Invoke("Couldn't load the host's game: " + string.Join("; ", newGame.Errors));
