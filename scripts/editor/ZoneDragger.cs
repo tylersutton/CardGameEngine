@@ -51,7 +51,11 @@ public partial class ZoneDragger : Control
             }
             bool selected = zone.Kind == SelectedKind;
             DrawRect(rect, selected ? SelectedColor : OutlineColor, false, selected ? 3 : 1.5f);
-            DrawString(font, rect.Position + new Vector2(2, -4), zone.Name, HorizontalAlignment.Left, -1, fontSize, NameColor);
+            // A board is named once, at its first space, rather than at every space.
+            if (zone.Board == null || zone.Number == 1)
+            {
+                DrawString(font, rect.Position + new Vector2(2, -4), zone.Board == null ? zone.Name : zone.Kind, HorizontalAlignment.Left, -1, fontSize, NameColor);
+            }
         }
     }
 

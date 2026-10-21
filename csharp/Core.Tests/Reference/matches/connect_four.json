@@ -1,0 +1,754 @@
+[
+	{
+		"seed": 1,
+		"inputs": [
+			{
+				"type": "click_empty",
+				"zone": "space_28"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_1"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_20"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_23"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_34"
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_2"
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_16"
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_8"
+			},
+			{
+				"type": "click",
+				"card": 37
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_9"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_10"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_10"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_7"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_13"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_33"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_39"
+			}
+		],
+		"logs": [
+			[
+				"[turn] Red"
+			],
+			[
+				"  Red may: Drop",
+				"[action] Drop",
+				"  supply → space_42: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_36: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_41: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_37: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_34: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_29: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_30: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_22: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_23: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_35: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_15: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_28: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_16: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_38: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_31: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_21: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_14: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_27: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_40: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_7: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_39: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → then",
+				"[game over] Winner: Red"
+			]
+		],
+		"end": {
+			"zones": {
+				"space_1": [],
+				"space_2": [],
+				"space_3": [],
+				"space_4": [],
+				"space_5": [],
+				"space_6": [],
+				"space_7": [
+					"Yellow"
+				],
+				"space_8": [],
+				"space_9": [],
+				"space_10": [],
+				"space_11": [],
+				"space_12": [],
+				"space_13": [],
+				"space_14": [
+					"Red"
+				],
+				"space_15": [
+					"Red"
+				],
+				"space_16": [
+					"Red"
+				],
+				"space_17": [],
+				"space_18": [],
+				"space_19": [],
+				"space_20": [],
+				"space_21": [
+					"Yellow"
+				],
+				"space_22": [
+					"Yellow"
+				],
+				"space_23": [
+					"Red"
+				],
+				"space_24": [],
+				"space_25": [],
+				"space_26": [],
+				"space_27": [
+					"Yellow"
+				],
+				"space_28": [
+					"Yellow"
+				],
+				"space_29": [
+					"Yellow"
+				],
+				"space_30": [
+					"Red"
+				],
+				"space_31": [
+					"Red"
+				],
+				"space_32": [],
+				"space_33": [],
+				"space_34": [
+					"Red"
+				],
+				"space_35": [
+					"Yellow"
+				],
+				"space_36": [
+					"Yellow"
+				],
+				"space_37": [
+					"Yellow"
+				],
+				"space_38": [
+					"Yellow"
+				],
+				"space_39": [
+					"Red"
+				],
+				"space_40": [
+					"Red"
+				],
+				"space_41": [
+					"Red"
+				],
+				"space_42": [
+					"Red"
+				],
+				"supply": [
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow"
+				]
+			},
+			"variables": {
+				"player": "1"
+			},
+			"over": true,
+			"result": "Winner: Red"
+		}
+	},
+	{
+		"seed": 2,
+		"inputs": [
+			{
+				"type": "click_empty",
+				"zone": "space_17"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_4"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_13"
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_8"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_23"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_23"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_5"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_1"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_19"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_19"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_18"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_31"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_5"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_2"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_9"
+			},
+			{
+				"type": "click_empty",
+				"zone": "space_4"
+			}
+		],
+		"logs": [
+			[
+				"[turn] Red"
+			],
+			[
+				"  Red may: Drop",
+				"[action] Drop",
+				"  supply → space_38: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_39: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_41: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_32: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_36: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_37: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_30: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_40: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_29: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_33: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_26: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_25: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_31: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_19: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_34: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_23: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_16: Red",
+				"  if in_a_row(landed, 'mine') >= 4 → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop"
+			],
+			[
+				"[action] Drop",
+				"  supply → space_18: Yellow",
+				"  if in_a_row(landed, 'mine') >= 4 → then",
+				"[game over] Winner: Yellow"
+			]
+		],
+		"end": {
+			"zones": {
+				"space_1": [],
+				"space_2": [],
+				"space_3": [],
+				"space_4": [],
+				"space_5": [],
+				"space_6": [],
+				"space_7": [],
+				"space_8": [],
+				"space_9": [],
+				"space_10": [],
+				"space_11": [],
+				"space_12": [],
+				"space_13": [],
+				"space_14": [],
+				"space_15": [],
+				"space_16": [
+					"Red"
+				],
+				"space_17": [],
+				"space_18": [
+					"Yellow"
+				],
+				"space_19": [
+					"Yellow"
+				],
+				"space_20": [],
+				"space_21": [],
+				"space_22": [],
+				"space_23": [
+					"Yellow"
+				],
+				"space_24": [],
+				"space_25": [
+					"Yellow"
+				],
+				"space_26": [
+					"Red"
+				],
+				"space_27": [],
+				"space_28": [],
+				"space_29": [
+					"Red"
+				],
+				"space_30": [
+					"Red"
+				],
+				"space_31": [
+					"Red"
+				],
+				"space_32": [
+					"Yellow"
+				],
+				"space_33": [
+					"Yellow"
+				],
+				"space_34": [
+					"Red"
+				],
+				"space_35": [],
+				"space_36": [
+					"Red"
+				],
+				"space_37": [
+					"Yellow"
+				],
+				"space_38": [
+					"Red"
+				],
+				"space_39": [
+					"Yellow"
+				],
+				"space_40": [
+					"Yellow"
+				],
+				"space_41": [
+					"Red"
+				],
+				"space_42": [],
+				"supply": [
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Red",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow",
+					"Yellow"
+				]
+			},
+			"variables": {
+				"player": "2"
+			},
+			"over": true,
+			"result": "Winner: Yellow"
+		}
+	}
+]

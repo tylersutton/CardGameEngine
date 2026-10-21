@@ -151,10 +151,21 @@ public class StepCompiler
         if (definition["board"] is not Dictionary<string, object?> board || WholeNumber(board.GetValueOrDefault("columns")) < 1
             || WholeNumber(board.GetValueOrDefault("rows")) < 1 || board.GetValueOrDefault("size") is not (null or double)
             || board.GetValueOrDefault("shape", Board.Square) is not string shape || !Board.Shapes.Contains(shape)
-            || board.Keys.Any(key => key is not ("shape" or "columns" or "rows" or "size")))
+            || board.Keys.Any(key => key is not ("shape" or "columns" or "rows" or "size" or "paint")))
         {
             errors.Add($"Zone \"{zoneKind}\": \"board\" should look like {{ \"shape\": \"square\", \"columns\": 8, \"rows\": 8, \"size\": 60 }} (shape square or hex; size in pixels)");
             return 0;
+        }
+        if (board.GetValueOrDefault("paint", new Dictionary<string, object?>()) is not Dictionary<string, object?> paint || paint.Values.Any(color => color is not string))
+        {
+            errors.Add($"Zone \"{zoneKind}\": \"paint\" should be conditions with their colors, e.g. {{ \"top_edge\": \"#c8443a\" }}");
+        }
+        else
+        {
+            foreach (string condition in paint.Keys.Where(condition => rules.ConditionParameters.GetValueOrDefault(condition)?.Count != 1))
+            {
+                errors.Add($"Zone \"{zoneKind}\": \"paint\" names \"{condition}\", which should be a condition with one parameter, e.g. \"{condition}(space)\"");
+            }
         }
         return WholeNumber(board["columns"]) * WholeNumber(board["rows"]);
     }

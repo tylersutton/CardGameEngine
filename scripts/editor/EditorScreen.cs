@@ -837,6 +837,10 @@ public partial class EditorScreen : Control
         }
         if (ofSection == "Table")
         {
+            if (settings.GetValueOrDefault("board") is Dictionary<string, object?> board)
+            {
+                return $"board {Values.Format(board.GetValueOrDefault("columns"))}×{Values.Format(board.GetValueOrDefault("rows"))}";
+            }
             string copies = settings.GetValueOrDefault("per_player") is true ? " ×P" : settings.GetValueOrDefault("copies") is double count ? $" ×{count}" : "";
             return Values.Text(settings.GetValueOrDefault("layout", "row")) + copies;
         }

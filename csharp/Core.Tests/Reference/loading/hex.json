@@ -8,7 +8,13 @@
 					"shape": "hex",
 					"columns": 9.0,
 					"rows": 9.0,
-					"size": 46.0
+					"size": 46.0,
+					"paint": {
+						"top_edge": "#a8473f",
+						"bottom_edge": "#a8473f",
+						"left_edge": "#3f62a8",
+						"right_edge": "#3f62a8"
+					}
 				},
 				"anchor": [
 					0.5,
@@ -97,7 +103,7 @@
 		"team_variables": {},
 		"melds": {},
 		"status": {
-			"goal": "'Red joins top and bottom; Blue joins left and right'"
+			"goal": "'Red joins the red edges; Blue joins the blue edges'"
 		},
 		"show_variables": [],
 		"bot": {

@@ -25,6 +25,9 @@ public class Board
     public int Rows { get; }
     /// How far apart neighbouring spaces are, in pixels.
     public float SpaceSize { get; }
+    /// Colors for spaces, each by a condition with one parameter (the space), in order: a space takes the first
+    /// that holds, e.g. Hex's goal edges, or a checkerboard.
+    public Dictionary<string, string> Paint { get; } = [];
 
     public Board(Dictionary<string, object?> settings)
     {
@@ -32,6 +35,10 @@ public class Board
         Columns = (int)Values.ToDouble(settings["columns"]);
         Rows = (int)Values.ToDouble(settings["rows"]);
         SpaceSize = (float)(settings.GetValueOrDefault("size") as double? ?? DefaultSpaceSize);
+        foreach ((string condition, object? color) in settings.GetValueOrDefault("paint") as Dictionary<string, object?> ?? [])
+        {
+            Paint[condition] = (string)color!;
+        }
     }
 
     /// The zone's board, if it has one.

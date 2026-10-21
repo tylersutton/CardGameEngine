@@ -63,6 +63,7 @@ A zone with a `board` is a grid of spaces, and each space is a zone of its own, 
 
 - **`shape`:** `square` (the default) or `hex`. A hex board is a rhombus, as in the game Hex: each row sits half a space right of the one above.
 - **`size`:** how far apart neighbouring spaces are, in pixels. Default 60.
+- **`paint`:** colors for spaces, each by a condition about the space: `{ "top_edge": "#c8443a80", "dark": "#5a3a22" }`. A space takes the first color whose condition holds for it, so Hex shows each player's goal edges and checkers a checkerboard (`"dark(space)": "(space.row + space.column) % 2 == 0"`).
 - **A space's place:** `space.column` and `space.row`, counting from 1. `space_at(square, 4, 4)` finds a space by them.
 - **Looking along the board:** the [board building blocks](#building-blocks) take conditions with one parameter, the space, e.g. `"empty(space)": "count(space) == 0"` or Hex's `"mine(space)": "text(top(space), 'name') == my_color"`.
 

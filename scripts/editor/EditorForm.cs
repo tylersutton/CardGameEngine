@@ -14,7 +14,7 @@ public partial class EditorForm : VBoxContainer
     /// Expression settings that may also be a plain number.
     static readonly string[] NumberOrText = ["pick", "up_to"];
     /// Kinds whose control takes the whole width, under the setting's name.
-    static readonly string[] WideKinds = ["long_text", "json", "expression", "steps", "drag"];
+    static readonly string[] WideKinds = ["long_text", "json", "expression", "steps", "drag", "board"];
     /// The keys that say an action is done by clicking.
     static readonly string[] ClickKeys = ["click", "double_click"];
 
@@ -206,6 +206,8 @@ public partial class EditorForm : VBoxContainer
                 return Drag(path, value);
             case "click":
                 return Click(path, value);
+            case "board":
+                return Board(path, value);
         }
         LineEdit textLine = new() { Text = value != null ? Values.Text(value) : "" };
         void Submit() => Changed?.Invoke(path, textLine.Text.Length > 0 ? textLine.Text : null);
@@ -399,6 +401,52 @@ public partial class EditorForm : VBoxContainer
     }
 
     static bool NamesZone(object? click) => click is string or List<object?>;
+
+    /// A board's shape, columns, rows and space size, each changed on its own (the first change makes the whole board,
+    /// so it's never half made), and its paint as JSONC text once there's a board.
+    VBoxContainer Board(List<object> path, object? value)
+    {
+        Dictionary<string, object?>? board = value as Dictionary<string, object?>;
+        void Send(string key, object? newValue)
+        {
+            if (board != null)
+            {
+                Changed?.Invoke([.. path, key], newValue);
+                return;
+            }
+            Dictionary<string, object?> made = new() { ["shape"] = Core.Board.Square, ["columns"] = 8L, ["rows"] = 8L, ["size"] = Core.Board.DefaultSpaceSize };
+            made[key] = newValue;
+            Changed?.Invoke(path, made);
+        }
+        GridContainer grid = new() { Columns = 2 };
+        OptionButton shape = new() { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        foreach (string option in Core.Board.Shapes)
+        {
+            shape.AddItem(option);
+        }
+        shape.Select(Array.IndexOf(Core.Board.Shapes, board?.GetValueOrDefault("shape") as string ?? Core.Board.Square));
+        shape.ItemSelected += index => Send("shape", Core.Board.Shapes[index]);
+        grid.AddChild(new Label { Text = "shape" });
+        grid.AddChild(shape);
+        foreach ((string key, double fallback, double least) in new[] { ("columns", 8.0, 1.0), ("rows", 8.0, 1.0), ("size", Core.Board.DefaultSpaceSize, 10.0) })
+        {
+            SpinBox spin = new()
+            {
+                MinValue = least, AllowGreater = true, Step = 1, Suffix = key == "size" ? "px" : "", SizeFlagsHorizontal = SizeFlags.ExpandFill,
+                Value = Values.IsNumber(board?.GetValueOrDefault(key)) ? Values.ToDouble(board![key]) : fallback,
+            };
+            spin.ValueChanged += number => Send(key, key == "size" ? number : (long)number);
+            grid.AddChild(new Label { Text = key });
+            grid.AddChild(spin);
+        }
+        VBoxContainer box = new();
+        box.AddChild(grid);
+        box.AddChild(new Label { Text = "paint (conditions with their colors)" });
+        TextEdit paint = JsonBox([.. path, "paint"], board?.GetValueOrDefault("paint"), "{ \"top_edge\": \"#c8443a\" }");
+        paint.Editable = board != null;
+        box.AddChild(paint);
+        return box;
+    }
 
     /// Anything else, as JSONC text; only sent when it reads correctly.
     TextEdit JsonBox(List<object> path, object? value, string example)

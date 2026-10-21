@@ -139,6 +139,26 @@ public class BoardTests
         Assert.Empty(failures);
     }
 
+    [Fact]
+    public void ConnectFourDiscsFallAndFourInARowWins()
+    {
+        GameFiles files = new(RepositoryFiles.PathOf(""));
+        Game game = new(files, "res://games/connect_four.jsonc", 1);
+        game.Rules.Bot["players"] = new List<object?>();
+        game.Failed += failures.Add;
+        game.Start();
+        // Red clicks the top of column 1 each time, Yellow column 2.
+        foreach (int column in new[] { 1, 2, 1, 2, 1, 2, 1 })
+        {
+            Assert.True(game.Apply(PlayerInput.ClickEmpty(game.Zones[$"space_{column}"])));
+        }
+        // Red's four discs fill column 1 from the bottom row (6) up: rows 3 to 6.
+        Assert.Equal(["space_15", "space_22", "space_29", "space_36"], Names(game.Evaluate("zones_where(space, 'mine')")));
+        Assert.True(game.Over);
+        Assert.Equal([1], game.Winners);
+        Assert.Empty(failures);
+    }
+
     [Theory]
     [InlineData("{ \"columns\": 8 }")]
     [InlineData("{ \"columns\": 8, \"rows\": 8, \"shape\": \"triangle\" }")]
@@ -147,6 +167,19 @@ public class BoardTests
     {
         Game game = TestGames.Create(Rules, $$"""{ "zones": { "square": { "board": {{board}} } } }""", 1, "res://board_test.jsonc");
         Assert.Contains(game.Errors, error => error.Contains("\"board\" should look like"));
+    }
+
+    [Fact]
+    public void PaintTakesTheFirstConditionThatHolds()
+    {
+        Game game = GameWith("""{ "zones": { "deck": { "layout": "pile", "cards": "res://decks/standard_deck.csv" }, "cell": { "board": { "shape": "hex", "columns": 3, "rows": 3, "paint": { "top_edge": "#ff0000", "bottom_edge": "#0000ff" } } } } }""");
+        Assert.Equal("#ff0000", game.PaintOf(game.Zones["cell_2"]));
+        Assert.Equal("#0000ff", game.PaintOf(game.Zones["cell_8"]));
+        Assert.Equal("", game.PaintOf(game.Zones["cell_5"]));
+        Assert.Equal("", game.PaintOf(game.Zones["deck"]));
+        Assert.Empty(failures);
+        Game unknown = TestGames.Create(Rules, """{ "zones": { "cell": { "board": { "columns": 3, "rows": 3, "paint": { "red": "#ff0000", "edge": "#0000ff" } } } } }""", 1, "res://board_test.jsonc");
+        Assert.Equal(["Zone \"cell\": \"paint\" names \"edge\", which should be a condition with one parameter, e.g. \"edge(space)\""], unknown.Errors);
     }
 
     [Fact]

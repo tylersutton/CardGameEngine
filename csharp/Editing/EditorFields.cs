@@ -8,7 +8,7 @@ public record Field(string Key, string Kind, string Help, string Group = "", str
 /// What each part of a game file can hold. Kinds: text, long_text, number, whole, yes_no, choice (with options), spot
 /// ([x, y] on the table), list (comma-separated; one item stays text), names and numbers (comma-separated lists),
 /// column (a deck column), columns, deck, expression and steps (checked as typed), drag (its from and to zones),
-/// click (zones clicked), json (anything else, as text, with an example).
+/// click (zones clicked), board (shape, columns, rows, size and paint), json (anything else, as text, with an example).
 public static class EditorFields
 {
     public static readonly Field[] Game =
@@ -38,7 +38,7 @@ public static class EditorFields
         new("labels", "json", "With per_player or copies: one label each.", "Advanced", Example: "[\"You\", \"Them\"]"),
         new("grid", "json", "With copies: lay them out in rows, e.g. { \"columns\": 5, \"spacing\": [0.09, 0.19] }.", "Advanced", Example: "{ \"columns\": 5, \"spacing\": [0.09, 0.19] }"),
         new("covered_by", "json", "With copies: which copies lie on top of each one (Pyramid).", "Advanced", Example: "[[1, 2], [2, 3]]"),
-        new("board", "json", "Make it a board: one space per column and row (square_1, square_2, ...), shape square or hex, size in pixels.", "Advanced", Example: "{ \"shape\": \"square\", \"columns\": 8, \"rows\": 8, \"size\": 60 }"),
+        new("board", "board", "Make it a board: one space per column and row (square_1, square_2, ...), square or hex, its spaces size pixels apart. paint colors spaces by conditions about the space, e.g. { \"top_edge\": \"#c8443a\" }.", "Board"),
     ];
 
     public static readonly Field[] Action =

@@ -474,29 +474,49 @@ public partial class TableView : Control
         {
             foreach (Zone zone in game.Choice.Options.OfType<Zone>())
             {
-                DrawStyleBox(CardView.HighlightStyle, SlotRect(zone).Grow(CardView.HighlightWidth / 2f));
+                DrawHighlight(zone, CardView.HighlightStyle);
             }
         }
         if (hoverZone != null)
         {
-            DrawStyleBox(hoverAllowed ? CardView.AllowedStyle : CardView.RefusedStyle, SlotRect(hoverZone).Grow(CardView.HighlightWidth / 2f));
+            DrawHighlight(hoverZone, hoverAllowed ? CardView.AllowedStyle : CardView.RefusedStyle);
         }
         DrawSeats(font);
     }
 
-    /// Board spaces touch, so they're drawn without the rounded corners of card slots: squares, or pointy-topped hexagons.
+    /// Board spaces touch, so they're drawn without the rounded corners of card slots: squares, or pointy-topped
+    /// hexagons, in the board's paint where it has some.
     void DrawSpace(Zone zone, Rect2 slot)
     {
+        Color fill = Color.FromString(game!.PaintOf(zone), SpaceColor);
         if (zone.Board!.Shape != Board.Hex)
         {
-            DrawRect(slot, SpaceColor);
+            DrawRect(slot, fill);
             DrawRect(slot, SlotBorder, false, SpaceBorderWidth);
             return;
         }
-        float radius = zone.Board.SpaceSize / Mathf.Sqrt(3);
-        Vector2[] corners = Enumerable.Range(0, 7).Select(corner => slot.GetCenter() + Vector2.FromAngle(Mathf.DegToRad(60 * corner - 90)) * radius).ToArray();
-        DrawColoredPolygon(corners[..6], SpaceColor);
+        Vector2[] corners = HexCorners(zone, 0);
+        DrawColoredPolygon(corners[..6], fill);
         DrawPolyline(corners, SlotBorder, SpaceBorderWidth, true);
+    }
+
+    /// A hex space's corners, going round back to the first (for an outline), grown outward by that many pixels.
+    Vector2[] HexCorners(Zone zone, float grow)
+    {
+        float radius = zone.Board!.SpaceSize / Mathf.Sqrt(3) + grow;
+        Vector2 center = CenterOf(zone);
+        return Enumerable.Range(0, 7).Select(corner => center + Vector2.FromAngle(Mathf.DegToRad(60 * corner - 90)) * radius).ToArray();
+    }
+
+    /// An outline round a zone to choose or drop on: the zone's slot, or a hex space's own hexagon.
+    void DrawHighlight(Zone zone, StyleBoxFlat style)
+    {
+        if (zone.Board?.Shape == Board.Hex)
+        {
+            DrawPolyline(HexCorners(zone, CardView.HighlightWidth / 2f), style.BorderColor, CardView.HighlightWidth, true);
+            return;
+        }
+        DrawStyleBox(style, SlotRect(zone).Grow(CardView.HighlightWidth / 2f));
     }
 
     void DrawSeats(Font font)

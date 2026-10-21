@@ -624,6 +624,19 @@ public class Game : IStepContext
         };
     }
 
+    /// A board space's color from its board's "paint": the first whose condition holds for it, or "" for none.
+    public string PaintOf(Zone space)
+    {
+        foreach ((string condition, string color) in space.Board?.Paint ?? [])
+        {
+            if (ConditionFor(condition) is { } holds && holds(space))
+            {
+                return color;
+            }
+        }
+        return "";
+    }
+
     public int CurrentPlayer() => (int)Values.ToDouble(Variables.GetValueOrDefault(PlayerVariable, 1L));
 
     public int NextPlayer() => SeatAfter(CurrentPlayer(), 1);
