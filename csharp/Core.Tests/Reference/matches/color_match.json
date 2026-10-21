@@ -1,0 +1,5913 @@
+[
+	{
+		"end": {
+			"over": true,
+			"result": "Game over",
+			"variables": {
+				"active_color": "Green",
+				"player": "2",
+				"winner": "—"
+			},
+			"zones": {
+				"deck": [],
+				"hand_1": [
+					"Yellow 1",
+					"Blue +2",
+					"Red +2",
+					"Red 2",
+					"Blue 3",
+					"Blue 3",
+					"Red 3",
+					"Blue 4",
+					"Red 5"
+				],
+				"hand_2": [
+					"Red 1",
+					"Yellow +2",
+					"Red 4",
+					"Red 4",
+					"Yellow 4",
+					"Yellow 4"
+				],
+				"pile": [
+					"Red 2",
+					"Green 2",
+					"Green 4",
+					"Green +2",
+					"Green 1",
+					"Green 5",
+					"Blue 5",
+					"Blue 2",
+					"Yellow 2",
+					"Green 2",
+					"Green 5",
+					"Green +2",
+					"Green 1",
+					"Green 3",
+					"Green 4",
+					"Wild",
+					"Green 3",
+					"Yellow 3",
+					"Wild",
+					"Blue 4",
+					"Blue 1",
+					"Blue 5",
+					"Yellow 5",
+					"Yellow 2",
+					"Yellow 3",
+					"Yellow 1",
+					"Yellow 5",
+					"Yellow +2",
+					"Blue +2",
+					"Blue 1",
+					"Blue 2",
+					"Wild",
+					"Red 3",
+					"Red 5",
+					"Red 1",
+					"Red +2",
+					"Wild"
+				]
+			}
+		},
+		"inputs": [
+			{
+				"card": 33,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 30,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 38,
+				"type": "click"
+			},
+			{
+				"card": 9,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 7,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 51,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 43,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"type": "click"
+			},
+			{
+				"card": 18,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 51,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Blue",
+				"type": "choose"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 15,
+				"type": "click"
+			},
+			{
+				"card": 49,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Blue",
+				"type": "choose"
+			},
+			{
+				"card": 17,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 22,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 15,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 23,
+				"type": "click"
+			},
+			{
+				"card": 17,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 19,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 23,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 27,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 14,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 32,
+				"type": "click"
+			},
+			{
+				"card": 37,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 20,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 39,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 37,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 2,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 2,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 8,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 41,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 10,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 16,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 4,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 16,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 5,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 45,
+				"type": "click"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"type": "click"
+			},
+			{
+				"card": 48,
+				"type": "click"
+			},
+			{
+				"card": 31,
+				"type": "click"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 34,
+				"type": "click"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 48,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Yellow",
+				"type": "choose"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 11,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 46,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 11,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 50,
+				"type": "click"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 3,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 27,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 31,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 34,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 24,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 39,
+				"type": "click"
+			},
+			{
+				"card": 33,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 15,
+				"type": "click"
+			},
+			{
+				"card": 21,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 15,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 7,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 39,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 26,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 32,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 43,
+				"type": "click"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 5,
+				"type": "click"
+			},
+			{
+				"card": 35,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 19,
+				"type": "click"
+			},
+			{
+				"card": 12,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 25,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 29,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 30,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Green",
+				"type": "choose"
+			},
+			{
+				"card": 28,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 40,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 50,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Blue",
+				"type": "choose"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 46,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 19,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 20,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 22,
+				"type": "click"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"type": "click"
+			},
+			{
+				"card": 44,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 38,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 41,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 36,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 45,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 37,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"card": 46,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 22,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 2,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 8,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 48,
+				"type": "click"
+			},
+			{
+				"card": 16,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 14,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 17,
+				"type": "click"
+			},
+			{
+				"card": 48,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Red",
+				"type": "choose"
+			},
+			{
+				"card": 5,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 8,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 11,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 51,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Green",
+				"type": "choose"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  sort hand_1 by color, number",
+				"  sort hand_2 by color, number",
+				"  shuffle deck",
+				"  deck → hand_1: Red 3, Yellow 2, Green 5, Yellow 4, Blue 4, Red 4, Blue 4",
+				"  deck → hand_2: 7 hidden cards",
+				"  while text(top(deck), 'on_pile') != '': repeated 0 times",
+				"  deck → pile: Green 1",
+				"  active_color = Green",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Green 4",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Yellow 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Blue 1",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Blue",
+				"  active_color = Blue",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Blue",
+				"  active_color = Blue",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 3",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Blue +2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green 5",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 1",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red 1",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Blue 5",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow +2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Blue 5",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 3",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red +2",
+				"  deck → hand_2: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Blue 3",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 5",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 1",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Green 4",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Green 2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Yellow",
+				"  active_color = Yellow",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red +2",
+				"  deck → hand_2: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red 4",
+				"  if count(deck) == 0 → then",
+				"[trigger] deck_empty",
+				"  pile → deck: Green 1, Green 5, Red 5, Red 4, Yellow 4, Blue 4, Wild, Wild, Blue +2, Blue 2, Blue 3, Blue 1, Blue 4, Blue +2, Blue 2, Yellow 2, Yellow 1, Red 1, Red 2, Red 5, Red +2, Red 3, Blue 3, Red 3, Red 1, Wild, Yellow 1, Yellow +2, Red +2",
+				"  shuffle deck",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green +2",
+				"  deck → hand_2: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Yellow 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red 4",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 4",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red 3",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Blue 4",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 1",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Green",
+				"  active_color = Green",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Blue",
+				"  active_color = Blue",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Yellow +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Blue +2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Yellow 1",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Yellow 1",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red +2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow +2",
+				"  deck → hand_2: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red 5",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 3",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 3",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Red",
+				"  active_color = Red",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Green",
+				"  active_color = Green",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  player = 1",
+				"[turn] Player 1",
+				"  player = 2",
+				"Nobody could do anything for a whole round of turns, so the game is over",
+				"[game over] Game over"
+			]
+		],
+		"seed": 1
+	},
+	{
+		"end": {
+			"over": false,
+			"result": "",
+			"variables": {
+				"active_color": "Blue",
+				"player": "2",
+				"winner": "—"
+			},
+			"zones": {
+				"deck": [
+					"▼Green +2",
+					"▼Green 1",
+					"▼Wild",
+					"▼Yellow 2",
+					"▼Green 4",
+					"▼Yellow 1",
+					"▼Red 3",
+					"▼Yellow 5",
+					"▼Red 1",
+					"▼Wild",
+					"▼Blue 3",
+					"▼Yellow 1",
+					"▼Blue 5",
+					"▼Green 3",
+					"▼Green 2",
+					"▼Yellow +2",
+					"▼Yellow 2",
+					"▼Wild",
+					"▼Red 5",
+					"▼Yellow 5",
+					"▼Yellow 4",
+					"▼Red 3",
+					"▼Yellow 4",
+					"▼Yellow 3",
+					"▼Green 2"
+				],
+				"hand_1": [
+					"Blue 1",
+					"Green 1",
+					"Blue +2",
+					"Blue 2",
+					"Green +2",
+					"Red 2",
+					"Red 2",
+					"Red +2",
+					"Blue 2",
+					"Blue 3",
+					"Blue 4",
+					"Blue 5",
+					"Green 5"
+				],
+				"hand_2": [
+					"Red +2",
+					"Green 3",
+					"Yellow 3",
+					"Red 4",
+					"Green 5",
+					"Red 5"
+				],
+				"pile": [
+					"Yellow +2",
+					"Blue +2",
+					"Wild",
+					"Green 4",
+					"Blue 4",
+					"Red 4",
+					"Red 1",
+					"Blue 1"
+				]
+			}
+		},
+		"inputs": [
+			{
+				"card": 18,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 22,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 31,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 34,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 47,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 48,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 50,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Yellow",
+				"type": "choose"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 38,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 51,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Red",
+				"type": "choose"
+			},
+			{
+				"card": 2,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 48,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Red",
+				"type": "choose"
+			},
+			{
+				"card": 49,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Red",
+				"type": "choose"
+			},
+			{
+				"card": 9,
+				"type": "click"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 41,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 24,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 37,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 41,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 28,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 44,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 32,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 44,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 8,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 30,
+				"type": "click"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 5,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 11,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 21,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 11,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 10,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 9,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 39,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 25,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 17,
+				"type": "click"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 16,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 30,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 31,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 14,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 27,
+				"type": "click"
+			},
+			{
+				"card": 43,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 45,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 29,
+				"type": "click"
+			},
+			{
+				"card": 47,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 46,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 7,
+				"type": "click"
+			},
+			{
+				"card": 35,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 3,
+				"type": "click"
+			},
+			{
+				"card": 46,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"card": 12,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 42,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 19,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 14,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 17,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 24,
+				"type": "click"
+			},
+			{
+				"card": 31,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 5,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 9,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 16,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 29,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 26,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 28,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 24,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 31,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 20,
+				"type": "click"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 28,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"type": "click"
+			},
+			{
+				"card": 4,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 36,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 13,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 15,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 49,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Red",
+				"type": "choose"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 51,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 35,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 9,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 7,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 18,
+				"type": "click"
+			},
+			{
+				"card": 10,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 6,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 51,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Red",
+				"type": "choose"
+			},
+			{
+				"card": 38,
+				"type": "click"
+			},
+			{
+				"card": 45,
+				"type": "click"
+			},
+			{
+				"card": 33,
+				"type": "click"
+			},
+			{
+				"card": 30,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 44,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 48,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 8,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 48,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Blue",
+				"type": "choose"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 20,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 18,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 34,
+				"type": "click"
+			},
+			{
+				"card": 41,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 43,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 50,
+				"type": "click"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 47,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 22,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 37,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 50,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Yellow",
+				"type": "choose"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 11,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 39,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 2,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 45,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 12,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 41,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 38,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 49,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 31,
+				"type": "click"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 27,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Blue",
+				"type": "choose"
+			},
+			{
+				"card": 12,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 5,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 2,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 8,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 43,
+				"type": "click"
+			},
+			{
+				"card": 33,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 40,
+				"type": "click"
+			},
+			{
+				"card": 44,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 50,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 17,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 43,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 14,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 47,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 26,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 11,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 50,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Yellow",
+				"type": "choose"
+			},
+			{
+				"card": 36,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 24,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 25,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 30,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 35,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 24,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 37,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 51,
+				"type": "click"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 42,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 13,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 31,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 26,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 20,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 29,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 5,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 51,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Yellow",
+				"type": "choose"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 18,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 46,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 19,
+				"type": "click"
+			},
+			{
+				"card": 16,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 15,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 17,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 28,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 4,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 48,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 4,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by color",
+				"type": "perform"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"card": 10,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 46,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 25,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 41,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort by number",
+				"type": "perform"
+			},
+			{
+				"card": 12,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 28,
+				"type": "click"
+			},
+			{
+				"card": 22,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 48,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Green",
+				"type": "choose"
+			},
+			{
+				"card": 17,
+				"type": "click"
+			},
+			{
+				"card": 31,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 10,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"card": 18,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 7,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 15,
+				"to": "hand_1",
+				"type": "drag"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  sort hand_1 by color, number",
+				"  sort hand_2 by color, number",
+				"  shuffle deck",
+				"  deck → hand_1: Red 2, Blue 4, Yellow 1, Red 5, Green 3, Wild, Yellow 2",
+				"  deck → hand_2: 7 hidden cards",
+				"  while text(top(deck), 'on_pile') != '': repeated 0 times",
+				"  deck → pile: Blue 5",
+				"  active_color = Blue",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green 4",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Yellow +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Yellow",
+				"  active_color = Yellow",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Red",
+				"  active_color = Red",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Red",
+				"  active_color = Red",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Red",
+				"  active_color = Red",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red 5",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 3",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 5",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Green 4",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red 3",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red +2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 5",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red +2",
+				"  deck → hand_2: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green 1",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Blue 3",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 3",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Blue 2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Green 3",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow +2",
+				"  deck → hand_2: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow +2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red 4",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Blue 1",
+				"  if count(deck) == 0 → then",
+				"[trigger] deck_empty",
+				"  pile → deck: Blue 5, Blue 4, Blue +2, Green +2, Wild, Yellow 1, Yellow 2, Wild, Red 2, Wild, Wild, Red 1, Green 1, Yellow 1, Yellow 3, Green 3, Green 5, Yellow 5, Red 5, Red +2, Red +2, Red 5, Green 5, Green 4, Green 4, Yellow 4, Yellow 5, Yellow +2, Green +2",
+				"  shuffle deck",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green 1",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Green 4",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red 5",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Green 3",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 5",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Yellow 1",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Red",
+				"  active_color = Red",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red +2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 4",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Red",
+				"  active_color = Red",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Yellow 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 5",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green 5",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Green 4",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Yellow 5",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red 5",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Blue",
+				"  active_color = Blue",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red 1",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 3",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow +2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Yellow 1",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Yellow",
+				"  active_color = Yellow",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red 2",
+				"  if count(deck) == 0 → then",
+				"[trigger] deck_empty",
+				"  pile → deck: Yellow +2, Yellow 3, Yellow 4, Blue 4, Blue 2, Blue 5, Blue 3, Red 3, Blue 3, Green 3, Green 2, Green 1, Green 4, Green 3, Red 3, Red 1, Blue 1, Blue 2, Wild, Red 5, Red 4, Red +2, Red 4, Wild, Wild, Blue 5, Blue 1, Blue 4, Yellow 4, Yellow 1, Red 1, Wild",
+				"  shuffle deck",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 1",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green 4",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red 1",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Blue",
+				"  active_color = Blue",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red 1",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red 3",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 4",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 3",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 3",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow +2",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Green 2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red +2",
+				"  deck → hand_2: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Yellow",
+				"  active_color = Yellow",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Green 1",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green +2",
+				"  deck → hand_2: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Yellow 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Blue 1",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_1 by color, number",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Green 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 5",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Yellow",
+				"  active_color = Yellow",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 4",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 5",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow +2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 4",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 5",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 2",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red 3",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Wild",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 3",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by color",
+				"  sort hand_2 by color, number",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red 4",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red +2",
+				"  deck → hand_2: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Yellow +2",
+				"[trigger] deck_empty",
+				"  pile → deck: Yellow 2, Yellow 5, Yellow 3, Yellow 2, Green 2, Wild, Blue 1, Red 1, Red 2, Red 1, Red 5, Green 5, Yellow 5, Yellow 4, Yellow +2, Red +2, Wild, Yellow 1, Green 1, Green 4, Green +2, Green 1, Yellow 1, Yellow 4, Green 4, Green 2, Green 3, Red 3, Wild, Yellow 3, Blue 3, Blue 5, Blue 2, Blue 3, Green 3, Red 3, Red +2",
+				"  shuffle deck",
+				"  deck → hand_1: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Yellow",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Green 1",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_2 by number, color",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Yellow 3",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Sort by number",
+				"  sort hand_1 by number, color",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 1",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Green 3",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue +2",
+				"  deck → hand_2: 2 hidden cards",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Wild",
+				"  choose one: Red, Blue, Green, Yellow"
+			],
+			[
+				"[Choose a color] chose Green",
+				"  active_color = Green",
+				"  if card.color != 'Wild' → else",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 3",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Green 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Green",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Red +2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: Red +2",
+				"  if count(deck) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Blue 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Red 4",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_1 → pile: Red 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Red",
+				"  if count(hand) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			],
+			[
+				"[action] Play a card",
+				"  hand_2 → pile: Blue 1",
+				"  if card.color != 'Wild' → then",
+				"  active_color = Blue",
+				"  if count(hand) == 0 → else",
+				"  player = 1",
+				"[turn] Player 1",
+				"  Player 1 may: Play a card, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Blue 2",
+				"  if count(deck) == 0 → else",
+				"  player = 2",
+				"[turn] Player 2",
+				"  Player 2 may: Play a card, Draw"
+			]
+		],
+		"seed": 2
+	}
+]

@@ -1,0 +1,1102 @@
+[
+	{
+		"end": {
+			"over": true,
+			"result": "Game over",
+			"variables": {
+				"clues": "0",
+				"final_turns": "-1",
+				"fuses": "0",
+				"player": "1",
+				"result": "Boom! Out of fuses"
+			},
+			"zones": {
+				"deck": [
+					"▼Yellow 5",
+					"▼Yellow 4",
+					"▼White 1",
+					"▼Blue 3",
+					"▼White 3",
+					"▼Yellow 4",
+					"▼Blue 1",
+					"▼Blue 2",
+					"▼Yellow 1",
+					"▼Blue 3",
+					"▼White 1",
+					"▼Yellow 1",
+					"▼Blue 1",
+					"▼Red 2",
+					"▼Green 3",
+					"▼Red 1",
+					"▼Yellow 1",
+					"▼White 2",
+					"▼Blue 2",
+					"▼White 1",
+					"▼Red 1",
+					"▼Green 1",
+					"▼Blue 5",
+					"▼Blue 1",
+					"▼Green 4",
+					"▼Green 1",
+					"▼Yellow 3",
+					"▼Red 3",
+					"▼Green 5",
+					"▼Green 4"
+				],
+				"discard": [
+					"Blue 4",
+					"White 3",
+					"Red 2",
+					"White 4",
+					"White 2",
+					"Red 5",
+					"Yellow 3",
+					"Red 4",
+					"White 5",
+					"Yellow 2"
+				],
+				"firework_1": [],
+				"firework_2": [],
+				"firework_3": [],
+				"firework_4": [],
+				"firework_5": [],
+				"hand_1": [
+					"White 4",
+					"Blue 4",
+					"Red 1",
+					"Red 3",
+					"Green 2"
+				],
+				"hand_2": [
+					"Yellow 2",
+					"Green 3",
+					"Green 1",
+					"Red 4",
+					"Green 2"
+				],
+				"play": []
+			}
+		},
+		"inputs": [
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 14,
+				"type": "click"
+			},
+			{
+				"card": 37,
+				"to": "play",
+				"type": "drag"
+			},
+			{
+				"card": 46,
+				"to": "discard",
+				"type": "drag"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 9,
+				"type": "click"
+			},
+			{
+				"card": 4,
+				"to": "discard",
+				"type": "drag"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 38,
+				"type": "click"
+			},
+			{
+				"card": 48,
+				"to": "discard",
+				"type": "drag"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"type": "click"
+			},
+			{
+				"action": "Clue color",
+				"type": "perform"
+			},
+			{
+				"card": 15,
+				"type": "click"
+			},
+			{
+				"card": 43,
+				"to": "discard",
+				"type": "drag"
+			},
+			{
+				"card": 9,
+				"to": "discard",
+				"type": "drag"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"type": "click"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"action": "Clue color",
+				"type": "perform"
+			},
+			{
+				"card": 13,
+				"type": "click"
+			},
+			{
+				"action": "Clue color",
+				"type": "perform"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"action": "Clue color",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"type": "click"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"action": "Clue color",
+				"type": "perform"
+			},
+			{
+				"card": 47,
+				"type": "click"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"card": 15,
+				"to": "discard",
+				"type": "drag"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"card": 7,
+				"to": "play",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "discard",
+				"type": "drag"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 47,
+				"type": "click"
+			},
+			{
+				"card": 13,
+				"to": "play",
+				"type": "drag"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  shuffle deck",
+				"  deck → hand_1: 5 hidden cards",
+				"  deck → hand_2: Red 4, Yellow 3, Yellow 2, White 2, Blue 4",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  You: choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose Yellow 2",
+				"  mark number = 2: Yellow 2, White 2",
+				"  clues = 7",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Play",
+				"  hand_2 → play: Blue 4",
+				"  if playable → else",
+				"  play → discard: Blue 4",
+				"  fuses = 2",
+				"  deck → hand_2: Green 3",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Discard",
+				"  hand_1 → discard: White 3",
+				"  clues = 8",
+				"  deck → hand_1: 1 hidden card",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose a hidden card",
+				"  mark number = 5: a hidden card",
+				"  clues = 7",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Discard",
+				"  hand_1 → discard: Red 2",
+				"  clues = 8",
+				"  deck → hand_1: 1 hidden card",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose a hidden card",
+				"  mark number = 4: a hidden card, a hidden card, a hidden card",
+				"  clues = 7",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Discard",
+				"  hand_1 → discard: White 4",
+				"  clues = 8",
+				"  deck → hand_1: 1 hidden card",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose a hidden card",
+				"  mark number = 1: a hidden card",
+				"  clues = 7",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue color",
+				"  You: choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue color] chose Yellow 3",
+				"  mark color = Yellow: Yellow 3, Yellow 2",
+				"  clues = 6",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Discard",
+				"  hand_2 → discard: White 2",
+				"  clues = 7",
+				"  deck → hand_2: Green 1",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Discard",
+				"  hand_1 → discard: Red 5",
+				"  clues = 8",
+				"  deck → hand_1: 1 hidden card",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose a hidden card",
+				"  mark number = 1: a hidden card",
+				"  clues = 7",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  You: choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose Green 3",
+				"  mark number = 3: Yellow 3, Green 3",
+				"  clues = 6",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue color",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue color] chose a hidden card",
+				"  mark color = Yellow: a hidden card",
+				"  clues = 5",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue color",
+				"  You: choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue color] chose Green 3",
+				"  mark color = Green: Green 3, Green 1",
+				"  clues = 4",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue color",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue color] chose a hidden card",
+				"  mark color = Red: a hidden card",
+				"  clues = 3",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  You: choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose Green 3",
+				"  mark number = 3: Yellow 3, Green 3",
+				"  clues = 2",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue color",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue color] chose a hidden card",
+				"  mark color = White: a hidden card, a hidden card",
+				"  clues = 1",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  You: choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose Green 3",
+				"  mark number = 3: Yellow 3, Green 3",
+				"  clues = 0",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Discard",
+				"  hand_2 → discard: Yellow 3",
+				"  clues = 1",
+				"  deck → hand_2: Red 4",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  You: choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose Green 3",
+				"  mark number = 3: Green 3",
+				"  clues = 0",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Play",
+				"  hand_2 → play: Red 4",
+				"  if playable → else",
+				"  play → discard: Red 4",
+				"  fuses = 1",
+				"  deck → hand_2: Green 2",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Discard",
+				"  hand_1 → discard: White 5",
+				"  clues = 1",
+				"  deck → hand_1: 1 hidden card",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose a hidden card",
+				"  mark number = 4: a hidden card, a hidden card",
+				"  clues = 0",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Play",
+				"  hand_1 → play: Yellow 2",
+				"  if playable → else",
+				"  play → discard: Yellow 2",
+				"  fuses = 0",
+				"  deck → hand_1: 1 hidden card",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → then",
+				"[trigger] game_over",
+				"[game over] Game over",
+				"  if fuses == 0 → then",
+				"  result = Boom! Out of fuses"
+			]
+		],
+		"seed": 1
+	},
+	{
+		"end": {
+			"over": true,
+			"result": "Game over",
+			"variables": {
+				"clues": "3",
+				"final_turns": "-1",
+				"fuses": "0",
+				"player": "1",
+				"result": "Boom! Out of fuses"
+			},
+			"zones": {
+				"deck": [
+					"▼Yellow 5",
+					"▼Yellow 1",
+					"▼Blue 2",
+					"▼Blue 4",
+					"▼Green 2",
+					"▼Red 5",
+					"▼Red 3",
+					"▼White 3",
+					"▼Green 3",
+					"▼Green 1",
+					"▼Blue 3",
+					"▼Green 2",
+					"▼White 2",
+					"▼Yellow 3",
+					"▼White 1",
+					"▼White 4",
+					"▼Blue 1",
+					"▼Yellow 3",
+					"▼Red 3",
+					"▼Blue 1",
+					"▼Blue 4",
+					"▼Red 1",
+					"▼Blue 3",
+					"▼Yellow 4",
+					"▼Yellow 4",
+					"▼White 4",
+					"▼Red 2",
+					"▼White 1",
+					"▼Blue 5",
+					"▼Red 1",
+					"▼Green 4"
+				],
+				"discard": [
+					"Yellow 2",
+					"Red 4",
+					"Red 4",
+					"Green 5",
+					"Green 3",
+					"Green 4"
+				],
+				"firework_1": [
+					"Red 1",
+					"Red 2"
+				],
+				"firework_2": [],
+				"firework_3": [],
+				"firework_4": [
+					"Blue 1"
+				],
+				"firework_5": [],
+				"hand_1": [
+					"White 1",
+					"White 5",
+					"Green 1",
+					"Blue 2",
+					"White 3"
+				],
+				"hand_2": [
+					"White 2",
+					"Yellow 1",
+					"Yellow 2",
+					"Green 1",
+					"Yellow 1"
+				],
+				"play": []
+			}
+		},
+		"inputs": [
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 3,
+				"type": "click"
+			},
+			{
+				"card": 14,
+				"to": "discard",
+				"type": "drag"
+			},
+			{
+				"card": 32,
+				"to": "play",
+				"type": "drag"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"card": 7,
+				"to": "discard",
+				"type": "drag"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 20,
+				"type": "click"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 43,
+				"type": "click"
+			},
+			{
+				"action": "Clue color",
+				"type": "perform"
+			},
+			{
+				"card": 8,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "play",
+				"type": "drag"
+			},
+			{
+				"action": "Clue color",
+				"type": "perform"
+			},
+			{
+				"card": 29,
+				"type": "click"
+			},
+			{
+				"card": 8,
+				"to": "play",
+				"type": "drag"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 34,
+				"type": "click"
+			},
+			{
+				"action": "Clue number",
+				"type": "perform"
+			},
+			{
+				"card": 13,
+				"type": "click"
+			},
+			{
+				"card": 3,
+				"to": "play",
+				"type": "drag"
+			},
+			{
+				"card": 29,
+				"to": "play",
+				"type": "drag"
+			},
+			{
+				"card": 26,
+				"to": "discard",
+				"type": "drag"
+			},
+			{
+				"card": 28,
+				"to": "play",
+				"type": "drag"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  shuffle deck",
+				"  deck → hand_1: 5 hidden cards",
+				"  deck → hand_2: Red 2, Yellow 2, White 2, Yellow 1, Yellow 2",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  You: choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose Red 2",
+				"  mark number = 2: Red 2, Yellow 2, White 2, Yellow 2",
+				"  clues = 7",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Discard",
+				"  hand_2 → discard: Yellow 2",
+				"  clues = 8",
+				"  deck → hand_2: Green 3",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Play",
+				"  hand_1 → play: Blue 1",
+				"  if playable → then",
+				"  play → firework_4: Blue 1",
+				"  if is_five and clues < 8 → else",
+				"  deck → hand_1: 1 hidden card",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose a hidden card",
+				"  mark number = 1: a hidden card, a hidden card, a hidden card",
+				"  clues = 7",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Discard",
+				"  hand_1 → discard: Red 4",
+				"  clues = 8",
+				"  deck → hand_1: 1 hidden card",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose a hidden card",
+				"  mark number = 1: a hidden card, a hidden card, a hidden card",
+				"  clues = 7",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  You: choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose White 2",
+				"  mark number = 2: Red 2, White 2, Yellow 2",
+				"  clues = 6",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue color",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue color] chose a hidden card",
+				"  mark color = Red: a hidden card, a hidden card",
+				"  clues = 5",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Play",
+				"  hand_1 → play: Red 1",
+				"  if playable → then",
+				"  play → firework_1: Red 1",
+				"  if is_five and clues < 8 → else",
+				"  deck → hand_1: 1 hidden card",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue color",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue color] chose a hidden card",
+				"  mark color = Green: a hidden card, a hidden card",
+				"  clues = 4",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Play",
+				"  hand_1 → play: Red 4",
+				"  if playable → else",
+				"  play → discard: Red 4",
+				"  fuses = 2",
+				"  deck → hand_1: 1 hidden card",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  Partner (bot): choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose a hidden card",
+				"  mark number = 2: a hidden card",
+				"  clues = 3",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Clue number",
+				"  You: choose 1 (click the highlighted cards; click anything else to cancel)"
+			],
+			[
+				"[Clue number] chose Yellow 2",
+				"  mark number = 2: Red 2, White 2, Yellow 2",
+				"  clues = 2",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Play",
+				"  hand_2 → play: Red 2",
+				"  if playable → then",
+				"  play → firework_1: Red 2",
+				"  if is_five and clues < 8 → else",
+				"  deck → hand_2: Green 1",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Play",
+				"  hand_1 → play: Green 5",
+				"  if playable → else",
+				"  play → discard: Green 5",
+				"  fuses = 1",
+				"  deck → hand_1: 1 hidden card",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 2",
+				"[turn] Partner (bot)",
+				"  Partner (bot) may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Discard",
+				"  hand_2 → discard: Green 3",
+				"  clues = 3",
+				"  deck → hand_2: Yellow 1",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play, Discard, Clue color, Clue number"
+			],
+			[
+				"[action] Play",
+				"  hand_1 → play: Green 4",
+				"  if playable → else",
+				"  play → discard: Green 4",
+				"  fuses = 0",
+				"  deck → hand_1: 1 hidden card",
+				"[trigger] end_of_turn",
+				"  if final_turns > 0 → else",
+				"  if final_turns == -1 and count(deck) == 0 → else",
+				"  if final_turns == 0 or fuses == 0 or count(firework) == 25 → then",
+				"[trigger] game_over",
+				"[game over] Game over",
+				"  if fuses == 0 → then",
+				"  result = Boom! Out of fuses"
+			]
+		],
+		"seed": 2
+	}
+]

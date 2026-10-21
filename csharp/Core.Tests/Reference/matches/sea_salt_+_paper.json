@@ -1,0 +1,2016 @@
+[
+	{
+		"end": {
+			"over": true,
+			"result": "Winner: Player 2",
+			"variables": {
+				"extra_turn": "false",
+				"last_chance_caller": "2",
+				"player": "2"
+			},
+			"zones": {
+				"browsing": [],
+				"deck": [
+					"▼Penguin",
+					"▼Anchor",
+					"▼Shell",
+					"▼Swimmer",
+					"▼Shell",
+					"▼Fish",
+					"▼1/Fish",
+					"▼Shark",
+					"▼2/Penguin",
+					"▼Fish",
+					"▼Boat",
+					"▼Shell",
+					"▼Mermaid",
+					"▼Shell",
+					"▼Boat",
+					"▼Shark",
+					"▼2/Boat",
+					"▼Crab",
+					"▼Crab",
+					"▼Octopus",
+					"▼Mermaid",
+					"▼Swimmer",
+					"▼Crab",
+					"▼Mermaid",
+					"▼Fish",
+					"▼Shark",
+					"▼Shark",
+					"▼Boat",
+					"▼Crab",
+					"▼Crab",
+					"▼Fish",
+					"▼Penguin",
+					"▼Shell"
+				],
+				"discard_piles_1": [
+					"Swimmer"
+				],
+				"discard_piles_2": [
+					"Shark",
+					"Octopus"
+				],
+				"drawn_1": [],
+				"drawn_2": [],
+				"hand_1": [
+					"3/Anchor",
+					"Anchor",
+					"Boat",
+					"Crab",
+					"Fish",
+					"Mermaid",
+					"Penguin",
+					"Shell",
+					"Swimmer"
+				],
+				"hand_2": [
+					"Crab",
+					"Crab",
+					"Crab",
+					"Octopus",
+					"Octopus",
+					"Octopus",
+					"Swimmer"
+				],
+				"played_1": [
+					"Boat",
+					"Boat"
+				],
+				"played_2": [
+					"Boat",
+					"Boat",
+					"Fish",
+					"Fish"
+				]
+			}
+		},
+		"inputs": [
+			{
+				"card": 54,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 11,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"card": 5,
+				"type": "click"
+			},
+			{
+				"card": 5,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 3,
+				"type": "click"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"card": 9,
+				"type": "click"
+			},
+			{
+				"card": 17,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 9,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Play duo",
+				"type": "perform"
+			},
+			{
+				"card": 3,
+				"type": "click"
+			},
+			{
+				"card": 9,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"type": "click"
+			},
+			{
+				"card": 1,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"card": 55,
+				"type": "click"
+			},
+			{
+				"option": "discard_piles_2",
+				"type": "choose"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"card": 51,
+				"type": "click"
+			},
+			{
+				"option": "discard_piles_1",
+				"type": "choose"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"card": 13,
+				"type": "click"
+			},
+			{
+				"card": 13,
+				"type": "click"
+			},
+			{
+				"option": "discard_piles_1",
+				"type": "choose"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 34,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"card": 30,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 20,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Play duo",
+				"type": "perform"
+			},
+			{
+				"card": 20,
+				"type": "click"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 14,
+				"type": "click"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"action": "Play duo",
+				"type": "perform"
+			},
+			{
+				"card": 5,
+				"type": "click"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"card": 53,
+				"type": "click"
+			},
+			{
+				"card": 7,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"type": "click"
+			},
+			{
+				"card": 36,
+				"type": "click"
+			},
+			{
+				"action": "Last chance",
+				"type": "perform"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"card": 41,
+				"type": "click"
+			},
+			{
+				"option": "discard_piles_2",
+				"type": "choose"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  shuffle deck",
+				"  for pile in discard_piles (2)",
+				"  deck → discard_piles_1: Crab",
+				"  deck → discard_piles_2: Swimmer",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_2 → hand_1: Swimmer",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_1 → hand_2: Crab",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_1: Boat, Boat",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose Boat",
+				"  drawn_1 → hand_1: Boat",
+				"  drawn_1 → discard_piles_1: Boat",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_1 → hand_2: Boat",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_1: Boat, Crab",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose Crab",
+				"  drawn_1 → hand_1: Crab",
+				"  drawn_1 → discard_piles_1: Boat",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_1 → hand_2: Boat",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Play duo",
+				"  Player 2 (bot): choose 2 (click the highlighted cards; click anything else to cancel)"
+			],
+			[],
+			[
+				"[Play duo] chose a hidden card, a hidden card",
+				"  hand_2 → played_2: Boat, Boat",
+				"[trigger] duo_Boat",
+				"  extra_turn = true",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → then",
+				"  extra_turn = false",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_2: 2 hidden cards",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose a hidden card",
+				"  drawn_2 → hand_2: 1 hidden card",
+				"  drawn_2 → discard_piles_1: Crab",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_1: Anchor, Octopus",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose Anchor",
+				"  drawn_1 → hand_1: Anchor",
+				"  drawn_1 → discard_piles_2: Octopus",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_2: 2 hidden cards",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose a hidden card",
+				"  drawn_2 → hand_2: 1 hidden card",
+				"  choose one: discard_piles_1, discard_piles_2"
+			],
+			[
+				"[Discard the other card onto a pile] chose discard_piles_2",
+				"  drawn_2 → discard_piles_2: Fish",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_1: Mermaid, Shell",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose Shell",
+				"  drawn_1 → hand_1: Shell",
+				"  choose one: discard_piles_1, discard_piles_2"
+			],
+			[
+				"[Discard the other card onto a pile] chose discard_piles_1",
+				"  drawn_1 → discard_piles_1: Mermaid",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_2: 2 hidden cards",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose a hidden card",
+				"  drawn_2 → hand_2: 1 hidden card",
+				"  choose one: discard_piles_1, discard_piles_2"
+			],
+			[
+				"[Discard the other card onto a pile] chose discard_piles_1",
+				"  drawn_2 → discard_piles_1: Fish",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_2 → hand_1: Fish",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_2 → hand_2: Octopus",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_1: Boat, 3/Anchor",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose 3/Anchor",
+				"  drawn_1 → hand_1: 3/Anchor",
+				"  drawn_1 → discard_piles_2: Boat",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_1 → hand_2: Fish",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Play duo",
+				"  Player 2 (bot): choose 2 (click the highlighted cards; click anything else to cancel)"
+			],
+			[],
+			[
+				"[Play duo] chose a hidden card, a hidden card",
+				"  hand_2 → played_2: Fish, Fish",
+				"[trigger] duo_Fish",
+				"  deck → hand_2: 1 hidden card",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_1 → hand_1: Mermaid",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_1 → hand_2: Crab",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_2 → hand_1: Boat",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Play duo",
+				"  You: choose 2 (click the highlighted cards; click anything else to cancel)"
+			],
+			[],
+			[
+				"[Play duo] chose Boat, Boat",
+				"  hand_1 → played_1: Boat, Boat",
+				"[trigger] duo_Boat",
+				"  extra_turn = true",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → then",
+				"  extra_turn = false",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_1: Swimmer, Boat",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose Boat",
+				"  drawn_1 → hand_1: Boat",
+				"  drawn_1 → discard_piles_1: Swimmer",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_2: 2 hidden cards",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose a hidden card",
+				"  drawn_2 → hand_2: 1 hidden card",
+				"  drawn_2 → discard_piles_2: Shark",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Last chance",
+				"  last_chance_caller = 2",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_1: Octopus, Penguin",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose Penguin",
+				"  drawn_1 → hand_1: Penguin",
+				"  choose one: discard_piles_1, discard_piles_2"
+			],
+			[
+				"[Discard the other card onto a pile] chose discard_piles_2",
+				"  drawn_1 → discard_piles_2: Octopus",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → then",
+				"[game over] Winner: Player 2"
+			]
+		],
+		"seed": 1
+	},
+	{
+		"end": {
+			"over": true,
+			"result": "Winner: You",
+			"variables": {
+				"extra_turn": "false",
+				"last_chance_caller": "1",
+				"player": "1"
+			},
+			"zones": {
+				"browsing": [],
+				"deck": [
+					"▼Penguin",
+					"▼Octopus",
+					"▼3/Anchor",
+					"▼Fish",
+					"▼Shell",
+					"▼Octopus",
+					"▼2/Boat",
+					"▼Swimmer",
+					"▼Crab",
+					"▼Crab",
+					"▼Shark",
+					"▼Crab",
+					"▼Shell",
+					"▼Boat",
+					"▼Shell",
+					"▼Penguin",
+					"▼Boat",
+					"▼Boat",
+					"▼Shark",
+					"▼Mermaid",
+					"▼Octopus",
+					"▼Mermaid",
+					"▼Fish",
+					"▼Octopus",
+					"▼Swimmer",
+					"▼Fish",
+					"▼Shark",
+					"▼Fish",
+					"▼Octopus",
+					"▼Mermaid",
+					"▼Boat",
+					"▼Swimmer",
+					"▼Crab",
+					"▼Shell",
+					"▼Crab",
+					"▼Fish",
+					"▼Boat",
+					"▼Shell",
+					"▼Boat",
+					"▼Crab"
+				],
+				"discard_piles_1": [],
+				"discard_piles_2": [],
+				"drawn_1": [],
+				"drawn_2": [],
+				"hand_1": [
+					"2/Penguin",
+					"Fish",
+					"Mermaid",
+					"Penguin",
+					"Shark",
+					"Shell"
+				],
+				"hand_2": [
+					"1/Fish",
+					"Anchor",
+					"Anchor",
+					"Boat",
+					"Boat",
+					"Crab",
+					"Fish",
+					"Shark"
+				],
+				"played_1": [
+					"Swimmer",
+					"Swimmer",
+					"Crab",
+					"Crab"
+				],
+				"played_2": []
+			}
+		},
+		"inputs": [
+			{
+				"card": 54,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 57,
+				"type": "click"
+			},
+			{
+				"card": 1,
+				"type": "click"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 57,
+				"type": "click"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 43,
+				"type": "click"
+			},
+			{
+				"card": 43,
+				"type": "click"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"card": 32,
+				"type": "click"
+			},
+			{
+				"card": 32,
+				"type": "click"
+			},
+			{
+				"option": "discard_piles_1",
+				"type": "choose"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 49,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 4,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 20,
+				"type": "click"
+			},
+			{
+				"card": 20,
+				"type": "click"
+			},
+			{
+				"action": "Play duo",
+				"type": "perform"
+			},
+			{
+				"card": 54,
+				"type": "click"
+			},
+			{
+				"card": 57,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"card": 18,
+				"type": "click"
+			},
+			{
+				"card": 18,
+				"type": "click"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 12,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"type": "click"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 39,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"action": "Play duo",
+				"type": "perform"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 12,
+				"type": "click"
+			},
+			{
+				"option": "discard_piles_2",
+				"type": "choose"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 31,
+				"type": "click"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			},
+			{
+				"card": 8,
+				"type": "click"
+			},
+			{
+				"card": 44,
+				"type": "click"
+			},
+			{
+				"action": "Last chance",
+				"type": "perform"
+			},
+			{
+				"action": "Sort hand",
+				"type": "perform"
+			},
+			{
+				"card": 8,
+				"type": "click"
+			},
+			{
+				"action": "End turn",
+				"type": "perform"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  shuffle deck",
+				"  for pile in discard_piles (2)",
+				"  deck → discard_piles_1: Mermaid",
+				"  deck → discard_piles_2: Swimmer",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_2 → hand_1: Swimmer",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_2: 2 hidden cards",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose a hidden card",
+				"  drawn_2 → hand_2: 1 hidden card",
+				"  drawn_2 → discard_piles_2: Swimmer",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_2 → hand_1: Swimmer",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_2: 2 hidden cards",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose a hidden card",
+				"  drawn_2 → hand_2: 1 hidden card",
+				"  drawn_2 → discard_piles_2: Boat",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_1: 2/Penguin, Shell",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose 2/Penguin",
+				"  drawn_1 → hand_1: 2/Penguin",
+				"  choose one: discard_piles_1, discard_piles_2"
+			],
+			[
+				"[Discard the other card onto a pile] chose discard_piles_1",
+				"  drawn_1 → discard_piles_1: Shell",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_1 → hand_2: Shell",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_1 → hand_1: Mermaid",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_2 → hand_2: Boat",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_1: Fish, Penguin",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose Fish",
+				"  drawn_1 → hand_1: Fish",
+				"  drawn_1 → discard_piles_1: Penguin",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Play duo",
+				"  You: choose 2 (click the highlighted cards; click anything else to cancel)"
+			],
+			[],
+			[
+				"[Play duo] chose Swimmer, Swimmer",
+				"  hand_1 → played_1: Swimmer, Swimmer",
+				"[trigger] duo_Swimmer",
+				"[trigger] duo_Shark",
+				"  hand_2 → hand_1: Shell",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_2: 2 hidden cards",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose a hidden card",
+				"  drawn_2 → hand_2: 1 hidden card",
+				"  drawn_2 → discard_piles_2: Crab",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_2 → hand_1: Crab",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_2: 2 hidden cards",
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose a hidden card",
+				"  drawn_2 → hand_2: 1 hidden card",
+				"  drawn_2 → discard_piles_2: Anchor",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_1 → hand_1: Penguin",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_1 by Kind, Color",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_2 → hand_2: Anchor",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_1: Crab, 1/Fish",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose Crab",
+				"  drawn_1 → hand_1: Crab",
+				"  drawn_1 → discard_piles_1: 1/Fish",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Play duo",
+				"  You: choose 2 (click the highlighted cards; click anything else to cancel)"
+			],
+			[],
+			[
+				"[Play duo] chose Crab, Crab",
+				"  hand_1 → played_1: Crab, Crab",
+				"[trigger] duo_Crab",
+				"  choose one: discard_piles_1, discard_piles_2"
+			],
+			[
+				"[Crabs: look through which pile?] chose discard_piles_2",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_1 → hand_2: 1/Fish",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw two, Take a discard"
+			],
+			[
+				"[action] Draw two",
+				"  deck → drawn_1: Boat, Shark",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Keep one card] chose Shark",
+				"  drawn_1 → hand_1: Shark",
+				"  drawn_1 → discard_piles_1: Boat",
+				"  You may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] Last chance",
+				"  last_chance_caller = 1",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 2",
+				"[turn] Player 2 (bot)",
+				"  if player == last_chance_caller → else",
+				"  if count(deck) == 0 → else",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Sort hand",
+				"  sort hand_2 by Kind, Color",
+				"  Player 2 (bot) may: Draw two, Take a discard"
+			],
+			[
+				"[action] Take a discard",
+				"  discard_piles_1 → hand_2: Boat",
+				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
+			],
+			[
+				"[action] End turn",
+				"  if extra_turn and ending == 'End turn' → else",
+				"  extra_turn = false",
+				"  player = 1",
+				"[turn] You",
+				"  if player == last_chance_caller → then",
+				"[game over] Winner: You"
+			]
+		],
+		"seed": 2
+	}
+]

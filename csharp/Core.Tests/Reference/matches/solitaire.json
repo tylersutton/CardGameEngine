@@ -1,0 +1,5711 @@
+[
+	{
+		"end": {
+			"over": false,
+			"result": "",
+			"variables": {
+				"draw_count": "1",
+				"result": ""
+			},
+			"zones": {
+				"foundation_1": [
+					"A♣"
+				],
+				"foundation_2": [
+					"A♠",
+					"2♠"
+				],
+				"foundation_3": [
+					"A♦",
+					"2♦",
+					"3♦",
+					"4♦"
+				],
+				"foundation_4": [],
+				"stock": [],
+				"tableau_1": [
+					"K♥",
+					"Q♣",
+					"J♦",
+					"10♠",
+					"9♦",
+					"8♣",
+					"7♦"
+				],
+				"tableau_2": [
+					"K♠",
+					"Q♥",
+					"J♣",
+					"10♦",
+					"9♣",
+					"8♦",
+					"7♠",
+					"6♥",
+					"5♠"
+				],
+				"tableau_3": [
+					"K♣",
+					"Q♦"
+				],
+				"tableau_4": [
+					"▼5♣",
+					"▼2♥",
+					"7♥",
+					"6♠",
+					"5♥"
+				],
+				"tableau_5": [
+					"▼8♠",
+					"10♥",
+					"9♠"
+				],
+				"tableau_6": [
+					"5♦",
+					"4♠",
+					"3♥",
+					"2♣",
+					"A♥"
+				],
+				"tableau_7": [
+					"K♦",
+					"Q♠",
+					"J♥"
+				],
+				"waste": [
+					"8♥",
+					"3♠",
+					"9♥",
+					"J♠",
+					"3♣",
+					"4♣",
+					"6♣",
+					"4♥",
+					"7♣",
+					"10♣",
+					"6♦"
+				]
+			}
+		},
+		"inputs": [
+			{
+				"card": 39,
+				"type": "double_click"
+			},
+			{
+				"card": 37,
+				"type": "click"
+			},
+			{
+				"card": 5,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 25,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 20,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 17,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 44,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"type": "click"
+			},
+			{
+				"card": 48,
+				"type": "click"
+			},
+			{
+				"card": 31,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 34,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 34,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"card": 3,
+				"type": "click"
+			},
+			{
+				"card": 50,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 37,
+				"type": "click"
+			},
+			{
+				"card": 20,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 2,
+				"type": "click"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 44,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 26,
+				"type": "double_click"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"card": 50,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 37,
+				"type": "click"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"card": 41,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 16,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 45,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 31,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"card": 13,
+				"type": "click"
+			},
+			{
+				"card": 13,
+				"type": "double_click"
+			},
+			{
+				"card": 3,
+				"type": "click"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"card": 35,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 3,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 15,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 24,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 47,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 28,
+				"type": "click"
+			},
+			{
+				"card": 33,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"type": "double_click"
+			},
+			{
+				"card": 12,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 25,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 25,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 25,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 12,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 37,
+				"type": "click"
+			},
+			{
+				"card": 12,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 37,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 12,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 51,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 20,
+				"type": "click"
+			},
+			{
+				"card": 46,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 26,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 26,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"type": "double_click"
+			},
+			{
+				"card": 49,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 26,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 50,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 32,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 26,
+				"type": "double_click"
+			},
+			{
+				"card": 13,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 27,
+				"type": "double_click"
+			},
+			{
+				"card": 50,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"type": "double_click"
+			},
+			{
+				"card": 49,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 50,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 50,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 45,
+				"type": "click"
+			},
+			{
+				"card": 49,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"type": "double_click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 33,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 50,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 31,
+				"type": "click"
+			},
+			{
+				"card": 33,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 50,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 49,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 49,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 50,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"card": 49,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 50,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 11,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 28,
+				"type": "click"
+			},
+			{
+				"card": 6,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 28,
+				"type": "double_click"
+			},
+			{
+				"card": 13,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 18,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 8,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"type": "double_click"
+			},
+			{
+				"card": 33,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 49,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 4,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 23,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 29,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 23,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 23,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 9,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 33,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 20,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"to": "foundation_1",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 5,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 23,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 51,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 12,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 23,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 29,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 25,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 44,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 36,
+				"type": "click"
+			},
+			{
+				"card": 33,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 29,
+				"type": "double_click"
+			},
+			{
+				"card": 33,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 25,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 38,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"type": "double_click"
+			},
+			{
+				"card": 5,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "foundation_1",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 3,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 29,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 3,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 29,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 3,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 23,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 20,
+				"type": "click"
+			},
+			{
+				"card": 1,
+				"type": "double_click"
+			},
+			{
+				"card": 1,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 13,
+				"type": "double_click"
+			},
+			{
+				"card": 1,
+				"type": "double_click"
+			},
+			{
+				"card": 33,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 29,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 29,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"card": 23,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 23,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 2,
+				"type": "click"
+			},
+			{
+				"card": 41,
+				"type": "click"
+			},
+			{
+				"card": 13,
+				"type": "double_click"
+			},
+			{
+				"card": 16,
+				"type": "click"
+			},
+			{
+				"card": 13,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 23,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 36,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 48,
+				"type": "click"
+			},
+			{
+				"card": 49,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 5,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "tableau_3",
+				"type": "drag"
+			},
+			{
+				"card": 9,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"type": "double_click"
+			},
+			{
+				"card": 13,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 13,
+				"type": "double_click"
+			},
+			{
+				"card": 1,
+				"type": "double_click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 49,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "tableau_6",
+				"type": "drag"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  shuffle stock",
+				"  for column in tableau (7)",
+				"  stock → tableau_1: 6♠",
+				"  stock → tableau_2: Q♥, A♣",
+				"  face down in tableau_2: Q♥",
+				"  stock → tableau_3: 2♠, 8♦, 9♣",
+				"  face down in tableau_3: 2♠, 8♦",
+				"  stock → tableau_4: 5♣, 2♥, 7♥, 10♠",
+				"  face down in tableau_4: 5♣, 2♥, 7♥",
+				"  stock → tableau_5: 8♠, 10♥, 6♥, J♣, K♥",
+				"  face down in tableau_5: 8♠, 10♥, 6♥, J♣",
+				"  stock → tableau_6: 5♦, K♦, K♣, K♠, 3♥, 5♥",
+				"  face down in tableau_6: 5♦, K♦, K♣, K♠, 3♥",
+				"  stock → tableau_7: 2♣, 4♦, J♥, 5♠, 9♠, 2♦, 7♦",
+				"  face down in tableau_7: 2♣, 4♦, J♥, 5♠, 9♠, 2♦"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_1: A♣",
+				"  face up in tableau_2: Q♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: Q♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_7: 6♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: A♠"
+			],
+			[
+				"[action] Waste to foundation",
+				"  waste → foundation_2: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_5 → tableau_1: K♥",
+				"  face up in tableau_5: J♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_5 → tableau_2: J♣",
+				"  face up in tableau_5: 6♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♥, 3♠, 8♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_7: 5♥",
+				"  face up in tableau_6: 3♥"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: J♠, 3♣, 4♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 6♣, 4♥, 7♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: J♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 10♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 6♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 9♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_4: 9♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: A♦, Q♠, A♥"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♠, 10♦, 3♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: Q♣, 7♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → then",
+				"  waste → stock: 7♠, Q♣, 3♦, 10♦, 4♠, A♥, Q♠, A♦, 6♦, 10♣, J♦, 7♣, 4♥, 6♣, 4♣, 3♣, J♠, 9♥, 8♣, 3♠, 8♥, Q♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: Q♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 3♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: J♠, 3♣, 4♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 6♣, 4♥, 7♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: J♦, 10♣, 6♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: A♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Waste to foundation",
+				"  waste → foundation_3: A♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: Q♠, A♥, 4♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 10♦, 3♦, Q♣"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_1: Q♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 7♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → then",
+				"  waste → stock: 7♠, 3♦, 10♦, 4♠, A♥, Q♠, 6♦, 10♣, J♦, 7♣, 4♥, 6♣, 4♣, 3♣, J♠, 9♥, 8♣, 3♠, 8♥, Q♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: Q♦, 8♥, 3♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♣, 9♥, J♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 3♣, 4♣, 6♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 7♣, J♦, 10♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 6♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: Q♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: A♥"
+			],
+			[
+				"[action] Waste to foundation",
+				"  waste → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 10♦"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_2: 10♦"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_7: 4♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_7: 3♥",
+				"  face up in tableau_6: K♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_6: Q♥, J♣, 10♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_6: 9♣",
+				"  face up in tableau_3: 8♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 3♦, 7♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_6: 8♦",
+				"  face up in tableau_3: 2♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_3 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_3: K♠, Q♥, J♣, 10♦, 9♣, 8♦",
+				"  face up in tableau_6: K♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: K♠, Q♥, J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: K♠, Q♥, J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_2: K♥, Q♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_1: K♠, Q♥, J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: K♥, Q♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_2: K♠, Q♥, J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_1: K♥, Q♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → then",
+				"  waste → stock: 7♠, 3♦, Q♠, 6♦, 10♣, J♦, 7♣, 4♥, 6♣, 4♣, 3♣, J♠, 9♥, 8♣, 3♠, 8♥, Q♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: K♠, Q♥, J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: K♠, Q♥, J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: Q♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: K♠, Q♥, J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_6: Q♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: K♠, Q♥, J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: K♠, Q♥, J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_2: K♣, Q♦",
+				"  face up in tableau_6: K♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_7: 2♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♥, 3♠, 8♣"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_4: 8♣"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_7: A♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_7 → foundation_3: A♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_7 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_7: 2♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_7: A♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: Q♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 9♥, J♠, 3♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_4: 7♦, 6♠, 5♥, 4♠, 3♥, 2♠, A♦",
+				"  face up in tableau_7: 2♦"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_3: A♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_4: A♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_7 → foundation_3: 2♦",
+				"  face up in tableau_7: 9♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: Q♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_4: A♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: Q♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_7: 8♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♣, 6♣, 4♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: Q♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: J♣, 10♦, 9♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_2: 8♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 7♣, J♦, 10♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_4: 2♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_7: 8♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: Q♣"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_4: 2♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_4: 2♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_4: 2♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 6♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_3: 8♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: Q♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: Q♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_4: 2♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_7: 8♦"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_4: 2♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_3: 8♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: Q♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: J♣, 10♦, 9♣, 8♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: Q♣"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_6: Q♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_4: 2♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_7: 8♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_2: 8♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 3♦, 7♠"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_2: 7♠"
+			],
+			[
+				"[action] Waste to foundation",
+				"  waste → foundation_3: 3♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_4: A♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_5 → tableau_2: 6♥",
+				"  face up in tableau_5: 10♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_5: 9♠",
+				"  face up in tableau_7: 5♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: J♣, 10♦, 9♣, 8♦, 7♠, 6♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: J♣, 10♦, 9♣, 8♦, 7♠, 6♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: J♣, 10♦, 9♣, 8♦, 7♠, 6♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: J♣, 10♦, 9♣, 8♦, 7♠, 6♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_5: 8♦, 7♠, 6♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: J♣, 10♦, 9♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_5: 5♠",
+				"  face up in tableau_7: J♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_6: J♥",
+				"  face up in tableau_7: 4♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_5 → tableau_3: 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → then",
+				"  waste → stock: 6♦, 10♣, J♦, 7♣, 4♥, 6♣, 4♣, 3♣, J♠, 9♥, 3♠, 8♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_7 → foundation_3: 4♦",
+				"  face up in tableau_7: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_7: A♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: J♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_4: 2♣, A♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_7: K♠, Q♥, J♣, 10♦, 9♣, 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_3: K♠, Q♥, J♣, 10♦, 9♣, 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_4: A♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_4 → tableau_6: 10♠, 9♦, 8♣, 7♦, 6♠, 5♥, 4♠, 3♥, 2♣, A♥",
+				"  face up in tableau_4: 7♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_6 → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_5: 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_5 → tableau_3: 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♥, 3♠, 9♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_6 → foundation_1: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: J♣, 10♦, 9♣, 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_4: 6♠, 5♥, 4♠, 3♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: J♥, 10♠, 9♦, 8♣, 7♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: J♣, 10♦, 9♣, 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_7: K♠, Q♥, J♣, 10♦, 9♣, 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: K♣, Q♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: J♠, 3♣, 4♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_2: K♠, Q♥, J♣, 10♦, 9♣, 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♥, 10♠, 9♦, 8♣, 7♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_2: 4♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_7: K♥, Q♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 6♣, 4♥, 7♣"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_4: 2♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: J♦, 10♣, 6♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_5: 8♦, 7♠, 6♥, 5♠, 4♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_4: A♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_3: 4♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_5 → tableau_2: 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → then",
+				"  waste → stock: 6♦, 10♣, J♦, 7♣, 4♥, 6♣, 4♣, 3♣, J♠, 9♥, 3♠, 8♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_1: K♥, Q♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_7: K♦, Q♠, J♥, 10♠, 9♦, 8♣, 7♦",
+				"  face up in tableau_6: 5♦"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_4 → tableau_7: 6♠, 5♥, 4♠, 3♥, 2♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_7 → foundation_1: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_7: 2♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_7: A♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: J♣, 10♦, 9♣, 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_6: 4♠, 3♥, 2♠, A♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_5: 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_5: 4♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_7: 4♠, 3♥, 2♠, A♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_7 → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: J♣, 10♦, 9♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_3: 4♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_7: A♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_5 → tableau_2: 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_5: 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_6: 4♠, 3♥, 2♠, A♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_6 → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_1: J♥, 10♠, 9♦, 8♣, 7♦, 6♠, 5♥"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_6 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_6: 2♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_6: A♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_6 → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_6 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_5 → tableau_2: 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_5: 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_5: 4♦"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_3: 4♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_7: J♥, 10♠, 9♦, 8♣, 7♦, 6♠, 5♥"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_6: 2♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_6: A♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_1: J♥, 10♠, 9♦, 8♣, 7♦, 6♠, 5♥"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 3♠, 9♥, J♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 3♣, 4♣, 6♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_6 → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♥, 7♣, J♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_6: A♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_7: J♥, 10♠, 9♦, 8♣, 7♦, 6♠, 5♥"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_1: J♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 10♣, 6♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_3: J♣, 10♦, 9♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_4: 6♠, 5♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_5 → tableau_3: 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_7 → tableau_1: 10♠, 9♦, 8♣, 7♦"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_6 → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_6: A♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_6 → foundation_4: A♥",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_6 → foundation_2: 2♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_6: 2♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_2: J♣, 10♦, 9♣, 8♦, 7♠, 6♥, 5♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_6: A♥"
+			]
+		],
+		"seed": 1
+	},
+	{
+		"end": {
+			"over": false,
+			"result": "",
+			"variables": {
+				"draw_count": "3",
+				"result": ""
+			},
+			"zones": {
+				"foundation_1": [],
+				"foundation_2": [
+					"A♦",
+					"2♦",
+					"3♦"
+				],
+				"foundation_3": [
+					"A♣"
+				],
+				"foundation_4": [
+					"A♠"
+				],
+				"stock": [
+					"▼K♠",
+					"▼J♥",
+					"▼7♥",
+					"▼7♠",
+					"▼8♠",
+					"▼4♣",
+					"▼5♠",
+					"▼4♦",
+					"▼K♥"
+				],
+				"tableau_1": [
+					"K♦",
+					"Q♠"
+				],
+				"tableau_2": [
+					"K♣",
+					"Q♦"
+				],
+				"tableau_3": [
+					"Q♥"
+				],
+				"tableau_4": [
+					"▼9♠",
+					"9♦",
+					"8♣"
+				],
+				"tableau_5": [
+					"▼J♣",
+					"10♥",
+					"9♣",
+					"8♥",
+					"7♣",
+					"6♥",
+					"5♣",
+					"4♥",
+					"3♠",
+					"2♥"
+				],
+				"tableau_6": [
+					"▼A♥",
+					"▼7♦",
+					"▼6♦",
+					"▼2♠",
+					"Q♣",
+					"J♦"
+				],
+				"tableau_7": [
+					"▼10♣",
+					"▼10♠",
+					"▼3♣",
+					"▼J♠",
+					"▼6♣",
+					"▼5♦",
+					"6♠",
+					"5♥",
+					"4♠",
+					"3♥",
+					"2♣"
+				],
+				"waste": [
+					"9♥",
+					"8♦",
+					"10♦"
+				]
+			}
+		},
+		"inputs": [
+			{
+				"card": 20,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 43,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "foundation_1",
+				"type": "drag"
+			},
+			{
+				"card": 45,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"card": 17,
+				"type": "click"
+			},
+			{
+				"card": 18,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 27,
+				"type": "click"
+			},
+			{
+				"card": 27,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_1",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 29,
+				"type": "click"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"card": 19,
+				"type": "click"
+			},
+			{
+				"card": 23,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 33,
+				"type": "click"
+			},
+			{
+				"card": 39,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 39,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 39,
+				"type": "double_click"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 39,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 39,
+				"type": "double_click"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 17,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 29,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"type": "double_click"
+			},
+			{
+				"card": 39,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 39,
+				"type": "double_click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"type": "double_click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 39,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"card": 19,
+				"type": "click"
+			},
+			{
+				"card": 39,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 23,
+				"type": "click"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"card": 26,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 27,
+				"type": "double_click"
+			},
+			{
+				"card": 12,
+				"type": "click"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 27,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 27,
+				"type": "double_click"
+			},
+			{
+				"card": 40,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 11,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 40,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 36,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 37,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"card": 27,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 27,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 27,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 27,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 27,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 16,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 27,
+				"type": "double_click"
+			},
+			{
+				"card": 17,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 14,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 2,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 7,
+				"type": "click"
+			},
+			{
+				"card": 3,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 38,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 33,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 47,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 14,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"card": 36,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 36,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 29,
+				"type": "click"
+			},
+			{
+				"card": 4,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"card": 0,
+				"type": "double_click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"card": 36,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 7,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "foundation_1",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"card": 23,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"card": 36,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 36,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"card": 36,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"type": "double_click"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 29,
+				"type": "click"
+			},
+			{
+				"card": 36,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 4,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"type": "double_click"
+			},
+			{
+				"card": 36,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 40,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "foundation_1",
+				"type": "drag"
+			},
+			{
+				"card": 3,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 23,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 36,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 36,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"card": 15,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"type": "double_click"
+			},
+			{
+				"card": 36,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 51,
+				"to": "tableau_2",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"card": 28,
+				"to": "foundation_2",
+				"type": "drag"
+			},
+			{
+				"card": 4,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 46,
+				"to": "tableau_4",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 39,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 7,
+				"type": "click"
+			},
+			{
+				"card": 39,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"card": 23,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_1",
+				"type": "drag"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_1",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_1",
+				"type": "drag"
+			},
+			{
+				"card": 36,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 36,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"type": "double_click"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 19,
+				"type": "click"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			},
+			{
+				"card": 0,
+				"to": "foundation_1",
+				"type": "drag"
+			},
+			{
+				"card": 36,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"type": "double_click"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "foundation_1",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 36,
+				"to": "tableau_1",
+				"type": "drag"
+			},
+			{
+				"card": 36,
+				"to": "tableau_6",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "tableau_5",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"type": "double_click"
+			},
+			{
+				"card": 33,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "foundation_4",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "foundation_3",
+				"type": "drag"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"to": "tableau_7",
+				"type": "drag"
+			},
+			{
+				"action": "Draw 1/3",
+				"type": "perform"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  shuffle stock",
+				"  for column in tableau (7)",
+				"  stock → tableau_1: 3♠",
+				"  stock → tableau_2: 3♥, 6♥",
+				"  face down in tableau_2: 3♥",
+				"  stock → tableau_3: Q♥, Q♦, J♦",
+				"  face down in tableau_3: Q♥, Q♦",
+				"  stock → tableau_4: 9♠, 9♦, 3♦, K♣",
+				"  face down in tableau_4: 9♠, 9♦, 3♦",
+				"  stock → tableau_5: J♣, 10♥, K♦, 5♣, 8♥",
+				"  face down in tableau_5: J♣, 10♥, K♦, 5♣",
+				"  stock → tableau_6: A♥, 7♦, 6♦, 2♠, Q♣, 9♣",
+				"  face down in tableau_6: A♥, 7♦, 6♦, 2♠, Q♣",
+				"  stock → tableau_7: 10♣, 10♠, 3♣, J♠, 6♣, 5♦, 6♠",
+				"  face down in tableau_7: 10♣, 10♠, 3♣, J♠, 6♣, 5♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_5 → tableau_6: 8♥",
+				"  face up in tableau_5: 5♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: Q♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_5 → tableau_2: 5♣",
+				"  face up in tableau_5: K♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♦, 7♣, A♠"
+			],
+			[
+				"[action] Waste to foundation",
+				"  waste → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_6: 7♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 10♦, A♣, K♥"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 5♥, 4♥, 2♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_6: 6♥, 5♣",
+				"  face up in tableau_2: 3♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 2♦"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_1: 2♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_1: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♦, 5♠, 4♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♣, 8♠, 7♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 7♥, 4♠, 2♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: J♥, A♦, K♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_1: A♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_4: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_1: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_2: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → then",
+				"  waste → stock: K♠, A♦, J♥, 2♣, 4♠, 7♥, 7♠, 8♠, 8♣, 4♣, 5♠, 4♦, 2♥, 4♥, 5♥, K♥, A♣, 10♦, 8♦, 9♥, Q♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: Q♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_1: A♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_3: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♦, 10♦, A♣"
+			],
+			[
+				"[action] Waste to foundation",
+				"  waste → foundation_2: A♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: K♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_1: A♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_1: A♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_1: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_2: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_1: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_2: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_1: A♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_1: A♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_1: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_3: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_1: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_4: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 5♥, 4♥, 2♥"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_1: A♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♦, 5♠, 4♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_2: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_1: A♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_1: A♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_1: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_2: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_1: A♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♣, 8♠, 7♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 7♥, 4♠, 2♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_4: A♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_2: 2♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_1: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_2: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_1: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_2: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_1: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_3: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: J♥"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: A♦"
+			],
+			[
+				"[action] Waste to foundation",
+				"  waste → foundation_2: A♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_2: 2♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: K♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → then",
+				"  waste → stock: K♠, J♥, 4♠, 7♥, 7♠, 8♠, 8♣, 4♣, 5♠, 4♦, 2♥, 4♥, 5♥, K♥, 10♦, 8♦, 9♥, Q♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_1: 2♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_2: 2♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: Q♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_5: Q♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_5: J♦",
+				"  face up in tableau_3: Q♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_3 → tableau_4: Q♦",
+				"  face up in tableau_3: Q♥"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_1: 2♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 9♥, 8♦, 10♦"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_2: 2♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_1: 2♦"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_2: 2♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_2 → tableau_1: 2♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: K♥, 5♥, 4♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_6: 4♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_1 → foundation_2: 2♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_7: 5♥"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 2♥, 4♦, 5♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♣"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: 3♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♠, 7♠, 7♥"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♠, J♥, K♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_5 → tableau_1: K♦, Q♠, J♦",
+				"  face up in tableau_5: 10♥"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → then",
+				"  waste → stock: K♠, J♥, 4♠, 7♥, 7♠, 8♠, 8♣, 4♣, 5♠, 4♦, 2♥, K♥, 10♦, 8♦, 9♥"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 10♦, K♥, 2♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_5: 9♣, 8♥, 7♣, 6♥, 5♣, 4♥, 3♠",
+				"  face up in tableau_6: Q♣"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_5: 2♥"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_5: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_3: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: J♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 5♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_5: A♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_3: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_5: A♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_3: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: J♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♣"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_5: A♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 7♠, 7♥, 4♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: J♥, K♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: J♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → then",
+				"  waste → stock: K♠, J♥, 4♠, 7♥, 7♠, 8♠, 8♣, 4♣, 5♠, 4♦, K♥, 10♦, 8♦, 9♥"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: J♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 9♥, 8♦, 10♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: K♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 5♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: J♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♣, 8♣, 8♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 7♠, 7♥, 4♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_7: 4♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: J♥, K♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → then",
+				"  waste → stock: K♠, J♥, 7♥, 7♠, 8♠, 8♣, 4♣, 5♠, 4♦, K♥, 10♦, 8♦, 9♥"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_2: 2♣"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: J♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_2 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♦"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_3: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 10♦, K♥, 4♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_2 → tableau_7: 3♥"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_5: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_4 → tableau_2: K♣, Q♦",
+				"  face up in tableau_4: 3♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_4: 2♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: J♦"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_4: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_4 → foundation_2: 3♦",
+				"  face up in tableau_4: 9♦",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 5♠, 4♣, 8♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_7: 2♣"
+			],
+			[
+				"[action] Waste to tableau",
+				"  waste → tableau_4: 8♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_5: A♣"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♠, 7♠, 7♥"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_3: A♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: J♥, K♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → then",
+				"  waste → stock: K♠, J♥, 7♥, 7♠, 8♠, 4♣, 5♠, 4♦, K♥, 10♦, 8♦, 9♥"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_4: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_7 → foundation_3: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_4 → tableau_5: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 9♥, 8♦, 10♦"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: K♥, 4♦, 5♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 4♣, 8♠, 7♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: J♦"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♦"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: J♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 7♥, J♥, K♠"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 1"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_7: 2♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → then",
+				"  waste → stock: K♠, J♥, 7♥, 7♠, 8♠, 4♣, 5♠, 4♦, K♥, 10♦, 8♦, 9♥"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_7 → foundation_3: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_7: 2♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_1: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_6 → tableau_1: J♦"
+			],
+			[
+				"[action] Tableau to tableau",
+				"  tableau_1 → tableau_6: J♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_1 → tableau_5: A♠"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_7 → foundation_3: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_7: 2♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_7 → foundation_3: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 8♦"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_5 → foundation_4: A♠",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_7: 2♣"
+			],
+			[
+				"[action] Tableau to foundation",
+				"  tableau_7 → foundation_3: 2♣",
+				"[trigger] check_win",
+				"  if count(foundation) == 52 → else"
+			],
+			[
+				"[action] Turn the stock",
+				"  if count(stock) == 0 → else",
+				"  stock → waste: 10♦"
+			],
+			[
+				"[action] Foundation to tableau",
+				"  foundation_3 → tableau_7: 2♣"
+			],
+			[
+				"[action] Draw 1/3",
+				"  draw_count = 3"
+			]
+		],
+		"seed": 2
+	}
+]

@@ -1,0 +1,1630 @@
+[
+	{
+		"end": {
+			"over": true,
+			"result": "Winner: You",
+			"variables": {
+				"actor": "1",
+				"noped": "false",
+				"pending": "",
+				"player": "1",
+				"target": "2"
+			},
+			"zones": {
+				"box": [],
+				"deck": [
+					"▼Steal"
+				],
+				"hand_1": [
+					"Defuse"
+				],
+				"hand_2": [],
+				"hand_3": [],
+				"out": [
+					"Bomb",
+					"Bomb"
+				],
+				"peek_1": [],
+				"peek_2": [],
+				"peek_3": [],
+				"pile": [
+					"Peek",
+					"Nope",
+					"Skip",
+					"Shuffle",
+					"Shuffle",
+					"Peek",
+					"Nope",
+					"Peek",
+					"Defuse",
+					"Peek",
+					"Nope",
+					"Shuffle",
+					"Nope",
+					"Steal",
+					"Shuffle",
+					"Skip",
+					"Nope",
+					"Steal",
+					"Skip",
+					"Steal",
+					"Defuse",
+					"Skip",
+					"Defuse",
+					"Defuse"
+				]
+			}
+		},
+		"inputs": [
+			{
+				"card": 16,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Nope!",
+				"type": "choose"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"card": 7,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"card": 11,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"card": 13,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"card": 17,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Nope!",
+				"type": "choose"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"card": 18,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"option": "Done",
+				"type": "choose"
+			},
+			{
+				"card": 12,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 22,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "hand_3",
+				"type": "drag"
+			},
+			{
+				"card": 24,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 15,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"option": "Nope!",
+				"type": "choose"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"card": 14,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Nope!",
+				"type": "choose"
+			},
+			{
+				"card": 22,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 8,
+				"type": "click"
+			},
+			{
+				"card": 9,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "hand_3",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 25,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 8,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Nope!",
+				"type": "choose"
+			},
+			{
+				"card": 21,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 2,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"card": 10,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 20,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 9,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 20,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 3,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 10,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "hand_2",
+				"type": "drag"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  for player in players (3)",
+				"  sort hand_1 by kind, name",
+				"  sort hand_2 by kind, name",
+				"  sort hand_3 by kind, name",
+				"  box → deck: 16 hidden cards",
+				"  box → deck: 5 hidden cards",
+				"  shuffle deck",
+				"  for player in players (3)",
+				"  box → hand_1: Defuse",
+				"  box → hand_2: 1 hidden card",
+				"  box → hand_3: 1 hidden card",
+				"  deck → hand_1: Shuffle, Shuffle, Peek, Peek",
+				"  deck → hand_2: 4 hidden cards",
+				"  deck → hand_3: 4 hidden cards",
+				"  box → deck: 2 hidden cards",
+				"  box → deck: 2 hidden cards",
+				"  shuffle deck",
+				"  player = 3",
+				"[turn] East (bot)",
+				"  East (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_3 → pile: Peek",
+				"  pending = Peek",
+				"  actor = 3",
+				"  noped = false",
+				"  target = 1",
+				"  player = 1",
+				"  player = 3",
+				"  player = 2",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Nope!",
+				"  if choice == 'Nope!' → then",
+				"  hand_2 → pile: Nope",
+				"  noped = true",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 1",
+				"  player = 3",
+				"[trigger] resolve",
+				"  if not noped → else",
+				"  pending = ",
+				"[turn] East (bot)"
+			],
+			[
+				"  East (bot) may: Play an action, Draw",
+				"[action] Play an action",
+				"  hand_3 → pile: Skip",
+				"  pending = Skip",
+				"  actor = 3",
+				"  noped = false",
+				"  target = 1",
+				"  player = 1",
+				"  player = 3",
+				"  player = 2",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 3",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Skip",
+				"  player = 1",
+				"  pending = ",
+				"[turn] You"
+			],
+			[
+				"  You may: Play an action, Draw",
+				"[action] Play an action",
+				"  hand_1 → pile: Shuffle",
+				"  pending = Shuffle",
+				"  actor = 1",
+				"  noped = false",
+				"  target = 2",
+				"  player = 2",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 1",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 1",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Shuffle",
+				"  shuffle deck",
+				"  pending = ",
+				"[turn] You"
+			],
+			[
+				"  You may: Play an action, Draw",
+				"[action] Play an action",
+				"  hand_1 → pile: Shuffle",
+				"  pending = Shuffle",
+				"  actor = 1",
+				"  noped = false",
+				"  target = 2",
+				"  player = 2",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 1",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 1",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Shuffle",
+				"  shuffle deck",
+				"  pending = ",
+				"[turn] You"
+			],
+			[
+				"  You may: Play an action, Draw",
+				"[action] Play an action",
+				"  hand_1 → pile: Peek",
+				"  pending = Peek",
+				"  actor = 1",
+				"  noped = false",
+				"  target = 2",
+				"  player = 2",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Nope!",
+				"  if choice == 'Nope!' → then",
+				"  hand_2 → pile: Nope",
+				"  noped = true",
+				"  player = 1",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 1",
+				"[trigger] resolve",
+				"  if not noped → else",
+				"  pending = ",
+				"[turn] You"
+			],
+			[
+				"  You may: Play an action, Draw",
+				"[action] Play an action",
+				"  hand_1 → pile: Peek",
+				"  pending = Peek",
+				"  actor = 1",
+				"  noped = false",
+				"  target = 2",
+				"  player = 2",
+				"  player = 1",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 1",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Peek",
+				"  deck → peek_1: Bomb, Steal, Shuffle"
+			],
+			[
+				"  choose one: Done",
+				"[Peek: the next three cards, top on the right] chose Done",
+				"  peek_1 → deck: Bomb, Steal, Shuffle",
+				"  pending = ",
+				"[turn] You",
+				"  You may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Shuffle",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  West (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: 1 hidden card",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 3",
+				"[turn] East (bot)",
+				"  East (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_3: 1 hidden card",
+				"  if card.data.kind == 'bomb' → then",
+				"  if count(matching(hand, 'is_defuse')) > 0 → then",
+				"  hand_3 → pile: Defuse",
+				"  hand_3 → deck: 1 hidden card",
+				"  shuffle deck",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Nope",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  West (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_2 → pile: Peek",
+				"  pending = Peek",
+				"  actor = 2",
+				"  noped = false",
+				"  target = 3",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 2",
+				"  player = 1",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Nope!",
+				"  if choice == 'Nope!' → then",
+				"  hand_1 → pile: Nope",
+				"  noped = true",
+				"  player = 2",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 2",
+				"[trigger] resolve",
+				"  if not noped → else",
+				"  pending = ",
+				"[turn] West (bot)"
+			],
+			[
+				"  West (bot) may: Play an action, Draw",
+				"[action] Play an action",
+				"  hand_2 → pile: Shuffle",
+				"  pending = Shuffle",
+				"  actor = 2",
+				"  noped = false",
+				"  target = 3",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Nope!",
+				"  if choice == 'Nope!' → then",
+				"  hand_3 → pile: Nope",
+				"  noped = true",
+				"  player = 2",
+				"  player = 1",
+				"  player = 2",
+				"[trigger] resolve",
+				"  if not noped → else",
+				"  pending = ",
+				"[turn] West (bot)"
+			],
+			[
+				"  West (bot) may: Play an action, Draw",
+				"[action] Play an action",
+				"  hand_2 → pile: Steal",
+				"  pending = Steal",
+				"  actor = 2",
+				"  noped = false",
+				"  target = 3",
+				"  player = 3",
+				"  player = 2",
+				"  player = 1",
+				"  player = 2",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Steal",
+				"  if target != 0 → then",
+				"  pending = ",
+				"  player = 3",
+				"[action] Give a card",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Give a card] chose a hidden card",
+				"  hand_3 → hand_2: 1 hidden card",
+				"[turn] East (bot)",
+				"  East (bot) may: Play an action, Draw",
+				"  player = 2"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: 1 hidden card",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 3",
+				"[turn] East (bot)",
+				"  East (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_3: 1 hidden card",
+				"  if card.data.kind == 'bomb' → then",
+				"  if count(matching(hand, 'is_defuse')) > 0 → else",
+				"[trigger] knocked_out",
+				"  East (bot) is out",
+				"  hand_3 → out: Bomb",
+				"  if size(players_left()) == 1 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_1 → pile: Shuffle",
+				"  pending = Shuffle",
+				"  actor = 1",
+				"  noped = false",
+				"  target = 2",
+				"  player = 2",
+				"  player = 1",
+				"  player = 3",
+				"  player = 1",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Shuffle",
+				"  shuffle deck",
+				"  pending = ",
+				"[turn] You"
+			],
+			[
+				"  You may: Play an action, Draw",
+				"[action] Draw",
+				"  deck → hand_1: Nope",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  West (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_2 → pile: Skip",
+				"  pending = Skip",
+				"  actor = 2",
+				"  noped = false",
+				"  target = 1",
+				"  player = 3",
+				"  player = 2",
+				"  player = 1",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Nope!",
+				"  if choice == 'Nope!' → then",
+				"  hand_1 → pile: Nope",
+				"  noped = true",
+				"  player = 2",
+				"  player = 3",
+				"  player = 2",
+				"[trigger] resolve",
+				"  if not noped → else",
+				"  pending = ",
+				"[turn] West (bot)"
+			],
+			[
+				"  West (bot) may: Play an action, Draw",
+				"[action] Draw",
+				"  deck → hand_2: 1 hidden card",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Defuse",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  West (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_2 → pile: Steal",
+				"  pending = Steal",
+				"  actor = 2",
+				"  noped = false",
+				"  target = 1",
+				"  player = 3",
+				"  player = 2",
+				"  player = 1",
+				"  player = 2",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Steal",
+				"  if target != 0 → then",
+				"  pending = ",
+				"  player = 1",
+				"[action] Give a card",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Give a card] chose Defuse",
+				"  hand_1 → hand_2: Defuse",
+				"[turn] You",
+				"  You may: Play an action, Draw",
+				"  player = 2"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: 1 hidden card",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Steal",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  West (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_2 → pile: Skip",
+				"  pending = Skip",
+				"  actor = 2",
+				"  noped = false",
+				"  target = 1",
+				"  player = 3",
+				"  player = 2",
+				"  player = 1",
+				"  player = 2",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Skip",
+				"  player = 1",
+				"  pending = ",
+				"[turn] You"
+			],
+			[
+				"  You may: Play an action, Draw",
+				"[action] Play an action",
+				"  hand_1 → pile: Steal",
+				"  pending = Steal",
+				"  actor = 1",
+				"  noped = false",
+				"  target = 2",
+				"  player = 2",
+				"  player = 1",
+				"  player = 3",
+				"  player = 1",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Steal",
+				"  if target != 0 → then",
+				"  pending = ",
+				"  player = 2",
+				"[action] Give a card",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Give a card] chose a hidden card",
+				"  hand_2 → hand_1: Skip",
+				"[turn] West (bot)",
+				"  West (bot) may: Play an action, Draw",
+				"  player = 1"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Defuse",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  West (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: 1 hidden card",
+				"  if card.data.kind == 'bomb' → then",
+				"  if count(matching(hand, 'is_defuse')) > 0 → then",
+				"  hand_2 → pile: Defuse",
+				"  hand_2 → deck: 1 hidden card",
+				"  shuffle deck",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_1 → pile: Skip",
+				"  pending = Skip",
+				"  actor = 1",
+				"  noped = false",
+				"  target = 2",
+				"  player = 2",
+				"  player = 1",
+				"  player = 3",
+				"  player = 1",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Skip",
+				"  player = 2",
+				"  pending = ",
+				"[turn] West (bot)"
+			],
+			[
+				"  West (bot) may: Play an action, Draw",
+				"[action] Draw",
+				"  deck → hand_2: 1 hidden card",
+				"  if card.data.kind == 'bomb' → then",
+				"  if count(matching(hand, 'is_defuse')) > 0 → then",
+				"  hand_2 → pile: Defuse",
+				"  hand_2 → deck: 1 hidden card",
+				"  shuffle deck",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Bomb",
+				"  if card.data.kind == 'bomb' → then",
+				"  if count(matching(hand, 'is_defuse')) > 0 → then",
+				"  hand_1 → pile: Defuse",
+				"  hand_1 → deck: Bomb",
+				"  shuffle deck",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  West (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: 1 hidden card",
+				"  if card.data.kind == 'bomb' → then",
+				"  if count(matching(hand, 'is_defuse')) > 0 → else",
+				"[trigger] knocked_out",
+				"  West (bot) is out",
+				"  hand_2 → out: Bomb",
+				"  if size(players_left()) == 1 → then",
+				"[game over] Winner: You",
+				"  player = 1"
+			]
+		],
+		"seed": 1
+	},
+	{
+		"end": {
+			"over": true,
+			"result": "Winner: West",
+			"variables": {
+				"actor": "2",
+				"noped": "false",
+				"pending": "",
+				"player": "2",
+				"target": "1"
+			},
+			"zones": {
+				"box": [],
+				"deck": [
+					"▼Peek"
+				],
+				"hand_1": [],
+				"hand_2": [
+					"Shuffle",
+					"Defuse",
+					"Defuse",
+					"Defuse",
+					"Defuse"
+				],
+				"hand_3": [],
+				"out": [
+					"Bomb",
+					"Bomb"
+				],
+				"peek_1": [],
+				"peek_2": [],
+				"peek_3": [],
+				"pile": [
+					"Shuffle",
+					"Nope",
+					"Nope",
+					"Peek",
+					"Nope",
+					"Skip",
+					"Steal",
+					"Nope",
+					"Shuffle",
+					"Skip",
+					"Defuse",
+					"Peek",
+					"Peek",
+					"Shuffle",
+					"Nope",
+					"Steal",
+					"Steal",
+					"Skip",
+					"Skip",
+					"Steal"
+				]
+			}
+		},
+		"inputs": [
+			{
+				"card": 11,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"option": "Nope!",
+				"type": "choose"
+			},
+			{
+				"option": "Nope!",
+				"type": "choose"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"card": 15,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Nope!",
+				"type": "choose"
+			},
+			{
+				"card": 19,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 7,
+				"to": "hand_3",
+				"type": "drag"
+			},
+			{
+				"card": 9,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 25,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Nope!",
+				"type": "choose"
+			},
+			{
+				"card": 26,
+				"to": "hand_3",
+				"type": "drag"
+			},
+			{
+				"card": 13,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Let it happen",
+				"type": "choose"
+			},
+			{
+				"card": 14,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 20,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 7,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 18,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Done",
+				"type": "choose"
+			},
+			{
+				"card": 16,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Done",
+				"type": "choose"
+			},
+			{
+				"card": 22,
+				"to": "hand_3",
+				"type": "drag"
+			},
+			{
+				"card": 14,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"option": "Nope!",
+				"type": "choose"
+			},
+			{
+				"card": 2,
+				"to": "hand_1",
+				"type": "drag"
+			},
+			{
+				"card": 20,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 4,
+				"type": "click"
+			},
+			{
+				"card": 19,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 22,
+				"type": "click"
+			},
+			{
+				"card": 10,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"to": "hand_3",
+				"type": "drag"
+			},
+			{
+				"card": 8,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 22,
+				"to": "pile",
+				"type": "drag"
+			},
+			{
+				"card": 2,
+				"type": "click"
+			},
+			{
+				"card": 3,
+				"to": "hand_2",
+				"type": "drag"
+			},
+			{
+				"card": 1,
+				"to": "hand_1",
+				"type": "drag"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  for player in players (3)",
+				"  sort hand_1 by kind, name",
+				"  sort hand_2 by kind, name",
+				"  sort hand_3 by kind, name",
+				"  box → deck: 16 hidden cards",
+				"  box → deck: 5 hidden cards",
+				"  shuffle deck",
+				"  for player in players (3)",
+				"  box → hand_1: Defuse",
+				"  box → hand_2: 1 hidden card",
+				"  box → hand_3: 1 hidden card",
+				"  deck → hand_1: Nope, Skip, Skip, Shuffle",
+				"  deck → hand_2: 4 hidden cards",
+				"  deck → hand_3: 4 hidden cards",
+				"  box → deck: 2 hidden cards",
+				"  box → deck: 2 hidden cards",
+				"  shuffle deck",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  West (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_2 → pile: Shuffle",
+				"  pending = Shuffle",
+				"  actor = 2",
+				"  noped = false",
+				"  target = 3",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 2",
+				"  player = 1",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Nope!",
+				"  if choice == 'Nope!' → then",
+				"  hand_1 → pile: Nope",
+				"  noped = true",
+				"  player = 2",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Nope!",
+				"  if choice == 'Nope!' → then",
+				"  hand_2 → pile: Nope",
+				"  noped = false",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 2",
+				"  player = 1",
+				"  player = 2",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Shuffle",
+				"  shuffle deck",
+				"  pending = ",
+				"[turn] West (bot)"
+			],
+			[
+				"  West (bot) may: Play an action, Draw",
+				"[action] Play an action",
+				"  hand_2 → pile: Peek",
+				"  pending = Peek",
+				"  actor = 2",
+				"  noped = false",
+				"  target = 3",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Nope!",
+				"  if choice == 'Nope!' → then",
+				"  hand_3 → pile: Nope",
+				"  noped = true",
+				"  player = 2",
+				"  player = 1",
+				"  player = 2",
+				"[trigger] resolve",
+				"  if not noped → else",
+				"  pending = ",
+				"[turn] West (bot)"
+			],
+			[
+				"  West (bot) may: Play an action, Draw",
+				"[action] Draw",
+				"  deck → hand_2: 1 hidden card",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 3",
+				"[turn] East (bot)",
+				"  East (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_3: 1 hidden card",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_1 → pile: Skip",
+				"  pending = Skip",
+				"  actor = 1",
+				"  noped = false",
+				"  target = 2",
+				"  player = 2",
+				"  player = 1",
+				"  player = 3",
+				"  player = 1",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Skip",
+				"  player = 2",
+				"  pending = ",
+				"[turn] West (bot)"
+			],
+			[
+				"  West (bot) may: Play an action, Draw",
+				"[action] Draw",
+				"  deck → hand_2: 1 hidden card",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 3",
+				"[turn] East (bot)",
+				"  East (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_3 → pile: Steal",
+				"  pending = Steal",
+				"  actor = 3",
+				"  noped = false",
+				"  target = 1",
+				"  player = 1",
+				"  player = 3",
+				"  player = 2",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Nope!",
+				"  if choice == 'Nope!' → then",
+				"  hand_2 → pile: Nope",
+				"  noped = true",
+				"  player = 3",
+				"  player = 1",
+				"  player = 3",
+				"[trigger] resolve",
+				"  if not noped → else",
+				"  pending = ",
+				"[turn] East (bot)"
+			],
+			[
+				"  East (bot) may: Play an action, Draw",
+				"[action] Draw",
+				"  deck → hand_3: 1 hidden card",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_1 → pile: Shuffle",
+				"  pending = Shuffle",
+				"  actor = 1",
+				"  noped = false",
+				"  target = 2",
+				"  player = 2",
+				"  player = 1",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Let it happen",
+				"  if choice == 'Nope!' → else",
+				"  player = 1",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Shuffle",
+				"  shuffle deck",
+				"  pending = ",
+				"[turn] You"
+			],
+			[
+				"  You may: Play an action, Draw",
+				"[action] Draw",
+				"  deck → hand_1: Shuffle",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  West (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: 1 hidden card",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 3",
+				"[turn] East (bot)",
+				"  East (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_3 → pile: Skip",
+				"  pending = Skip",
+				"  actor = 3",
+				"  noped = false",
+				"  target = 1",
+				"  player = 1",
+				"  player = 3",
+				"  player = 2",
+				"  player = 3",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Skip",
+				"  player = 1",
+				"  pending = ",
+				"[turn] You"
+			],
+			[
+				"  You may: Play an action, Draw",
+				"[action] Draw",
+				"  deck → hand_1: Bomb",
+				"  if card.data.kind == 'bomb' → then",
+				"  if count(matching(hand, 'is_defuse')) > 0 → then",
+				"  hand_1 → pile: Defuse",
+				"  hand_1 → deck: Bomb",
+				"  shuffle deck",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  West (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: 1 hidden card",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 3",
+				"[turn] East (bot)",
+				"  East (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_3 → pile: Peek",
+				"  pending = Peek",
+				"  actor = 3",
+				"  noped = false",
+				"  target = 1",
+				"  player = 1",
+				"  player = 3",
+				"  player = 2",
+				"  player = 3",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Peek",
+				"  deck → peek_3: 3 hidden cards"
+			],
+			[
+				"  choose one: Done",
+				"[Peek: the next three cards, top on the right] chose Done",
+				"  peek_3 → deck: 3 hidden cards",
+				"  pending = ",
+				"[turn] East (bot)",
+				"  East (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_3 → pile: Peek",
+				"  pending = Peek",
+				"  actor = 3",
+				"  noped = false",
+				"  target = 1",
+				"  player = 1",
+				"  player = 3",
+				"  player = 2",
+				"  player = 3",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Peek",
+				"  deck → peek_3: 3 hidden cards"
+			],
+			[
+				"  choose one: Done",
+				"[Peek: the next three cards, top on the right] chose Done",
+				"  peek_3 → deck: 3 hidden cards",
+				"  pending = ",
+				"[turn] East (bot)",
+				"  East (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_3: 1 hidden card",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_1 → pile: Shuffle",
+				"  pending = Shuffle",
+				"  actor = 1",
+				"  noped = false",
+				"  target = 2",
+				"  player = 2",
+				"  player = 1",
+				"  player = 3",
+				"[action] Nope?",
+				"  choose one: Nope!, Let it happen"
+			],
+			[
+				"[Nope?] chose Nope!",
+				"  if choice == 'Nope!' → then",
+				"  hand_3 → pile: Nope",
+				"  noped = true",
+				"  player = 1",
+				"  player = 2",
+				"  player = 1",
+				"[trigger] resolve",
+				"  if not noped → else",
+				"  pending = ",
+				"[turn] You"
+			],
+			[
+				"  You may: Play an action, Draw",
+				"[action] Draw",
+				"  deck → hand_1: Defuse",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  West (bot) may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_2 → pile: Steal",
+				"  pending = Steal",
+				"  actor = 2",
+				"  noped = false",
+				"  target = 3",
+				"  player = 3",
+				"  player = 2",
+				"  player = 1",
+				"  player = 2",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Steal",
+				"  if target != 0 → then",
+				"  pending = ",
+				"  player = 3",
+				"[action] Give a card",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Give a card] chose a hidden card",
+				"  hand_3 → hand_2: 1 hidden card",
+				"[turn] East (bot)",
+				"  East (bot) may: Play an action, Draw",
+				"  player = 2"
+			],
+			[
+				"[action] Play an action",
+				"  hand_2 → pile: Steal",
+				"  pending = Steal",
+				"  actor = 2",
+				"  noped = false",
+				"  target = 3",
+				"  player = 3",
+				"  player = 2",
+				"  player = 1",
+				"  player = 2",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Steal",
+				"  if target != 0 → then",
+				"  pending = ",
+				"  player = 3",
+				"[action] Give a card",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Give a card] chose a hidden card",
+				"  hand_3 → hand_2: 1 hidden card",
+				"[turn] East (bot)",
+				"  East (bot) may: Play an action, Draw",
+				"  player = 2"
+			],
+			[
+				"[action] Play an action",
+				"  hand_2 → pile: Skip",
+				"  pending = Skip",
+				"  actor = 2",
+				"  noped = false",
+				"  target = 3",
+				"  player = 3",
+				"  player = 2",
+				"  player = 1",
+				"  player = 2",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Skip",
+				"  player = 3",
+				"  pending = ",
+				"[turn] East (bot)"
+			],
+			[
+				"  East (bot) may: Play an action, Draw",
+				"[action] Draw",
+				"  deck → hand_3: 1 hidden card",
+				"  if card.data.kind == 'bomb' → then",
+				"  if count(matching(hand, 'is_defuse')) > 0 → else",
+				"[trigger] knocked_out",
+				"  East (bot) is out",
+				"  hand_3 → out: Bomb",
+				"  if size(players_left()) == 1 → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play an action, Draw"
+			],
+			[
+				"[action] Play an action",
+				"  hand_1 → pile: Skip",
+				"  pending = Skip",
+				"  actor = 1",
+				"  noped = false",
+				"  target = 2",
+				"  player = 2",
+				"  player = 1",
+				"  player = 3",
+				"  player = 1",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Skip",
+				"  player = 2",
+				"  pending = ",
+				"[turn] West (bot)"
+			],
+			[
+				"  West (bot) may: Play an action, Draw",
+				"[action] Play an action",
+				"  hand_2 → pile: Steal",
+				"  pending = Steal",
+				"  actor = 2",
+				"  noped = false",
+				"  target = 1",
+				"  player = 3",
+				"  player = 2",
+				"  player = 1",
+				"  player = 2",
+				"[trigger] resolve",
+				"  if not noped → then",
+				"[trigger] Steal",
+				"  if target != 0 → then",
+				"  pending = ",
+				"  player = 1",
+				"[action] Give a card",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Give a card] chose Defuse",
+				"  hand_1 → hand_2: Defuse",
+				"[turn] You",
+				"  You may: Play an action, Draw",
+				"  player = 2"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_2: 1 hidden card",
+				"  if card.data.kind == 'bomb' → else",
+				"  player = 1",
+				"[turn] You",
+				"  You may: Play an action, Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand_1: Bomb",
+				"  if card.data.kind == 'bomb' → then",
+				"  if count(matching(hand, 'is_defuse')) > 0 → else",
+				"[trigger] knocked_out",
+				"  You is out",
+				"  hand_1 → out: Bomb",
+				"  if size(players_left()) == 1 → then",
+				"[game over] Winner: West",
+				"  player = 2"
+			]
+		],
+		"seed": 2
+	}
+]

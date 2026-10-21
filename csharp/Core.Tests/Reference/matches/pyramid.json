@@ -1,0 +1,6379 @@
+[
+	{
+		"end": {
+			"over": false,
+			"result": "",
+			"variables": {
+				"passes": "3",
+				"result": "You win!"
+			},
+			"zones": {
+				"pyramid_1": [],
+				"pyramid_10": [],
+				"pyramid_11": [],
+				"pyramid_12": [],
+				"pyramid_13": [],
+				"pyramid_14": [],
+				"pyramid_15": [],
+				"pyramid_16": [],
+				"pyramid_17": [],
+				"pyramid_18": [],
+				"pyramid_19": [],
+				"pyramid_2": [],
+				"pyramid_20": [],
+				"pyramid_21": [],
+				"pyramid_22": [],
+				"pyramid_23": [],
+				"pyramid_24": [],
+				"pyramid_25": [],
+				"pyramid_26": [],
+				"pyramid_27": [],
+				"pyramid_28": [],
+				"pyramid_3": [],
+				"pyramid_4": [],
+				"pyramid_5": [],
+				"pyramid_6": [],
+				"pyramid_7": [],
+				"pyramid_8": [],
+				"pyramid_9": [],
+				"removed": [
+					"▼2♦",
+					"▼J♥",
+					"▼4♦",
+					"▼9♠",
+					"▼K♦",
+					"▼5♠",
+					"▼8♥",
+					"▼K♣",
+					"▼10♥",
+					"▼3♥",
+					"▼K♠",
+					"▼J♣",
+					"▼2♣",
+					"▼6♥",
+					"▼7♦",
+					"▼5♦",
+					"▼8♣",
+					"▼5♥",
+					"▼8♠",
+					"▼K♥",
+					"▼2♥",
+					"▼J♦",
+					"▼10♠",
+					"▼3♠",
+					"▼7♥",
+					"▼6♣",
+					"▼8♦",
+					"▼5♣",
+					"▼9♣",
+					"▼4♥",
+					"▼A♣",
+					"▼Q♣",
+					"▼J♠",
+					"▼2♠",
+					"▼Q♥",
+					"▼A♦",
+					"▼6♠",
+					"▼7♠"
+				],
+				"stock": [],
+				"waste": [
+					"Q♦",
+					"A♠",
+					"9♥",
+					"3♣",
+					"4♣",
+					"7♣",
+					"10♣",
+					"6♦",
+					"9♦",
+					"Q♠",
+					"A♥",
+					"4♠",
+					"10♦",
+					"3♦"
+				]
+			}
+		},
+		"inputs": [
+			{
+				"card": 27,
+				"to": "pyramid_24",
+				"type": "drag"
+			},
+			{
+				"card": 37,
+				"type": "click"
+			},
+			{
+				"card": 29,
+				"to": "pyramid_26",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"type": "click"
+			},
+			{
+				"card": 38,
+				"type": "click"
+			},
+			{
+				"card": 20,
+				"type": "click"
+			},
+			{
+				"card": 4,
+				"to": "waste",
+				"type": "drag"
+			},
+			{
+				"card": 51,
+				"type": "click"
+			},
+			{
+				"card": 22,
+				"to": "pyramid_20",
+				"type": "drag"
+			},
+			{
+				"card": 12,
+				"type": "click"
+			},
+			{
+				"card": 49,
+				"to": "pyramid_22",
+				"type": "drag"
+			},
+			{
+				"card": 18,
+				"to": "pyramid_28",
+				"type": "drag"
+			},
+			{
+				"card": 2,
+				"type": "click"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"card": 30,
+				"to": "waste",
+				"type": "drag"
+			},
+			{
+				"card": 17,
+				"to": "pyramid_11",
+				"type": "drag"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 41,
+				"type": "click"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"card": 44,
+				"type": "click"
+			},
+			{
+				"card": 16,
+				"type": "click"
+			},
+			{
+				"card": 45,
+				"type": "click"
+			},
+			{
+				"card": 36,
+				"type": "click"
+			},
+			{
+				"card": 14,
+				"to": "waste",
+				"type": "drag"
+			},
+			{
+				"card": 48,
+				"type": "click"
+			},
+			{
+				"card": 31,
+				"type": "click"
+			},
+			{
+				"card": 34,
+				"type": "click"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"card": 13,
+				"type": "click"
+			},
+			{
+				"card": 3,
+				"type": "click"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"card": 28,
+				"type": "click"
+			},
+			{
+				"card": 50,
+				"type": "click"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 37,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"type": "click"
+			},
+			{
+				"card": 2,
+				"type": "click"
+			},
+			{
+				"card": 9,
+				"to": "waste",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 41,
+				"type": "click"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"card": 44,
+				"type": "click"
+			},
+			{
+				"card": 19,
+				"to": "waste",
+				"type": "drag"
+			},
+			{
+				"card": 16,
+				"type": "click"
+			},
+			{
+				"card": 33,
+				"to": "pyramid_7",
+				"type": "drag"
+			},
+			{
+				"card": 47,
+				"to": "waste",
+				"type": "drag"
+			},
+			{
+				"card": 45,
+				"type": "click"
+			},
+			{
+				"card": 48,
+				"type": "click"
+			},
+			{
+				"card": 31,
+				"type": "click"
+			},
+			{
+				"card": 34,
+				"type": "click"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"card": 13,
+				"type": "click"
+			},
+			{
+				"card": 3,
+				"type": "click"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"card": 28,
+				"type": "click"
+			},
+			{
+				"card": 50,
+				"type": "click"
+			},
+			{
+				"card": 39,
+				"to": "waste",
+				"type": "drag"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 37,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"type": "click"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"card": 10,
+				"to": "pyramid_4",
+				"type": "drag"
+			},
+			{
+				"card": 41,
+				"type": "click"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"card": 45,
+				"type": "click"
+			},
+			{
+				"card": 48,
+				"type": "click"
+			},
+			{
+				"card": 31,
+				"type": "click"
+			},
+			{
+				"card": 34,
+				"type": "click"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"card": 24,
+				"to": "waste",
+				"type": "drag"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"card": 13,
+				"type": "click"
+			},
+			{
+				"card": 3,
+				"type": "click"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"card": 28,
+				"type": "click"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"card": 5,
+				"to": "waste",
+				"type": "drag"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  shuffle stock",
+				"  for spot in pyramid (28)",
+				"  stock → pyramid_1: 6♠",
+				"  stock → pyramid_2: Q♥",
+				"  stock → pyramid_3: A♣",
+				"  stock → pyramid_4: 2♠",
+				"  stock → pyramid_5: 8♦",
+				"  stock → pyramid_6: 9♣",
+				"  stock → pyramid_7: 5♣",
+				"  stock → pyramid_8: 2♥",
+				"  stock → pyramid_9: 7♥",
+				"  stock → pyramid_10: 10♠",
+				"  stock → pyramid_11: 8♠",
+				"  stock → pyramid_12: 10♥",
+				"  stock → pyramid_13: 6♥",
+				"  stock → pyramid_14: J♣",
+				"  stock → pyramid_15: K♥",
+				"  stock → pyramid_16: 5♦",
+				"  stock → pyramid_17: K♦",
+				"  stock → pyramid_18: K♣",
+				"  stock → pyramid_19: K♠",
+				"  stock → pyramid_20: 3♥",
+				"  stock → pyramid_21: 5♥",
+				"  stock → pyramid_22: 2♣",
+				"  stock → pyramid_23: 4♦",
+				"  stock → pyramid_24: J♥",
+				"  stock → pyramid_25: 5♠",
+				"  stock → pyramid_26: 9♠",
+				"  stock → pyramid_27: 2♦",
+				"  stock → pyramid_28: 7♦"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_27 → pyramid_24: 2♦",
+				"  pyramid_24 → removed: 2♦",
+				"  pyramid_24 → removed: J♥",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: Q♦"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_23 → pyramid_26: 4♦",
+				"  pyramid_26 → removed: 4♦",
+				"  pyramid_26 → removed: 9♠",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♠"
+			],
+			[
+				"[action] Remove a King",
+				"  pyramid_17 → removed: K♦",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 8♥"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_25 → waste: 5♠",
+				"  waste → removed: 5♠",
+				"  waste → removed: 8♥",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Remove a King",
+				"  pyramid_18 → removed: K♣",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_12 → pyramid_20: 10♥",
+				"  pyramid_20 → removed: 10♥",
+				"  pyramid_20 → removed: 3♥",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Remove a King",
+				"  pyramid_19 → removed: K♠",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_14 → pyramid_22: J♣",
+				"  pyramid_22 → removed: J♣",
+				"  pyramid_22 → removed: 2♣",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_13 → pyramid_28: 6♥",
+				"  pyramid_28 → removed: 6♥",
+				"  pyramid_28 → removed: 7♦",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 3♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 8♣"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_16 → waste: 5♦",
+				"  waste → removed: 5♦",
+				"  waste → removed: 8♣",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_21 → pyramid_11: 5♥",
+				"  pyramid_11 → removed: 5♥",
+				"  pyramid_11 → removed: 8♠",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Remove a King",
+				"  pyramid_15 → removed: K♥",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: J♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 3♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 6♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 7♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: J♦"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_8 → waste: 2♥",
+				"  waste → removed: 2♥",
+				"  waste → removed: J♦",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 10♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 6♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 9♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: Q♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 10♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 3♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: Q♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 7♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → then",
+				"  waste → stock: 7♠, Q♣, 3♦, 10♦, 4♠, A♥, Q♠, A♦, 9♦, 6♦, 10♣, 7♣, 4♥, 6♣, 4♣, 3♣, J♠, 9♥, 3♠, A♠, Q♦",
+				"  passes = 2"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: Q♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 3♠"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_10 → waste: 10♠",
+				"  waste → removed: 10♠",
+				"  waste → removed: 3♠",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: J♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 3♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 6♣"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_9 → waste: 7♥",
+				"  waste → removed: 7♥",
+				"  waste → removed: 6♣",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♥"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_5 → pyramid_7: 8♦",
+				"  pyramid_7 → removed: 8♦",
+				"  pyramid_7 → removed: 5♣",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_6 → waste: 9♣",
+				"  waste → removed: 9♣",
+				"  waste → removed: 4♥",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 7♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 10♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 6♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 9♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: Q♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 10♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 3♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: Q♣"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_3 → waste: A♣",
+				"  waste → removed: A♣",
+				"  waste → removed: Q♣",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 7♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → then",
+				"  waste → stock: 7♠, 3♦, 10♦, 4♠, A♥, Q♠, A♦, 9♦, 6♦, 10♣, 7♣, 4♣, 3♣, J♠, 9♥, A♠, Q♦",
+				"  passes = 3"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: Q♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: J♠"
+			],
+			[
+				"[action] Pair to 13",
+				"  waste → pyramid_4: J♠",
+				"  pyramid_4 → removed: J♠",
+				"  pyramid_4 → removed: 2♠",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 3♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 7♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 10♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 6♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 9♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♦"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_2 → waste: Q♥",
+				"  waste → removed: Q♥",
+				"  waste → removed: A♦",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: Q♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 10♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 3♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 7♠"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_1 → waste: 6♠",
+				"  waste → removed: 6♠",
+				"  waste → removed: 7♠",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → then",
+				"  result = You win!"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			]
+		],
+		"seed": 1
+	},
+	{
+		"end": {
+			"over": false,
+			"result": "",
+			"variables": {
+				"passes": "3",
+				"result": ""
+			},
+			"zones": {
+				"pyramid_1": [
+					"3♠"
+				],
+				"pyramid_10": [],
+				"pyramid_11": [
+					"J♣"
+				],
+				"pyramid_12": [
+					"10♥"
+				],
+				"pyramid_13": [],
+				"pyramid_14": [],
+				"pyramid_15": [],
+				"pyramid_16": [
+					"A♥"
+				],
+				"pyramid_17": [
+					"7♦"
+				],
+				"pyramid_18": [],
+				"pyramid_19": [],
+				"pyramid_2": [
+					"3♥"
+				],
+				"pyramid_20": [],
+				"pyramid_21": [],
+				"pyramid_22": [],
+				"pyramid_23": [],
+				"pyramid_24": [],
+				"pyramid_25": [],
+				"pyramid_26": [],
+				"pyramid_27": [],
+				"pyramid_28": [],
+				"pyramid_3": [
+					"6♥"
+				],
+				"pyramid_4": [
+					"Q♥"
+				],
+				"pyramid_5": [
+					"Q♦"
+				],
+				"pyramid_6": [],
+				"pyramid_7": [
+					"9♠"
+				],
+				"pyramid_8": [
+					"9♦"
+				],
+				"pyramid_9": [],
+				"removed": [
+					"▼3♣",
+					"▼10♣",
+					"▼7♣",
+					"▼6♣",
+					"▼8♦",
+					"▼5♦",
+					"▼A♠",
+					"▼Q♣",
+					"▼2♥",
+					"▼J♠",
+					"▼6♠",
+					"▼7♥",
+					"▼9♣",
+					"▼4♠",
+					"▼J♥",
+					"▼2♠",
+					"▼5♣",
+					"▼8♥",
+					"▼K♣",
+					"▼K♥",
+					"▼6♦",
+					"▼7♠",
+					"▼K♦",
+					"▼3♦",
+					"▼10♠",
+					"▼2♣",
+					"▼J♦",
+					"▼K♠"
+				],
+				"stock": [],
+				"waste": [
+					"Q♠",
+					"9♥",
+					"10♦",
+					"A♣",
+					"5♥",
+					"4♥",
+					"2♦",
+					"4♦",
+					"5♠",
+					"4♣",
+					"8♣",
+					"8♠",
+					"A♦"
+				]
+			}
+		},
+		"inputs": [
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"card": 41,
+				"to": "pyramid_22",
+				"type": "drag"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 33,
+				"type": "click"
+			},
+			{
+				"card": 45,
+				"type": "click"
+			},
+			{
+				"card": 45,
+				"to": "pyramid_26",
+				"type": "drag"
+			},
+			{
+				"card": 33,
+				"to": "pyramid_27",
+				"type": "drag"
+			},
+			{
+				"card": 0,
+				"type": "click"
+			},
+			{
+				"card": 0,
+				"to": "pyramid_20",
+				"type": "drag"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"card": 39,
+				"type": "click"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"card": 17,
+				"type": "click"
+			},
+			{
+				"card": 16,
+				"type": "click"
+			},
+			{
+				"card": 14,
+				"type": "click"
+			},
+			{
+				"card": 14,
+				"to": "pyramid_25",
+				"type": "drag"
+			},
+			{
+				"card": 27,
+				"type": "click"
+			},
+			{
+				"card": 29,
+				"type": "click"
+			},
+			{
+				"card": 4,
+				"type": "click"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"card": 7,
+				"type": "click"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"card": 19,
+				"type": "click"
+			},
+			{
+				"card": 5,
+				"to": "waste",
+				"type": "drag"
+			},
+			{
+				"card": 3,
+				"type": "click"
+			},
+			{
+				"card": 47,
+				"to": "waste",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"type": "click"
+			},
+			{
+				"card": 23,
+				"type": "click"
+			},
+			{
+				"card": 23,
+				"to": "pyramid_19",
+				"type": "drag"
+			},
+			{
+				"card": 43,
+				"to": "pyramid_15",
+				"type": "drag"
+			},
+			{
+				"card": 51,
+				"type": "click"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"card": 12,
+				"type": "click"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"card": 39,
+				"type": "click"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"card": 17,
+				"type": "click"
+			},
+			{
+				"card": 16,
+				"type": "click"
+			},
+			{
+				"card": 27,
+				"type": "click"
+			},
+			{
+				"card": 29,
+				"type": "click"
+			},
+			{
+				"card": 4,
+				"type": "click"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"card": 7,
+				"type": "click"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"card": 40,
+				"type": "click"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"card": 12,
+				"type": "click"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 11,
+				"type": "click"
+			},
+			{
+				"card": 21,
+				"type": "click"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"card": 39,
+				"type": "click"
+			},
+			{
+				"card": 17,
+				"type": "click"
+			},
+			{
+				"card": 16,
+				"type": "click"
+			},
+			{
+				"card": 27,
+				"type": "click"
+			},
+			{
+				"card": 29,
+				"type": "click"
+			},
+			{
+				"card": 4,
+				"type": "click"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"card": 7,
+				"type": "click"
+			},
+			{
+				"card": 6,
+				"type": "click"
+			},
+			{
+				"card": 31,
+				"to": "waste",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"type": "click"
+			},
+			{
+				"card": 38,
+				"type": "click"
+			},
+			{
+				"card": 28,
+				"to": "pyramid_23",
+				"type": "drag"
+			},
+			{
+				"card": 40,
+				"to": "pyramid_6",
+				"type": "drag"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"card": 12,
+				"type": "click"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"card": 12,
+				"type": "click"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			},
+			{
+				"type": "click_empty",
+				"zone": "stock"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  shuffle stock",
+				"  for spot in pyramid (28)",
+				"  stock → pyramid_1: 3♠",
+				"  stock → pyramid_2: 3♥",
+				"  stock → pyramid_3: 6♥",
+				"  stock → pyramid_4: Q♥",
+				"  stock → pyramid_5: Q♦",
+				"  stock → pyramid_6: J♦",
+				"  stock → pyramid_7: 9♠",
+				"  stock → pyramid_8: 9♦",
+				"  stock → pyramid_9: 3♦",
+				"  stock → pyramid_10: K♣",
+				"  stock → pyramid_11: J♣",
+				"  stock → pyramid_12: 10♥",
+				"  stock → pyramid_13: K♦",
+				"  stock → pyramid_14: 5♣",
+				"  stock → pyramid_15: 8♥",
+				"  stock → pyramid_16: A♥",
+				"  stock → pyramid_17: 7♦",
+				"  stock → pyramid_18: 6♦",
+				"  stock → pyramid_19: 2♠",
+				"  stock → pyramid_20: Q♣",
+				"  stock → pyramid_21: 9♣",
+				"  stock → pyramid_22: 10♣",
+				"  stock → pyramid_23: 10♠",
+				"  stock → pyramid_24: 3♣",
+				"  stock → pyramid_25: J♠",
+				"  stock → pyramid_26: 6♣",
+				"  stock → pyramid_27: 5♦",
+				"  stock → pyramid_28: 6♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: Q♠"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_24 → pyramid_22: 3♣",
+				"  pyramid_22 → removed: 3♣",
+				"  pyramid_22 → removed: 10♣",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 8♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 7♣"
+			],
+			[
+				"[action] Pair to 13",
+				"  waste → pyramid_26: 7♣",
+				"  pyramid_26 → removed: 7♣",
+				"  pyramid_26 → removed: 6♣",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Pair to 13",
+				"  waste → pyramid_27: 8♦",
+				"  pyramid_27 → removed: 8♦",
+				"  pyramid_27 → removed: 5♦",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♠"
+			],
+			[
+				"[action] Pair to 13",
+				"  waste → pyramid_20: A♠",
+				"  pyramid_20 → removed: A♠",
+				"  pyramid_20 → removed: Q♣",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 10♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: K♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 5♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 2♥"
+			],
+			[
+				"[action] Pair to 13",
+				"  waste → pyramid_25: 2♥",
+				"  pyramid_25 → removed: 2♥",
+				"  pyramid_25 → removed: J♠",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 2♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 5♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 8♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 8♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 7♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 7♥"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_28 → waste: 6♠",
+				"  waste → removed: 6♠",
+				"  waste → removed: 7♥",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♠"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_21 → waste: 9♣",
+				"  waste → removed: 9♣",
+				"  waste → removed: 4♠",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 2♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: J♥"
+			],
+			[
+				"[action] Pair to 13",
+				"  waste → pyramid_19: J♥",
+				"  pyramid_19 → removed: J♥",
+				"  pyramid_19 → removed: 2♠",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_14 → pyramid_15: 5♣",
+				"  pyramid_15 → removed: 5♣",
+				"  pyramid_15 → removed: 8♥",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Remove a King",
+				"  pyramid_10 → removed: K♣",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: K♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → then",
+				"  waste → stock: K♠, A♦, 2♣, 7♠, 8♠, 8♣, 4♣, 5♠, 4♦, 2♦, 4♥, 5♥, K♥, A♣, 10♦, 9♥, Q♠",
+				"  passes = 2"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: Q♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 10♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: K♥"
+			],
+			[
+				"[action] Remove a King",
+				"  waste → removed: K♥",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 5♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 2♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 5♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 8♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 8♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 7♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 2♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: K♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → then",
+				"  waste → stock: K♠, A♦, 2♣, 7♠, 8♠, 8♣, 4♣, 5♠, 4♦, 2♦, 4♥, 5♥, A♣, 10♦, 9♥, Q♠",
+				"  passes = 3"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: Q♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 9♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 10♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 5♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♥"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 2♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 5♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 4♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 8♣"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 8♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 7♠"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_18 → waste: 6♦",
+				"  waste → removed: 6♦",
+				"  waste → removed: 7♠",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: 2♣"
+			],
+			[
+				"[action] Remove a King",
+				"  pyramid_13 → removed: K♦",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Pair to 13",
+				"  pyramid_9 → pyramid_23: 3♦",
+				"  pyramid_23 → removed: 3♦",
+				"  pyramid_23 → removed: 10♠",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Pair to 13",
+				"  waste → pyramid_6: 2♣",
+				"  pyramid_6 → removed: 2♣",
+				"  pyramid_6 → removed: J♦",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: A♦"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → then",
+				"  stock → waste: K♠"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Remove a King",
+				"  waste → removed: K♠",
+				"[trigger] check_win",
+				"  if count(pyramid) == 0 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			],
+			[
+				"[action] Turn a card",
+				"[trigger] turn_card",
+				"  if count(stock) > 0 → else",
+				"  if passes < 3 → else"
+			]
+		],
+		"seed": 2
+	}
+]

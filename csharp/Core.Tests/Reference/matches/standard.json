@@ -1,0 +1,5097 @@
+[
+	{
+		"end": {
+			"over": false,
+			"result": "",
+			"variables": {},
+			"zones": {
+				"deck": [],
+				"discard": [],
+				"hand": [
+					"A♣",
+					"2♣",
+					"3♣",
+					"4♣",
+					"5♣",
+					"6♣",
+					"7♣",
+					"8♣",
+					"9♣",
+					"10♣",
+					"J♣",
+					"Q♣",
+					"K♣",
+					"A♦",
+					"2♦",
+					"3♦",
+					"4♦",
+					"5♦",
+					"6♦",
+					"7♦",
+					"8♦",
+					"9♦",
+					"10♦",
+					"J♦",
+					"Q♦",
+					"K♦",
+					"A♥",
+					"2♥",
+					"3♥",
+					"4♥",
+					"5♥",
+					"6♥",
+					"7♥",
+					"8♥",
+					"9♥",
+					"10♥",
+					"J♥",
+					"Q♥",
+					"K♥",
+					"A♠",
+					"2♠",
+					"3♠",
+					"4♠",
+					"5♠",
+					"6♠",
+					"7♠",
+					"8♠",
+					"9♠",
+					"10♠",
+					"J♠",
+					"Q♠",
+					"K♠"
+				],
+				"table": []
+			}
+		},
+		"inputs": [
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"card": 19,
+				"type": "click"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"card": 23,
+				"type": "click"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"card": 51,
+				"type": "click"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"card": 26,
+				"type": "click"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"card": 20,
+				"type": "click"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"card": 16,
+				"type": "click"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"card": 22,
+				"type": "click"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"card": 10,
+				"type": "click"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"card": 9,
+				"type": "click"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"card": 7,
+				"type": "click"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"card": 27,
+				"type": "click"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"card": 8,
+				"type": "click"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"card": 45,
+				"type": "click"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"card": 28,
+				"type": "click"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  sort hand by value, suit",
+				"  shuffle deck",
+				"  deck → hand: 6♠, Q♥, A♣, 2♠, 8♦, 9♣, 5♣"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 2♥"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 7♥"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 4♣"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: J♥"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: K♣"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 5♠"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: A♦"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 8♥"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 7♦"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 4♥"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 5♥"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 10♥"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: K♦"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 10♦"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 9♦"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: A♠"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 10♣"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: J♠"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 3♣"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: Q♠"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 10♠"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 5♦"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 4♦"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 2♣"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 8♠"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 7♠"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 6♥"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 3♥"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: Q♦"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 3♠"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 2♦"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: A♥"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: J♣"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: K♥"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: K♠"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 9♥"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 9♠"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 8♣"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 6♣"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 6♦"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: J♦"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: Q♣"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 7♣"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 3♦"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 4♠"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			]
+		],
+		"seed": 1
+	},
+	{
+		"end": {
+			"over": false,
+			"result": "",
+			"variables": {},
+			"zones": {
+				"deck": [],
+				"discard": [],
+				"hand": [
+					"A♣",
+					"2♣",
+					"3♣",
+					"4♣",
+					"5♣",
+					"6♣",
+					"7♣",
+					"8♣",
+					"9♣",
+					"10♣",
+					"J♣",
+					"Q♣",
+					"K♣",
+					"A♦",
+					"2♦",
+					"3♦",
+					"4♦",
+					"5♦",
+					"6♦",
+					"7♦",
+					"8♦",
+					"9♦",
+					"10♦",
+					"J♦",
+					"Q♦",
+					"K♦",
+					"A♥",
+					"2♥",
+					"3♥",
+					"4♥",
+					"5♥",
+					"6♥",
+					"7♥",
+					"8♥",
+					"9♥",
+					"10♥",
+					"J♥",
+					"Q♥",
+					"K♥",
+					"A♠",
+					"2♠",
+					"3♠",
+					"4♠",
+					"5♠",
+					"6♠",
+					"7♠",
+					"8♠",
+					"9♠",
+					"10♠",
+					"J♠",
+					"Q♠",
+					"K♠"
+				],
+				"table": []
+			}
+		},
+		"inputs": [
+			{
+				"card": 34,
+				"type": "click"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"card": 31,
+				"type": "click"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"card": 1,
+				"type": "click"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"card": 5,
+				"type": "click"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"card": 3,
+				"type": "click"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"card": 25,
+				"type": "click"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"card": 41,
+				"type": "click"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"card": 51,
+				"type": "click"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"card": 33,
+				"type": "click"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"card": 22,
+				"type": "click"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"card": 14,
+				"type": "click"
+			},
+			{
+				"card": 7,
+				"type": "click"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"card": 40,
+				"type": "click"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"card": 13,
+				"type": "click"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"card": 46,
+				"type": "click"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"card": 32,
+				"type": "click"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"card": 35,
+				"type": "click"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"card": 45,
+				"type": "click"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"card": 42,
+				"type": "click"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"card": 16,
+				"type": "click"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"card": 30,
+				"type": "click"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"card": 43,
+				"type": "click"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by value",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Sort by suit",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"action": "Draw",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			},
+			{
+				"action": "Shuffle",
+				"type": "perform"
+			},
+			{
+				"type": "click_empty",
+				"zone": "deck"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  sort hand by value, suit",
+				"  shuffle deck",
+				"  deck → hand: 3♠, 3♥, 6♥, Q♥, Q♦, J♦, 9♠"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 9♦"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 6♦"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 2♠"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 6♠"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: Q♣"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 4♠"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 8♥"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: K♥"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 7♠"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 3♣"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 10♠"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: J♣"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 9♣"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: K♣"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 8♦"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 10♥"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: J♠"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 2♥"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 8♠"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 6♣"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: J♥"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 2♣"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: K♦"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: K♠"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: A♥"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 2♦"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 8♣"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 7♥"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: A♠"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 7♦"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 4♦"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 10♦"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: Q♠"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 7♣"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 4♣"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 9♥"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 4♥"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 5♠"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: A♦"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: A♣"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 5♦"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 3♦"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 5♥"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"  deck → hand: 10♣"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"  deck → hand: 5♣"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Sort by value",
+				"  sort hand by value, suit"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Sort by suit",
+				"  sort hand by suit, value"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			],
+			[
+				"[action] Shuffle",
+				"  shuffle deck"
+			],
+			[
+				"[action] Draw from the deck",
+				"[trigger] deck_empty",
+				"  shuffle deck"
+			]
+		],
+		"seed": 2
+	}
+]
