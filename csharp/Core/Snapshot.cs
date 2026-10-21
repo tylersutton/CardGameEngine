@@ -10,6 +10,7 @@ public class Snapshot
     readonly Dictionary<string, object?> variables;
     readonly ChoiceState choice;
     readonly List<Frame> waitingSteps;
+    readonly (int Run, int Idle, bool Waited, bool Stopped) turns;
     readonly List<string> offered;
     readonly bool over;
     readonly List<int> winners;
@@ -34,6 +35,7 @@ public class Snapshot
         variables = (Dictionary<string, object?>)Values.DeepCopy(game.Variables)!;
         choice = game.Choice.State();
         waitingSteps = StepRunner.CopyFrames(game.Runner.Frames);
+        turns = game.Runner.Turns;
         offered = [.. game.Plays.Offered];
         over = game.Over;
         winners = [.. game.Winners];
@@ -66,6 +68,7 @@ public class Snapshot
         game.Choice.Restore(choice);
         game.Runner.Frames = StepRunner.CopyFrames(waitingSteps);
         game.Runner.Waiting = game.Runner.Frames.Count > 0;
+        game.Runner.Turns = turns;
         game.Plays.Offered = [.. offered];
         game.Over = over;
         game.Winners = [.. winners];

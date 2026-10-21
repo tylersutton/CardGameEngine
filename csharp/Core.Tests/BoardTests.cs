@@ -169,6 +169,25 @@ public class BoardTests
         Assert.Contains(game.Errors, error => error.Contains("\"board\" should look like"));
     }
 
+    /// Bots that aim for something try each move out, running the turns after it, and put the game back: the turns
+    /// they ran mustn't count towards a stalemate. Reversi then ends by its own rule, with a winner.
+    [Fact]
+    public void ReversiWithBotsTryingMovesOutEndsWithAWinner()
+    {
+        Game game = new(new GameFiles(RepositoryFiles.PathOf("")), "res://games/reversi.jsonc", 1);
+        game.Rules.Bot["players"] = new List<object?> { 1.0, 2.0 };
+        game.Rules.Bot["prefer"] = "discs";
+        game.Failed += failures.Add;
+        game.Start();
+        Bot bot = new(game);
+        for (int inputs = 0; inputs < 100 && !game.Over && bot.TakeInput(); inputs++)
+        {
+        }
+        Assert.True(game.Over);
+        Assert.Single(game.Winners);
+        Assert.Empty(failures);
+    }
+
     [Fact]
     public void PaintTakesTheFirstConditionThatHolds()
     {

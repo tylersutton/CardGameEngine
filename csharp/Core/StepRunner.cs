@@ -33,6 +33,14 @@ public class StepRunner(Game game)
 
     public bool IsWaiting => Frames.Count > 0 && !Running;
 
+    /// How the turns are going, for the stalemate rule (see StartTurn). Snapshot copies it with the frames, so a bot
+    /// trying a move out doesn't leave the turns it ran counted.
+    public (int Run, int Idle, bool Waited, bool Stopped) Turns
+    {
+        get => (turnsRun, idleTurns, waitedSinceTurn, turnsStopped);
+        set => (turnsRun, idleTurns, waitedSinceTurn, turnsStopped) = value;
+    }
+
     /// Steps to run after the step being worked out, or straight away when started from outside (see Drive).
     public void Schedule(List<object?> steps, Card? card)
     {
