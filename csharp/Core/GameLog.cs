@@ -6,6 +6,9 @@ public class GameLog
 {
     public event Action<string>? Logged;
 
+    /// While a bot tries moves out, nothing is logged.
+    public bool Quiet { get; set; }
+
     readonly Dictionary<string, List<string>> items = [];
     string lineText = "";
     int repeats;
@@ -49,7 +52,7 @@ public class GameLog
             {
                 names.Add($"{hidden} hidden card{(hidden == 1 ? "" : "s")}");
             }
-            Logged?.Invoke($"  {kind}: {string.Join(", ", names)}");
+            Announce($"  {kind}: {string.Join(", ", names)}");
         }
         items.Clear();
     }
@@ -65,8 +68,16 @@ public class GameLog
     {
         if (lineText.Length > 0)
         {
-            Logged?.Invoke(lineText + (repeats > 1 ? $" (×{repeats})" : ""));
+            Announce(lineText + (repeats > 1 ? $" (×{repeats})" : ""));
         }
         lineText = "";
+    }
+
+    void Announce(string text)
+    {
+        if (!Quiet)
+        {
+            Logged?.Invoke(text);
+        }
     }
 }

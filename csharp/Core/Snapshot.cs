@@ -74,12 +74,69 @@ public class Snapshot
         game.Random.State = randomState;
     }
 
+    /// The open choice's title when the snapshot was taken ("" for none).
+    public string ChoiceTitle => choice.Title;
+
     /// Whether two snapshots hold the same state (an input that changed nothing isn't worth an undo).
     public bool SameAs(Snapshot other) => Values.DeepEquals(Plain(), other.Plain());
+
+    /// What's where (cards, faces, marks, variables) as plain data. With everyDetail, also the order cards sit in,
+    /// any choice in progress and the random numbers' state; without, just enough to tell whether a move changed
+    /// anything.
+    public static Dictionary<string, object?> Describe(Game game, bool everyDetail = true)
+    {
+        Dictionary<string, object?> zones = [];
+        Dictionary<string, object?> marks = [];
+        Dictionary<string, object?> state = new()
+        {
+            ["variables"] = PlainData(game.Variables), ["zones"] = zones, ["marks"] = marks, ["over"] = game.Over,
+            ["winners"] = PlainData(game.Winners),
+        };
+        if (everyDetail)
+        {
+            Snapshot snapshot = Take(game);
+            state["choice"] = PlainData(snapshot.choice.Plain());
+            state["flow"] = PlainData(snapshot.Plain()[6..]);
+        }
+        foreach ((string name, Zone zone) in game.Zones)
+        {
+            List<long> ids = zone.Cards.Select(card => card.FaceUp ? (long)card.Id : -1L - card.Id).ToList();
+            if (!everyDetail)
+            {
+                ids.Sort();
+            }
+            zones[name] = ids;
+            foreach (Card card in zone.Cards.Where(card => card.Marks.Count > 0))
+            {
+                marks[card.Id.ToString()] = PlainData(card.Marks);
+            }
+        }
+        return state;
+    }
+
+    /// Everything that decides what happens next, as one number, so two copies of a match (e.g. online) can be
+    /// compared.
+    public static long StateHash(Game game)
+    {
+        byte[] text = System.Text.Encoding.UTF8.GetBytes(System.Text.Json.JsonSerializer.Serialize(Describe(game)));
+        return BitConverter.ToInt64(System.Security.Cryptography.SHA256.HashData(text));
+    }
 
     List<object?> Plain() =>
     [
         zones, sortColumns, faces, marks, variables, choice.Plain(), waitingSteps.Select(frame => (object?)frame.Plain()).ToList(),
         offered, over, winners, knockedOut, randomState,
     ];
+
+    /// Cards and zones by name, so the state can be written out as JSON.
+    static object? PlainData(object? value) => value switch
+    {
+        Card card => $"card {card.Id}",
+        Zone zone => $"zone {zone.Name}",
+        string or bool or null => value,
+        System.Collections.IDictionary dictionary => dictionary.Keys.Cast<object>().ToDictionary(key => PlainData(key)!.ToString()!, key => PlainData(dictionary[key])),
+        System.Collections.IEnumerable items => items.Cast<object?>().Select(PlainData).ToList(),
+        Enum => value.ToString(),
+        _ => value,
+    };
 }

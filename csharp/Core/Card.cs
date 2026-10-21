@@ -12,7 +12,8 @@ public class Card(Dictionary<string, string> data)
     /// The zone it's in, by name (Zone keeps it up to date): a name rather than the zone, as a zone holds its cards.
     public string ZoneName { get; set; } = "";
 
-    public Dictionary<string, string> Data { get; } = data;
+    /// The card's row from the deck. A bot that can't see the card swaps in a guess while it tries moves out.
+    public Dictionary<string, string> Data { get; set; } = data;
 
     public bool FaceUp { get; set; } = true;
 

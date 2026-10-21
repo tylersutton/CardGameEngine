@@ -738,6 +738,7 @@ public class Game : IStepContext
     public void SetQuiet(bool quiet)
     {
         Quiet = quiet;
+        GameLog.Quiet = quiet;
         foreach (Zone zone in Zones.Values)
         {
             zone.Quiet = quiet;
