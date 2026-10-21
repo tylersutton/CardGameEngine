@@ -351,7 +351,7 @@ public class StepEvaluator(IStepContext game, Card? card)
             ParameterInfo parameter = parameters[i];
             if (!Fits(args[i], parameter.ParameterType))
             {
-                return Fail($"{name}: \"{parameter.Name}\" should be {KindOfParameter(parameter.ParameterType)}, not {Describe(args[i])} ({game.Blocks.Signature(name)})");
+                return Fail($"{name}: \"{BuildingBlocks.ParameterName(parameter)}\" should be {KindOfParameter(parameter.ParameterType)}, not {Describe(args[i])} ({game.Blocks.Signature(name)})");
             }
             args[i] = Convert(args[i], parameter.ParameterType);
         }

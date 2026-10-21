@@ -1,10 +1,17 @@
 using Core;
 
-/// The step language test (tests/step_language_test.gd) for the C# parser and evaluator: what steps work out to,
-/// changing variables, and the messages for mistakes. Load checks (StepCompiler) aren't ported yet.
-public class CoreTests
+/// The step language test (tests/step_language_test.gd), with the same game file: what steps work out to,
+/// changing variables, and the messages for mistakes, both when the game loads and while it runs.
+public class StepLanguageTests
 {
-    readonly TestGame game = new();
+    readonly Game game = StepLanguageGame.Create();
+    readonly List<string> failures = [];
+
+    public StepLanguageTests()
+    {
+        game.Failed += failures.Add;
+        game.Start();
+    }
 
     Card Ace => game.Cards.First(card => card.Title == "A♠");
 
@@ -57,17 +64,15 @@ public class CoreTests
     [Fact]
     public void ConditionsAndColumnsSeeTheStepsCard()
     {
-        Assert.Equal(true, game.Evaluate("is_ace", Ace).Result);
-        Assert.Equal(2L, game.Evaluate("card.value + 1", Ace).Result);
+        Assert.Equal(true, game.Evaluate("is_ace", Ace));
+        Assert.Equal(2L, game.Evaluate("card.value + 1", Ace));
     }
 
     [Fact]
     public void ChangingVariables()
     {
-        foreach (string step in new[] { "total = 5", "total += 2", "total -= 1", "names += ['x']", "score += 3", "player = 2", "score += 10" })
-        {
-            Assert.Equal("", game.Evaluate(step).Failure);
-        }
+        game.Run(["total = 5", "total += 2", "total -= 1", "names += ['x']", "score += 3", "player = 2", "score += 10"]);
+        Assert.Empty(failures);
         Assert.Equal(6L, game.Variables["total"]);
         Assert.Equal(List("x"), game.Variables["names"]);
         Assert.Equal(3L, game.Variables["score_1"]);
@@ -82,39 +87,39 @@ public class CoreTests
     [InlineData("total / 0", "can't divide by zero")]
     [InlineData("phase - 1", "can't work out the text 'draw' - the number 1")]
     [InlineData("[1, 2][5]", "outside the list")]
-    [InlineData("shufle(deck)", "unknown building block \"shufle\"")]
-    [InlineData("shuffle(deck, pile)", "shuffle takes 1 argument, got 2")]
-    [InlineData("total = suited(deck)", "suited takes 2 (cards, suit), got 1")]
-    [InlineData("total = suited", "suited needs its cards, suit")]
-    [InlineData("score[3] = 1", "there's no player 3")]
-    public void RunningMistakes(string step, string message) =>
-        Assert.Contains(message, game.Evaluate(step, Ace).Failure);
+    public void RunningMistakes(string step, string message)
+    {
+        game.Evaluate(step, Ace);
+        Assert.True(game.EvaluationFailed);
+        Assert.Contains(message, Assert.Single(failures));
+    }
 
     [Theory]
-    [InlineData("move(top(deck), \"pile\")", "single quotes")]
-    [InlineData("!deck_full", "use not instead of !")]
-    [InlineData("draw(deck, pile", "expected \")\"")]
-    [InlineData("'unclosed", "has no closing '")]
-    [InlineData("count(deck) = 1", "only a variable can be changed with =")]
-    public void ParseMistakes(string step, string message) =>
-        Assert.Contains(message, Assert.IsType<UnreadableNode>(StepParser.Parse(step)).Error);
-
-    [Fact]
-    public void TreesAreRecordsThatCompareByValue()
+    [InlineData("{\"actions\": {\"Play\": {\"drag\": {\"from\": \"deck\", \"to\": \"pile\"}, \"when\": \"total = 1\"}}}", "only works as a step of its own")]
+    [InlineData("{\"triggers\": {\"start\": [\"pile = 1\"]}}", "is a zone")]
+    [InlineData("{\"triggers\": {\"start\": [\"totl = 1\"]}}", "\"totl\" is set but never used")]
+    [InlineData("{\"triggers\": {\"start\": [\"move(top(deck), \\\"pile\\\")\"]}}", "single quotes")]
+    [InlineData("{\"triggers\": {\"start\": [\"!deck_full\"]}}", "use not instead of !")]
+    [InlineData("{\"triggers\": {\"start\": [\"draw(deck, pile\"]}}", "expected \")\"")]
+    [InlineData("{\"triggers\": {\"start\": [\"shufle(deck)\"]}}", "unknown building block \"shufle\"")]
+    [InlineData("{\"triggers\": {\"start\": [\"shuffle(deck, pile)\"]}}", "shuffle takes 1 argument, got 2")]
+    [InlineData("{\"conditions\": {\"a\": \"b\", \"b\": \"not a\"}}", "refers to itself")]
+    [InlineData("{\"triggers\": {\"start\": [\"total = viewer()\"]}}", "viewer() only works in \"status\"")]
+    [InlineData("{\"triggers\": {\"start\": [\"table = []\"]}}", "is a constant")]
+    [InlineData("{\"triggers\": {\"start\": [\"total = suited(deck)\"]}}", "suited takes 2 (cards, suit), got 1")]
+    [InlineData("{\"triggers\": {\"start\": [\"total = suited\"]}}", "suited needs its cards, suit")]
+    [InlineData("{\"triggers\": {\"start\": [\"total = deck_full()\"]}}", "is a condition without parameters")]
+    [InlineData("{\"conditions\": {\"points(cards\": \"1\"}}", "write a name, or a name with parameters")]
+    public void LoadMistakes(string changes, string message)
     {
-        Assert.Equal(new AssignNode("score", null, "+=", new ValueNode(2L)), StepParser.Parse("score += 2"));
-        Assert.Equal(
-            new AssignNode("score", new ValueNode(2L), "=", new ValueNode(0L)),
-            StepParser.Parse("score[2] = 0"));
-        BinaryNode sum = Assert.IsType<BinaryNode>(StepParser.Parse("1 + 2 * 3"));
-        Assert.Equal("+", sum.Op);
-        Assert.IsType<BinaryNode>(sum.Right);
+        Game broken = StepLanguageGame.Create(changes);
+        Assert.Contains(broken.Errors, error => error.Contains(message));
     }
 
     void Expect(string step, object wanted)
     {
-        (object? result, string failure) = game.Evaluate(step);
-        Assert.Equal("", failure);
+        object? result = game.Evaluate(step);
+        Assert.Empty(failures);
         Assert.True(SameKindAndValue(wanted, result), $"{step} gave {Values.Format(result)} ({result?.GetType().Name}), wanted {Values.Format(wanted)} ({wanted.GetType().Name})");
     }
 

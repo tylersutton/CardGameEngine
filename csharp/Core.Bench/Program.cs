@@ -22,7 +22,8 @@ const int ParseRounds = 20000;
 const int EvaluateRounds = 20000;
 const int SlowRounds = 200;
 
-TestGame game = new();
+Game game = StepLanguageGame.Create();
+game.Start();
 Card ace = game.Cards.First(card => card.Title == "A♠");
 StepNode[] trees = evaluated.Select(game.TreeOf).ToArray();
 // Warm up the JIT, as a game would be by its second turn.

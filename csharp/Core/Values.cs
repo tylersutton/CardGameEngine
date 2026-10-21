@@ -38,6 +38,35 @@ public static class Values
         return Equals(left, right);
     }
 
+    /// GDScript's == on whole states: numbers by value, lists item by item, dictionaries key by key (in any order),
+    /// and anything else (cards, zones) only itself.
+    public static bool DeepEquals(object? left, object? right)
+    {
+        if (IsNumber(left) && IsNumber(right))
+        {
+            return ToDouble(left) == ToDouble(right);
+        }
+        if (left is IDictionary leftDictionary && right is IDictionary rightDictionary)
+        {
+            return leftDictionary.Count == rightDictionary.Count
+                && leftDictionary.Keys.Cast<object>().All(key => rightDictionary.Contains(key) && DeepEquals(leftDictionary[key], rightDictionary[key]));
+        }
+        if (left is IList leftList && right is IList rightList)
+        {
+            return leftList.Count == rightList.Count && Enumerable.Range(0, leftList.Count).All(i => DeepEquals(leftList[i], rightList[i]));
+        }
+        return Equals(left, right);
+    }
+
+    /// GDScript's duplicate(true): lists and dictionaries copied all the way down, so changing the copy leaves the
+    /// original alone (cards and zones stay themselves).
+    public static object? DeepCopy(object? value) => value switch
+    {
+        List<object?> items => items.Select(DeepCopy).ToList(),
+        Dictionary<string, object?> dictionary => dictionary.ToDictionary(pair => pair.Key, pair => DeepCopy(pair.Value)),
+        _ => value,
+    };
+
     /// Things of different kinds can't be equal, so comparing them is a mistake worth reporting (card.rank == 10
     /// when rank is text), except with null ("nothing yet") and between numbers.
     public static bool AreComparable(object? left, object? right) =>

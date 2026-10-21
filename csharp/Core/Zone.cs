@@ -34,6 +34,9 @@ public class Zone
 
     public event Action<Zone>? Changed;
 
+    /// While a bot tries moves out, nothing is announced.
+    public bool Quiet { get; set; }
+
     /// seats: how many players there are, for per-player zones placed round the table from seat 1's "anchor".
     public Zone(string kind, Dictionary<string, object?> definition, int number = 0, int seats = 1)
     {
@@ -104,7 +107,7 @@ public class Zone
         card.ZoneName = Name;
         Cards.Add(card);
         Sort();
-        Changed?.Invoke(this);
+        AnnounceChanged();
     }
 
     public void AddAll(List<Card> newCards)
@@ -116,13 +119,13 @@ public class Zone
         }
         Cards.AddRange(newCards);
         Sort();
-        Changed?.Invoke(this);
+        AnnounceChanged();
     }
 
     public void Remove(Card card)
     {
         Cards.Remove(card);
-        Changed?.Invoke(this);
+        AnnounceChanged();
     }
 
     public void Reorder(Card card, int index)
@@ -130,7 +133,7 @@ public class Zone
         SortColumns = [];
         Cards.Remove(card);
         Cards.Insert(index, card);
-        Changed?.Invoke(this);
+        AnnounceChanged();
     }
 
     public void Restore(List<Card> savedCards, List<string> savedSortColumns)
@@ -142,7 +145,7 @@ public class Zone
             card.ZoneName = Name;
         }
         SortColumns = [.. savedSortColumns];
-        Changed?.Invoke(this);
+        AnnounceChanged();
     }
 
     /// Where the card would go if it were added, given the zone's sorting.
@@ -156,14 +159,23 @@ public class Zone
             int j = random.NextInRange(0, i);
             (Cards[i], Cards[j]) = (Cards[j], Cards[i]);
         }
-        Changed?.Invoke(this);
+        AnnounceChanged();
     }
 
     public void KeepSortedBy(List<string> columns)
     {
         SortColumns = columns;
         Sort();
-        Changed?.Invoke(this);
+        AnnounceChanged();
+    }
+
+    /// Tells the table the zone changed (a card in it flipped, say).
+    public void AnnounceChanged()
+    {
+        if (!Quiet)
+        {
+            Changed?.Invoke(this);
+        }
     }
 
     public bool TryRead(string member, out object? value)

@@ -22,7 +22,10 @@ public partial class BuildingBlocks
 
     public ParameterInfo[] Parameters(string name) => methods[name].GetParameters();
 
-    public string Signature(string name) => $"{name}({string.Join(", ", Parameters(name).Select(parameter => parameter.Name))})";
+    public string Signature(string name) => $"{name}({string.Join(", ", Parameters(name).Select(ParameterName))})";
+
+    /// A parameter's name the way steps write it (thenTrigger is then_trigger).
+    public static string ParameterName(ParameterInfo parameter) => StepName(parameter.Name!);
 
     /// "shuffle takes 1 argument, got 2 (expected shuffle(zone))", or null if the count is right.
     public string? ArgumentCountProblem(string name, int given)
