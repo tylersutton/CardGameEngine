@@ -222,7 +222,22 @@ func _build_bars() -> void:
 	%CloseProblems.icon = EditorIcons.icon("close", Color.WHITE, 0.85)
 	%CloseProblems.pressed.connect(_toggle_problems)
 	%Problems.item_activated.connect(func() -> void: _go_to_problem(%Problems.get_selected().get_metadata(0)))
-	%Problems.item_selected.connect(func() -> void: _go_to_problem(%Problems.get_selected().get_metadata(0)))
+	%Problems.item_selected.connect(func() -> void:
+		# A right-click selects too, but it's for the copy menu, not for going there.
+		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+			_go_to_problem(%Problems.get_selected().get_metadata(0)))
+	var copy_menu := _popup([
+		["Copy", "duplicate", KEY_MASK_CTRL | KEY_C, func() -> void: DisplayServer.clipboard_set(%Problems.get_selected().get_metadata(0))],
+		["Copy all problems", "duplicate", 0, func() -> void: DisplayServer.clipboard_set("\n".join(problems))],
+	])
+	add_child(copy_menu)
+	%Problems.item_mouse_selected.connect(func(at: Vector2, button: int) -> void:
+		if button == MOUSE_BUTTON_RIGHT and problems:
+			copy_menu.popup(Rect2i(Vector2i(%Problems.get_global_transform() * at), Vector2i.ZERO)))
+	%Problems.gui_input.connect(func(event: InputEvent) -> void:
+		if event is InputEventKey and event.pressed and event.keycode == KEY_C and event.ctrl_pressed and %Problems.get_selected():
+			DisplayServer.clipboard_set(%Problems.get_selected().get_metadata(0))
+			%Problems.accept_event())
 	_show_mode()
 
 

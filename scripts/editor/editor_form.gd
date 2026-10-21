@@ -14,6 +14,8 @@ const NOT_SET := "(default)"
 const NUMBER_OR_TEXT := ["pick", "up_to"]
 ## Kinds whose control takes the whole width, under the setting's name.
 const WIDE_KINDS := ["long_text", "json", "expression", "steps", "drag"]
+## The keys that say an action is done by clicking.
+const CLICK_KEYS := ["click", "double_click"]
 
 ## Groups opened or closed by the user, by form and heading, kept while the editor is open.
 static var opened_groups: Dictionary = {}
@@ -170,6 +172,8 @@ func _control_for(field: Dictionary, path: Array, value: Variant) -> Control:
 			return StepList.new(editor, path)
 		"drag":
 			return _drag(path, value)
+		"click":
+			return _click(path, value)
 		"zones":
 			var zones := LineEdit.new()
 			zones.text = ", ".join(value) if value is Array else _as_text(value)
@@ -249,9 +253,13 @@ func _spot(path: Array, value: Variant) -> HBoxContainer:
 	return row
 
 
-## A drag's "from" and "to": zone names (comma-separated for several), each left empty for any zone. Both empty
-## takes the drag out.
-func _drag(path: Array, value: Variant) -> GridContainer:
+## A drag's "from" and "to": zone names (comma-separated for several), each left empty for any zone, and whether a
+## click or double-click on the card does the drag too ("click": true). Both ends empty takes the drag out, with
+## its clicks. While the action is done by clicking a zone instead, the drag can't be filled in.
+func _drag(path: Array, value: Variant) -> VBoxContainer:
+	var action_path := path.slice(0, -1)
+	var clicked_zone := CLICK_KEYS.any(func(key: String) -> bool: return _names_zone(document.get_value(action_path + [key])))
+	var box := VBoxContainer.new()
 	var grid := GridContainer.new()
 	grid.columns = 2
 	var ends := {}
@@ -264,20 +272,74 @@ func _drag(path: Array, value: Variant) -> GridContainer:
 		zones.text = ", ".join(current) if current is Array else _as_text(current)
 		zones.placeholder_text = "any zone" if end == "from" else "e.g. pile, or tableau, foundation"
 		zones.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		zones.editable = not clicked_zone
+		if clicked_zone:
+			zones.placeholder_text = "done by clicking a zone: empty click first"
+			zones.tooltip_text = "An action is done by a drag or by clicking a zone, not both. To drag instead, take out click (and double_click)."
 		grid.add_child(zones)
 		ends[end] = zones
+	box.add_child(grid)
 	var send := func(_text: Variant = null) -> void:
 		var drag := {}
 		for end: String in ends:
 			var names := Array(ends[end].text.split(",", false)).map(func(name: String) -> String: return name.strip_edges())
 			if names:
 				drag[end] = names[0] if names.size() == 1 else names
-		if drag != (value if value is Dictionary else {}):
-			changed.emit(path, drag if drag else null)
+		if drag == (value if value is Dictionary else {}):
+			return
+		if drag:
+			changed.emit(path, drag)
+			return
+		editor.edit(_take_out_drag.bind(path))
 	for zones: LineEdit in ends.values():
 		zones.text_submitted.connect(send)
 		zones.focus_exited.connect(send)
-	return grid
+	var clicks := HBoxContainer.new()
+	for key: String in CLICK_KEYS:
+		var check := CheckBox.new()
+		check.text = "also by " + key.replace("_", "-") + "ing"
+		var click: Variant = document.get_value(action_path + [key])
+		check.button_pressed = click is bool and click
+		check.disabled = not value is Dictionary
+		check.tooltip_text = "Clicking the card does the drag: it goes to the first zone the drag allows." if value is Dictionary \
+			else "Fill in the drag first."
+		check.toggled.connect(func(on: bool) -> void: changed.emit(action_path + [key], true if on else null))
+		clicks.add_child(check)
+	box.add_child(clicks)
+	return box
+
+
+## Without the drag, "click": true would mean nothing, so it goes too.
+func _take_out_drag(path: Array) -> void:
+	document.remove(path)
+	for key: String in CLICK_KEYS:
+		if document.get_value(path.slice(0, -1) + [key]) is bool:
+			document.remove(path.slice(0, -1) + [key])
+
+
+## For an action without a drag: the zone (or zones) whose cards are clicked. A drag action is clicked with the
+## drag's own check boxes, so then this stays empty.
+func _click(path: Array, value: Variant) -> LineEdit:
+	var zones := LineEdit.new()
+	zones.text = ", ".join(value) if value is Array else (value if value is String else "")
+	zones.placeholder_text = "e.g. deck"
+	if document.has(path.slice(0, -1) + ["drag"]):
+		zones.editable = false
+		zones.text = ""
+		zones.placeholder_text = "done by its drag"
+		zones.tooltip_text = "This action has a drag. To let a click do it, tick \"also by clicking\" under drag."
+	var send := func(_text: Variant = null) -> void:
+		var names := Array(zones.text.split(",", false)).map(func(name: String) -> String: return name.strip_edges())
+		var new_value: Variant = null if names.is_empty() else (names[0] if names.size() == 1 else names)
+		if zones.editable and JSON.stringify(new_value) != JSON.stringify(value if _names_zone(value) else null):
+			changed.emit(path, new_value)
+	zones.text_submitted.connect(send)
+	zones.focus_exited.connect(send)
+	return zones
+
+
+static func _names_zone(click: Variant) -> bool:
+	return click is String or click is Array
 
 
 ## Anything else, as JSONC text; only sent when it reads correctly.

@@ -34,9 +34,9 @@ const ZONE := [
 
 const ACTION := [
 	{key = "steps", kind = "steps", help = "What the action does. card is the card dragged, clicked or chosen; from and to are a drag's zones, clicked_zone a click's; choice is what was chosen."},
-	{key = "drag", kind = "drag", help = "Done by dragging a card from one zone (or group of copies) to another: from hand, to pile. Several, comma-separated; leave one empty for any zone."},
-	{key = "click", kind = "json", example = "\"deck\"", help = "Done by clicking a card in this zone (or the empty zone), e.g. \"deck\". On a drag action, true: clicking the card does the drag."},
-	{key = "double_click", group = "Advanced", kind = "json", example = "true", help = "The same for double-clicking, e.g. true on solitaire's moves to the foundations."},
+	{key = "drag", kind = "drag", help = "Done by dragging a card from one zone (or group of copies) to another: from hand, to pile. Several, comma-separated; leave one empty for any zone. Tick \"also by clicking\" to let a click on the card do the drag. An action is done by a drag or by clicking a zone, not both."},
+	{key = "click", kind = "click", help = "Done by clicking a card in this zone (or the empty zone), e.g. deck. Only for actions without a drag: a drag action is clicked with \"also by clicking\", under drag."},
+	{key = "double_click", group = "Advanced", kind = "click", help = "The same for double-clicking. On a drag action, use \"also by double-clicking\" under drag, e.g. solitaire's moves to the foundations."},
 	{key = "when", kind = "expression", help = "Only allowed while this is true (the button is greyed out). card, from and to are the drag's."},
 	{key = "choose", group = "Choosing", kind = "expression", help = "For a button: something to choose first. Cards (e.g. hand) are clicked; values (e.g. ['Red', 'Blue'], numbers(0, 13)) get buttons."},
 	{key = "pick", group = "Choosing", kind = "expression", help = "How many cards to choose (a number, or e.g. count(hand) - 3)."},

@@ -162,7 +162,7 @@ func _check_actions() -> void:
 			if action.get(key) is bool and not action.has(Plays.DRAG_KEY):
 				errors.append("%s: \"%s\": true means clicking does its drag, so it needs \"drag\"; to click a zone, name it: \"%s\": \"deck\"" % [label, key, key])
 			elif action.has(key) and action.has(Plays.DRAG_KEY) and action[key] is not bool:
-				errors.append("%s: with \"drag\", \"%s\" is true (clicking the card does the drag)" % [label, key])
+				errors.append("%s: it has a \"drag\", so \"%s\" can only be true (clicking the card does that drag). To have it done by clicking a zone instead, take the drag out." % [label, key])
 			elif action.get(key) is not bool:
 				_check_zone_names(label, action.get(key))
 	if rules.seats.size() not in [0, 1, rules.players]:

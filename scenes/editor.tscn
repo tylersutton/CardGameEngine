@@ -321,6 +321,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 hide_root = true
+allow_rmb_select = true
 scroll_horizontal_enabled = false
 
 [node name="Inspector" type="PanelContainer" parent="Layout/Body/SidebarSplit/InspectorSplit"]

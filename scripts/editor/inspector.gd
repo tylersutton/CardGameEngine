@@ -337,8 +337,11 @@ func _add_form(path: Array, fields: Array, columns: Array = []) -> void:
 	var form := EditorForm.new()
 	form.show_fields(editor, path, fields, columns)
 	form.changed.connect(func(changed_path: Array, value: Variant) -> void:
+		var existed := document.has(changed_path)
 		editor.change(changed_path, value)
-		if value == null or changed_path.back() in ["per_player", "copies", "cards", "from", "to"]:
+		# A drag or click being added or taken out greys out the other, so the form is built again.
+		var added_or_taken_out: bool = existed != document.has(changed_path) and changed_path.back() in ["drag", "click", "double_click"]
+		if value == null or changed_path.back() in ["per_player", "copies", "cards"] or added_or_taken_out:
 			show_page.call_deferred())
 	form.described.connect(describe)
 	content.add_child(form)
