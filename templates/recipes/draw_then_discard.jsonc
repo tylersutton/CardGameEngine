@@ -1,0 +1,53 @@
+// Draw then discard: on your turn, draw from the deck (drag or click it), then discard a card to end your turn.
+{
+	"players": 2,
+	"zones": {
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.4,
+				0.5
+			],
+			"cards": "res://decks/standard_deck.csv"
+		},
+		"discard": {
+			"label": "Discard",
+			"layout": "pile",
+			"anchor": [
+				0.6,
+				0.5
+			]
+		},
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.84
+			]
+		}
+	},
+	"actions": {
+		"Draw": {
+			"drag": {
+				"from": "deck",
+				"to": "hand"
+			},
+			"click": true
+		},
+		"Discard": {
+			"drag": {
+				"from": "hand",
+				"to": "discard"
+			}
+		}
+	},
+	"turn": [
+		"offer('Draw')",
+		"offer('Discard')",
+		"end_turn()"
+	]
+}

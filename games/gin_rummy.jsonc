@@ -1,0 +1,305 @@
+{
+	"title": "Gin Rummy",
+	"description": "Two players, you against a bot. Knock with 10 or less deadwood; first to 100 wins the match.",
+	"players": 2,
+	"seats": [
+		[
+			0.1,
+			0.72
+		],
+		[
+			0.1,
+			0.28
+		]
+	],
+	"zones": {
+		"stock": {
+			"label": "Stock",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.08,
+				0.5
+			],
+			"cards": "res://decks/standard_deck.csv",
+			"columns": {
+				"points": "min(card.value, 10)"
+			}
+		},
+		"discard": {
+			"label": "Discard",
+			"layout": "pile",
+			"anchor": [
+				0.19,
+				0.5
+			]
+		},
+		"knock": {
+			"label": "Knock",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.3,
+				0.5
+			]
+		},
+		"table": {
+			"per_player": true,
+			"layout": "melds",
+			"anchors": [
+				[
+					0.68,
+					0.63
+				],
+				[
+					0.68,
+					0.37
+				]
+			]
+		},
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchors": [
+				[
+					0.5,
+					0.83
+				],
+				[
+					0.5,
+					0.16
+				]
+			]
+		}
+	},
+	"variables": {
+		"stage": "upcard",
+		"taken": null,
+		"passes": 0,
+		"result": "",
+		"knocker_deadwood": 0,
+		"defender_deadwood": 0,
+		"dealer": 2,
+		"winner": null
+	},
+	"player_variables": {
+		"score": 0,
+		"hands_won": 0
+	},
+	"bot": {
+		"players": [
+			2
+		],
+		"prefer": "score - opponent_score - sum(deadwood(hand), 'points')"
+	},
+	"status": {
+		"your deadwood": "sum(deadwood(hand[min(viewer(), 2)]), 'points')"
+	},
+	"melds": {
+		"types": [
+			{
+				"same": "rank",
+				"min": 3
+			},
+			{
+				"same": "suit",
+				"sequence": "value",
+				"min": 3
+			}
+		],
+		"points": "points"
+	},
+	"actions": {
+		"Draw from the stock": {
+			"drag": {
+				"from": "stock",
+				"to": "hand"
+			},
+			"click": true,
+			"steps": [
+				"taken = null",
+				"stage = 'draw'"
+			]
+		},
+		"Take the discard": {
+			"drag": {
+				"from": "discard",
+				"to": "hand"
+			},
+			"click": true,
+			"steps": [
+				"taken = card",
+				"stage = 'draw'"
+			]
+		},
+		"Discard": {
+			"drag": {
+				"from": "hand",
+				"to": "discard"
+			},
+			"when": "card != taken"
+		},
+		"Knock": {
+			"drag": {
+				"from": "hand",
+				"to": "knock"
+			},
+			"button": true,
+			"when": "card != taken and sum(deadwood(without(hand, card)), 'points') <= 10",
+			"steps": [
+				"knocker_deadwood = sum(deadwood(hand), 'points')",
+				{
+					"if": "knocker_deadwood == 0",
+					"then": [
+						"defender_deadwood = sum(deadwood(opponent_hand), 'points')",
+						"result = 'gin'",
+						"score += 25 + defender_deadwood",
+						"hands_won += 1"
+					],
+					"else": [
+						"move(layoff(opponent_hand, melds(hand)), table)",
+						"defender_deadwood = sum(deadwood(opponent_hand), 'points')",
+						{
+							"if": "defender_deadwood <= knocker_deadwood",
+							"then": [
+								"result = 'undercut'",
+								"opponent_score += 25 + knocker_deadwood - defender_deadwood",
+								"opponent_hands_won += 1"
+							],
+							"else": [
+								"result = 'knock'",
+								"score += defender_deadwood - knocker_deadwood",
+								"hands_won += 1"
+							]
+						}
+					]
+				},
+				"move(hand, table)",
+				"move(opponent_hand, opponent_table)",
+				"trigger('hand_over')"
+			]
+		},
+		"Pass": {
+			"steps": [
+				"passes += 1",
+				{
+					"if": "passes == 2",
+					"then": [
+						"stage = 'stock_only'"
+					]
+				}
+			]
+		},
+		"Big Gin": {
+			"when": "count(deadwood(hand)) == 0",
+			"steps": [
+				"defender_deadwood = sum(deadwood(opponent_hand), 'points')",
+				"result = 'big gin'",
+				"score += 31 + defender_deadwood",
+				"hands_won += 1",
+				"move(hand, table)",
+				"move(opponent_hand, opponent_table)",
+				"trigger('hand_over')"
+			]
+		},
+		"Next hand": {
+			"human_only": true,
+			"steps": [
+				"dealer = 3 - dealer",
+				"trigger('deal')"
+			]
+		},
+		"Sort by suit": [
+			"sort(hand, ['suit', 'value'])"
+		],
+		"Sort by rank": [
+			"sort(hand, ['value', 'suit'])"
+		]
+	},
+	"turn": [
+		{
+			"if": "stage == 'upcard'",
+			"then": [
+				"offer(['Take the discard', 'Pass'])"
+			],
+			"else": [
+				{
+					"if": "stage == 'stock_only'",
+					"then": [
+						"offer('Draw from the stock')"
+					],
+					"else": [
+						"offer(['Draw from the stock', 'Take the discard'])"
+					]
+				}
+			]
+		},
+		{
+			"if": "count(hand) == 11",
+			"then": [
+				"ending = offer(['Discard', 'Knock', 'Big Gin'])",
+				{
+					"if": "ending == 'Discard' and count(stock) > 2",
+					"then": [
+						"end_turn()"
+					],
+					"else": [
+						{
+							"if": "ending == 'Discard'",
+							"then": [
+								"result = 'void: stock ran out'"
+							]
+						},
+						"offer('Next hand')"
+					]
+				}
+			],
+			"else": [
+				"end_turn()"
+			]
+		}
+	],
+	"triggers": {
+		"start": [
+			"sort(hand_1, ['value', 'suit'])",
+			"sort(hand_2, ['value', 'suit'])",
+			"trigger('deal')"
+		],
+		"deal": [
+			"move([hand_1, hand_2, table_1, table_2, discard, knock], stock)",
+			"shuffle(stock)",
+			"player = 3 - dealer",
+			"deal(stock, [hand, opponent_hand], 10)",
+			"move(top(stock), discard)",
+			"reset(['stage', 'passes', 'taken', 'result', 'knocker_deadwood', 'defender_deadwood'])"
+		],
+		"hand_over": [
+			{
+				"if": "most('score') >= 100",
+				"then": [
+					"player = players_with_most('score')[0]",
+					"winner = player",
+					"score += 100 + 25 * hands_won",
+					"opponent_score += 25 * opponent_hands_won",
+					{
+						"if": "opponent_hands_won == 0",
+						"then": [
+							"score = score * 2",
+							"result += ', shutout'"
+						]
+					},
+					"end_game(player)"
+				]
+			}
+		]
+	},
+	"card_face": {
+		"corner": "name",
+		"title": "name",
+		"body": [
+			"suit"
+		],
+		"color": "color"
+	}
+}

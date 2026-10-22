@@ -1,0 +1,137 @@
+{
+	"title": "Color Match",
+	"description": "Two players sharing the screen. Match the color or number; +2 and Wild cards. The README tutorial builds it.",
+	"players": 2,
+	"seats": [
+		[
+			0.15,
+			0.83
+		],
+		[
+			0.15,
+			0.16
+		]
+	],
+	"zones": {
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.4,
+				0.5
+			],
+			"cards": "res://decks/color_match.csv"
+		},
+		"pile": {
+			"label": "Pile",
+			"layout": "pile",
+			"anchor": [
+				0.6,
+				0.5
+			]
+		},
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchors": [
+				[
+					0.5,
+					0.83
+				],
+				[
+					0.5,
+					0.16
+				]
+			]
+		}
+	},
+	"variables": {
+		"winner": null,
+		"active_color": ""
+	},
+	"actions": {
+		"Play a card": {
+			"drag": {
+				"from": "hand",
+				"to": "pile"
+			},
+			"when": "card.color == 'Wild' or card.color == active_color or card.number == top(pile).number",
+			"steps": [
+				{
+					"if": "card.color != 'Wild'",
+					"then": [
+						"active_color = card.color"
+					]
+				},
+				{
+					"if": "count(hand) == 0",
+					"then": [
+						"winner = player",
+						"end_game(player)"
+					]
+				}
+			]
+		},
+		"Draw": {
+			"drag": {
+				"from": "deck",
+				"to": "hand"
+			},
+			"click": true,
+			"steps": [
+				{
+					"if": "count(deck) == 0",
+					"then": [
+						"trigger('deck_empty')"
+					]
+				}
+			]
+		},
+		"Sort by color": [
+			"sort(hand, ['color', 'number'])"
+		],
+		"Sort by number": [
+			"sort(hand, ['number', 'color'])"
+		]
+	},
+	"turn": [
+		"offer(['Play a card', 'Draw'])",
+		"end_turn()"
+	],
+	"triggers": {
+		"draw_two": [
+			"draw(deck, opponent_hand, 2)"
+		],
+		"wild": [
+			"active_color = choose(['Red', 'Blue', 'Green', 'Yellow'], 'Choose a color')"
+		],
+		"start": [
+			"sort(hand_1, ['color', 'number'])",
+			"sort(hand_2, ['color', 'number'])",
+			"shuffle(deck)",
+			"deal(deck, all_hand, 7)",
+			{
+				"while": "text(top(deck), 'on_pile') != ''",
+				"do": [
+					"shuffle(deck)"
+				]
+			},
+			"move(top(deck), pile)",
+			"active_color = top(pile).color"
+		],
+		"deck_empty": [
+			"move(without(pile, top(pile)), deck)",
+			"shuffle(deck)"
+		]
+	},
+	"card_face": {
+		"corner": "number",
+		"title": "number",
+		"body": [
+			"color"
+		],
+		"color": "ink"
+	}
+}

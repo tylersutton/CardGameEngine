@@ -1,0 +1,117 @@
+{
+	"title": "Hex",
+	"description": "You play Red against a Blue bot. Take turns placing a stone on any empty cell: click it, or drag a stone there from your pile. Red wins by joining the top and bottom edges with a chain of red stones, Blue by joining the left and right edges. Someone always wins.",
+	"players": 2,
+	"player_names": [
+		"Red",
+		"Blue"
+	],
+	"seats": [
+		[
+			0.5,
+			0.94
+		],
+		[
+			0.12,
+			0.5
+		]
+	],
+	"zones": {
+		"cell": {
+			"board": {
+				"shape": "hex",
+				"columns": 9,
+				"rows": 9,
+				"size": 46,
+				"paint": {
+					"top_edge": "#a8473f",
+					"bottom_edge": "#a8473f",
+					"left_edge": "#3f62a8",
+					"right_edge": "#3f62a8"
+				}
+			},
+			"anchor": [
+				0.5,
+				0.5
+			]
+		},
+		"box": {
+			"layout": "pile",
+			"outline": false,
+			"anchor": [
+				-0.3,
+				0.5
+			],
+			"cards": "res://decks/hex_stones.csv"
+		},
+		"stones": {
+			"per_player": true,
+			"layout": "pile",
+			"outline": false,
+			"anchors": [
+				[
+					0.35,
+					0.9
+				],
+				[
+					0.1,
+					0.35
+				]
+			]
+		}
+	},
+	"conditions": {
+		"my_color": "'Red' if player == 1 else 'Blue'",
+		"mine(space)": "text(top(space), 'name') == my_color",
+		"top_edge(space)": "space.row == 1",
+		"bottom_edge(space)": "space.row == 9",
+		"left_edge(space)": "space.column == 1",
+		"right_edge(space)": "space.column == 9",
+		"won": "connected(zones_where(cell, 'top_edge'), zones_where(cell, 'bottom_edge'), 'mine') if player == 1 else connected(zones_where(cell, 'left_edge'), zones_where(cell, 'right_edge'), 'mine')"
+	},
+	"actions": {
+		"Place": {
+			"click": "cell",
+			"when": "count(clicked_zone) == 0",
+			"steps": [
+				"draw(stones, clicked_zone)"
+			]
+		},
+		"Place by dragging": {
+			"drag": {
+				"from": "stones",
+				"to": "cell"
+			},
+			"when": "count(to) == 0"
+		}
+	},
+	"turn": [
+		"offer(['Place', 'Place by dragging'])",
+		{
+			"if": "won",
+			"then": [
+				"end_game(player)"
+			]
+		},
+		"end_turn()"
+	],
+	"triggers": {
+		"start": [
+			"move(where(box, 'name', 'Red'), stones[1])",
+			"move(where(box, 'name', 'Blue'), stones[2])"
+		]
+	},
+	"status": {
+		"goal": "'Red joins the red edges; Blue joins the blue edges'"
+	},
+	"bot": {
+		"players": [
+			2
+		]
+	},
+	"card_face": {
+		"shape": "disc",
+		"size": 38,
+		"background": "paint"
+	}
+}

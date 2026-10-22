@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cbxrviu5tb00m"]
 
-[ext_resource type="Script" uid="uid://bmvx4otqp7xhv" path="res://scripts/ui/main.gd" id="1_main"]
-[ext_resource type="Script" uid="uid://dmmga7b2iq5l0" path="res://scripts/ui/table_view.gd" id="2_table"]
-[ext_resource type="Script" uid="uid://cbl3yarmriyug" path="res://scripts/ui/log_view.gd" id="3_log"]
-[ext_resource type="Script" uid="uid://bsjaea1ytn71d" path="res://scripts/ui/status_view.gd" id="4_status"]
+[ext_resource type="Script" path="res://scripts/ui/Main.cs" id="1_main"]
+[ext_resource type="Script" path="res://scripts/ui/TableView.cs" id="2_table"]
+[ext_resource type="Script" path="res://scripts/ui/LogView.cs" id="3_log"]
+[ext_resource type="Script" path="res://scripts/ui/StatusView.cs" id="4_status"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_undo"]
 command_or_control_autoremap = true
@@ -20,7 +20,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_main")
-rules_path = "res://games/hearts.json"
 
 [node name="Layout" type="HBoxContainer" parent="." unique_id=1742410408]
 layout_mode = 1
@@ -43,33 +42,50 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Toolbar" type="HBoxContainer" parent="Layout/TableColumn/ToolbarMargin" unique_id=56630377]
+[node name="Toolbar" type="HFlowContainer" parent="Layout/TableColumn/ToolbarMargin" unique_id=56630377]
 layout_mode = 2
+
+[node name="GamesButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Back to the list of games"
+text = "Games"
 
 [node name="ReloadButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=768880190]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 text = "Reload"
 
 [node name="UndoButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=1169205054]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 shortcut = SubResource("Shortcut_undo")
 text = "Undo"
 
 [node name="SandboxToggle" type="CheckButton" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=1630523048]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 tooltip_text = "Ignore move rules and action conditions"
 text = "Sandbox"
 
-[node name="ActionButtons" type="HBoxContainer" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=510503867]
+[node name="ZoneNamesToggle" type="CheckButton" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Show each zone's name and card count, as used in rules"
+text = "Zone names"
+
+[node name="ActionButtons" type="HFlowContainer" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=510503867]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ChoiceMargin" type="MarginContainer" parent="Layout/TableColumn" unique_id=1722594352]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
@@ -77,6 +93,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="ChoiceBar" type="HBoxContainer" parent="Layout/TableColumn/ChoiceMargin" unique_id=1607239929]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
 [node name="TableView" type="Control" parent="Layout/TableColumn" unique_id=360531308]
@@ -96,6 +113,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+autowrap_mode = 3
 script = ExtResource("4_status")
 
 [node name="LogView" type="RichTextLabel" parent="Layout/LogPanel/SidePanel" unique_id=1497853782]

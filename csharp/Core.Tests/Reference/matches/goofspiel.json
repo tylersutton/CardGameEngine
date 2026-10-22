@@ -1,0 +1,1656 @@
+[
+	{
+		"seed": 1,
+		"inputs": [
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 4
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "click",
+				"card": 13
+			},
+			{
+				"type": "click",
+				"card": 49
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "click",
+				"card": 50
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "click",
+				"card": 17
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "click",
+				"card": 16
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "click",
+				"card": 51
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "click",
+				"card": 24
+			},
+			{
+				"type": "click",
+				"card": 40
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "click",
+				"card": 45
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 1
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 12
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  for player in players (3)",
+				"  sort hand_1 by value",
+				"  box → hand_1: A♠, 2♠, 3♠, 4♠, 5♠, 6♠, 7♠, 8♠, 9♠, 10♠, J♠, Q♠, K♠",
+				"  sort hand_2 by value",
+				"  box → hand_2: 13 hidden cards",
+				"  sort hand_3 by value",
+				"  box → hand_3: 13 hidden cards",
+				"  box → prizes: 13 hidden cards",
+				"  shuffle prizes",
+				"[trigger] round",
+				"  prizes → prize: 6♦",
+				"  stake = 6",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 6♠",
+				"  hand_1 → bid_1: 6♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 6♠",
+				"  face up in bid_2: 8♥",
+				"  face up in bid_3: 10♣",
+				"  high = 10",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_3: 6♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 6♠",
+				"  bid_2 → box: 8♥",
+				"  bid_3 → box: 10♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: A♦",
+				"  stake = 1",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 5♠",
+				"  hand_1 → bid_1: 5♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 5♠",
+				"  face up in bid_2: J♥",
+				"  face up in bid_3: 6♣",
+				"  high = 11",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_2: A♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 5♠",
+				"  bid_2 → box: J♥",
+				"  bid_3 → box: 6♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 8♦",
+				"  stake = 8",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose Q♠",
+				"  hand_1 → bid_1: Q♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: Q♠",
+				"  face up in bid_2: A♥",
+				"  face up in bid_3: J♣",
+				"  high = 12",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_1: 8♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: Q♠",
+				"  bid_2 → box: A♥",
+				"  bid_3 → box: J♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 9♦",
+				"  stake = 9",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 10♠",
+				"  hand_1 → bid_1: 10♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 10♠",
+				"  face up in bid_2: 7♥",
+				"  face up in bid_3: Q♣",
+				"  high = 12",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_3: 9♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 10♠",
+				"  bid_2 → box: 7♥",
+				"  bid_3 → box: Q♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: Q♦",
+				"  stake = 12",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 3♠",
+				"  hand_1 → bid_1: 3♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 3♠",
+				"  face up in bid_2: 5♥",
+				"  face up in bid_3: 4♣",
+				"  high = 5",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_2: Q♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 3♠",
+				"  bid_2 → box: 5♥",
+				"  bid_3 → box: 4♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 2♦",
+				"  stake = 2",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 9♠",
+				"  hand_1 → bid_1: 9♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 9♠",
+				"  face up in bid_2: 4♥",
+				"  face up in bid_3: 3♣",
+				"  high = 9",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_1: 2♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 9♠",
+				"  bid_2 → box: 4♥",
+				"  bid_3 → box: 3♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: J♦",
+				"  stake = 11",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 8♠",
+				"  hand_1 → bid_1: 8♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 8♠",
+				"  face up in bid_2: K♥",
+				"  face up in bid_3: K♣",
+				"  high = 13",
+				"  if count(high_bids) == 1 → else"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 8♠",
+				"  bid_2 → box: K♥",
+				"  bid_3 → box: K♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: K♦",
+				"  stake = 24",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 4♠",
+				"  hand_1 → bid_1: 4♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 4♠",
+				"  face up in bid_2: Q♥",
+				"  face up in bid_3: 2♣",
+				"  high = 12",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_2: J♦, K♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 4♠",
+				"  bid_2 → box: Q♥",
+				"  bid_3 → box: 2♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 7♦",
+				"  stake = 7",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 7♠",
+				"  hand_1 → bid_1: 7♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 7♠",
+				"  face up in bid_2: 2♥",
+				"  face up in bid_3: 7♣",
+				"  high = 7",
+				"  if count(high_bids) == 1 → else"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 7♠",
+				"  bid_2 → box: 2♥",
+				"  bid_3 → box: 7♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 4♦",
+				"  stake = 11",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 2♠",
+				"  hand_1 → bid_1: 2♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 2♠",
+				"  face up in bid_2: 3♥",
+				"  face up in bid_3: A♣",
+				"  high = 3",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_2: 7♦, 4♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 2♠",
+				"  bid_2 → box: 3♥",
+				"  bid_3 → box: A♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 5♦",
+				"  stake = 5",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose K♠",
+				"  hand_1 → bid_1: K♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: K♠",
+				"  face up in bid_2: 10♥",
+				"  face up in bid_3: 9♣",
+				"  high = 13",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_1: 5♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: K♠",
+				"  bid_2 → box: 10♥",
+				"  bid_3 → box: 9♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 10♦",
+				"  stake = 10",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose A♠",
+				"  hand_1 → bid_1: A♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: A♠",
+				"  face up in bid_2: 6♥",
+				"  face up in bid_3: 8♣",
+				"  high = 8",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_3: 10♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: A♠",
+				"  bid_2 → box: 6♥",
+				"  bid_3 → box: 8♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 3♦",
+				"  stake = 3",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose J♠",
+				"  hand_1 → bid_1: J♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: J♠",
+				"  face up in bid_2: 9♥",
+				"  face up in bid_3: 5♣",
+				"  high = 11",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_1: 3♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: J♠",
+				"  bid_2 → box: 9♥",
+				"  bid_3 → box: 5♣",
+				"  if count(prizes) > 0 → else",
+				"[trigger] game_over",
+				"[game over] Winner: West"
+			]
+		],
+		"end": {
+			"zones": {
+				"box": [
+					"▼6♠",
+					"▼8♥",
+					"▼10♣",
+					"▼5♠",
+					"▼J♥",
+					"▼6♣",
+					"▼Q♠",
+					"▼A♥",
+					"▼J♣",
+					"▼10♠",
+					"▼7♥",
+					"▼Q♣",
+					"▼3♠",
+					"▼5♥",
+					"▼4♣",
+					"▼9♠",
+					"▼4♥",
+					"▼3♣",
+					"▼8♠",
+					"▼K♥",
+					"▼K♣",
+					"▼4♠",
+					"▼Q♥",
+					"▼2♣",
+					"▼7♠",
+					"▼2♥",
+					"▼7♣",
+					"▼2♠",
+					"▼3♥",
+					"▼A♣",
+					"▼K♠",
+					"▼10♥",
+					"▼9♣",
+					"▼A♠",
+					"▼6♥",
+					"▼8♣",
+					"▼J♠",
+					"▼9♥",
+					"▼5♣"
+				],
+				"prizes": [],
+				"prize": [],
+				"hand_1": [],
+				"hand_2": [],
+				"hand_3": [],
+				"bid_1": [],
+				"bid_2": [],
+				"bid_3": [],
+				"won_1": [
+					"8♦",
+					"2♦",
+					"5♦",
+					"3♦"
+				],
+				"won_2": [
+					"A♦",
+					"Q♦",
+					"J♦",
+					"K♦",
+					"7♦",
+					"4♦"
+				],
+				"won_3": [
+					"6♦",
+					"9♦",
+					"10♦"
+				]
+			},
+			"variables": {
+				"stake": "3",
+				"high": "11",
+				"player": "1"
+			},
+			"over": true,
+			"result": "Winner: West"
+		}
+	},
+	{
+		"seed": 2,
+		"inputs": [
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "click",
+				"card": 24
+			},
+			{
+				"type": "click",
+				"card": 51
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "click",
+				"card": 49
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 12
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "click",
+				"card": 45
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "click",
+				"card": 50
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 4
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "click",
+				"card": 13
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 1
+			},
+			{
+				"type": "click",
+				"card": 17
+			},
+			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "click",
+				"card": 40
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "click",
+				"card": 16
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  for player in players (3)",
+				"  sort hand_1 by value",
+				"  box → hand_1: A♠, 2♠, 3♠, 4♠, 5♠, 6♠, 7♠, 8♠, 9♠, 10♠, J♠, Q♠, K♠",
+				"  sort hand_2 by value",
+				"  box → hand_2: 13 hidden cards",
+				"  sort hand_3 by value",
+				"  box → hand_3: 13 hidden cards",
+				"  box → prizes: 13 hidden cards",
+				"  shuffle prizes",
+				"[trigger] round",
+				"  prizes → prize: 3♦",
+				"  stake = 3",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 3♠",
+				"  hand_1 → bid_1: 3♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 3♠",
+				"  face up in bid_2: Q♥",
+				"  face up in bid_3: K♣",
+				"  high = 13",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_3: 3♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 3♠",
+				"  bid_2 → box: Q♥",
+				"  bid_3 → box: K♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 4♦",
+				"  stake = 4",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 10♠",
+				"  hand_1 → bid_1: 10♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 10♠",
+				"  face up in bid_2: 2♥",
+				"  face up in bid_3: J♣",
+				"  high = 11",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_3: 4♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 10♠",
+				"  bid_2 → box: 2♥",
+				"  bid_3 → box: J♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: Q♦",
+				"  stake = 12",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose K♠",
+				"  hand_1 → bid_1: K♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: K♠",
+				"  face up in bid_2: 6♥",
+				"  face up in bid_3: 7♣",
+				"  high = 13",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_1: Q♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: K♠",
+				"  bid_2 → box: 6♥",
+				"  bid_3 → box: 7♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 7♦",
+				"  stake = 7",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 6♠",
+				"  hand_1 → bid_1: 6♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 6♠",
+				"  face up in bid_2: 9♥",
+				"  face up in bid_3: Q♣",
+				"  high = 12",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_3: 7♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 6♠",
+				"  bid_2 → box: 9♥",
+				"  bid_3 → box: Q♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 8♦",
+				"  stake = 8",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 9♠",
+				"  hand_1 → bid_1: 9♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 9♠",
+				"  face up in bid_2: J♥",
+				"  face up in bid_3: 9♣",
+				"  high = 11",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_2: 8♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 9♠",
+				"  bid_2 → box: J♥",
+				"  bid_3 → box: 9♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: K♦",
+				"  stake = 13",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 5♠",
+				"  hand_1 → bid_1: 5♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 5♠",
+				"  face up in bid_2: 7♥",
+				"  face up in bid_3: 4♣",
+				"  high = 7",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_2: K♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 5♠",
+				"  bid_2 → box: 7♥",
+				"  bid_3 → box: 4♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 2♦",
+				"  stake = 2",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose A♠",
+				"  hand_1 → bid_1: A♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: A♠",
+				"  face up in bid_2: A♥",
+				"  face up in bid_3: 6♣",
+				"  high = 6",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_3: 2♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: A♠",
+				"  bid_2 → box: A♥",
+				"  bid_3 → box: 6♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 5♦",
+				"  stake = 5",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose J♠",
+				"  hand_1 → bid_1: J♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: J♠",
+				"  face up in bid_2: 8♥",
+				"  face up in bid_3: 8♣",
+				"  high = 11",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_1: 5♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: J♠",
+				"  bid_2 → box: 8♥",
+				"  bid_3 → box: 8♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: A♦",
+				"  stake = 1",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 2♠",
+				"  hand_1 → bid_1: 2♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 2♠",
+				"  face up in bid_2: 5♥",
+				"  face up in bid_3: 10♣",
+				"  high = 10",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_3: A♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 2♠",
+				"  bid_2 → box: 5♥",
+				"  bid_3 → box: 10♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 9♦",
+				"  stake = 9",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose Q♠",
+				"  hand_1 → bid_1: Q♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: Q♠",
+				"  face up in bid_2: K♥",
+				"  face up in bid_3: 3♣",
+				"  high = 13",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_2: 9♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: Q♠",
+				"  bid_2 → box: K♥",
+				"  bid_3 → box: 3♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 6♦",
+				"  stake = 6",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 4♠",
+				"  hand_1 → bid_1: 4♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 4♠",
+				"  face up in bid_2: 10♥",
+				"  face up in bid_3: 2♣",
+				"  high = 10",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_2: 6♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 4♠",
+				"  bid_2 → box: 10♥",
+				"  bid_3 → box: 2♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: 10♦",
+				"  stake = 10",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 7♠",
+				"  hand_1 → bid_1: 7♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 7♠",
+				"  face up in bid_2: 4♥",
+				"  face up in bid_3: A♣",
+				"  high = 7",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_1: 10♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 7♠",
+				"  bid_2 → box: 4♥",
+				"  bid_3 → box: A♣",
+				"  if count(prizes) > 0 → then",
+				"[trigger] round",
+				"  prizes → prize: J♦",
+				"  stake = 11",
+				"[action] Bid",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose 8♠",
+				"  hand_1 → bid_1: 8♠",
+				"  player = 2",
+				"[action] Bid",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_2 → bid_2: 1 hidden card",
+				"  player = 1",
+				"  player = 3",
+				"[action] Bid",
+				"  East (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Bid] chose a hidden card",
+				"  hand_3 → bid_3: 1 hidden card",
+				"  player = 1",
+				"[trigger] reveal",
+				"  face up in bid_1: 8♠",
+				"  face up in bid_2: 3♥",
+				"  face up in bid_3: 5♣",
+				"  high = 8",
+				"  if count(high_bids) == 1 → then",
+				"  prize → won_1: J♦"
+			],
+			[
+				"  You may: Next round",
+				"[action] Next round",
+				"  bid_1 → box: 8♠",
+				"  bid_2 → box: 3♥",
+				"  bid_3 → box: 5♣",
+				"  if count(prizes) > 0 → else",
+				"[trigger] game_over",
+				"[game over] Winner: You"
+			]
+		],
+		"end": {
+			"zones": {
+				"box": [
+					"▼3♠",
+					"▼Q♥",
+					"▼K♣",
+					"▼10♠",
+					"▼2♥",
+					"▼J♣",
+					"▼K♠",
+					"▼6♥",
+					"▼7♣",
+					"▼6♠",
+					"▼9♥",
+					"▼Q♣",
+					"▼9♠",
+					"▼J♥",
+					"▼9♣",
+					"▼5♠",
+					"▼7♥",
+					"▼4♣",
+					"▼A♠",
+					"▼A♥",
+					"▼6♣",
+					"▼J♠",
+					"▼8♥",
+					"▼8♣",
+					"▼2♠",
+					"▼5♥",
+					"▼10♣",
+					"▼Q♠",
+					"▼K♥",
+					"▼3♣",
+					"▼4♠",
+					"▼10♥",
+					"▼2♣",
+					"▼7♠",
+					"▼4♥",
+					"▼A♣",
+					"▼8♠",
+					"▼3♥",
+					"▼5♣"
+				],
+				"prizes": [],
+				"prize": [],
+				"hand_1": [],
+				"hand_2": [],
+				"hand_3": [],
+				"bid_1": [],
+				"bid_2": [],
+				"bid_3": [],
+				"won_1": [
+					"Q♦",
+					"5♦",
+					"10♦",
+					"J♦"
+				],
+				"won_2": [
+					"8♦",
+					"K♦",
+					"9♦",
+					"6♦"
+				],
+				"won_3": [
+					"3♦",
+					"4♦",
+					"7♦",
+					"2♦",
+					"A♦"
+				]
+			},
+			"variables": {
+				"stake": "11",
+				"high": "8",
+				"player": "1"
+			},
+			"over": true,
+			"result": "Winner: You"
+		}
+	}
+]

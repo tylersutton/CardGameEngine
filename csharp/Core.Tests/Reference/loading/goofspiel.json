@@ -1,0 +1,815 @@
+{
+	"rules": {
+		"title": "Goofspiel",
+		"description": "Three players, you against two bots, all bidding at once. Each round a diamond is turned up as the prize; everyone secretly bids a card from their suit, then the bids are revealed. The highest bid takes the prize (a tie leaves it for the next round). Most prize points after 13 rounds wins.",
+		"zones": {
+			"box": {
+				"outline": false,
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					-0.3,
+					0.5
+				],
+				"cards": "res://decks/standard_deck.csv"
+			},
+			"prizes": {
+				"label": "Prizes",
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					0.38,
+					0.32
+				]
+			},
+			"prize": {
+				"label": "Prize",
+				"layout": "row",
+				"width": 0.2,
+				"anchor": [
+					0.53,
+					0.32
+				]
+			},
+			"hand": {
+				"per_player": true,
+				"layout": "fan",
+				"face": "private",
+				"width": 0.45,
+				"anchors": [
+					[
+						0.5,
+						0.86
+					],
+					[
+						0.09,
+						0.5
+					],
+					[
+						0.91,
+						0.5
+					]
+				],
+				"rotations": [
+					0.0,
+					90.0,
+					270.0
+				]
+			},
+			"bid": {
+				"label": "Bid",
+				"per_player": true,
+				"layout": "pile",
+				"face": "down",
+				"anchors": [
+					[
+						0.5,
+						0.62
+					],
+					[
+						0.3,
+						0.5
+					],
+					[
+						0.7,
+						0.5
+					]
+				]
+			},
+			"won": {
+				"label": "Won",
+				"per_player": true,
+				"layout": "pile",
+				"anchors": [
+					[
+						0.84,
+						0.86
+					],
+					[
+						0.25,
+						0.16
+					],
+					[
+						0.75,
+						0.16
+					]
+				]
+			}
+		},
+		"actions": {
+			"Bid": {
+				"button": false,
+				"choose": "hand",
+				"prefer": "-abs(sum(bid, 'value') - stake - player + 1)",
+				"steps": [
+					"move(choice, bid)"
+				]
+			},
+			"Next round": {
+				"human_only": true,
+				"steps": []
+			}
+		},
+		"triggers": {
+			"start": [
+				{
+					"for": "player",
+					"in": "players",
+					"do": [
+						"sort(hand, ['value'])",
+						"move(where(box, 'suit', ['Spades', 'Hearts', 'Clubs'][player - 1]), hand)"
+					]
+				},
+				"move(where(box, 'suit', 'Diamonds'), prizes)",
+				"shuffle(prizes)",
+				"trigger('round')"
+			],
+			"round": [
+				"move(top(prizes), prize)",
+				"stake = sum(prize, 'value')",
+				"ask_all('Bid', 'reveal')"
+			],
+			"reveal": [
+				"flip(all_bid)",
+				"high = number(highest(all_bid, 'value'), 'value')",
+				{
+					"if": "count(high_bids) == 1",
+					"then": [
+						"move(prize, won[owner(top(high_bids))])"
+					]
+				},
+				"offer('Next round')",
+				"move(all_bid, box)",
+				{
+					"if": "count(prizes) > 0",
+					"then": [
+						"trigger('round')"
+					],
+					"else": [
+						"trigger('game_over')"
+					]
+				}
+			],
+			"game_over": [
+				"move(prize, box)",
+				"end_game(players_with_most('prize_points'))"
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"prize_points": "sum(won, 'value')",
+			"high_bids": "where(all_bid, 'value', high)"
+		},
+		"condition_parameters": {
+			"prize_points": [],
+			"high_bids": []
+		},
+		"condition_errors": [],
+		"constants": {},
+		"turn": [],
+		"variables": {
+			"stake": 0,
+			"high": 0
+		},
+		"players": 3,
+		"seats": [
+			[
+				0.16,
+				0.86
+			],
+			[
+				0.09,
+				0.18
+			],
+			[
+				0.91,
+				0.18
+			]
+		],
+		"player_names": [
+			"You",
+			"West",
+			"East"
+		],
+		"player_variables": {},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"points": "'%s %d, %s %d, %s %d' % [name_of(1), sum(won_1, 'value'), name_of(2), sum(won_2, 'value'), name_of(3), sum(won_3, 'value')]",
+			"prize worth": "stake"
+		},
+		"show_variables": [
+			"stake"
+		],
+		"bot": {
+			"players": [
+				2.0,
+				3.0
+			],
+			"prefer": "sum(won, 'value')"
+		},
+		"card_face": {
+			"corner": "name",
+			"title": "name",
+			"body": [
+				"suit"
+			],
+			"color": "color"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "box",
+			"label": "",
+			"has_outline": false,
+			"kind": "box",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "prizes",
+			"label": "Prizes",
+			"has_outline": true,
+			"kind": "prizes",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.3799999952316284,
+				0.3199999928474426
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "prize",
+			"label": "Prize",
+			"has_outline": true,
+			"kind": "prize",
+			"owner": 0,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.5299999713897705,
+				0.3199999928474426
+			],
+			"width": 0.2,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 1,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.8600000143051147
+			],
+			"width": 0.45,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 2,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.09000000357627869,
+				0.5
+			],
+			"width": 0.45,
+			"rotation": 90.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_3",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 3,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.9100000262260437,
+				0.5
+			],
+			"width": 0.45,
+			"rotation": 270.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "bid_1",
+			"label": "Bid",
+			"has_outline": true,
+			"kind": "bid",
+			"owner": 1,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.5,
+				0.6200000047683716
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "bid_2",
+			"label": "Bid",
+			"has_outline": true,
+			"kind": "bid",
+			"owner": 2,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "bid_3",
+			"label": "Bid",
+			"has_outline": true,
+			"kind": "bid",
+			"owner": 3,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.699999988079071,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "won_1",
+			"label": "Won",
+			"has_outline": true,
+			"kind": "won",
+			"owner": 1,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.8399999737739563,
+				0.8600000143051147
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "won_2",
+			"label": "Won",
+			"has_outline": true,
+			"kind": "won",
+			"owner": 2,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.25,
+				0.1599999964237213
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "won_3",
+			"label": "Won",
+			"has_outline": true,
+			"kind": "won",
+			"owner": 3,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.75,
+				0.1599999964237213
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/standard_deck.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"value"
+			],
+			"cards": [
+				{
+					"name": "A♠",
+					"rank": "A",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "1"
+				},
+				{
+					"name": "2♠",
+					"rank": "2",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "2"
+				},
+				{
+					"name": "3♠",
+					"rank": "3",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "3"
+				},
+				{
+					"name": "4♠",
+					"rank": "4",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "4"
+				},
+				{
+					"name": "5♠",
+					"rank": "5",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "5"
+				},
+				{
+					"name": "6♠",
+					"rank": "6",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "6"
+				},
+				{
+					"name": "7♠",
+					"rank": "7",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "7"
+				},
+				{
+					"name": "8♠",
+					"rank": "8",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "8"
+				},
+				{
+					"name": "9♠",
+					"rank": "9",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "9"
+				},
+				{
+					"name": "10♠",
+					"rank": "10",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "10"
+				},
+				{
+					"name": "J♠",
+					"rank": "J",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "11"
+				},
+				{
+					"name": "Q♠",
+					"rank": "Q",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "12"
+				},
+				{
+					"name": "K♠",
+					"rank": "K",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "13"
+				},
+				{
+					"name": "A♥",
+					"rank": "A",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "1"
+				},
+				{
+					"name": "2♥",
+					"rank": "2",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "2"
+				},
+				{
+					"name": "3♥",
+					"rank": "3",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "3"
+				},
+				{
+					"name": "4♥",
+					"rank": "4",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "4"
+				},
+				{
+					"name": "5♥",
+					"rank": "5",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "5"
+				},
+				{
+					"name": "6♥",
+					"rank": "6",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "6"
+				},
+				{
+					"name": "7♥",
+					"rank": "7",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "7"
+				},
+				{
+					"name": "8♥",
+					"rank": "8",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "8"
+				},
+				{
+					"name": "9♥",
+					"rank": "9",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "9"
+				},
+				{
+					"name": "10♥",
+					"rank": "10",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "10"
+				},
+				{
+					"name": "J♥",
+					"rank": "J",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "11"
+				},
+				{
+					"name": "Q♥",
+					"rank": "Q",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "12"
+				},
+				{
+					"name": "K♥",
+					"rank": "K",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "13"
+				},
+				{
+					"name": "A♦",
+					"rank": "A",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "1"
+				},
+				{
+					"name": "2♦",
+					"rank": "2",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "2"
+				},
+				{
+					"name": "3♦",
+					"rank": "3",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "3"
+				},
+				{
+					"name": "4♦",
+					"rank": "4",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "4"
+				},
+				{
+					"name": "5♦",
+					"rank": "5",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "5"
+				},
+				{
+					"name": "6♦",
+					"rank": "6",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "6"
+				},
+				{
+					"name": "7♦",
+					"rank": "7",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "7"
+				},
+				{
+					"name": "8♦",
+					"rank": "8",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "8"
+				},
+				{
+					"name": "9♦",
+					"rank": "9",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "9"
+				},
+				{
+					"name": "10♦",
+					"rank": "10",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "10"
+				},
+				{
+					"name": "J♦",
+					"rank": "J",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "11"
+				},
+				{
+					"name": "Q♦",
+					"rank": "Q",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "12"
+				},
+				{
+					"name": "K♦",
+					"rank": "K",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "13"
+				},
+				{
+					"name": "A♣",
+					"rank": "A",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "1"
+				},
+				{
+					"name": "2♣",
+					"rank": "2",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "2"
+				},
+				{
+					"name": "3♣",
+					"rank": "3",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "3"
+				},
+				{
+					"name": "4♣",
+					"rank": "4",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "4"
+				},
+				{
+					"name": "5♣",
+					"rank": "5",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "5"
+				},
+				{
+					"name": "6♣",
+					"rank": "6",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "6"
+				},
+				{
+					"name": "7♣",
+					"rank": "7",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "7"
+				},
+				{
+					"name": "8♣",
+					"rank": "8",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "8"
+				},
+				{
+					"name": "9♣",
+					"rank": "9",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "9"
+				},
+				{
+					"name": "10♣",
+					"rank": "10",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "10"
+				},
+				{
+					"name": "J♣",
+					"rank": "J",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "11"
+				},
+				{
+					"name": "Q♣",
+					"rank": "Q",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "12"
+				},
+				{
+					"name": "K♣",
+					"rank": "K",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "13"
+				}
+			]
+		}
+	}
+}

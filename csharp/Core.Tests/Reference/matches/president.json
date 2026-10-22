@@ -1,0 +1,7507 @@
+[
+	{
+		"seed": 1,
+		"inputs": [
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 49
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 1
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 40
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 24
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 50
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "click",
+				"card": 12
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 13
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 33
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 16
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 31
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 45
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 51
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 37
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 32
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 17
+			},
+			{
+				"type": "click",
+				"card": 4
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 28
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 40
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "click",
+				"card": 1
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 13
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 24
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 37
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 50
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 33
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 12
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 28
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 51
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"[trigger] deal",
+				"  shuffle deck",
+				"  deck → hand_1: 6♠, 8♦, 7♥, 6♥, K♦, 5♥, 5♠, Q♦, 8♣, 4♣, J♦, A♦, 10♦",
+				"  deck → hand_2: 13 hidden cards",
+				"  deck → hand_3: 13 hidden cards",
+				"  deck → hand_4: 13 hidden cards",
+				"  finish_order = []",
+				"  first_play = true",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if size(ranking) == 0 → then",
+				"  player = 4",
+				"  for player in players (4)",
+				"  sort hand_1 by order, suit",
+				"  sort hand_2 by order, suit",
+				"  sort hand_3 by order, suit",
+				"  sort hand_4 by order, suit",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_4 → table: 7♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 5",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 7♥",
+				"  table → beaten: 7♠",
+				"  hand_1 → table: 7♥",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 5",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 7♥",
+				"  hand_4 → table: J♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 9",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: J♥",
+				"  hand_2 → table: J♣",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 9",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: J♣",
+				"  hand_4 → table: 2♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♠",
+				"  beaten → deck: 7♠, 7♥, J♥, J♣",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[],
+			[
+				"[Play] chose a hidden card, a hidden card, a hidden card",
+				"  hand_4 → table: 3♣, 3♥, 3♠",
+				"  set_size = 3",
+				"  matched = false",
+				"  top_order = 1",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 3♣, 3♥, 3♠",
+				"  hand_2 → table: 2♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♣",
+				"  beaten → deck: 3♣, 3♥, 3♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_2 → table: Q♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 10",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: Q♥",
+				"  hand_3 → table: Q♣",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 10",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose A♦",
+				"  table → beaten: Q♣",
+				"  hand_1 → table: A♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 12",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: A♦",
+				"  hand_2 → table: A♠",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 12",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 2",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: A♠",
+				"  beaten → deck: Q♥, Q♣, A♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose a hidden card, a hidden card",
+				"  hand_2 → table: 9♣, 9♥",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 7",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose a hidden card, a hidden card",
+				"  table → beaten: 9♣, 9♥",
+				"  hand_3 → table: K♥, K♠",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: K♥, K♠",
+				"  hand_4 → table: 2♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♥",
+				"  beaten → deck: 9♣, 9♥, K♥, K♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_4 → table: 10♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 8",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose K♦",
+				"  table → beaten: 10♥",
+				"  hand_1 → table: K♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: K♦",
+				"  hand_3 → table: A♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 12",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 3",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: A♥",
+				"  beaten → deck: 10♥, K♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_3 → table: 8♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 6",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 8♦",
+				"  table → beaten: 8♥",
+				"  hand_1 → table: 8♦",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 6",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 8♦",
+				"  hand_3 → table: A♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 12",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 3",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: A♣",
+				"  beaten → deck: 8♥, 8♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_3 → table: 4♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 2",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 4♥",
+				"  hand_4 → table: 4♠",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 2",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 4♠",
+				"  hand_2 → table: 10♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 8",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 10♠",
+				"  hand_3 → table: 2♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♦",
+				"  beaten → deck: 4♥, 4♠, 10♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_3 → table: 6♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 4",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 6♦",
+				"  hand_4 → table: 7♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 5",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 10♦",
+				"  table → beaten: 7♣",
+				"  hand_1 → table: 10♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 8",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 10♦",
+				"  hand_2 → table: 10♣",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 8",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose J♦",
+				"  table → beaten: 10♣",
+				"  hand_1 → table: J♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 9",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: J♦",
+				"  hand_2 → table: K♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 2",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: K♣",
+				"  beaten → deck: 6♦, 7♣, 10♦, 10♣, J♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_2 → table: Q♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 10",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 2",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: Q♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_2 → table: 9♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 7",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose Q♦",
+				"  table → beaten: 9♠",
+				"  hand_1 → table: Q♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 10",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 1",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: Q♦",
+				"  beaten → deck: 9♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 6♥",
+				"  hand_1 → table: 6♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 4",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 1",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 6♥",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 4♣",
+				"  hand_1 → table: 4♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 2",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 4♣",
+				"  hand_3 → table: J♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 9",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 3",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: J♠",
+				"  beaten → deck: 4♣",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_3 → table: 4♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 2",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 4♦",
+				"  hand_4 → table: 7♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 5",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 7♦",
+				"  hand_3 → table: 8♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 6",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 8♠",
+				"  hand_4 → table: 9♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 7",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 4",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 9♦",
+				"  beaten → deck: 4♦, 7♦, 8♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_4 → table: 5♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 3",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → then",
+				"[trigger] finished",
+				"  East (bot) is out",
+				"  finish_order = [4]",
+				"  title_4 = President",
+				"  score_4 = 3",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 8♣",
+				"  table → beaten: 5♦",
+				"  hand_1 → table: 8♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 6",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 1",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 8♣",
+				"  beaten → deck: 5♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose 5♥, 5♠",
+				"  hand_1 → table: 5♥, 5♠",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 3",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 1",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 5♥, 5♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 6♠",
+				"  hand_1 → table: 6♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 4",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → then",
+				"[trigger] finished",
+				"  You is out",
+				"  finish_order = [4, 1]",
+				"  title_1 = Vice President",
+				"  score_1 = 2",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 2",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 6♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_2 → table: 3♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 1",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 3♦",
+				"  hand_3 → table: 5♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 3",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → then",
+				"[trigger] finished",
+				"  North (bot) is out",
+				"  finish_order = [4, 1, 3]",
+				"  title_3 = Vice Scum",
+				"  score_3 = 1",
+				"  if size(finish_order) == 3 → then",
+				"  player = 2",
+				"[trigger] finished",
+				"  West (bot) is out",
+				"  finish_order = [4, 1, 3, 2]",
+				"  title_2 = Scum",
+				"  score_2 = 0",
+				"[trigger] hand_over",
+				"  ranking = [4, 1, 3, 2]",
+				"  West (bot) may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"[trigger] deal",
+				"  hand_2 → deck: 1 hidden card",
+				"  table → deck: 5♣",
+				"  beaten → deck: 3♦",
+				"  shuffle deck",
+				"  deck → hand_1: 7♣, 2♣, 2♦, 7♠, 6♣, Q♥, 7♦, 3♠, 8♥, Q♠, 6♠, 5♣, 8♠",
+				"  deck → hand_2: 13 hidden cards",
+				"  deck → hand_3: 13 hidden cards",
+				"  deck → hand_4: 13 hidden cards",
+				"  finish_order = []",
+				"  first_play = true",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if size(ranking) == 0 → else",
+				"[trigger] exchange",
+				"  hand_2 → hand_4: 1 hidden card",
+				"  hand_2 → hand_4: 1 hidden card",
+				"  hand_3 → hand_1: A♥",
+				"  player = 2",
+				"  player = 4",
+				"[action] Give 2 back",
+				"  East (bot): choose 2 (click the highlighted cards)"
+			],
+			[],
+			[
+				"[Give 2 back] chose a hidden card, a hidden card",
+				"  hand_4 → hand_2: 2 hidden cards",
+				"  player = 2",
+				"  player = 1",
+				"[action] Give 1 back",
+				"  You: choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Give 1 back] chose Q♠",
+				"  hand_1 → hand_3: Q♠",
+				"[turn] You",
+				"  You may: Play, Pass",
+				"  player = 2"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_2 → table: 7♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 5",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 7♥",
+				"  hand_3 → table: J♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 9",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: J♥",
+				"  hand_4 → table: K♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 2♣",
+				"  table → beaten: K♥",
+				"  hand_1 → table: 2♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♣",
+				"  beaten → deck: 7♥, J♥, K♥",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 2♦",
+				"  hand_1 → table: 2♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose 6♣, 6♠",
+				"  hand_1 → table: 6♣, 6♠",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 4",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose a hidden card, a hidden card",
+				"  table → beaten: 6♣, 6♠",
+				"  hand_3 → table: 9♦, 9♥",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 7",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose a hidden card, a hidden card",
+				"  table → beaten: 9♦, 9♥",
+				"  hand_4 → table: 2♥, 2♠",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♥, 2♠",
+				"  beaten → deck: 6♣, 6♠, 9♦, 9♥",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose a hidden card, a hidden card",
+				"  hand_4 → table: A♦, A♠",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 12",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 4",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: A♦, A♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_4 → table: 10♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 8",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 10♦",
+				"  hand_2 → table: 10♥",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 8",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose A♥",
+				"  table → beaten: 10♥",
+				"  hand_1 → table: A♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 12",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 1",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: A♥",
+				"  beaten → deck: 10♦, 10♥",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose Q♥",
+				"  hand_1 → table: Q♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 10",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: Q♥",
+				"  hand_3 → table: Q♠",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 10",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: Q♠",
+				"  hand_2 → table: Q♦",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 10",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: Q♦",
+				"  hand_4 → table: A♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 12",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 4",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: A♣",
+				"  beaten → deck: Q♥, Q♠, Q♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_4 → table: Q♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 10",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: Q♣",
+				"  hand_3 → table: K♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 3",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: K♦",
+				"  beaten → deck: Q♣",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_3 → table: 6♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 4",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 6♥",
+				"  hand_4 → table: 8♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 6",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 8♠",
+				"  table → beaten: 8♦",
+				"  hand_1 → table: 8♠",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 6",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 8♠",
+				"  hand_3 → table: K♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 3",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: K♠",
+				"  beaten → deck: 6♥, 8♦, 8♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_3 → table: 3♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 1",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 3♦",
+				"  hand_4 → table: 9♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 7",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 9♠",
+				"  hand_2 → table: 10♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 8",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 10♣",
+				"  hand_3 → table: J♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 9",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: J♠",
+				"  hand_4 → table: K♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			]
+		],
+		"end": {
+			"zones": {
+				"deck": [
+					"▼2♣",
+					"▼7♥",
+					"▼J♥",
+					"▼K♥",
+					"▼2♦",
+					"▼2♥",
+					"▼2♠",
+					"▼6♣",
+					"▼6♠",
+					"▼9♦",
+					"▼9♥",
+					"▼A♦",
+					"▼A♠",
+					"▼A♥",
+					"▼10♦",
+					"▼10♥",
+					"▼A♣",
+					"▼Q♥",
+					"▼Q♠",
+					"▼Q♦",
+					"▼K♦",
+					"▼Q♣",
+					"▼K♠",
+					"▼6♥",
+					"▼8♦",
+					"▼8♠"
+				],
+				"hand_1": [
+					"3♠",
+					"5♣",
+					"7♣",
+					"7♦",
+					"7♠",
+					"8♥"
+				],
+				"hand_2": [
+					"3♣",
+					"3♥",
+					"4♦",
+					"4♥",
+					"4♠",
+					"5♥",
+					"5♠",
+					"9♣",
+					"J♦"
+				],
+				"hand_3": [
+					"5♦",
+					"6♦",
+					"10♠",
+					"J♣"
+				],
+				"hand_4": [
+					"4♣",
+					"8♣"
+				],
+				"beaten": [
+					"3♦",
+					"9♠",
+					"10♣",
+					"J♠"
+				],
+				"table": [
+					"K♣"
+				]
+			},
+			"variables": {
+				"first_play": "false",
+				"set_size": "1",
+				"top_order": "11",
+				"matched": "false",
+				"last_played": "4",
+				"passes": "2",
+				"finish_order": "[]",
+				"ranking": "[4, 1, 3, 2]",
+				"player": "3",
+				"title_1": "Vice President",
+				"title_2": "Scum",
+				"title_3": "Vice Scum",
+				"title_4": "President",
+				"score_1": "2",
+				"score_2": "0",
+				"score_3": "1",
+				"score_4": "3"
+			},
+			"over": false,
+			"result": ""
+		}
+	},
+	{
+		"seed": 2,
+		"inputs": [
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 51
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 50
+			},
+			{
+				"type": "click",
+				"card": 24
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 37
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "click",
+				"card": 1
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 40
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 28
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 13
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 49
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 32
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 33
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 12
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 45
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 17
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 4
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 31
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 16
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 40
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 45
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 12
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 24
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 37
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 1
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 31
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Pass"
+			},
+			{
+				"type": "perform",
+				"action": "Play"
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "finish"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"[trigger] deal",
+				"  shuffle deck",
+				"  deck → hand_1: 3♠, Q♦, 3♦, K♦, 7♦, 9♣, J♠, Q♠, A♠, 5♥, 4♦, 8♠, 2♣",
+				"  deck → hand_2: 13 hidden cards",
+				"  deck → hand_3: 13 hidden cards",
+				"  deck → hand_4: 13 hidden cards",
+				"  finish_order = []",
+				"  first_play = true",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if size(ranking) == 0 → then",
+				"  player = 4",
+				"  for player in players (4)",
+				"  sort hand_1 by order, suit",
+				"  sort hand_2 by order, suit",
+				"  sort hand_3 by order, suit",
+				"  sort hand_4 by order, suit",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_4 → table: 6♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 4",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose J♠",
+				"  table → beaten: 6♠",
+				"  hand_1 → table: J♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 9",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: J♠",
+				"  hand_2 → table: K♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: K♣",
+				"  hand_3 → table: A♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 12",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: A♦",
+				"  hand_4 → table: 2♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♦",
+				"  beaten → deck: 6♠, J♠, K♣, A♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose a hidden card, a hidden card",
+				"  hand_4 → table: Q♣, Q♥",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 10",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose Q♦, Q♠",
+				"  table → beaten: Q♣, Q♥",
+				"  hand_1 → table: Q♦, Q♠",
+				"  set_size = 2",
+				"  matched = true",
+				"  top_order = 10",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose a hidden card, a hidden card",
+				"  table → beaten: Q♦, Q♠",
+				"  hand_3 → table: 2♥, 2♠",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♥, 2♠",
+				"  beaten → deck: Q♣, Q♥, Q♦, Q♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_3 → table: 9♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 7",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 9♠",
+				"  hand_4 → table: 9♦",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 7",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 9♦",
+				"  hand_2 → table: 9♥",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 7",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 2♣",
+				"  table → beaten: 9♥",
+				"  hand_1 → table: 2♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♣",
+				"  beaten → deck: 9♠, 9♦, 9♥",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 3♦",
+				"  hand_1 → table: 3♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 1",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 3♦",
+				"  hand_2 → table: J♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 9",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: J♥",
+				"  hand_3 → table: A♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 12",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: A♣",
+				"  hand_4 → table: A♥",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 12",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 4",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: A♥",
+				"  beaten → deck: 3♦, J♥, A♣",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_4 → table: 8♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 6",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 8♠",
+				"  table → beaten: 8♣",
+				"  hand_1 → table: 8♠",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 6",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 8♠",
+				"  hand_3 → table: J♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 9",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose A♠",
+				"  table → beaten: J♣",
+				"  hand_1 → table: A♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 12",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 1",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: A♠",
+				"  beaten → deck: 8♣, 8♠, J♣",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 7♦",
+				"  hand_1 → table: 7♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 5",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 7♦",
+				"  hand_2 → table: 10♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 8",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 10♣",
+				"  hand_3 → table: 10♠",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 8",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose K♦",
+				"  table → beaten: 10♠",
+				"  hand_1 → table: K♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: K♦",
+				"  hand_4 → table: K♥",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 11",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 4",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: K♥",
+				"  beaten → deck: 7♦, 10♣, 10♠, K♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_4 → table: 3♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 1",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 3♣",
+				"  hand_2 → table: 5♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 3",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 5♣",
+				"  hand_3 → table: 8♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 6",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 9♣",
+				"  table → beaten: 8♦",
+				"  hand_1 → table: 9♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 7",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 9♣",
+				"  hand_4 → table: 10♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 8",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 10♥",
+				"  hand_2 → table: 10♦",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 8",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 2",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 10♦",
+				"  beaten → deck: 3♣, 5♣, 8♦, 9♣, 10♥",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_2 → table: 3♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 1",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 3♥",
+				"  hand_3 → table: 7♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 5",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 7♥",
+				"  hand_2 → table: 7♠",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 5",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 2",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 7♠",
+				"  beaten → deck: 3♥, 7♥",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_2 → table: J♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 9",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: J♦",
+				"  hand_4 → table: K♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 4",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: K♠",
+				"  beaten → deck: J♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_4 → table: 7♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 5",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 4",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 7♣",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_4 → table: 4♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 2",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → then",
+				"[trigger] finished",
+				"  East (bot) is out",
+				"  finish_order = [4]",
+				"  title_4 = President",
+				"  score_4 = 3",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 4♦",
+				"  table → beaten: 4♠",
+				"  hand_1 → table: 4♦",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 2",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 4♦",
+				"  hand_3 → table: 8♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 6",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 8♥",
+				"  beaten → deck: 4♠, 4♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_3 → table: 6♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 4",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 6♥",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_3 → table: 4♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 2",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 5♥",
+				"  table → beaten: 4♣",
+				"  hand_1 → table: 5♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 3",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 5♥",
+				"  hand_2 → table: 5♠",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 3",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 2",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 5♠",
+				"  beaten → deck: 4♣, 5♥",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_2 → table: 6♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 4",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 2",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 6♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_2 → table: 6♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 4",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 2",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 6♣",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_2 → table: 4♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 2",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → then",
+				"[trigger] finished",
+				"  West (bot) is out",
+				"  finish_order = [4, 2]",
+				"  title_2 = Vice President",
+				"  score_2 = 2",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 4♥",
+				"  hand_3 → table: 5♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 3",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → then",
+				"[trigger] finished",
+				"  North (bot) is out",
+				"  finish_order = [4, 2, 3]",
+				"  title_3 = Vice Scum",
+				"  score_3 = 1",
+				"  if size(finish_order) == 3 → then",
+				"  player = 1",
+				"[trigger] finished",
+				"  You is out",
+				"  finish_order = [4, 2, 3, 1]",
+				"  title_1 = Scum",
+				"  score_1 = 0",
+				"[trigger] hand_over",
+				"  ranking = [4, 2, 3, 1]",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"[trigger] deal",
+				"  hand_1 → deck: 3♠",
+				"  table → deck: 5♦",
+				"  beaten → deck: 4♥",
+				"  shuffle deck",
+				"  deck → hand_1: 9♥, 2♦, 8♣, A♥, 6♣, 7♠, Q♦, Q♠, 8♥, 5♠, J♦, 8♠, 9♣",
+				"  deck → hand_2: 13 hidden cards",
+				"  deck → hand_3: 13 hidden cards",
+				"  deck → hand_4: 13 hidden cards",
+				"  finish_order = []",
+				"  first_play = true",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if size(ranking) == 0 → else",
+				"[trigger] exchange",
+				"  hand_1 → hand_4: 2♦",
+				"  hand_1 → hand_4: A♥",
+				"  hand_3 → hand_2: 1 hidden card",
+				"  player = 1",
+				"  player = 4",
+				"[action] Give 2 back",
+				"  East (bot): choose 2 (click the highlighted cards)"
+			],
+			[],
+			[
+				"[Give 2 back] chose a hidden card, a hidden card",
+				"  hand_4 → hand_1: 9♦, 2♦",
+				"  player = 1",
+				"  player = 2",
+				"[action] Give 1 back",
+				"  West (bot): choose 1 (click the highlighted cards)"
+			],
+			[
+				"[Give 1 back] chose a hidden card",
+				"  hand_2 → hand_3: 1 hidden card",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass",
+				"  player = 1"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[],
+			[
+				"[Play] chose 9♣, 9♦, 9♥",
+				"  hand_1 → table: 9♣, 9♦, 9♥",
+				"  set_size = 3",
+				"  matched = false",
+				"  top_order = 7",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 9♣, 9♦, 9♥",
+				"  hand_2 → table: 2♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♣",
+				"  beaten → deck: 9♣, 9♦, 9♥",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_2 → table: 3♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 1",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 3♠",
+				"  hand_3 → table: 7♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 5",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 7♥",
+				"  hand_4 → table: K♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: K♥",
+				"  hand_2 → table: A♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 12",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: A♦",
+				"  hand_3 → table: 2♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♥",
+				"  beaten → deck: 3♠, 7♥, K♥, A♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_3 → table: 4♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 2",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 4♠",
+				"  hand_4 → table: 7♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 5",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 7♠",
+				"  table → beaten: 7♣",
+				"  hand_1 → table: 7♠",
+				"  set_size = 1",
+				"  matched = true",
+				"  top_order = 5",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → then",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 7♠",
+				"  hand_3 → table: K♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 3",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 4",
+				"  if matched → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: K♠",
+				"  hand_4 → table: A♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 12",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 4",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: A♠",
+				"  beaten → deck: 4♠, 7♣, 7♠, K♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_4 → table: 3♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 1",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 8♣",
+				"  table → beaten: 3♥",
+				"  hand_1 → table: 8♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 6",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 8♣",
+				"  hand_2 → table: Q♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 10",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: Q♥",
+				"  hand_4 → table: A♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 12",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 4",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: A♣",
+				"  beaten → deck: 3♥, 8♣, Q♥",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose a hidden card, a hidden card",
+				"  hand_4 → table: 10♦, 10♥",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 8",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose Q♦, Q♠",
+				"  table → beaten: 10♦, 10♥",
+				"  hand_1 → table: Q♦, Q♠",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 10",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 1",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: Q♦, Q♠",
+				"  beaten → deck: 10♦, 10♥",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose J♦",
+				"  hand_1 → table: J♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 9",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 1",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: J♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 6♣",
+				"  hand_1 → table: 6♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 4",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 3",
+				"  if round_over → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 6♣",
+				"  hand_4 → table: K♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 11",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 2♦",
+				"  table → beaten: K♦",
+				"  hand_1 → table: 2♦",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♦",
+				"  beaten → deck: 6♣, K♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  You: choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose 8♥",
+				"  hand_1 → table: 8♥",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 6",
+				"  last_played = 1",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 2",
+				"  if matched → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: 8♥",
+				"  hand_2 → table: J♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 9",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  table → beaten: J♠",
+				"  hand_4 → table: 2♠",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 13",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → then",
+				"[trigger] clear",
+				"  table → deck: 2♠",
+				"  beaten → deck: 8♥, J♠",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"  if count(hand) == 0 → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose a hidden card, a hidden card",
+				"  hand_4 → table: 5♣, 5♦",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 3",
+				"  last_played = 4",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 1",
+				"  if matched → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 2",
+				"  if round_over → else",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play] chose a hidden card, a hidden card",
+				"  table → beaten: 5♣, 5♦",
+				"  hand_2 → table: 6♦, 6♥",
+				"  set_size = 2",
+				"  matched = false",
+				"  top_order = 4",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 1",
+				"  player = 4",
+				"  if round_over → else",
+				"[turn] East (bot)",
+				"  East (bot) may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 2",
+				"  player = 1",
+				"  if round_over → else",
+				"[turn] You",
+				"  You may: Play, Pass"
+			],
+			[
+				"[action] Pass",
+				"[trigger] pass",
+				"  passes = 3",
+				"  player = 2",
+				"  if round_over → then",
+				"[trigger] clear",
+				"  table → deck: 6♦, 6♥",
+				"  beaten → deck: 5♣, 5♦",
+				"  set_size = 0",
+				"  top_order = 0",
+				"  passes = 0",
+				"[turn] West (bot)",
+				"  West (bot) may: Play, Pass"
+			],
+			[
+				"[action] Play",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play] chose a hidden card",
+				"  hand_2 → table: 3♣",
+				"  set_size = 1",
+				"  matched = false",
+				"  top_order = 1",
+				"  last_played = 2",
+				"  passes = 0",
+				"  first_play = false",
+				"  if count(hand) == 0 → else",
+				"  if size(finish_order) == 3 → else",
+				"  if unbeatable → else",
+				"  player = 3",
+				"  if matched → else",
+				"[turn] North (bot)",
+				"  North (bot) may: Play, Pass"
+			]
+		],
+		"end": {
+			"zones": {
+				"deck": [
+					"▼2♣",
+					"▼9♣",
+					"▼9♦",
+					"▼9♥",
+					"▼2♥",
+					"▼3♠",
+					"▼7♥",
+					"▼K♥",
+					"▼A♦",
+					"▼A♠",
+					"▼4♠",
+					"▼7♣",
+					"▼7♠",
+					"▼K♠",
+					"▼A♣",
+					"▼3♥",
+					"▼8♣",
+					"▼Q♥",
+					"▼Q♦",
+					"▼Q♠",
+					"▼10♦",
+					"▼10♥",
+					"▼J♦",
+					"▼2♦",
+					"▼6♣",
+					"▼K♦",
+					"▼2♠",
+					"▼8♥",
+					"▼J♠",
+					"▼6♦",
+					"▼6♥",
+					"▼5♣",
+					"▼5♦"
+				],
+				"hand_1": [
+					"5♠",
+					"8♠"
+				],
+				"hand_2": [
+					"4♦",
+					"4♥",
+					"10♣",
+					"J♥",
+					"Q♣"
+				],
+				"hand_3": [
+					"4♣",
+					"5♥",
+					"6♠",
+					"7♦",
+					"8♦",
+					"9♠",
+					"10♠",
+					"J♣",
+					"K♣"
+				],
+				"hand_4": [
+					"3♦",
+					"A♥"
+				],
+				"beaten": [],
+				"table": [
+					"3♣"
+				]
+			},
+			"variables": {
+				"first_play": "false",
+				"set_size": "1",
+				"top_order": "1",
+				"matched": "false",
+				"last_played": "2",
+				"passes": "0",
+				"finish_order": "[]",
+				"ranking": "[4, 2, 3, 1]",
+				"player": "3",
+				"title_1": "Scum",
+				"title_2": "Vice President",
+				"title_3": "Vice Scum",
+				"title_4": "President",
+				"score_1": "0",
+				"score_2": "2",
+				"score_3": "1",
+				"score_4": "3"
+			},
+			"over": false,
+			"result": ""
+		}
+	}
+]

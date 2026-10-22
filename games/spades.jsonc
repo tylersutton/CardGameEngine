@@ -1,0 +1,266 @@
+{
+	"title": "Spades",
+	"description": "Four players in two partnerships: you and North against West and East. Bid your tricks, spades are trump; the first team to 500 wins.",
+	"players": 4,
+	"player_names": [
+		"You",
+		"West",
+		"North",
+		"East"
+	],
+	"teams": [
+		[
+			1,
+			3
+		],
+		[
+			2,
+			4
+		]
+	],
+	"seats": [
+		[
+			0.215,
+			0.86
+		]
+	],
+	"zones": {
+		"deck": {
+			"outline": false,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"cards": "res://decks/standard_deck.csv",
+			"columns": {
+				"value": "14 if card.rank == 'A' else card.value"
+			}
+		},
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"width": 0.45,
+			"anchor": [
+				0.5,
+				0.86
+			]
+		},
+		"played": {
+			"per_player": true,
+			"layout": "pile",
+			"anchor": [
+				0.5,
+				0.62
+			]
+		},
+		"won": {
+			"label": "Tricks",
+			"per_player": true,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.787,
+				0.86
+			]
+		}
+	},
+	"variables": {
+		"dealer": 4,
+		"lead": "",
+		"spades_broken": false
+	},
+	"player_variables": {
+		"bid": 0
+	},
+	"team_variables": {
+		"team_bid": 0,
+		"team_score": 0,
+		"bags": 0
+	},
+	"show_variables": [
+		"spades_broken"
+	],
+	"status": {
+		"bids": "'%s %d, %s %d, %s %d, %s %d' % [name_of(1), bid_1, name_of(2), bid_2, name_of(3), bid_3, name_of(4), bid_4]",
+		"team 1": "'%s & %s: bid %d, won %d' % [name_of(1), name_of(3), team_bid_1, count(won_1) / 4 + count(won_3) / 4]",
+		"team 1 score": "'%d (%d bags)' % [team_score_1, bags_1]",
+		"team 2": "'%s & %s: bid %d, won %d' % [name_of(2), name_of(4), team_bid_2, count(won_2) / 4 + count(won_4) / 4]",
+		"team 2 score": "'%d (%d bags)' % [team_score_2, bags_2]"
+	},
+	"bot": {
+		"players": [
+			2,
+			3,
+			4
+		],
+		"prefer": "10 * count(team_won) + 5 * int(team_winning) - 0.2 * sum(played, 'value')"
+	},
+	"conditions": {
+		"spades_allowed": "lead != '' or card.data.suit != 'Spades' or spades_broken or count(where(hand, 'suit', 'Spades')) == count(hand)",
+		"best_card": "trick_winner(all_played, lead, 'Spades')",
+		"team_winning": "team(owner(best_card)) == team(player)",
+		"team_tricks": "count(team_won) / 4",
+		"likely_winner": "card.data.rank == 'A' or card.data.rank == 'K' or (card.data.suit == 'Spades' and number(card, 'value') >= 11)"
+	},
+	"actions": {
+		"Play a card": {
+			"drag": {
+				"from": "hand",
+				"to": "played"
+			},
+			"when": "follows_suit(card, hand, lead) and spades_allowed",
+			"steps": [
+				{
+					"if": "lead == ''",
+					"then": [
+						"lead = card.data.suit"
+					]
+				},
+				{
+					"if": "card.data.suit == 'Spades'",
+					"then": [
+						"spades_broken = true"
+					]
+				}
+			]
+		},
+		"Bid": {
+			"button": false,
+			"choose": "numbers(0, 13)",
+			"prefer": "-abs(bid - max(1, count(matching(hand, 'likely_winner'))))",
+			"steps": [
+				"bid = choice",
+				"team_bid += choice"
+			]
+		},
+		"Collect trick": {
+			"human_only": true,
+			"steps": [
+				"move(all_played, won)",
+				"lead = ''"
+			]
+		},
+		"Next hand": {
+			"human_only": true,
+			"steps": [
+				"trigger('deal')"
+			]
+		}
+	},
+	"turn": [
+		"offer('Play a card')",
+		{
+			"if": "count(all_played) < 4",
+			"then": [
+				"end_turn()"
+			],
+			"else": [
+				"player = owner(best_card)",
+				"offer('Collect trick')",
+				{
+					"if": "count(all_hand) == 0",
+					"then": [
+						"trigger('score_hand')",
+						"offer('Next hand')"
+					]
+				}
+			]
+		}
+	],
+	"triggers": {
+		"start": [
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					"sort(hand, ['suit', 'value'])"
+				]
+			},
+			"dealer = random(1, 4)",
+			"trigger('deal')"
+		],
+		"deal": [
+			"move([all_hand, all_played, all_won], deck)",
+			"shuffle(deck)",
+			"deal(deck, all_hand, 13)",
+			"player = dealer",
+			"dealer = next_player()",
+			"reset(['lead', 'spades_broken', 'team_bid'])",
+			"player = next_player(2)",
+			{
+				"for": "seat",
+				"in": "4",
+				"do": [
+					"ask('Bid', player)",
+					"player = next_player()"
+				]
+			}
+		],
+		"score_hand": [
+			{
+				"for": "player",
+				"in": "[1, 2]",
+				"do": [
+					{
+						"if": "team_tricks >= team_bid",
+						"then": [
+							"team_score += 10 * team_bid + team_tricks - team_bid",
+							"bags += team_tricks - team_bid"
+						],
+						"else": [
+							"team_score -= 10 * team_bid"
+						]
+					},
+					{
+						"if": "bags >= 10",
+						"then": [
+							"team_score -= 100",
+							"bags -= 10"
+						]
+					}
+				]
+			},
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					{
+						"if": "bid == 0 and count(won) == 0",
+						"then": [
+							"team_score += 100"
+						]
+					},
+					{
+						"if": "bid == 0 and count(won) > 0",
+						"then": [
+							"team_score -= 100"
+						]
+					}
+				]
+			},
+			{
+				"if": "team_score_1 >= 500 and team_score_1 > team_score_2",
+				"then": [
+					"end_game([1, 3])"
+				]
+			},
+			{
+				"if": "team_score_2 >= 500 and team_score_2 > team_score_1",
+				"then": [
+					"end_game([2, 4])"
+				]
+			}
+		]
+	},
+	"card_face": {
+		"corner": "name",
+		"title": "name",
+		"body": [
+			"suit"
+		],
+		"color": "color"
+	}
+}

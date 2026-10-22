@@ -1,0 +1,210 @@
+{
+	"title": "Solitaire",
+	"description": "Klondike: build the foundations from Ace to King. Draw one or three cards at a time.",
+	"zones": {
+		"stock": {
+			"label": "Stock",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.08,
+				0.16
+			],
+			"cards": "res://decks/standard_deck.csv",
+			"columns": {
+				"art": "'cards/' + card.rank + '_' + card.suit + '.png'"
+			}
+		},
+		"waste": {
+			"label": "Waste",
+			"layout": "pile",
+			"spread": 3,
+			"anchor": [
+				0.21,
+				0.16
+			]
+		},
+		"foundation": {
+			"label": "A",
+			"copies": 4,
+			"layout": "pile",
+			"anchors": [
+				[
+					0.47,
+					0.16
+				],
+				[
+					0.6,
+					0.16
+				],
+				[
+					0.73,
+					0.16
+				],
+				[
+					0.86,
+					0.16
+				]
+			]
+		},
+		"tableau": {
+			"label": "K",
+			"copies": 7,
+			"layout": "column",
+			"drag": "stack",
+			"anchors": [
+				[
+					0.08,
+					0.45
+				],
+				[
+					0.21,
+					0.45
+				],
+				[
+					0.34,
+					0.45
+				],
+				[
+					0.47,
+					0.45
+				],
+				[
+					0.6,
+					0.45
+				],
+				[
+					0.73,
+					0.45
+				],
+				[
+					0.86,
+					0.45
+				]
+			]
+		}
+	},
+	"variables": {
+		"result": "",
+		"draw_count": 1
+	},
+	"status": {
+		"cards on foundations": "count(foundation)",
+		"cards you can move": "count(movable([waste, tableau], [tableau, foundation]))"
+	},
+	"conditions": {
+		"top_card": "card == top(from)",
+		"fits_foundation": "number(card, 'value') == count(to) + 1 and count(where(to, 'suit', card.data.suit)) == count(to)",
+		"fits_tableau": "(count(to) == 0 and number(card, 'value') == 13) or (number(card, 'value') == number(top(to), 'value') - 1 and card.data.color != text(top(to), 'color'))"
+	},
+	"actions": {
+		"Waste to foundation": {
+			"drag": {
+				"from": "waste",
+				"to": "foundation"
+			},
+			"double_click": true,
+			"when": "top_card and fits_foundation",
+			"steps": [
+				"trigger('check_win')"
+			]
+		},
+		"Tableau to foundation": {
+			"drag": {
+				"from": "tableau",
+				"to": "foundation"
+			},
+			"double_click": true,
+			"when": "top_card and fits_foundation",
+			"steps": [
+				"flip(face_down(top(from)))",
+				"trigger('check_win')"
+			]
+		},
+		"Waste to tableau": {
+			"drag": {
+				"from": "waste",
+				"to": "tableau"
+			},
+			"when": "top_card and fits_tableau",
+			"steps": []
+		},
+		"Tableau to tableau": {
+			"drag": {
+				"from": "tableau",
+				"to": "tableau"
+			},
+			"when": "card.face_up and fits_tableau",
+			"steps": [
+				"flip(face_down(top(from)))"
+			]
+		},
+		"Foundation to tableau": {
+			"drag": {
+				"from": "foundation",
+				"to": "tableau"
+			},
+			"when": "top_card and fits_tableau",
+			"steps": []
+		},
+		"Turn the stock": {
+			"click": "stock",
+			"steps": [
+				{
+					"if": "count(stock) == 0",
+					"then": [
+						"draw(waste, stock, count(waste))"
+					],
+					"else": [
+						"draw(stock, waste, draw_count)"
+					]
+				}
+			]
+		},
+		"Draw 1/3": [
+			"draw_count = 4 - draw_count"
+		],
+		"Auto-finish": {
+			"when": "result == '' and count(stock) + count(waste) == 0 and count(face_down(tableau)) == 0",
+			"steps": [
+				{
+					"while": "count(movable(tableau, foundation)) > 0",
+					"do": [
+						"try_move(top(movable(tableau, foundation)), foundation)"
+					]
+				}
+			]
+		}
+	},
+	"triggers": {
+		"start": [
+			"shuffle(stock)",
+			{
+				"for": "column",
+				"in": "tableau",
+				"do": [
+					"draw(stock, column, column_number)",
+					"flip(without(column, top(column)))"
+				]
+			}
+		],
+		"check_win": [
+			{
+				"if": "count(foundation) == 52",
+				"then": [
+					"result = 'You win!'"
+				]
+			}
+		]
+	},
+	"card_face": {
+		"corner": "name",
+		"title": "name",
+		"body": [
+			"suit"
+		],
+		"color": "color",
+		"image": "art",
+		"card_back": "card_back.svg"
+	}
+}

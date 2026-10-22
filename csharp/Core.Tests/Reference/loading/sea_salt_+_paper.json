@@ -1,0 +1,887 @@
+{
+	"rules": {
+		"title": "Sea Salt + Paper",
+		"description": "2 players, one round. Draw two cards and keep one, or take the top of a discard pile; then play duos for their effects. With 7 points, Stop (most points wins) or call Last chance (everyone else gets one more turn, then you win if you still have the most).",
+		"zones": {
+			"deck": {
+				"label": "Deck",
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					0.39,
+					0.5
+				],
+				"cards": "res://decks/seas_salt_+_paper.csv",
+				"columns": {
+					"ink": "'#000000' if card.color == 'White' else '#ffffff'"
+				}
+			},
+			"discard_piles": {
+				"label": "Discard #",
+				"layout": "pile",
+				"copies": 2.0,
+				"anchor": [
+					0.5,
+					0.5
+				],
+				"grid": {
+					"columns": 2.0,
+					"spacing": [
+						0.11,
+						0.0
+					]
+				}
+			},
+			"drawn": {
+				"per_player": true,
+				"layout": "row",
+				"face": "private",
+				"outline": false,
+				"anchor": [
+					0.5,
+					0.7
+				]
+			},
+			"browsing": {
+				"layout": "row",
+				"outline": false,
+				"width": 0.8,
+				"anchor": [
+					0.5,
+					0.3
+				]
+			},
+			"hand": {
+				"per_player": true,
+				"layout": "fan",
+				"face": "private",
+				"anchor": [
+					0.5,
+					0.9
+				]
+			},
+			"played": {
+				"label": "Duos played",
+				"per_player": true,
+				"layout": "row",
+				"width": 0.25,
+				"anchor": [
+					0.8,
+					0.84
+				]
+			}
+		},
+		"actions": {
+			"Draw two": {
+				"click": "deck",
+				"steps": [
+					"draw(deck, drawn, 2)",
+					"move(choose(drawn, 'Keep one card'), hand)",
+					"move(drawn, discard_piles_1 if count(discard_piles_1) == 0 else discard_piles_2 if count(discard_piles_2) == 0 else choose(discard_piles, 'Discard the other card onto a pile'))"
+				]
+			},
+			"Take a discard": {
+				"drag": {
+					"from": "discard_piles",
+					"to": "hand"
+				},
+				"click": true
+			},
+			"Play duo": {
+				"when": "count(matching(hand, 'is_duo')) >= 2",
+				"choose": "matching(hand, 'is_duo')",
+				"pick": 2.0,
+				"allow": "one_kind or shark_and_swimmer",
+				"steps": [
+					"move(choice, played)",
+					"trigger('duo_' + text(top(choice), 'Kind'))"
+				]
+			},
+			"End turn": {
+				"steps": []
+			},
+			"Stop": {
+				"when": "my_points >= 7 and last_chance_caller == 0",
+				"steps": [
+					"end_game(players_with_most('my_points'))"
+				]
+			},
+			"Last chance": {
+				"when": "my_points >= 7 and last_chance_caller == 0",
+				"steps": [
+					"last_chance_caller = player"
+				]
+			},
+			"Sort hand": {
+				"steps": [
+					"sort(hand, ['Kind', 'Color'])"
+				]
+			}
+		},
+		"triggers": {
+			"start": [
+				"shuffle(deck)",
+				{
+					"for": "pile",
+					"in": "discard_piles",
+					"do": [
+						"move(top(deck), pile)"
+					]
+				}
+			],
+			"duo_Crab": [
+				"pile = choose(discard_piles, 'Crabs: look through which pile?')",
+				"move(pile, browsing)",
+				"move(choose(browsing, 'Take one card'), hand)",
+				"move(browsing, pile)"
+			],
+			"duo_Boat": [
+				"extra_turn = true"
+			],
+			"duo_Fish": [
+				"draw(deck, hand)"
+			],
+			"duo_Shark": [
+				"move(one_of(opponent_hand), hand)"
+			],
+			"duo_Swimmer": [
+				"trigger('duo_Shark')"
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"is_duo": "card.data.cardtype == 'Duo'",
+			"one_kind": "size(groups(choice, 'Kind')) == 1",
+			"shark_and_swimmer": "count(where(choice, 'Kind', 'Shark')) == 1 and count(where(choice, 'Kind', 'Swimmer')) == 1",
+			"kinds": "count(where(cards, 'Kind', kind))",
+			"duo_points": "kinds(cards, 'Crab') / 2 + kinds(cards, 'Boat') / 2 + kinds(cards, 'Fish') / 2 + min(kinds(cards, 'Shark'), kinds(cards, 'Swimmer'))",
+			"collection_points": "lookup(shell_points, kinds(cards, 'Shell')) + lookup(octopus_points, kinds(cards, 'Octopus')) + lookup(penguin_points, kinds(cards, 'Penguin')) + lookup(sailor_points, kinds(cards, 'Anchor'))",
+			"multiplier_points": "3 * kinds(cards, 'Anchor') * kinds(cards, '3/Anchor') + kinds(cards, 'Fish') * kinds(cards, '1/Fish') + 2 * kinds(cards, 'Penguin') * kinds(cards, '2/Penguin') + 2 * kinds(cards, 'Boat') * kinds(cards, '2/Boat')",
+			"mermaid_points": "sum(first(group_sizes(without(cards, where(cards, 'Kind', 'Mermaid')), 'Color'), kinds(cards, 'Mermaid')))",
+			"points": "duo_points(cards) + collection_points(cards) + multiplier_points(cards) + mermaid_points(cards)",
+			"my_points": "points([hand, played])"
+		},
+		"condition_parameters": {
+			"is_duo": [],
+			"one_kind": [],
+			"shark_and_swimmer": [],
+			"kinds": [
+				"cards",
+				"kind"
+			],
+			"duo_points": [
+				"cards"
+			],
+			"collection_points": [
+				"cards"
+			],
+			"multiplier_points": [
+				"cards"
+			],
+			"mermaid_points": [
+				"cards"
+			],
+			"points": [
+				"cards"
+			],
+			"my_points": []
+		},
+		"condition_errors": [],
+		"constants": {
+			"shell_points": [
+				0,
+				0,
+				2,
+				4,
+				6,
+				8,
+				10
+			],
+			"octopus_points": [
+				0,
+				0,
+				3,
+				6,
+				9,
+				12
+			],
+			"penguin_points": [
+				0,
+				1,
+				3,
+				5
+			],
+			"sailor_points": [
+				0,
+				0,
+				5
+			]
+		},
+		"turn": [
+			{
+				"if": "player == last_chance_caller",
+				"then": [
+					"end_game(player if my_points >= most('my_points') else players_with_most('my_points'))"
+				]
+			},
+			{
+				"if": "count(deck) == 0",
+				"then": [
+					"end_game()"
+				]
+			},
+			"offer(['Draw two', 'Take a discard'])",
+			"ending = offer_until('Play duo', ['End turn', 'Stop', 'Last chance'])",
+			{
+				"if": "extra_turn and ending == 'End turn'",
+				"then": [
+					"extra_turn = false"
+				],
+				"else": [
+					"extra_turn = false",
+					"end_turn()"
+				]
+			}
+		],
+		"variables": {
+			"extra_turn": false,
+			"last_chance_caller": 0
+		},
+		"players": 2,
+		"seats": [
+			[
+				0.22,
+				0.86
+			]
+		],
+		"player_names": [
+			"You",
+			"Player 2",
+			"Player 3",
+			"Player 4"
+		],
+		"player_variables": {},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"your points": "points([hand[viewer()], played[viewer()]])"
+		},
+		"show_variables": [],
+		"bot": {
+			"players": [
+				2.0
+			]
+		},
+		"card_face": {
+			"corner": "Kind",
+			"title": "Kind",
+			"body": [
+				"Text"
+			],
+			"color": "ink",
+			"background": "Background",
+			"zoom": 0.0
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "deck",
+			"label": "Deck",
+			"has_outline": true,
+			"kind": "deck",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.38999998569488525,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "discard_piles_1",
+			"label": "Discard 1",
+			"has_outline": true,
+			"kind": "discard_piles",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "discard_piles_2",
+			"label": "Discard 2",
+			"has_outline": true,
+			"kind": "discard_piles",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.6100000143051147,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "drawn_1",
+			"label": "",
+			"has_outline": false,
+			"kind": "drawn",
+			"owner": 1,
+			"layout": "row",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "drawn_2",
+			"label": "",
+			"has_outline": false,
+			"kind": "drawn",
+			"owner": 2,
+			"layout": "row",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.30000001192092896
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "browsing",
+			"label": "",
+			"has_outline": false,
+			"kind": "browsing",
+			"owner": 0,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.30000001192092896
+			],
+			"width": 0.8,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 1,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.8999999761581421
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 2,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5000000596046448,
+				0.10000002384185791
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "played_1",
+			"label": "Duos played",
+			"has_outline": true,
+			"kind": "played",
+			"owner": 1,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.800000011920929,
+				0.8399999737739563
+			],
+			"width": 0.25,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "played_2",
+			"label": "Duos played",
+			"has_outline": true,
+			"kind": "played",
+			"owner": 2,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.20000001788139343,
+				0.1599999964237213
+			],
+			"width": 0.25,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/seas_salt_+_paper.csv": {
+			"title_column": "Kind",
+			"number_columns": [
+				"Text"
+			],
+			"cards": [
+				{
+					"Kind": "Anchor",
+					"Color": "Light Pink",
+					"Text": "",
+					"Background": "#FEA1BF",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Anchor",
+					"Color": "Orange",
+					"Text": "",
+					"Background": "#FF6F3C",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Boat",
+					"Color": "Black",
+					"Text": "",
+					"Background": "#222222",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Boat",
+					"Color": "Black",
+					"Text": "",
+					"Background": "#222222",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Boat",
+					"Color": "Dark Blue",
+					"Text": "",
+					"Background": "#1D2D50",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Boat",
+					"Color": "Dark Blue",
+					"Text": "",
+					"Background": "#1D2D50",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Boat",
+					"Color": "Light Blue",
+					"Text": "",
+					"Background": "#528AAE",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Boat",
+					"Color": "Light Blue",
+					"Text": "",
+					"Background": "#528AAE",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Boat",
+					"Color": "Yellow",
+					"Text": "",
+					"Background": "#F4D160",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Boat",
+					"Color": "Yellow",
+					"Text": "",
+					"Background": "#F4D160",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Crab",
+					"Color": "Black",
+					"Text": "",
+					"Background": "#222222",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Crab",
+					"Color": "Dark Blue",
+					"Text": "",
+					"Background": "#1D2D50",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Crab",
+					"Color": "Dark Blue",
+					"Text": "",
+					"Background": "#1D2D50",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Crab",
+					"Color": "Light Blue",
+					"Text": "",
+					"Background": "#528AAE",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Crab",
+					"Color": "Light Blue",
+					"Text": "",
+					"Background": "#528AAE",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Crab",
+					"Color": "Light Green",
+					"Text": "",
+					"Background": "#4E9F3D",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Crab",
+					"Color": "Light Grey",
+					"Text": "",
+					"Background": "#C0C4C7",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Crab",
+					"Color": "Yellow",
+					"Text": "",
+					"Background": "#F4D160",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Crab",
+					"Color": "Yellow",
+					"Text": "",
+					"Background": "#F4D160",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Fish",
+					"Color": "Black",
+					"Text": "",
+					"Background": "#222222",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Fish",
+					"Color": "Black",
+					"Text": "",
+					"Background": "#222222",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Fish",
+					"Color": "Dark Blue",
+					"Text": "",
+					"Background": "#1D2D50",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Fish",
+					"Color": "Dark Blue",
+					"Text": "",
+					"Background": "#1D2D50",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Fish",
+					"Color": "Light Blue",
+					"Text": "",
+					"Background": "#528AAE",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Fish",
+					"Color": "Light Green",
+					"Text": "",
+					"Background": "#4E9F3D",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Fish",
+					"Color": "Yellow",
+					"Text": "",
+					"Background": "#F4D160",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Mermaid",
+					"Color": "White",
+					"Text": "",
+					"Background": "#FFFFFF",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Mermaid",
+					"Color": "White",
+					"Text": "",
+					"Background": "#FFFFFF",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Mermaid",
+					"Color": "White",
+					"Text": "",
+					"Background": "#FFFFFF",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Mermaid",
+					"Color": "White",
+					"Text": "",
+					"Background": "#FFFFFF",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "3/Anchor",
+					"Color": "Light Orange",
+					"Text": "",
+					"Background": "#F9B208",
+					"cardtype": "Multiplier"
+				},
+				{
+					"Kind": "1/Fish",
+					"Color": "Light Grey",
+					"Text": "",
+					"Background": "#C0C4C7",
+					"cardtype": "Multiplier"
+				},
+				{
+					"Kind": "2/Penguin",
+					"Color": "Light Green",
+					"Text": "",
+					"Background": "#4E9F3D",
+					"cardtype": "Multiplier"
+				},
+				{
+					"Kind": "2/Boat",
+					"Color": "Purple",
+					"Text": "",
+					"Background": "#845EC2",
+					"cardtype": "Multiplier"
+				},
+				{
+					"Kind": "Octopus",
+					"Color": "Light Blue",
+					"Text": "",
+					"Background": "#528AAE",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Octopus",
+					"Color": "Light Green",
+					"Text": "",
+					"Background": "#4E9F3D",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Octopus",
+					"Color": "Light Grey",
+					"Text": "",
+					"Background": "#C0C4C7",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Octopus",
+					"Color": "Purple",
+					"Text": "",
+					"Background": "#845EC2",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Octopus",
+					"Color": "Yellow",
+					"Text": "",
+					"Background": "#F4D160",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Penguin",
+					"Color": "Light Orange",
+					"Text": "",
+					"Background": "#F9B208",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Penguin",
+					"Color": "Light Pink",
+					"Text": "",
+					"Background": "#FEA1BF",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Penguin",
+					"Color": "Purple",
+					"Text": "",
+					"Background": "#845EC2",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Shark",
+					"Color": "Black",
+					"Text": "",
+					"Background": "#222222",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Shark",
+					"Color": "Dark Blue",
+					"Text": "",
+					"Background": "#1D2D50",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Shark",
+					"Color": "Light Blue",
+					"Text": "",
+					"Background": "#528AAE",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Shark",
+					"Color": "Light Green",
+					"Text": "",
+					"Background": "#4E9F3D",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Shark",
+					"Color": "Purple",
+					"Text": "",
+					"Background": "#845EC2",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Shell",
+					"Color": "Black",
+					"Text": "",
+					"Background": "#222222",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Shell",
+					"Color": "Dark Blue",
+					"Text": "",
+					"Background": "#1D2D50",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Shell",
+					"Color": "Light Blue",
+					"Text": "",
+					"Background": "#528AAE",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Shell",
+					"Color": "Light Green",
+					"Text": "",
+					"Background": "#4E9F3D",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Shell",
+					"Color": "Light Grey",
+					"Text": "",
+					"Background": "#C0C4C7",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Shell",
+					"Color": "Yellow",
+					"Text": "",
+					"Background": "#F4D160",
+					"cardtype": "Set"
+				},
+				{
+					"Kind": "Swimmer",
+					"Color": "Black",
+					"Text": "",
+					"Background": "#222222",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Swimmer",
+					"Color": "Dark Blue",
+					"Text": "",
+					"Background": "#1D2D50",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Swimmer",
+					"Color": "Light Blue",
+					"Text": "",
+					"Background": "#528AAE",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Swimmer",
+					"Color": "Light Orange",
+					"Text": "",
+					"Background": "#F9B208",
+					"cardtype": "Duo"
+				},
+				{
+					"Kind": "Swimmer",
+					"Color": "Yellow",
+					"Text": "",
+					"Background": "#F4D160",
+					"cardtype": "Duo"
+				}
+			]
+		}
+	}
+}

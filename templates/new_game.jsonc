@@ -1,0 +1,87 @@
+{
+	// A starting point made by "New game...". Change anything and save: the table reloads by itself.
+	// Every key is explained in docs/reference.md.
+	"title": "{title}",
+	"description": "{players} players. Describe your game here.",
+	"players": {players},
+	"player_names": {player_names},
+	"zones": {
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.4,
+				0.5
+			],
+			"cards": "res://decks/{deck}"
+		},
+		"discard": {
+			"label": "Discard",
+			"layout": "pile",
+			"anchor": [
+				0.6,
+				0.5
+			]
+		},
+		// One hand per player. The anchor is seat 1's (the bottom); the other seats go round the table.
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.84
+			]
+		}
+	},
+	"seats": [
+		[
+			0.22,
+			0.86
+		]
+	],
+	// The other seats are bots that play random legal moves. Add "prefer" to make them try to win.
+	"bot": {
+		"players": {bot_players}
+	},
+	// What players can do. "drag" and "click" say how; an action without them is a button.
+	"actions": {
+		// Click the deck to draw, or drag from it.
+		"Draw": {
+			"drag": {
+				"from": "deck",
+				"to": "hand"
+			},
+			"click": true,
+			"steps": {
+				"if": "count(deck) == 0",
+				"then": "trigger('deck_empty')"
+			}
+		},
+		"Discard": {
+			"drag": {
+				"from": "hand",
+				"to": "discard"
+			}
+		},
+		"Sort hand": "sort(hand, ['name'])"
+	},
+	// A turn: draw a card, then discard one. offer(...) waits for the player to do one of those actions.
+	"turn": [
+		"offer('Draw')",
+		"offer('Discard')",
+		"end_turn()"
+	],
+	"triggers": {
+		"start": [
+			"shuffle(deck)",
+			"deal(deck, all_hand, 5)"
+		],
+		// The discard pile, minus its top card, becomes the new deck.
+		"deck_empty": [
+			"move(without(discard, top(discard)), deck)",
+			"shuffle(deck)"
+		]
+	}
+}

@@ -1,0 +1,342 @@
+{
+	"title": "Cribbage",
+	"description": "Two players, you against a bot. Discard two cards to the dealer's crib, peg to 31, then count your hand. First to 121 wins.",
+	"players": 2,
+	"player_names": [
+		"You",
+		"Opponent"
+	],
+	"seats": [
+		[
+			0.1,
+			0.72
+		],
+		[
+			0.1,
+			0.28
+		]
+	],
+	"zones": {
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.08,
+				0.5
+			],
+			"cards": "res://decks/standard_deck.csv",
+			"columns": {
+				"order": "card.value",
+				"value": "min(card.value, 10)"
+			}
+		},
+		"starter": {
+			"label": "Starter",
+			"layout": "pile",
+			"anchor": [
+				0.19,
+				0.5
+			]
+		},
+		"pegging": {
+			"label": "Play to 31",
+			"layout": "row",
+			"width": 0.4,
+			"anchor": [
+				0.5,
+				0.5
+			]
+		},
+		"pegged": {
+			"label": "Played",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.81,
+				0.5
+			]
+		},
+		"crib": {
+			"label": "Crib",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.92,
+				0.5
+			]
+		},
+		"shown": {
+			"label": "Counted",
+			"per_player": true,
+			"layout": "row",
+			"width": 0.3,
+			"anchors": [
+				[
+					0.78,
+					0.85
+				],
+				[
+					0.78,
+					0.15
+				]
+			]
+		},
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchors": [
+				[
+					0.4,
+					0.85
+				],
+				[
+					0.4,
+					0.15
+				]
+			]
+		}
+	},
+	"variables": {
+		"dealer": 2,
+		"discarded": 0,
+		"total": 0,
+		"points": 0,
+		"pair_points": 0,
+		"run_points": 0,
+		"counting_crib": false
+	},
+	"player_variables": {
+		"score": 0,
+		"kept": []
+	},
+	"show_variables": [
+		"total",
+		"points"
+	],
+	"status": {
+		"scores": "'%s %d, %s %d' % [name_of(1), score_1, name_of(2), score_2]",
+		"dealer": "name_of(int(dealer))"
+	},
+	"bot": {
+		"players": [
+			2
+		],
+		"prefer": "score - opponent_score"
+	},
+	"conditions": {
+		"playable": "number(card, 'value') <= 31 - total",
+		"with_starter": "[shown, starter]",
+		"hand_flush": "4 * int(size(groups(shown, 'suit')) == 1) + int(size(groups(with_starter, 'suit')) == 1)",
+		"crib_flush": "5 * int(size(groups(with_starter, 'suit')) == 1)",
+		"flush_points": "int(not counting_crib) * hand_flush + int(counting_crib) * crib_flush",
+		"nobs": "count(where(where(shown, 'rank', 'J'), 'suit', text(top(starter), 'suit')))",
+		"combo_points(cards)": "2 * size(sums(cards, 'value', 15)) + 2 * size(pairs(cards, 'rank')) + count(runs(cards, 'order', 3))",
+		"hand_points": "combo_points(with_starter) + flush_points + nobs",
+		"kept_points": "combo_points(hand)"
+	},
+	"actions": {
+		"Peg a card": {
+			"drag": {
+				"from": "hand",
+				"to": "pegging"
+			},
+			"click": true,
+			"when": "playable",
+			"steps": [
+				"total += number(card, 'value')",
+				"points = 0",
+				{
+					"if": "total == 15 or total == 31",
+					"then": [
+						"points = 2"
+					]
+				},
+				"pair_points = 0",
+				{
+					"for": "length",
+					"in": "numbers(2, min(4, count(pegging)))",
+					"do": [
+						{
+							"if": "size(groups(last(pegging, length), 'rank')) == 1",
+							"then": [
+								"pair_points = length * (length - 1)"
+							]
+						}
+					]
+				},
+				"run_points = 0",
+				{
+					"for": "length",
+					"in": "numbers(3, count(pegging))",
+					"do": [
+						{
+							"if": "size(runs(last(pegging, length), 'order', length)) > 0",
+							"then": [
+								"run_points = length"
+							]
+						}
+					]
+				},
+				"points += pair_points + run_points",
+				"score += points",
+				"trigger('check_win')",
+				{
+					"if": "count(all_hand) == 0",
+					"then": [
+						{
+							"if": "total != 31",
+							"then": [
+								"score += 1",
+								"trigger('check_win')"
+							]
+						},
+						"trigger('show')"
+					],
+					"else": [
+						{
+							"if": "count(matching(opponent_hand, 'playable')) > 0",
+							"then": [
+								"end_turn()"
+							],
+							"else": [
+								{
+									"if": "count(matching(hand, 'playable')) == 0",
+									"then": [
+										{
+											"if": "total != 31",
+											"then": [
+												"score += 1",
+												"trigger('check_win')"
+											]
+										},
+										"move(pegging, pegged)",
+										"total = 0",
+										{
+											"if": "count(opponent_hand) > 0",
+											"then": [
+												"end_turn()"
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"Discard to crib": {
+			"button": false,
+			"choose": "hand",
+			"pick": 2,
+			"prefer": "kept_points",
+			"steps": [
+				"move(choice, crib)",
+				"discarded += 1",
+				{
+					"if": "discarded == 2",
+					"then": [
+						"trigger('cut')"
+					]
+				}
+			]
+		},
+		"Count hand": {
+			"human_only": true,
+			"steps": [
+				"move(kept, shown)",
+				"points = hand_points",
+				"score += points",
+				"trigger('check_win')"
+			]
+		},
+		"Count crib": {
+			"human_only": true,
+			"steps": [
+				"move(shown, deck)",
+				"move(crib, shown)",
+				"counting_crib = true",
+				"points = hand_points",
+				"score += points",
+				"trigger('check_win')"
+			]
+		},
+		"Next hand": {
+			"human_only": true,
+			"steps": [
+				"trigger('deal')"
+			]
+		}
+	},
+	"turn": [
+		"offer('Peg a card')"
+	],
+	"triggers": {
+		"start": [
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					"sort(hand, ['order', 'suit'])"
+				]
+			},
+			"trigger('deal')"
+		],
+		"deal": [
+			"move([all_hand, all_shown, starter, pegging, pegged, crib], deck)",
+			"shuffle(deck)",
+			"player = dealer",
+			"dealer = next_player()",
+			"deal(deck, all_hand, 6)",
+			"reset(['discarded', 'total', 'counting_crib'])",
+			"ask('Discard to crib', 1)",
+			"ask('Discard to crib', 2)"
+		],
+		"cut": [
+			"move(top(deck), starter)",
+			{
+				"if": "text(top(starter), 'rank') == 'J'",
+				"then": [
+					"score[dealer] += 2",
+					"trigger('check_win')"
+				]
+			},
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					"kept = all(hand)"
+				]
+			}
+		],
+		"show": [
+			"move(pegging, pegged)",
+			"total = 0",
+			"player = dealer",
+			"player = next_player()",
+			"offer('Count hand')",
+			"player = dealer",
+			"offer('Count hand')",
+			"offer('Count crib')",
+			"offer('Next hand')"
+		],
+		"check_win": [
+			{
+				"if": "most('score') >= 121",
+				"then": [
+					"end_game(players_with_most('score'))"
+				]
+			}
+		]
+	},
+	"card_face": {
+		"corner": "name",
+		"title": "name",
+		"body": [
+			"suit"
+		],
+		"color": "color"
+	}
+}

@@ -11,14 +11,26 @@ config_version=5
 [application]
 
 config/name="Card Game Prototyping"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/title.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Net="*res://scripts/net/Net.cs"
+
 [display]
 
+window/size/viewport_width=1440
+window/size/viewport_height=810
+window/size/window_width_override=1600
+window/size/window_height_override=900
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[dotnet]
+
+project/assembly_name="CardGamePrototyping"
 
 [physics]
 

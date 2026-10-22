@@ -1,0 +1,1151 @@
+{
+	"rules": {
+		"title": "Connect Four",
+		"description": "You play Red against a Yellow bot. Click a column, or drag a disc there from your pile, to drop it in: it falls to the lowest empty space. Four of your discs in a line, across, down or diagonally, wins. A full board is a draw.",
+		"zones": {
+			"space": {
+				"board": {
+					"shape": "square",
+					"columns": 7.0,
+					"rows": 6.0,
+					"size": 70.0,
+					"paint": {
+						"any_space": "#2456a8"
+					}
+				},
+				"anchor": [
+					0.5,
+					0.5
+				]
+			},
+			"box": {
+				"layout": "pile",
+				"outline": false,
+				"anchor": [
+					-0.3,
+					0.5
+				],
+				"cards": "res://decks/connect_four.csv"
+			},
+			"discs": {
+				"per_player": true,
+				"layout": "pile",
+				"outline": false,
+				"anchors": [
+					[
+						0.2,
+						0.75
+					],
+					[
+						0.8,
+						0.25
+					]
+				]
+			}
+		},
+		"actions": {
+			"Drop": {
+				"click": "space",
+				"when": "landing_space != null",
+				"steps": [
+					"draw(discs, landing_space)"
+				]
+			},
+			"Drop by dragging": {
+				"drag": {
+					"from": "discs",
+					"to": "space"
+				},
+				"when": "discs_in_dropped_column < 6",
+				"steps": [
+					"landed = space_at(space, to.column, 7 - discs_in_dropped_column)",
+					{
+						"if": "landed != to",
+						"then": [
+							"move(card, landed)"
+						]
+					}
+				]
+			}
+		},
+		"triggers": {
+			"start": [
+				"move(where(box, 'name', 'Red'), discs[1])",
+				"move(where(box, 'name', 'Yellow'), discs[2])"
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"my_color": "'Red' if player == 1 else 'Yellow'",
+			"mine": "text(top(space), 'name') == my_color",
+			"four_in_a_row": "in_a_row(space, 'mine') >= 4",
+			"won": "count(zones_where(space, 'four_in_a_row')) > 0",
+			"in_clicked_column": "space.column == clicked_zone.column",
+			"landing_space": "space_at(space, clicked_zone.column, 6 - count(zones_where(space, 'in_clicked_column')))",
+			"in_dropped_column": "space.column == to.column",
+			"discs_in_dropped_column": "count(zones_where(space, 'in_dropped_column'))",
+			"any_space": "true"
+		},
+		"condition_parameters": {
+			"my_color": [],
+			"mine": [
+				"space"
+			],
+			"four_in_a_row": [
+				"space"
+			],
+			"won": [],
+			"in_clicked_column": [
+				"space"
+			],
+			"landing_space": [],
+			"in_dropped_column": [
+				"space"
+			],
+			"discs_in_dropped_column": [],
+			"any_space": [
+				"space"
+			]
+		},
+		"condition_errors": [],
+		"constants": {},
+		"turn": [
+			"offer(['Drop', 'Drop by dragging'])",
+			{
+				"if": "won",
+				"then": [
+					"end_game(player)"
+				]
+			},
+			{
+				"if": "count(space) == 42",
+				"then": [
+					"end_game()"
+				]
+			},
+			"end_turn()"
+		],
+		"variables": {},
+		"players": 2,
+		"seats": [
+			[
+				0.5,
+				0.95
+			],
+			[
+				0.5,
+				0.05
+			]
+		],
+		"player_names": [
+			"Red",
+			"Yellow"
+		],
+		"player_variables": {},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {},
+		"show_variables": [],
+		"bot": {
+			"players": [
+				2.0
+			]
+		},
+		"card_face": {
+			"shape": "disc",
+			"size": 58.0,
+			"background": "paint"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "space_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_3",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_4",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_5",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_6",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_7",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_8",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_9",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_10",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_11",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_12",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_13",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_14",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_15",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_16",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_17",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_18",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_19",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_20",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_21",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_22",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_23",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_24",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_25",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_26",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_27",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_28",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_29",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_30",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_31",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_32",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_33",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_34",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_35",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_36",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_37",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_38",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_39",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_40",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_41",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "space_42",
+			"label": "",
+			"has_outline": true,
+			"kind": "space",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "box",
+			"label": "",
+			"has_outline": false,
+			"kind": "box",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "discs_1",
+			"label": "",
+			"has_outline": false,
+			"kind": "discs",
+			"owner": 1,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.20000000298023224,
+				0.75
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "discs_2",
+			"label": "",
+			"has_outline": false,
+			"kind": "discs",
+			"owner": 2,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.800000011920929,
+				0.25
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/connect_four.csv": {
+			"title_column": "name",
+			"number_columns": [],
+			"cards": [
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Red",
+					"paint": "#c8443a"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				},
+				{
+					"name": "Yellow",
+					"paint": "#e8c547"
+				}
+			]
+		}
+	}
+}

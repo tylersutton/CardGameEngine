@@ -1,0 +1,10 @@
+// Bots: player 2 is played by the computer. With prefer, it picks the move leaving it the fewest cards in hand;
+// change prefer (under Players) to whatever "a good position for me" means in your game.
+{
+	"bot": {
+		"players": [
+			2
+		],
+		"prefer": "-count(hand)"
+	}
+}

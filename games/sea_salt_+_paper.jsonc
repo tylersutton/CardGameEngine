@@ -1,0 +1,271 @@
+{
+	// Every key is explained in docs/reference.md.
+	"title": "Sea Salt + Paper",
+	"description": "2 players, one round. Draw two cards and keep one, or take the top of a discard pile; then play duos for their effects. With 7 points, Stop (most points wins) or call Last chance (everyone else gets one more turn, then you win if you still have the most).",
+	"players": 2,
+	"player_names": [
+		"You",
+		"Player 2",
+		"Player 3",
+		"Player 4"
+	],
+	"zones": {
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.39,
+				0.5
+			],
+			"cards": "res://decks/seas_salt_+_paper.csv",
+			"columns": {
+				"ink": "'#000000' if card.color == 'White' else '#ffffff'"
+			}
+		},
+		"discard_piles": {
+			"label": "Discard #",
+			"layout": "pile",
+			"copies": 2,
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"grid": {
+				"columns": 2,
+				"spacing": [
+					0.11,
+					0
+				]
+			}
+		},
+		// The two cards just drawn, seen only by the player choosing which to keep.
+		"drawn": {
+			"per_player": true,
+			"layout": "row",
+			"face": "private",
+			"outline": false,
+			"anchor": [
+				0.5,
+				0.7
+			]
+		},
+		// A discard pile spread out, while the crabs look through it.
+		"browsing": {
+			"layout": "row",
+			"outline": false,
+			"width": 0.8,
+			"anchor": [
+				0.5,
+				0.3
+			]
+		},
+		// One hand per player. The anchor is seat 1's (the bottom); the other seats go round the table.
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.9
+			]
+		},
+		"played": {
+			"label": "Duos played",
+			"per_player": true,
+			"layout": "row",
+			"width": 0.25,
+			"anchor": [
+				0.8,
+				0.84
+			]
+		}
+	},
+	"seats": [
+		[
+			0.22,
+			0.86
+		]
+	],
+	// The other seats are bots that play random legal moves. Add "prefer" to make them try to win.
+	"bot": {
+		"players": [
+			2
+		]
+	},
+	"variables": {
+		"extra_turn": false,
+		"last_chance_caller": 0
+	},
+	// Points for a collection, by how many of it you have (0, 1, 2, ...).
+	"constants": {
+		"shell_points": [
+			0,
+			0,
+			2,
+			4,
+			6,
+			8,
+			10
+		],
+		"octopus_points": [
+			0,
+			0,
+			3,
+			6,
+			9,
+			12
+		],
+		"penguin_points": [
+			0,
+			1,
+			3,
+			5
+		],
+		"sailor_points": [
+			0,
+			0,
+			5
+		]
+	},
+	"conditions": {
+		"is_duo": "card.data.cardtype == 'Duo'",
+		"one_kind": "size(groups(choice, 'Kind')) == 1",
+		"shark_and_swimmer": "count(where(choice, 'Kind', 'Shark')) == 1 and count(where(choice, 'Kind', 'Swimmer')) == 1",
+		// How many of the cards are of a kind, e.g. kinds(hand, 'Crab').
+		"kinds(cards, kind)": "count(where(cards, 'Kind', kind))",
+		// Each pair of duo cards is worth 1, played or not.
+		"duo_points(cards)": "kinds(cards, 'Crab') / 2 + kinds(cards, 'Boat') / 2 + kinds(cards, 'Fish') / 2 + min(kinds(cards, 'Shark'), kinds(cards, 'Swimmer'))",
+		"collection_points(cards)": "lookup(shell_points, kinds(cards, 'Shell')) + lookup(octopus_points, kinds(cards, 'Octopus')) + lookup(penguin_points, kinds(cards, 'Penguin')) + lookup(sailor_points, kinds(cards, 'Anchor'))",
+		// A "3/Anchor" card is worth 3 for each Anchor, and so on.
+		"multiplier_points(cards)": "3 * kinds(cards, 'Anchor') * kinds(cards, '3/Anchor') + kinds(cards, 'Fish') * kinds(cards, '1/Fish') + 2 * kinds(cards, 'Penguin') * kinds(cards, '2/Penguin') + 2 * kinds(cards, 'Boat') * kinds(cards, '2/Boat')",
+		// Each mermaid is worth the cards of one color: the first your most common color, the second your next, ...
+		"mermaid_points(cards)": "sum(first(group_sizes(without(cards, where(cards, 'Kind', 'Mermaid')), 'Color'), kinds(cards, 'Mermaid')))",
+		"points(cards)": "duo_points(cards) + collection_points(cards) + multiplier_points(cards) + mermaid_points(cards)",
+		"my_points": "points([hand, played])"
+	},
+	"status": {
+		"your points": "points([hand[viewer()], played[viewer()]])"
+	},
+	"actions": {
+		// Click the deck: keep one of the two cards drawn, and discard the other onto an empty pile if there is one,
+		// otherwise onto either.
+		"Draw two": {
+			"click": "deck",
+			"steps": [
+				"draw(deck, drawn, 2)",
+				"move(choose(drawn, 'Keep one card'), hand)",
+				"move(drawn, discard_piles_1 if count(discard_piles_1) == 0 else discard_piles_2 if count(discard_piles_2) == 0 else choose(discard_piles, 'Discard the other card onto a pile'))"
+			]
+		},
+		// Or click (or drag) the top card of a discard pile.
+		"Take a discard": {
+			"drag": {
+				"from": "discard_piles",
+				"to": "hand"
+			},
+			"click": true
+		},
+		"Play duo": {
+			"when": "count(matching(hand, 'is_duo')) >= 2",
+			"choose": "matching(hand, 'is_duo')",
+			"pick": 2,
+			"allow": "one_kind or shark_and_swimmer",
+			"steps": [
+				"move(choice, played)",
+				"trigger('duo_' + text(top(choice), 'Kind'))"
+			]
+		},
+		"End turn": [],
+		// With 7 points or more, end the round now: the most points wins.
+		"Stop": {
+			"when": "my_points >= 7 and last_chance_caller == 0",
+			"steps": [
+				"end_game(players_with_most('my_points'))"
+			]
+		},
+		// Or let everyone else have one more turn first (see the turn).
+		"Last chance": {
+			"when": "my_points >= 7 and last_chance_caller == 0",
+			"steps": [
+				"last_chance_caller = player"
+			]
+		},
+		"Sort hand": [
+			"sort(hand, ['Kind', 'Color'])"
+		]
+	},
+	// A turn: draw (two from the deck, or one from a discard pile), then play any duos, then end it.
+	"turn": [
+		// Back round to whoever called Last chance: they win with the most points (a tie included).
+		{
+			"if": "player == last_chance_caller",
+			"then": [
+				"end_game(player if my_points >= most('my_points') else players_with_most('my_points'))"
+			]
+		},
+		// An empty deck ends the round, and nobody scores.
+		{
+			"if": "count(deck) == 0",
+			"then": [
+				"end_game()"
+			]
+		},
+		"offer(['Draw two', 'Take a discard'])",
+		"ending = offer_until('Play duo', ['End turn', 'Stop', 'Last chance'])",
+		{
+			"if": "extra_turn and ending == 'End turn'",
+			"then": [
+				"extra_turn = false"
+			],
+			"else": [
+				"extra_turn = false",
+				"end_turn()"
+			]
+		}
+	],
+	"triggers": {
+		"start": [
+			"shuffle(deck)",
+			{
+				"for": "pile",
+				"in": "discard_piles",
+				"do": [
+					"move(top(deck), pile)"
+				]
+			}
+		],
+		// Two crabs: look through a discard pile and take one card from it.
+		"duo_Crab": [
+			"pile = choose(discard_piles, 'Crabs: look through which pile?')",
+			"move(pile, browsing)",
+			"move(choose(browsing, 'Take one card'), hand)",
+			"move(browsing, pile)"
+		],
+		// Two boats: take another turn after this one.
+		"duo_Boat": [
+			"extra_turn = true"
+		],
+		// Two fish: draw the top card of the deck.
+		"duo_Fish": [
+			"draw(deck, hand)"
+		],
+		// A shark and a swimmer: steal a random card from the other player's hand.
+		"duo_Shark": [
+			"move(one_of(opponent_hand), hand)"
+		],
+		"duo_Swimmer": [
+			"trigger('duo_Shark')"
+		]
+	},
+	"card_face": {
+		"corner": "Kind",
+		"title": "Kind",
+		"body": [
+			"Text"
+		],
+		"color": "ink",
+		"background": "Background",
+		"zoom": 0
+	}
+}

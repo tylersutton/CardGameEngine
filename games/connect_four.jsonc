@@ -1,0 +1,129 @@
+{
+	"title": "Connect Four",
+	"description": "You play Red against a Yellow bot. Click a column, or drag a disc there from your pile, to drop it in: it falls to the lowest empty space. Four of your discs in a line, across, down or diagonally, wins. A full board is a draw.",
+	"players": 2,
+	"player_names": [
+		"Red",
+		"Yellow"
+	],
+	"seats": [
+		[
+			0.5,
+			0.95
+		],
+		[
+			0.5,
+			0.05
+		]
+	],
+	"zones": {
+		"space": {
+			"board": {
+				"shape": "square",
+				"columns": 7,
+				"rows": 6,
+				"size": 70,
+				"paint": {
+					"any_space": "#2456a8"
+				}
+			},
+			"anchor": [
+				0.5,
+				0.5
+			]
+		},
+		"box": {
+			"layout": "pile",
+			"outline": false,
+			"anchor": [
+				-0.3,
+				0.5
+			],
+			"cards": "res://decks/connect_four.csv"
+		},
+		"discs": {
+			"per_player": true,
+			"layout": "pile",
+			"outline": false,
+			"anchors": [
+				[
+					0.2,
+					0.75
+				],
+				[
+					0.8,
+					0.25
+				]
+			]
+		}
+	},
+	"conditions": {
+		"my_color": "'Red' if player == 1 else 'Yellow'",
+		"mine(space)": "text(top(space), 'name') == my_color",
+		"four_in_a_row(space)": "in_a_row(space, 'mine') >= 4",
+		"won": "count(zones_where(space, 'four_in_a_row')) > 0",
+		"in_clicked_column(space)": "space.column == clicked_zone.column",
+		"landing_space": "space_at(space, clicked_zone.column, 6 - count(zones_where(space, 'in_clicked_column')))",
+		"in_dropped_column(space)": "space.column == to.column",
+		"discs_in_dropped_column": "count(zones_where(space, 'in_dropped_column'))",
+		"any_space(space)": "true"
+	},
+	"actions": {
+		"Drop": {
+			"click": "space",
+			"when": "landing_space != null",
+			"steps": [
+				"draw(discs, landing_space)"
+			]
+		},
+		"Drop by dragging": {
+			"drag": {
+				"from": "discs",
+				"to": "space"
+			},
+			"when": "discs_in_dropped_column < 6",
+			// The disc has landed where it was dropped, so the column's count includes it.
+			"steps": [
+				"landed = space_at(space, to.column, 7 - discs_in_dropped_column)",
+				{
+					"if": "landed != to",
+					"then": [
+						"move(card, landed)"
+					]
+				}
+			]
+		}
+	},
+	"turn": [
+		"offer(['Drop', 'Drop by dragging'])",
+		{
+			"if": "won",
+			"then": [
+				"end_game(player)"
+			]
+		},
+		{
+			"if": "count(space) == 42",
+			"then": [
+				"end_game()"
+			]
+		},
+		"end_turn()"
+	],
+	"triggers": {
+		"start": [
+			"move(where(box, 'name', 'Red'), discs[1])",
+			"move(where(box, 'name', 'Yellow'), discs[2])"
+		]
+	},
+	"bot": {
+		"players": [
+			2
+		]
+	},
+	"card_face": {
+		"shape": "disc",
+		"size": 58,
+		"background": "paint"
+	}
+}

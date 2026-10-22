@@ -1,0 +1,63 @@
+{
+	// A starting point made by "New game...". Change anything and save: the table reloads by itself.
+	// Every key is explained in docs/reference.md.
+	"title": "{title}",
+	"description": "A one-player game. Describe your game here.",
+	"zones": {
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.4,
+				0.5
+			],
+			"cards": "res://decks/{deck}"
+		},
+		"discard": {
+			"label": "Discard",
+			"layout": "pile",
+			"anchor": [
+				0.6,
+				0.5
+			]
+		},
+		"hand": {
+			"label": "Hand",
+			"layout": "fan",
+			"anchor": [
+				0.5,
+				0.84
+			]
+		}
+	},
+	// Draw cards and discard them. "drag" and "click" say how an action is done; add "when" to say when it's allowed.
+	"actions": {
+		// Click the deck to draw, or drag from it.
+		"Draw": {
+			"drag": {
+				"from": "deck",
+				"to": "hand"
+			},
+			"click": true
+		},
+		"Discard": {
+			"drag": {
+				"from": "hand",
+				"to": "discard"
+			}
+		},
+		"Sort hand": "sort(hand, ['name'])"
+	},
+	"triggers": {
+		"start": [
+			"shuffle(deck)",
+			"draw(deck, hand, 5)"
+		],
+		// The discard pile becomes the new deck.
+		"deck_empty": [
+			"move(discard, deck)",
+			"shuffle(deck)"
+		]
+	}
+}

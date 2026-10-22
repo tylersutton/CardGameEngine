@@ -1,0 +1,1356 @@
+{
+	"rules": {
+		"title": "Pyramid",
+		"description": "Solitaire. Clear the pyramid by pairing two uncovered cards that add up to 13: drag one onto the other. Kings are 13 on their own: click them. Queens are 12, Jacks 11, Aces 1. Click the stock to turn a card onto the waste; you can go through the stock three times.",
+		"zones": {
+			"stock": {
+				"label": "Stock",
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					0.12,
+					0.85
+				],
+				"cards": "res://decks/standard_deck.csv"
+			},
+			"waste": {
+				"label": "Waste",
+				"layout": "pile",
+				"anchor": [
+					0.24,
+					0.85
+				]
+			},
+			"removed": {
+				"label": "Removed",
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					0.88,
+					0.85
+				]
+			},
+			"pyramid": {
+				"copies": 28.0,
+				"layout": "pile",
+				"outline": false,
+				"anchors": [
+					[
+						0.5,
+						0.1
+					],
+					[
+						0.4625,
+						0.185
+					],
+					[
+						0.5375,
+						0.185
+					],
+					[
+						0.425,
+						0.27
+					],
+					[
+						0.5,
+						0.27
+					],
+					[
+						0.575,
+						0.27
+					],
+					[
+						0.3875,
+						0.355
+					],
+					[
+						0.4625,
+						0.355
+					],
+					[
+						0.5375,
+						0.355
+					],
+					[
+						0.6125,
+						0.355
+					],
+					[
+						0.35,
+						0.44
+					],
+					[
+						0.425,
+						0.44
+					],
+					[
+						0.5,
+						0.44
+					],
+					[
+						0.575,
+						0.44
+					],
+					[
+						0.65,
+						0.44
+					],
+					[
+						0.3125,
+						0.525
+					],
+					[
+						0.3875,
+						0.525
+					],
+					[
+						0.4625,
+						0.525
+					],
+					[
+						0.5375,
+						0.525
+					],
+					[
+						0.6125,
+						0.525
+					],
+					[
+						0.6875,
+						0.525
+					],
+					[
+						0.275,
+						0.61
+					],
+					[
+						0.35,
+						0.61
+					],
+					[
+						0.425,
+						0.61
+					],
+					[
+						0.5,
+						0.61
+					],
+					[
+						0.575,
+						0.61
+					],
+					[
+						0.65,
+						0.61
+					],
+					[
+						0.725,
+						0.61
+					]
+				],
+				"covered_by": [
+					[
+						2.0,
+						3.0
+					],
+					[
+						4.0,
+						5.0
+					],
+					[
+						5.0,
+						6.0
+					],
+					[
+						7.0,
+						8.0
+					],
+					[
+						8.0,
+						9.0
+					],
+					[
+						9.0,
+						10.0
+					],
+					[
+						11.0,
+						12.0
+					],
+					[
+						12.0,
+						13.0
+					],
+					[
+						13.0,
+						14.0
+					],
+					[
+						14.0,
+						15.0
+					],
+					[
+						16.0,
+						17.0
+					],
+					[
+						17.0,
+						18.0
+					],
+					[
+						18.0,
+						19.0
+					],
+					[
+						19.0,
+						20.0
+					],
+					[
+						20.0,
+						21.0
+					],
+					[
+						22.0,
+						23.0
+					],
+					[
+						23.0,
+						24.0
+					],
+					[
+						24.0,
+						25.0
+					],
+					[
+						25.0,
+						26.0
+					],
+					[
+						26.0,
+						27.0
+					],
+					[
+						27.0,
+						28.0
+					],
+					[],
+					[],
+					[],
+					[],
+					[],
+					[],
+					[]
+				]
+			}
+		},
+		"actions": {
+			"Pair to 13": {
+				"drag": {
+					"from": [
+						"pyramid",
+						"waste"
+					],
+					"to": [
+						"pyramid",
+						"waste"
+					]
+				},
+				"when": "free and count(to) > 0 and not covered(to) and makes_13",
+				"steps": [
+					"move(card, removed)",
+					"move(top(to), removed)",
+					"trigger('check_win')"
+				]
+			},
+			"Turn a card": {
+				"click": "stock",
+				"steps": [
+					"trigger('turn_card')"
+				]
+			},
+			"Remove a King": {
+				"click": [
+					"waste",
+					"pyramid"
+				],
+				"when": "number(card, 'value') == 13 and free",
+				"steps": [
+					"move(card, removed)",
+					"trigger('check_win')"
+				]
+			}
+		},
+		"triggers": {
+			"start": [
+				"shuffle(stock)",
+				{
+					"for": "spot",
+					"in": "pyramid",
+					"do": [
+						"draw(stock, spot)"
+					]
+				}
+			],
+			"turn_card": [
+				{
+					"if": "count(stock) > 0",
+					"then": [
+						"draw(stock, waste)"
+					],
+					"else": [
+						{
+							"if": "passes < 3",
+							"then": [
+								"draw(waste, stock, count(waste))",
+								"passes += 1"
+							]
+						}
+					]
+				}
+			],
+			"check_win": [
+				{
+					"if": "count(pyramid) == 0",
+					"then": [
+						"result = 'You win!'"
+					]
+				}
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"free": "not covered(card)",
+			"makes_13": "number(card, 'value') + number(top(to), 'value') == 13"
+		},
+		"condition_parameters": {
+			"free": [],
+			"makes_13": []
+		},
+		"condition_errors": [],
+		"constants": {},
+		"turn": [],
+		"variables": {
+			"passes": 1,
+			"result": ""
+		},
+		"players": 1,
+		"seats": [],
+		"player_names": [],
+		"player_variables": {},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"cards left in the pyramid": "count(pyramid)"
+		},
+		"show_variables": [],
+		"bot": {},
+		"card_face": {
+			"corner": "name",
+			"title": "name",
+			"body": [
+				"suit"
+			],
+			"color": "color"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "stock",
+			"label": "Stock",
+			"has_outline": true,
+			"kind": "stock",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.11999999731779099,
+				0.8500000238418579
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "waste",
+			"label": "Waste",
+			"has_outline": true,
+			"kind": "waste",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.23999999463558197,
+				0.8500000238418579
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "removed",
+			"label": "Removed",
+			"has_outline": true,
+			"kind": "removed",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.8799999952316284,
+				0.8500000238418579
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pyramid_1",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.10000000149011612
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				2.0,
+				3.0
+			]
+		},
+		{
+			"name": "pyramid_2",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.4625000059604645,
+				0.1850000023841858
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				4.0,
+				5.0
+			]
+		},
+		{
+			"name": "pyramid_3",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5375000238418579,
+				0.1850000023841858
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				5.0,
+				6.0
+			]
+		},
+		{
+			"name": "pyramid_4",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.42500001192092896,
+				0.27000001072883606
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				7.0,
+				8.0
+			]
+		},
+		{
+			"name": "pyramid_5",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.27000001072883606
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				8.0,
+				9.0
+			]
+		},
+		{
+			"name": "pyramid_6",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.574999988079071,
+				0.27000001072883606
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				9.0,
+				10.0
+			]
+		},
+		{
+			"name": "pyramid_7",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.38749998807907104,
+				0.35499998927116394
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				11.0,
+				12.0
+			]
+		},
+		{
+			"name": "pyramid_8",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.4625000059604645,
+				0.35499998927116394
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				12.0,
+				13.0
+			]
+		},
+		{
+			"name": "pyramid_9",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5375000238418579,
+				0.35499998927116394
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				13.0,
+				14.0
+			]
+		},
+		{
+			"name": "pyramid_10",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.612500011920929,
+				0.35499998927116394
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				14.0,
+				15.0
+			]
+		},
+		{
+			"name": "pyramid_11",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.3499999940395355,
+				0.4399999976158142
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				16.0,
+				17.0
+			]
+		},
+		{
+			"name": "pyramid_12",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.42500001192092896,
+				0.4399999976158142
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				17.0,
+				18.0
+			]
+		},
+		{
+			"name": "pyramid_13",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.4399999976158142
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				18.0,
+				19.0
+			]
+		},
+		{
+			"name": "pyramid_14",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.574999988079071,
+				0.4399999976158142
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				19.0,
+				20.0
+			]
+		},
+		{
+			"name": "pyramid_15",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.6499999761581421,
+				0.4399999976158142
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				20.0,
+				21.0
+			]
+		},
+		{
+			"name": "pyramid_16",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.3125,
+				0.5249999761581421
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				22.0,
+				23.0
+			]
+		},
+		{
+			"name": "pyramid_17",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.38749998807907104,
+				0.5249999761581421
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				23.0,
+				24.0
+			]
+		},
+		{
+			"name": "pyramid_18",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.4625000059604645,
+				0.5249999761581421
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				24.0,
+				25.0
+			]
+		},
+		{
+			"name": "pyramid_19",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5375000238418579,
+				0.5249999761581421
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				25.0,
+				26.0
+			]
+		},
+		{
+			"name": "pyramid_20",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.612500011920929,
+				0.5249999761581421
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				26.0,
+				27.0
+			]
+		},
+		{
+			"name": "pyramid_21",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.6875,
+				0.5249999761581421
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": [
+				27.0,
+				28.0
+			]
+		},
+		{
+			"name": "pyramid_22",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.2750000059604645,
+				0.6100000143051147
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pyramid_23",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.3499999940395355,
+				0.6100000143051147
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pyramid_24",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.42500001192092896,
+				0.6100000143051147
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pyramid_25",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.6100000143051147
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pyramid_26",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.574999988079071,
+				0.6100000143051147
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pyramid_27",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.6499999761581421,
+				0.6100000143051147
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pyramid_28",
+			"label": "",
+			"has_outline": false,
+			"kind": "pyramid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.7250000238418579,
+				0.6100000143051147
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/standard_deck.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"value"
+			],
+			"cards": [
+				{
+					"name": "A♠",
+					"rank": "A",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "1"
+				},
+				{
+					"name": "2♠",
+					"rank": "2",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "2"
+				},
+				{
+					"name": "3♠",
+					"rank": "3",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "3"
+				},
+				{
+					"name": "4♠",
+					"rank": "4",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "4"
+				},
+				{
+					"name": "5♠",
+					"rank": "5",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "5"
+				},
+				{
+					"name": "6♠",
+					"rank": "6",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "6"
+				},
+				{
+					"name": "7♠",
+					"rank": "7",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "7"
+				},
+				{
+					"name": "8♠",
+					"rank": "8",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "8"
+				},
+				{
+					"name": "9♠",
+					"rank": "9",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "9"
+				},
+				{
+					"name": "10♠",
+					"rank": "10",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "10"
+				},
+				{
+					"name": "J♠",
+					"rank": "J",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "11"
+				},
+				{
+					"name": "Q♠",
+					"rank": "Q",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "12"
+				},
+				{
+					"name": "K♠",
+					"rank": "K",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "13"
+				},
+				{
+					"name": "A♥",
+					"rank": "A",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "1"
+				},
+				{
+					"name": "2♥",
+					"rank": "2",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "2"
+				},
+				{
+					"name": "3♥",
+					"rank": "3",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "3"
+				},
+				{
+					"name": "4♥",
+					"rank": "4",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "4"
+				},
+				{
+					"name": "5♥",
+					"rank": "5",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "5"
+				},
+				{
+					"name": "6♥",
+					"rank": "6",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "6"
+				},
+				{
+					"name": "7♥",
+					"rank": "7",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "7"
+				},
+				{
+					"name": "8♥",
+					"rank": "8",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "8"
+				},
+				{
+					"name": "9♥",
+					"rank": "9",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "9"
+				},
+				{
+					"name": "10♥",
+					"rank": "10",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "10"
+				},
+				{
+					"name": "J♥",
+					"rank": "J",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "11"
+				},
+				{
+					"name": "Q♥",
+					"rank": "Q",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "12"
+				},
+				{
+					"name": "K♥",
+					"rank": "K",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "13"
+				},
+				{
+					"name": "A♦",
+					"rank": "A",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "1"
+				},
+				{
+					"name": "2♦",
+					"rank": "2",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "2"
+				},
+				{
+					"name": "3♦",
+					"rank": "3",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "3"
+				},
+				{
+					"name": "4♦",
+					"rank": "4",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "4"
+				},
+				{
+					"name": "5♦",
+					"rank": "5",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "5"
+				},
+				{
+					"name": "6♦",
+					"rank": "6",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "6"
+				},
+				{
+					"name": "7♦",
+					"rank": "7",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "7"
+				},
+				{
+					"name": "8♦",
+					"rank": "8",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "8"
+				},
+				{
+					"name": "9♦",
+					"rank": "9",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "9"
+				},
+				{
+					"name": "10♦",
+					"rank": "10",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "10"
+				},
+				{
+					"name": "J♦",
+					"rank": "J",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "11"
+				},
+				{
+					"name": "Q♦",
+					"rank": "Q",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "12"
+				},
+				{
+					"name": "K♦",
+					"rank": "K",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "13"
+				},
+				{
+					"name": "A♣",
+					"rank": "A",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "1"
+				},
+				{
+					"name": "2♣",
+					"rank": "2",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "2"
+				},
+				{
+					"name": "3♣",
+					"rank": "3",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "3"
+				},
+				{
+					"name": "4♣",
+					"rank": "4",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "4"
+				},
+				{
+					"name": "5♣",
+					"rank": "5",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "5"
+				},
+				{
+					"name": "6♣",
+					"rank": "6",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "6"
+				},
+				{
+					"name": "7♣",
+					"rank": "7",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "7"
+				},
+				{
+					"name": "8♣",
+					"rank": "8",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "8"
+				},
+				{
+					"name": "9♣",
+					"rank": "9",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "9"
+				},
+				{
+					"name": "10♣",
+					"rank": "10",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "10"
+				},
+				{
+					"name": "J♣",
+					"rank": "J",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "11"
+				},
+				{
+					"name": "Q♣",
+					"rank": "Q",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "12"
+				},
+				{
+					"name": "K♣",
+					"rank": "K",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "13"
+				}
+			]
+		}
+	}
+}
