@@ -66,6 +66,7 @@ Only the host needs the game's files. Each player sees the table from their own 
 - **Right:** the inspector: the settings of whatever is selected, with less-used ones folded away. Point at a setting to read what it does at the bottom. Steps are edited as a list, with suggestions and problems shown as you type; the turn also gets a summary in words.
 - **Bottom:** problems with the game (Ctrl+J shows or hides them). Click one to go to it.
 - **Ctrl+P** finds any command or part of the game. Ctrl+S saves, Ctrl+Z undoes.
+- **File > Export to Tabletop Simulator** sets the game's table up in Tabletop Simulator, to play by hand: every zone that starts with cards becomes a deck there, drawn with the game's own card faces. In Tabletop Simulator, **Load > Card Game Prototypes** opens it. The pictures stay on this computer, so to play online, upload them first (Tabletop Simulator's **Modding > Cloud Manager**) and put their new addresses in the deck (right-click it, **Custom**).
 
 ## Tutorial: making a game
 

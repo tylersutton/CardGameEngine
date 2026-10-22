@@ -25,7 +25,7 @@ Then add it to the [reference](reference.md#building-blocks).
   - `Choice` is the choice being made.
   - Steps are read by `StepParser`, checked at load by `StepCompiler`, worked out by `StepEvaluator`, and run by `StepRunner`, which pauses at a `choose` or `offer` and starts each turn.
   - `Bot` picks moves, and `Snapshot` saves the state for undo.
-- **`csharp/Editing/`** holds the editor's logic: `GameDocument` edits a game file's text in place, and `Recipes`, `TurnSummary`, `BlockHelp` and `EditorFields` serve its panels.
+- **`csharp/Editing/`** holds the editor's logic: `GameDocument` edits a game file's text in place, and `Recipes`, `TurnSummary`, `BlockHelp` and `EditorFields` serve its panels. `TabletopDeck` and `TabletopSave` lay a game out for Tabletop Simulator; `TabletopExport` (`scripts/editor/`) draws the card sheets and writes the save into Tabletop Simulator's Saves folder.
 - **`scripts/ui/`** holds the title screen, the table and the side panel.
 - **`scripts/editor/`** holds the game editor. `EditorScreen` ties it together; `GameOutline`, `Inspector`, `GameFileView` and the sidebar browsers are its panels; `EditorTheme` and `EditorIcons` are its look. The building-block help comes from this repository's `docs/reference.md` (`BlockHelp`), so an exported build needs `docs/*` in its export filter for that help.
 - **`scripts/net/Net.cs`** holds online play: the lobby, inputs sent through the host, and rejoining.

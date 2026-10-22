@@ -184,6 +184,7 @@ public partial class EditorScreen : Control
             new("Revert to saved", "restart", Run: Revert),
             null,
             new("Open in text editor", "file", Run: () => OS.ShellOpen(ProjectSettings.GlobalizePath(FilePath))),
+            new("Export to Tabletop Simulator", "deck", Run: ExportToTabletop),
             null,
             new("Back to games", "back", Ctrl(Key.W), Leave),
         ]);
@@ -561,6 +562,23 @@ public partial class EditorScreen : Control
         savedState = State();
         UpdateTitle();
         ShowMessage("Saved " + FilePath.GetFile());
+    }
+
+    /// The game as it's being edited, unsaved changes and all, laid out for Tabletop Simulator.
+    async void ExportToTabletop()
+    {
+        Game game = new(Files, FilePath);
+        if (game.Errors.Count > 0)
+        {
+            ShowMessage("Fix the problems before exporting");
+            return;
+        }
+        ShowMessage("Exporting to Tabletop Simulator...");
+        TabletopExport export = new();
+        AddChild(export);
+        string save = await export.Export(game);
+        export.QueueFree();
+        ShowMessage($"Exported: in Tabletop Simulator, Load > Card Game Prototypes > {System.IO.Path.GetFileNameWithoutExtension(save)}");
     }
 
     void Revert()
