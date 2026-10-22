@@ -59,7 +59,7 @@ Wherever a list of steps goes, a single step will also do: `"then": "end_turn()"
 
 ### Boards
 
-A zone with a `board` is a grid of spaces, and each space is a zone of its own, numbered across each row from the top: an 8 by 8 `square` board is `square_1` to `square_64`, and `square` is all of them, as with copies. Pieces sit in spaces as cards sit in piles, so actions, steps and bots work on boards unchanged. Reversi places a disc with `"click": "square"`.
+A zone with a `board` is a grid of spaces, and each space is a zone of its own, numbered across each row from the top: an 8 by 8 `square` board is `square_1` to `square_64`, and `square` is all of them, as with copies. Pieces sit in spaces as cards sit in piles, so actions, steps and bots work on boards unchanged. Reversi places a disc with `"click": "square"`, or with a drag from its pile (a second action, offered with the first).
 
 - **`shape`:** `square` (the default) or `hex`. A hex board is a rhombus, as in the game Hex: each row sits half a space right of the one above.
 - **`size`:** how far apart neighbouring spaces are, in pixels. Default 60.
@@ -121,7 +121,7 @@ Everything a player can do, each with a name. How an action is done:
 - An action named in an [`offer(...)`](#turn) can only be done while that offer waits.
 - Any other action can be done whenever its `when` holds, like sorting your hand.
 - For a drag or click, the first action in the file that allows it is the one that's done.
-- A game with no drag actions at all allows every drag, as a free-play sandbox.
+- A game with no drag actions that never offers an action allows every drag, as a free-play sandbox. Any other game refuses a drag no action allows.
 
 ## turn
 

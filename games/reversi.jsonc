@@ -1,6 +1,6 @@
 {
 	"title": "Reversi",
-	"description": "You play Black against a White bot on an 8 by 8 board. Click an empty square that traps a line of the other color between your new disc and one of yours: every trapped disc flips to your color. A player who can't trap anything passes. When neither can move, the most discs wins.",
+	"description": "You play Black against a White bot on an 8 by 8 board. Place a disc on an empty square (click it, or drag a disc there from the pile) so that it traps a line of the other color between your new disc and one of yours: every trapped disc flips to your color. A player who can't trap anything passes. When neither can move, the most discs wins.",
 	"players": 2,
 	"player_names": [
 		"Black",
@@ -50,12 +50,13 @@
 		"mine(space)": "black(space) if player == 1 else white(space)",
 		"theirs(space)": "white(space) if player == 1 else black(space)",
 		"captures(space)": "flanked(space, 'theirs', 'mine')",
+		"can_place(space)": "count(space) == 0 and count(captures(space)) > 0",
 		"discs": "count(zones_where(square, 'mine'))"
 	},
 	"actions": {
 		"Place": {
 			"click": "square",
-			"when": "count(clicked_zone) == 0 and count(captures(clicked_zone)) > 0",
+			"when": "can_place(clicked_zone)",
 			"steps": [
 				"flip(captures(clicked_zone))",
 				"draw(supply, clicked_zone)",
@@ -66,10 +67,26 @@
 					]
 				}
 			]
+		},
+		"Place by dragging": {
+			"drag": {
+				"from": "supply",
+				"to": "square"
+			},
+			"when": "can_place(to)",
+			"steps": [
+				"flip(captures(to))",
+				{
+					"if": "player == 2",
+					"then": [
+						"flip(card)"
+					]
+				}
+			]
 		}
 	},
 	"turn": [
-		"placed = offer(['Place'])",
+		"placed = offer(['Place', 'Place by dragging'])",
 		{
 			"if": "placed == null",
 			"then": [

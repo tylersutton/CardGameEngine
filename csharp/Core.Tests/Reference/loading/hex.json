@@ -1,7 +1,7 @@
 {
 	"rules": {
 		"title": "Hex",
-		"description": "You play Red against a Blue bot. Take turns placing a stone on any empty cell. Red wins by joining the top and bottom edges with a chain of red stones, Blue by joining the left and right edges. Someone always wins.",
+		"description": "You play Red against a Blue bot. Take turns placing a stone on any empty cell: click it, or drag a stone there from your pile. Red wins by joining the top and bottom edges with a chain of red stones, Blue by joining the left and right edges. Someone always wins.",
 		"zones": {
 			"cell": {
 				"board": {
@@ -21,7 +21,7 @@
 					0.5
 				]
 			},
-			"stones": {
+			"box": {
 				"layout": "pile",
 				"outline": false,
 				"anchor": [
@@ -29,6 +29,21 @@
 					0.5
 				],
 				"cards": "res://decks/hex_stones.csv"
+			},
+			"stones": {
+				"per_player": true,
+				"layout": "pile",
+				"outline": false,
+				"anchors": [
+					[
+						0.35,
+						0.9
+					],
+					[
+						0.1,
+						0.35
+					]
+				]
 			}
 		},
 		"actions": {
@@ -36,17 +51,23 @@
 				"click": "cell",
 				"when": "count(clicked_zone) == 0",
 				"steps": [
-					"move(top(where(stones, 'name', my_color)), clicked_zone)",
-					{
-						"if": "won",
-						"then": [
-							"end_game(player)"
-						]
-					}
+					"draw(stones, clicked_zone)"
 				]
+			},
+			"Place by dragging": {
+				"drag": {
+					"from": "stones",
+					"to": "cell"
+				},
+				"when": "count(to) == 0"
 			}
 		},
-		"triggers": {},
+		"triggers": {
+			"start": [
+				"move(where(box, 'name', 'Red'), stones[1])",
+				"move(where(box, 'name', 'Blue'), stones[2])"
+			]
+		},
 		"effects": {},
 		"conditions": {
 			"my_color": "'Red' if player == 1 else 'Blue'",
@@ -79,7 +100,13 @@
 		"condition_errors": [],
 		"constants": {},
 		"turn": [
-			"offer(['Place'])",
+			"offer(['Place', 'Place by dragging'])",
+			{
+				"if": "won",
+				"then": [
+					"end_game(player)"
+				]
+			},
 			"end_turn()"
 		],
 		"variables": {},
@@ -1579,16 +1606,52 @@
 			"covered_by": []
 		},
 		{
-			"name": "stones",
+			"name": "box",
 			"label": "",
 			"has_outline": false,
-			"kind": "stones",
+			"kind": "box",
 			"owner": 0,
 			"layout": "pile",
 			"face": "up",
 			"anchor": [
 				-0.30000001192092896,
 				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "stones_1",
+			"label": "",
+			"has_outline": false,
+			"kind": "stones",
+			"owner": 1,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.3499999940395355,
+				0.8999999761581421
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "stones_2",
+			"label": "",
+			"has_outline": false,
+			"kind": "stones",
+			"owner": 2,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.10000000149011612,
+				0.3499999940395355
 			],
 			"width": 0.0,
 			"rotation": 0.0,

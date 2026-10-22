@@ -159,6 +159,40 @@ public class BoardTests
         Assert.Empty(failures);
     }
 
+    [Fact]
+    public void ConnectFourDiscsDraggedAnywhereInAColumnFallToTheBottom()
+    {
+        Game game = new(new GameFiles(RepositoryFiles.PathOf("")), "res://games/connect_four.jsonc", 1);
+        game.Rules.Bot["players"] = new List<object?>();
+        game.Failed += failures.Add;
+        game.Start();
+        Assert.True(game.Apply(PlayerInput.Drag(game.Zones["discs_1"].Cards[^1], game.Zones["space_3"])));
+        Assert.Single(game.Zones["space_38"].Cards);
+        // Yellow drops onto the space Red's disc took: theirs stacks on top of it.
+        Assert.True(game.Apply(PlayerInput.Drag(game.Zones["discs_2"].Cards[^1], game.Zones["space_38"])));
+        Assert.Single(game.Zones["space_31"].Cards);
+        Assert.Equal(2L, game.Evaluate("count(space)"));
+        Assert.False(game.Apply(PlayerInput.Drag(game.Zones["space_38"].Cards[0], game.Zones["space_1"])));
+        Assert.Empty(failures);
+    }
+
+    [Fact]
+    public void ReversiDiscsDraggedFromThePileFlipWhatTheyTrap()
+    {
+        Game game = new(new GameFiles(RepositoryFiles.PathOf("")), "res://games/reversi.jsonc", 1);
+        game.Rules.Bot["players"] = new List<object?>();
+        game.Failed += failures.Add;
+        game.Start();
+        Zone supply = game.Zones["supply"];
+        Assert.False(game.Apply(PlayerInput.Drag(supply.Cards[^1], game.Zones["square_1"])));
+        // Black at (4, 3) traps White's disc at (4, 4) against Black's at (4, 5).
+        Assert.True(game.Apply(PlayerInput.Drag(supply.Cards[^1], game.Zones["square_20"])));
+        Assert.Equal(4L, game.Evaluate("count(zones_where(square, 'black'))"));
+        Assert.Equal(2, game.CurrentPlayer());
+        Assert.False(game.Apply(PlayerInput.Drag(game.Zones["square_20"].Cards[0], game.Zones["square_1"])));
+        Assert.Empty(failures);
+    }
+
     [Theory]
     [InlineData("{ \"columns\": 8 }")]
     [InlineData("{ \"columns\": 8, \"rows\": 8, \"shape\": \"triangle\" }")]

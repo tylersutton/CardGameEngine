@@ -120,6 +120,21 @@ public class TurnTests
         Assert.Empty(failures);
     }
 
+    /// Without drag actions, a game that offers actions refuses drags (they'd move cards outside its rules); only a
+    /// game that offers nothing is a free-play sandbox.
+    [Fact]
+    public void OnlySandboxesAllowEveryDrag()
+    {
+        const string clickOnly = """{ "actions": { "Draw": { "click": "deck", "steps": "draw(deck, hand)" } }, "turn": ["offer(['Draw'])", "end_turn()"] }""";
+        Game played = GameWith(clickOnly);
+        Assert.False(played.Apply(DragTo(played.Zones["hand_1"].Cards[0], "discard")));
+        Assert.Empty(played.Zones["discard"].Cards);
+        Game sandbox = GameWith("""{ "actions": { "Draw": { "click": "deck", "steps": "draw(deck, hand)" } }, "turn": [] }""");
+        Assert.True(sandbox.Apply(DragTo(sandbox.Zones["hand_1"].Cards[0], "discard")));
+        Assert.Single(sandbox.Zones["discard"].Cards);
+        Assert.Empty(failures);
+    }
+
     [Theory]
     [InlineData("""{ "moves": [{ "from": "deck", "to": "hand" }] }""", "\"moves\" are now actions with \"drag\"")]
     [InlineData("""{ "zones": { "deck": { "cards": "res://decks/standard_deck.csv", "on_click": "draw(deck, discard)" }, "discard": {}, "table": { "per_player": true }, "hand": { "per_player": true } } }""", "make an action with \"click\"")]

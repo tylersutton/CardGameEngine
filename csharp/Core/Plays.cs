@@ -120,8 +120,10 @@ public class Plays
         }
     }
 
+    /// A game with no drag actions that never offers an action is a free-play sandbox, so any drag is allowed. One
+    /// that offers actions is played by its rules: a drag no action allows would move cards outside them.
     public bool CanMove(Card card, Zone destination) =>
-        game.Sandbox || dragActionNames.Count == 0 || DragAction(card, game.ZoneOf(card), destination).Length > 0;
+        game.Sandbox || dragActionNames.Count == 0 && OfferedActions.Count == 0 || DragAction(card, game.ZoneOf(card), destination).Length > 0;
 
     /// The first drag action (in the file's order) that allows this card from source to destination now, or "".
     public string DragAction(Card card, Zone source, Zone destination) =>
