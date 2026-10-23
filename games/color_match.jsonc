@@ -1,6 +1,17 @@
 {
 	"title": "Color Match",
 	"description": "Two players sharing the screen. Match the color or number; +2 and Wild cards. The README tutorial builds it.",
+	"how_to_play": [
+		"# Goal",
+		"Be the first to play every card in your hand.",
+		"# Your turn",
+		"- Play a card by dragging it from your hand to the pile. It must match the top card's color or number, or be a Wild.",
+		"- If you can't (or don't want to) play, click the deck to draw a card instead. Either way, your turn ends.",
+		"# Special cards",
+		"- +2: the next player draws two cards.",
+		"- Wild: plays on anything; choose the new color from the buttons under the table.",
+		"- The sort buttons on the right arrange your hand by color or number."
+	],
 	"players": 2,
 	"seats": [
 		[
@@ -89,12 +100,18 @@
 				}
 			]
 		},
-		"Sort by color": [
-			"sort(hand, ['color', 'number'])"
-		],
-		"Sort by number": [
-			"sort(hand, ['number', 'color'])"
-		]
+		"Sort by color": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['color', 'number'])"
+			]
+		},
+		"Sort by number": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['number', 'color'])"
+			]
+		}
 	},
 	"turn": [
 		"offer(['Play a card', 'Draw'])",
@@ -119,7 +136,8 @@
 				]
 			},
 			"move(top(deck), pile)",
-			"active_color = top(pile).color"
+			"active_color = top(pile).color",
+			"player = one_of(players)"
 		],
 		"deck_empty": [
 			"move(without(pile, top(pile)), deck)",

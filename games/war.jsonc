@@ -1,0 +1,177 @@
+{
+	"title": "War",
+	"description": "You against a bot, each with half the deck. Take turns pressing Battle: both turn up their top card, and the higher one (Aces high) takes both. A tie is War: each lays three cards face down and one face up, and the higher of those takes them all. Won cards are shuffled into your deck when it runs out. Whoever runs out of cards loses; after 300 battles, whoever has more cards wins.",
+	"how_to_play": [
+		"# Goal",
+		"Win all the cards.",
+		"# A battle",
+		"- Press Battle: both players turn up the top card of their deck. The higher card (Aces high) wins both, and they go to the winner's Won pile.",
+		"- A tie is War: each player lays three cards face down and one face up, and the higher face-up card takes them all. Another tie means another War.",
+		"- The cards stay face up on the table until the next battle, then go to the winner's Won pile.",
+		"- When your deck runs out, your Won pile is shuffled to become your deck.",
+		"# The end",
+		"- Run out of cards and you lose. After 300 battles, whoever has more cards wins."
+	],
+	"players": 2,
+	"player_names": [
+		"You",
+		"Bot"
+	],
+	"seats": [
+		[
+			0.5,
+			0.96
+		]
+	],
+	"zones": {
+		"box": {
+			"outline": false,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				-0.3,
+				0.5
+			],
+			"cards": "res://decks/standard_deck.csv",
+			"columns": {
+				"art": "'cards/' + card.rank + '_' + card.suit + '.png'",
+				"strength": "14 if card.rank == 'A' else card.value"
+			}
+		},
+		"deck": {
+			"label": "Deck",
+			"per_player": true,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.3,
+				0.8
+			]
+		},
+		"battle": {
+			"per_player": true,
+			"layout": "row",
+			"width": 0.35,
+			"anchors": [
+				[
+					0.5,
+					0.62
+				],
+				[
+					0.5,
+					0.37
+				]
+			],
+			"rotations": [
+				0,
+				0
+			]
+		},
+		"won": {
+			"label": "Won",
+			"per_player": true,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.8,
+				0.8
+			]
+		}
+	},
+	"variables": {
+		"battles": 0,
+		// Who won the battle on the table: its cards stay there to be seen until the next battle.
+		"taker": 0
+	},
+	"conditions": {
+		"cards_left": "count(deck) + count(won) + (count(all_battle) if taker == player else 0)",
+		"face_up_strength": "number(top(battle), 'strength')",
+		"tied": "number(top(battle[1]), 'strength') == number(top(battle[2]), 'strength')",
+		"can_go_to_war": "cards_left >= 4"
+	},
+	"actions": {
+		"Battle": [
+			{
+				"if": "taker > 0",
+				"then": [
+					"move(all_battle, won[taker])",
+					"taker = 0"
+				]
+			},
+			"battles += 1",
+			{
+				"for": "player",
+				"in": "players",
+				"do": "draw(deck, battle)"
+			},
+			{
+				"while": "tied and size(players_where('can_go_to_war')) == 2",
+				"do": [
+					"log('War!')",
+					{
+						"for": "player",
+						"in": "players",
+						"do": [
+							"draw(deck, battle, 3, 'down')",
+							"draw(deck, battle)"
+						]
+					}
+				]
+			},
+			{
+				"if": "tied",
+				"then": [
+					"log('%s can\\'t go to war' % [name_of(players_with_least('cards_left')[0])])",
+					"end_game(players_with_most('cards_left'))"
+				],
+				"else": [
+					"taker = players_with_most('face_up_strength')[0]",
+					"log('%s takes %d cards' % [name_of(taker), count(all_battle)])"
+				]
+			}
+		]
+	},
+	"turn": [
+		"offer('Battle')",
+		{
+			"if": "size(players_where('cards_left')) < 2",
+			"then": "end_game(players_where('cards_left'))"
+		},
+		{
+			"if": "battles >= 300",
+			"then": "end_game(players_with_most('cards_left'))"
+		},
+		"end_turn()"
+	],
+	"triggers": {
+		"start": [
+			"shuffle(box)",
+			"deal(box, all_deck, 26)",
+			"player = one_of(players)"
+		],
+		// Won cards become the deck again, shuffled.
+		"deck_empty": [
+			"move(won, deck)",
+			"shuffle(deck)"
+		]
+	},
+	"status": {
+		"your cards": "count(deck[viewer()]) + count(won[viewer()])",
+		"battles": "battles"
+	},
+	"bot": {
+		"players": [
+			2
+		]
+	},
+	"card_face": {
+		"corner": "name",
+		"title": "name",
+		"body": [
+			"suit"
+		],
+		"color": "color",
+		"image": "art",
+		"card_back": "card_back.svg"
+	}
+}

@@ -50,7 +50,7 @@ Dictionary<string, object?> Loading(string path)
     GameRules rules = GameRules.Load(files, path);
     Dictionary<string, object?> read = new()
     {
-        ["title"] = rules.Title, ["description"] = rules.Description, ["zones"] = rules.Zones, ["actions"] = rules.Actions,
+        ["title"] = rules.Title, ["description"] = rules.Description, ["how_to_play"] = rules.HowToPlay.Cast<object?>().ToList(), ["zones"] = rules.Zones, ["actions"] = rules.Actions,
         ["triggers"] = rules.Triggers, ["effects"] = rules.Effects, ["conditions"] = rules.Conditions,
         ["condition_parameters"] = rules.ConditionParameters, ["condition_errors"] = rules.ConditionErrors, ["constants"] = rules.Constants,
         ["turn"] = rules.Turn, ["variables"] = rules.Variables, ["players"] = (long)rules.Players, ["seats"] = rules.Seats,

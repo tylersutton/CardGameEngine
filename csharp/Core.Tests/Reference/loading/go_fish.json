@@ -1,0 +1,694 @@
+{
+	"rules": {
+		"title": "Go Fish",
+		"description": "Two to four players, you against bots. On your turn, click a card in your hand to ask another player for every card of its rank (with three or more players, then click whose hand to ask). If they have any, they hand them over and you ask again; if not, go fish: click the deck. Fish the rank you asked for and you go again. Four of a kind make a book. When all 13 books are made, the most books wins.",
+		"how_to_play": [
+			"# Goal",
+			"Collect the most books: sets of all four cards of one rank.",
+			"# Your turn",
+			"- Click a card in your hand to ask for that rank. With three or more players, then click the hand of the player you're asking.",
+			"- If they have any cards of that rank, they hand them all over and you ask again.",
+			"- If not: Go fish! Click the deck to draw a card. If it's the rank you asked for, you go again; otherwise your turn ends.",
+			"# Books",
+			"- Four of a kind are laid down as a book by themselves.",
+			"- If your hand runs out, you take a card from the deck.",
+			"- When all 13 books are made, the player with the most wins."
+		],
+		"zones": {
+			"deck": {
+				"label": "Deck",
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					0.5,
+					0.48
+				],
+				"cards": "res://decks/standard_deck.csv",
+				"columns": {
+					"art": "'cards/' + card.rank + '_' + card.suit + '.png'"
+				}
+			},
+			"hand": {
+				"per_player": true,
+				"layout": "fan",
+				"face": "private",
+				"width": 0.4,
+				"anchor": [
+					0.5,
+					0.86
+				]
+			},
+			"books": {
+				"label": "Books",
+				"per_player": true,
+				"layout": "row",
+				"width": 0.18,
+				"anchor": [
+					0.84,
+					0.86
+				]
+			}
+		},
+		"actions": {
+			"Ask": {
+				"click": "hand",
+				"when": "size(askable) > 0",
+				"steps": [
+					"asked_rank = card.rank",
+					"asked = choose(askable, 'Ask whom for %ss? Click their hand' % [asked_rank])",
+					"got = where(asked, 'rank', asked_rank)",
+					"log('%s asks %s for %ss' % [name_of(player), name_of(asked.owner), asked_rank])",
+					{
+						"if": "count(got) > 0",
+						"then": [
+							"log('%s hands over %d' % [name_of(asked.owner), count(got)])",
+							"move(got, hand)",
+							"go_again = true"
+						],
+						"else": [
+							"log('Go fish!')",
+							"offer('Go fish')"
+						]
+					}
+				]
+			},
+			"Go fish": {
+				"click": true,
+				"drag": {
+					"from": "deck",
+					"to": "hand"
+				},
+				"steps": [
+					{
+						"if": "card.rank == asked_rank",
+						"then": [
+							"reveal(card)",
+							"log('%s fished the %s they asked for, and goes again' % [name_of(player), asked_rank])",
+							"go_again = true"
+						]
+					}
+				]
+			},
+			"Sort by rank": {
+				"any_time": true,
+				"steps": [
+					"sort(hand, ['value', 'suit'])"
+				]
+			}
+		},
+		"triggers": {
+			"start": [
+				{
+					"for": "player",
+					"in": "players",
+					"do": [
+						"sort(hand, ['value', 'suit'])"
+					]
+				},
+				"shuffle(deck)",
+				"deal(deck, all_hand, 7 if size(players) == 2 else 5)",
+				{
+					"for": "player",
+					"in": "players",
+					"do": [
+						"trigger('books')"
+					]
+				},
+				"player = one_of(players)"
+			],
+			"books": [
+				{
+					"for": "group",
+					"in": "groups(hand, 'rank')",
+					"do": [
+						{
+							"if": "count(group) == 4",
+							"then": [
+								"log('%s makes a book of %ss' % [name_of(player), text(top(group), 'rank')])",
+								"move(group, books)"
+							]
+						}
+					]
+				}
+			],
+			"refill": [
+				{
+					"if": "count(hand) == 0",
+					"then": [
+						"draw(deck, hand)"
+					]
+				}
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"book_count": "count(books) / 4",
+			"can_be_asked": "zone.owner != player and count(zone) > 0",
+			"askable": "zones_where(all_hand, 'can_be_asked')",
+			"all_booked": "count(all_books) == 52"
+		},
+		"condition_parameters": {
+			"book_count": [],
+			"can_be_asked": [
+				"zone"
+			],
+			"askable": [],
+			"all_booked": []
+		},
+		"condition_errors": [],
+		"constants": {},
+		"turn": [
+			"trigger('refill')",
+			"go_again = true",
+			{
+				"while": "go_again and count(hand) > 0",
+				"do": [
+					"go_again = false",
+					"offer('Ask')",
+					"trigger('books')",
+					"trigger('refill')"
+				]
+			},
+			{
+				"if": "all_booked",
+				"then": [
+					"end_game(players_with_most('book_count'))"
+				]
+			},
+			"end_turn()"
+		],
+		"variables": {
+			"asked_rank": "",
+			"go_again": false
+		},
+		"players": 2,
+		"seats": [
+			[
+				0.16,
+				0.86
+			]
+		],
+		"player_names": [
+			"You",
+			"West",
+			"North",
+			"East"
+		],
+		"player_variables": {},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"your books": "count(books[viewer()]) / 4",
+			"most books": "most('book_count')",
+			"deck": "count(deck)"
+		},
+		"show_variables": [],
+		"bot": {
+			"players": [
+				2.0,
+				3.0,
+				4.0
+			],
+			"prefer": "10 * count(books) + count(hand)"
+		},
+		"card_face": {
+			"corner": "name",
+			"title": "name",
+			"body": [
+				"suit"
+			],
+			"color": "color",
+			"image": "art",
+			"card_back": "card_back.svg"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "deck",
+			"label": "Deck",
+			"has_outline": true,
+			"kind": "deck",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.5,
+				0.47999998927116394
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 1,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.8600000143051147
+			],
+			"width": 0.4,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 2,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5000000596046448,
+				0.13999998569488525
+			],
+			"width": 0.4,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "books_1",
+			"label": "Books",
+			"has_outline": true,
+			"kind": "books",
+			"owner": 1,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.8399999737739563,
+				0.8600000143051147
+			],
+			"width": 0.18,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "books_2",
+			"label": "Books",
+			"has_outline": true,
+			"kind": "books",
+			"owner": 2,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.1600000560283661,
+				0.13999995589256287
+			],
+			"width": 0.18,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/standard_deck.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"value"
+			],
+			"cards": [
+				{
+					"name": "A♠",
+					"rank": "A",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "1"
+				},
+				{
+					"name": "2♠",
+					"rank": "2",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "2"
+				},
+				{
+					"name": "3♠",
+					"rank": "3",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "3"
+				},
+				{
+					"name": "4♠",
+					"rank": "4",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "4"
+				},
+				{
+					"name": "5♠",
+					"rank": "5",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "5"
+				},
+				{
+					"name": "6♠",
+					"rank": "6",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "6"
+				},
+				{
+					"name": "7♠",
+					"rank": "7",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "7"
+				},
+				{
+					"name": "8♠",
+					"rank": "8",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "8"
+				},
+				{
+					"name": "9♠",
+					"rank": "9",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "9"
+				},
+				{
+					"name": "10♠",
+					"rank": "10",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "10"
+				},
+				{
+					"name": "J♠",
+					"rank": "J",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "11"
+				},
+				{
+					"name": "Q♠",
+					"rank": "Q",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "12"
+				},
+				{
+					"name": "K♠",
+					"rank": "K",
+					"suit": "Spades",
+					"color": "Black",
+					"value": "13"
+				},
+				{
+					"name": "A♥",
+					"rank": "A",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "1"
+				},
+				{
+					"name": "2♥",
+					"rank": "2",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "2"
+				},
+				{
+					"name": "3♥",
+					"rank": "3",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "3"
+				},
+				{
+					"name": "4♥",
+					"rank": "4",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "4"
+				},
+				{
+					"name": "5♥",
+					"rank": "5",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "5"
+				},
+				{
+					"name": "6♥",
+					"rank": "6",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "6"
+				},
+				{
+					"name": "7♥",
+					"rank": "7",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "7"
+				},
+				{
+					"name": "8♥",
+					"rank": "8",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "8"
+				},
+				{
+					"name": "9♥",
+					"rank": "9",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "9"
+				},
+				{
+					"name": "10♥",
+					"rank": "10",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "10"
+				},
+				{
+					"name": "J♥",
+					"rank": "J",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "11"
+				},
+				{
+					"name": "Q♥",
+					"rank": "Q",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "12"
+				},
+				{
+					"name": "K♥",
+					"rank": "K",
+					"suit": "Hearts",
+					"color": "Red",
+					"value": "13"
+				},
+				{
+					"name": "A♦",
+					"rank": "A",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "1"
+				},
+				{
+					"name": "2♦",
+					"rank": "2",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "2"
+				},
+				{
+					"name": "3♦",
+					"rank": "3",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "3"
+				},
+				{
+					"name": "4♦",
+					"rank": "4",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "4"
+				},
+				{
+					"name": "5♦",
+					"rank": "5",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "5"
+				},
+				{
+					"name": "6♦",
+					"rank": "6",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "6"
+				},
+				{
+					"name": "7♦",
+					"rank": "7",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "7"
+				},
+				{
+					"name": "8♦",
+					"rank": "8",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "8"
+				},
+				{
+					"name": "9♦",
+					"rank": "9",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "9"
+				},
+				{
+					"name": "10♦",
+					"rank": "10",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "10"
+				},
+				{
+					"name": "J♦",
+					"rank": "J",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "11"
+				},
+				{
+					"name": "Q♦",
+					"rank": "Q",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "12"
+				},
+				{
+					"name": "K♦",
+					"rank": "K",
+					"suit": "Diamonds",
+					"color": "Red",
+					"value": "13"
+				},
+				{
+					"name": "A♣",
+					"rank": "A",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "1"
+				},
+				{
+					"name": "2♣",
+					"rank": "2",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "2"
+				},
+				{
+					"name": "3♣",
+					"rank": "3",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "3"
+				},
+				{
+					"name": "4♣",
+					"rank": "4",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "4"
+				},
+				{
+					"name": "5♣",
+					"rank": "5",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "5"
+				},
+				{
+					"name": "6♣",
+					"rank": "6",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "6"
+				},
+				{
+					"name": "7♣",
+					"rank": "7",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "7"
+				},
+				{
+					"name": "8♣",
+					"rank": "8",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "8"
+				},
+				{
+					"name": "9♣",
+					"rank": "9",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "9"
+				},
+				{
+					"name": "10♣",
+					"rank": "10",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "10"
+				},
+				{
+					"name": "J♣",
+					"rank": "J",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "11"
+				},
+				{
+					"name": "Q♣",
+					"rank": "Q",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "12"
+				},
+				{
+					"name": "K♣",
+					"rank": "K",
+					"suit": "Clubs",
+					"color": "Black",
+					"value": "13"
+				}
+			]
+		}
+	}
+}

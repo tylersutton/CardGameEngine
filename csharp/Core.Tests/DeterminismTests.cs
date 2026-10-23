@@ -76,8 +76,9 @@ public class DeterminismTests
         Game game = new(files, "res://games/gin_rummy.jsonc", Seed);
         game.Start();
         PlayerInput move = game.Plays.LegalMoves()[0][0];
-        Assert.False(game.Apply(move with { Player = 2 }), "player 2 acted on player 1's turn");
-        Assert.True(game.Apply(move with { Player = 1 }), "player 1 couldn't act on their own turn");
+        int mover = game.CurrentPlayer();
+        Assert.False(game.Apply(move with { Player = 3 - mover }), "the other player acted out of turn");
+        Assert.True(game.Apply(move with { Player = mover }), "the player whose turn it is couldn't act");
     }
 
     /// A random legal move, or when there are none, a random toolbar button (like Hearts' "Collect trick").

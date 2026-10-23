@@ -3,7 +3,8 @@ using Core;
 using Editing;
 using Godot;
 
-/// The list of games: play one, open it in the editor, make a new one from a template, or go online.
+/// The list of games: play one, open it in the editor, make a new one from a template, or go online (or straight
+/// back online, hosting or joining as last time).
 public partial class TitleScreen : Control
 {
     const string MainScene = "res://scenes/main.tscn";
@@ -18,6 +19,8 @@ public partial class TitleScreen : Control
     static readonly StyleBoxFlat selectedStyle = SelectedBox();
 
     string selectedPath = "";
+    /// For a game that can be played with different numbers of players: how many.
+    readonly OptionButton playerCount = new();
 
     Button PlayButton => GetNode<Button>("%Play");
 
@@ -26,7 +29,10 @@ public partial class TitleScreen : Control
         GetNode<ColorRect>("%Felt").Color = TableView.FeltColor;
         FitWindowToScreen();
         PlayButton.Pressed += () => Play(selectedPath);
+        PlayButton.AddSibling(playerCount);
+        PlayButton.GetParent().MoveChild(playerCount, PlayButton.GetIndex());
         GetNode<Button>("%OnlineButton").Pressed += () => GetTree().ChangeSceneToFile(LobbyScene);
+        ShowOnlineAgain();
         GetNode<Button>("%NewGameButton").Pressed += AskForNewGame;
         GetNode<Button>("%EditButton").Pressed += () => OS.ShellOpen(ProjectSettings.GlobalizePath(selectedPath));
         GetNode<Button>("%OpenEditorButton").Pressed += () => OpenEditor(selectedPath);
@@ -61,6 +67,20 @@ public partial class TitleScreen : Control
             chosen.ButtonPressed = true;
             chosen.GrabFocus();
         }
+    }
+
+    void ShowOnlineAgain()
+    {
+        OnlineSettings online = OnlineSettings.Load();
+        Button again = GetNode<Button>("%OnlineAgainButton");
+        again.Visible = online.LastConnection != "";
+        again.Text = online.LastConnection == OnlineSettings.Hosted ? "Host again" : $"Rejoin {online.Address}";
+        again.Pressed += () =>
+        {
+            LobbyScreen lobby = GD.Load<PackedScene>(LobbyScene).Instantiate<LobbyScreen>();
+            lobby.ConnectAtOnce = true;
+            SwitchTo(lobby);
+        };
     }
 
     /// "New game...": a name, a player count and a deck make a playable game file from a template, ready to edit.
@@ -161,6 +181,13 @@ public partial class TitleScreen : Control
         GetNode<Label>("%GameTitle").Text = TitleOf(path, rules);
         GetNode<Label>("%Description").Text = rules.Error.Length > 0 ? rules.Error : rules.Description;
         PlayButton.Disabled = rules.Error.Length > 0;
+        playerCount.Clear();
+        foreach (int count in rules.PlayerCounts.Order())
+        {
+            playerCount.AddItem($"{count} players", count);
+        }
+        playerCount.Select(playerCount.GetItemIndex(rules.Players));
+        playerCount.Visible = rules.PlayerCounts.Count > 1;
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -214,6 +241,7 @@ public partial class TitleScreen : Control
     {
         Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
         main.RulesPath = path;
+        main.Players = playerCount.Visible ? playerCount.GetSelectedId() : 0;
         SwitchTo(main);
     }
 

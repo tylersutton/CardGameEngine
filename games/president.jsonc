@@ -1,6 +1,16 @@
 {
 	"title": "President",
-	"description": "Four players, you against three bots. Play a single, pair, triple or four of a kind that beats or matches the last one (matching skips the next player), or pass. 2s are high, and a single 2 beats anything (except as the first play of a hand). Get rid of your cards first to become President.",
+	"description": "Four players, you against three bots. Play a single, pair, triple or four of a kind that beats or matches the last one (matching skips the next player), or pass. 2s are high and a single 2 beats anything, but you can't lead with a 2. Get rid of your cards first to become President.",
+	"how_to_play": [
+		"# Goal",
+		"Get rid of all your cards first to become President. Players finish in order: President, Vice President, Vice Scum, Scum.",
+		"# Your turn",
+		"- Press Play and click a single card, a pair, three or four of a kind, then Done. It must be the same number of cards as the last play, of an equal or higher rank. 2s are the highest.",
+		"- Matching the last play's rank skips the next player. A single 2 beats anything. You can't lead with a 2.",
+		"- Or press Pass. When everyone else has passed, whoever played last starts a new round with anything.",
+		"# The next hand",
+		"- The Scum gives the President their two best cards, and the Vice Scum gives the Vice President their best one; they give back any cards they like in return."
+	],
 	"players": 4,
 	"player_names": [
 		"You",
@@ -25,6 +35,7 @@
 			],
 			"cards": "res://decks/standard_deck.csv",
 			"columns": {
+				"art": "'cards/' + card.rank + '_' + card.suit + '.png'",
 				"order": "(card.value + 10) % 13 + 1"
 			}
 		},
@@ -57,7 +68,6 @@
 		}
 	},
 	"variables": {
-		"first_play": true,
 		"set_size": 0,
 		"top_order": 0,
 		"matched": false,
@@ -74,6 +84,7 @@
 		"passes"
 	],
 	"status": {
+		"to beat": "'nothing: lead anything but a 2' if set_size == 0 else '%d × %s or higher' % [set_size, text(top(table), 'rank')]",
 		"seat 1": "'%s: %s (%d points)' % [name_of(1), title_1, score_1]",
 		"seat 2": "'%s: %s (%d points)' % [name_of(2), title_2, score_2]",
 		"seat 3": "'%s: %s (%d points)' % [name_of(3), title_3, score_3]",
@@ -89,7 +100,8 @@
 	},
 	"conditions": {
 		"is_two": "card.data.rank == '2'",
-		"can_beat": "(is_two and not first_play) or (not is_two and number(card, 'order') >= top_order and count(where(hand, 'rank', card.data.rank)) >= max(set_size, 1))",
+		"can_beat": "(is_two and (set_size > 0 or only_twos_left)) or (not is_two and number(card, 'order') >= top_order and count(where(hand, 'rank', card.data.rank)) >= max(set_size, 1))",
+		"only_twos_left": "count(where(all_hand, 'rank', '2')) == count(all_hand)",
 		"one_rank": "size(groups(choice, 'rank')) == 1",
 		"right_size": "set_size == 0 or count(choice) == set_size",
 		"single_two": "count(choice) == 1 and text(top(choice), 'rank') == '2'",
@@ -111,7 +123,6 @@
 				"top_order = number(top(choice), 'order')",
 				"last_played = player",
 				"passes = 0",
-				"first_play = false",
 				{
 					"if": "count(hand) == 0",
 					"then": [
@@ -179,28 +190,42 @@
 			"steps": [
 				"trigger('deal')"
 			]
+		},
+		"Sort by rank": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['order', 'suit'])"
+			]
 		}
 	},
 	"turn": [
-		"offer(['Play', 'Pass'])"
+		{
+			"if": "set_size == 0 and count(matching(hand, 'can_beat')) == 0",
+			"then": [
+				"end_turn()"
+			],
+			"else": [
+				"offer(['Play', 'Pass'])"
+			]
+		}
 	],
 	"triggers": {
 		"start": [
-			"trigger('deal')",
+			"trigger('deal')"
+		],
+		"deal": [
+			"move([all_hand, table, beaten], deck)",
+			"shuffle(deck)",
 			{
 				"for": "player",
 				"in": "players",
 				"do": [
 					"sort(hand, ['order', 'suit'])"
 				]
-			}
-		],
-		"deal": [
-			"move([all_hand, table, beaten], deck)",
-			"shuffle(deck)",
+			},
 			"deal(deck, all_hand, 13)",
 			"bring_back(players)",
-			"reset(['finish_order', 'first_play', 'set_size', 'top_order', 'passes'])",
+			"reset(['finish_order', 'set_size', 'top_order', 'passes'])",
 			{
 				"if": "size(ranking) == 0",
 				"then": [
@@ -220,7 +245,6 @@
 			"ask('Give 1 back', ranking[1])"
 		],
 		"clear": [
-			"move([table, beaten], deck)",
 			"reset(['set_size', 'top_order', 'passes'])"
 		],
 		"pass": [
@@ -240,6 +264,7 @@
 			"score += 4 - size(finish_order)"
 		],
 		"hand_over": [
+			"reveal(all_hand)",
 			"ranking = finish_order",
 			"offer('Next hand')"
 		]
@@ -250,6 +275,8 @@
 		"body": [
 			"suit"
 		],
-		"color": "color"
+		"color": "color",
+		"image": "art",
+		"card_back": "card_back.svg"
 	}
 }

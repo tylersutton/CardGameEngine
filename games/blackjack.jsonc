@@ -1,0 +1,250 @@
+{
+	"title": "Blackjack",
+	"description": "One to three players against the dealer, with 100 chips each. Bet, then Hit to take cards or Stand to stop; get closer to 21 than the dealer without going over. Double down doubles your bet for exactly one more card. Aces count 1 or 11, and two cards making 21 is a Blackjack, paid 3 to 2. The dealer draws to 17. After 10 hands, whoever has the most chips wins; playing alone, you win by ending ahead.",
+	"how_to_play": [
+		"# Goal",
+		"Beat the dealer: finish each hand closer to 21 than the dealer without going over. You start with 100 chips; after 10 hands the most chips wins (playing alone, you win by ending with more than 100).",
+		"# Card values",
+		"- Number cards count their number, and Jacks, Queens and Kings count 10.",
+		"- An Ace counts 11, or 1 if 11 would take you over 21.",
+		"- An Ace and a ten-point card as your first two cards is a Blackjack.",
+		"# A hand",
+		"- Bet: press 5, 10 or 25 under the table when it's your turn to bet.",
+		"- Everyone gets two cards face up; the dealer gets one face up and one face down.",
+		"- On your turn, press Hit to take a card, or Stand to stop. Double down (only with your first two cards) doubles your bet and takes exactly one more card.",
+		"- Go over 21 and you lose your bet straight away.",
+		"- Once everyone has played, the dealer turns over the hidden card and takes cards until reaching 17 or more.",
+		"# Winning a hand",
+		"- Beat the dealer, or the dealer goes over 21: win your bet.",
+		"- A Blackjack wins one and a half times your bet, unless the dealer has one too.",
+		"- The same total as the dealer: you keep your bet.",
+		"- Press Next hand to deal again."
+	],
+	"players": [
+		1,
+		2,
+		3
+	],
+	"player_names": [
+		"You",
+		"West",
+		"East"
+	],
+	"seats": [
+		[
+			0.5,
+			0.97
+		],
+		[
+			0.12,
+			0.97
+		],
+		[
+			0.88,
+			0.97
+		]
+	],
+	"zones": {
+		"shoe": {
+			"label": "Shoe",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.85,
+				0.2
+			],
+			"cards": "res://decks/standard_deck.csv",
+			"columns": {
+				"art": "'cards/' + card.rank + '_' + card.suit + '.png'",
+				"points": "min(card.value, 10)"
+			}
+		},
+		"discard": {
+			"label": "Discard",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.15,
+				0.2
+			]
+		},
+		"dealer": {
+			"label": "Dealer",
+			"layout": "row",
+			"width": 0.35,
+			"anchor": [
+				0.5,
+				0.22
+			]
+		},
+		"hand": {
+			"per_player": true,
+			"layout": "row",
+			"width": 0.25,
+			"anchors": [
+				[
+					0.5,
+					0.75
+				],
+				[
+					0.17,
+					0.62
+				],
+				[
+					0.83,
+					0.62
+				]
+			]
+		}
+	},
+	"variables": {
+		"phase": "bet",
+		"hands_played": 0
+	},
+	"player_variables": {
+		"chips": 100,
+		"bet": 0
+	},
+	"constants": {
+		"hands_per_game": 10
+	},
+	"conditions": {
+		"total(cards)": "sum(cards, 'points') + (10 if count(where(cards, 'rank', 'A')) > 0 and sum(cards, 'points') <= 11 else 0)",
+		"blackjack(cards)": "count(cards) == 2 and total(cards) == 21",
+		"my_total": "total(hand)",
+		"dealer_total": "total(dealer)",
+		"last_to_act": "next_player() <= player",
+		// How good the hand looks, for bots: -1 for bust, then better the nearer 21.
+		"hand_strength": "-1 if my_total > 21 else (my_total - 17) / 4.0",
+		"ahead": "chips > 100"
+	},
+	"actions": {
+		"Hit": {
+			"when": "phase == 'play' and my_total < 21",
+			"steps": "draw(shoe, hand)"
+		},
+		"Stand": {
+			"when": "phase == 'play'",
+			"steps": []
+		},
+		"Double down": {
+			"when": "phase == 'play' and count(hand) == 2 and chips >= 2 * bet",
+			"steps": [
+				"bet += bet",
+				"draw(shoe, hand)"
+			]
+		},
+		"Next hand": {
+			"human_only": true,
+			"steps": []
+		}
+	},
+	"turn": [
+		{
+			"if": "phase == 'bet'",
+			"then": [
+				"bet = min(choose([5, 10, 25], 'Your bet'), chips)",
+				"log('%s bets %d' % [name_of(player), bet])",
+				{
+					"if": "last_to_act",
+					"then": "trigger('deal')"
+				}
+			],
+			"else": [
+				{
+					"if": "blackjack(hand)",
+					"then": "log('%s has Blackjack!' % [name_of(player)])",
+					"else": [
+						"done = 'Hit'",
+						{
+							"while": "done == 'Hit' and my_total < 21",
+							"do": "done = offer(['Hit', 'Stand', 'Double down'])"
+						}
+					]
+				},
+				{
+					"if": "last_to_act",
+					"then": "trigger('dealer_plays')"
+				}
+			]
+		},
+		"end_turn()"
+	],
+	"triggers": {
+		"start": [
+			"shuffle(shoe)"
+		],
+		"deal": [
+			"deal(shoe, [all_hand, dealer], 2)",
+			"flip(top(dealer))",
+			"phase = 'play'"
+		],
+		"dealer_plays": [
+			"flip(face_down(dealer))",
+			{
+				"while": "dealer_total < 17",
+				"do": "draw(shoe, dealer)"
+			},
+			"log('Dealer has %d' % [dealer_total])",
+			{
+				"for": "player",
+				"in": "players",
+				"do": "trigger('settle')"
+			},
+			"hands_played += 1",
+			{
+				"if": "hands_played == hands_per_game or least('chips') < 5",
+				"then": "end_game(players_with_most('chips') if size(players) > 1 else players_where('ahead'))"
+			},
+			"offer('Next hand')",
+			"move([all_hand, dealer], discard)",
+			"phase = 'bet'"
+		],
+		// Pays out one player's bet.
+		"settle": [
+			{
+				"if": "my_total > 21",
+				"then": "won = -bet",
+				"else": {
+					"if": "blackjack(hand) and not blackjack(dealer)",
+					"then": "won = bet * 3 / 2",
+					"else": {
+						"if": "blackjack(dealer) and not blackjack(hand)",
+						"then": "won = -bet",
+						"else": "won = bet if dealer_total > 21 or my_total > dealer_total else (0 if my_total == dealer_total else -bet)"
+					}
+				}
+			},
+			"chips += won",
+			"log('%s: %d against the dealer\\'s %d, %s %d chips' % [name_of(player), my_total, dealer_total, 'wins' if won >= 0 else 'loses', abs(won)])"
+		],
+		"shoe_empty": [
+			"move(discard, shoe)",
+			"shuffle(shoe)"
+		]
+	},
+	"status": {
+		"your chips": "chips[viewer()]",
+		"your bet": "bet[viewer()]",
+		"your total": "total(hand[viewer()])",
+		"dealer shows": "total(without(dealer, face_down(dealer)))",
+		"hand": "'%d of %d' % [min(hands_played + 1, hands_per_game), hands_per_game]"
+	},
+	"bot": {
+		"players": [
+			2,
+			3
+		],
+		"prefer": "chips + bet * hand_strength"
+	},
+	"card_face": {
+		"corner": "name",
+		"title": "name",
+		"body": [
+			"suit"
+		],
+		"color": "color",
+		"image": "art",
+		"card_back": "card_back.svg"
+	}
+}

@@ -152,6 +152,73 @@ public class ChooseTests
     }
 
     [Fact]
+    public void OneCardOrZoneIsChosenWithoutAsking()
+    {
+        Game game = GameWith("""{ "actions": { "Play one": ["move(choose(hand), piles_1)"], "Deal to a pile": ["move(top(deck), choose([piles_2]))"], "Pick a color": ["color = choose(['Red'])"] } }""");
+        game.Run(["move(first(hand, 2), deck)"]);
+        game.Apply(PlayerInput.Perform("Play one"));
+        Assert.False(game.Choice.IsOpen);
+        Assert.Single(game.Zones["piles_1"].Cards);
+        game.Apply(PlayerInput.Perform("Deal to a pile"));
+        Assert.False(game.Choice.IsOpen);
+        Assert.Single(game.Zones["piles_2"].Cards);
+        game.Apply(PlayerInput.Perform("Pick a color"));
+        Assert.True(game.Choice.IsOpen, "values always ask");
+        Assert.Empty(failures);
+    }
+
+    [Fact]
+    public void AButtonsOnlyCardIsChosenWithoutAsking()
+    {
+        Game game = GameWith("""{ "actions": { "Give": { "choose": "hand", "steps": ["move(choice, piles_1)"] } } }""");
+        game.Run(["move(first(hand, 2), deck)"]);
+        Assert.Equal([[PlayerInput.Perform("Give")]], game.Plays.LegalMoves());
+        game.Apply(PlayerInput.Perform("Give"));
+        Assert.False(game.Choice.IsOpen);
+        Assert.Single(game.Zones["piles_1"].Cards);
+        Assert.Empty(failures);
+    }
+
+    [Fact]
+    public void AButtonNothingCouldBePickedForCantBePressed()
+    {
+        Game game = GameWith("""{ "actions": { "Play kings": { "choose": "hand", "up_to": 3, "allow": "count(choice) > 0 and count(where(choice, 'rank', 'K')) == count(choice)", "steps": [] } } }""");
+        game.Run(["move(hand, deck)", "move(where(deck, 'rank', '2'), hand)"]);
+        Assert.False(game.Plays.CanPerform("Play kings"));
+        Assert.False(game.Plays.CanDo("Play kings"), "so offer('Play kings') wouldn't wait");
+        game.Run(["move(top(where(deck, 'rank', 'K')), hand)"]);
+        Assert.True(game.Plays.CanPerform("Play kings"));
+        Assert.True(game.Plays.CanDo("Play kings"));
+        Assert.Empty(failures);
+    }
+
+    [Fact]
+    public void AZoneThatKeepsItsOrderRefusesRearranging()
+    {
+        Game game = GameWith("""{ "zones": { "deck": { "layout": "pile", "cards": "res://decks/standard_deck.csv" }, "piles": { "layout": "pile", "copies": 2 }, "hand": { "per_player": true, "reorder": false } } }""");
+        List<Card> before = [.. game.Zones["hand_1"].Cards];
+        Assert.False(game.Apply(new("reorder") { Card = before[0].Id, Index = 2 }));
+        Assert.Equal(before, game.Zones["hand_1"].Cards);
+        Card drawn = game.Zones["deck"].Cards[^1];
+        game.Run(["move(top(deck), piles_1)"]);
+        Assert.True(game.Apply(new("drag") { Card = drawn.Id, To = "hand_1", Index = 1 }), "a card dragged in still goes where it's dropped");
+        Assert.Equal(drawn, game.Zones["hand_1"].Cards[1]);
+    }
+
+    [Fact]
+    public void PlayersRememberCardsTheyveSeenUntilShuffled()
+    {
+        Game game = GameWith("""{ "zones": { "deck": { "layout": "pile", "face": "down", "cards": "res://decks/standard_deck.csv" }, "piles": { "layout": "pile", "copies": 2 }, "hand": { "per_player": true, "face": "private" } } }""");
+        Card mine = game.Zones["hand_1"].Cards[0];
+        Assert.True(game.HasSeen(1, mine));
+        Assert.False(game.HasSeen(2, mine));
+        game.Run(["move(hand, deck)"]);
+        Assert.True(game.HasSeen(1, mine), "still known, face down in the deck");
+        game.Run(["shuffle(deck)"]);
+        Assert.False(game.HasSeen(1, mine));
+    }
+
+    [Fact]
     public void ChooseOnlyWorksInSteps()
     {
         string rules = """{ "zones": { "hand": {} }, "actions": { "Go": { "when": "choose(hand) == null", "steps": [] } } }""";

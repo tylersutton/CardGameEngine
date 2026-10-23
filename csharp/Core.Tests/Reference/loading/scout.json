@@ -1,0 +1,1251 @@
+{
+	"rules": {
+		"title": "Scout",
+		"description": "Three to five players, you against bots. Every card has a number at each end, and only the top one counts. You can't rearrange your hand, but before your first move of a round you may turn the whole hand round. On your turn, Show cards that sit next to each other in your hand, all the same number (a set) or counting up or down (a run): it must beat the show on the table, by having more cards, or as many and a set against a run, or the same kind with higher numbers. You collect the cards you beat. Or Scout: drag a card from either end of the show into your hand, anywhere, either way up; the show's owner earns a point. Once a round you may Scout & Show. The round ends when someone empties their hand, or when everyone else has scouted a show. Score your collected cards and points, minus the cards in your hand. Highest total after a round each wins.",
+		"how_to_play": [
+			"# Goal",
+			"Score the most points over as many rounds as there are players.",
+			"# The cards",
+			"- Every card has a number at each end; only the big number on top counts.",
+			"- You can't rearrange your hand. Before your first move of a round, you may press Turn hand round to flip your whole hand.",
+			"# Your turn",
+			"Do one of these:",
+			"- Show: press Show and click cards that sit next to each other in your hand, then Done. They must all be the same number (a set) or count up or down by one (a run).",
+			"- A show must beat the one on the table: more cards wins; with the same number of cards a set beats a run; otherwise the higher numbers win. You collect the cards you beat, face down.",
+			"- Scout: drag a card from either end of the show on the table into your hand, anywhere you like, then choose which way up. The show's owner earns a point.",
+			"- Scout & Show (once a round): press it, scout a card, then show. If nothing in your hand can beat the show by then, your turn just ends.",
+			"# End of a round",
+			"- A round ends when someone plays their last card, or when everyone else has scouted from your show and it comes back to you.",
+			"- Score 1 for every card you collected and every point you earned, minus 1 for every card left in your hand (unless you ended the round)."
+		],
+		"zones": {
+			"box": {
+				"outline": false,
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					-0.3,
+					0.5
+				],
+				"cards": "res://decks/scout.csv"
+			},
+			"deck": {
+				"outline": false,
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					-0.3,
+					0.5
+				]
+			},
+			"show": {
+				"label": "Show",
+				"layout": "row",
+				"width": 0.3,
+				"anchor": [
+					0.5,
+					0.45
+				]
+			},
+			"hand": {
+				"per_player": true,
+				"layout": "fan",
+				"face": "private",
+				"reorder": false,
+				"width": 0.36,
+				"anchor": [
+					0.5,
+					0.86
+				]
+			},
+			"collected": {
+				"label": "Collected",
+				"per_player": true,
+				"layout": "pile",
+				"face": "down",
+				"show_count": true,
+				"anchor": [
+					0.82,
+					0.86
+				]
+			}
+		},
+		"actions": {
+			"Show": {
+				"choose": "hand",
+				"up_to": "count(hand)",
+				"allow": "count(choice) > 0 and count(choice) >= count(show) and side_by_side and (is_set or is_run) and beats_show",
+				"steps": [
+					"log('%s shows %s' % [name_of(player), 'a set' if is_set else 'a run'])",
+					"move(show, collected)",
+					"show_kind = choice_kind",
+					"show_low = choice_low",
+					{
+						"for": "held",
+						"in": "hand",
+						"do": [
+							{
+								"if": "held in choice",
+								"then": [
+									"move(held, show)"
+								]
+							}
+						]
+					},
+					"show_owner = player",
+					"may_turn_round = false"
+				]
+			},
+			"Scout": {
+				"drag": {
+					"from": "show",
+					"to": "hand"
+				},
+				"click": true,
+				"when": "show_owner != player and show_end",
+				"steps": [
+					"tokens[show_owner] += 1",
+					"may_turn_round = false",
+					"log('%s scouts a card from %s\\'s show' % [name_of(player), name_of(show_owner)])",
+					{
+						"if": "choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round'",
+						"then": [
+							"swap(card, other_side(card))"
+						]
+					}
+				]
+			},
+			"Scout & Show": {
+				"when": "scout_and_show_left and count(show) > 0 and show_owner != player",
+				"steps": [
+					"log('%s will Scout & Show' % [name_of(player)])",
+					"scout_and_show_left = false"
+				]
+			},
+			"Turn hand round": {
+				"when": "may_turn_round",
+				"steps": [
+					"log('%s turns their hand round' % [name_of(player)])",
+					{
+						"for": "held",
+						"in": "hand",
+						"do": [
+							"swap(held, other_side(held))"
+						]
+					},
+					"may_turn_round = false"
+				]
+			},
+			"Next round": {
+				"human_only": true,
+				"steps": []
+			}
+		},
+		"triggers": {
+			"start": [
+				"trigger('deal')"
+			],
+			"deal": [
+				"move([all_hand, all_collected, show, deck], box)",
+				{
+					"for": "both_ways",
+					"in": "groups(matching(box, 'in_play'), 'pair')",
+					"do": [
+						"move(one_of(both_ways), deck)"
+					]
+				},
+				"shuffle(deck)",
+				"deal(deck, all_hand, count(deck) / size(players))",
+				"reset(['tokens', 'may_turn_round', 'scout_and_show_left', 'show_owner', 'show_kind', 'show_low', 'round_ender'])",
+				"round += 1",
+				"player = round"
+			],
+			"round_over": [
+				{
+					"for": "player",
+					"in": "players",
+					"do": [
+						"log('%s scores %d' % [name_of(player), round_points])",
+						"score += round_points"
+					]
+				},
+				"reveal(all_hand)",
+				{
+					"if": "round == size(players)",
+					"then": [
+						"end_game(players_with_most('score'))"
+					]
+				},
+				"offer('Next round')",
+				"trigger('deal')"
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"other_side": "top(where(box, 'pair', one.pair))",
+			"in_play": "card.needs <= size(players)",
+			"left_of": "all(hand)[position(one) - 2] if position(one) > 1 else null",
+			"joins_left": "left_of(card) in choice",
+			"side_by_side": "count(matching(choice, 'joins_left')) == count(choice) - 1",
+			"steps_up": "joins_left and number(left_of(card), 'value') == card.value - 1",
+			"steps_down": "joins_left and number(left_of(card), 'value') == card.value + 1",
+			"is_set": "size(groups(choice, 'value')) == 1",
+			"is_run": "count(choice) > 1 and (count(matching(choice, 'steps_up')) == count(choice) - 1 or count(matching(choice, 'steps_down')) == count(choice) - 1)",
+			"choice_kind": "'set' if is_set else 'run'",
+			"choice_low": "number(lowest(choice, 'value'), 'value')",
+			"beats_show": "count(show) == 0 or count(choice) > count(show) or (count(choice) == count(show) and ((choice_kind == 'set' and show_kind == 'run') or (choice_kind == show_kind and choice_low > show_low)))",
+			"show_end": "position(card) == 1 or position(card) == count(show)",
+			"round_points": "count(collected) + tokens - (0 if player == round_ender else count(hand))"
+		},
+		"condition_parameters": {
+			"other_side": [
+				"one"
+			],
+			"in_play": [],
+			"left_of": [
+				"one"
+			],
+			"joins_left": [],
+			"side_by_side": [],
+			"steps_up": [],
+			"steps_down": [],
+			"is_set": [],
+			"is_run": [],
+			"choice_kind": [],
+			"choice_low": [],
+			"beats_show": [],
+			"show_end": [],
+			"round_points": []
+		},
+		"condition_errors": [],
+		"constants": {},
+		"turn": [
+			{
+				"if": "count(show) > 0 and show_owner == player",
+				"then": [
+					"log('Everyone scouted %s\\'s show' % [name_of(player)])",
+					"round_ender = player",
+					"trigger('round_over')"
+				],
+				"else": [
+					"done = offer(['Show', 'Scout', 'Scout & Show', 'Turn hand round'])",
+					{
+						"if": "done == 'Turn hand round'",
+						"then": [
+							"done = offer(['Show', 'Scout', 'Scout & Show'])"
+						]
+					},
+					{
+						"if": "done == 'Scout & Show'",
+						"then": [
+							"offer('Scout')",
+							"offer('Show')"
+						]
+					},
+					{
+						"if": "count(hand) == 0",
+						"then": [
+							"log('%s has played every card' % [name_of(player)])",
+							"round_ender = player",
+							"trigger('round_over')"
+						],
+						"else": [
+							"end_turn()"
+						]
+					}
+				]
+			}
+		],
+		"variables": {
+			"show_owner": 0,
+			"show_kind": "",
+			"show_low": 0,
+			"round": 0,
+			"round_ender": 0
+		},
+		"players": 4,
+		"seats": [
+			[
+				0.14,
+				0.86
+			]
+		],
+		"player_names": [
+			"You",
+			"West",
+			"North",
+			"East",
+			"Player 5"
+		],
+		"player_variables": {
+			"tokens": 0,
+			"score": 0,
+			"may_turn_round": true,
+			"scout_and_show_left": true
+		},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"your score": "score[viewer()]",
+			"your points this round": "tokens[viewer()]",
+			"round": "'%d of %d' % [round, size(players)]",
+			"to beat": "'anything' if count(show) == 0 else '%d cards, a %s from %d' % [count(show), show_kind, show_low]"
+		},
+		"show_variables": [],
+		"bot": {
+			"players": [
+				2.0,
+				3.0,
+				4.0,
+				5.0
+			],
+			"prefer": "count(collected) + tokens - count(hand)"
+		},
+		"card_face": {
+			"corner": "name",
+			"title": "value",
+			"body": [
+				"other"
+			],
+			"background": "paint",
+			"color": "#1b1b1b",
+			"card_back": "#37474f"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "box",
+			"label": "",
+			"has_outline": false,
+			"kind": "box",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "deck",
+			"label": "",
+			"has_outline": false,
+			"kind": "deck",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "show",
+			"label": "Show",
+			"has_outline": true,
+			"kind": "show",
+			"owner": 0,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.44999998807907104
+			],
+			"width": 0.3,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 1,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.8600000143051147
+			],
+			"width": 0.36,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 2,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.13999998569488525,
+				0.4999999701976776
+			],
+			"width": 0.36,
+			"rotation": 90.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_3",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 3,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5000000596046448,
+				0.13999998569488525
+			],
+			"width": 0.36,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_4",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 4,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.8600000143051147,
+				0.5
+			],
+			"width": 0.36,
+			"rotation": 270.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "collected_1",
+			"label": "Collected",
+			"has_outline": true,
+			"kind": "collected",
+			"owner": 1,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.8199999928474426,
+				0.8600000143051147
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "collected_2",
+			"label": "Collected",
+			"has_outline": true,
+			"kind": "collected",
+			"owner": 2,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.13999998569488525,
+				0.8199999332427979
+			],
+			"width": 0.0,
+			"rotation": 90.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "collected_3",
+			"label": "Collected",
+			"has_outline": true,
+			"kind": "collected",
+			"owner": 3,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.18000003695487976,
+				0.13999995589256287
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "collected_4",
+			"label": "Collected",
+			"has_outline": true,
+			"kind": "collected",
+			"owner": 4,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.8600000143051147,
+				0.18000000715255737
+			],
+			"width": 0.0,
+			"rotation": 270.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/scout.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"pair",
+				"value",
+				"other",
+				"needs"
+			],
+			"cards": [
+				{
+					"name": "1/2",
+					"pair": "1",
+					"value": "1",
+					"other": "2",
+					"needs": "3",
+					"paint": "#e57373"
+				},
+				{
+					"name": "2/1",
+					"pair": "1",
+					"value": "2",
+					"other": "1",
+					"needs": "3",
+					"paint": "#f06292"
+				},
+				{
+					"name": "1/3",
+					"pair": "2",
+					"value": "1",
+					"other": "3",
+					"needs": "3",
+					"paint": "#e57373"
+				},
+				{
+					"name": "3/1",
+					"pair": "2",
+					"value": "3",
+					"other": "1",
+					"needs": "3",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "1/4",
+					"pair": "3",
+					"value": "1",
+					"other": "4",
+					"needs": "3",
+					"paint": "#e57373"
+				},
+				{
+					"name": "4/1",
+					"pair": "3",
+					"value": "4",
+					"other": "1",
+					"needs": "3",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "1/5",
+					"pair": "4",
+					"value": "1",
+					"other": "5",
+					"needs": "3",
+					"paint": "#e57373"
+				},
+				{
+					"name": "5/1",
+					"pair": "4",
+					"value": "5",
+					"other": "1",
+					"needs": "3",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "1/6",
+					"pair": "5",
+					"value": "1",
+					"other": "6",
+					"needs": "3",
+					"paint": "#e57373"
+				},
+				{
+					"name": "6/1",
+					"pair": "5",
+					"value": "6",
+					"other": "1",
+					"needs": "3",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "1/7",
+					"pair": "6",
+					"value": "1",
+					"other": "7",
+					"needs": "3",
+					"paint": "#e57373"
+				},
+				{
+					"name": "7/1",
+					"pair": "6",
+					"value": "7",
+					"other": "1",
+					"needs": "3",
+					"paint": "#81c784"
+				},
+				{
+					"name": "1/8",
+					"pair": "7",
+					"value": "1",
+					"other": "8",
+					"needs": "3",
+					"paint": "#e57373"
+				},
+				{
+					"name": "8/1",
+					"pair": "7",
+					"value": "8",
+					"other": "1",
+					"needs": "3",
+					"paint": "#dce775"
+				},
+				{
+					"name": "1/9",
+					"pair": "8",
+					"value": "1",
+					"other": "9",
+					"needs": "3",
+					"paint": "#e57373"
+				},
+				{
+					"name": "9/1",
+					"pair": "8",
+					"value": "9",
+					"other": "1",
+					"needs": "3",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "1/10",
+					"pair": "9",
+					"value": "1",
+					"other": "10",
+					"needs": "4",
+					"paint": "#e57373"
+				},
+				{
+					"name": "10/1",
+					"pair": "9",
+					"value": "10",
+					"other": "1",
+					"needs": "4",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "2/3",
+					"pair": "10",
+					"value": "2",
+					"other": "3",
+					"needs": "3",
+					"paint": "#f06292"
+				},
+				{
+					"name": "3/2",
+					"pair": "10",
+					"value": "3",
+					"other": "2",
+					"needs": "3",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "2/4",
+					"pair": "11",
+					"value": "2",
+					"other": "4",
+					"needs": "3",
+					"paint": "#f06292"
+				},
+				{
+					"name": "4/2",
+					"pair": "11",
+					"value": "4",
+					"other": "2",
+					"needs": "3",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "2/5",
+					"pair": "12",
+					"value": "2",
+					"other": "5",
+					"needs": "3",
+					"paint": "#f06292"
+				},
+				{
+					"name": "5/2",
+					"pair": "12",
+					"value": "5",
+					"other": "2",
+					"needs": "3",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "2/6",
+					"pair": "13",
+					"value": "2",
+					"other": "6",
+					"needs": "3",
+					"paint": "#f06292"
+				},
+				{
+					"name": "6/2",
+					"pair": "13",
+					"value": "6",
+					"other": "2",
+					"needs": "3",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "2/7",
+					"pair": "14",
+					"value": "2",
+					"other": "7",
+					"needs": "3",
+					"paint": "#f06292"
+				},
+				{
+					"name": "7/2",
+					"pair": "14",
+					"value": "7",
+					"other": "2",
+					"needs": "3",
+					"paint": "#81c784"
+				},
+				{
+					"name": "2/8",
+					"pair": "15",
+					"value": "2",
+					"other": "8",
+					"needs": "3",
+					"paint": "#f06292"
+				},
+				{
+					"name": "8/2",
+					"pair": "15",
+					"value": "8",
+					"other": "2",
+					"needs": "3",
+					"paint": "#dce775"
+				},
+				{
+					"name": "2/9",
+					"pair": "16",
+					"value": "2",
+					"other": "9",
+					"needs": "3",
+					"paint": "#f06292"
+				},
+				{
+					"name": "9/2",
+					"pair": "16",
+					"value": "9",
+					"other": "2",
+					"needs": "3",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "2/10",
+					"pair": "17",
+					"value": "2",
+					"other": "10",
+					"needs": "4",
+					"paint": "#f06292"
+				},
+				{
+					"name": "10/2",
+					"pair": "17",
+					"value": "10",
+					"other": "2",
+					"needs": "4",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "3/4",
+					"pair": "18",
+					"value": "3",
+					"other": "4",
+					"needs": "3",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "4/3",
+					"pair": "18",
+					"value": "4",
+					"other": "3",
+					"needs": "3",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "3/5",
+					"pair": "19",
+					"value": "3",
+					"other": "5",
+					"needs": "3",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "5/3",
+					"pair": "19",
+					"value": "5",
+					"other": "3",
+					"needs": "3",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "3/6",
+					"pair": "20",
+					"value": "3",
+					"other": "6",
+					"needs": "3",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "6/3",
+					"pair": "20",
+					"value": "6",
+					"other": "3",
+					"needs": "3",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "3/7",
+					"pair": "21",
+					"value": "3",
+					"other": "7",
+					"needs": "3",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "7/3",
+					"pair": "21",
+					"value": "7",
+					"other": "3",
+					"needs": "3",
+					"paint": "#81c784"
+				},
+				{
+					"name": "3/8",
+					"pair": "22",
+					"value": "3",
+					"other": "8",
+					"needs": "3",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "8/3",
+					"pair": "22",
+					"value": "8",
+					"other": "3",
+					"needs": "3",
+					"paint": "#dce775"
+				},
+				{
+					"name": "3/9",
+					"pair": "23",
+					"value": "3",
+					"other": "9",
+					"needs": "3",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "9/3",
+					"pair": "23",
+					"value": "9",
+					"other": "3",
+					"needs": "3",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "3/10",
+					"pair": "24",
+					"value": "3",
+					"other": "10",
+					"needs": "4",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "10/3",
+					"pair": "24",
+					"value": "10",
+					"other": "3",
+					"needs": "4",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "4/5",
+					"pair": "25",
+					"value": "4",
+					"other": "5",
+					"needs": "3",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "5/4",
+					"pair": "25",
+					"value": "5",
+					"other": "4",
+					"needs": "3",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "4/6",
+					"pair": "26",
+					"value": "4",
+					"other": "6",
+					"needs": "3",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "6/4",
+					"pair": "26",
+					"value": "6",
+					"other": "4",
+					"needs": "3",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "4/7",
+					"pair": "27",
+					"value": "4",
+					"other": "7",
+					"needs": "3",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "7/4",
+					"pair": "27",
+					"value": "7",
+					"other": "4",
+					"needs": "3",
+					"paint": "#81c784"
+				},
+				{
+					"name": "4/8",
+					"pair": "28",
+					"value": "4",
+					"other": "8",
+					"needs": "3",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "8/4",
+					"pair": "28",
+					"value": "8",
+					"other": "4",
+					"needs": "3",
+					"paint": "#dce775"
+				},
+				{
+					"name": "4/9",
+					"pair": "29",
+					"value": "4",
+					"other": "9",
+					"needs": "3",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "9/4",
+					"pair": "29",
+					"value": "9",
+					"other": "4",
+					"needs": "3",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "4/10",
+					"pair": "30",
+					"value": "4",
+					"other": "10",
+					"needs": "4",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "10/4",
+					"pair": "30",
+					"value": "10",
+					"other": "4",
+					"needs": "4",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "5/6",
+					"pair": "31",
+					"value": "5",
+					"other": "6",
+					"needs": "3",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "6/5",
+					"pair": "31",
+					"value": "6",
+					"other": "5",
+					"needs": "3",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "5/7",
+					"pair": "32",
+					"value": "5",
+					"other": "7",
+					"needs": "3",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "7/5",
+					"pair": "32",
+					"value": "7",
+					"other": "5",
+					"needs": "3",
+					"paint": "#81c784"
+				},
+				{
+					"name": "5/8",
+					"pair": "33",
+					"value": "5",
+					"other": "8",
+					"needs": "3",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "8/5",
+					"pair": "33",
+					"value": "8",
+					"other": "5",
+					"needs": "3",
+					"paint": "#dce775"
+				},
+				{
+					"name": "5/9",
+					"pair": "34",
+					"value": "5",
+					"other": "9",
+					"needs": "3",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "9/5",
+					"pair": "34",
+					"value": "9",
+					"other": "5",
+					"needs": "3",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "5/10",
+					"pair": "35",
+					"value": "5",
+					"other": "10",
+					"needs": "4",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "10/5",
+					"pair": "35",
+					"value": "10",
+					"other": "5",
+					"needs": "4",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "6/7",
+					"pair": "36",
+					"value": "6",
+					"other": "7",
+					"needs": "3",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "7/6",
+					"pair": "36",
+					"value": "7",
+					"other": "6",
+					"needs": "3",
+					"paint": "#81c784"
+				},
+				{
+					"name": "6/8",
+					"pair": "37",
+					"value": "6",
+					"other": "8",
+					"needs": "3",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "8/6",
+					"pair": "37",
+					"value": "8",
+					"other": "6",
+					"needs": "3",
+					"paint": "#dce775"
+				},
+				{
+					"name": "6/9",
+					"pair": "38",
+					"value": "6",
+					"other": "9",
+					"needs": "3",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "9/6",
+					"pair": "38",
+					"value": "9",
+					"other": "6",
+					"needs": "3",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "6/10",
+					"pair": "39",
+					"value": "6",
+					"other": "10",
+					"needs": "4",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "10/6",
+					"pair": "39",
+					"value": "10",
+					"other": "6",
+					"needs": "4",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "7/8",
+					"pair": "40",
+					"value": "7",
+					"other": "8",
+					"needs": "3",
+					"paint": "#81c784"
+				},
+				{
+					"name": "8/7",
+					"pair": "40",
+					"value": "8",
+					"other": "7",
+					"needs": "3",
+					"paint": "#dce775"
+				},
+				{
+					"name": "7/9",
+					"pair": "41",
+					"value": "7",
+					"other": "9",
+					"needs": "3",
+					"paint": "#81c784"
+				},
+				{
+					"name": "9/7",
+					"pair": "41",
+					"value": "9",
+					"other": "7",
+					"needs": "3",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "7/10",
+					"pair": "42",
+					"value": "7",
+					"other": "10",
+					"needs": "4",
+					"paint": "#81c784"
+				},
+				{
+					"name": "10/7",
+					"pair": "42",
+					"value": "10",
+					"other": "7",
+					"needs": "4",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "8/9",
+					"pair": "43",
+					"value": "8",
+					"other": "9",
+					"needs": "3",
+					"paint": "#dce775"
+				},
+				{
+					"name": "9/8",
+					"pair": "43",
+					"value": "9",
+					"other": "8",
+					"needs": "3",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "8/10",
+					"pair": "44",
+					"value": "8",
+					"other": "10",
+					"needs": "4",
+					"paint": "#dce775"
+				},
+				{
+					"name": "10/8",
+					"pair": "44",
+					"value": "10",
+					"other": "8",
+					"needs": "4",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "9/10",
+					"pair": "45",
+					"value": "9",
+					"other": "10",
+					"needs": "5",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "10/9",
+					"pair": "45",
+					"value": "10",
+					"other": "9",
+					"needs": "5",
+					"paint": "#ffb74d"
+				}
+			]
+		}
+	}
+}

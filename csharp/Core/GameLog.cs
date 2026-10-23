@@ -4,6 +4,12 @@ namespace Core;
 /// ("deck → hand_1: 2♦, 7♥"), and identical lines in a row are shown once with a count ("(×17)").
 public class GameLog
 {
+    /// Indented lines players see: the rest are the steps' workings.
+    static readonly string[] PlayerDetails = ["face up in ", "face down in ", "shown from ", "shuffle ", "swap "];
+
+    /// Starts a move between two zones off the table (a box filling a supply), which only designers see.
+    public const string OutOfSight = "out of sight: ";
+
     public event Action<string>? Logged;
 
     /// While a bot tries moves out, nothing is logged.
@@ -12,6 +18,19 @@ public class GameLog
     readonly Dictionary<string, List<string>> items = [];
     string lineText = "";
     int repeats;
+
+    /// What a player sees with designer info off: what happened (turns, actions, choices, card moves and flips,
+    /// refusals), without how the steps worked it out (triggers, variables, conditions, loops, offers).
+    public static bool ForPlayers(string line)
+    {
+        string detail = line.TrimStart();
+        if (detail.Length == line.Length)
+        {
+            return !line.StartsWith("[trigger]") && !line.StartsWith("[bot ");
+        }
+        bool isMove = detail.Contains(" → ") && !detail.StartsWith("if ") && !detail.StartsWith(OutOfSight);
+        return isMove || PlayerDetails.Any(detail.StartsWith) || detail.EndsWith(" is out");
+    }
 
     public void Line(string text)
     {

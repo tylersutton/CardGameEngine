@@ -3,6 +3,14 @@
 	// Every key is explained in docs/reference.md.
 	"title": "{title}",
 	"description": "{players} players. Describe your game here.",
+	// Shown by the How to play button: one paragraph per line, "# " starts a heading and "- " a bullet.
+	"how_to_play": [
+		"# Goal",
+		"What wins the game.",
+		"# On your turn",
+		"- Draw a card: click the deck.",
+		"- Discard a card: drag it from your hand to the discard pile."
+	],
 	"players": {players},
 	"player_names": {player_names},
 	"zones": {
@@ -65,7 +73,10 @@
 				"to": "discard"
 			}
 		},
-		"Sort hand": "sort(hand, ['name'])"
+		"Sort hand": {
+			"any_time": true,
+			"steps": "sort(hand, ['name'])"
+		}
 	},
 	// A turn: draw a card, then discard one. offer(...) waits for the player to do one of those actions.
 	"turn": [
@@ -76,7 +87,9 @@
 	"triggers": {
 		"start": [
 			"shuffle(deck)",
-			"deal(deck, all_hand, 5)"
+			"deal(deck, all_hand, 5)",
+			// Whoever goes first is picked at random.
+			"player = one_of(players)"
 		],
 		// The discard pile, minus its top card, becomes the new deck.
 		"deck_empty": [

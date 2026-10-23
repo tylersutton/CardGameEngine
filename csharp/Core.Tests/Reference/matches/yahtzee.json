@@ -1,0 +1,4170 @@
+[
+	{
+		"seed": 1,
+		"inputs": [
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "click",
+				"card": 31
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "click",
+				"card": 50
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "drag",
+				"card": 56,
+				"to": "kept"
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 51
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "drag",
+				"card": 56,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "drag",
+				"card": 53,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "drag",
+				"card": 56,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "drag",
+				"card": 53,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "click",
+				"card": 27
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  for player in players (2)",
+				"  sort sheet_1 by order",
+				"  for group in groups(boxes, 'name') (13)",
+				"  boxes → sheet_1: Ones",
+				"  boxes → sheet_1: Twos",
+				"  boxes → sheet_1: Threes",
+				"  boxes → sheet_1: Fours",
+				"  boxes → sheet_1: Fives",
+				"  boxes → sheet_1: Sixes",
+				"  boxes → sheet_1: 3 of a Kind",
+				"  boxes → sheet_1: 4 of a Kind",
+				"  boxes → sheet_1: Full House",
+				"  boxes → sheet_1: Small Straight",
+				"  boxes → sheet_1: Large Straight",
+				"  boxes → sheet_1: Yahtzee",
+				"  boxes → sheet_1: Chance",
+				"  sort sheet_2 by order",
+				"  for group in groups(boxes, 'name') (13)",
+				"  boxes → sheet_2: Ones",
+				"  boxes → sheet_2: Twos",
+				"  boxes → sheet_2: Threes",
+				"  boxes → sheet_2: Fours",
+				"  boxes → sheet_2: Fives",
+				"  boxes → sheet_2: Sixes",
+				"  boxes → sheet_2: 3 of a Kind",
+				"  boxes → sheet_2: 4 of a Kind",
+				"  boxes → sheet_2: Full House",
+				"  boxes → sheet_2: Small Straight",
+				"  boxes → sheet_2: Large Straight",
+				"  boxes → sheet_2: Yahtzee",
+				"  boxes → sheet_2: Chance",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (13)",
+				"  mark could = 1: Ones",
+				"  mark could = 2: Twos",
+				"  mark could = 0: Threes",
+				"  mark could = 4: Fours",
+				"  mark could = 5: Fives",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 18: Chance",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 4",
+				"  if card.kind == 'upper' → then",
+				"  upper_2 = 4",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 4 for Fours",
+				"  unmark could: Ones, Twos, Threes, Fours, Fives, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight, Large Straight, Yahtzee, Chance",
+				"  face down in sheet_2: Fours",
+				"  mark scored = Fours 4: Fours",
+				"  kept → rolled: Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (13)",
+				"  mark could = 0: Ones",
+				"  mark could = 4: Twos",
+				"  mark could = 0: Threes",
+				"  mark could = 4: Fours",
+				"  mark could = 0: Fives",
+				"  mark could = 12: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 20: Chance",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 0",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 0 for 4 of a Kind",
+				"  unmark could: Ones, Twos, Threes, Fours, Fives, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight, Large Straight, Yahtzee, Chance",
+				"  face down in sheet_1: 4 of a Kind",
+				"  mark scored = 4 of a Kind 0: 4 of a Kind",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (12)",
+				"  mark could = 0: Ones",
+				"  mark could = 0: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 5: Fives",
+				"  mark could = 0: Sixes",
+				"  mark could = 20: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 20: Chance",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 4",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 0 for Yahtzee",
+				"  unmark could: Ones, Twos, Threes, Fives, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight, Large Straight, Yahtzee, Chance",
+				"  face down in sheet_2: Yahtzee",
+				"  mark scored = Yahtzee 0: Yahtzee",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (12)",
+				"  mark could = 2: Ones",
+				"  mark could = 0: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 8: Fours",
+				"  mark could = 0: Fives",
+				"  mark could = 0: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 13: Chance",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 0",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 0 for Large Straight",
+				"  unmark could: Ones, Twos, Threes, Fours, Fives, Sixes, 3 of a Kind, Full House, Small Straight, Large Straight, Yahtzee, Chance",
+				"  face down in sheet_1: Large Straight",
+				"  mark scored = Large Straight 0: Large Straight",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (11)",
+				"  mark could = 1: Ones",
+				"  mark could = 2: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 0: Fives",
+				"  mark could = 12: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 18: Chance",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 4",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 0 for Large Straight",
+				"  unmark could: Ones, Twos, Threes, Fives, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight, Large Straight, Chance",
+				"  face down in sheet_2: Large Straight",
+				"  mark scored = Large Straight 0: Large Straight",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (11)",
+				"  mark could = 1: Ones",
+				"  mark could = 0: Twos",
+				"  mark could = 6: Threes",
+				"  mark could = 0: Fours",
+				"  mark could = 5: Fives",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 18: Chance",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 0",
+				"  if card.kind == 'upper' → then",
+				"  upper_1 = 0",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 0 for Fours",
+				"  unmark could: Ones, Twos, Threes, Fours, Fives, Sixes, 3 of a Kind, Full House, Small Straight, Yahtzee, Chance",
+				"  face down in sheet_1: Fours",
+				"  mark scored = Fours 0: Fours",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (10)",
+				"  mark could = 1: Ones",
+				"  mark could = 0: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 5: Fives",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 30: Small Straight",
+				"  mark could = 19: Chance",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 9",
+				"  if card.kind == 'upper' → then",
+				"  upper_2 = 9",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 5 for Fives",
+				"  unmark could: Ones, Twos, Threes, Fives, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight, Chance",
+				"  face down in sheet_2: Fives",
+				"  mark scored = Fives 5: Fives",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (10)",
+				"  mark could = 1: Ones",
+				"  mark could = 0: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 0: Fives",
+				"  mark could = 12: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 20: Chance",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 3",
+				"  if card.kind == 'upper' → then",
+				"  upper_1 = 3",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 3 for Threes",
+				"  unmark could: Ones, Twos, Threes, Fives, Sixes, 3 of a Kind, Full House, Small Straight, Yahtzee, Chance",
+				"  face down in sheet_1: Threes",
+				"  mark scored = Threes 3: Threes",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (9)",
+				"  mark could = 1: Ones",
+				"  mark could = 2: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 12: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 18: Chance",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 27",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 18 for Chance",
+				"  unmark could: Ones, Twos, Threes, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight, Chance",
+				"  face down in sheet_2: Chance",
+				"  mark scored = Chance 18: Chance",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (9)",
+				"  mark could = 2: Ones",
+				"  mark could = 0: Twos",
+				"  mark could = 0: Fives",
+				"  mark could = 18: Sixes",
+				"  mark could = 20: 3 of a Kind",
+				"  mark could = 25: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 20: Chance",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 21",
+				"  if card.kind == 'upper' → then",
+				"  upper_1 = 21",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 18 for Sixes",
+				"  unmark could: Ones, Twos, Fives, Sixes, 3 of a Kind, Full House, Small Straight, Yahtzee, Chance",
+				"  face down in sheet_1: Sixes",
+				"  mark scored = Sixes 18: Sixes",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (8)",
+				"  mark could = 2: Ones",
+				"  mark could = 2: Twos",
+				"  mark could = 0: Threes",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 27",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 0 for Full House",
+				"  unmark could: Ones, Twos, Threes, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight",
+				"  face down in sheet_2: Full House",
+				"  mark scored = Full House 0: Full House",
+				"  kept → rolled: Die, Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (8)",
+				"  mark could = 0: Ones",
+				"  mark could = 2: Twos",
+				"  mark could = 15: Fives",
+				"  mark could = 20: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 20: Chance",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (3)",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 1",
+				"  for box in open_boxes (8)",
+				"  mark could = 0: Ones",
+				"  mark could = 4: Twos",
+				"  mark could = 5: Fives",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 18: Chance",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 39",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 18 for Chance",
+				"  unmark could: Ones, Twos, Fives, 3 of a Kind, Full House, Small Straight, Yahtzee, Chance",
+				"  face down in sheet_1: Chance",
+				"  mark scored = Chance 18: Chance",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (7)",
+				"  mark could = 1: Ones",
+				"  mark could = 2: Twos",
+				"  mark could = 0: Threes",
+				"  mark could = 18: Sixes",
+				"  mark could = 21: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 28",
+				"  if card.kind == 'upper' → then",
+				"  upper_2 = 10",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 1 for Ones",
+				"  unmark could: Ones, Twos, Threes, Sixes, 3 of a Kind, 4 of a Kind, Small Straight",
+				"  face down in sheet_2: Ones",
+				"  mark scored = Ones 1: Ones",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (7)",
+				"  mark could = 0: Ones",
+				"  mark could = 6: Twos",
+				"  mark could = 0: Fives",
+				"  mark could = 15: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Yahtzee",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 45",
+				"  if card.kind == 'upper' → then",
+				"  upper_1 = 27",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 6 for Twos",
+				"  unmark could: Ones, Twos, Fives, 3 of a Kind, Full House, Small Straight, Yahtzee",
+				"  face down in sheet_1: Twos",
+				"  mark scored = Twos 6: Twos",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (6)",
+				"  mark could = 2: Twos",
+				"  mark could = 0: Threes",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 34",
+				"  if card.kind == 'upper' → then",
+				"  upper_2 = 16",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 6 for Sixes",
+				"  unmark could: Twos, Threes, Sixes, 3 of a Kind, 4 of a Kind, Small Straight",
+				"  face down in sheet_2: Sixes",
+				"  mark scored = Sixes 6: Sixes",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (6)",
+				"  mark could = 2: Ones",
+				"  mark could = 5: Fives",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Yahtzee",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 47",
+				"  if card.kind == 'upper' → then",
+				"  upper_1 = 29",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 2 for Ones",
+				"  unmark could: Ones, Fives, 3 of a Kind, Full House, Small Straight, Yahtzee",
+				"  face down in sheet_1: Ones",
+				"  mark scored = Ones 2: Ones",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (5)",
+				"  mark could = 2: Twos",
+				"  mark could = 0: Threes",
+				"  mark could = 25: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 59",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 25 for 3 of a Kind",
+				"  unmark could: Twos, Threes, 3 of a Kind, 4 of a Kind, Small Straight",
+				"  face down in sheet_2: 3 of a Kind",
+				"  mark scored = 3 of a Kind 25: 3 of a Kind",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (5)",
+				"  mark could = 10: Fives",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 30: Small Straight",
+				"  mark could = 0: Yahtzee",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 57",
+				"  if card.kind == 'upper' → then",
+				"  upper_1 = 39",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 10 for Fives",
+				"  unmark could: Fives, 3 of a Kind, Full House, Small Straight, Yahtzee",
+				"  face down in sheet_1: Fives",
+				"  mark scored = Fives 10: Fives",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (4)",
+				"  mark could = 2: Twos",
+				"  mark could = 0: Threes",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 61",
+				"  if card.kind == 'upper' → then",
+				"  upper_2 = 18",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 2 for Twos",
+				"  unmark could: Twos, Threes, 4 of a Kind, Small Straight",
+				"  face down in sheet_2: Twos",
+				"  mark scored = Twos 2: Twos",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (4)",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Yahtzee",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 57",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 0 for Yahtzee",
+				"  unmark could: 3 of a Kind, Full House, Small Straight, Yahtzee",
+				"  face down in sheet_1: Yahtzee",
+				"  mark scored = Yahtzee 0: Yahtzee",
+				"  kept → rolled: Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (3)",
+				"  mark could = 0: Threes",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 61",
+				"  if card.kind == 'upper' → then",
+				"  upper_2 = 18",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 0 for Threes",
+				"  unmark could: Threes, 4 of a Kind, Small Straight",
+				"  face down in sheet_2: Threes",
+				"  mark scored = Threes 0: Threes",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (3)",
+				"  mark could = 13: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  rolls_left = 1",
+				"  for box in open_boxes (3)",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (4)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 0",
+				"  for box in open_boxes (3)",
+				"  mark could = 17: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 57",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 0 for Small Straight",
+				"  unmark could: 3 of a Kind, Full House, Small Straight",
+				"  face down in sheet_1: Small Straight",
+				"  mark scored = Small Straight 0: Small Straight",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (2)",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 61",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 0 for 4 of a Kind",
+				"  unmark could: 4 of a Kind, Small Straight",
+				"  face down in sheet_2: 4 of a Kind",
+				"  mark scored = 4 of a Kind 0: 4 of a Kind",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (2)",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (3)",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 1",
+				"  for box in open_boxes (2)",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (3)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 0",
+				"  for box in open_boxes (2)",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: Full House",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 57",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 0 for Full House",
+				"  unmark could: 3 of a Kind, Full House",
+				"  face down in sheet_1: Full House",
+				"  mark scored = Full House 0: Full House",
+				"  kept → rolled: Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (1)",
+				"  mark could = 30: Small Straight",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 1",
+				"  for box in open_boxes (1)",
+				"  mark could = 0: Small Straight",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 61",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 0 for Small Straight",
+				"  unmark could: Small Straight",
+				"  face down in sheet_2: Small Straight",
+				"  mark scored = Small Straight 0: Small Straight",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (1)",
+				"  mark could = 0: 3 of a Kind",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (3)",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 1",
+				"  for box in open_boxes (1)",
+				"  mark could = 0: 3 of a Kind",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 57",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 0 for 3 of a Kind",
+				"  unmark could: 3 of a Kind",
+				"  face down in sheet_1: 3 of a Kind",
+				"  mark scored = 3 of a Kind 0: 3 of a Kind",
+				"  kept → rolled: Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → then",
+				"[game over] Winner: Bot 1"
+			]
+		],
+		"end": {
+			"zones": {
+				"boxes": [
+					"Ones",
+					"Ones",
+					"Twos",
+					"Twos",
+					"Threes",
+					"Threes",
+					"Fours",
+					"Fours",
+					"Fives",
+					"Fives",
+					"Sixes",
+					"Sixes",
+					"3 of a Kind",
+					"3 of a Kind",
+					"4 of a Kind",
+					"4 of a Kind",
+					"Full House",
+					"Full House",
+					"Small Straight",
+					"Small Straight",
+					"Large Straight",
+					"Large Straight",
+					"Yahtzee",
+					"Yahtzee",
+					"Chance",
+					"Chance"
+				],
+				"rolled": [
+					"Die",
+					"Die",
+					"Die",
+					"Die",
+					"Die"
+				],
+				"kept": [],
+				"sheet_1": [
+					"▼Ones",
+					"▼Twos",
+					"▼Threes",
+					"▼Fours",
+					"▼Fives",
+					"▼Sixes",
+					"▼3 of a Kind",
+					"▼4 of a Kind",
+					"▼Full House",
+					"▼Small Straight",
+					"▼Large Straight",
+					"▼Yahtzee",
+					"▼Chance"
+				],
+				"sheet_2": [
+					"▼Ones",
+					"▼Twos",
+					"▼Threes",
+					"▼Fours",
+					"▼Fives",
+					"▼Sixes",
+					"▼3 of a Kind",
+					"▼4 of a Kind",
+					"▼Full House",
+					"▼Small Straight",
+					"▼Large Straight",
+					"▼Yahtzee",
+					"▼Chance"
+				]
+			},
+			"variables": {
+				"rolls_left": "1",
+				"scored": "true",
+				"player": "1",
+				"score_1": "57",
+				"score_2": "61",
+				"upper_1": "39",
+				"upper_2": "18",
+				"upper_bonus_1": "false",
+				"upper_bonus_2": "false",
+				"got_yahtzee_1": "false",
+				"got_yahtzee_2": "false"
+			},
+			"over": true,
+			"result": "Winner: Bot 1"
+		}
+	},
+	{
+		"seed": 2,
+		"inputs": [
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 50
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "drag",
+				"card": 53,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 51
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 39
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 56,
+				"to": "kept"
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "rolled"
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "drag",
+				"card": 53,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 53,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "drag",
+				"card": 56,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "rolled"
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 56,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "rolled"
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 31
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "drag",
+				"card": 56,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 56,
+				"to": "rolled"
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "kept"
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "drag",
+				"card": 53,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "drag",
+				"card": 53,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "drag",
+				"card": 56,
+				"to": "kept"
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "drag",
+				"card": 53,
+				"to": "rolled"
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "kept"
+			},
+			{
+				"type": "drag",
+				"card": 53,
+				"to": "kept"
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "click",
+				"card": 53
+			},
+			{
+				"type": "drag",
+				"card": 53,
+				"to": "rolled"
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "perform",
+				"action": "Roll"
+			},
+			{
+				"type": "click",
+				"card": 30
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  for player in players (2)",
+				"  sort sheet_1 by order",
+				"  for group in groups(boxes, 'name') (13)",
+				"  boxes → sheet_1: Ones",
+				"  boxes → sheet_1: Twos",
+				"  boxes → sheet_1: Threes",
+				"  boxes → sheet_1: Fours",
+				"  boxes → sheet_1: Fives",
+				"  boxes → sheet_1: Sixes",
+				"  boxes → sheet_1: 3 of a Kind",
+				"  boxes → sheet_1: 4 of a Kind",
+				"  boxes → sheet_1: Full House",
+				"  boxes → sheet_1: Small Straight",
+				"  boxes → sheet_1: Large Straight",
+				"  boxes → sheet_1: Yahtzee",
+				"  boxes → sheet_1: Chance",
+				"  sort sheet_2 by order",
+				"  for group in groups(boxes, 'name') (13)",
+				"  boxes → sheet_2: Ones",
+				"  boxes → sheet_2: Twos",
+				"  boxes → sheet_2: Threes",
+				"  boxes → sheet_2: Fours",
+				"  boxes → sheet_2: Fives",
+				"  boxes → sheet_2: Sixes",
+				"  boxes → sheet_2: 3 of a Kind",
+				"  boxes → sheet_2: 4 of a Kind",
+				"  boxes → sheet_2: Full House",
+				"  boxes → sheet_2: Small Straight",
+				"  boxes → sheet_2: Large Straight",
+				"  boxes → sheet_2: Yahtzee",
+				"  boxes → sheet_2: Chance",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (13)",
+				"  mark could = 1: Ones",
+				"  mark could = 2: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 4: Fours",
+				"  mark could = 5: Fives",
+				"  mark could = 0: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 30: Small Straight",
+				"  mark could = 40: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 15: Chance",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 1",
+				"  if card.kind == 'upper' → then",
+				"  upper_1 = 1",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 1 for Ones",
+				"  unmark could: Ones, Twos, Threes, Fours, Fives, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight, Large Straight, Yahtzee, Chance",
+				"  face down in sheet_1: Ones",
+				"  mark scored = Ones 1: Ones",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (13)",
+				"  mark could = 3: Ones",
+				"  mark could = 0: Twos",
+				"  mark could = 0: Threes",
+				"  mark could = 0: Fours",
+				"  mark could = 10: Fives",
+				"  mark could = 0: Sixes",
+				"  mark could = 13: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 25: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 13: Chance",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 25",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 25 for Full House",
+				"  unmark could: Ones, Twos, Threes, Fours, Fives, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight, Large Straight, Yahtzee, Chance",
+				"  face down in sheet_2: Full House",
+				"  mark scored = Full House 25: Full House",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (12)",
+				"  mark could = 2: Twos",
+				"  mark could = 0: Threes",
+				"  mark could = 0: Fours",
+				"  mark could = 10: Fives",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 19: Chance",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 11",
+				"  if card.kind == 'upper' → then",
+				"  upper_1 = 11",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 10 for Fives",
+				"  unmark could: Twos, Threes, Fours, Fives, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight, Large Straight, Yahtzee, Chance",
+				"  face down in sheet_1: Fives",
+				"  mark scored = Fives 10: Fives",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (12)",
+				"  mark could = 1: Ones",
+				"  mark could = 0: Twos",
+				"  mark could = 6: Threes",
+				"  mark could = 8: Fours",
+				"  mark could = 0: Fives",
+				"  mark could = 0: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 15: Chance",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 40",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 15 for Chance",
+				"  unmark could: Ones, Twos, Threes, Fours, Fives, Sixes, 3 of a Kind, 4 of a Kind, Small Straight, Large Straight, Yahtzee, Chance",
+				"  face down in sheet_2: Chance",
+				"  mark scored = Chance 15: Chance",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (11)",
+				"  mark could = 0: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 4: Fours",
+				"  mark could = 0: Sixes",
+				"  mark could = 22: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 22: Chance",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 15",
+				"  if card.kind == 'upper' → then",
+				"  upper_1 = 15",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 4 for Fours",
+				"  unmark could: Twos, Threes, Fours, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight, Large Straight, Yahtzee, Chance",
+				"  face down in sheet_1: Fours",
+				"  mark scored = Fours 4: Fours",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (11)",
+				"  mark could = 1: Ones",
+				"  mark could = 0: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 8: Fours",
+				"  mark could = 0: Fives",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 40",
+				"  if card.kind == 'upper' → then",
+				"  upper_2 = 0",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 0 for Twos",
+				"  unmark could: Ones, Twos, Threes, Fours, Fives, Sixes, 3 of a Kind, 4 of a Kind, Small Straight, Large Straight, Yahtzee",
+				"  face down in sheet_2: Twos",
+				"  mark scored = Twos 0: Twos",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (10)",
+				"  mark could = 0: Twos",
+				"  mark could = 6: Threes",
+				"  mark could = 0: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  mark could = 16: Chance",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 31",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 16 for Chance",
+				"  unmark could: Twos, Threes, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight, Large Straight, Yahtzee, Chance",
+				"  face down in sheet_1: Chance",
+				"  mark scored = Chance 16: Chance",
+				"  kept → rolled: Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (10)",
+				"  mark could = 0: Ones",
+				"  mark could = 3: Threes",
+				"  mark could = 12: Fours",
+				"  mark could = 0: Fives",
+				"  mark could = 6: Sixes",
+				"  mark could = 21: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 43",
+				"  if card.kind == 'upper' → then",
+				"  upper_2 = 3",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 3 for Threes",
+				"  unmark could: Ones, Threes, Fours, Fives, Sixes, 3 of a Kind, 4 of a Kind, Small Straight, Large Straight, Yahtzee",
+				"  face down in sheet_2: Threes",
+				"  mark scored = Threes 3: Threes",
+				"  kept → rolled: Die, Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (9)",
+				"  mark could = 2: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 30: Small Straight",
+				"  mark could = 40: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 61",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 30 for Small Straight",
+				"  unmark could: Twos, Threes, Sixes, 3 of a Kind, 4 of a Kind, Full House, Small Straight, Large Straight, Yahtzee",
+				"  face down in sheet_1: Small Straight",
+				"  mark scored = Small Straight 30: Small Straight",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (9)",
+				"  mark could = 1: Ones",
+				"  mark could = 0: Fours",
+				"  mark could = 5: Fives",
+				"  mark could = 12: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 44",
+				"  if card.kind == 'upper' → then",
+				"  upper_2 = 4",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 1 for Ones",
+				"  unmark could: Ones, Fours, Fives, Sixes, 3 of a Kind, 4 of a Kind, Small Straight, Large Straight, Yahtzee",
+				"  face down in sheet_2: Ones",
+				"  mark scored = Ones 1: Ones",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (8)",
+				"  mark could = 0: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 0: Sixes",
+				"  mark could = 10: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (1)",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  rolls_left = 1",
+				"  for box in open_boxes (8)",
+				"  mark could = 0: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 0: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Full House",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 61",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 0 for Full House",
+				"  unmark could: Twos, Threes, Sixes, 3 of a Kind, 4 of a Kind, Full House, Large Straight, Yahtzee",
+				"  face down in sheet_1: Full House",
+				"  mark scored = Full House 0: Full House",
+				"  kept → rolled: Die, Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (8)",
+				"  mark could = 0: Fours",
+				"  mark could = 5: Fives",
+				"  mark could = 18: Sixes",
+				"  mark could = 24: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 44",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 0 for Large Straight",
+				"  unmark could: Fours, Fives, Sixes, 3 of a Kind, 4 of a Kind, Small Straight, Large Straight, Yahtzee",
+				"  face down in sheet_2: Large Straight",
+				"  mark scored = Large Straight 0: Large Straight",
+				"  kept → rolled: Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (7)",
+				"  mark could = 2: Twos",
+				"  mark could = 0: Threes",
+				"  mark could = 0: Sixes",
+				"  mark could = 21: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Large Straight",
+				"  mark could = 0: Yahtzee",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 61",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 0 for Large Straight",
+				"  unmark could: Twos, Threes, Sixes, 3 of a Kind, 4 of a Kind, Large Straight, Yahtzee",
+				"  face down in sheet_1: Large Straight",
+				"  mark scored = Large Straight 0: Large Straight",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (7)",
+				"  mark could = 12: Fours",
+				"  mark could = 0: Fives",
+				"  mark could = 0: Sixes",
+				"  mark could = 14: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Yahtzee",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  rolls_left = 1",
+				"  for box in open_boxes (7)",
+				"  mark could = 4: Fours",
+				"  mark could = 10: Fives",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 30: Small Straight",
+				"  mark could = 0: Yahtzee",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 54",
+				"  if card.kind == 'upper' → then",
+				"  upper_2 = 14",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 10 for Fives",
+				"  unmark could: Fours, Fives, Sixes, 3 of a Kind, 4 of a Kind, Small Straight, Yahtzee",
+				"  face down in sheet_2: Fives",
+				"  mark scored = Fives 10: Fives",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (6)",
+				"  mark could = 2: Twos",
+				"  mark could = 0: Threes",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Yahtzee",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 67",
+				"  if card.kind == 'upper' → then",
+				"  upper_1 = 21",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 6 for Sixes",
+				"  unmark could: Twos, Threes, Sixes, 3 of a Kind, 4 of a Kind, Yahtzee",
+				"  face down in sheet_1: Sixes",
+				"  mark scored = Sixes 6: Sixes",
+				"  kept → rolled: Die, Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (6)",
+				"  mark could = 4: Fours",
+				"  mark could = 0: Sixes",
+				"  mark could = 13: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Small Straight",
+				"  mark could = 0: Yahtzee",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 54",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 0 for Small Straight",
+				"  unmark could: Fours, Sixes, 3 of a Kind, 4 of a Kind, Small Straight, Yahtzee",
+				"  face down in sheet_2: Small Straight",
+				"  mark scored = Small Straight 0: Small Straight",
+				"  kept → rolled: Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (5)",
+				"  mark could = 2: Twos",
+				"  mark could = 0: Threes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Yahtzee",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 67",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 0 for 4 of a Kind",
+				"  unmark could: Twos, Threes, 3 of a Kind, 4 of a Kind, Yahtzee",
+				"  face down in sheet_1: 4 of a Kind",
+				"  mark scored = 4 of a Kind 0: 4 of a Kind",
+				"  kept → rolled: Die, Die, Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (5)",
+				"  mark could = 4: Fours",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Yahtzee",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 58",
+				"  if card.kind == 'upper' → then",
+				"  upper_2 = 18",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 4 for Fours",
+				"  unmark could: Fours, Sixes, 3 of a Kind, 4 of a Kind, Yahtzee",
+				"  face down in sheet_2: Fours",
+				"  mark scored = Fours 4: Fours",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (4)",
+				"  mark could = 4: Twos",
+				"  mark could = 3: Threes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: Yahtzee",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 71",
+				"  if card.kind == 'upper' → then",
+				"  upper_1 = 25",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 4 for Twos",
+				"  unmark could: Twos, Threes, 3 of a Kind, Yahtzee",
+				"  face down in sheet_1: Twos",
+				"  mark scored = Twos 4: Twos",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (4)",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  mark could = 0: Yahtzee",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 58",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 0 for Yahtzee",
+				"  unmark could: Sixes, 3 of a Kind, 4 of a Kind, Yahtzee",
+				"  face down in sheet_2: Yahtzee",
+				"  mark scored = Yahtzee 0: Yahtzee",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (3)",
+				"  mark could = 0: Threes",
+				"  mark could = 15: 3 of a Kind",
+				"  mark could = 0: Yahtzee",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 71",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 0 for Yahtzee",
+				"  unmark could: Threes, 3 of a Kind, Yahtzee",
+				"  face down in sheet_1: Yahtzee",
+				"  mark scored = Yahtzee 0: Yahtzee",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (3)",
+				"  mark could = 6: Sixes",
+				"  mark could = 0: 3 of a Kind",
+				"  mark could = 0: 4 of a Kind",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 58",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 0 for 3 of a Kind",
+				"  unmark could: Sixes, 3 of a Kind, 4 of a Kind",
+				"  face down in sheet_2: 3 of a Kind",
+				"  mark scored = 3 of a Kind 0: 3 of a Kind",
+				"  kept → rolled: Die, Die, Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (2)",
+				"  mark could = 3: Threes",
+				"  mark could = 0: 3 of a Kind",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (4)",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  rolls_left = 1",
+				"  for box in open_boxes (2)",
+				"  mark could = 0: Threes",
+				"  mark could = 19: 3 of a Kind",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 90",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 19 for 3 of a Kind",
+				"  unmark could: Threes, 3 of a Kind",
+				"  face down in sheet_1: 3 of a Kind",
+				"  mark scored = 3 of a Kind 19: 3 of a Kind",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 4: Die",
+				"  set image = dice/4.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (2)",
+				"  mark could = 12: Sixes",
+				"  mark could = 0: 4 of a Kind",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 70",
+				"  if card.kind == 'upper' → then",
+				"  upper_2 = 30",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 12 for Sixes",
+				"  unmark could: Sixes, 4 of a Kind",
+				"  face down in sheet_2: Sixes",
+				"  mark scored = Sixes 12: Sixes",
+				"  kept → rolled: Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 1",
+				"[turn] You",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (1)",
+				"  mark could = 3: Threes",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (4)",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 6: Die",
+				"  set image = dice/6.svg: Die",
+				"  rolls_left = 1",
+				"  for box in open_boxes (1)",
+				"  mark could = 0: Threes",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (3)",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  rolls_left = 0",
+				"  for box in open_boxes (1)",
+				"  mark could = 3: Threes",
+				"  You may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_1 = 93",
+				"  if card.kind == 'upper' → then",
+				"  upper_1 = 28",
+				"  if upper >= 63 and not upper_bonus → else",
+				"You scores 3 for Threes",
+				"  unmark could: Threes",
+				"  face down in sheet_1: Threes",
+				"  mark scored = Threes 3: Threes",
+				"  kept → rolled: Die, Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → else",
+				"  player = 2",
+				"[turn] Bot 1 (bot)",
+				"  rolls_left = 3",
+				"[trigger] roll",
+				"  for die in rolled (5)",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  rolls_left = 2",
+				"  for box in open_boxes (1)",
+				"  mark could = 0: 4 of a Kind",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (3)",
+				"  set value = 5: Die",
+				"  set image = dice/5.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 1",
+				"  for box in open_boxes (1)",
+				"  mark could = 0: 4 of a Kind",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Put back",
+				"  kept → rolled: Die"
+			],
+			[
+				"[action] Keep",
+				"  rolled → kept: Die"
+			],
+			[
+				"[action] Roll",
+				"  scored = false",
+				"[trigger] roll",
+				"  for die in rolled (4)",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 1: Die",
+				"  set image = dice/1.svg: Die",
+				"  set value = 3: Die",
+				"  set image = dice/3.svg: Die",
+				"  set value = 2: Die",
+				"  set image = dice/2.svg: Die",
+				"  rolls_left = 0",
+				"  for box in open_boxes (1)",
+				"  mark could = 0: 4 of a Kind",
+				"  Bot 1 (bot) may: Roll, Score"
+			],
+			[
+				"[action] Score",
+				"  scored = true",
+				"  if of_a_kind == 5 and got_yahtzee → else",
+				"  if card.kind == 'yahtzee' and points == 50 → else",
+				"  score_2 = 70",
+				"  if card.kind == 'upper' → else",
+				"  if upper >= 63 and not upper_bonus → else",
+				"Bot 1 scores 0 for 4 of a Kind",
+				"  unmark could: 4 of a Kind",
+				"  face down in sheet_2: 4 of a Kind",
+				"  mark scored = 4 of a Kind 0: 4 of a Kind",
+				"  kept → rolled: Die",
+				"  if count(without(all_sheet, face_down(all_sheet))) == 0 → then",
+				"[game over] Winner: You"
+			]
+		],
+		"end": {
+			"zones": {
+				"boxes": [
+					"Ones",
+					"Ones",
+					"Twos",
+					"Twos",
+					"Threes",
+					"Threes",
+					"Fours",
+					"Fours",
+					"Fives",
+					"Fives",
+					"Sixes",
+					"Sixes",
+					"3 of a Kind",
+					"3 of a Kind",
+					"4 of a Kind",
+					"4 of a Kind",
+					"Full House",
+					"Full House",
+					"Small Straight",
+					"Small Straight",
+					"Large Straight",
+					"Large Straight",
+					"Yahtzee",
+					"Yahtzee",
+					"Chance",
+					"Chance"
+				],
+				"rolled": [
+					"Die",
+					"Die",
+					"Die",
+					"Die",
+					"Die"
+				],
+				"kept": [],
+				"sheet_1": [
+					"▼Ones",
+					"▼Twos",
+					"▼Threes",
+					"▼Fours",
+					"▼Fives",
+					"▼Sixes",
+					"▼3 of a Kind",
+					"▼4 of a Kind",
+					"▼Full House",
+					"▼Small Straight",
+					"▼Large Straight",
+					"▼Yahtzee",
+					"▼Chance"
+				],
+				"sheet_2": [
+					"▼Ones",
+					"▼Twos",
+					"▼Threes",
+					"▼Fours",
+					"▼Fives",
+					"▼Sixes",
+					"▼3 of a Kind",
+					"▼4 of a Kind",
+					"▼Full House",
+					"▼Small Straight",
+					"▼Large Straight",
+					"▼Yahtzee",
+					"▼Chance"
+				]
+			},
+			"variables": {
+				"rolls_left": "0",
+				"scored": "true",
+				"player": "2",
+				"score_1": "93",
+				"score_2": "70",
+				"upper_1": "28",
+				"upper_2": "30",
+				"upper_bonus_1": "false",
+				"upper_bonus_2": "false",
+				"got_yahtzee_1": "false",
+				"got_yahtzee_2": "false"
+			},
+			"over": true,
+			"result": "Winner: You"
+		}
+	}
+]

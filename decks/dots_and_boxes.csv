@@ -1,0 +1,5 @@
+name,kind,seat,paint,shape,size,count
+Red line,line,1,#d64545,fill,60,40
+Blue line,line,2,#3f74d6,fill,60,40
+Red box,box,1,#d64545,disc,44,16
+Blue box,box,2,#3f74d6,disc,44,16

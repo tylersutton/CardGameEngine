@@ -15,7 +15,14 @@ public class Card(Dictionary<string, string> data)
     /// The card's row from the deck. A bot that can't see the card swaps in a guess while it tries moves out.
     public Dictionary<string, string> Data { get; set; } = data;
 
+    /// Columns changed during play by set(...) (a die rolled), over the deck's row: kept as the card moves. Replaced
+    /// rather than changed, so a snapshot can keep the one it saw.
+    public Dictionary<string, string> Changed { get; set; } = [];
+
     public bool FaceUp { get; set; } = true;
+
+    /// Shown to every player (reveal), even in a private zone, until it moves.
+    public bool Revealed { get; set; }
 
     public Dictionary<string, object?> Marks { get; } = [];
 
@@ -25,10 +32,10 @@ public class Card(Dictionary<string, string> data)
     /// The column naming the card in the log: "name", or the deck's first column if it has none.
     public string TitleColumn { get; set; } = DefaultTitleColumn;
 
-    public string Title => Data.GetValueOrDefault(TitleColumn, "");
+    public string Title => Changed.GetValueOrDefault(TitleColumn) ?? Data.GetValueOrDefault(TitleColumn, "");
 
     /// A column's text, whatever the capitals ("kind" reads a "Kind" column), or missing if the card has no such column.
-    public string Column(string name, string missing = "") => ColumnMatching(name) is { } column ? Data[column] : missing;
+    public string Column(string name, string missing = "") => ColumnMatching(name) is { } column ? ColumnText(column) : missing;
 
     /// card.suit, card.face_up: a property, or else a column. A column of numbers gives numbers (a blank is 0); a
     /// column that mixes in any text (rank: 2 ... 10, J, Q, K, A) gives text, so card.rank == 'A' and
@@ -53,7 +60,7 @@ public class Card(Dictionary<string, string> data)
         {
             return false;
         }
-        string text = Data[column];
+        string text = ColumnText(column);
         if (!NumberColumns.Contains(column))
         {
             value = text;
@@ -84,7 +91,10 @@ public class Card(Dictionary<string, string> data)
         return Values.IsValidFloat(text) && Values.Text(Values.ToFloat(text)) == text;
     }
 
-    string? ColumnMatching(string name)
+    string ColumnText(string column) => Changed.TryGetValue(column, out string? text) ? text : Data[column];
+
+    /// The deck's own name for a column, whatever the capitals, or null if it has none.
+    public string? ColumnMatching(string name)
     {
         if (Data.ContainsKey(name))
         {

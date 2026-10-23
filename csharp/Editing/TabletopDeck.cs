@@ -2,8 +2,9 @@ using Core;
 
 namespace Editing;
 
-/// A zone that holds cards before the game starts, as a Tabletop Simulator deck: its different card faces (cards
-/// alike in every column share one), drawn on sheets of up to 10 by 7, and which face each of its cards shows.
+/// The cards a zone holds before the game starts, as Tabletop Simulator draws them: their different faces (cards
+/// alike in every column share one) on sheets of up to 10 by 7 with one back, and which face each card shows. The
+/// cards keep their faces wherever the game's start puts them.
 public class TabletopDeck
 {
     public const int SheetColumns = 10;
@@ -12,15 +13,18 @@ public class TabletopDeck
     public const int FacesPerSheet = SheetColumns * SheetRows - 1;
 
     public Zone Zone { get; }
+    /// The zone's cards before the game starts, bottom to top.
+    public List<Card> Cards { get; }
     public List<Card> Faces { get; } = [];
-    /// For each of the zone's cards, bottom to top, its index in Faces.
+    /// For each of Cards, its index in Faces.
     public List<int> FaceOf { get; } = [];
 
     public TabletopDeck(Zone zone)
     {
         Zone = zone;
+        Cards = [.. zone.Cards];
         Dictionary<string, int> known = [];
-        foreach (Card card in zone.Cards)
+        foreach (Card card in Cards)
         {
             string columns = string.Join("\n", card.Data.OrderBy(pair => pair.Key, StringComparer.Ordinal).Select(pair => pair.Key + "=" + pair.Value));
             if (!known.TryGetValue(columns, out int face))
@@ -32,8 +36,7 @@ public class TabletopDeck
         }
     }
 
-    /// Every zone holding cards in a game that hasn't started: the table is set up as the game file sets it, and
-    /// players deal by hand.
+    /// Every zone holding cards in a game that hasn't started yet.
     public static List<TabletopDeck> Of(Game game) => game.Zones.Values.Where(zone => !zone.IsEmpty).Select(zone => new TabletopDeck(zone)).ToList();
 
     public int SheetCount => (Faces.Count + FacesPerSheet - 1) / FacesPerSheet;

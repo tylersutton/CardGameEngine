@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://scripts/ui/TableView.cs" id="2_table"]
 [ext_resource type="Script" path="res://scripts/ui/LogView.cs" id="3_log"]
 [ext_resource type="Script" path="res://scripts/ui/StatusView.cs" id="4_status"]
+[ext_resource type="Script" path="res://scripts/ui/DesignerMenu.cs" id="5_designer"]
+[ext_resource type="Script" path="res://scripts/ui/ActionDock.cs" id="6_dock"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_undo"]
 command_or_control_autoremap = true
@@ -11,6 +13,12 @@ keycode = 90
 
 [sub_resource type="Shortcut" id="Shortcut_undo"]
 events = [SubResource("InputEventKey_undo")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_help"]
+keycode = 4194332
+
+[sub_resource type="Shortcut" id="Shortcut_help"]
+events = [SubResource("InputEventKey_help")]
 
 [node name="Main" type="Control" unique_id=383874150]
 layout_mode = 3
@@ -48,59 +56,76 @@ layout_mode = 2
 [node name="GamesButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 size_flags_vertical = 4
 tooltip_text = "Back to the list of games"
 text = "Games"
 
-[node name="ReloadButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=768880190]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 4
-text = "Reload"
-
 [node name="UndoButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=1169205054]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 size_flags_vertical = 4
 shortcut = SubResource("Shortcut_undo")
 text = "Undo"
 
-[node name="SandboxToggle" type="CheckButton" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=1630523048]
+[node name="HowToPlayButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 size_flags_vertical = 4
-tooltip_text = "Ignore move rules and action conditions"
-text = "Sandbox"
+tooltip_text = "How to play this game (F1)"
+shortcut = SubResource("Shortcut_help")
+text = "How to play"
 
-[node name="ZoneNamesToggle" type="CheckButton" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
+[node name="DesignerMenu" type="MenuButton" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 size_flags_vertical = 4
-tooltip_text = "Show each zone's name and card count, as used in rules"
-text = "Zone names"
-
-[node name="ActionButtons" type="HFlowContainer" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=510503867]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ChoiceMargin" type="MarginContainer" parent="Layout/TableColumn" unique_id=1722594352]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="ChoiceBar" type="HBoxContainer" parent="Layout/TableColumn/ChoiceMargin" unique_id=1607239929]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
+tooltip_text = "Tools for making the game: reload, sandbox, zone names, designer info"
+text = "Designer"
+flat = false
+script = ExtResource("5_designer")
 
 [node name="TableView" type="Control" parent="Layout/TableColumn" unique_id=360531308]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_table")
+
+[node name="ActionDock" type="MarginContainer" parent="Layout/TableColumn" unique_id=1722594352]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("6_dock")
+
+[node name="DockRows" type="VBoxContainer" parent="Layout/TableColumn/ActionDock"]
+layout_mode = 2
+
+[node name="ChoiceBar" type="HBoxContainer" parent="Layout/TableColumn/ActionDock/DockRows" unique_id=1607239929]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonRow" type="HBoxContainer" parent="Layout/TableColumn/ActionDock/DockRows"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ActionButtons" type="HFlowContainer" parent="Layout/TableColumn/ActionDock/DockRows/ButtonRow" unique_id=510503867]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="AnyTimeButtons" type="HBoxContainer" parent="Layout/TableColumn/ActionDock/DockRows/ButtonRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
 
 [node name="LogPanel" type="PanelContainer" parent="Layout" unique_id=907753794]
 custom_minimum_size = Vector2(260, 0)

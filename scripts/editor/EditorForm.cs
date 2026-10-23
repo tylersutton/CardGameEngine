@@ -14,7 +14,7 @@ public partial class EditorForm : VBoxContainer
     /// Expression settings that may also be a plain number.
     static readonly string[] NumberOrText = ["pick", "up_to"];
     /// Kinds whose control takes the whole width, under the setting's name.
-    static readonly string[] WideKinds = ["long_text", "json", "expression", "steps", "drag", "board"];
+    static readonly string[] WideKinds = ["long_text", "lines", "json", "expression", "steps", "drag", "board"];
     /// The keys that say an action is done by clicking.
     static readonly string[] ClickKeys = ["click", "double_click"];
 
@@ -153,6 +153,17 @@ public partial class EditorForm : VBoxContainer
                 TextEdit box = new() { Text = value != null ? Values.Text(value) : "", CustomMinimumSize = new Vector2(0, 54), WrapMode = TextEdit.LineWrappingMode.Boundary };
                 box.FocusExited += () => Changed?.Invoke(path, box.Text.Length > 0 ? box.Text : null);
                 return box;
+            case "lines":
+                TextEdit linesBox = new()
+                {
+                    Text = string.Join("\n", value as List<object?> ?? []), CustomMinimumSize = new Vector2(0, 160), WrapMode = TextEdit.LineWrappingMode.Boundary,
+                };
+                linesBox.FocusExited += () =>
+                {
+                    List<object?> lines = linesBox.Text.Split('\n').Where(line => line.Trim().Length > 0).Select(line => (object?)line.TrimEnd()).ToList();
+                    Changed?.Invoke(path, lines.Count > 0 ? lines : null);
+                };
+                return linesBox;
             case "number":
             case "whole":
                 SpinBox spin = new()
@@ -180,6 +191,7 @@ public partial class EditorForm : VBoxContainer
             case "list":
             case "names":
             case "numbers":
+            case "counts":
                 LineEdit line = new()
                 {
                     Text = value is List<object?> items ? string.Join(", ", items.Select(AsText)) : AsText(value),
@@ -187,8 +199,8 @@ public partial class EditorForm : VBoxContainer
                 };
                 void Commit()
                 {
-                    List<object?> entries = SplitNames(line.Text).Select(item => field.Kind == "numbers" ? (object?)Values.ToInt(item) : item).ToList();
-                    bool oneAllowed = field.Kind == "list" && entries.Count == 1;
+                    List<object?> entries = SplitNames(line.Text).Select(item => field.Kind is "numbers" or "counts" ? (object?)Values.ToInt(item) : item).ToList();
+                    bool oneAllowed = field.Kind is "list" or "counts" && entries.Count == 1;
                     Changed?.Invoke(path, entries.Count == 0 ? null : oneAllowed ? entries[0] : entries);
                 }
                 line.TextSubmitted += _ => Commit();
@@ -458,10 +470,14 @@ public partial class EditorForm : VBoxContainer
         grid.AddChild(image);
         VBoxContainer box = new();
         box.AddChild(grid);
-        box.AddChild(new Label { Text = "paint (conditions with their colors)" });
-        TextEdit paint = JsonBox([.. path, "paint"], board?.GetValueOrDefault("paint"), "{ \"top_edge\": \"#c8443a\" }");
+        box.AddChild(new Label { Text = "paint (conditions with their colors, and maybe dot, hbar or vbar)" });
+        TextEdit paint = JsonBox([.. path, "paint"], board?.GetValueOrDefault("paint"), "{ \"top_edge\": \"#c8443a\", \"dot\": \"#1b1b1b dot\" }");
         paint.Editable = board != null;
         box.AddChild(paint);
+        box.AddChild(new Label { Text = "labels (conditions with their text)" });
+        TextEdit labels = JsonBox([.. path, "labels"], board?.GetValueOrDefault("labels"), "{ \"start_space\": \"Start\" }");
+        labels.Editable = board != null;
+        box.AddChild(labels);
         return box;
     }
 

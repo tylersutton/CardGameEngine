@@ -4,7 +4,7 @@
 		"inputs": [
 			{
 				"type": "drag",
-				"card": 16,
+				"card": 18,
 				"to": "pile"
 			},
 			{
@@ -17,21 +17,8 @@
 			},
 			{
 				"type": "drag",
-				"card": 7,
+				"card": 9,
 				"to": "pile"
-			},
-			{
-				"type": "choose",
-				"option": "Let it happen"
-			},
-			{
-				"type": "drag",
-				"card": 11,
-				"to": "pile"
-			},
-			{
-				"type": "choose",
-				"option": "Let it happen"
 			},
 			{
 				"type": "choose",
@@ -52,7 +39,20 @@
 			},
 			{
 				"type": "drag",
-				"card": 17,
+				"card": 15,
+				"to": "pile"
+			},
+			{
+				"type": "choose",
+				"option": "Let it happen"
+			},
+			{
+				"type": "choose",
+				"option": "Let it happen"
+			},
+			{
+				"type": "drag",
+				"card": 19,
 				"to": "pile"
 			},
 			{
@@ -65,7 +65,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 18,
+				"card": 20,
 				"to": "pile"
 			},
 			{
@@ -78,12 +78,12 @@
 			},
 			{
 				"type": "drag",
-				"card": 12,
+				"card": 14,
 				"to": "hand_1"
 			},
 			{
 				"type": "drag",
-				"card": 22,
+				"card": 24,
 				"to": "hand_2"
 			},
 			{
@@ -93,12 +93,12 @@
 			},
 			{
 				"type": "drag",
-				"card": 24,
+				"card": 26,
 				"to": "hand_1"
 			},
 			{
 				"type": "drag",
-				"card": 15,
+				"card": 17,
 				"to": "pile"
 			},
 			{
@@ -115,7 +115,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 14,
+				"card": 16,
 				"to": "pile"
 			},
 			{
@@ -124,16 +124,12 @@
 			},
 			{
 				"type": "drag",
-				"card": 22,
+				"card": 24,
 				"to": "pile"
 			},
 			{
-				"type": "click",
-				"card": 8
-			},
-			{
 				"type": "drag",
-				"card": 9,
+				"card": 11,
 				"to": "hand_2"
 			},
 			{
@@ -143,17 +139,17 @@
 			},
 			{
 				"type": "drag",
-				"card": 12,
+				"card": 14,
 				"to": "pile"
 			},
 			{
 				"type": "drag",
-				"card": 25,
+				"card": 27,
 				"to": "hand_1"
 			},
 			{
 				"type": "drag",
-				"card": 8,
+				"card": 10,
 				"to": "pile"
 			},
 			{
@@ -162,50 +158,50 @@
 			},
 			{
 				"type": "drag",
-				"card": 21,
+				"card": 23,
 				"to": "hand_2"
 			},
 			{
 				"type": "drag",
-				"card": 2,
+				"card": 4,
 				"to": "hand_1"
 			},
 			{
 				"type": "drag",
-				"card": 21,
+				"card": 23,
 				"to": "pile"
 			},
 			{
 				"type": "click",
-				"card": 6
+				"card": 8
 			},
 			{
 				"type": "drag",
-				"card": 10,
+				"card": 12,
 				"to": "hand_2"
 			},
 			{
 				"type": "drag",
-				"card": 20,
+				"card": 22,
 				"to": "hand_1"
 			},
 			{
 				"type": "drag",
-				"card": 9,
+				"card": 11,
 				"to": "pile"
 			},
 			{
 				"type": "drag",
-				"card": 20,
+				"card": 22,
 				"to": "pile"
 			},
 			{
 				"type": "click",
-				"card": 10
+				"card": 12
 			},
 			{
 				"type": "drag",
-				"card": 3,
+				"card": 5,
 				"to": "hand_1"
 			},
 			{
@@ -215,7 +211,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 10,
+				"card": 12,
 				"to": "pile"
 			},
 			{
@@ -255,8 +251,8 @@
 				"  box → deck: 2 hidden cards",
 				"  shuffle deck",
 				"  player = 3",
-				"[turn] East (bot)",
-				"  East (bot) may: Play an action, Draw"
+				"[turn] Player 3 (bot)",
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Play an action",
@@ -288,10 +284,10 @@
 				"[trigger] resolve",
 				"  if not noped → else",
 				"  pending = ",
-				"[turn] East (bot)"
+				"[turn] Player 3 (bot)"
 			],
 			[
-				"  East (bot) may: Play an action, Draw",
+				"  Player 3 (bot) may: Play an action, Draw",
 				"[action] Play an action",
 				"  hand_3 → pile: Skip",
 				"  pending = Skip",
@@ -444,16 +440,16 @@
 				"  deck → hand_1: Shuffle",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 2",
-				"[turn] West (bot)",
-				"  West (bot) may: Play an action, Draw"
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Draw",
 				"  deck → hand_2: 1 hidden card",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 3",
-				"[turn] East (bot)",
-				"  East (bot) may: Play an action, Draw"
+				"[turn] Player 3 (bot)",
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Draw",
@@ -472,8 +468,8 @@
 				"  deck → hand_1: Nope",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 2",
-				"[turn] West (bot)",
-				"  West (bot) may: Play an action, Draw"
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Play an action",
@@ -511,10 +507,10 @@
 				"[trigger] resolve",
 				"  if not noped → else",
 				"  pending = ",
-				"[turn] West (bot)"
+				"[turn] Player 2 (bot)"
 			],
 			[
-				"  West (bot) may: Play an action, Draw",
+				"  Player 2 (bot) may: Play an action, Draw",
 				"[action] Play an action",
 				"  hand_2 → pile: Shuffle",
 				"  pending = Shuffle",
@@ -536,10 +532,10 @@
 				"[trigger] resolve",
 				"  if not noped → else",
 				"  pending = ",
-				"[turn] West (bot)"
+				"[turn] Player 2 (bot)"
 			],
 			[
-				"  West (bot) may: Play an action, Draw",
+				"  Player 2 (bot) may: Play an action, Draw",
 				"[action] Play an action",
 				"  hand_2 → pile: Steal",
 				"  pending = Steal",
@@ -557,22 +553,19 @@
 				"  pending = ",
 				"  player = 3",
 				"[action] Give a card",
-				"  East (bot): choose 1 (click the highlighted cards)"
-			],
-			[
 				"[Give a card] chose a hidden card",
 				"  hand_3 → hand_2: 1 hidden card",
-				"[turn] East (bot)",
-				"  East (bot) may: Play an action, Draw",
-				"  player = 2"
+				"[turn] Player 3 (bot)",
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
+				"  player = 2",
 				"[action] Draw",
 				"  deck → hand_2: 1 hidden card",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 3",
-				"[turn] East (bot)",
-				"  East (bot) may: Play an action, Draw"
+				"[turn] Player 3 (bot)",
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Draw",
@@ -580,7 +573,7 @@
 				"  if card.data.kind == 'bomb' → then",
 				"  if count(matching(hand, 'is_defuse')) > 0 → else",
 				"[trigger] knocked_out",
-				"  East (bot) is out",
+				"  Player 3 (bot) is out",
 				"  hand_3 → out: Bomb",
 				"  if size(players_left()) == 1 → else",
 				"  player = 1",
@@ -611,8 +604,8 @@
 				"  deck → hand_1: Nope",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 2",
-				"[turn] West (bot)",
-				"  West (bot) may: Play an action, Draw"
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Play an action",
@@ -638,10 +631,10 @@
 				"[trigger] resolve",
 				"  if not noped → else",
 				"  pending = ",
-				"[turn] West (bot)"
+				"[turn] Player 2 (bot)"
 			],
 			[
-				"  West (bot) may: Play an action, Draw",
+				"  Player 2 (bot) may: Play an action, Draw",
 				"[action] Draw",
 				"  deck → hand_2: 1 hidden card",
 				"  if card.data.kind == 'bomb' → else",
@@ -654,8 +647,8 @@
 				"  deck → hand_1: Defuse",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 2",
-				"[turn] West (bot)",
-				"  West (bot) may: Play an action, Draw"
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Play an action",
@@ -697,8 +690,8 @@
 				"  deck → hand_1: Steal",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 2",
-				"[turn] West (bot)",
-				"  West (bot) may: Play an action, Draw"
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Play an action",
@@ -737,13 +730,13 @@
 				"  pending = ",
 				"  player = 2",
 				"[action] Give a card",
-				"  West (bot): choose 1 (click the highlighted cards)"
+				"  Player 2 (bot): choose 1 (click the highlighted cards)"
 			],
 			[
 				"[Give a card] chose a hidden card",
 				"  hand_2 → hand_1: Skip",
-				"[turn] West (bot)",
-				"  West (bot) may: Play an action, Draw",
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Play an action, Draw",
 				"  player = 1"
 			],
 			[
@@ -751,8 +744,8 @@
 				"  deck → hand_1: Defuse",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 2",
-				"[turn] West (bot)",
-				"  West (bot) may: Play an action, Draw"
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Draw",
@@ -782,10 +775,10 @@
 				"[trigger] Skip",
 				"  player = 2",
 				"  pending = ",
-				"[turn] West (bot)"
+				"[turn] Player 2 (bot)"
 			],
 			[
-				"  West (bot) may: Play an action, Draw",
+				"  Player 2 (bot) may: Play an action, Draw",
 				"[action] Draw",
 				"  deck → hand_2: 1 hidden card",
 				"  if card.data.kind == 'bomb' → then",
@@ -806,8 +799,8 @@
 				"  hand_1 → deck: Bomb",
 				"  shuffle deck",
 				"  player = 2",
-				"[turn] West (bot)",
-				"  West (bot) may: Play an action, Draw"
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Draw",
@@ -815,7 +808,7 @@
 				"  if card.data.kind == 'bomb' → then",
 				"  if count(matching(hand, 'is_defuse')) > 0 → else",
 				"[trigger] knocked_out",
-				"  West (bot) is out",
+				"  Player 2 (bot) is out",
 				"  hand_2 → out: Bomb",
 				"  if size(players_left()) == 1 → then",
 				"[game over] Winner: You",
@@ -824,7 +817,10 @@
 		],
 		"end": {
 			"zones": {
-				"box": [],
+				"box": [
+					"▼Bomb",
+					"▼Bomb"
+				],
 				"deck": [
 					"▼Steal"
 				],
@@ -883,70 +879,6 @@
 		"inputs": [
 			{
 				"type": "drag",
-				"card": 11,
-				"to": "pile"
-			},
-			{
-				"type": "choose",
-				"option": "Let it happen"
-			},
-			{
-				"type": "choose",
-				"option": "Nope!"
-			},
-			{
-				"type": "choose",
-				"option": "Nope!"
-			},
-			{
-				"type": "choose",
-				"option": "Let it happen"
-			},
-			{
-				"type": "drag",
-				"card": 15,
-				"to": "pile"
-			},
-			{
-				"type": "choose",
-				"option": "Nope!"
-			},
-			{
-				"type": "drag",
-				"card": 19,
-				"to": "hand_2"
-			},
-			{
-				"type": "drag",
-				"card": 7,
-				"to": "hand_3"
-			},
-			{
-				"type": "drag",
-				"card": 9,
-				"to": "pile"
-			},
-			{
-				"type": "drag",
-				"card": 25,
-				"to": "hand_2"
-			},
-			{
-				"type": "drag",
-				"card": 21,
-				"to": "pile"
-			},
-			{
-				"type": "choose",
-				"option": "Nope!"
-			},
-			{
-				"type": "drag",
-				"card": 26,
-				"to": "hand_3"
-			},
-			{
-				"type": "drag",
 				"card": 13,
 				"to": "pile"
 			},
@@ -955,18 +887,82 @@
 				"option": "Let it happen"
 			},
 			{
-				"type": "drag",
-				"card": 14,
-				"to": "hand_1"
+				"type": "choose",
+				"option": "Nope!"
+			},
+			{
+				"type": "choose",
+				"option": "Nope!"
+			},
+			{
+				"type": "choose",
+				"option": "Let it happen"
 			},
 			{
 				"type": "drag",
-				"card": 20,
+				"card": 17,
+				"to": "pile"
+			},
+			{
+				"type": "choose",
+				"option": "Nope!"
+			},
+			{
+				"type": "drag",
+				"card": 21,
 				"to": "hand_2"
 			},
 			{
 				"type": "drag",
-				"card": 7,
+				"card": 9,
+				"to": "hand_3"
+			},
+			{
+				"type": "drag",
+				"card": 11,
+				"to": "pile"
+			},
+			{
+				"type": "drag",
+				"card": 27,
+				"to": "hand_2"
+			},
+			{
+				"type": "drag",
+				"card": 23,
+				"to": "pile"
+			},
+			{
+				"type": "choose",
+				"option": "Nope!"
+			},
+			{
+				"type": "drag",
+				"card": 28,
+				"to": "hand_3"
+			},
+			{
+				"type": "drag",
+				"card": 15,
+				"to": "pile"
+			},
+			{
+				"type": "choose",
+				"option": "Let it happen"
+			},
+			{
+				"type": "drag",
+				"card": 16,
+				"to": "hand_1"
+			},
+			{
+				"type": "drag",
+				"card": 22,
+				"to": "hand_2"
+			},
+			{
+				"type": "drag",
+				"card": 9,
 				"to": "pile"
 			},
 			{
@@ -976,8 +972,17 @@
 			},
 			{
 				"type": "drag",
-				"card": 12,
+				"card": 14,
 				"to": "hand_2"
+			},
+			{
+				"type": "drag",
+				"card": 20,
+				"to": "pile"
+			},
+			{
+				"type": "choose",
+				"option": "Done"
 			},
 			{
 				"type": "drag",
@@ -990,21 +995,12 @@
 			},
 			{
 				"type": "drag",
-				"card": 16,
-				"to": "pile"
-			},
-			{
-				"type": "choose",
-				"option": "Done"
-			},
-			{
-				"type": "drag",
-				"card": 22,
+				"card": 24,
 				"to": "hand_3"
 			},
 			{
 				"type": "drag",
-				"card": 14,
+				"card": 16,
 				"to": "pile"
 			},
 			{
@@ -1013,30 +1009,26 @@
 			},
 			{
 				"type": "drag",
-				"card": 2,
+				"card": 4,
 				"to": "hand_1"
 			},
 			{
 				"type": "drag",
-				"card": 20,
+				"card": 22,
 				"to": "pile"
 			},
 			{
 				"type": "click",
-				"card": 4
+				"card": 6
 			},
 			{
 				"type": "drag",
-				"card": 19,
+				"card": 21,
 				"to": "pile"
 			},
 			{
-				"type": "click",
-				"card": 22
-			},
-			{
 				"type": "drag",
-				"card": 10,
+				"card": 12,
 				"to": "pile"
 			},
 			{
@@ -1046,21 +1038,17 @@
 			},
 			{
 				"type": "drag",
-				"card": 8,
+				"card": 10,
 				"to": "pile"
 			},
 			{
 				"type": "drag",
-				"card": 22,
+				"card": 24,
 				"to": "pile"
 			},
 			{
-				"type": "click",
-				"card": 2
-			},
-			{
 				"type": "drag",
-				"card": 3,
+				"card": 5,
 				"to": "hand_2"
 			},
 			{
@@ -1090,8 +1078,8 @@
 				"  box → deck: 2 hidden cards",
 				"  shuffle deck",
 				"  player = 2",
-				"[turn] West (bot)",
-				"  West (bot) may: Play an action, Draw"
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Play an action",
@@ -1141,10 +1129,10 @@
 				"[trigger] Shuffle",
 				"  shuffle deck",
 				"  pending = ",
-				"[turn] West (bot)"
+				"[turn] Player 2 (bot)"
 			],
 			[
-				"  West (bot) may: Play an action, Draw",
+				"  Player 2 (bot) may: Play an action, Draw",
 				"[action] Play an action",
 				"  hand_2 → pile: Peek",
 				"  pending = Peek",
@@ -1166,16 +1154,16 @@
 				"[trigger] resolve",
 				"  if not noped → else",
 				"  pending = ",
-				"[turn] West (bot)"
+				"[turn] Player 2 (bot)"
 			],
 			[
-				"  West (bot) may: Play an action, Draw",
+				"  Player 2 (bot) may: Play an action, Draw",
 				"[action] Draw",
 				"  deck → hand_2: 1 hidden card",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 3",
-				"[turn] East (bot)",
-				"  East (bot) may: Play an action, Draw"
+				"[turn] Player 3 (bot)",
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Draw",
@@ -1201,16 +1189,16 @@
 				"[trigger] Skip",
 				"  player = 2",
 				"  pending = ",
-				"[turn] West (bot)"
+				"[turn] Player 2 (bot)"
 			],
 			[
-				"  West (bot) may: Play an action, Draw",
+				"  Player 2 (bot) may: Play an action, Draw",
 				"[action] Draw",
 				"  deck → hand_2: 1 hidden card",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 3",
-				"[turn] East (bot)",
-				"  East (bot) may: Play an action, Draw"
+				"[turn] Player 3 (bot)",
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Play an action",
@@ -1236,10 +1224,10 @@
 				"[trigger] resolve",
 				"  if not noped → else",
 				"  pending = ",
-				"[turn] East (bot)"
+				"[turn] Player 3 (bot)"
 			],
 			[
-				"  East (bot) may: Play an action, Draw",
+				"  Player 3 (bot) may: Play an action, Draw",
 				"[action] Draw",
 				"  deck → hand_3: 1 hidden card",
 				"  if card.data.kind == 'bomb' → else",
@@ -1277,16 +1265,16 @@
 				"  deck → hand_1: Shuffle",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 2",
-				"[turn] West (bot)",
-				"  West (bot) may: Play an action, Draw"
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Draw",
 				"  deck → hand_2: 1 hidden card",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 3",
-				"[turn] East (bot)",
-				"  East (bot) may: Play an action, Draw"
+				"[turn] Player 3 (bot)",
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Play an action",
@@ -1316,16 +1304,16 @@
 				"  hand_1 → deck: Bomb",
 				"  shuffle deck",
 				"  player = 2",
-				"[turn] West (bot)",
-				"  West (bot) may: Play an action, Draw"
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Draw",
 				"  deck → hand_2: 1 hidden card",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 3",
-				"[turn] East (bot)",
-				"  East (bot) may: Play an action, Draw"
+				"[turn] Player 3 (bot)",
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Play an action",
@@ -1348,8 +1336,8 @@
 				"[Peek: the next three cards, top on the right] chose Done",
 				"  peek_3 → deck: 3 hidden cards",
 				"  pending = ",
-				"[turn] East (bot)",
-				"  East (bot) may: Play an action, Draw"
+				"[turn] Player 3 (bot)",
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Play an action",
@@ -1372,8 +1360,8 @@
 				"[Peek: the next three cards, top on the right] chose Done",
 				"  peek_3 → deck: 3 hidden cards",
 				"  pending = ",
-				"[turn] East (bot)",
-				"  East (bot) may: Play an action, Draw"
+				"[turn] Player 3 (bot)",
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Draw",
@@ -1415,8 +1403,8 @@
 				"  deck → hand_1: Defuse",
 				"  if card.data.kind == 'bomb' → else",
 				"  player = 2",
-				"[turn] West (bot)",
-				"  West (bot) may: Play an action, Draw"
+				"[turn] Player 2 (bot)",
+				"  Player 2 (bot) may: Play an action, Draw"
 			],
 			[
 				"[action] Play an action",
@@ -1436,13 +1424,13 @@
 				"  pending = ",
 				"  player = 3",
 				"[action] Give a card",
-				"  East (bot): choose 1 (click the highlighted cards)"
+				"  Player 3 (bot): choose 1 (click the highlighted cards)"
 			],
 			[
 				"[Give a card] chose a hidden card",
 				"  hand_3 → hand_2: 1 hidden card",
-				"[turn] East (bot)",
-				"  East (bot) may: Play an action, Draw",
+				"[turn] Player 3 (bot)",
+				"  Player 3 (bot) may: Play an action, Draw",
 				"  player = 2"
 			],
 			[
@@ -1463,16 +1451,13 @@
 				"  pending = ",
 				"  player = 3",
 				"[action] Give a card",
-				"  East (bot): choose 1 (click the highlighted cards)"
-			],
-			[
 				"[Give a card] chose a hidden card",
 				"  hand_3 → hand_2: 1 hidden card",
-				"[turn] East (bot)",
-				"  East (bot) may: Play an action, Draw",
-				"  player = 2"
+				"[turn] Player 3 (bot)",
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
+				"  player = 2",
 				"[action] Play an action",
 				"  hand_2 → pile: Skip",
 				"  pending = Skip",
@@ -1488,16 +1473,16 @@
 				"[trigger] Skip",
 				"  player = 3",
 				"  pending = ",
-				"[turn] East (bot)"
+				"[turn] Player 3 (bot)"
 			],
 			[
-				"  East (bot) may: Play an action, Draw",
+				"  Player 3 (bot) may: Play an action, Draw",
 				"[action] Draw",
 				"  deck → hand_3: 1 hidden card",
 				"  if card.data.kind == 'bomb' → then",
 				"  if count(matching(hand, 'is_defuse')) > 0 → else",
 				"[trigger] knocked_out",
-				"  East (bot) is out",
+				"  Player 3 (bot) is out",
 				"  hand_3 → out: Bomb",
 				"  if size(players_left()) == 1 → else",
 				"  player = 1",
@@ -1520,10 +1505,10 @@
 				"[trigger] Skip",
 				"  player = 2",
 				"  pending = ",
-				"[turn] West (bot)"
+				"[turn] Player 2 (bot)"
 			],
 			[
-				"  West (bot) may: Play an action, Draw",
+				"  Player 2 (bot) may: Play an action, Draw",
 				"[action] Play an action",
 				"  hand_2 → pile: Steal",
 				"  pending = Steal",
@@ -1541,16 +1526,13 @@
 				"  pending = ",
 				"  player = 1",
 				"[action] Give a card",
-				"  You: choose 1 (click the highlighted cards)"
-			],
-			[
 				"[Give a card] chose Defuse",
 				"  hand_1 → hand_2: Defuse",
 				"[turn] You",
-				"  You may: Play an action, Draw",
-				"  player = 2"
+				"  You may: Play an action, Draw"
 			],
 			[
+				"  player = 2",
 				"[action] Draw",
 				"  deck → hand_2: 1 hidden card",
 				"  if card.data.kind == 'bomb' → else",
@@ -1567,13 +1549,16 @@
 				"  You is out",
 				"  hand_1 → out: Bomb",
 				"  if size(players_left()) == 1 → then",
-				"[game over] Winner: West",
+				"[game over] Winner: Player 2",
 				"  player = 2"
 			]
 		],
 		"end": {
 			"zones": {
-				"box": [],
+				"box": [
+					"▼Bomb",
+					"▼Bomb"
+				],
 				"deck": [
 					"▼Peek"
 				],
@@ -1624,7 +1609,7 @@
 				"player": "2"
 			},
 			"over": true,
-			"result": "Winner: West"
+			"result": "Winner: Player 2"
 		}
 	}
 ]

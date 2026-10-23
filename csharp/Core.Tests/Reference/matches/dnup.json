@@ -1,0 +1,7702 @@
+[
+	{
+		"seed": 1,
+		"inputs": [
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 12
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "set_2"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "drag",
+				"card": 16,
+				"to": "set_4"
+			},
+			{
+				"type": "click",
+				"card": 16
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 58
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 58
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 17
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "drag",
+				"card": 35,
+				"to": "set_2"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "drag",
+				"card": 49,
+				"to": "set_2"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 62
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 33
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 61
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "drag",
+				"card": 17,
+				"to": "set_3"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "click",
+				"card": 32
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 24
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 31
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "click",
+				"card": 32
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 32
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 62
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "drag",
+				"card": 1,
+				"to": "set_4"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 60
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "click",
+				"card": 60
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "click",
+				"card": 25
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 61
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "click",
+				"card": 51
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 51
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 58
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 58
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 59
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "drag",
+				"card": 44,
+				"to": "set_4"
+			},
+			{
+				"type": "drag",
+				"card": 3,
+				"to": "set_4"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "click",
+				"card": 57
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 32
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 18
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Next round"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 60
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 32
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 62
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 62
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 4
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "drag",
+				"card": 24,
+				"to": "set_4"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 57
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "drag",
+				"card": 18,
+				"to": "set_4"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 45
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 38
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "click",
+				"card": 45
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "click",
+				"card": 19
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "finish"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  for player in players (4)",
+				"  sort hand_1 by value",
+				"  sort hand_2 by value",
+				"  sort hand_3 by value",
+				"  sort hand_4 by value",
+				"[trigger] deal",
+				"  out of sight: box → deck: 32 hidden cards",
+				"  shuffle deck",
+				"  deck → hand_1: 10/1, 6/7, 4/5, 3/6, 1/3, 3/5, 6/8, 9/10",
+				"  deck → hand_2: 8 hidden cards",
+				"  deck → hand_3: 8 hidden cards",
+				"  deck → hand_4: 8 hidden cards",
+				"  first_out = 0",
+				"  round_ended = false",
+				"  out_set_turns = 0",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 7",
+				"  hand_2 → set_2: 7/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_3 → set_2: 7/10",
+				"North adds a 7 to West's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 8",
+				"  hand_4 → set_4: 8/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 10/1",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 8/9 ↔ 9/8",
+				"  set_4 → hand_4: 9/8",
+				"You plays 1 × 10",
+				"  hand_1 → set_1: 10/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_2 → discard: 7/8, 7/10",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 10/1 ↔ 1/10",
+				"  set_1 → hand_2: 1/10",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (7)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 2 × 9",
+				"  hand_4 → set_4: 9/2, 9/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_1 → set_4: 9/10",
+				"You adds a 9 to East's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (3)",
+				"  swap set_4 ↔ box: 9/2 ↔ 2/9",
+				"  swap set_4 ↔ box: 9/8 ↔ 8/9",
+				"  swap set_4 ↔ box: 9/10 ↔ 10/9",
+				"  set_4 → hand_2: 2/9, 8/9, 10/9",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 7 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 7",
+				"  hand_3 → set_3: 7/5",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 3",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 7/5 ↔ 5/7",
+				"  set_3 → hand_3: 5/7",
+				"East plays 1 × 10",
+				"  hand_4 → set_4: 10/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose 6/7, 6/8",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 2 × 6",
+				"  hand_1 → set_1: 6/7, 6/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 10/3 ↔ 3/10",
+				"  set_4 → hand_2: 3/10",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_1 ↔ box: 6/7 ↔ 7/6",
+				"  swap set_1 ↔ box: 6/8 ↔ 8/6",
+				"  set_1 → hand_3: 7/6, 8/6",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 2",
+				"  hand_4 → set_4: 2/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 4/5",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 2/3 ↔ 3/2",
+				"  set_4 → hand_4: 3/2",
+				"You plays 1 × 4",
+				"  hand_1 → set_1: 4/5",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 12 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 1",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 4/5 ↔ 5/4",
+				"  set_1 → hand_1: 5/4",
+				"West plays 1 × 10",
+				"  hand_2 → set_2: 10/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_3 → set_2: 10/8",
+				"North adds a 10 to West's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 5",
+				"  hand_4 → set_4: 5/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_2 ↔ box: 10/9 ↔ 9/10",
+				"  swap set_2 ↔ box: 10/8 ↔ 8/10",
+				"  set_2 → hand_1: 9/10, 8/10",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 11 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 2 × 8",
+				"  hand_2 → set_2: 8/1, 8/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_3 → set_2: 8/5",
+				"North adds a 8 to West's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 5/6",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 3",
+				"  hand_4 → set_4: 3/2",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 5/4",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 3/2 ↔ 2/3",
+				"  set_4 → hand_4: 2/3",
+				"You plays 1 × 5",
+				"  hand_1 → set_1: 5/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_2 → discard: 8/1, 8/9, 8/5",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 5/4 ↔ 4/5",
+				"  set_1 → hand_2: 4/5",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (7)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 1",
+				"  hand_4 → set_4: 1/2",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 1/2 ↔ 2/1",
+				"  set_4 → hand_1: 2/1",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (10)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 7 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 2 × 6",
+				"  hand_3 → set_3: 6/7, 6/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 2",
+				"  hand_4 → set_4: 2/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 8/10",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 2/6 ↔ 6/2",
+				"  set_4 → hand_4: 6/2",
+				"You plays 1 × 8",
+				"  hand_1 → set_1: 8/10",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_3 ↔ box: 6/7 ↔ 7/6",
+				"  swap set_3 ↔ box: 6/8 ↔ 8/6",
+				"  set_3 → hand_2: 7/6, 8/6",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 8/10 ↔ 10/8",
+				"  set_1 → hand_3: 10/8",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 2",
+				"  hand_4 → set_4: 2/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_1 ↔ box: 1/3 ↔ 3/1",
+				"  swap hand_1 ↔ box: 2/1 ↔ 1/2",
+				"  swap hand_1 ↔ box: 3/6 ↔ 6/3",
+				"  swap hand_1 ↔ box: 3/5 ↔ 5/3",
+				"  swap hand_1 ↔ box: 9/10 ↔ 10/9",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 12 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 2/3 ↔ 3/2",
+				"  set_4 → hand_4: 3/2",
+				"West plays 1 × 9",
+				"  hand_2 → set_2: 9/7",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 2",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 9/7 ↔ 7/9",
+				"  set_2 → hand_2: 7/9",
+				"North plays 1 × 10",
+				"  hand_3 → set_3: 10/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (3)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_1 ↔ box: 1/2 ↔ 2/1",
+				"  swap hand_1 ↔ box: 3/1 ↔ 1/3",
+				"  swap hand_1 ↔ box: 5/3 ↔ 3/5",
+				"  swap hand_1 ↔ box: 6/3 ↔ 3/6",
+				"  swap hand_1 ↔ box: 10/9 ↔ 9/10",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 10/8 ↔ 8/10",
+				"  set_3 → hand_2: 8/10",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 2 × 2",
+				"  hand_3 → set_3: 2/4, 2/5",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_3 ↔ box: 2/4 ↔ 4/2",
+				"  swap set_3 ↔ box: 2/5 ↔ 5/2",
+				"  set_3 → hand_4: 4/2, 5/2",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_1 ↔ box: 1/3 ↔ 3/1",
+				"  swap hand_1 ↔ box: 2/1 ↔ 1/2",
+				"  swap hand_1 ↔ box: 3/5 ↔ 5/3",
+				"  swap hand_1 ↔ box: 3/6 ↔ 6/3",
+				"  swap hand_1 ↔ box: 9/10 ↔ 10/9",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 13 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 5",
+				"  hand_2 → set_2: 5/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 2",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 5/1 ↔ 1/5",
+				"  set_2 → hand_2: 1/5",
+				"North plays 1 × 10",
+				"  hand_3 → set_3: 10/2",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_1 → set_3: 10/9",
+				"You adds a 10 to North's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 13 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 3 × 7",
+				"  hand_2 → set_2: 7/4, 7/6, 7/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_3 → discard: 10/2, 10/9",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 7",
+				"  hand_3 → set_3: 7/5",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (3)",
+				"  swap set_2 ↔ box: 7/4 ↔ 4/7",
+				"  swap set_2 ↔ box: 7/6 ↔ 6/7",
+				"  swap set_2 ↔ box: 7/9 ↔ 9/7",
+				"  set_2 → hand_1: 4/7, 6/7, 9/7",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 10 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 3",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 7/5 ↔ 5/7",
+				"  set_3 → hand_3: 5/7",
+				"West plays 1 × 9",
+				"  hand_2 → set_2: 9/2",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 9/2 ↔ 2/9",
+				"  set_2 → hand_3: 2/9",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 6",
+				"  hand_4 → set_4: 6/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (7)",
+				"  swap hand_1 ↔ box: 1/2 ↔ 2/1",
+				"  swap hand_1 ↔ box: 3/1 ↔ 1/3",
+				"  swap hand_1 ↔ box: 4/7 ↔ 7/4",
+				"  swap hand_1 ↔ box: 5/3 ↔ 3/5",
+				"  swap hand_1 ↔ box: 6/3 ↔ 3/6",
+				"  swap hand_1 ↔ box: 6/7 ↔ 7/6",
+				"  swap hand_1 ↔ box: 9/7 ↔ 7/9",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 9 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 6/4 ↔ 4/6",
+				"  set_4 → hand_4: 4/6",
+				"West plays 1 × 8",
+				"  hand_2 → set_2: 8/10",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 8/10 ↔ 10/8",
+				"  set_2 → hand_3: 10/8",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 5",
+				"  hand_4 → set_4: 5/2",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 7 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose 3/5, 3/6",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 2 × 3",
+				"  hand_1 → set_1: 3/5, 3/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_1 ↔ box: 3/5 ↔ 5/3",
+				"  swap set_1 ↔ box: 3/6 ↔ 6/3",
+				"  set_1 → hand_2: 5/3, 6/3",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 5/2",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 4",
+				"  hand_4 → set_4: 4/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 7/4",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 4/6 ↔ 6/4",
+				"  set_4 → hand_4: 6/4",
+				"You plays 1 × 7",
+				"  hand_1 → set_1: 7/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 10 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 1",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 7/4 ↔ 4/7",
+				"  set_1 → hand_1: 4/7",
+				"West plays 1 × 10",
+				"  hand_2 → set_2: 10/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 10/1 ↔ 1/10",
+				"  set_2 → hand_1: 1/10",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 9 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 8",
+				"  hand_2 → set_2: 8/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 2",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 8/6 ↔ 6/8",
+				"  set_2 → hand_2: 6/8",
+				"North plays 1 × 10",
+				"  hand_3 → set_3: 10/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose 7/6, 7/9",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 2 × 7",
+				"  hand_1 → set_1: 7/6, 7/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_1 ↔ box: 7/6 ↔ 6/7",
+				"  swap set_1 ↔ box: 7/9 ↔ 9/7",
+				"  set_1 → hand_2: 6/7, 9/7",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_3 → discard: 10/8",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (3)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 2",
+				"  hand_4 → set_4: 2/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose 1/3, 1/10",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 2 × 1",
+				"  hand_1 → set_1: 1/3, 1/10",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_1 ↔ box: 1/3 ↔ 3/1",
+				"  swap set_1 ↔ box: 1/10 ↔ 10/1",
+				"  set_1 → hand_2: 3/1, 10/1",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (3)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 2/6",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 2",
+				"  hand_4 → set_4: 2/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_1 → set_4: 2/1",
+				"You adds a 2 to East's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 13 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 1",
+				"  hand_2 → set_2: 1/5",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_4 ↔ box: 2/3 ↔ 3/2",
+				"  swap set_4 ↔ box: 2/1 ↔ 1/2",
+				"  set_4 → hand_3: 3/2, 1/2",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 1/5 ↔ 5/1",
+				"  set_2 → hand_4: 5/1",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (1)",
+				"  swap hand_1 ↔ box: 4/7 ↔ 7/4",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 12 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 2 × 5",
+				"  hand_2 → set_2: 5/4, 5/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 4",
+				"  hand_4 → set_4: 4/2",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 7/4",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 4/2 ↔ 2/4",
+				"  set_4 → hand_4: 2/4",
+				"You plays 1 × 7",
+				"  hand_1 → set_1: 7/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → then",
+				"  if first_out == 0 → then",
+				"You is out first: 2 points",
+				"  points_1 = 2",
+				"  first_out = 1",
+				"  You is out",
+				"  out_set_turns = 4",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → then",
+				"  out_set_turns = 3",
+				"  if out_set_turns == 0 → else",
+				"  set_2 → discard: 5/4, 5/3",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 10 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 2 × 4",
+				"  hand_2 → set_2: 4/1, 4/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → then",
+				"  out_set_turns = 2",
+				"  if out_set_turns == 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 7/4 ↔ 4/7",
+				"  set_1 → hand_3: 4/7",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → then",
+				"  out_set_turns = 1",
+				"  if out_set_turns == 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 5",
+				"  hand_4 → set_4: 5/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → then",
+				"  out_set_turns = 0",
+				"  if out_set_turns == 0 → then",
+				"  set_2 → discard: 4/1, 4/3",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 2 × 6",
+				"  hand_2 → set_2: 6/8, 6/7",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 2",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_2 ↔ box: 6/8 ↔ 8/6",
+				"  swap set_2 ↔ box: 6/7 ↔ 7/6",
+				"  set_2 → hand_2: 8/6, 7/6",
+				"North plays 2 × 9",
+				"  hand_3 → set_3: 9/2, 9/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 5/1",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_3 ↔ box: 9/2 ↔ 2/9",
+				"  swap set_3 ↔ box: 9/6 ↔ 6/9",
+				"  set_3 → hand_4: 2/9, 6/9",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 2 × 10",
+				"  hand_2 → set_2: 10/3, 10/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 7",
+				"  hand_3 → set_3: 7/5",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_2 ↔ box: 10/3 ↔ 3/10",
+				"  swap set_2 ↔ box: 10/1 ↔ 1/10",
+				"  set_2 → hand_4: 3/10, 1/10",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (6)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_3 → discard: 7/5",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 4",
+				"  hand_3 → set_3: 4/7",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 3",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 4/7 ↔ 7/4",
+				"  set_3 → hand_3: 7/4",
+				"East plays 1 × 6",
+				"  hand_4 → set_4: 6/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 2 × 6",
+				"  hand_2 → set_2: 6/7, 6/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_2 ↔ box: 6/7 ↔ 7/6",
+				"  swap set_2 ↔ box: 6/8 ↔ 8/6",
+				"  set_2 → hand_3: 7/6, 8/6",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 6/4",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 1",
+				"  hand_4 → set_4: 1/10",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 1/10 ↔ 10/1",
+				"  set_4 → hand_2: 10/1",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 2",
+				"  hand_3 → set_3: 2/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 3",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 2/3 ↔ 3/2",
+				"  set_3 → hand_3: 3/2",
+				"East plays 1 × 3",
+				"  hand_4 → set_4: 3/10",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_2 → set_4: 3/6",
+				"West adds a 3 to East's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_3 → set_4: 3/2",
+				"North adds a 3 to East's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 3/10, 3/6, 3/2",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 2 × 2",
+				"  hand_4 → set_4: 2/4, 2/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 7",
+				"  hand_2 → set_2: 7/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 2/4, 2/9",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (1)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_2 → discard: 7/9",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 9",
+				"  hand_2 → set_2: 9/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 9/1 ↔ 1/9",
+				"  set_2 → hand_4: 1/9",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 10",
+				"  hand_2 → set_2: 10/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 2 × 7",
+				"  hand_3 → set_3: 7/4, 7/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_3 ↔ box: 7/4 ↔ 4/7",
+				"  swap set_3 ↔ box: 7/6 ↔ 6/7",
+				"  set_3 → hand_4: 4/7, 6/7",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_2 → discard: 10/1",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 1",
+				"  hand_2 → set_2: 1/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → then",
+				"  if first_out == 0 → else",
+				"West is out second: 1 point, and the round ends",
+				"  points_2 = 1",
+				"  round_ended = true",
+				"  if round_ended → then",
+				"[trigger] next_round",
+				"  shown from hand_3: 2/1, 8/6",
+				"  shown from hand_4: 1/9, 4/7, 6/7, 9/6",
+				"  if most('points') >= 4 → else",
+				"  West (bot) may: Next round"
+			],
+			[
+				"[action] Next round",
+				"[trigger] deal",
+				"  hand_3 → box: 2/1, 8/6",
+				"  hand_4 → box: 1/9, 4/7, 6/7, 9/6",
+				"  set_2 → box: 1/3",
+				"  discard → box: 25 hidden cards",
+				"  out of sight: box → deck: 32 hidden cards",
+				"  shuffle deck",
+				"  deck → hand_1: 3/5, 2/6, 10/1, 2/4, 9/1, 6/9, 5/8, 1/2",
+				"  deck → hand_2: 8 hidden cards",
+				"  deck → hand_3: 8 hidden cards",
+				"  deck → hand_4: 8 hidden cards",
+				"  first_out = 0",
+				"  round_ended = false",
+				"  out_set_turns = 0",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 1",
+				"  hand_2 → set_2: 1/5",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (8)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 2 × 7",
+				"  hand_4 → set_4: 7/9, 7/10",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 2/6",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 2",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 1/5 ↔ 5/1",
+				"  set_2 → hand_2: 5/1",
+				"You plays 1 × 2",
+				"  hand_1 → set_1: 2/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 2/6 ↔ 6/2",
+				"  set_1 → hand_2: 6/2",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_4 ↔ box: 7/9 ↔ 9/7",
+				"  swap set_4 ↔ box: 7/10 ↔ 10/7",
+				"  set_4 → hand_3: 9/7, 10/7",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 3",
+				"  hand_4 → set_4: 3/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_1 → set_4: 3/5",
+				"You adds a 3 to East's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (9)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 10 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 2",
+				"  hand_3 → set_3: 2/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 3/4, 3/5",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 3",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 2/9 ↔ 9/2",
+				"  set_3 → hand_3: 9/2",
+				"East plays 1 × 10",
+				"  hand_4 → set_4: 10/2",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_1 → set_4: 10/1",
+				"You adds a 10 to East's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 9 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 6",
+				"  hand_2 → set_2: 6/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_4 ↔ box: 10/2 ↔ 2/10",
+				"  swap set_4 ↔ box: 10/1 ↔ 1/10",
+				"  set_4 → hand_3: 2/10, 1/10",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 6/3 ↔ 3/6",
+				"  set_2 → hand_1: 3/6",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (8)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 12 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 2 × 1",
+				"  hand_3 → set_3: 1/8, 1/10",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 3",
+				"  hand_4 → set_4: 3/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			]
+		],
+		"end": {
+			"zones": {
+				"box": [
+					"▼5/6",
+					"▼7/6",
+					"▼7/8",
+					"▼8/9",
+					"▼10/1",
+					"▼1/3",
+					"▼4/2",
+					"▼7/9",
+					"▼10/2",
+					"▼6/3",
+					"▼4/7",
+					"▼7/10",
+					"▼8/1",
+					"▼2/6",
+					"▼3/7",
+					"▼7/3",
+					"▼4/8",
+					"▼8/4",
+					"▼5/9",
+					"▼9/5",
+					"▼6/10",
+					"▼10/6",
+					"▼7/1",
+					"▼1/7",
+					"▼8/2",
+					"▼2/8",
+					"▼9/3",
+					"▼3/9",
+					"▼10/4",
+					"▼4/10",
+					"▼2/1",
+					"▼6/8",
+					"▼1/9",
+					"▼9/6",
+					"▼8/5",
+					"▼9/10",
+					"▼5/2",
+					"▼10/8",
+					"▼5/4",
+					"▼5/3",
+					"▼4/1",
+					"▼4/3",
+					"▼1/5",
+					"▼5/7",
+					"▼6/4",
+					"▼10/3",
+					"▼2/3",
+					"▼2/9"
+				],
+				"deck": [],
+				"discard": [
+					"▼3/4",
+					"▼3/5"
+				],
+				"hand_1": [
+					"1/2",
+					"2/4",
+					"3/6",
+					"5/8",
+					"6/9",
+					"9/1"
+				],
+				"hand_2": [
+					"1/4",
+					"2/5",
+					"4/5",
+					"4/6",
+					"5/1",
+					"6/2",
+					"6/7",
+					"8/10"
+				],
+				"hand_3": [
+					"2/10",
+					"3/2",
+					"3/10",
+					"6/5",
+					"7/4",
+					"8/6",
+					"9/8",
+					"9/7",
+					"9/2",
+					"10/7"
+				],
+				"hand_4": [
+					"7/5",
+					"8/7",
+					"10/9"
+				],
+				"set_1": [],
+				"set_2": [],
+				"set_3": [
+					"1/8",
+					"1/10"
+				],
+				"set_4": [
+					"3/1"
+				]
+			},
+			"variables": {
+				"first_out": "0",
+				"round_ended": "false",
+				"out_set_turns": "0",
+				"from_seat": "2",
+				"to_seat": "1",
+				"player": "1",
+				"points_1": "2",
+				"points_2": "1",
+				"points_3": "0",
+				"points_4": "0"
+			},
+			"over": false,
+			"result": ""
+		}
+	},
+	{
+		"seed": 2,
+		"inputs": [
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 4
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 10
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 58
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "drag",
+				"card": 38,
+				"to": "set_1"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "drag",
+				"card": 18,
+				"to": "set_1"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 17
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 42
+			},
+			{
+				"type": "click",
+				"card": 57
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 57
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 49
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 49
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 51
+			},
+			{
+				"type": "click",
+				"card": 56
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 31
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "drag",
+				"card": 34,
+				"to": "set_1"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "drag",
+				"card": 25,
+				"to": "set_4"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 44
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 13
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 13
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 40
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "click",
+				"card": 40
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 32
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 12
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "click",
+				"card": 32
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "click",
+				"card": 33
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 62
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 52
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "click",
+				"card": 4
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 33
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 60
+			},
+			{
+				"type": "click",
+				"card": 40
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 1
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 43
+			},
+			{
+				"type": "click",
+				"card": 28
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "drag",
+				"card": 8,
+				"to": "set_2"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 4
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "click",
+				"card": 54
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 45
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 23
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 15
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 36
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 40
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 48
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 47
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 49
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 49
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 62
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 55
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Rotate hand"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 41
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 46
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "click",
+				"card": 14
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "click",
+				"card": 26
+			},
+			{
+				"type": "finish"
+			},
+			{
+				"type": "perform",
+				"action": "Play a set"
+			},
+			{
+				"type": "click",
+				"card": 62
+			},
+			{
+				"type": "finish"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  for player in players (4)",
+				"  sort hand_1 by value",
+				"  sort hand_2 by value",
+				"  sort hand_3 by value",
+				"  sort hand_4 by value",
+				"[trigger] deal",
+				"  out of sight: box → deck: 32 hidden cards",
+				"  shuffle deck",
+				"  deck → hand_1: 7/10, 2/5, 1/2, 10/3, 3/5, 8/1, 3/4, 6/8",
+				"  deck → hand_2: 8 hidden cards",
+				"  deck → hand_3: 8 hidden cards",
+				"  deck → hand_4: 8 hidden cards",
+				"  first_out = 0",
+				"  round_ended = false",
+				"  out_set_turns = 0",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 2",
+				"  hand_4 → set_4: 2/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 3/4",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 2/4 ↔ 4/2",
+				"  set_4 → hand_4: 4/2",
+				"You plays 1 × 3",
+				"  hand_1 → set_1: 3/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 2 × 8",
+				"  hand_2 → set_2: 8/9, 8/10",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_2 ↔ box: 8/9 ↔ 9/8",
+				"  swap set_2 ↔ box: 8/10 ↔ 10/8",
+				"  set_2 → hand_3: 9/8, 10/8",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 1",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 3/4 ↔ 4/3",
+				"  set_1 → hand_1: 4/3",
+				"East plays 1 × 6",
+				"  hand_4 → set_4: 6/7",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 10/3",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 6/7 ↔ 7/6",
+				"  set_4 → hand_4: 7/6",
+				"You plays 1 × 10",
+				"  hand_1 → set_1: 10/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_2 → set_1: 10/2",
+				"West adds a 10 to You's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 10 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 2",
+				"  hand_3 → set_3: 2/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_4 → set_1: 10/1",
+				"East adds a 10 to You's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  set_1 → discard: 10/3, 10/2, 10/1",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 7 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 8/1",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 3",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 2/3 ↔ 3/2",
+				"  set_3 → hand_3: 3/2",
+				"You plays 1 × 8",
+				"  hand_1 → set_1: 8/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 8/1 ↔ 1/8",
+				"  set_1 → hand_2: 1/8",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (10)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 7 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 9",
+				"  hand_4 → set_4: 9/2",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 9/2 ↔ 2/9",
+				"  set_4 → hand_1: 2/9",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (6)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 10 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 2",
+				"  hand_3 → set_3: 2/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 3",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 2/3 ↔ 3/2",
+				"  set_3 → hand_3: 3/2",
+				"East plays 1 × 5",
+				"  hand_4 → set_4: 5/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 7 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 6/8",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 5/6 ↔ 6/5",
+				"  set_4 → hand_4: 6/5",
+				"You plays 1 × 6",
+				"  hand_1 → set_1: 6/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 1",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 6/8 ↔ 8/6",
+				"  set_1 → hand_1: 8/6",
+				"West plays 1 × 8",
+				"  hand_2 → set_2: 8/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 10 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 2",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 8/1 ↔ 1/8",
+				"  set_2 → hand_2: 1/8",
+				"North plays 1 × 10",
+				"  hand_3 → set_3: 10/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (6)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 7 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose 2/5, 2/9",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 2 × 2",
+				"  hand_1 → set_1: 2/5, 2/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"West takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_1 ↔ box: 2/5 ↔ 5/2",
+				"  swap set_1 ↔ box: 2/9 ↔ 9/2",
+				"  set_1 → hand_2: 5/2, 9/2",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_3 → discard: 10/9",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 9 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 8",
+				"  hand_3 → set_3: 8/5",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 2 × 5",
+				"  hand_4 → set_4: 5/4, 5/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 8/5 ↔ 5/8",
+				"  set_3 → hand_1: 5/8",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_4 ↔ box: 5/4 ↔ 4/5",
+				"  swap set_4 ↔ box: 5/6 ↔ 6/5",
+				"  set_4 → hand_4: 4/5, 6/5",
+				"West plays 2 × 9",
+				"  hand_2 → set_2: 9/6, 9/2",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 3",
+				"  hand_3 → set_3: 3/2",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (6)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 8/6",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 3",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 3/2 ↔ 2/3",
+				"  set_3 → hand_3: 2/3",
+				"You plays 1 × 8",
+				"  hand_1 → set_1: 8/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_2 → discard: 9/6, 9/2",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (6)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_3 → set_1: 8/10",
+				"North adds a 8 to You's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 7",
+				"  hand_4 → set_4: 7/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  set_1 → discard: 8/6, 8/10",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_1 ↔ box: 1/2 ↔ 2/1",
+				"  swap hand_1 ↔ box: 3/5 ↔ 5/3",
+				"  swap hand_1 ↔ box: 4/3 ↔ 3/4",
+				"  swap hand_1 ↔ box: 5/8 ↔ 8/5",
+				"  swap hand_1 ↔ box: 7/10 ↔ 10/7",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (6)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (7)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 7/6",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 5",
+				"  hand_4 → set_4: 5/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_1 → set_4: 5/3",
+				"You adds a 5 to East's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (6)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (7)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 5/4, 5/3",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 3",
+				"  hand_4 → set_4: 3/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 3/6 ↔ 6/3",
+				"  set_4 → hand_1: 6/3",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 1",
+				"  hand_2 → set_2: 1/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 7 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 2 × 8",
+				"  hand_3 → set_3: 8/7, 8/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_3 ↔ box: 8/7 ↔ 7/8",
+				"  swap set_3 ↔ box: 8/9 ↔ 9/8",
+				"  set_3 → hand_4: 7/8, 9/8",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_1 ↔ box: 2/1 ↔ 1/2",
+				"  swap hand_1 ↔ box: 3/4 ↔ 4/3",
+				"  swap hand_1 ↔ box: 6/3 ↔ 3/6",
+				"  swap hand_1 ↔ box: 8/5 ↔ 5/8",
+				"  swap hand_1 ↔ box: 10/7 ↔ 7/10",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_2 → discard: 1/3",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 1",
+				"  hand_2 → set_2: 1/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 1/4 ↔ 4/1",
+				"  set_2 → hand_4: 4/1",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_1 ↔ box: 1/2 ↔ 2/1",
+				"  swap hand_1 ↔ box: 3/6 ↔ 6/3",
+				"  swap hand_1 ↔ box: 4/3 ↔ 3/4",
+				"  swap hand_1 ↔ box: 5/8 ↔ 8/5",
+				"  swap hand_1 ↔ box: 7/10 ↔ 10/7",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 4",
+				"  hand_2 → set_2: 4/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 2",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 4/6 ↔ 6/4",
+				"  set_2 → hand_2: 6/4",
+				"North plays 1 × 7",
+				"  hand_3 → set_3: 7/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 3",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 7/9 ↔ 9/7",
+				"  set_3 → hand_3: 9/7",
+				"East plays 1 × 9",
+				"  hand_4 → set_4: 9/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 9/8 ↔ 8/9",
+				"  set_4 → hand_1: 8/9",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 7",
+				"  hand_4 → set_4: 7/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (6)",
+				"  swap hand_1 ↔ box: 2/1 ↔ 1/2",
+				"  swap hand_1 ↔ box: 3/4 ↔ 4/3",
+				"  swap hand_1 ↔ box: 6/3 ↔ 3/6",
+				"  swap hand_1 ↔ box: 8/5 ↔ 5/8",
+				"  swap hand_1 ↔ box: 8/9 ↔ 9/8",
+				"  swap hand_1 ↔ box: 10/7 ↔ 7/10",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 2 × 7",
+				"  hand_3 → set_3: 7/4, 7/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 7/8",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_3 ↔ box: 7/4 ↔ 4/7",
+				"  swap set_3 ↔ box: 7/9 ↔ 9/7",
+				"  set_3 → hand_1: 4/7, 9/7",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (3)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 6",
+				"  hand_4 → set_4: 6/5",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 8 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose 9/8, 9/7",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 2 × 9",
+				"  hand_1 → set_1: 9/8, 9/7",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 6/5 ↔ 5/6",
+				"  set_4 → hand_3: 5/6",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_1 ↔ box: 9/8 ↔ 8/9",
+				"  swap set_1 ↔ box: 9/7 ↔ 7/9",
+				"  set_1 → hand_4: 8/9, 7/9",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose 4/3, 4/7",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 2 × 4",
+				"  hand_1 → set_1: 4/3, 4/7",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 6",
+				"  hand_2 → set_2: 6/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_1 ↔ box: 4/3 ↔ 3/4",
+				"  swap set_1 ↔ box: 4/7 ↔ 7/4",
+				"  set_1 → hand_3: 3/4, 7/4",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 7/10",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 2",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 6/4 ↔ 4/6",
+				"  set_2 → hand_2: 4/6",
+				"You plays 1 × 7",
+				"  hand_1 → set_1: 7/10",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 1",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 7/10 ↔ 10/7",
+				"  set_1 → hand_1: 10/7",
+				"West plays 1 × 8",
+				"  hand_2 → set_2: 8/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 2",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 8/1 ↔ 1/8",
+				"  set_2 → hand_2: 1/8",
+				"North plays 1 × 9",
+				"  hand_3 → set_3: 9/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 9/1 ↔ 1/9",
+				"  set_3 → hand_4: 1/9",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_1 ↔ box: 1/2 ↔ 2/1",
+				"  swap hand_1 ↔ box: 3/6 ↔ 6/3",
+				"  swap hand_1 ↔ box: 5/8 ↔ 8/5",
+				"  swap hand_1 ↔ box: 10/7 ↔ 7/10",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 2",
+				"  hand_3 → set_3: 2/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 3",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 2/6 ↔ 6/2",
+				"  set_3 → hand_3: 6/2",
+				"East plays 1 × 4",
+				"  hand_4 → set_4: 4/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 7/10",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 4/1 ↔ 1/4",
+				"  set_4 → hand_4: 1/4",
+				"You plays 1 × 7",
+				"  hand_1 → set_1: 7/10",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 2 × 3",
+				"  hand_3 → set_3: 3/2, 3/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 1",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 7/10 ↔ 10/7",
+				"  set_1 → hand_1: 10/7",
+				"East plays 1 × 9",
+				"  hand_4 → set_4: 9/7",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_3 ↔ box: 3/2 ↔ 2/3",
+				"  swap set_3 ↔ box: 3/4 ↔ 4/3",
+				"  set_3 → hand_1: 2/3, 4/3",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (3)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 9/7",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 2 × 1",
+				"  hand_4 → set_4: 1/5, 1/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose 2/1, 2/3",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_4 ↔ box: 1/5 ↔ 5/1",
+				"  swap set_4 ↔ box: 1/4 ↔ 4/1",
+				"  set_4 → hand_4: 5/1, 4/1",
+				"You plays 2 × 2",
+				"  hand_1 → set_1: 2/1, 2/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 5",
+				"  hand_2 → set_2: 5/2",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 2",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 2",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 5/2 ↔ 2/5",
+				"  set_2 → hand_2: 2/5",
+				"North plays 1 × 6",
+				"  hand_3 → set_3: 6/5",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 6/5 ↔ 5/6",
+				"  set_3 → hand_4: 5/6",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  set_1 → discard: 2/1, 2/3",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_1 ↔ box: 4/3 ↔ 3/4",
+				"  swap hand_1 ↔ box: 6/3 ↔ 3/6",
+				"  swap hand_1 ↔ box: 8/5 ↔ 5/8",
+				"  swap hand_1 ↔ box: 10/7 ↔ 7/10",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (2)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 9",
+				"  hand_4 → set_4: 9/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 9/8 ↔ 8/9",
+				"  set_4 → hand_1: 8/9",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 2 × 5",
+				"  hand_2 → set_2: 5/2, 5/7",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 7",
+				"  hand_3 → set_3: 7/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Add a card",
+				"  hand_4 → set_2: 5/6",
+				"East adds a 5 to West's set",
+				"  for beaten in zones_where(all_set, 'beaten_by_add') (0)",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 7/4 ↔ 4/7",
+				"  set_3 → hand_1: 4/7",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_2 → discard: 5/2, 5/7, 5/6",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"West plays 1 × 4",
+				"  hand_2 → set_2: 4/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (1)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 4/6 ↔ 6/4",
+				"  set_2 → hand_4: 6/4",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 6 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 5/8",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 1 × 5",
+				"  hand_1 → set_1: 5/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"West rotates their hand",
+				"  for held in hand (1)",
+				"  swap hand_2 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (1)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 5/8 ↔ 8/5",
+				"  set_1 → hand_4: 8/5",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 3/4",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 1 × 3",
+				"  hand_1 → set_1: 3/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  if out_set_turns > 0 → else",
+				"  West (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  West (bot): choose up to 1 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 1",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 3/4 ↔ 4/3",
+				"  set_1 → hand_1: 4/3",
+				"West plays 1 × 8",
+				"  hand_2 → set_2: 8/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → then",
+				"  if first_out == 0 → then",
+				"West is out first: 2 points",
+				"  points_2 = 2",
+				"  first_out = 2",
+				"  West (bot) is out",
+				"  out_set_turns = 4",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → then",
+				"  out_set_turns = 3",
+				"  if out_set_turns == 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (1)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → then",
+				"  out_set_turns = 2",
+				"  if out_set_turns == 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes West's set",
+				"  from_seat = 2",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_2 ↔ box: 8/1 ↔ 1/8",
+				"  set_2 → hand_4: 1/8",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → then",
+				"  out_set_turns = 1",
+				"  if out_set_turns == 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_1 ↔ box: 3/6 ↔ 6/3",
+				"  swap hand_1 ↔ box: 4/7 ↔ 7/4",
+				"  swap hand_1 ↔ box: 4/3 ↔ 3/4",
+				"  swap hand_1 ↔ box: 7/10 ↔ 10/7",
+				"  swap hand_1 ↔ box: 8/9 ↔ 9/8",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → then",
+				"  out_set_turns = 0",
+				"  if out_set_turns == 0 → then",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (1)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 7 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 2 × 4",
+				"  hand_4 → set_4: 4/2, 4/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 6/3",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 1 × 6",
+				"  hand_1 → set_1: 6/3",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_4 ↔ box: 4/2 ↔ 2/4",
+				"  swap set_4 ↔ box: 4/1 ↔ 1/4",
+				"  set_4 → hand_3: 2/4, 1/4",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  set_1 → discard: 6/3",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 9/8",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 1 × 9",
+				"  hand_1 → set_1: 9/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 9/8 ↔ 8/9",
+				"  set_1 → hand_3: 8/9",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 9",
+				"  hand_4 → set_4: 9/1",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 9/1 ↔ 1/9",
+				"  set_4 → hand_1: 1/9",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 1",
+				"  hand_3 → set_3: 1/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 3",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 1/4 ↔ 4/1",
+				"  set_3 → hand_3: 4/1",
+				"East plays 1 × 5",
+				"  hand_4 → set_4: 5/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 7/4",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 4",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 5/8 ↔ 8/5",
+				"  set_4 → hand_4: 8/5",
+				"You plays 1 × 7",
+				"  hand_1 → set_1: 7/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (4)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 1",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 7/4 ↔ 4/7",
+				"  set_1 → hand_1: 4/7",
+				"East plays 1 × 8",
+				"  hand_4 → set_4: 8/5",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 8/5 ↔ 5/8",
+				"  set_4 → hand_1: 5/8",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 4 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 2",
+				"  hand_3 → set_3: 2/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"East rotates their hand",
+				"  for held in hand (3)",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 4/7",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 3",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 2/6 ↔ 6/2",
+				"  set_3 → hand_3: 6/2",
+				"You plays 1 × 4",
+				"  hand_1 → set_1: 4/7",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"North takes You's set",
+				"  from_seat = 1",
+				"  to_seat = 3",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 4/7 ↔ 7/4",
+				"  set_1 → hand_3: 7/4",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 6",
+				"  hand_4 → set_4: 6/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"You takes East's set",
+				"  from_seat = 4",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_4 ↔ box: 6/4 ↔ 4/6",
+				"  set_4 → hand_1: 4/6",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"North rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  East (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"East plays 1 × 1",
+				"  hand_4 → set_4: 1/8",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Rotate hand",
+				"You rotates their hand",
+				"  for held in hand (5)",
+				"  swap hand_1 ↔ box: 1/9 ↔ 9/1",
+				"  swap hand_1 ↔ box: 3/4 ↔ 4/3",
+				"  swap hand_1 ↔ box: 4/6 ↔ 6/4",
+				"  swap hand_1 ↔ box: 5/8 ↔ 8/5",
+				"  swap hand_1 ↔ box: 10/7 ↔ 7/10",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose a hidden card, a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 2 × 4",
+				"  hand_3 → set_3: 4/1, 4/7",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  set_4 → discard: 1/8",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (2)",
+				"  swap set_3 ↔ box: 4/1 ↔ 1/4",
+				"  swap set_3 ↔ box: 4/7 ↔ 7/4",
+				"  set_3 → hand_4: 1/4, 7/4",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose 6/4",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 1 × 6",
+				"  hand_1 → set_1: 6/4",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 3 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (1)",
+				"  from_seat = 1",
+				"[trigger] beaten",
+				"  if from_seat == first_out → else",
+				"  to_seat = 1",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_1 ↔ box: 6/4 ↔ 4/6",
+				"  set_1 → hand_1: 4/6",
+				"North plays 1 × 8",
+				"  hand_3 → set_3: 8/9",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Take a set",
+				"East takes North's set",
+				"  from_seat = 3",
+				"  to_seat = 4",
+				"[trigger] turn_round_into_hand",
+				"  for taken in set[from_seat] (1)",
+				"  swap set_3 ↔ box: 8/9 ↔ 9/8",
+				"  set_3 → hand_4: 9/8",
+				"  if round_ended → else",
+				"  player = 1",
+				"[turn] You",
+				"  if out_set_turns > 0 → else",
+				"  You may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  You: choose up to 5 (click the highlighted cards, then Done)"
+			],
+			[],
+			[],
+			[
+				"[Play a set] chose 4/3, 4/6",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"You plays 2 × 4",
+				"  hand_1 → set_1: 4/3, 4/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  if out_set_turns > 0 → else",
+				"  North (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			],
+			[
+				"[action] Play a set",
+				"  North (bot): choose up to 2 (click the highlighted cards, then Done)"
+			],
+			[],
+			[
+				"[Play a set] chose a hidden card",
+				"  for beaten in zones_where(all_set, 'beaten_by_play') (0)",
+				"North plays 1 × 2",
+				"  hand_3 → set_3: 2/6",
+				"[trigger] maybe_out",
+				"  if count(hand) == 0 → else",
+				"  if round_ended → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  if out_set_turns > 0 → else",
+				"  East (bot) may: Play a set, Add a card, Take a set, Rotate hand"
+			]
+		],
+		"end": {
+			"zones": {
+				"box": [
+					"▼1/2",
+					"▼3/2",
+					"▼3/4",
+					"▼4/5",
+					"▼6/5",
+					"▼6/7",
+					"▼8/7",
+					"▼8/9",
+					"▼9/10",
+					"▼1/10",
+					"▼3/1",
+					"▼4/2",
+					"▼3/5",
+					"▼6/4",
+					"▼7/5",
+					"▼6/8",
+					"▼7/9",
+					"▼10/8",
+					"▼1/9",
+					"▼2/10",
+					"▼4/1",
+					"▼2/5",
+					"▼3/6",
+					"▼4/7",
+					"▼5/8",
+					"▼6/9",
+					"▼10/7",
+					"▼8/1",
+					"▼2/9",
+					"▼3/10",
+					"▼1/5",
+					"▼6/2",
+					"▼3/7",
+					"▼7/3",
+					"▼4/8",
+					"▼8/4",
+					"▼5/9",
+					"▼9/5",
+					"▼6/10",
+					"▼10/6",
+					"▼7/1",
+					"▼1/7",
+					"▼8/2",
+					"▼2/8",
+					"▼9/3",
+					"▼3/9",
+					"▼10/4",
+					"▼4/10"
+				],
+				"deck": [],
+				"discard": [
+					"▼10/3",
+					"▼10/2",
+					"▼10/1",
+					"▼10/9",
+					"▼9/6",
+					"▼9/2",
+					"▼8/6",
+					"▼8/10",
+					"▼7/6",
+					"▼5/4",
+					"▼5/3",
+					"▼1/3",
+					"▼7/8",
+					"▼9/7",
+					"▼2/1",
+					"▼2/3",
+					"▼5/2",
+					"▼5/7",
+					"▼5/6",
+					"▼6/3",
+					"▼1/8"
+				],
+				"hand_1": [
+					"7/10",
+					"8/5",
+					"9/1"
+				],
+				"hand_2": [],
+				"hand_3": [
+					"2/4"
+				],
+				"hand_4": [
+					"1/4",
+					"5/1",
+					"7/4",
+					"9/8"
+				],
+				"set_1": [
+					"4/3",
+					"4/6"
+				],
+				"set_2": [],
+				"set_3": [
+					"2/6"
+				],
+				"set_4": []
+			},
+			"variables": {
+				"first_out": "2",
+				"round_ended": "false",
+				"out_set_turns": "0",
+				"from_seat": "3",
+				"to_seat": "4",
+				"player": "4",
+				"points_1": "0",
+				"points_2": "2",
+				"points_3": "0",
+				"points_4": "0"
+			},
+			"over": false,
+			"result": ""
+		}
+	}
+]

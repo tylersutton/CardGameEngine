@@ -6,8 +6,13 @@ namespace Core;
 /// group_sizes). Static methods are helpers, not building blocks. See docs/reference.md.
 public class Actions(Game game, Card? stepCard = null)
 {
-    public void Draw(Zone from, Zone to, int amount = 1)
+    /// face: 'up' or 'down' to land the cards that way, instead of the way the zone shows them.
+    public void Draw(Zone from, Zone to, int amount = 1, string face = "")
     {
+        if (!ReadFace(face, out bool? faceUp))
+        {
+            return;
+        }
         for (int i = 0; i < amount; i++)
         {
             if (from.IsEmpty)
@@ -18,7 +23,7 @@ public class Actions(Game game, Card? stepCard = null)
             {
                 return;
             }
-            game.Move(from.Cards[^1], to);
+            game.Move(from.Cards[^1], to, faceUp);
         }
     }
 
@@ -34,13 +39,33 @@ public class Actions(Game game, Card? stepCard = null)
         }
     }
 
-    public void Move(object? cards, Zone to)
+    public void Move(object? cards, Zone to, string face = "")
     {
+        if (!ReadFace(face, out bool? faceUp))
+        {
+            return;
+        }
         foreach (Card card in CardsIn(cards))
         {
-            game.Move(card, to);
+            game.Move(card, to, faceUp);
         }
     }
+
+    /// Whether the player is played by the computer, e.g. to pause for people to see what a bot revealed.
+    public bool IsBot(int player) => game.IsBot(player);
+
+    /// Two cards trade places, each taking the other's zone and spot in it: Sorry!'s 11, or turning a two-way card
+    /// round by trading it for its other side, kept in a box. A sorted zone stays sorted.
+    public void Swap(Card? card, Card? other)
+    {
+        if (card != null && other != null && card != other)
+        {
+            game.Swap(card, other);
+        }
+    }
+
+    /// Where a card lies in its zone, counting from 1 at the bottom (the left of a row), or 0 for no card.
+    public int Position(Card? card) => card != null ? game.ZoneOf(card).Cards.IndexOf(card) + 1 : 0;
 
     public void TryMove(Card? card, object? to)
     {
@@ -62,7 +87,7 @@ public class Actions(Game game, Card? stepCard = null)
                 return;
             }
         }
-        game.LogLine($"[not allowed] {card.Title}: no move rule allows any of {string.Join(", ", destinations.Select(destination => destination.Name))}");
+        game.LogLine($"[not allowed] {game.Describe(card)}: no move rule allows any of {string.Join(", ", destinations.Select(destination => destination.Name))}");
     }
 
     public List<Card> All(Zone zone) => [.. zone.Cards];
@@ -93,9 +118,18 @@ public class Actions(Game game, Card? stepCard = null)
         }
     }
 
+    public void Reveal(object? cards)
+    {
+        foreach (Card card in CardsIn(cards).Where(card => !card.Revealed))
+        {
+            game.Reveal(card);
+        }
+    }
+
     public void Shuffle(Zone zone)
     {
         zone.Shuffle(game.Random);
+        game.Forget(zone.Cards);
         game.LogLine("  shuffle " + zone.Name);
     }
 
@@ -128,7 +162,7 @@ public class Actions(Game game, Card? stepCard = null)
 
     /// Waits for the current player to pick one option, and gives it: a card of a zone or list, a zone of a list of
     /// zones (a pile), or a value of a list (a color), e.g. pile = choose(discard_piles, 'Take from which pile?').
-    /// With nothing to choose from, it gives null straight away.
+    /// With nothing to choose from, it gives null straight away, and with only one card or zone, that one.
     public object? Choose(object? options, string prompt = "") => WaitForChoice(options, 1, true, true, prompt);
 
     /// Waits for the current player to pick exactly that many cards, and gives them as a list, e.g.
@@ -166,6 +200,12 @@ public class Actions(Game game, Card? stepCard = null)
     public void EndGame(object? winners = null)
     {
         game.EndGame(PlayersIn(winners));
+    }
+
+    /// Writes a line in the action log for everyone to read, e.g. log('%s scores %d' % [name_of(player), score]).
+    public void Log(string text)
+    {
+        game.LogLine(text);
     }
 
     /// Players out of the game: turns, next_player() and opponent_ skip them. A number or a list.
@@ -272,16 +312,24 @@ public class Actions(Game game, Card? stepCard = null)
     public Card? Top(object? cards) => CardsIn(cards).LastOrDefault();
 
     /// The total of a column over cards, or of a list of numbers: sum(hand, 'points'), sum([1, 2, 3]).
-    public double Sum(object? items, string column = "")
+    /// A whole number when every part is whole, so sum(dice, 'value') / 2 counts in whole numbers.
+    public object Sum(object? items, string column = "")
     {
-        if (column.Length == 0 && items is List<object?> numbers)
-        {
-            return numbers.Where(Values.IsNumber).Sum(Values.ToDouble);
-        }
-        return CardsIn(items).Sum(card => Number(card, column));
+        List<object> parts = column.Length == 0 && items is List<object?> numbers
+            ? numbers.Where(Values.IsNumber).Cast<object>().ToList()
+            : CardsIn(items).Select(card => Number(card, column)).ToList();
+        return parts.All(part => part is long) ? (object)parts.Sum(part => (long)part) : parts.Sum(Values.ToDouble);
     }
 
-    public double Number(Card? card, string column) => card != null ? Values.ToFloat(card.Column(column, "0")) : 0;
+    /// A column as a number: whole unless it's written with a point (as card.value reads it), and 0 for no card or text
+    /// that isn't a number.
+    public object Number(Card? card, string column)
+    {
+        string text = card?.Column(column, "0") ?? "0";
+        return Values.IsValidFloat(text) && !text.Contains('.') ? (object)Values.ToInt(text) : Values.ToFloat(text);
+    }
+
+    static double NumberOf(Card? card, string column) => card != null ? Values.ToFloat(card.Column(column, "0")) : 0;
 
     public string Text(Card? card, string column) => card?.Column(column) ?? "";
 
@@ -290,7 +338,7 @@ public class Actions(Game game, Card? stepCard = null)
         Card? best = null;
         foreach (Card candidate in CardsIn(cards))
         {
-            if (best == null || Number(candidate, column) > Number(best, column))
+            if (best == null || NumberOf(candidate, column) > NumberOf(best, column))
             {
                 best = candidate;
             }
@@ -303,7 +351,7 @@ public class Actions(Game game, Card? stepCard = null)
         Card? best = null;
         foreach (Card candidate in CardsIn(cards))
         {
-            if (best == null || Number(candidate, column) < Number(best, column))
+            if (best == null || NumberOf(candidate, column) < NumberOf(best, column))
             {
                 best = candidate;
             }
@@ -403,11 +451,45 @@ public class Actions(Game game, Card? stepCard = null)
 
     public List<Card> FaceDown(object? cards) => CardsIn(cards).Where(card => !card.FaceUp).ToList();
 
-    public List<Card> Without(object? cards, object? removed)
+    /// The cards, minus the removed ones; or a list of values (names, numbers) without the removed values.
+    public object Without(object? cards, object? removed)
     {
+        if (cards is List<object?> { Count: > 0 } values && values.All(item => item is not (Card or Core.Zone or List<object?>)))
+        {
+            List<object?> gone = removed as List<object?> ?? [removed];
+            return values.Where(item => !gone.Any(each => Values.AreEqual(item, each))).ToList();
+        }
         List<Card> removedCards = CardsIn(removed);
         return CardsIn(cards).Where(card => !removedCards.Contains(card)).ToList();
     }
+
+    /// The total of a condition with one parameter, worked out for each item: a zone's cards, or each card, zone or
+    /// value of a list, e.g. sum_of(zones_where(board, 'mine_here'), 'progress').
+    public object SumOf(object? items, string condition) =>
+        game.ConditionValueFor(condition) is { } valueOf ? Sum(ItemsOf(items).Select(valueOf).Where(Values.IsNumber).ToList()) : 0L;
+
+    /// The largest value of a condition with one parameter over the items (as sum_of), or null if there are none,
+    /// e.g. max_of(open_boxes, 'points_for').
+    public object? MaxOf(object? items, string condition) =>
+        game.ConditionValueFor(condition) is { } valueOf ? ItemsOf(items).Select(valueOf).Where(Values.IsNumber).MaxBy(Values.ToDouble) : null;
+
+    /// Changes a column of cards for the rest of the game, kept as they move, e.g. rolling a die:
+    /// set(die, 'value', random(1, 6)).
+    public void Set(object? cards, string column, object? value)
+    {
+        foreach (Card card in CardsIn(cards))
+        {
+            if (card.ColumnMatching(column) is not { } named)
+            {
+                game.ReportFailure($"set: {card.Title} has no column \"{column}\"");
+                return;
+            }
+            game.SetColumn(card, named, value);
+        }
+    }
+
+    /// The zone a card is in, or null for no card.
+    public Zone? ZoneOf(Card? card) => card != null ? game.ZoneOf(card) : null;
 
     public List<Card> Where(object? cards, string column, object? value) =>
         CardsIn(cards).Where(card => card.Column(column) == Values.Format(value)).ToList();
@@ -457,7 +539,7 @@ public class Actions(Game game, Card? stepCard = null)
 
     /// Every set of cards whose column adds up to total. Tries every subset, so keep it to small hands.
     public List<List<Card>> Sums(object? cards, string column, double total) =>
-        Core.Melds.Subsets(CardsIn(cards)).Where(subset => subset.Count > 0 && Sum(subset, column) == total).ToList();
+        Core.Melds.Subsets(CardsIn(cards)).Where(subset => subset.Count > 0 && Values.ToDouble(Sum(subset, column)) == total).ToList();
 
     /// Every longest run of consecutive values, at least length long. A repeated value gives one run per copy
     /// (3, 4, 4, 5 is two runs), so count(runs(...)) scores runs the cribbage way.
@@ -466,7 +548,7 @@ public class Actions(Game game, Card? stepCard = null)
         Dictionary<long, List<Card>> byValue = [];
         foreach (Card card in CardsIn(cards))
         {
-            long value = (long)Number(card, column);
+            long value = (long)NumberOf(card, column);
             if (!byValue.TryGetValue(value, out List<Card>? same))
             {
                 byValue[value] = same = [];
@@ -519,6 +601,18 @@ public class Actions(Game game, Card? stepCard = null)
         _ => [],
     };
 
+    /// '' (the zone's way), 'up' or 'down'.
+    bool ReadFace(string face, out bool? faceUp)
+    {
+        faceUp = face switch { "up" => true, "down" => false, _ => null };
+        if (face.Length > 0 && faceUp == null)
+        {
+            game.ReportFailure($"face should be 'up' or 'down', not '{face}'");
+            return false;
+        }
+        return true;
+    }
+
     Board? BoardOf(Zone space)
     {
         if (space.Board == null)
@@ -543,6 +637,15 @@ public class Actions(Game game, Card? stepCard = null)
     /// The condition as a check on the spaces of a board, by their numbers (null if there's no such condition).
     Func<int, bool>? HoldsAt(Zone anySpace, string condition) =>
         game.ConditionFor(condition) is { } holds ? number => holds(SpaceNumbered(anySpace, number)) : null;
+
+    /// What sum_of and max_of go through: a zone's cards, or a list's items as they are.
+    static List<object?> ItemsOf(object? items) => items switch
+    {
+        null => [],
+        Core.Zone zone => [.. zone.Cards],
+        List<object?> list => list,
+        _ => [items],
+    };
 
     /// Cards stay cards (a zone gives its cards); any other list is kept as it is.
     static List<object?> ListOf(object? items)
@@ -608,6 +711,10 @@ public class Actions(Game game, Card? stepCard = null)
         if (exactly && !single && offered.Count <= amount)
         {
             return offered;
+        }
+        if (single && Choice.IsOnlyPick(offered, 1, true))
+        {
+            return offered[0];
         }
         return game.Runner.AnswerOrWait(new ChoiceRequest(offered, Math.Min(amount, offered.Count), exactly, prompt));
     }

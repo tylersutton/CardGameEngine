@@ -6,7 +6,9 @@ public class Snapshot
     readonly Dictionary<string, List<Card>> zones = [];
     readonly Dictionary<string, List<string>> sortColumns = [];
     readonly Dictionary<Card, bool> faces = [];
+    readonly List<Card> revealed;
     readonly Dictionary<Card, Dictionary<string, object?>> marks = [];
+    readonly Dictionary<Card, Dictionary<string, string>> changedColumns = [];
     readonly Dictionary<string, object?> variables;
     readonly ChoiceState choice;
     readonly List<Frame> waitingSteps;
@@ -30,8 +32,13 @@ public class Snapshot
                 {
                     marks[card] = new(card.Marks);
                 }
+                if (card.Changed.Count > 0)
+                {
+                    changedColumns[card] = card.Changed;
+                }
             }
         }
+        revealed = game.Cards.Where(card => card.Revealed).ToList();
         variables = (Dictionary<string, object?>)Values.DeepCopy(game.Variables)!;
         choice = game.Choice.State();
         waitingSteps = StepRunner.CopyFrames(game.Runner.Frames);
@@ -54,11 +61,13 @@ public class Snapshot
         foreach ((Card card, bool faceUp) in faces)
         {
             card.FaceUp = faceUp;
+            card.Revealed = revealed.Contains(card);
             card.Marks.Clear();
             foreach ((string key, object? value) in marks.GetValueOrDefault(card) ?? [])
             {
                 card.Marks[key] = value;
             }
+            card.Changed = changedColumns.GetValueOrDefault(card) ?? [];
         }
         game.Variables.Clear();
         foreach ((string name, object? value) in variables)
@@ -72,8 +81,12 @@ public class Snapshot
         game.Plays.Offered = [.. offered];
         game.Over = over;
         game.Winners = [.. winners];
-        game.KnockedOut = [.. knockedOut];
-        game.ClearPlayerCaches();
+        // Bots restore after every move they try, so the caches built from who's out are kept unless that changed.
+        if (!game.KnockedOut.SequenceEqual(knockedOut))
+        {
+            game.KnockedOut = [.. knockedOut];
+            game.ClearPlayerCaches();
+        }
         game.Random.State = randomState;
     }
 
@@ -83,16 +96,17 @@ public class Snapshot
     /// Whether two snapshots hold the same state (an input that changed nothing isn't worth an undo).
     public bool SameAs(Snapshot other) => Values.DeepEquals(Plain(), other.Plain());
 
-    /// What's where (cards, faces, marks, variables) as plain data. With everyDetail, also the order cards sit in,
+    /// What's where (cards, faces, marks, changed columns, variables) as plain data. With everyDetail, also the order cards sit in,
     /// any choice in progress and the random numbers' state; without, just enough to tell whether a move changed
     /// anything.
     public static Dictionary<string, object?> Describe(Game game, bool everyDetail = true)
     {
         Dictionary<string, object?> zones = [];
         Dictionary<string, object?> marks = [];
+        Dictionary<string, object?> columns = [];
         Dictionary<string, object?> state = new()
         {
-            ["variables"] = PlainData(game.Variables), ["zones"] = zones, ["marks"] = marks, ["over"] = game.Over,
+            ["variables"] = PlainData(game.Variables), ["zones"] = zones, ["marks"] = marks, ["columns"] = columns, ["over"] = game.Over,
             ["winners"] = PlainData(game.Winners),
         };
         if (everyDetail)
@@ -113,6 +127,10 @@ public class Snapshot
             {
                 marks[card.Id.ToString()] = PlainData(card.Marks);
             }
+            foreach (Card card in zone.Cards.Where(card => card.Changed.Count > 0))
+            {
+                columns[card.Id.ToString()] = PlainData(card.Changed);
+            }
         }
         return state;
     }
@@ -128,7 +146,7 @@ public class Snapshot
     List<object?> Plain() =>
     [
         zones, sortColumns, faces, marks, variables, choice.Plain(), waitingSteps.Select(frame => (object?)frame.Plain()).ToList(),
-        offered, over, winners, knockedOut, randomState,
+        offered, over, winners, knockedOut, randomState, revealed.Cast<object?>().ToList(), changedColumns,
     ];
 
     /// Cards and zones by name, so the state can be written out as JSON.

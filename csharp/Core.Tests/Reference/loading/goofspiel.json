@@ -1,7 +1,18 @@
 {
 	"rules": {
 		"title": "Goofspiel",
-		"description": "Three players, you against two bots, all bidding at once. Each round a diamond is turned up as the prize; everyone secretly bids a card from their suit, then the bids are revealed. The highest bid takes the prize (a tie leaves it for the next round). Most prize points after 13 rounds wins.",
+		"description": "Two or three players, you against bots, all bidding at once. Each round a diamond is turned up as the prize; everyone secretly bids a card from their suit, then the bids are revealed. The highest bid takes the prize (a tie leaves it for the next round). Most prize points after 13 rounds wins.",
+		"how_to_play": [
+			"# Goal",
+			"Win the most prize points. Each player has one suit of cards to bid with; the diamonds are the prizes.",
+			"# A round",
+			"- A diamond is turned up as the prize. Its value (Ace 1 up to King 13) is what it's worth.",
+			"- Everyone secretly bids a card from their hand: click it. Bids are revealed together.",
+			"- The highest bid wins the prize. A tie wins nothing, and the prize stays for the next round, worth more.",
+			"- Bid cards are used up. Press Next round to continue.",
+			"# The end",
+			"- After 13 rounds, the most prize points wins."
+		],
 		"zones": {
 			"box": {
 				"outline": false,
@@ -11,7 +22,10 @@
 					-0.3,
 					0.5
 				],
-				"cards": "res://decks/standard_deck.csv"
+				"cards": "res://decks/standard_deck.csv",
+				"columns": {
+					"art": "'cards/' + card.rank + '_' + card.suit + '.png'"
+				}
 			},
 			"prizes": {
 				"label": "Prizes",
@@ -108,6 +122,12 @@
 			"Next round": {
 				"human_only": true,
 				"steps": []
+			},
+			"Sort hand": {
+				"any_time": true,
+				"steps": [
+					"sort(hand, ['value'])"
+				]
 			}
 		},
 		"triggers": {
@@ -196,7 +216,8 @@
 		"team_variables": {},
 		"melds": {},
 		"status": {
-			"points": "'%s %d, %s %d, %s %d' % [name_of(1), sum(won_1, 'value'), name_of(2), sum(won_2, 'value'), name_of(3), sum(won_3, 'value')]",
+			"your points": "sum(won[viewer()], 'value')",
+			"most points": "most('prize_points')",
 			"prize worth": "stake"
 		},
 		"show_variables": [
@@ -215,7 +236,9 @@
 			"body": [
 				"suit"
 			],
-			"color": "color"
+			"color": "color",
+			"image": "art",
+			"card_back": "card_back.svg"
 		},
 		"unknown_keys": [],
 		"error": ""

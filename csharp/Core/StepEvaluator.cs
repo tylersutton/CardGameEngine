@@ -52,15 +52,16 @@ public class StepEvaluator(IStepContext game, Card? card)
         };
     }
 
+    /// A condition's parameters come first, so a parameter named like anything else (even card) means what was passed.
     object? Name(string name)
     {
-        if (name == CardVariable)
-        {
-            return card;
-        }
         if (parameters.TryPeek(out Dictionary<string, object?>? innermost) && innermost.TryGetValue(name, out object? parameter))
         {
             return parameter;
+        }
+        if (name == CardVariable)
+        {
+            return card;
         }
         if (game.TryGetCondition(name, out Condition? condition))
         {

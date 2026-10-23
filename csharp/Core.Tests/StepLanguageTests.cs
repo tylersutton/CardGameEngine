@@ -47,9 +47,13 @@ public class StepLanguageTests
     [InlineData("lookup(table, -1)", 0L)]
     [InlineData("suited(deck, 'Hearts')", 13L)]
     [InlineData("hearts_and_spades(deck)", 26L)]
-    [InlineData("sum(first(group_sizes(deck, 'color'), 1))", 26.0)]
+    [InlineData("sum(first(group_sizes(deck, 'color'), 1))", 26L)]
     [InlineData("max([3, 9, 4]) + min([3, 9, 4])", 12L)]
-    [InlineData("sum([1, 2, 3])", 6.0)]
+    [InlineData("sum([1, 2, 3])", 6L)]
+    [InlineData("sum([1, 2.5])", 3.5)]
+    [InlineData("sum(where(deck, 'rank', 'K'), 'value') / 8", 6L)]
+    [InlineData("number(top(deck), 'value') / 2", 6L)]
+    [InlineData("number(top(deck), 'rank')", 0.0)]
     [InlineData("count(where(deck, 'SUIT', 'Clubs'))", 13L)]
     public void WorksOut(string step, object wanted) => Expect(step, wanted);
 
@@ -59,6 +63,105 @@ public class StepLanguageTests
         Expect("[1, 2] + [3]", List(1L, 2L, 3L));
         Expect("group_sizes(deck, 'suit')", List(13L, 13L, 13L, 13L));
         Expect("first([5, 6, 7], 2) + last([5, 6, 7], 1)", List(5L, 6L, 7L));
+    }
+
+    [Fact]
+    public void ZonesKnowTheirNumberAndOwner()
+    {
+        Expect("hand_2.number", 2L);
+        Expect("hand_2.owner", 2L);
+        Expect("pile.owner", 0L);
+    }
+
+    [Fact]
+    public void PositionCountsFromTheBottom()
+    {
+        game.Run(["draw(deck, hand, 3)"]);
+        Card middle = game.Zones["hand_1"].Cards[1];
+        Assert.Equal(2L, game.Evaluate("position(card)", middle));
+        Assert.Equal(middle, game.Evaluate("all(hand)[position(card) - 1]", middle));
+        Expect("position(top(pile))", 0L);
+    }
+
+    [Fact]
+    public void SwappedCardsTradeZoneAndSpot()
+    {
+        game.Run(["draw(deck, hand, 3)", "draw(deck, pile)"]);
+        Card middle = game.Zones["hand_1"].Cards[1];
+        Card piled = game.Zones["pile"].Cards[0];
+        game.Run(["swap(all(hand)[1], top(pile))"]);
+        Assert.Empty(failures);
+        Assert.Equal(piled, game.Zones["hand_1"].Cards[1]);
+        Assert.Equal([middle], game.Zones["pile"].Cards);
+        game.Run(["swap(all(hand)[0], all(hand)[2])"]);
+        Assert.Equal(piled, game.Zones["hand_1"].Cards[1]);
+    }
+
+    [Fact]
+    public void CardsCanLandFaceDownInAFaceUpZone()
+    {
+        game.Run(["flip(deck)"]);
+        List<string> lines = [];
+        game.GameLog.Logged += lines.Add;
+        game.Run(["draw(deck, pile, 2, 'down')", "move(top(deck), pile, 'up')"]);
+        Assert.Empty(failures);
+        Assert.Equal([false, false, true], game.Zones["pile"].Cards.Select(card => card.FaceUp));
+        Assert.Contains(lines, line => line.Contains("2 hidden cards"));
+        game.Run(["draw(deck, pile, 1, 'sideways')"]);
+        Assert.Contains(failures, failure => failure.Contains("'up' or 'down'"));
+    }
+
+    [Fact]
+    public void ASwapIsLoggedAsOneChange()
+    {
+        game.Run(["draw(deck, hand, 2)", "draw(deck, pile)"]);
+        List<string> lines = [];
+        game.GameLog.Logged += lines.Add;
+        game.Run(["swap(all(hand)[0], top(pile))"]);
+        Assert.Single(lines, line => line.Contains('↔'));
+        Assert.DoesNotContain(lines, line => line.Contains('→'));
+        Assert.True(GameLog.ForPlayers(lines.Single(line => line.Contains('↔'))));
+    }
+
+    [Fact]
+    public void IsBot()
+    {
+        Expect("is_bot(1)", false);
+        Game withBot = StepLanguageGame.Create("""{ "bot": { "players": [2] } }""");
+        Assert.Equal(true, withBot.Evaluate("is_bot(2)"));
+    }
+
+    [Fact]
+    public void ConditionsWorkedOutOverLists()
+    {
+        Expect("sum_of([1, 2, 3], 'doubled')", 12L);
+        Expect("max_of([1, 5, 3], 'doubled')", 10L);
+        Expect("count(matching(deck, 'ace'))", 4L);
+        Expect("count(matching(deck, 'is_ace'))", 4L);
+        Expect("size(without(['a', 'b', 'c'], 'b'))", 2L);
+        Expect("without(['a', 'b', 'c'], ['a', 'c'])[0]", "b");
+        Expect("zone_of(top(deck)) == deck", true);
+    }
+
+    [Fact]
+    public void AParameterNamedCardIsWhatWasPassed()
+    {
+        Card king = game.Cards.First(card => card.Title == "K♠");
+        Assert.Equal("A", game.Evaluate("rank_of(top(where(deck, 'name', 'A♠')))", king));
+    }
+
+    [Fact]
+    public void SetChangesAColumnForTheRestOfTheGame()
+    {
+        Snapshot before = Snapshot.Take(game);
+        game.Run(["set(top(where(deck, 'name', 'A♠')), 'value', 14)", "move(top(where(deck, 'name', 'A♠')), pile)"]);
+        Assert.Empty(failures);
+        Assert.Equal(14L, game.Evaluate("card.value", Ace));
+        Assert.Equal(14L, game.Evaluate("number(top(pile), 'value')"));
+        before.Restore(game);
+        Assert.Equal(1L, game.Evaluate("card.value", Ace));
+        game.Run(["set(top(deck), 'colour', 1)"]);
+        Assert.Contains(failures, failure => failure.Contains("no column \"colour\""));
     }
 
     [Fact]

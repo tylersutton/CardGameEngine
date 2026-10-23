@@ -9,6 +9,8 @@ public partial class CardView : Control
     const float DefaultPieceSize = 50;
     const string Disc = "disc";
     const string SquarePiece = "square";
+    /// A piece drawn as the painted shape of the board space it's on, in its own color: a line in Dots and Boxes.
+    const string FillPiece = "fill";
     const string ArtLayout = "art";
     const float CornerRadius = 8;
     const float ArtTop = 26;
@@ -30,6 +32,10 @@ public partial class CardView : Control
     const int MarksFontSize = 13;
     static readonly Color HighlightColor = new(1, 0.85f, 0.2f);
     static readonly Color SelectedColor = new(0.3f, 0.75f, 1);
+    static readonly Color PlayableColor = new(1, 1, 1, 0.7f);
+    static readonly Color FlashColor = new(1, 0.6f, 0.2f);
+    static readonly Color DimmedTint = new(0.6f, 0.6f, 0.6f);
+    const float FlashTime = 1.5f;
     static readonly Color AllowedColor = new(0.35f, 0.9f, 0.45f);
     static readonly Color RefusedColor = new(0.95f, 0.35f, 0.3f);
     static readonly Color MarksBackground = new(0.1f, 0.1f, 0.1f, 0.8f);
@@ -49,6 +55,7 @@ public partial class CardView : Control
     static readonly StyleBoxFlat imageEdgeStyle = OutlineBox(FaceBorder, 1, CornerRadius);
     static readonly Dictionary<Color, StyleBoxFlat> backStylesByColor = [];
     public static readonly StyleBoxFlat HighlightStyle = OutlineBox(HighlightColor);
+    public static readonly StyleBoxFlat PlayableStyle = OutlineBox(PlayableColor, 3, 12, 3);
     static readonly StyleBoxFlat selectedStyle = OutlineBox(SelectedColor);
     public static readonly StyleBoxFlat AllowedStyle = OutlineBox(AllowedColor);
     public static readonly StyleBoxFlat RefusedStyle = OutlineBox(RefusedColor);
@@ -62,6 +69,8 @@ public partial class CardView : Control
     public event Action<CardView>? Unhovered;
 
     public Card? Card { get; set; }
+    /// Where the card is moving to (see MoveTo), for laying the table out elsewhere without waiting for it to get there.
+    public (Vector2 Position, float Rotation) Destination { get; private set; }
     Dictionary<string, object?> face = [];
     readonly ImageCache? images;
     Tween? tween;
@@ -72,9 +81,16 @@ public partial class CardView : Control
     bool faceUp = true;
     bool highlighted;
     bool selected;
+    bool playable;
     DropHint hint;
     string marksText = "";
+    string spaceShape = "";
+    float spaceSize = DefaultPieceSize;
     float lift;
+    /// How strongly the glow of Flash still shows: 1 when the card has just moved, fading to 0.
+    float flash;
+    Tween? flashTween;
+    StyleBoxFlat? flashStyle;
 
     /// Off for cards this screen's player can't move (another player's, online): they can still be clicked.
     public bool Movable { get; set; } = true;
@@ -96,6 +112,24 @@ public partial class CardView : Control
         set
         {
             highlighted = value;
+            QueueRedraw();
+        }
+    }
+
+    /// The player can't play this card now, though they could play others beside it (TableView.FindPlayable).
+    public bool Dimmed
+    {
+        get => Modulate != Colors.White;
+        set => Modulate = value ? DimmedTint : Colors.White;
+    }
+
+    /// Something the player could do now would use this card (Plays.Playable): fainter than a choice's highlight.
+    public bool Playable
+    {
+        get => playable;
+        set
+        {
+            playable = value;
             QueueRedraw();
         }
     }
@@ -150,7 +184,7 @@ public partial class CardView : Control
         face = cardFace;
         images = cardImages;
         TextureFilter = TextureFilterEnum.LinearWithMipmaps;
-        Size = IsPiece ? Vector2.One * PieceSize() : CardSize;
+        Size = IsFill ? SpaceShape.Extent(spaceShape, spaceSize) : IsPiece ? Vector2.One * PieceSize() : CardSize;
         PivotOffset = Size / 2;
         MouseEntered += () =>
         {
@@ -166,6 +200,7 @@ public partial class CardView : Control
 
     public void MoveTo(Vector2 targetPosition, float targetRotation)
     {
+        Destination = (targetPosition, targetRotation);
         StopMoving();
         tween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
         tween.TweenProperty(this, "position", targetPosition, MoveTime);
@@ -175,6 +210,19 @@ public partial class CardView : Control
     public void StopMoving()
     {
         tween?.Kill();
+    }
+
+    /// Glows for a moment, to show that someone else (a bot, or another player online) just moved this card.
+    public void Flash()
+    {
+        flashStyle ??= OutlineBox(FlashColor, HighlightWidth, 12, 3);
+        flashTween?.Kill();
+        flashTween = CreateTween().SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.In);
+        flashTween.TweenMethod(Callable.From<float>(strength =>
+        {
+            flash = strength;
+            QueueRedraw();
+        }), 1f, 0f, FlashTime);
     }
 
     public override void _GuiInput(InputEvent @event)
@@ -249,18 +297,45 @@ public partial class CardView : Control
         {
             DrawMarks(rect);
         }
-        if (OutlineStyle() is { } outline && Shape() == Disc)
+        if (OutlineStyle() is { } outline)
         {
-            DrawArc(rect.GetCenter(), rect.Size.X / 2 + HighlightWidth / 2f, 0, Mathf.Tau, 48, outline.BorderColor, HighlightWidth, true);
+            DrawOutline(rect, outline);
         }
-        else if (OutlineStyle() is { } box)
+        if (flash > 0)
         {
-            DrawStyleBox(box, rect.Grow(HighlightWidth / 2f));
+            flashStyle!.BorderColor = new Color(FlashColor, flash);
+            DrawOutline(rect, flashStyle);
         }
     }
 
+    void DrawOutline(Rect2 rect, StyleBoxFlat outline)
+    {
+        if (Shape() == Disc)
+        {
+            DrawArc(rect.GetCenter(), rect.Size.X / 2 + HighlightWidth / 2f + outline.ExpandMarginTop, 0, Mathf.Tau, 48, outline.BorderColor, outline.BorderWidthTop, true);
+            return;
+        }
+        DrawStyleBox(outline, rect.Grow(HighlightWidth / 2f));
+    }
+
     /// "shape" in card_face: a column or one shape for every card. Anything but a disc or a square is a card.
-    public bool IsPiece => Card != null && Shape() is Disc or SquarePiece;
+    public bool IsPiece => Card != null && Shape() is Disc or SquarePiece or FillPiece;
+
+    bool IsFill => Card != null && Shape() == FillPiece;
+
+    /// The board space the card is on: its painted shape ("" for the whole space) and size, which a "fill" piece takes.
+    public void ShowOnSpace(string shape, float size)
+    {
+        if (!IsFill || shape == spaceShape && size == spaceSize)
+        {
+            return;
+        }
+        spaceShape = shape;
+        spaceSize = size;
+        Size = SpaceShape.Extent(shape, size);
+        PivotOffset = Size / 2;
+        QueueRedraw();
+    }
 
     string Shape() => FaceValue("shape");
 
@@ -279,6 +354,11 @@ public partial class CardView : Control
         string side = Card!.FaceUp ? "image" : "back";
         Texture2D? image = FaceUp ? ImageOf(side) : null;
         Color fill = !FaceUp ? HiddenPieceColor : image != null ? Colors.White : Color.FromString(FaceValue(Card.FaceUp ? "background" : "back"), Colors.White);
+        if (Shape() == FillPiece)
+        {
+            SpaceShape.Draw(this, rect.GetCenter(), spaceShape, spaceSize, fill);
+            return;
+        }
         bool disc = Shape() == Disc;
         if (disc)
         {
@@ -334,7 +414,11 @@ public partial class CardView : Control
         {
             return selectedStyle;
         }
-        return Highlighted ? HighlightStyle : null;
+        if (Highlighted)
+        {
+            return HighlightStyle;
+        }
+        return Playable ? PlayableStyle : null;
     }
 
     /// A card's face: its image covering the whole card ("full", the default layout, for cards whose picture has
@@ -507,11 +591,13 @@ public partial class CardView : Control
         return box;
     }
 
-    static StyleBoxFlat OutlineBox(Color color, int width = HighlightWidth, float radius = 10)
+    /// An outline drawn round a card; "outside" moves it that far out, onto the table, to show on white cards too.
+    static StyleBoxFlat OutlineBox(Color color, int width = HighlightWidth, float radius = 10, float outside = 0)
     {
         StyleBoxFlat box = new() { DrawCenter = false, BorderColor = color };
         box.SetBorderWidthAll(width);
         box.SetCornerRadiusAll((int)radius);
+        box.SetExpandMarginAll(outside);
         return box;
     }
 }

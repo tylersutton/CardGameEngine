@@ -9,7 +9,7 @@ Prototype card games in Godot 4.7 (the .NET build) without writing code. The car
 ## Quick start
 
 1. Open the project folder in Godot 4.7 (the .NET build, which runs C#) and press **F5**.
-2. Pick a game on the title screen. Every file in `games/` is listed there.
+2. Pick a game on the title screen. Every file in `games/` is listed there. For a game that can be played by different numbers of players, choose how many beside **Play**.
 3. To make your own game, press **New game...**. Give it a name, a player count and a deck, and it writes a small playable game for you to change. That game deals, lets players draw and discard, and puts bots in the other seats, and it has comments explaining each part. Change the game in the editor (**Open in editor**), or by hand (**Edit file**). Saving reloads the table.
 
 To go straight into one game while you work on it, set **Rules Path** on the **Main** node of `scenes/main.tscn`, then press **F6**.
@@ -28,32 +28,41 @@ To go straight into one game while you work on it, set **Rules Path** on the **M
 | Kaboom | Responding to other players' cards (Nope chains), knocking players out |
 | President | Playing several cards at once, passing, finishing order |
 | Goofspiel | Everyone bidding at once, face down |
+| Go Fish | Asking another player for cards (click a card, then their hand), going again |
+| Blackjack | A dealer run by steps, bets chosen from buttons, one to three players |
+| Trio | Asking for the lowest or highest card of anyone's sorted hand, memory |
+| Dnup, Scout | Cards with a number at each end, turned round with `swap`; Scout's shows of cards side by side in a hand you can't rearrange |
+| Yahtzee | Dice (a box of die faces), keeping and rerolling, a scorecard of pieces showing what each box would score |
+| Mancala, Dots and Boxes, Checkers | Boards: sowing round a ring of pits, claiming boxes and going again, jumping, forced captures and crowning |
+| Sorry!, Candy Land | Races round a board: bumping pawns back to Start, slides, swaps, shortcuts and lost turns |
+| War | No decisions at all, just the Battle button |
 | Fireworks | Co-op (Hanabi-style): holding your cards facing away, clues marked on cards |
 | Pyramid, Solitaire | Solitaire: overlapping cards, cascading columns, dragging stacks, double-click to send a card up |
 | Standard deck | A free-play sandbox |
 
-All but Color Match use `decks/standard_deck.csv`, or a deck named after the game.
+The card games use `decks/standard_deck.csv` or a deck named after the game; the others have their own decks of pieces in `decks/`.
 
 ## Playing
 
 | Control | What it does |
 |---|---|
 | Drag a card | Moves it to the zone nearest where you drop it. While you drag, the outline turns green if the move is allowed and red if not. A refused drop snaps back, and the log says why. Dragging within your own hand reorders it. |
-| Click a card or zone | Does the game's click action there, if it has one (for example, drawing from the deck). |
-| Choosing | The cards you can choose are outlined in yellow. Click them; picked cards turn blue. Anything else to pick, like a color, appears as buttons above the table. |
-| Toolbar buttons | The game's other actions. A button is greyed out while it can't be done. The bar above the table says what you can do now. |
+| Click a card or zone | Does the game's click action there, if it has one (for example, drawing from the deck). On your turn, the cards in your hand you can't play are dimmed (all of them when you can only pass), also while you pick several; while you're doing something else, like drawing or bidding, your hand stays as it is. |
+| Choosing | The cards you can choose are outlined in yellow. Click them; picked cards turn blue. Anything else to pick, like a color, appears as buttons under the table. On your turn, clicking a card can also start a button's choice of several cards with it, as in President's Play. |
+| Action buttons | The game's other actions, under the table. The ones you can do now are gold; the rest are greyed out, and an offered action's button only shows while your turn offers it. Buttons anyone can press at any time, like sorting your hand, sit apart on the right. The bar above them says what you can do now, or who the game is waiting for. Keys **1**–**9** press the buttons shown, left to right (choosing a number, like a bid, the number's own key), and **Space** presses the gold one when there's only one. |
 | **Undo** (Ctrl+Z) | Goes back one of your inputs, including one step of a choice. |
-| **Reload** | Starts over from the files on disk. Saving a game file or deck reloads it automatically. |
-| **Sandbox** | Ignores the rules so you can set up a situation by hand. |
-| **Zone names** | Shows each zone's name and card count: the names your rules use. |
+| **How to play** (F1) | The rules of the game you're playing, and how to do each thing on the table. |
+| **Designer** menu | Tools for making the game: **Reload** starts over from the files on disk (saving a game file or deck reloads it automatically); **Sandbox** ignores the rules so you can set up a situation by hand; **Zone names** shows each zone's name and card count, the names your rules use; **Show plays** outlines every card and zone the player whose turn it is could use now, to check your rules; **Designer info** shows every variable and how the steps worked each move out; **Slow / Normal / Fast bots** sets how quickly bots move; **Bot plays for me** lets a bot take your turns too, to play a game out or watch bots play it (not online). |
 
-The side panel shows the game's variables and readouts, with a log of everything that happened beneath them. Cards you can't see are logged as "hidden card", and errors appear in red.
+The side panel shows the game's readouts, with a log of what happened beneath them. With **Designer info** (on while you try a game from the editor), it also shows every variable, and the log shows each step's workings: triggers, conditions, variables changing. Cards you can't see are logged as "hidden card", and errors appear in red. Cards a bot or another player just moved glow orange for a moment. When the game ends, a banner says who won (click it away), and every hand is shown.
 
 **Online:** press **Play online...** on the title screen.
 
-1. The host presses **Host** (port 7777) and picks the game.
+1. The host presses **Host** (port 7777) and picks the game, and how many play if it allows different numbers.
 2. The other players press **Join** with the host's address. Use the local address on the same network. Over the internet, the host forwards the port, or everyone joins a virtual network like Tailscale.
-3. Everyone takes a seat, the host can put bots in empty seats, and the host presses **Start**.
+3. Everyone is seated as they arrive (**Sit here** moves), the host can put bots in empty seats, and the host presses **Start**.
+
+When a match ends, the host presses **Play again** (same game and seats, a new deal) or **Back to lobby** to pick another game; everyone stays connected and seated. The host's **Lobby** button ends a match early. The screen remembers your name, address and the host's game, and the title screen's **Host again** / **Rejoin** button goes straight back online.
 
 Only the host needs the game's files. Each player sees the table from their own seat and only their own hidden cards. Undo asks the other players first. A player who drops out can rejoin under the same name.
 
@@ -66,7 +75,7 @@ Only the host needs the game's files. Each player sees the table from their own 
 - **Right:** the inspector: the settings of whatever is selected, with less-used ones folded away. Point at a setting to read what it does at the bottom. Steps are edited as a list, with suggestions and problems shown as you type; the turn also gets a summary in words.
 - **Bottom:** problems with the game (Ctrl+J shows or hides them). Click one to go to it.
 - **Ctrl+P** finds any command or part of the game. Ctrl+S saves, Ctrl+Z undoes.
-- **File > Export to Tabletop Simulator** sets the game's table up in Tabletop Simulator, to play by hand: every zone that starts with cards becomes a deck there, drawn with the game's own card faces. In Tabletop Simulator, **Load > Card Game Prototypes** opens it. The pictures stay on this computer, so to play online, upload them first (Tabletop Simulator's **Modding > Cloud Manager**) and put their new addresses in the deck (right-click it, **Custom**).
+- **File > Export to Tabletop Simulator** sets the game's table up in Tabletop Simulator, to play by hand, as it is once the game's `start` has run, so each export is a new deal. Cards are drawn with the game's own card faces; piles become decks, and each player's private zone becomes their hand. In Tabletop Simulator, **Load > Card Game Prototypes** opens it. The pictures stay on this computer, so to play online, upload them first (Tabletop Simulator's **Modding > Cloud Manager**) and put their new addresses in the deck (right-click it, **Custom**).
 
 ## Tutorial: making a game
 
@@ -181,11 +190,11 @@ A card's effect runs as the card arrives, before the action's `steps` and before
 
 ### 7. Add buttons
 
-An action without `drag` or `click` is a toolbar button. These two aren't offered by the turn, so they can be pressed at any time:
+An action without `drag` or `click` is a button under the table. These two aren't offered by the turn, and `any_time` lets either player press them even on the other's turn, sorting their own hand:
 
 ```json
-"Sort by color": ["sort(hand, ['color', 'number'])"],
-"Sort by number": ["sort(hand, ['number', 'color'])"]
+"Sort by color": { "any_time": true, "steps": ["sort(hand, ['color', 'number'])"] },
+"Sort by number": { "any_time": true, "steps": ["sort(hand, ['number', 'color'])"] }
 ```
 
 The game is now playable.
@@ -198,7 +207,7 @@ Change anything and save, and the game reloads. Mistakes show in the log in red,
 Step "draw(deck, hnad)": unknown zone or variable "hnad"
 ```
 
-When a drag is refused, the log shows the `when` it failed. Turn on **Sandbox** to set up a situation by hand.
+When a drag is refused, the log shows the `when` it failed. Turn on **Sandbox** (in the **Designer** menu) to set up a situation by hand.
 
 ### 9. Add wild cards
 

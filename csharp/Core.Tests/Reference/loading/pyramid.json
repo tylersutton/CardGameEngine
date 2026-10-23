@@ -2,6 +2,15 @@
 	"rules": {
 		"title": "Pyramid",
 		"description": "Solitaire. Clear the pyramid by pairing two uncovered cards that add up to 13: drag one onto the other. Kings are 13 on their own: click them. Queens are 12, Jacks 11, Aces 1. Click the stock to turn a card onto the waste; you can go through the stock three times.",
+		"how_to_play": [
+			"# Goal",
+			"Clear the whole pyramid by removing pairs of cards that add up to 13.",
+			"# How",
+			"- Only uncovered cards (with nothing overlapping them) can be used.",
+			"- Drag one uncovered card onto another (or onto the waste's top card) when the two add up to 13. Aces are 1, Jacks 11, Queens 12.",
+			"- Kings are 13 on their own: click one to remove it.",
+			"- Click the stock to turn a card onto the waste. You can go through the stock three times."
+		],
 		"zones": {
 			"stock": {
 				"label": "Stock",
@@ -11,7 +20,10 @@
 					0.12,
 					0.85
 				],
-				"cards": "res://decks/standard_deck.csv"
+				"cards": "res://decks/standard_deck.csv",
+				"columns": {
+					"art": "'cards/' + card.rank + '_' + card.suit + '.png'"
+				}
 			},
 			"waste": {
 				"label": "Waste",
@@ -351,7 +363,9 @@
 			"body": [
 				"suit"
 			],
-			"color": "color"
+			"color": "color",
+			"image": "art",
+			"card_back": "card_back.svg"
 		},
 		"unknown_keys": [],
 		"error": ""

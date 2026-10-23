@@ -1,12 +1,20 @@
 using Core;
 using Godot;
 
-/// Host or join a game, take seats, and (as host) fill empty seats with bots and start.
+/// Host or join a game, take seats, and (as host) fill empty seats with bots and start. Everyone comes back here
+/// between matches. The fields start as they were last time (OnlineSettings).
 public partial class LobbyScreen : Control
 {
     const string TitleScene = "res://scenes/title.tscn";
     const string MainScene = "res://scenes/main.tscn";
     static readonly Color OpenSeatColor = new(1, 1, 1, 0.5f);
+
+    /// The host's choice of how many play, for a game that allows different numbers.
+    readonly OptionButton playerCount = new();
+    readonly OnlineSettings settings = OnlineSettings.Load();
+
+    /// Host or join again at once, as last time (the title screen's quick button).
+    public bool ConnectAtOnce { get; set; }
 
     Net Net => Net.Instance;
     OptionButton GamePicker => GetNode<OptionButton>("%GamePicker");
@@ -14,18 +22,26 @@ public partial class LobbyScreen : Control
     public override void _Ready()
     {
         GetNode<ColorRect>("%Felt").Color = TableView.FeltColor;
-        GetNode<LineEdit>("%PlayerName").Text = Net.MyName;
-        GetNode<SpinBox>("%HostPort").Value = Net.DefaultPort;
-        GetNode<SpinBox>("%JoinPort").Value = Net.DefaultPort;
+        GetNode<LineEdit>("%PlayerName").Text = settings.Name;
+        GetNode<LineEdit>("%Address").Text = settings.Address;
+        GetNode<SpinBox>("%HostPort").Value = settings.HostPort;
+        GetNode<SpinBox>("%JoinPort").Value = settings.JoinPort;
         GameFiles files = ProjectFiles.With();
         foreach (string path in files.GamePaths())
         {
             GamePicker.AddItem(GameRules.Load(files, path).Title);
             GamePicker.SetItemMetadata(GamePicker.ItemCount - 1, path);
+            if (path == settings.Game)
+            {
+                GamePicker.Select(GamePicker.ItemCount - 1);
+            }
         }
         GetNode<Button>("%HostButton").Pressed += HostGame;
         GetNode<Button>("%JoinButton").Pressed += Join;
-        GamePicker.ItemSelected += index => Net.ChooseGame((string)GamePicker.GetItemMetadata((int)index));
+        GetNode<LineEdit>("%Address").TextSubmitted += _ => Join();
+        GamePicker.ItemSelected += index => ChooseGame((string)GamePicker.GetItemMetadata((int)index));
+        GamePicker.AddSibling(playerCount);
+        playerCount.ItemSelected += index => Net.ChoosePlayers(playerCount.GetItemId((int)index));
         GetNode<Button>("%StartButton").Pressed += Net.StartMatch;
         GetNode<Button>("%LeaveButton").Pressed += Net.Leave;
         GetNode<Button>("%BackButton").Pressed += () =>
@@ -37,6 +53,17 @@ public partial class LobbyScreen : Control
         Net.Notice += ShowNotice;
         Net.MatchStarted += StartMatch;
         Refresh();
+        if (ConnectAtOnce && !Net.Online)
+        {
+            if (settings.LastConnection == OnlineSettings.Hosted)
+            {
+                HostGame();
+            }
+            else
+            {
+                Join();
+            }
+        }
     }
 
     public override void _ExitTree()
@@ -58,17 +85,31 @@ public partial class LobbyScreen : Control
 
     void HostGame()
     {
-        Net.MyName = GetNode<LineEdit>("%PlayerName").Text.StripEdges();
-        if (Net.HostGame((int)GetNode<SpinBox>("%HostPort").Value) == Error.Ok)
+        Net.MyName = settings.Name = GetNode<LineEdit>("%PlayerName").Text.StripEdges();
+        settings.HostPort = (int)GetNode<SpinBox>("%HostPort").Value;
+        settings.LastConnection = OnlineSettings.Hosted;
+        settings.Save();
+        if (Net.HostGame(settings.HostPort) == Error.Ok)
         {
-            Net.ChooseGame((string)GamePicker.GetItemMetadata(GamePicker.Selected));
+            ChooseGame((string)GamePicker.GetItemMetadata(GamePicker.Selected));
         }
     }
 
     void Join()
     {
-        Net.MyName = GetNode<LineEdit>("%PlayerName").Text.StripEdges();
-        Net.Join(GetNode<LineEdit>("%Address").Text.StripEdges(), (int)GetNode<SpinBox>("%JoinPort").Value);
+        Net.MyName = settings.Name = GetNode<LineEdit>("%PlayerName").Text.StripEdges();
+        settings.Address = GetNode<LineEdit>("%Address").Text.StripEdges();
+        settings.JoinPort = (int)GetNode<SpinBox>("%JoinPort").Value;
+        settings.LastConnection = OnlineSettings.Joined;
+        settings.Save();
+        Net.Join(settings.Address, settings.JoinPort);
+    }
+
+    void ChooseGame(string path)
+    {
+        settings.Game = path;
+        settings.Save();
+        Net.ChooseGame(path);
     }
 
     void Refresh()
@@ -90,6 +131,13 @@ public partial class LobbyScreen : Control
                 GamePicker.Select(index);
             }
         }
+        playerCount.Clear();
+        foreach (int count in lobby.PlayerCounts.Order())
+        {
+            playerCount.AddItem($"{count} players", count);
+        }
+        playerCount.Select(playerCount.GetItemIndex(lobby.Seats.Count));
+        playerCount.Visible = Net.IsHost() && lobby.PlayerCounts.Count > 1;
         GetNode<Label>("%GameTitle").Visible = !Net.IsHost();
         GetNode<Label>("%GameTitle").Text = lobby.Title;
         GetNode<Label>("%Description").Text = lobby.Description;

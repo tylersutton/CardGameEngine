@@ -1,0 +1,1338 @@
+{
+	"rules": {
+		"title": "Dnup",
+		"description": "Three to five players, you against bots, racing to empty their hands. Every card has a number at each end, and only the top one counts. On your turn, your set from last turn is discarded, then do one thing: Play a set (cards of one number), which must beat any set of the same size on the table, sending that set back to its owner's hand; add one matching card to someone else's set, which must then beat any set of its new size; take someone else's set into your hand; or rotate your whole hand. Cards taken back into a hand are turned round. First out scores 2 and second out 1, which ends the round. First to 4 points wins.",
+		"how_to_play": [
+			"# Goal",
+			"Empty your hand. First out each round scores 2 points, second out scores 1 (and ends the round). The first to 4 points wins.",
+			"# The cards",
+			"- Every card has a number at each end. Only the big number on top counts; the small one underneath is what it becomes if the card is turned round.",
+			"- A set is one or more cards of the same number. Bigger sets don't beat smaller ones: each size of set is a separate contest.",
+			"# Your turn",
+			"Your set from your last turn is discarded, then do exactly one of these:",
+			"- Play a set: press Play a set, click the cards (all the same number), then Done. If another player has a set of the same size on the table, yours must be higher, and theirs goes back to their hand.",
+			"- Add a card: drag one card from your hand onto another player's set of the same number. Their set is now one bigger, so it must beat any other set of its new size (which goes back to its owner).",
+			"- Take a set: click another player's set to take it into your hand.",
+			"- Rotate hand: turn your whole hand round, so every card shows its other number.",
+			"# Turning round",
+			"- Whenever cards go back into a hand from the table (taken, or beaten), they are turned round. Plan for the small numbers!",
+			"- When you're out, your last set stays on the table until everyone has had another turn."
+		],
+		"zones": {
+			"box": {
+				"outline": false,
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					-0.3,
+					0.5
+				],
+				"cards": "res://decks/dnup.csv"
+			},
+			"deck": {
+				"outline": false,
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					-0.3,
+					0.5
+				]
+			},
+			"discard": {
+				"label": "Discard",
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					0.5,
+					0.42
+				]
+			},
+			"hand": {
+				"per_player": true,
+				"layout": "fan",
+				"face": "private",
+				"width": 0.34,
+				"anchor": [
+					0.5,
+					0.86
+				]
+			},
+			"set": {
+				"label": "Set",
+				"per_player": true,
+				"layout": "row",
+				"width": 0.2,
+				"anchor": [
+					0.5,
+					0.64
+				]
+			}
+		},
+		"actions": {
+			"Play a set": {
+				"choose": "hand",
+				"up_to": "count(hand)",
+				"allow": "count(choice) > 0 and size(groups(choice, 'value')) == 1 and count(zones_where(all_set, 'blocks_play')) == 0",
+				"steps": [
+					{
+						"for": "beaten",
+						"in": "zones_where(all_set, 'beaten_by_play')",
+						"do": [
+							"from_seat = beaten.owner",
+							"trigger('beaten')"
+						]
+					},
+					"log('%s plays %d × %s' % [name_of(player), count(choice), text(top(choice), 'value')])",
+					"move(choice, set)",
+					"trigger('maybe_out')"
+				]
+			},
+			"Add a card": {
+				"drag": {
+					"from": "hand",
+					"to": "all_set"
+				},
+				"when": "count(to) > 0 and to.owner != player and card.value == set_value(to) and count(zones_where(all_set, 'blocks_add')) == 0",
+				"steps": [
+					"log('%s adds a %s to %s\\'s set' % [name_of(player), card.value, name_of(to.owner)])",
+					{
+						"for": "beaten",
+						"in": "zones_where(all_set, 'beaten_by_add')",
+						"do": [
+							"from_seat = beaten.owner",
+							"trigger('beaten')"
+						]
+					},
+					"trigger('maybe_out')"
+				]
+			},
+			"Take a set": {
+				"click": "all_set",
+				"when": "count(clicked_zone) > 0 and clicked_zone.owner != player",
+				"steps": [
+					"log('%s takes %s\\'s set' % [name_of(player), name_of(clicked_zone.owner)])",
+					"from_seat = clicked_zone.owner",
+					"to_seat = player",
+					"trigger('turn_round_into_hand')"
+				]
+			},
+			"Rotate hand": {
+				"when": "count(hand) > 0",
+				"steps": [
+					"log('%s rotates their hand' % [name_of(player)])",
+					{
+						"for": "held",
+						"in": "hand",
+						"do": [
+							"swap(held, other_side(held))"
+						]
+					}
+				]
+			},
+			"Next round": {
+				"human_only": true,
+				"steps": []
+			}
+		},
+		"triggers": {
+			"start": [
+				{
+					"for": "player",
+					"in": "players",
+					"do": [
+						"sort(hand, ['value'])"
+					]
+				},
+				"trigger('deal')"
+			],
+			"deal": [
+				"move([all_hand, all_set, discard], box)",
+				"move(matching(box, 'in_play'), deck)",
+				"shuffle(deck)",
+				"deal(deck, all_hand, 8)",
+				"bring_back(players)",
+				"reset(['first_out', 'round_ended', 'out_set_turns'])",
+				"player = owner(top(where(all_hand, 'star', 'yes')))"
+			],
+			"turn_round_into_hand": [
+				{
+					"for": "taken",
+					"in": "set[from_seat]",
+					"do": [
+						"swap(taken, other_side(taken))"
+					]
+				},
+				"move(set[from_seat], hand[to_seat])"
+			],
+			"beaten": [
+				{
+					"if": "from_seat == first_out",
+					"then": [
+						"move(set[from_seat], discard)"
+					],
+					"else": [
+						"to_seat = from_seat",
+						"trigger('turn_round_into_hand')"
+					]
+				}
+			],
+			"maybe_out": [
+				{
+					"if": "count(hand) == 0",
+					"then": [
+						{
+							"if": "first_out == 0",
+							"then": [
+								"log('%s is out first: 2 points' % [name_of(player)])",
+								"points += 2",
+								"first_out = player",
+								"knock_out(player)",
+								"out_set_turns = size(players_left()) + 1"
+							],
+							"else": [
+								"log('%s is out second: 1 point, and the round ends' % [name_of(player)])",
+								"points += 1",
+								"round_ended = true"
+							]
+						}
+					]
+				}
+			],
+			"next_round": [
+				"reveal(all_hand)",
+				{
+					"if": "most('points') >= 4",
+					"then": [
+						"end_game(players_with_most('points'))"
+					]
+				},
+				"offer('Next round')",
+				"trigger('deal')"
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"other_side": "top(where(box, 'pair', one.pair))",
+			"set_value": "number(top(zone), 'value')",
+			"blocks_play": "count(zone) == count(choice) and set_value(zone) >= number(top(choice), 'value')",
+			"beaten_by_play": "count(zone) == count(choice)",
+			"blocks_add": "zone != to and count(zone) == count(to) + 1 and set_value(zone) >= number(card, 'value')",
+			"beaten_by_add": "zone != to and count(zone) == count(to)",
+			"in_play": "card.side == 'top' and card.dots <= size(players) - 2"
+		},
+		"condition_parameters": {
+			"other_side": [
+				"one"
+			],
+			"set_value": [
+				"zone"
+			],
+			"blocks_play": [
+				"zone"
+			],
+			"beaten_by_play": [
+				"zone"
+			],
+			"blocks_add": [
+				"zone"
+			],
+			"beaten_by_add": [
+				"zone"
+			],
+			"in_play": []
+		},
+		"condition_errors": [],
+		"constants": {},
+		"turn": [
+			{
+				"if": "out_set_turns > 0",
+				"then": [
+					"out_set_turns -= 1",
+					{
+						"if": "out_set_turns == 0",
+						"then": [
+							"move(set[first_out], discard)"
+						]
+					}
+				]
+			},
+			"move(set, discard)",
+			"offer(['Play a set', 'Add a card', 'Take a set', 'Rotate hand'])",
+			{
+				"if": "round_ended",
+				"then": [
+					"trigger('next_round')"
+				],
+				"else": [
+					"end_turn()"
+				]
+			}
+		],
+		"variables": {
+			"first_out": 0,
+			"round_ended": false,
+			"out_set_turns": 0,
+			"from_seat": 0,
+			"to_seat": 0
+		},
+		"players": 4,
+		"seats": [
+			[
+				0.14,
+				0.86
+			]
+		],
+		"player_names": [
+			"You",
+			"West",
+			"North",
+			"East",
+			"Player 5"
+		],
+		"player_variables": {
+			"points": 0
+		},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"your points": "points[viewer()]",
+			"most points": "most('points')"
+		},
+		"show_variables": [],
+		"bot": {
+			"players": [
+				2.0,
+				3.0,
+				4.0,
+				5.0
+			],
+			"prefer": "100 * points - 3 * count(hand) + count(set)"
+		},
+		"card_face": {
+			"corner": "name",
+			"title": "value",
+			"body": [
+				"other"
+			],
+			"background": "paint",
+			"color": "#1b1b1b",
+			"card_back": "#37474f"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "box",
+			"label": "",
+			"has_outline": false,
+			"kind": "box",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "deck",
+			"label": "",
+			"has_outline": false,
+			"kind": "deck",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "discard",
+			"label": "Discard",
+			"has_outline": true,
+			"kind": "discard",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.5,
+				0.41999998688697815
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 1,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.8600000143051147
+			],
+			"width": 0.34,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 2,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.13999998569488525,
+				0.4999999701976776
+			],
+			"width": 0.34,
+			"rotation": 90.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_3",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 3,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5000000596046448,
+				0.13999998569488525
+			],
+			"width": 0.34,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_4",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 4,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.8600000143051147,
+				0.5
+			],
+			"width": 0.34,
+			"rotation": 270.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "set_1",
+			"label": "Set",
+			"has_outline": true,
+			"kind": "set",
+			"owner": 1,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.6399999856948853
+			],
+			"width": 0.2,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "set_2",
+			"label": "Set",
+			"has_outline": true,
+			"kind": "set",
+			"owner": 2,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.36000001430511475,
+				0.5
+			],
+			"width": 0.2,
+			"rotation": 90.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "set_3",
+			"label": "Set",
+			"has_outline": true,
+			"kind": "set",
+			"owner": 3,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.36000001430511475
+			],
+			"width": 0.2,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "set_4",
+			"label": "Set",
+			"has_outline": true,
+			"kind": "set",
+			"owner": 4,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.6399999856948853,
+				0.5
+			],
+			"width": 0.2,
+			"rotation": 270.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/dnup.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"pair",
+				"value",
+				"other",
+				"dots"
+			],
+			"cards": [
+				{
+					"name": "1/2",
+					"pair": "1",
+					"value": "1",
+					"other": "2",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#e57373"
+				},
+				{
+					"name": "2/1",
+					"pair": "1",
+					"value": "2",
+					"other": "1",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#f06292"
+				},
+				{
+					"name": "2/3",
+					"pair": "2",
+					"value": "2",
+					"other": "3",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#f06292"
+				},
+				{
+					"name": "3/2",
+					"pair": "2",
+					"value": "3",
+					"other": "2",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "3/4",
+					"pair": "3",
+					"value": "3",
+					"other": "4",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "4/3",
+					"pair": "3",
+					"value": "4",
+					"other": "3",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "4/5",
+					"pair": "4",
+					"value": "4",
+					"other": "5",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "5/4",
+					"pair": "4",
+					"value": "5",
+					"other": "4",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "5/6",
+					"pair": "5",
+					"value": "5",
+					"other": "6",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "6/5",
+					"pair": "5",
+					"value": "6",
+					"other": "5",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "6/7",
+					"pair": "6",
+					"value": "6",
+					"other": "7",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "7/6",
+					"pair": "6",
+					"value": "7",
+					"other": "6",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#81c784"
+				},
+				{
+					"name": "7/8",
+					"pair": "7",
+					"value": "7",
+					"other": "8",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#81c784"
+				},
+				{
+					"name": "8/7",
+					"pair": "7",
+					"value": "8",
+					"other": "7",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#dce775"
+				},
+				{
+					"name": "8/9",
+					"pair": "8",
+					"value": "8",
+					"other": "9",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#dce775"
+				},
+				{
+					"name": "9/8",
+					"pair": "8",
+					"value": "9",
+					"other": "8",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "9/10",
+					"pair": "9",
+					"value": "9",
+					"other": "10",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "10/9",
+					"pair": "9",
+					"value": "10",
+					"other": "9",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "10/1",
+					"pair": "10",
+					"value": "10",
+					"other": "1",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "1/10",
+					"pair": "10",
+					"value": "1",
+					"other": "10",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#e57373"
+				},
+				{
+					"name": "1/3",
+					"pair": "11",
+					"value": "1",
+					"other": "3",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#e57373"
+				},
+				{
+					"name": "3/1",
+					"pair": "11",
+					"value": "3",
+					"other": "1",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "2/4",
+					"pair": "12",
+					"value": "2",
+					"other": "4",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#f06292"
+				},
+				{
+					"name": "4/2",
+					"pair": "12",
+					"value": "4",
+					"other": "2",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "3/5",
+					"pair": "13",
+					"value": "3",
+					"other": "5",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "5/3",
+					"pair": "13",
+					"value": "5",
+					"other": "3",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "4/6",
+					"pair": "14",
+					"value": "4",
+					"other": "6",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "6/4",
+					"pair": "14",
+					"value": "6",
+					"other": "4",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "5/7",
+					"pair": "15",
+					"value": "5",
+					"other": "7",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "7/5",
+					"pair": "15",
+					"value": "7",
+					"other": "5",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#81c784"
+				},
+				{
+					"name": "6/8",
+					"pair": "16",
+					"value": "6",
+					"other": "8",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "8/6",
+					"pair": "16",
+					"value": "8",
+					"other": "6",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#dce775"
+				},
+				{
+					"name": "7/9",
+					"pair": "17",
+					"value": "7",
+					"other": "9",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#81c784"
+				},
+				{
+					"name": "9/7",
+					"pair": "17",
+					"value": "9",
+					"other": "7",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "8/10",
+					"pair": "18",
+					"value": "8",
+					"other": "10",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#dce775"
+				},
+				{
+					"name": "10/8",
+					"pair": "18",
+					"value": "10",
+					"other": "8",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "9/1",
+					"pair": "19",
+					"value": "9",
+					"other": "1",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "1/9",
+					"pair": "19",
+					"value": "1",
+					"other": "9",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#e57373"
+				},
+				{
+					"name": "10/2",
+					"pair": "20",
+					"value": "10",
+					"other": "2",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "2/10",
+					"pair": "20",
+					"value": "2",
+					"other": "10",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#f06292"
+				},
+				{
+					"name": "1/4",
+					"pair": "21",
+					"value": "1",
+					"other": "4",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#e57373"
+				},
+				{
+					"name": "4/1",
+					"pair": "21",
+					"value": "4",
+					"other": "1",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "2/5",
+					"pair": "22",
+					"value": "2",
+					"other": "5",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#f06292"
+				},
+				{
+					"name": "5/2",
+					"pair": "22",
+					"value": "5",
+					"other": "2",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "3/6",
+					"pair": "23",
+					"value": "3",
+					"other": "6",
+					"side": "top",
+					"dots": "2",
+					"star": "",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "6/3",
+					"pair": "23",
+					"value": "6",
+					"other": "3",
+					"side": "bottom",
+					"dots": "2",
+					"star": "",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "4/7",
+					"pair": "24",
+					"value": "4",
+					"other": "7",
+					"side": "top",
+					"dots": "2",
+					"star": "",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "7/4",
+					"pair": "24",
+					"value": "7",
+					"other": "4",
+					"side": "bottom",
+					"dots": "2",
+					"star": "",
+					"paint": "#81c784"
+				},
+				{
+					"name": "5/8",
+					"pair": "25",
+					"value": "5",
+					"other": "8",
+					"side": "top",
+					"dots": "2",
+					"star": "",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "8/5",
+					"pair": "25",
+					"value": "8",
+					"other": "5",
+					"side": "bottom",
+					"dots": "2",
+					"star": "",
+					"paint": "#dce775"
+				},
+				{
+					"name": "6/9",
+					"pair": "26",
+					"value": "6",
+					"other": "9",
+					"side": "top",
+					"dots": "2",
+					"star": "",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "9/6",
+					"pair": "26",
+					"value": "9",
+					"other": "6",
+					"side": "bottom",
+					"dots": "2",
+					"star": "",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "7/10",
+					"pair": "27",
+					"value": "7",
+					"other": "10",
+					"side": "top",
+					"dots": "2",
+					"star": "",
+					"paint": "#81c784"
+				},
+				{
+					"name": "10/7",
+					"pair": "27",
+					"value": "10",
+					"other": "7",
+					"side": "bottom",
+					"dots": "2",
+					"star": "",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "8/1",
+					"pair": "28",
+					"value": "8",
+					"other": "1",
+					"side": "top",
+					"dots": "2",
+					"star": "",
+					"paint": "#dce775"
+				},
+				{
+					"name": "1/8",
+					"pair": "28",
+					"value": "1",
+					"other": "8",
+					"side": "bottom",
+					"dots": "2",
+					"star": "",
+					"paint": "#e57373"
+				},
+				{
+					"name": "9/2",
+					"pair": "29",
+					"value": "9",
+					"other": "2",
+					"side": "top",
+					"dots": "2",
+					"star": "",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "2/9",
+					"pair": "29",
+					"value": "2",
+					"other": "9",
+					"side": "bottom",
+					"dots": "2",
+					"star": "",
+					"paint": "#f06292"
+				},
+				{
+					"name": "10/3",
+					"pair": "30",
+					"value": "10",
+					"other": "3",
+					"side": "top",
+					"dots": "2",
+					"star": "",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "3/10",
+					"pair": "30",
+					"value": "3",
+					"other": "10",
+					"side": "bottom",
+					"dots": "2",
+					"star": "",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "1/5",
+					"pair": "31",
+					"value": "1",
+					"other": "5",
+					"side": "top",
+					"dots": "0",
+					"star": "yes",
+					"paint": "#e57373"
+				},
+				{
+					"name": "5/1",
+					"pair": "31",
+					"value": "5",
+					"other": "1",
+					"side": "bottom",
+					"dots": "0",
+					"star": "yes",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "2/6",
+					"pair": "32",
+					"value": "2",
+					"other": "6",
+					"side": "top",
+					"dots": "0",
+					"star": "",
+					"paint": "#f06292"
+				},
+				{
+					"name": "6/2",
+					"pair": "32",
+					"value": "6",
+					"other": "2",
+					"side": "bottom",
+					"dots": "0",
+					"star": "",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "3/7",
+					"pair": "33",
+					"value": "3",
+					"other": "7",
+					"side": "top",
+					"dots": "3",
+					"star": "",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "7/3",
+					"pair": "33",
+					"value": "7",
+					"other": "3",
+					"side": "bottom",
+					"dots": "3",
+					"star": "",
+					"paint": "#81c784"
+				},
+				{
+					"name": "4/8",
+					"pair": "34",
+					"value": "4",
+					"other": "8",
+					"side": "top",
+					"dots": "3",
+					"star": "",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "8/4",
+					"pair": "34",
+					"value": "8",
+					"other": "4",
+					"side": "bottom",
+					"dots": "3",
+					"star": "",
+					"paint": "#dce775"
+				},
+				{
+					"name": "5/9",
+					"pair": "35",
+					"value": "5",
+					"other": "9",
+					"side": "top",
+					"dots": "3",
+					"star": "",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "9/5",
+					"pair": "35",
+					"value": "9",
+					"other": "5",
+					"side": "bottom",
+					"dots": "3",
+					"star": "",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "6/10",
+					"pair": "36",
+					"value": "6",
+					"other": "10",
+					"side": "top",
+					"dots": "3",
+					"star": "",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "10/6",
+					"pair": "36",
+					"value": "10",
+					"other": "6",
+					"side": "bottom",
+					"dots": "3",
+					"star": "",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "7/1",
+					"pair": "37",
+					"value": "7",
+					"other": "1",
+					"side": "top",
+					"dots": "3",
+					"star": "",
+					"paint": "#81c784"
+				},
+				{
+					"name": "1/7",
+					"pair": "37",
+					"value": "1",
+					"other": "7",
+					"side": "bottom",
+					"dots": "3",
+					"star": "",
+					"paint": "#e57373"
+				},
+				{
+					"name": "8/2",
+					"pair": "38",
+					"value": "8",
+					"other": "2",
+					"side": "top",
+					"dots": "3",
+					"star": "",
+					"paint": "#dce775"
+				},
+				{
+					"name": "2/8",
+					"pair": "38",
+					"value": "2",
+					"other": "8",
+					"side": "bottom",
+					"dots": "3",
+					"star": "",
+					"paint": "#f06292"
+				},
+				{
+					"name": "9/3",
+					"pair": "39",
+					"value": "9",
+					"other": "3",
+					"side": "top",
+					"dots": "3",
+					"star": "",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "3/9",
+					"pair": "39",
+					"value": "3",
+					"other": "9",
+					"side": "bottom",
+					"dots": "3",
+					"star": "",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "10/4",
+					"pair": "40",
+					"value": "10",
+					"other": "4",
+					"side": "top",
+					"dots": "3",
+					"star": "",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "4/10",
+					"pair": "40",
+					"value": "4",
+					"other": "10",
+					"side": "bottom",
+					"dots": "3",
+					"star": "",
+					"paint": "#7986cb"
+				}
+			]
+		}
+	}
+}

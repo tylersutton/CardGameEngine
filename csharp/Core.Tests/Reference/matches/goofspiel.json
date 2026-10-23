@@ -195,18 +195,6 @@
 				"action": "Next round"
 			},
 			{
-				"type": "click",
-				"card": 10
-			},
-			{
-				"type": "click",
-				"card": 21
-			},
-			{
-				"type": "click",
-				"card": 43
-			},
-			{
 				"type": "perform",
 				"action": "Next round"
 			}
@@ -705,24 +693,15 @@
 				"  prizes → prize: 3♦",
 				"  stake = 3",
 				"[action] Bid",
-				"  You: choose 1 (click the highlighted cards)"
-			],
-			[
 				"[Bid] chose J♠",
 				"  hand_1 → bid_1: J♠",
 				"  player = 2",
 				"[action] Bid",
-				"  West (bot): choose 1 (click the highlighted cards)"
-			],
-			[
 				"[Bid] chose a hidden card",
 				"  hand_2 → bid_2: 1 hidden card",
 				"  player = 1",
 				"  player = 3",
 				"[action] Bid",
-				"  East (bot): choose 1 (click the highlighted cards)"
-			],
-			[
 				"[Bid] chose a hidden card",
 				"  hand_3 → bid_3: 1 hidden card",
 				"  player = 1",
@@ -1019,18 +998,6 @@
 			{
 				"type": "perform",
 				"action": "Next round"
-			},
-			{
-				"type": "click",
-				"card": 7
-			},
-			{
-				"type": "click",
-				"card": 15
-			},
-			{
-				"type": "click",
-				"card": 43
 			},
 			{
 				"type": "perform",
@@ -1533,24 +1500,15 @@
 				"  prizes → prize: J♦",
 				"  stake = 11",
 				"[action] Bid",
-				"  You: choose 1 (click the highlighted cards)"
-			],
-			[
 				"[Bid] chose 8♠",
 				"  hand_1 → bid_1: 8♠",
 				"  player = 2",
 				"[action] Bid",
-				"  West (bot): choose 1 (click the highlighted cards)"
-			],
-			[
 				"[Bid] chose a hidden card",
 				"  hand_2 → bid_2: 1 hidden card",
 				"  player = 1",
 				"  player = 3",
 				"[action] Bid",
-				"  East (bot): choose 1 (click the highlighted cards)"
-			],
-			[
 				"[Bid] chose a hidden card",
 				"  hand_3 → bid_3: 1 hidden card",
 				"  player = 1",

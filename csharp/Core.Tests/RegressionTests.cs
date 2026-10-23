@@ -119,9 +119,10 @@ public class RegressionTests
     {
         Game game = Started("res://games/dominion.jsonc");
         Card smithy = TestGames.Named(game, "Smithy");
-        int handBefore = game.Zones["hand_1"].Cards.Count;
+        Zone hand = game.Zones["hand_" + game.CurrentPlayer()];
+        int handBefore = hand.Cards.Count;
         new Actions(game).RunEffect(smithy, "play");
-        Assert.Equal(handBefore + 3, game.Zones["hand_1"].Cards.Count);
+        Assert.Equal(handBefore + 3, hand.Cards.Count);
         Assert.Empty(failures);
     }
 
@@ -130,11 +131,12 @@ public class RegressionTests
     public void RemodelChoosesTwice()
     {
         Game game = Started("res://games/dominion.jsonc", 4);
-        Card Named(string title) => game.Cards.First(card => card.Title == title && game.ZoneOf(card) != game.Zones["hand_1"]);
+        Zone hand = game.Zones["hand_" + game.CurrentPlayer()];
+        Card Named(string title) => game.Cards.First(card => card.Title == title && game.ZoneOf(card) != hand);
         Card remodel = Named("Remodel");
         Card estate = Named("Estate");
-        game.Move(remodel, game.Zones["hand_1"]);
-        game.Move(estate, game.Zones["hand_1"]);
+        game.Move(remodel, hand);
+        game.Move(estate, hand);
         game.Apply(PlayerInput.Click(remodel));
         Assert.StartsWith("Remodel: trash", game.Choice.Title);
         game.Apply(PlayerInput.Click(estate));
@@ -143,7 +145,7 @@ public class RegressionTests
         Card silver = game.Choice.Options.Cast<Card>().First(card => card.Title == "Silver");
         Assert.All(game.Choice.Options.Cast<Card>(), card => Assert.True(Values.ToInt(card.Data["cost"]) <= 4));
         game.Apply(PlayerInput.Click(silver));
-        Assert.Contains(silver, game.Zones["discard_1"].Cards);
+        Assert.Contains(silver, game.Zones["discard_" + game.CurrentPlayer()].Cards);
         Assert.False(game.Choice.IsOpen);
         Assert.Empty(failures);
     }
@@ -153,12 +155,13 @@ public class RegressionTests
     public void SeaSaltDrawingAndCrabs()
     {
         Game game = Started("res://games/sea_salt_+_paper.jsonc", 2);
+        Zone hand = game.Zones["hand_" + game.CurrentPlayer()];
         game.Apply(PlayerInput.Click(game.Zones["deck"].Cards[^1]));
         Assert.Equal("Keep one card", game.Choice.Title);
         Assert.Equal(2, game.Choice.Options.Count);
         Card kept = (Card)game.Choice.Options[0]!;
         game.Apply(PlayerInput.Click(kept));
-        Assert.Contains(kept, game.Zones["hand_1"].Cards);
+        Assert.Contains(kept, hand.Cards);
         Assert.Equal("Discard the other card onto a pile", game.Choice.Title);
         game.Apply(PlayerInput.Choose("discard_piles_2"));
         Assert.Equal(2, game.Zones["discard_piles_2"].Cards.Count);
@@ -166,7 +169,7 @@ public class RegressionTests
         List<Card> crabs = game.Zones["deck"].Cards.Where(card => card.Data["Kind"] == "Crab").Take(2).ToList();
         foreach (Card crab in crabs)
         {
-            game.Move(crab, game.Zones["hand_1"]);
+            game.Move(crab, hand);
         }
         game.Apply(PlayerInput.Perform("Play duo"));
         foreach (Card crab in crabs)
@@ -178,7 +181,7 @@ public class RegressionTests
         Assert.Equal(2, game.Zones["browsing"].Cards.Count);
         Card taken = game.Zones["browsing"].Cards[0];
         game.Apply(PlayerInput.Click(taken));
-        Assert.Contains(taken, game.Zones["hand_1"].Cards);
+        Assert.Contains(taken, hand.Cards);
         Assert.Single(game.Zones["discard_piles_2"].Cards);
         Assert.True(game.Zones["browsing"].IsEmpty);
         Assert.Empty(failures);
@@ -224,5 +227,73 @@ public class RegressionTests
         string rules = """{ "zones": { "hand": { "layout": "fan" } }, "actions": { "Pass": { "choose": "hand", "pick": 2, "up_to": 2, "steps": [] } } }""";
         Game game = new(TestGames.Files("res://pick_test.jsonc", rules), "res://pick_test.jsonc", 1);
         Assert.Contains(game.Errors, error => error.Contains("not both"));
+    }
+
+    /// Each new hand is dealt sorted, even when a player put their last hand in their own order.
+    [Fact]
+    public void PresidentDealsSortedHands()
+    {
+        Game game = Started("res://games/president.jsonc", 3);
+        game.Apply(new("reorder") { Card = game.Zones["hand_1"].Cards[0].Id, Index = 1 });
+        RandomNumbers chooser = new(3);
+        for (int input = 0; input < 400 && !game.Plays.Offered.Contains("Next hand"); input++)
+        {
+            List<List<PlayerInput>> moves = game.Plays.LegalMoves();
+            game.ApplyMove(moves[chooser.NextInRange(0, moves.Count - 1)]);
+        }
+        Assert.Contains("Next hand", game.Plays.Offered);
+        game.Perform("Next hand");
+        for (int player = 1; player <= 4; player++)
+        {
+            List<string> orders = game.Zones["hand_" + player].Cards.Select(card => card.Column("order")).ToList();
+            Assert.Equal(orders.OrderBy(int.Parse), orders);
+        }
+        Assert.Empty(failures);
+    }
+
+    /// A card dropped back where it was is no reorder: the hand keeps sorting, and nothing is recorded.
+    [Fact]
+    public void DroppingACardInPlaceKeepsSorting()
+    {
+        Game game = Started("res://games/hearts.jsonc", 3);
+        Zone hand = game.Zones["hand_1"];
+        Assert.False(game.Apply(new("reorder") { Card = hand.Cards[2].Id, Index = 2 }));
+        Assert.NotEmpty(hand.SortColumns);
+        Assert.Empty(game.Inputs);
+        Assert.True(game.Apply(new("reorder") { Card = hand.Cards[2].Id, Index = 0 }));
+        Assert.Empty(hand.SortColumns);
+        Assert.Empty(failures);
+    }
+
+    /// A 2 can't lead: after a 2 wins the round, a player holding only 2s is skipped. The 2 stays on the table, in
+    /// sight, until the next lead.
+    [Fact]
+    public void PresidentSkipsALeaderWithOnlyTwos()
+    {
+        Game game = Started("res://games/president.jsonc", 3);
+        int leader = game.CurrentPlayer();
+        int next = leader % 4 + 1;
+        Card Named(string name) => game.Cards.Single(card => card.Column("name") == name);
+        foreach (Card card in game.Zones[$"hand_{leader}"].Cards.Concat(game.Zones[$"hand_{next}"].Cards).ToList())
+        {
+            game.Move(card, game.Zones["deck"]);
+        }
+        foreach (string name in new[] { "3♣", "4♣" })
+        {
+            game.Move(Named(name), game.Zones[$"hand_{leader}"]);
+        }
+        foreach (string name in new[] { "2♥", "2♦" })
+        {
+            game.Move(Named(name), game.Zones[$"hand_{next}"]);
+        }
+        foreach (string name in new[] { "3♣", "2♥" })
+        {
+            game.ApplyMove([PlayerInput.Perform("Play"), PlayerInput.Click(Named(name)), PlayerInput.Finish()]);
+        }
+        Assert.Equal(next % 4 + 1, game.CurrentPlayer());
+        Assert.Contains("Play", game.Plays.Offered);
+        Assert.Equal(["2♥"], game.Zones["table"].Cards.Select(card => card.Column("name")));
+        Assert.Equal("nothing: lead anything but a 2", game.Evaluate((string)game.Rules.Status["to beat"]!));
+        Assert.Empty(failures);
     }
 }

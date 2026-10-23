@@ -7,12 +7,12 @@ public record ClickAction(string Action, Zone? Destination = null);
 /// Where cards could be dragged from a zone, and the drag actions that go there.
 record DragRoute(Zone Destination, List<string> Actions);
 
-/// What players can do: the game's actions, each done by a drag, a click or its toolbar button; which action an
+/// What players can do: the game's actions, each done by a drag, a click or its button; which action an
 /// input is; which actions are offered right now (offer(...)); and every legal input, for bots. Game carries the
 /// inputs out.
 public class Plays
 {
-    /// Ways to do an action other than its toolbar button.
+    /// Ways to do an action other than its button.
     public const string DragKey = "drag";
     public const string ClickKey = "click";
     public const string DoubleClickKey = "double_click";
@@ -58,22 +58,22 @@ public class Plays
     /// An action's "when" ("" if it has none, so it's always allowed).
     public static string WhenOf(Dictionary<string, object?> action) => action.GetValueOrDefault("when") as string ?? "";
 
-    /// Toolbar buttons: actions done by pressing them (not by a drag or click, unless they also say "button": true).
+    /// Buttons: actions done by pressing them (not by a drag or click, unless they also say "button": true).
     public bool ShowsButton(string actionName)
     {
         Dictionary<string, object?> action = game.Rules.Actions[actionName];
         return action.GetValueOrDefault("button") as bool? ?? !IsCardAction(action);
     }
 
-    /// Whether a toolbar button can be pressed now. A drag or click action with "button": true needs a card it
-    /// could be done with, which pressing the button then asks for.
+    /// Whether an action's button can be pressed now. A drag or click action with "button": true needs a card it
+    /// could be done with, which pressing the button then asks for; a button with "choose", something to choose.
     public bool CanPerform(string actionName)
     {
         if (game.Sandbox)
         {
             return true;
         }
-        if (game.Choice.MustBeMade || !IsOfferedNow(actionName))
+        if (game.Choice.MustBeMade && !IsAnyTime(actionName) || !IsOfferedNow(actionName))
         {
             return false;
         }
@@ -81,8 +81,61 @@ public class Plays
         {
             return PlayableCards(actionName).Count > 0;
         }
-        return game.Holds(WhenOf(game.Rules.Actions[actionName]));
+        Dictionary<string, object?> action = game.Rules.Actions[actionName];
+        return game.Holds(WhenOf(action)) && (!action.ContainsKey("choose") || game.Choice.HasOptionsFor(actionName));
     }
+
+    /// The button whose choice of several cards clicking this card starts, with the card picked (President's Play:
+    /// click the cards, then Done), or "". A choice of one card isn't started by a click, which would make it at once.
+    public string ChoiceStartedBy(Card card) =>
+        game.Rules.Actions.Keys.FirstOrDefault(actionName => StartsChoiceOnClick(actionName) && ChoiceOptions(actionName).Contains(card)) ?? "";
+
+    /// What the current player could do something with now, for the table to point out: the cards a drag or click
+    /// could be done with (or a click would start a button's choice with), and the empty zones a click works on.
+    public HashSet<object> Playable()
+    {
+        HashSet<object> playable = [];
+        foreach ((string actionName, Dictionary<string, object?> action) in game.Rules.Actions)
+        {
+            if (IsAnyTime(actionName) || !IsOfferedNow(actionName))
+            {
+                continue;
+            }
+            if (IsCardAction(action))
+            {
+                playable.UnionWith(PlayableCards(actionName));
+                playable.UnionWith(ClickableEmptyZones(actionName));
+            }
+            else if (StartsChoiceOnClick(actionName))
+            {
+                playable.UnionWith(ChoiceOptions(actionName).OfType<Card>());
+            }
+        }
+        return playable;
+    }
+
+    /// Whether something that may be done now takes its cards from the zone: a drag from it or a click on it, or a
+    /// button (whose "when" holds) choosing from it. Its cards that can't be played now are then worth dimming, even
+    /// all of them (President's hand when nothing beats the table), unlike a zone nothing plays from now.
+    public bool PlaysFrom(Zone zone) =>
+        game.Rules.Actions.Any(pair => !IsAnyTime(pair.Key) && IsOfferedNow(pair.Key) && TakesFrom(pair.Value, zone));
+
+    bool TakesFrom(Dictionary<string, object?> action, Zone zone)
+    {
+        if (action.GetValueOrDefault(DragKey) is Dictionary<string, object?> dragZones)
+        {
+            return Names(dragZones.GetValueOrDefault("from"), zone);
+        }
+        if (Binds(action, ClickKey, zone) || Binds(action, DoubleClickKey, zone))
+        {
+            return true;
+        }
+        return action.GetValueOrDefault("choose") is string options && game.Holds(WhenOf(action))
+            && StepCompiler.NamesIn(game.TreeOf(options)).Any(name => Names(name, zone));
+    }
+
+    /// "any_time" actions (like sorting a hand) can be done by anyone, on anyone's turn, as themselves.
+    public bool IsAnyTime(string actionName) => game.Rules.Actions[actionName].GetValueOrDefault("any_time") is true;
 
     /// Actions named in an offer(...) can only be done while an offer naming them is waiting; the others whenever
     /// their "when" holds.
@@ -100,7 +153,7 @@ public class Plays
         {
             return PlayableCards(actionName).Count > 0 || ClickableEmptyZones(actionName).Count > 0;
         }
-        return game.Holds(WhenOf(action));
+        return game.Holds(WhenOf(action)) && (!action.ContainsKey("choose") || game.Choice.HasOptionsFor(actionName));
     }
 
     /// An offer(...) step is waiting: the current player may do one of these actions (and anything not offered).
@@ -219,7 +272,7 @@ public class Plays
     }
 
     /// Every move the current player could make, for bots. A move is a list of inputs (see Game.Apply), e.g.
-    /// pressing an action and then clicking the cards to choose.
+    /// pressing an action and then clicking the cards to choose. "any_time" actions (sorting) are left to people.
     public List<List<PlayerInput>> LegalMoves()
     {
         if (game.Choice.IsOpen)
@@ -255,7 +308,7 @@ public class Plays
         }
         foreach ((string actionName, Dictionary<string, object?> action) in game.Rules.Actions)
         {
-            if (IsCardAction(action) || !ShowsButton(actionName) || action.GetValueOrDefault("human_only") is true || !CanPerform(actionName))
+            if (IsCardAction(action) || !ShowsButton(actionName) || action.GetValueOrDefault("human_only") is true || IsAnyTime(actionName) || !CanPerform(actionName))
             {
                 continue;
             }
@@ -297,6 +350,16 @@ public class Plays
     {
         dragRoutesByPlayer.Clear();
     }
+
+    /// A button whose choice is of several cards, which a click on one of them starts (see ChoiceStartedBy).
+    bool StartsChoiceOnClick(string actionName)
+    {
+        Dictionary<string, object?> action = game.Rules.Actions[actionName];
+        bool picksSeveral = action.ContainsKey("up_to") || action.GetValueOrDefault("pick") is not (null or 1.0);
+        return action.GetValueOrDefault("choose") is string && picksSeveral && !IsCardAction(action) && ShowsButton(actionName) && CanPerform(actionName);
+    }
+
+    List<object?> ChoiceOptions(string actionName) => Choice.OptionsFrom(game.Evaluate((string)game.Rules.Actions[actionName]["choose"]!));
 
     string FirstAllowed(List<string> actionNames, Card card, Zone source, Zone destination) =>
         game.WithMove(source, destination, () =>

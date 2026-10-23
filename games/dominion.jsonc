@@ -1,6 +1,18 @@
 {
 	"title": "Dominion",
 	"description": "Deckbuilding: buy cards to grow a better deck. You against a Big Money bot. Change \"kingdom\" in the game file to play with other cards.",
+	"how_to_play": [
+		"# Goal",
+		"Have the most victory points in your deck when the Provinces run out (or any three supply piles are empty).",
+		"# Your turn",
+		"- Action phase: play an action card by clicking it (or dragging it to your play area). You start with one action; cards can give you more actions, cards, buys and coins.",
+		"- Buy phase: play your treasures (click them, or press Play treasures), then click a supply pile you can afford to buy that card. You start with one buy.",
+		"- Press End turn: your hand and played cards are discarded, and you draw five new cards.",
+		"# Your deck",
+		"- Everything you buy goes to your discard pile; when your draw pile runs out, the discard pile is shuffled to make a new one.",
+		"- Copper, Silver and Gold give coins; Estates, Duchies and Provinces are worth points but do nothing in your hand.",
+		"- Some cards ask you to choose (Chapel, Remodel, Cellar...): pick the highlighted cards, then press Done. Hover over a card to read it."
+	],
 	"players": 2,
 	"player_names": [
 		"You",
@@ -276,6 +288,12 @@
 			"steps": [
 				"move(choice, discard)"
 			]
+		},
+		"Sort hand": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['type', 'cost'])"
+			]
 		}
 	},
 	"triggers": {
@@ -421,7 +439,8 @@
 					"shuffle(deck)",
 					"draw(deck, hand, 5)"
 				]
-			}
+			},
+			"player = one_of(players)"
 		],
 		"deck_empty": [
 			"move(discard, deck)",

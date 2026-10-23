@@ -1,0 +1,32 @@
+// Dice: five dice in a row, rolled by a button. A die is a card whose value set(...) changes, and its name and
+// picture to match; read them with card.value or sum(dice, 'value'). To draw them as dice rather than cards, add to
+// card_face: "shape": "square", "size": "size", "image": "image" (as Yahtzee does).
+{
+	"zones": {
+		"dice": {
+			"label": "Dice",
+			"layout": "row",
+			"width": 0.4,
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"cards": "res://decks/dice.csv"
+		}
+	},
+	"actions": {
+		"Roll": {
+			"steps": [
+				{
+					"for": "die",
+					"in": "dice",
+					"do": [
+						"set(die, 'value', random(1, 6))",
+						"set(die, 'name', '%d' % [die.value])",
+						"set(die, 'image', 'dice/%d.svg' % [die.value])"
+					]
+				}
+			]
+		}
+	}
+}

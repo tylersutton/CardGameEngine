@@ -3,8 +3,8 @@ using Editing;
 using Godot;
 
 /// Opens the real screens: the title screen, the lobby, every game on the table screen with bots playing every seat
-/// for a few moves, and every game in the editor (edited and undone back to the file). Reports load errors, failed
-/// steps and errors Godot reports.
+/// for a few moves, the dock's keys, dimmed cards (also while choosing), Next hand on a bot's turn, and every game in
+/// the editor (edited and undone back to the file). Reports load errors, failed steps and errors Godot reports.
 /// Run: godot --headless res://tests/ui_test.tscn
 public partial class UiTest : Node
 {
@@ -29,6 +29,10 @@ public partial class UiTest : Node
             await Play(path);
             await Edit(path);
         }
+        await PressKeys();
+        await DimOffSuitCards();
+        await DimInPresident();
+        await NextHandOnABotsTurn();
         problems.AddRange(scriptErrors.Messages);
         GD.Print("UI TEST: ", problems.Count == 0 ? "all passed" : "FAILED\n  " + string.Join("\n  ", problems));
         GetTree().Quit(problems.Count == 0 ? 0 : 1);
@@ -205,6 +209,179 @@ public partial class UiTest : Node
         {
             problems.Add($"{name}: undoing step edits didn't give back the trigger");
         }
+    }
+
+    /// Gin Rummy starts with each player taking the upcard or passing: Pass is the one gold button and the first
+    /// one shown, so Space presses it, and then 1 does for the other player.
+    async Task PressKeys()
+    {
+        Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
+        main.RulesPath = "res://games/gin_rummy.jsonc";
+        AddChild(main);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Game game = main.Game!;
+        game.Rules.Bot["players"] = new List<object?>();
+        game.AnnounceStateChanged();
+        foreach (Key key in new[] { Key.Space, Key.Key1 })
+        {
+            int inputs = game.Inputs.Count;
+            GetViewport().PushInput(new InputEventKey { Keycode = key, Pressed = true });
+            GetViewport().PushInput(new InputEventKey { Keycode = key, Pressed = false });
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            if (game.Inputs.Count != inputs + 1 || game.Inputs[^1].Action != "Pass")
+            {
+                problems.Add($"dock keys: {key} didn't press Pass (inputs: {string.Join(", ", game.Inputs)})");
+            }
+        }
+        main.QueueFree();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await PressNumberKey();
+    }
+
+    /// Spades' bids are the buttons 0 to 13: 3 bids 3, not the third button.
+    async Task PressNumberKey()
+    {
+        Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
+        main.RulesPath = "res://games/spades.jsonc";
+        AddChild(main);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Game game = main.Game!;
+        game.Rules.Bot["players"] = new List<object?>();
+        game.AnnounceStateChanged();
+        GetViewport().PushInput(new InputEventKey { Keycode = Key.Key3, Pressed = true });
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        if (game.Inputs.Count != 1 || Values.Format(game.Inputs[0].Option) != "3")
+        {
+            problems.Add($"dock keys: 3 didn't bid 3 in Spades (inputs: {string.Join(", ", game.Inputs)})");
+        }
+        main.QueueFree();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+    }
+
+    /// Hearts: when you must follow suit and hold other suits too, those other cards are dimmed, and only those.
+    async Task DimOffSuitCards()
+    {
+        Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
+        main.RulesPath = "res://games/hearts.jsonc";
+        AddChild(main);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Game game = main.Game!;
+        List<Card> hand = game.Zones["hand_1"].Cards;
+        bool MustFollowWithOthers()
+        {
+            string lead = Values.Text(game.Variables["lead"]);
+            return game.CurrentPlayer() == 1 && game.Plays.Offered.Contains("Play a card") && lead != ""
+                && hand.Any(card => card.Data["suit"] == lead) && hand.Any(card => card.Data["suit"] != lead);
+        }
+        PlayUntil(game, MustFollowWithOthers);
+        TableView table = main.GetNode<TableView>("%TableView");
+        string leadSuit = Values.Text(game.Variables["lead"]);
+        List<Card> dimmed = hand.Where(card => table.CardViews[card].Dimmed).ToList();
+        if (!MustFollowWithOthers() || !dimmed.SequenceEqual(hand.Where(card => card.Data["suit"] != leadSuit)))
+        {
+            problems.Add($"dimming: in Hearts, following {leadSuit}, dimmed {string.Join(", ", dimmed.Select(card => card.Title))}");
+        }
+        main.QueueFree();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+    }
+
+    /// President: the cards that can't beat the table stay dimmed after clicking one that can starts choosing a set.
+    /// When none can, the whole hand is dimmed and Play can't be pressed: the turn only offers Pass.
+    async Task DimInPresident()
+    {
+        Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
+        main.RulesPath = "res://games/president.jsonc";
+        AddChild(main);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Game game = main.Game!;
+        TableView table = main.GetNode<TableView>("%TableView");
+        List<Card> hand = game.Zones["hand_1"].Cards;
+        List<Card> Dimmed() => hand.Where(card => table.CardViews[card].Dimmed).ToList();
+
+        PlayUntil(game, () => Dimmed().Count > 0 && Dimmed().Count < hand.Count);
+        List<Card> before = Dimmed();
+        Card? playable = hand.FirstOrDefault(card => !before.Contains(card));
+        if (before.Count == 0 || playable == null)
+        {
+            problems.Add("dimming: President never had some cards that couldn't beat the table");
+        }
+        else
+        {
+            game.Apply(PlayerInput.Click(playable) with { Player = 1 });
+            if (!game.Choice.IsOpen || !Dimmed().SequenceEqual(before))
+            {
+                problems.Add($"dimming: choosing in President dimmed {string.Join(", ", Dimmed().Select(card => card.Title))}, not {string.Join(", ", before.Select(card => card.Title))}");
+            }
+            game.Apply(new("undo") { Player = 1 });
+        }
+
+        PlayUntil(game, () => hand.Count > 0 && Dimmed().Count == hand.Count);
+        Button play = main.GetNode("%ActionButtons").GetChildren().OfType<Button>().First(button => button.Text == "Play");
+        string prompt = string.Join(" ", main.GetNode("%ChoiceBar").GetChildren().OfType<Label>().Select(label => label.Text));
+        if (Dimmed().Count != hand.Count || !play.Disabled || prompt != "Your turn: Pass")
+        {
+            problems.Add($"dimming: with nothing to beat the table in President, dimmed {Dimmed().Count} of {hand.Count}, Play pressable: {!play.Disabled}, \"{prompt}\"");
+        }
+        main.QueueFree();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+    }
+
+    /// Bots play every seat (and a person presses the "human_only" buttons, like Collect trick) until it's player 1's
+    /// turn, with nothing being chosen, and the screen shows what's asked.
+    static void PlayUntil(Game game, Func<bool> shown)
+    {
+        List<object?> bots = (List<object?>)game.Rules.Bot["players"]!;
+        List<object?> everyone = Enumerable.Range(1, game.Rules.Players).Select(player => (object?)(double)player).ToList();
+        Bot bot = new(game);
+        for (int move = 0; move < 500; move++)
+        {
+            if (game.CurrentPlayer() == 1 && !game.Choice.IsOpen)
+            {
+                game.Rules.Bot["players"] = bots;
+                game.AnnounceStateChanged();
+                if (shown())
+                {
+                    return;
+                }
+            }
+            game.Rules.Bot["players"] = everyone;
+            string? button = game.Rules.Actions.Keys.FirstOrDefault(action => game.Rules.Actions[action].GetValueOrDefault("human_only") is true && game.Plays.CanPerform(action));
+            if (button != null)
+            {
+                game.Apply(PlayerInput.Perform(button));
+            }
+            else
+            {
+                bot.TakeInput();
+            }
+        }
+        game.Rules.Bot["players"] = bots;
+    }
+
+    /// Gin Rummy: a hand that ends on the bot's turn waits for a person to press Next hand, so the dock offers it.
+    async Task NextHandOnABotsTurn()
+    {
+        Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
+        main.RulesPath = "res://games/gin_rummy.jsonc";
+        AddChild(main);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Game game = main.Game!;
+        game.Rules.Bot["players"] = new List<object?> { 1.0, 2.0 };
+        Bot bot = new(game);
+        for (int move = 0; move < 500 && !game.Plays.Offered.Contains("Next hand"); move++)
+        {
+            bot.TakeInput();
+        }
+        game.Rules.Bot["players"] = new List<object?> { (double)game.CurrentPlayer() };
+        game.AnnounceStateChanged();
+        Button? nextHand = main.GetNode("%ActionButtons").GetChildren().OfType<Button>().FirstOrDefault(button => button.Text == "Next hand");
+        string prompt = string.Join(" ", main.GetNode("%ChoiceBar").GetChildren().OfType<Label>().Select(label => label.Text));
+        if (!game.Plays.Offered.Contains("Next hand") || nextHand is not { Visible: true, Disabled: false } || prompt.Contains("thinking"))
+        {
+            problems.Add($"Next hand on a bot's turn: offered {string.Join(", ", game.Plays.Offered)}; dock says \"{prompt}\"");
+        }
+        main.QueueFree();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
 
     static List<string> Suggestions(SmartField field) =>

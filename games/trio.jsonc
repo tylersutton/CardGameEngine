@@ -1,0 +1,220 @@
+{
+	"title": "Trio",
+	"description": "Three to six players, you against bots. Find three cards of the same number. On your turn, reveal cards one at a time: click the leftmost (lowest) or rightmost (highest) card of anyone's hand, yours included, or turn over a card in the middle. While every revealed card matches, keep going; three that match are a trio, and yours to keep. A card that doesn't match ends your turn, and everything goes back. Collect three trios, or the trio of 7s, to win. Hands stay sorted, so remember what you've seen!",
+	"how_to_play": [
+		"# Goal",
+		"Collect three trios (three cards of the same number), or the trio of 7s.",
+		"# Hands",
+		"- Everyone's hand is kept sorted from lowest (left) to highest (right), even the parts you can't see.",
+		"# Your turn",
+		"Reveal cards one at a time:",
+		"- Click the leftmost (lowest) or rightmost (highest) card of anyone's hand, yours included, to reveal it in the middle.",
+		"- Or click a face-down card in the middle to turn it over.",
+		"- Keep going while every revealed card shows the same number. Three that match are a trio: you keep it, and your turn ends.",
+		"- As soon as a card doesn't match, your turn ends and everything goes back where it came from.",
+		"- After a bot's turn, the revealed cards stay in the middle until you press Continue, so you can see them.",
+		"# Tip",
+		"- Everyone sees every revealed card. Remember them!"
+	],
+	"players": [
+		4,
+		3,
+		5,
+		6
+	],
+	"player_names": [
+		"You",
+		"West",
+		"North",
+		"East",
+		"Player 5",
+		"Player 6"
+	],
+	"seats": [
+		[
+			0.12,
+			0.86
+		]
+	],
+	"zones": {
+		"box": {
+			"outline": false,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				-0.3,
+				0.5
+			],
+			"cards": "res://decks/trio.csv"
+		},
+		"middle": {
+			"copies": 9,
+			"layout": "pile",
+			"face": "down",
+			"grid": {
+				"columns": 5,
+				"spacing": [
+					0.07,
+					0.2
+				]
+			},
+			"anchor": [
+				0.27,
+				0.4
+			]
+		},
+		"revealed": {
+			"label": "Revealed",
+			"layout": "row",
+			"width": 0.18,
+			"anchor": [
+				0.71,
+				0.5
+			]
+		},
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"width": 0.3,
+			"anchor": [
+				0.5,
+				0.86
+			]
+		},
+		"trios": {
+			"label": "Trios",
+			"per_player": true,
+			"layout": "row",
+			"width": 0.14,
+			"anchor": [
+				0.82,
+				0.86
+			]
+		}
+	},
+	"variables": {
+		// Whose hand each revealed card came from, in the order they were revealed.
+		"revealed_from": [],
+		"done": false
+	},
+	"constants": {
+		"hand_sizes": [
+			9,
+			7,
+			6,
+			5
+		]
+	},
+	"conditions": {
+		"hand_end": "owner(card) > 0 and (position(card) == 1 or position(card) == count(hand[owner(card)]))",
+		"shown": "[revealed, without(middle, face_down(middle))]",
+		"mismatch": "size(groups(shown, 'value')) > 1",
+		"trio_count": "count(trios) / 3",
+		"won": "trio_count >= 3 or count(where(trios, 'value', 7)) == 3"
+	},
+	"actions": {
+		"Reveal": {
+			"click": "all_hand",
+			"when": "hand_end",
+			"steps": [
+				"revealed_from += [owner(card)]",
+				"log('%s reveals %s\\'s %s' % [name_of(player), name_of(owner(card)), 'lowest' if position(card) == 1 else 'highest'])",
+				"move(card, revealed)"
+			]
+		},
+		"Turn over": {
+			"click": "middle",
+			"when": "card != null and not card.face_up",
+			"steps": "flip(card)"
+		},
+		// After a bot's turn, so people can see what it revealed.
+		"Continue": {
+			"human_only": true,
+			"steps": []
+		}
+	},
+	"turn": [
+		"done = false",
+		{
+			"while": "not done",
+			"do": [
+				"offer(['Reveal', 'Turn over'])",
+				{
+					"if": "mismatch",
+					"then": [
+						"log('No match: everything goes back')",
+						{
+							"if": "is_bot(player)",
+							"then": "offer('Continue')"
+						},
+						"trigger('put_back')",
+						"done = true"
+					],
+					"else": {
+						"if": "count(shown) == 3",
+						"then": [
+							"log('%s takes a trio of %ss!' % [name_of(player), text(top(shown), 'value')])",
+							"move(shown, trios)",
+							"revealed_from = []",
+							{
+								"if": "is_bot(player)",
+								"then": "offer('Continue')"
+							},
+							"done = true"
+						]
+					}
+				}
+			]
+		},
+		{
+			"if": "won",
+			"then": "end_game(player)"
+		},
+		"end_turn()"
+	],
+	"triggers": {
+		"start": [
+			{
+				"for": "player",
+				"in": "players",
+				"do": "sort(hand, ['value'])"
+			},
+			"shuffle(box)",
+			"deal(box, all_hand, lookup(hand_sizes, size(players) - 3))",
+			"deal(box, middle, 1)",
+			"player = one_of(players)"
+		],
+		// Revealed hand cards go back to their owners, and middle cards turn face down again.
+		"put_back": [
+			{
+				"for": "shown_card",
+				"in": "revealed",
+				"do": "move(shown_card, hand[revealed_from[shown_card_number - 1]])"
+			},
+			"revealed_from = []",
+			"flip(without(middle, face_down(middle)))"
+		]
+	},
+	"status": {
+		"your trios": "count(trios[viewer()]) / 3",
+		"most trios": "most('trio_count')"
+	},
+	"bot": {
+		"players": [
+			2,
+			3,
+			4,
+			5,
+			6
+		],
+		"prefer": "trio_count"
+	},
+	"card_face": {
+		"corner": "name",
+		"title": "name",
+		"background": "paint",
+		"color": "#1b1b1b",
+		"card_back": "#37474f"
+	}
+}

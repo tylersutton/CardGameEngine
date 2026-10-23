@@ -5,15 +5,17 @@ using Core;
 using Editing;
 using Godot;
 
-/// Exports a game to Tabletop Simulator: draws each deck's card sheets and back with the game's own card faces, and
-/// writes a save that Tabletop Simulator lists under Saves, with the pictures beside it on this computer.
+/// Exports a game to Tabletop Simulator: draws each starting deck's card sheets and back with the game's own card
+/// faces, runs the game's start, and writes a save of the table as the game shows it then, which Tabletop Simulator
+/// lists under Saves, with the pictures beside it on this computer.
 public partial class TabletopExport : Node
 {
     public const string SavesFolder = "My Games/Tabletop Simulator/Saves/Card Game Prototypes";
     /// Picture pixels per pixel of the game's table: a sheet 10 cards across stays under 4096 pixels.
     const int Scale = 4;
 
-    /// Writes the save and its pictures (replacing an earlier export of the game) and gives the save's path.
+    /// Writes the save and its pictures (replacing an earlier export of the game) and gives the save's path. The game
+    /// mustn't have started: the export starts it, so each export is a new deal.
     public async Task<string> Export(Game game)
     {
         string name = string.Concat(game.Rules.Title.Split(Path.GetInvalidFileNameChars()));
@@ -40,9 +42,27 @@ public partial class TabletopExport : Node
             Image back = await Draw(game, images, [deck.Faces[0]], (1, 1), false);
             backUrls[deckNumber] = Save(back, pictures, $"{deck.Zone.Name}_back");
         }
+        game.Start();
+        Dictionary<Card, (System.Numerics.Vector2, float)> places = PlacesOnTable(game);
         string savePath = Path.Combine(folder, name + ".json");
-        File.WriteAllText(savePath, TabletopSave.Text(game, decks, (deck, sheet) => faceUrls[(deck, sheet)], deck => backUrls[deck]));
+        File.WriteAllText(savePath, TabletopSave.Text(game, decks, card => places[card], (deck, sheet) => faceUrls[(deck, sheet)], deck => backUrls[deck]));
         return savePath;
+    }
+
+    /// Where the game's own table (unseen, at its usual size) puts each card: its center and how far it's turned.
+    Dictionary<Card, (System.Numerics.Vector2, float)> PlacesOnTable(Game game)
+    {
+        TableView table = new() { Visible = false };
+        AddChild(table);
+        table.Size = new(TabletopSave.TableSize.X, TabletopSave.TableSize.Y);
+        table.ShowGame(game);
+        Dictionary<Card, (System.Numerics.Vector2, float)> places = table.CardViews.ToDictionary(pair => pair.Key, pair =>
+        {
+            Vector2 center = pair.Value.Destination.Position + pair.Value.Size / 2;
+            return (new System.Numerics.Vector2(center.X, center.Y), Mathf.RadToDeg(pair.Value.Destination.Rotation));
+        });
+        table.QueueFree();
+        return places;
     }
 
     /// The cards drawn in a grid, face up or down, with white behind their rounded corners.

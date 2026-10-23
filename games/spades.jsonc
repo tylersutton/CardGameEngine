@@ -1,6 +1,20 @@
 {
 	"title": "Spades",
 	"description": "Four players in two partnerships: you and North against West and East. Bid your tricks, spades are trump; the first team to 500 wins.",
+	"how_to_play": [
+		"# Goal",
+		"With your partner (North), be the first team to 500 points. Spades are always trump.",
+		"# Bidding",
+		"- Before play, everyone bids how many tricks they expect to take: press a number under the table. Partners' bids are added together.",
+		"- A bid of 0 (nil) scores 100 if you take no tricks at all, and loses 100 if you take any.",
+		"# Tricks",
+		"- Drag a card from your hand to the middle. Follow the suit led if you can; if you can't, play anything, including a spade.",
+		"- The highest spade wins the trick, or if there's none, the highest card of the suit led. Press Collect trick to go on.",
+		"- Spades can't be led until a spade has been played.",
+		"# Scoring",
+		"- Make your team's bid: 10 points per trick bid, plus 1 per extra trick (a bag). Miss it: lose 10 per trick bid.",
+		"- Every 10 bags costs your team 100 points."
+	],
 	"players": 4,
 	"player_names": [
 		"You",
@@ -35,6 +49,7 @@
 			],
 			"cards": "res://decks/standard_deck.csv",
 			"columns": {
+				"art": "'cards/' + card.rank + '_' + card.suit + '.png'",
 				"value": "14 if card.rank == 'A' else card.value"
 			}
 		},
@@ -148,6 +163,18 @@
 			"steps": [
 				"trigger('deal')"
 			]
+		},
+		"Sort by suit": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['suit', 'value'])"
+			]
+		},
+		"Sort by rank": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['value', 'suit'])"
+			]
 		}
 	},
 	"turn": [
@@ -172,6 +199,12 @@
 	],
 	"triggers": {
 		"start": [
+			"dealer = random(1, 4)",
+			"trigger('deal')"
+		],
+		"deal": [
+			"move([all_hand, all_played, all_won], deck)",
+			"shuffle(deck)",
 			{
 				"for": "player",
 				"in": "players",
@@ -179,12 +212,6 @@
 					"sort(hand, ['suit', 'value'])"
 				]
 			},
-			"dealer = random(1, 4)",
-			"trigger('deal')"
-		],
-		"deal": [
-			"move([all_hand, all_played, all_won], deck)",
-			"shuffle(deck)",
 			"deal(deck, all_hand, 13)",
 			"player = dealer",
 			"dealer = next_player()",
@@ -261,6 +288,8 @@
 		"body": [
 			"suit"
 		],
-		"color": "color"
+		"color": "color",
+		"image": "art",
+		"card_back": "card_back.svg"
 	}
 }

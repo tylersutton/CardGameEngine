@@ -8,11 +8,14 @@ public partial class TableView : Control
     public static readonly Color FeltColor = new(0.12f, 0.38f, 0.22f);
     static readonly Color LabelColor = new(1, 1, 1, 0.7f);
     static readonly Color ZoneLabelColor = new(1, 1, 1, 0.45f);
+    static readonly Color LabelOnLightColor = new(0, 0, 0, 0.6f);
+    static readonly Color LabelOnDarkColor = new(1, 1, 1, 0.85f);
     static readonly Color SlotBorder = new(1, 1, 1, 0.25f);
     static readonly Color CurrentSlotBorder = new(1, 0.85f, 0.4f, 0.8f);
     static readonly Color SpaceColor = new(0, 0, 0, 0.15f);
     const float SpaceBorderWidth = 1.5f;
     const int LabelFontSize = 14;
+    const int MinLabelFontSize = 8;
     const float LabelGap = 22;
     const float BottomMargin = 8;
     const float ZoomGap = 12;
@@ -29,7 +32,10 @@ public partial class TableView : Control
     /// Where inputs go: the game itself, or the online session (set by Main).
     public Func<PlayerInput, bool> Submit { get; set; } = _ => false;
     public bool ShowZoneNames { get; set; }
+    /// Designer > Show plays: outline everything this screen's player could do something with now, to check the rules.
+    public bool ShowPlays { get; set; }
     public Game? Game => game;
+    public IReadOnlyDictionary<Card, CardView> CardViews => views;
 
     Game? game;
     ImageCache images = new(ProjectFiles.With());
@@ -38,6 +44,14 @@ public partial class TableView : Control
     CardView? zoomView;
     Zone? hoverZone;
     bool hoverAllowed;
+    /// The cards and empty zones outlined with ShowPlays (Plays.Playable).
+    HashSet<object> outlined = [];
+    /// The cards in this screen's player's own zones that they can't play now, in the zones something plays from now
+    /// (Plays.PlaysFrom): the cards that don't follow suit, or a whole hand when nothing in it beats the table. A zone
+    /// nothing plays from now (a hand while drawing or bidding) isn't dimmed: it would say nothing.
+    HashSet<Card> dimmed = [];
+    /// Each card's zone before the input being carried out, to see which cards it moves (see ShowMoved).
+    readonly Dictionary<Card, string> zonesBefore = [];
     readonly List<CardView> carriedViews = [];
     readonly List<Vector2> carriedOffsets = [];
 
@@ -47,6 +61,11 @@ public partial class TableView : Control
         TextureFilter = TextureFilterEnum.LinearWithMipmaps;
     }
 
+    public override void _ExitTree()
+    {
+        ForgetInputs();
+    }
+
     public void ShowGame(Game gameToShow)
     {
         foreach (CardView view in views.Values)
@@ -54,7 +73,10 @@ public partial class TableView : Control
             view.QueueFree();
         }
         views.Clear();
+        ForgetInputs();
         game = gameToShow;
+        game.InputApplying += RememberZones;
+        game.InputApplied += ShowMoved;
         images = new(game.Files);
         MakeZoomView();
         foreach (Zone zone in game.Zones.Values)
@@ -70,9 +92,45 @@ public partial class TableView : Control
             QueueRedraw();
             RefreshViews();
         };
-        game.StateChanged += RefreshViews;
+        game.StateChanged += () =>
+        {
+            FindPlayable();
+            RefreshViews();
+        };
         LayoutAll();
         QueueRedraw();
+    }
+
+    void ForgetInputs()
+    {
+        if (game != null)
+        {
+            game.InputApplying -= RememberZones;
+            game.InputApplied -= ShowMoved;
+        }
+    }
+
+    void RememberZones(PlayerInput input)
+    {
+        foreach (Card card in game!.Cards)
+        {
+            zonesBefore[card] = card.ZoneName;
+        }
+    }
+
+    /// The cards someone else's input moved (a bot's, or another player's online) glow for a moment, to show what
+    /// changed.
+    void ShowMoved(PlayerInput input)
+    {
+        bool madeElsewhere = input.Player is int player && (game!.IsBot(player) || game.LocalSeat != 0 && player != game.LocalSeat);
+        if (!madeElsewhere || input.Type == "undo")
+        {
+            return;
+        }
+        foreach (Card card in game!.Cards.Where(card => card.ZoneName != zonesBefore.GetValueOrDefault(card) && views.ContainsKey(card)))
+        {
+            views[card].Flash();
+        }
     }
 
     void LayoutAll()
@@ -111,10 +169,18 @@ public partial class TableView : Control
                     continue;
                 }
                 CardView view = ViewFor(group[i], center);
-                view.FaceUp = game!.ShowsFace(group[i]);
+                view.FaceUp = ShowsFace(group[i]);
+                // A column changed by set(...) (a die rolled) changes how the card looks.
+                view.QueueRedraw();
+                if (zone.Board != null)
+                {
+                    view.ShowOnSpace(Board.PaintParts(game!.PaintOf(zone)).Shape, zone.Board.SpaceSize);
+                }
                 MoveChild(view, -1);
                 Transform2D placement = zone.Layout == "column"
                     ? new(0, new Vector2(0, columnOffsets[i]))
+                    : zone.Board != null && zone.Layout == "pile"
+                    ? ZoneLayout.Cluster(i, group.Count, zone.Board.SpaceSize)
                     : ZoneLayout.Place(zone.Layout, i, group.Count, MaxSpread(zone), zone.Spread);
                 Vector2 offset = (new Vector2(groupCenters[groupIndex], 0) + placement.Origin).Rotated(turn);
                 view.MoveTo(center + offset - view.Size / 2, placement.Rotation + turn);
@@ -137,17 +203,56 @@ public partial class TableView : Control
         return groups;
     }
 
+    /// Plays are pointed out only on this screen's turn and while the rules hold. While choosing (like picking the
+    /// cards for President's Play), the plays are the choice's options, which are outlined already.
+    void FindPlayable()
+    {
+        bool pointsOut = game!.IsLocalTurn() && !game.Sandbox && !game.Over;
+        HashSet<object> playable = !pointsOut ? [] : game.Choice.IsOpen ? [.. game.Choice.Options.OfType<Card>()] : game.Plays.Playable();
+        outlined = ShowPlays && !game.Choice.IsOpen ? playable : [];
+        dimmed = [];
+        foreach (Zone zone in game.Zones.Values.Where(zone => pointsOut && zone.Owner == game.Viewer() && PlaysFrom(zone)))
+        {
+            dimmed.UnionWith(Plays.ReachableCards(zone).Where(card => !playable.Contains(card)));
+        }
+    }
+
+    /// While choosing, the zones holding the options; otherwise the zones the actions that may be done now play from.
+    bool PlaysFrom(Zone zone) =>
+        game!.Choice.IsOpen ? game.Choice.Options.Any(option => option is Card card && game.ZoneOf(card) == zone) : game.Plays.PlaysFrom(zone);
+
+    /// Shows or hides the plays (see ShowPlays) at once, without waiting for the next change.
+    public void RefreshPlays()
+    {
+        if (game != null)
+        {
+            FindPlayable();
+            RefreshViews();
+        }
+    }
+
     void RefreshViews()
     {
         QueueRedraw();
         foreach ((Card card, CardView view) in views)
         {
-            view.FaceUp = game!.ShowsFace(card);
-            view.Highlighted = game.Choice.Options.Contains(card) && game.IsLocalTurn();
+            view.FaceUp = ShowsFace(card);
+            view.Highlighted = game!.Choice.Options.Contains(card) && game.IsLocalTurn();
+            view.Playable = outlined.Contains(card);
+            view.Dimmed = dimmed.Contains(card);
             view.Selected = game.Choice.Selected.Contains(card);
             view.Movable = game.MayHandle(card);
             view.MarksText = string.Join(" ", card.Marks.Values.Select(Values.Format));
         }
+    }
+
+    /// Whether the card is drawn face up: if this screen can see it and, in a pile, it's on top (or one of the top
+    /// cards the pile spreads), as the cards under it are hidden by it.
+    bool ShowsFace(Card card)
+    {
+        Zone zone = game!.ZoneOf(card);
+        bool underTop = zone.Layout == "pile" && zone.Board == null && zone.Cards.IndexOf(card) < zone.Cards.Count - Mathf.Max(zone.Spread, 1);
+        return game.ShowsFace(card) && !underTop;
     }
 
     CardView ViewFor(Card card, Vector2 spawnCenter)
@@ -239,7 +344,8 @@ public partial class TableView : Control
         Zone source = game!.ZoneOf(view.Card!);
         Zone? target = NearestZone(GetLocalMousePosition(), DraggedViews(view));
         ShowDropHint(view, target == source ? null : target);
-        if (target != null && (!MakesRoom(target) || target != source && !hoverAllowed))
+        bool keepsOrder = target == source && !source.Reorders && !game.Sandbox;
+        if (target != null && (!MakesRoom(target) || target != source && !hoverAllowed || keepsOrder))
         {
             target = null;
         }
@@ -264,7 +370,7 @@ public partial class TableView : Control
         if (target != hoverZone)
         {
             hoverZone = target;
-            hoverAllowed = target != null && game!.Plays.CanMove(view.Card!, target);
+            hoverAllowed = target != null && game!.MayAct(game.Viewer(), PlayerInput.Drag(view.Card!, target)) && game.Plays.CanMove(view.Card!, target);
             QueueRedraw();
         }
         view.Hint = hoverZone == null ? CardView.DropHint.None : hoverAllowed ? CardView.DropHint.Allowed : CardView.DropHint.Refused;
@@ -323,7 +429,7 @@ public partial class TableView : Control
         ShowDropHint(view, null);
         if (destination == source && MakesRoom(source))
         {
-            if (!Submit(new("reorder") { Card = view.Card!.Id, Index = index }))
+            if (index == source.Cards.IndexOf(view.Card!) || !Submit(new("reorder") { Card = view.Card!.Id, Index = index }))
             {
                 LayoutZone(source);
             }
@@ -447,32 +553,53 @@ public partial class TableView : Control
         }
         Font font = GetThemeDefaultFont();
         DrawBoardImages();
+        DrawSpaces();
         foreach (Zone zone in game.Zones.Values)
         {
-            if (!zone.HasOutline || zone.Layout == "melds" && zone.IsEmpty)
+            if (zone.Board == null && (!zone.HasOutline || zone.Layout == "melds" && zone.IsEmpty))
             {
                 continue;
             }
             Rect2 slot = SlotRect(zone);
-            bool isCurrent = game.Rules.Players > 1 && zone.Owner == game.CurrentPlayer();
-            if (zone.Board != null)
+            if (zone.Board == null)
             {
-                DrawSpace(zone, slot);
-            }
-            else
-            {
+                bool isCurrent = game.Rules.Players > 1 && zone.Owner == game.CurrentPlayer();
                 DrawStyleBox(isCurrent ? currentSlotStyle : slotStyle, slot);
             }
-            if (zone.Label.Length > 0)
+            string label = zone.Board != null ? game.LabelOf(zone) : zone.Label;
+            if (label.Length > 0)
             {
-                Vector2 baseline = new(slot.Position.X, slot.GetCenter().Y + LabelFontSize / 3f);
-                DrawString(font, baseline, zone.Label, HorizontalAlignment.Center, slot.Size.X, LabelFontSize, ZoneLabelColor);
+                int fontSize = LabelFontSize;
+                while (fontSize > MinLabelFontSize && font.GetStringSize(label, HorizontalAlignment.Left, -1, fontSize).X > slot.Size.X - 2)
+                {
+                    fontSize--;
+                }
+                Vector2 baseline = new(slot.Position.X, slot.GetCenter().Y + fontSize / 3f);
+                DrawString(font, baseline, label, HorizontalAlignment.Center, slot.Size.X, fontSize, LabelColorOn(zone));
             }
             if (ShowZoneNames)
             {
                 Vector2 namePosition = slot.Position - new Vector2(LabelOverhang, LabelGap);
                 DrawString(font, namePosition, $"{zone.Name} ({zone.Cards.Count})", HorizontalAlignment.Center, slot.Size.X + LabelOverhang * 2, LabelFontSize, LabelColor);
             }
+        }
+        foreach (Zone zone in game.Zones.Values.Where(zone => zone.ShowsCount))
+        {
+            // Board spaces touch, so a space's count goes in its corner rather than under it.
+            Rect2 slot = SlotRect(zone);
+            string count = zone.Cards.Count.ToString();
+            if (zone.Board != null)
+            {
+                DrawString(font, slot.End - new Vector2(slot.Size.X + 4, 4), count, HorizontalAlignment.Right, slot.Size.X, LabelFontSize, LabelColor);
+            }
+            else
+            {
+                DrawString(font, new Vector2(slot.Position.X, slot.End.Y + LabelFontSize + 2), count, HorizontalAlignment.Center, slot.Size.X, LabelFontSize, LabelColor);
+            }
+        }
+        foreach (Zone zone in outlined.OfType<Zone>())
+        {
+            DrawHighlight(zone, CardView.PlayableStyle);
         }
         if (game.IsLocalTurn())
         {
@@ -490,18 +617,62 @@ public partial class TableView : Control
 
     /// Board spaces touch, so they're drawn without the rounded corners of card slots: squares, or pointy-topped
     /// hexagons, in the board's paint where it has some.
-    void DrawSpace(Zone zone, Rect2 slot)
+    /// A label on a painted space is dark or light to stand out from the paint; elsewhere it's faint.
+    Color LabelColorOn(Zone zone)
     {
-        Color fill = Color.FromString(game!.PaintOf(zone), SpaceColor);
-        if (zone.Board!.Shape != Board.Hex)
+        (string color, string shape) = zone.Board != null ? Board.PaintParts(game!.PaintOf(zone)) : ("", "");
+        if (color.Length == 0 || shape.Length > 0)
         {
-            DrawRect(slot, fill);
-            DrawRect(slot, SlotBorder, false, SpaceBorderWidth);
+            return ZoneLabelColor;
+        }
+        return Color.FromString(color, SpaceColor).Luminance > 0.5f ? LabelOnLightColor : LabelOnDarkColor;
+    }
+
+    /// Every board space's paint, under the cards: bars before dots, so a line's ends sit under the dots it joins.
+    void DrawSpaces()
+    {
+        List<(Zone Space, string Color, string Shape)> painted = [];
+        foreach (Zone space in game!.Zones.Values.Where(zone => zone.Board != null))
+        {
+            (string color, string shape) = Board.PaintParts(game.PaintOf(space));
+            painted.Add((space, color, shape));
+        }
+        foreach ((Zone space, string color, string shape) in painted.OrderBy(each => each.Shape == SpaceShape.Dot))
+        {
+            DrawSpace(space, SlotRect(space), color, shape);
+        }
+    }
+
+    /// A board space: its paint, filling it or as a dot or bar, and its outline unless the zone has none (then an
+    /// unpainted space isn't drawn at all, leaving the board's picture).
+    void DrawSpace(Zone zone, Rect2 slot, string color, string shape)
+    {
+        if (color.Length == 0 && !zone.HasOutline)
+        {
             return;
         }
-        Vector2[] corners = HexCorners(zone, 0);
-        DrawColoredPolygon(corners[..6], fill);
-        DrawPolyline(corners, SlotBorder, SpaceBorderWidth, true);
+        Color fill = Color.FromString(color, SpaceColor);
+        bool hex = zone.Board!.Shape == Board.Hex;
+        if (shape.Length > 0)
+        {
+            SpaceShape.Draw(this, slot.GetCenter(), shape, zone.Board.SpaceSize, fill);
+        }
+        else if (hex)
+        {
+            DrawColoredPolygon(HexCorners(zone, 0)[..6], fill);
+        }
+        else
+        {
+            DrawRect(slot, fill);
+        }
+        if (zone.HasOutline && hex)
+        {
+            DrawPolyline(HexCorners(zone, 0), SlotBorder, SpaceBorderWidth, true);
+        }
+        else if (zone.HasOutline)
+        {
+            DrawRect(slot, SlotBorder, false, SpaceBorderWidth);
+        }
     }
 
     /// Each board's picture, stretched over all its spaces, under them.
@@ -538,7 +709,7 @@ public partial class TableView : Control
     {
         if (zone.Board?.Shape == Board.Hex)
         {
-            DrawPolyline(HexCorners(zone, CardView.HighlightWidth / 2f), style.BorderColor, CardView.HighlightWidth, true);
+            DrawPolyline(HexCorners(zone, CardView.HighlightWidth / 2f), style.BorderColor, style.BorderWidthTop, true);
             return;
         }
         DrawStyleBox(style, SlotRect(zone).Grow(CardView.HighlightWidth / 2f));

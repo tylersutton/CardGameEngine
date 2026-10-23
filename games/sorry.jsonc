@@ -1,0 +1,337 @@
+{
+	"title": "Sorry!",
+	"description": "Two to four players, you (Red) against bots. Get your four pawns from Start, clockwise round the board and up your colored safety lane into Home. On your turn, click the deck, then click the pawn to move (or Pass if none can). 1 and 2 move a pawn out of Start, 2 draws again, 4 goes backwards, 10 goes forward 10 or back 1, 11 goes forward 11 or swaps places with another player's pawn, and Sorry! takes a pawn from Start onto another player's pawn. Land on another pawn to send it back to its Start. Land on the start of a slide that isn't your color to slide to its end, sending every pawn on it back to Start. Home must be reached by exact count. (A 7 can't be split here.)",
+	"how_to_play": [
+		"# Goal",
+		"Be the first to get all four of your pawns from Start, clockwise round the board, up your colored safety lane, and into Home. You play Red: your Start is just inside the bottom edge, and your safety lane runs up from the bottom right.",
+		"# Your turn",
+		"- Click the deck to draw a card, then click the pawn you want to move. If the card can move it more than one way, choose with the buttons.",
+		"- If none of your pawns can move, press Pass.",
+		"# The cards",
+		"- 1 or 2: move a pawn out of Start, or forward that many. A 2 also lets you draw again.",
+		"- 3, 5, 7, 8, 12: forward that many. 4: backward 4.",
+		"- 10: forward 10, or backward 1. 11: forward 11, or swap places with another player's pawn on the track (then click their pawn).",
+		"- Sorry!: move a pawn out of Start onto another player's pawn, sending it back to its Start (click their pawn).",
+		"# Bumping and sliding",
+		"- Land on another player's pawn and it goes back to its Start. You can't land on your own pawn.",
+		"- Land on the start of a slide (a colored stretch of track) that isn't your color and you slide to its end, sending every pawn on it back to Start.",
+		"- Your safety lane is yours alone, and Home must be reached by exact count."
+	],
+	"players": [
+		4,
+		2,
+		3
+	],
+	"player_names": [
+		"You",
+		"West",
+		"North",
+		"East"
+	],
+	"seats": [
+		[
+			0.5,
+			0.97
+		]
+	],
+	"zones": {
+		"pawns": {
+			"outline": false,
+			"layout": "pile",
+			"anchor": [
+				-0.3,
+				0.5
+			],
+			"cards": "res://decks/sorry_pawns.csv"
+		},
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.86,
+				0.38
+			],
+			"cards": "res://decks/sorry_cards.csv"
+		},
+		"discard": {
+			"label": "Drawn",
+			"layout": "pile",
+			"anchor": [
+				0.86,
+				0.64
+			]
+		},
+		// The track is the board's edge, 60 spaces clockwise from the top left. Each side (0 top, 1 right,
+		// 2 bottom, 3 left) has its color's Start, safety lane and Home inside it.
+		"board": {
+			"board": {
+				"shape": "square",
+				"columns": 16,
+				"rows": 16,
+				"size": 38,
+				"paint": {
+					"yellow": "#f2d043",
+					"green": "#4caf50",
+					"red": "#d64545",
+					"blue": "#4a7fd6",
+					"yellow_slide": "#f6e39a",
+					"green_slide": "#a3d9a5",
+					"red_slide": "#eb9a9a",
+					"blue_slide": "#a3bfee",
+					"track": "#f4efe1"
+				},
+				"labels": {
+					"any_start": "Start",
+					"any_home": "Home"
+				}
+			},
+			"outline": false,
+			"anchor": [
+				0.5,
+				0.5
+			]
+		}
+	},
+	"variables": {
+		"drawn": -1,
+		"can_move": false,
+		"again": false
+	},
+	"constants": {
+		// Which side of the board each player plays from, for 2, 3 and 4 players.
+		"sides_by_count": [
+			[
+				2,
+				0
+			],
+			[
+				2,
+				3,
+				1
+			],
+			[
+				2,
+				3,
+				0,
+				1
+			]
+		],
+		"start_columns": [
+			5,
+			15,
+			12,
+			2
+		],
+		"start_rows": [
+			2,
+			5,
+			15,
+			12
+		],
+		"lane_columns": [
+			0,
+			-1,
+			0,
+			1
+		],
+		"lane_rows": [
+			1,
+			0,
+			-1,
+			0
+		]
+	},
+	"conditions": {
+		"side_of(seat)": "lookup(sides_by_count, size(players) - 2)[seat - 1]",
+		"my_side": "side_of(player)",
+		"is_track(space)": "space.row == 1 or space.row == 16 or space.column == 1 or space.column == 16",
+		"track_index(space)": "space.column - 1 if space.row == 1 and space.column < 16 else (14 + space.row if space.column == 16 and space.row < 16 else (46 - space.column if space.row == 16 and space.column > 1 else 61 - space.row))",
+		"track_space(index)": "space_at(board, [1 + index % 15, 16, 16 - index % 15, 1][index / 15], [1, 1 + index % 15, 16, 16 - index % 15][index / 15])",
+		"exit_index(side)": "15 * side + 4",
+		"entry_index(side)": "15 * side + 2",
+		"start_space(side)": "space_at(board, start_columns[side], start_rows[side])",
+		// The lane runs inward from the track space at its entry; its sixth space is Home.
+		"lane_space(side, step)": "space_at(board, track_space(entry_index(side)).column + step * lane_columns[side], track_space(entry_index(side)).row + step * lane_rows[side])",
+		"lane_side(space)": "0 if space.column == 3 and space.row >= 2 and space.row <= 7 else (1 if space.row == 3 and space.column >= 10 and space.column <= 15 else (2 if space.column == 14 and space.row >= 10 and space.row <= 15 else (3 if space.row == 14 and space.column >= 2 and space.column <= 7 else -1)))",
+		"start_side(space)": "0 if space == start_space(0) else (1 if space == start_space(1) else (2 if space == start_space(2) else (3 if space == start_space(3) else -1)))",
+		"on_slide(space)": "is_track(space) and track_index(space) % 15 in [1, 2, 3, 4, 9, 10, 11, 12, 13]",
+		// Each color's Start and lane are painted solid, and its slides lighter.
+		"own_side(space)": "lane_side(space) if lane_side(space) >= 0 else start_side(space)",
+		"slide_side(space)": "track_index(space) / 15 if on_slide(space) else -1",
+		"yellow(space)": "own_side(space) == 0",
+		"green(space)": "own_side(space) == 1",
+		"red(space)": "own_side(space) == 2",
+		"blue(space)": "own_side(space) == 3",
+		"yellow_slide(space)": "slide_side(space) == 0",
+		"green_slide(space)": "slide_side(space) == 1",
+		"red_slide(space)": "slide_side(space) == 2",
+		"blue_slide(space)": "slide_side(space) == 3",
+		"track(space)": "is_track(space)",
+		"any_start(space)": "start_side(space) >= 0",
+		"any_home(space)": "space == lane_space(0, 6) or space == lane_space(1, 6) or space == lane_space(2, 6) or space == lane_space(3, 6)",
+		// How far a pawn of mine has come: -2 in Start, -1 just behind the start's exit, 0 at the exit, 58 at the
+		// lane's entry, 59 to 63 up the lane, 64 Home.
+		"progress_of(space, side)": "-2 if space == start_space(side) else ((track_index(space) - exit_index(side) + 61) % 60 - 1 if is_track(space) else 58 + abs(space.column - track_space(entry_index(side)).column) + abs(space.row - track_space(entry_index(side)).row))",
+		"progress(space)": "progress_of(space, my_side)",
+		"space_for(steps)": "start_space(my_side) if steps == -2 else (track_space((exit_index(my_side) + steps + 60) % 60) if steps <= 58 else lane_space(my_side, steps - 58))",
+		"home": "lane_space(my_side, 6)",
+		"mine_here(space)": "count(where(space, 'side', my_side)) > 0",
+		"rival_on_track(space)": "is_track(space) and count(space) > 0 and not mine_here(space)",
+		"rivals_on_track": "zones_where(board, 'rival_on_track')",
+		"forward_steps": "0 if drawn == 4 or drawn == 0 else drawn",
+		"back_steps": "4 if drawn == 4 else (1 if drawn == 10 else 0)",
+		"back_from(steps)": "steps - back_steps + 60 if steps - back_steps < -1 else steps - back_steps",
+		"can_go_to(steps)": "steps == 64 or not mine_here(space_for(steps))",
+		"may_leave_start(space)": "(drawn == 1 or drawn == 2 or (drawn == 0 and size(rivals_on_track) > 0)) and progress(space) == -2",
+		"may_go_forward(space)": "forward_steps > 0 and progress(space) >= -1 and progress(space) + forward_steps <= 64 and can_go_to(progress(space) + forward_steps)",
+		"may_go_back(space)": "back_steps > 0 and progress(space) >= -1 and progress(space) < 64 and can_go_to(back_from(progress(space)))",
+		"may_swap(space)": "drawn == 11 and is_track(space) and size(rivals_on_track) > 0",
+		"ways_to_move(space)": "(['Sorry!' if drawn == 0 else 'Move out'] if may_leave_start(space) and (drawn == 0 or can_go_to(0)) else []) + (['Forward %d' % [forward_steps]] if may_go_forward(space) else []) + (['Back %d' % [back_steps]] if may_go_back(space) else []) + (['Swap'] if may_swap(space) else [])",
+		"can_move_from(space)": "mine_here(space) and size(ways_to_move(space)) > 0",
+		"at_home": "count(where(home, 'side', my_side))",
+		// How far all of a player's pawns have come, for bots.
+		"pawn_progress(pawn)": "progress(zone_of(pawn))",
+		"travelled": "sum_of(where(board, 'side', my_side), 'pawn_progress')",
+		"in_start(side)": "count(where(start_space(side), 'side', side))"
+	},
+	"actions": {
+		"Draw": {
+			"drag": {
+				"from": "deck",
+				"to": "discard"
+			},
+			"click": true,
+			"steps": [
+				"drawn = card.value",
+				"again = drawn == 2",
+				"can_move = count(zones_where(board, 'can_move_from')) > 0"
+			]
+		},
+		"Move": {
+			"click": "board",
+			"when": "can_move_from(clicked_zone)",
+			"steps": [
+				"pawn = top(where(clicked_zone, 'side', my_side))",
+				"ways = ways_to_move(clicked_zone)",
+				"way = ways[0] if size(ways) == 1 else choose(ways, 'Move how?')",
+				"goal = null",
+				{
+					"if": "way == 'Move out'",
+					"then": "goal = space_for(0)"
+				},
+				{
+					"if": "way == 'Forward %d' % [forward_steps]",
+					"then": "goal = space_for(progress(clicked_zone) + forward_steps)"
+				},
+				{
+					"if": "way == 'Back %d' % [back_steps]",
+					"then": "goal = space_for(back_from(progress(clicked_zone)))"
+				},
+				{
+					"if": "way == 'Swap' or way == 'Sorry!'",
+					"then": "goal = choose(rivals_on_track, 'Whose pawn? Click it')"
+				},
+				{
+					"if": "way == 'Swap'",
+					"then": [
+						"log('%s swaps places' % [name_of(player)])",
+						"rival = top(goal)",
+						"swap(pawn, rival)"
+					],
+					"else": [
+						{
+							"for": "rival",
+							"in": "without(goal, where(goal, 'side', my_side))",
+							"do": [
+								"log('Sorry! A %s goes back to Start' % [rival.name])",
+								"move(rival, start_space(rival.side))"
+							]
+						},
+						"move(pawn, goal)"
+					]
+				},
+				{
+					"if": "is_track(goal) and track_index(goal) / 15 != my_side and track_index(goal) % 15 in [1, 9]",
+					"then": [
+						"slide_from = track_index(goal)",
+						"length = 3 if slide_from % 15 == 1 else 4",
+						"log('%s slides!' % [name_of(player)])",
+						{
+							"for": "step",
+							"in": "length",
+							"do": {
+								"for": "rival",
+								"in": "track_space((slide_from + step_number) % 60)",
+								"do": [
+									"move(rival, start_space(rival.side))"
+								]
+							}
+						},
+						"goal = track_space((slide_from + length) % 60)",
+						"move(pawn, goal)"
+					]
+				}
+			]
+		},
+		"Pass": {
+			"when": "not can_move",
+			"steps": "log('%s can\\'t move' % [name_of(player)])"
+		}
+	},
+	"turn": [
+		"again = true",
+		{
+			"while": "again and at_home < 4",
+			"do": [
+				{
+					"if": "count(deck) == 0",
+					"then": [
+						"move(discard, deck)",
+						"shuffle(deck)"
+					]
+				},
+				"offer('Draw')",
+				"offer(['Move', 'Pass'])"
+			]
+		},
+		{
+			"if": "at_home == 4",
+			"then": "end_game(player)"
+		},
+		"end_turn()"
+	],
+	"triggers": {
+		"start": [
+			{
+				"for": "player",
+				"in": "players",
+				"do": "move(where(pawns, 'side', my_side), start_space(my_side))"
+			},
+			"shuffle(deck)",
+			"player = one_of(players)"
+		]
+	},
+	"status": {
+		"your pawns home": "'%d of 4' % [count(where(lane_space(side_of(viewer()), 6), 'side', side_of(viewer())))]",
+		"last card": "text(top(discard), 'text')"
+	},
+	"bot": {
+		"players": [
+			2,
+			3,
+			4
+		],
+		"prefer": "travelled + 20 * at_home - most('travelled') / 3.0"
+	},
+	"card_face": {
+		// Only the cards have a label: pawns are plain discs.
+		"title": "label",
+		"text": "text",
+		"shape": "shape",
+		"size": 20,
+		"background": "paint",
+		"color": "#1b1b1b",
+		"card_back": "#c62828"
+	}
+}

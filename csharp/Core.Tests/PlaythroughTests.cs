@@ -2,7 +2,7 @@ using System.Text.Json;
 using Core;
 
 /// tests/playthrough_test.gd: every game played to its end with random bots in every seat (pressing the buttons only
-/// people press, like Next hand), with nothing failing on the way. Games with no end (solitaire, the sandbox,
+/// people press, like Next hand), with each number of players it allows, with nothing failing on the way. Games with no end (solitaire, the sandbox,
 /// President's endless hands) just play a while at random.
 public class PlaythroughTests
 {
@@ -10,37 +10,42 @@ public class PlaythroughTests
     const int EndlessInputs = 300;
     /// Games that never call end_game(): one player games, the sandbox, and President (hands go on for ever).
     static readonly string[] Endless = ["pyramid", "solitaire", "standard", "president"];
+    /// Random bots forget every card they've seen, so their games of Trio run long.
+    static readonly Dictionary<string, int> MoreInputs = new() { ["trio"] = 10000 };
     /// Games too long for random bots to finish (they rarely knock in Gin): finishing a hand will do.
     static readonly string[] Long = ["gin_rummy"];
-    /// Bots with an aim, for games random play wouldn't finish (Color Match's random bots draw as often as they play).
-    static readonly Dictionary<string, string> Prefer = new() { ["color_match"] = "count(opponent_hand) - count(hand)" };
+    /// Bots with an aim, for games random play wouldn't finish (Color Match's random bots draw as often as they play,
+    /// and Yahtzee's keep and put back the same dice).
+    static readonly Dictionary<string, string> Prefer = new() { ["color_match"] = "count(opponent_hand) - count(hand)", ["yahtzee"] = "score - count(open_boxes) / 100.0" };
 
     static readonly GameFiles files = new(RepositoryFiles.PathOf(""));
 
-    public static TheoryData<string> Games()
+    public static TheoryData<string, int> Games()
     {
-        TheoryData<string> games = [];
+        TheoryData<string, int> games = [];
         foreach (string path in files.GamePaths())
         {
-            games.Add(Path.GetFileNameWithoutExtension(path));
+            foreach (int players in GameRules.Load(files, path).PlayerCounts)
+            {
+                games.Add(Path.GetFileNameWithoutExtension(path), players);
+            }
         }
         return games;
     }
 
     [Theory]
     [MemberData(nameof(Games))]
-    public void BotsPlayToTheEnd(string gameName)
+    public void BotsPlayToTheEnd(string gameName, int players)
     {
         string path = files.GamePaths().Single(each => Path.GetFileNameWithoutExtension(each) == gameName);
         Dictionary<string, object?> data = (Dictionary<string, object?>)GameRules.Parse(files.Read(path))!;
-        int players = (int)(data.GetValueOrDefault("players") as double? ?? 1);
         Dictionary<string, object?> bot = new() { ["players"] = Enumerable.Range(1, players).Select(player => (object?)(double)player).ToList() };
         if (Prefer.TryGetValue(gameName, out string? prefer))
         {
             bot["prefer"] = prefer;
         }
         data["bot"] = bot;
-        Game game = new(new(RepositoryFiles.PathOf(""), new() { [path] = JsonSerializer.Serialize(data) }), path, 11);
+        Game game = new(new(RepositoryFiles.PathOf(""), new() { [path] = JsonSerializer.Serialize(data) }), path, 11, players);
         Assert.Empty(game.Errors);
         List<string> failures = [];
         game.Failed += failures.Add;
@@ -51,7 +56,8 @@ public class PlaythroughTests
         int inputs = 0;
         int nextHands = 0;
         game.InputApplied += input => nextHands += input.Action == "Next hand" ? 1 : 0;
-        while (inputs < (endless ? EndlessInputs : MostInputs) && !game.Over && failures.Count == 0)
+        int mostInputs = endless ? EndlessInputs : MoreInputs.GetValueOrDefault(gameName, MostInputs);
+        while (inputs < mostInputs && !game.Over && failures.Count == 0)
         {
             bool moved = endless ? RandomMove(game, chooser) : bots.TakeInput();
             if (!moved && !PressAButton(game))

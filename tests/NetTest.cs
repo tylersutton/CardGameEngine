@@ -2,8 +2,9 @@ using Core;
 using Godot;
 
 /// Two processes play a hand of Hearts over the network (two people, two bots on the host), then compare. The guest
-/// asks for an undo partway (the host allows it), drops out and rejoins by name, and finally scribbles on its own copy
-/// to check it notices it's out of step and catches up.
+/// is seated as it joins, asks for an undo partway (the host allows it), drops out and rejoins by name, and finally
+/// scribbles on its own copy to check it notices it's out of step and catches up. Then the host takes everyone back to
+/// the lobby and starts a second match, which both play with the same seats before comparing.
 /// Run both, then check the two printed state numbers match:
 ///   godot --headless res://tests/net_test.tscn -- host
 ///   godot --headless res://tests/net_test.tscn -- guest
@@ -23,6 +24,7 @@ public partial class NetTest : Node
     bool askedUndo;
     bool rejoined;
     bool corrupted;
+    bool backInLobby;
     bool finished;
 
     Net Net => Net.Instance;
@@ -33,6 +35,7 @@ public partial class NetTest : Node
     {
         chooser = new(hosting ? 7UL : 8UL);
         Net.MatchStarted += OnMatchStarted;
+        Net.MatchEnded += () => backInLobby = true;
         Net.Notice += text => GD.Print($"  [{Role}] {text}");
         Net.UndoAsked += asker =>
         {
@@ -59,13 +62,6 @@ public partial class NetTest : Node
         else
         {
             Net.MyName = "Guest";
-            Net.LobbyChanged += () =>
-            {
-                if (Net.Lobby != null && Net.Game == null && Net.MySeat() == 0)
-                {
-                    Net.Sit(1);
-                }
-            };
             Net.Join("127.0.0.1", Port);
         }
     }
@@ -78,6 +74,10 @@ public partial class NetTest : Node
         bot = new(game, hosting ? 7 : 8);
         waitingFor = -1;
         GD.Print($"  [{Role}] match started as seat {game.LocalSeat} with {game.Inputs.Count} inputs so far");
+        if (game.LocalSeat != (hosting ? 3 : 1))
+        {
+            GD.Print($"  [{Role}] PROBLEM: not in the seat it took (or was given)");
+        }
         int otherPerson = hosting ? 1 : 3;
         Zone otherHand = game.Zones[$"hand_{otherPerson}"];
         Card? otherCard = otherHand.IsEmpty ? null : otherHand.Cards[0];
@@ -100,7 +100,15 @@ public partial class NetTest : Node
         }
         if (game.Plays.Offered.Contains("Next hand") || game.Over)
         {
-            Finish("hand over");
+            if (backInLobby)
+            {
+                Finish("second hand over");
+            }
+            else if (hosting)
+            {
+                GD.Print("  [host] hand over: back to the lobby for another match");
+                Net.ReturnToLobby();
+            }
             return;
         }
         if (game.Inputs.Count < waitingFor)

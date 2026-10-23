@@ -11,8 +11,9 @@ A game file is **JSONC**: JSON that also allows `//` and `/* */` comments, and t
 | Key | What it holds |
 |---|---|
 | `title`, `description` | Shown on the title screen. Without a title, the file name is used. |
+| `how_to_play` | The rules for players, shown by the table's **How to play** button (F1) under the description: a list of lines, one paragraph each. A line starting `# ` is a heading, and one starting `- ` a bullet. Say how each thing is done on this table: "click the deck", "drag a card to the pile". |
 | [`zones`](#zones) | The places cards can be: decks, hands, piles, boards. |
-| [`players`](#players-and-variables), `player_names`, `seats`, `teams` | How many players there are, what they're called, where their name tags sit, and partnerships. |
+| [`players`](#players-and-variables), `player_names`, `seats`, `teams` | How many players there are (or may be), what they're called, where their name tags sit, and partnerships. |
 | [`variables`](#players-and-variables), `player_variables`, `team_variables` | Values the game keeps track of, with their starting values. |
 | [`actions`](#actions) | What players can do: drag, click, or press a button. |
 | [`turn`](#turn) | The steps of one player's turn. |
@@ -35,8 +36,8 @@ Wherever a list of steps goes, a single step will also do: `"then": "end_turn()"
 | Key | Meaning | Default |
 |---|---|---|
 | `anchor` | Where the zone sits, as `[x, y]` fractions of the table. For a per-player zone, this is seat 1's spot. The other seats' spots are worked out round the table, with the side seats turned sideways. | `[0.5, 0.5]` |
-| `layout` | How the cards spread: `pile`, `row`, `fan`, `column` (cascading downward, as in solitaire), or `melds` (grouped into melds) | `row` |
-| `face` | `up`; `down`; `private` (only its owner sees the cards); or `others` (everyone but its owner sees them, like holding cards facing out in Hanabi). Cards take this face as they arrive. | `up` |
+| `layout` | How the cards spread: `pile` (only the top card shows), `row`, `fan`, `column` (cascading downward, as in solitaire), or `melds` (grouped into melds) | `row` |
+| `face` | `up`; `down`; `private` (only its owner sees the cards); or `others` (everyone but its owner sees them, like holding cards facing out in Hanabi). Cards take this face as they arrive. Once the game is over, everyone sees every card that isn't face down. | `up` |
 | `cards` | A deck to start with, e.g. `"res://decks/my_deck.csv"` | empty |
 | `columns` | With `cards`: columns to add or change on every card as the game loads, each an expression about `card`, e.g. Hearts' `{ "value": "14 if card.rank == 'A' else card.value" }` | |
 | `label` | Text shown faintly inside the zone while it's empty. `#` becomes the number in per-player zones and copies: `"Tricks #"`. | none |
@@ -44,6 +45,8 @@ Wherever a list of steps goes, a single step will also do: `"then": "end_turn()"
 | `width` | The widest a `row` or `fan` may spread, as a fraction of the table | 800 px |
 | `rotation` | Turns the zone, in degrees | `0` |
 | `spread` | For a `pile`: how many top cards to fan out sideways, e.g. `3` for a draw-three waste | `0` |
+| `reorder` | `false` stops players rearranging the zone's cards by dragging, for a hand whose order is a rule (Scout). A card dragged in from elsewhere still goes where it's dropped. | `true` |
+| `show_count` | `true` shows how many cards the zone holds, under it: seeds in a Mancala pit, cards left in a deck | `false` |
 | `drag` | `"stack"`: dragging a card also carries every card on top of it | one card |
 | `per_player` | `true` makes one zone per player: `hand_1`, `hand_2`, ... | `false` |
 | `copies` | A number: makes that many zones, e.g. `7` gives `tableau_1` to `tableau_7` | |
@@ -64,8 +67,10 @@ A zone with a `board` is a grid of spaces, and each space is a zone of its own, 
 - **`shape`:** `square` (the default) or `hex`. A hex board is a rhombus, as in the game Hex: each row sits half a space right of the one above.
 - **`size`:** how far apart neighbouring spaces are, in pixels. Default 60.
 - **`image`:** a picture stretched over the whole board, under its spaces, e.g. `"boards/reversi.svg"` (see [Images](#images)). Add `"outline": false` to the zone to show the picture alone.
-- **`paint`:** colors for spaces, each by a condition about the space: `{ "top_edge": "#c8443a80", "dark": "#5a3a22" }`. A space takes the first color whose condition holds for it, so Hex shows each player's goal edges and checkers a checkerboard (`"dark(space)": "(space.row + space.column) % 2 == 0"`).
+- **`paint`:** colors for spaces, each by a condition about the space: `{ "top_edge": "#c8443a80", "dark": "#5a3a22" }`. A space takes the first color whose condition holds for it, so Hex shows each player's goal edges and checkers a checkerboard (`"dark(space)": "(space.row + space.column) % 2 == 0"`). After the color can come a shape, drawn instead of filling the space: `dot`, or a bar across (`hbar`) or down (`vbar`) reaching the middles of the spaces either side, as Dots and Boxes draws its dots and lines: `"dot": "#1b1b1b dot"`. With `"outline": false` on the zone, unpainted spaces aren't drawn at all.
+- **`labels`:** text for spaces, by conditions in the same way: `{ "start_space": "Start", "home_space": "Home" }`.
 - **A space's place:** `space.column` and `space.row`, counting from 1. `space_at(square, 4, 4)` finds a space by them.
+- **Sharing a space:** pieces in the same space sit round its middle, so each one shows (Sorry!'s pawns in Start).
 - **Looking along the board:** the [board building blocks](#building-blocks) take conditions with one parameter, the space, e.g. `"empty(space)": "count(space) == 0"` or Hex's `"mine(space)": "text(top(space), 'name') == my_color"`.
 
 ## players and variables
@@ -80,7 +85,8 @@ A zone with a `board` is a grid of spaces, and each space is a zone of its own, 
 "team_variables": { "team_score": 0 }
 ```
 
-- **Whose turn:** `player` holds whose turn it is, starting at 1. `end_turn()` passes the turn on, and `player = ...` gives it to someone in particular, e.g. the winner of a trick. `players` is the list `[1, 2, 3, 4]`.
+- **Whose turn:** `player` holds whose turn it is, starting at 1. `end_turn()` passes the turn on, and `player = ...` gives it to someone in particular, e.g. the winner of a trick. `players` is the list `[1, 2, 3, 4]`, so `player = one_of(players)` in `start` picks who goes first at random.
+- **How many:** `"players": [2, 3, 4]` lets the game be played by any of those numbers, chosen on the title screen or in the online lobby; the first is the usual one. Place per-player zones and name tags round the table from seat 1's spot (or give `anchors` and `seats` for the most players), list bots for every seat they might play, and write readouts without a fixed number of seats, e.g. `score[viewer()]`.
 - **Name tags:** `seats` places them. Give seat 1's spot and the others go round the table, or give one `[x, y]` per player. Without `player_names`, players are "Player 1", "Player 2", ...
 - **Per-player variables:** these work like per-player zones. `score` is the current player's, `opponent_score` is the next player's, and `score[2]` or `score_2` is player 2's.
 - **Teams:** each list in `teams` is one team. `team_score` is the current player's team's score, `team_won` is every won zone on that team, and `team(player)` gives a player's team number.
@@ -93,7 +99,7 @@ Everything a player can do, each with a name. How an action is done:
 
 - **By dragging:** `"drag": { "from": "hand", "to": "pile" }`. Each end can be a zone, a group of copies, or a list of those. Leave one end out to mean any zone. In the action, `card` is the dragged card, `from` is where it came from and `to` is where it's going. To let a click do the drag too, add `"click": true` or `"double_click": true`. The card then goes to the first zone it's allowed to go to.
 - **By clicking:** `"click": "deck"`, or `"double_click"`. Clicking a card there makes it the `card`. Clicking the empty zone makes `card` be `null`. `clicked_zone` is the zone that was clicked.
-- **By a button:** an action with neither is a toolbar button, and the buttons appear in the order listed. An action written as just a list of steps is a button: `"Shuffle": ["shuffle(deck)"]`.
+- **By a button:** an action with neither is a button under the table, and the buttons appear in the order listed. An action written as just a list of steps is a button: `"Shuffle": ["shuffle(deck)"]`.
 
 ```json
 "Tableau to foundation": {
@@ -108,18 +114,19 @@ Everything a player can do, each with a name. How an action is done:
 |---|---|
 | `steps` | What the action does. For a drag, these run after the card has moved. |
 | `when` | The action is only allowed while this is true. A button is greyed out otherwise. |
-| `choose` | For a button: what the player chooses before the steps run, e.g. `"hand"` (the cards are highlighted) or `"['Red', 'Blue']"` (buttons above the table). The steps get the pick as `choice`, and a single card as `card` too. Clicking elsewhere cancels the choice. |
+| `choose` | For a button: what the player chooses before the steps run, e.g. `"hand"` (the cards are highlighted) or `"['Red', 'Blue']"` (buttons under the table). The steps get the pick as `choice`, and a single card as `card` too. The button can't be pressed while there's nothing (or not enough) to choose, or no pick its `allow` accepts. With only one card or zone to choose, it's chosen without asking. Clicking elsewhere cancels the choice. When it picks several cards (`pick` above 1, or `up_to`), clicking one of them while the button can be pressed starts the choice with it. |
 | `pick` | With `choose`: exactly how many cards to pick, a number or an expression. `choice` is then a list. |
 | `up_to` | With `choose`: any number of cards up to this many, then **Done**. Use `pick` or `up_to`, not both. |
 | `allow` | With `choose`: a condition the whole pick must meet, e.g. `"size(groups(choice, 'rank')) == 1"` (all the same rank) |
 | `button` | `false` hides a button, for actions that are only started with `ask(...)`. `true` gives a drag or click action a button too, which asks for the card. |
 | `human_only` | `true`: bots never do it |
+| `any_time` | `true`: anyone may do it, even on someone else's turn or while a choice is being made, and it's done as them, so `hand` is their own hand: a Sort button. Its steps can't wait for a choice, and bots never do it. |
 | `prefer` | What a bot aims for when making this action's choice, instead of the game's `bot.prefer` |
 
 **When an action can be done:**
 
 - An action named in an [`offer(...)`](#turn) can only be done while that offer waits.
-- Any other action can be done whenever its `when` holds, like sorting your hand.
+- Any other action can be done whenever its `when` holds, on the current player's turn. With `any_time`, by anyone at any time.
 - For a drag or click, the first action in the file that allows it is the one that's done.
 - A game with no drag actions that never offers an action allows every drag, as a free-play sandbox. Any other game refuses a drag no action allows.
 
@@ -176,7 +183,7 @@ A condition can take **parameters** and be used like a building block. Sea Salt 
 "my_points": "points([hand, played])"
 ```
 
-Inside a condition, the parameter names stand for whatever was passed in. Dividing whole numbers gives a whole number, so `kinds(cards, 'Crab') / 2` counts pairs of crabs.
+Inside a condition, the parameter names stand for whatever was passed in, even one named `card`. Dividing whole numbers gives a whole number, so `kinds(cards, 'Crab') / 2` counts pairs of crabs.
 
 A refused drag is logged with the names of the conditions it failed, which keeps the message short.
 
@@ -200,7 +207,7 @@ Named values that steps can read but never change:
 
 Name players with `name_of(...)` and use `viewer()` for "you", so a readout is right on every player's screen when playing online.
 
-`"show_variables": ["actions", "buys", "coins"]` lists only those variables in the side panel. Without it, every variable is listed.
+`"show_variables": ["actions", "buys", "coins"]` lists those variables in the side panel too. With **Designer info** on, every variable is listed.
 
 ## card_face
 
@@ -216,7 +223,7 @@ Name players with `name_of(...)` and use `viewer()` for "you", so a readout is r
 | `image` | A picture for the card: a column of [image](#images) file names, or one file for every card. |
 | `layout` | `full` (the default): the image covers the whole card, for cards whose picture has everything on it. `art`: the image sits in a box above the title and text. |
 | `card_back` | What face-down cards show: an image or a color, for every card or from a column. A plain blue back if not set. |
-| `shape` | `disc` or `square` draws cards as pieces, `size` pixels across (a column or one number; 50 if not set), in their `background` color with their `title` on top. A column or one shape for every card. |
+| `shape` | `disc` or `square` draws cards as pieces, `size` pixels across (a column or one number; 50 if not set), in their `background` color with their `title` on top. `fill` draws a piece as the painted shape of the board space it's on, in its own color: Dots and Boxes' lines. A column or one shape for every card. |
 | `back` | A piece's other side, as a color or an image: a two-sided piece like Reversi's discs. `flip` turns it over, and both sides are public. |
 
 Without a `card_face`, a card shows its `name`.
@@ -242,8 +249,9 @@ A meld is at least `min` cards sharing a value in the `same` column. With `seque
 
 - **Without `prefer`,** the bot plays a random legal move, which is enough to play a prototype through.
 - **With `prefer`,** the bot tries every legal input, scores the result of each from its own point of view, and takes the best. Write `prefer` as "how good is this position for me?"
-- **It looks one input ahead.**
-- **It doesn't peek.** Cards it can't see are shuffled among themselves before each try. `"samples": 4` sets how many shuffles it averages over, and `"peek": true` lets it see everything.
+- **It looks one input ahead.** Among equally good inputs, it picks one at random. With `"depth": 2`, it also weighs the next player's best answer to each move, for board games like Checkers. That's slower, especially with hidden cards.
+- **It doesn't peek.** Cards it can't see are shuffled among themselves before each try, and so are dice and shuffles: it tries moves with random numbers of its own. `"samples": 4` sets how many shuffles it averages over, and `"peek": true` lets it see everything.
+- **It remembers.** A card it has seen face up keeps its identity, even back in someone's hand or face down, until it's shuffled.
 - **It never makes inputs that only reorder cards,** such as sorting.
 
 ## Steps
@@ -256,6 +264,7 @@ A step is one line of text that does something or works something out, like `dra
 | The card involved: dragged, clicked, chosen, or whose effect is running | `card` (`null` if there isn't one) |
 | A card's columns, with any capitals | `card.suit == lead`, `card.value > 5` |
 | A board space's place | `space.column`, `space.row` |
+| Which copy, space or player's zone a zone is | `clicked_zone.number` (from 1), `clicked_zone.owner` (the player whose per-player zone it is, `0` for a shared one) |
 | Where a drag goes, and what was clicked or chosen | `from`, `to`, `clicked_zone`, `choice` |
 | Text in single quotes | `'Hearts'`. A quote inside text takes a backslash, `'King\'s Court'`, which is doubled in the game file's JSON: `'King\\'s Court'`. |
 | Lists, read by position from 0 | `[1, 2]`, `ranking[0]`, `finish_order + [player]` |
@@ -301,7 +310,7 @@ Wherever a list of steps goes, you can also use these:
 - **What can be chosen:** cards (`hand`); zones (`discard_piles`), which the player clicks; or values (`['Red', 'Blue']`, `numbers(1, 6)`), which appear as buttons. The prompt shows above the table.
 - **Who chooses:** the current player. Inside a loop over players, each of them chooses in turn.
 - **While waiting,** nothing else can be done but the choice. Undo goes back to before the choice.
-- **When there's nothing to choose,** `choose` gives `null` and the others give `[]`. If there are no more cards than `choose_exactly` asks for, it gives them all without asking.
+- **When there's nothing to choose,** `choose` gives `null` and the others give `[]`. With only one card or zone, `choose` gives it without asking, and with no more cards than `choose_exactly` asks for, it gives them all. A choice of values always asks, so `choose(['Done'])` is a pause.
 - **In a trigger,** a choice holds up the steps that called the trigger.
 - **Where it works:** only in steps, not in a `when`, a condition or `status`.
 - **`choose` or an action's `choose`?** Choosing through an action's `choose` key can be cancelled, can check the whole pick with `allow`, and can have its own bot `prefer`.
@@ -314,13 +323,16 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 
 | Building block | Does |
 |---|---|
-| `draw(from, to, amount)` | Moves the top card(s) of `from` to `to` (1 card unless you say). Fires `<from>_empty` if `from` runs out. |
+| `draw(from, to, amount, face)` | Moves the top card(s) of `from` to `to` (1 card unless you say). Fires `<from>_empty` if `from` runs out. `face` is `'up'` or `'down'` to land the cards that way instead of the zone's way, e.g. War's `draw(deck, battle, 3, 'down')`. |
 | `deal(from, to, amount)` | Deals `amount` cards to each zone in `to`, one at a time, e.g. `deal(deck, all_hand, 13)` |
-| `move(cards, to)` | Moves cards to a zone |
+| `move(cards, to, face)` | Moves cards to a zone; `face` as for `draw` |
+| `swap(card, other)` | The two cards trade places, zone and spot. Sorry!'s 11; and Scout turns a card round by swapping it for its other way up, kept in a box. |
 | `try_move(card, to)` | Moves a card only if a drag action allows it, and does that action. `to` can be a group. |
 | `shuffle(zone)` | Shuffles a zone |
 | `flip(cards)` | Turns cards over, until they move to another zone |
-| `sort(zone, ['column', ...])` | Keeps a zone sorted by these columns. `sort(zone, [])` stops sorting. |
+| `reveal(cards)` | Shows cards to everyone, even in a private zone, until they move: hands at the end of a round |
+| `sort(zone, ['column', ...])` | Keeps a zone sorted by these columns, until a player drags a card to a new place in it. `sort(zone, [])` stops sorting. |
+| `set(cards, 'column', value)` | Changes a column for the rest of the game, kept as the cards move: rolling a die is `set(die, 'value', random(1, 6))`. The column must be in the deck. |
 | `mark(cards, 'key', value)`, `unmark(cards, 'key')` | Puts a note on cards, or takes it off, e.g. a clue `mark(cards, 'color', 'Red')`. Marks show on the card and last until it moves. A mark named after a column tells bots what the card is. |
 | `end_turn()` | Passes the turn to the next player and fires `turn_start` |
 | `trigger('name')` | Runs a trigger right after this step, with the same `card` |
@@ -328,6 +340,7 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 | `reset(['variable', ...])` | Puts variables back to their starting values, for every player if they're player variables |
 | `knock_out(players)`, `bring_back(players)` | Takes players out of the game, or puts them back |
 | `end_game(winners)` | Ends the game (see [turn](#turn)) |
+| `log('text')` | Writes a line in the action log for everyone, e.g. `log('%s has %d points' % [name_of(player), score])` |
 
 **Waiting for players**
 
@@ -346,13 +359,15 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 | Building block | Gives |
 |---|---|
 | `top(cards)`, `all(zone)` | The top card (`null` if there's none), or all of a zone's cards |
+| `position(card)` | Where a card lies in its zone, from 1 at the bottom (the left of a row). `all(hand)[position(card) - 2]` is the card to its left. |
 | `count(cards)` | How many cards there are |
 | `where(cards, 'column', value)` | The cards with that value in the column |
-| `matching(cards, 'condition')` | The cards for which a condition holds, with each one as `card` |
-| `without(cards, removed)` | The cards, minus the removed ones |
+| `matching(cards, 'condition')` | The cards for which a condition holds: one that reads `card` (`"is_ace": "card.rank == 'A'"`), or one with a parameter (`"ace(one)": "one.rank == 'A'"`) |
+| `without(cards, removed)` | The cards, minus the removed ones; or a list of values without those values, e.g. `without(open, ['Chance'])` |
 | `highest(cards, 'column')`, `lowest(cards, 'column')` | The card with the biggest or smallest number in the column |
-| `number(card, 'column')`, `text(card, 'column')` | A column as a number or as text, giving `0` or `''` when `card` is `null` |
-| `sum(cards, 'column')` | The total of a column, or `sum(list)` for a list of numbers |
+| `number(card, 'column')`, `text(card, 'column')` | A column as a number (whole unless written with a point) or as text, giving `0` or `''` when `card` is `null` |
+| `sum(cards, 'column')` | The total of a column, or `sum(list)` for a list of numbers: whole if they all are |
+| `sum_of(items, 'condition')`, `max_of(items, 'condition')` | A condition with one parameter worked out for each item (a zone's cards, or each card, zone or value of a list), then added up, or the largest. e.g. `sum_of(zones_where(board, 'mine_here'), 'progress')` adds up how far a player's pawns have come. |
 | `last(cards, amount)`, `first(list, amount)` | The last cards (the top of a pile) or the first ones, or the last or first items of a list |
 | `tops(zones)` | The top card of each zone, e.g. `tops(supply)` |
 | `face_down(cards)` | The cards that are face down |
@@ -361,6 +376,7 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 | `mark_of(card, 'key')` | A card's mark, or `null` |
 | `one_of(items)` | A random card or item, or `null` if there are none |
 | `zone('kind', number)` | That copy or player's zone, e.g. `zone('basic_pile', 7)` |
+| `zone_of(card)` | The zone the card is in |
 | `follows_suit(card, hand, lead)` | Whether playing the card follows suit (uses the `suit` column) |
 | `trick_winner(cards, lead, trump)` | The card that takes the trick (uses `suit` and `value`; `trump` is optional) |
 
@@ -389,6 +405,7 @@ See [Boards](#boards). A `'condition'` here is a condition's name in quotes, wit
 | `players_with_most('name')`, `players_with_least('name')` | The players who have it (several when tied), e.g. `end_game(players_with_most('score'))` |
 | `players_where('name')` | The players for whom a player variable or condition is true |
 | `players_left()` | The players who aren't knocked out |
+| `is_bot(player)` | Whether the computer plays that seat, e.g. to `offer` a people-only Continue after a bot's turn, so people can see what it did |
 | `team(player)` | A player's team number |
 
 **Numbers and lists**
@@ -416,7 +433,7 @@ See [Boards](#boards). A `'condition'` here is a condition's name in quotes, wit
 - **An empty zone's top card is `null`,** and `card.value` fails on it. Use `number(top(pile), 'value')` and `text(top(pile), 'suit')` instead. Alternatively, `and` and `or` stop as soon as the answer is known, so `count(to) > 0 and top(to).color == 'Red'` is safe.
 - **To reuse steps,** put them in a trigger and call `trigger('deal')`. **To reuse a check,** name it in `conditions`.
 - **"Draw only if you can't play"** is a drag action with `"when": "count(movable(hand, pile)) == 0"`.
-- **Whole numbers stay whole,** so `dealer % 4` and `list[index]` work.
+- **Whole numbers stay whole,** so `dealer % 4` and `list[index]` work, and so do `number(...)` and `sum(...)` of whole columns.
 
 ## Decks
 

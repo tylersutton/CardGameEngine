@@ -1,0 +1,152 @@
+{
+	"title": "Dots and Boxes",
+	"description": "You (Red) against a Blue bot, on a grid of 4 by 4 boxes. Take turns clicking the gap between two neighbouring dots to draw a line there. Draw the fourth side of a box and it's yours, and you go again. When every box is taken, whoever has more wins.",
+	"how_to_play": [
+		"# Goal",
+		"Claim more of the 16 boxes than your opponent. You play Red.",
+		"# The board",
+		"- The faint lines between the dots are where lines can go; the squares they surround are boxes.",
+		"# Your turn",
+		"- Click a faint line between two dots to draw it in your color.",
+		"- If your line closes the fourth side of a box, the box gets your color and you go again.",
+		"# Tips",
+		"- Don't draw the third side of a box: your opponent will take it.",
+		"- When the game is over, the player with more boxes wins."
+	],
+	"players": 2,
+	"player_names": [
+		"Red",
+		"Blue"
+	],
+	"seats": [
+		[
+			0.5,
+			0.96
+		],
+		[
+			0.5,
+			0.04
+		]
+	],
+	"zones": {
+		"box": {
+			"outline": false,
+			"layout": "pile",
+			"anchor": [
+				-0.3,
+				0.5
+			],
+			"cards": "res://decks/dots_and_boxes.csv"
+		},
+		"supply": {
+			"per_player": true,
+			"outline": false,
+			"layout": "pile",
+			"anchors": [
+				[
+					-0.3,
+					0.5
+				],
+				[
+					-0.3,
+					0.5
+				]
+			]
+		},
+		// Dots sit on odd columns and rows, boxes on even ones, and the lines between them on the rest.
+		"grid": {
+			"board": {
+				"shape": "square",
+				"columns": 9,
+				"rows": 9,
+				"size": 60,
+				"image": "boards/paper.svg",
+				"paint": {
+					"dot": "#1b1b1b dot",
+					"gap_across": "#ddd2b8 hbar",
+					"gap_down": "#ddd2b8 vbar"
+				}
+			},
+			"outline": false,
+			"anchor": [
+				0.5,
+				0.5
+			]
+		}
+	},
+	"variables": {
+		"another_go": false
+	},
+	"player_variables": {
+		"score": 0
+	},
+	"constants": {
+		"boxes": 16
+	},
+	"conditions": {
+		"dot(space)": "space.column % 2 == 1 and space.row % 2 == 1",
+		"box_space(space)": "space.column % 2 == 0 and space.row % 2 == 0",
+		"gap(space)": "not dot(space) and not box_space(space)",
+		"gap_across(space)": "space.row % 2 == 1 and space.column % 2 == 0",
+		"gap_down(space)": "space.row % 2 == 0 and space.column % 2 == 1",
+		"drawn(space)": "count(space) > 0",
+		"sides(space)": "count(zones_where(neighbors(space, 'orthogonal'), 'drawn'))",
+		"closed(space)": "box_space(space) and count(space) == 0 and sides(space) == 4",
+		"three_sided(space)": "box_space(space) and sides(space) == 3"
+	},
+	"actions": {
+		"Draw a line": {
+			"click": "grid",
+			"when": "gap(clicked_zone) and count(clicked_zone) == 0",
+			"steps": [
+				"move(top(where(supply, 'kind', 'line')), clicked_zone)",
+				"closed_now = zones_where(neighbors(clicked_zone, 'orthogonal'), 'closed')",
+				{
+					"for": "space",
+					"in": "closed_now",
+					"do": [
+						"move(top(where(supply, 'kind', 'box')), space)",
+						"score += 1"
+					]
+				},
+				"another_go = size(closed_now) > 0"
+			]
+		}
+	},
+	"turn": [
+		"offer('Draw a line')",
+		{
+			"if": "score_1 + score_2 == boxes",
+			"then": "end_game(players_with_most('score'))"
+		},
+		{
+			"if": "not another_go",
+			"then": "end_turn()"
+		}
+	],
+	"triggers": {
+		"start": [
+			{
+				"for": "player",
+				"in": "players",
+				"do": "move(where(box, 'seat', player), supply)"
+			},
+			"player = one_of(players)"
+		]
+	},
+	"status": {
+		"boxes": "'Red %d, Blue %d' % [score_1, score_2]"
+	},
+	"bot": {
+		"players": [
+			2
+		],
+		// Takes boxes, and avoids leaving a box with three sides for the other player.
+		"prefer": "score - opponent_score - (0 if another_go else 0.6) * count(zones_where(grid, 'three_sided'))"
+	},
+	"card_face": {
+		"shape": "shape",
+		"size": "size",
+		"background": "paint"
+	}
+}

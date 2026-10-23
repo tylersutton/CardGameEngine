@@ -1,0 +1,279 @@
+{
+	"title": "Scout",
+	"description": "Three to five players, you against bots. Every card has a number at each end, and only the top one counts. You can't rearrange your hand, but before your first move of a round you may turn the whole hand round. On your turn, Show cards that sit next to each other in your hand, all the same number (a set) or counting up or down (a run): it must beat the show on the table, by having more cards, or as many and a set against a run, or the same kind with higher numbers. You collect the cards you beat. Or Scout: drag a card from either end of the show into your hand, anywhere, either way up; the show's owner earns a point. Once a round you may Scout & Show. The round ends when someone empties their hand, or when everyone else has scouted a show. Score your collected cards and points, minus the cards in your hand. Highest total after a round each wins.",
+	"how_to_play": [
+		"# Goal",
+		"Score the most points over as many rounds as there are players.",
+		"# The cards",
+		"- Every card has a number at each end; only the big number on top counts.",
+		"- You can't rearrange your hand. Before your first move of a round, you may press Turn hand round to flip your whole hand.",
+		"# Your turn",
+		"Do one of these:",
+		"- Show: press Show and click cards that sit next to each other in your hand, then Done. They must all be the same number (a set) or count up or down by one (a run).",
+		"- A show must beat the one on the table: more cards wins; with the same number of cards a set beats a run; otherwise the higher numbers win. You collect the cards you beat, face down.",
+		"- Scout: drag a card from either end of the show on the table into your hand, anywhere you like, then choose which way up. The show's owner earns a point.",
+		"- Scout & Show (once a round): press it, scout a card, then show. If nothing in your hand can beat the show by then, your turn just ends.",
+		"# End of a round",
+		"- A round ends when someone plays their last card, or when everyone else has scouted from your show and it comes back to you.",
+		"- Score 1 for every card you collected and every point you earned, minus 1 for every card left in your hand (unless you ended the round)."
+	],
+	"players": [
+		4,
+		3,
+		5
+	],
+	"player_names": [
+		"You",
+		"West",
+		"North",
+		"East",
+		"Player 5"
+	],
+	"seats": [
+		[
+			0.14,
+			0.86
+		]
+	],
+	"zones": {
+		// Every card's other way round waits here, as do the cards left out for fewer players.
+		"box": {
+			"outline": false,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				-0.3,
+				0.5
+			],
+			"cards": "res://decks/scout.csv"
+		},
+		"deck": {
+			"outline": false,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				-0.3,
+				0.5
+			]
+		},
+		"show": {
+			"label": "Show",
+			"layout": "row",
+			"width": 0.3,
+			"anchor": [
+				0.5,
+				0.45
+			]
+		},
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"reorder": false,
+			"width": 0.36,
+			"anchor": [
+				0.5,
+				0.86
+			]
+		},
+		"collected": {
+			"label": "Collected",
+			"per_player": true,
+			"layout": "pile",
+			"face": "down",
+			"show_count": true,
+			"anchor": [
+				0.82,
+				0.86
+			]
+		}
+	},
+	"variables": {
+		"show_owner": 0,
+		"show_kind": "",
+		"show_low": 0,
+		"round": 0,
+		"round_ender": 0
+	},
+	"player_variables": {
+		"tokens": 0,
+		"score": 0,
+		"may_turn_round": true,
+		"scout_and_show_left": true
+	},
+	"conditions": {
+		"other_side(one)": "top(where(box, 'pair', one.pair))",
+		"in_play": "card.needs <= size(players)",
+		// A show's cards must sit side by side in the hand: one block, so each but the first has its left
+		// neighbour chosen too.
+		"left_of(one)": "all(hand)[position(one) - 2] if position(one) > 1 else null",
+		"joins_left": "left_of(card) in choice",
+		"side_by_side": "count(matching(choice, 'joins_left')) == count(choice) - 1",
+		"steps_up": "joins_left and number(left_of(card), 'value') == card.value - 1",
+		"steps_down": "joins_left and number(left_of(card), 'value') == card.value + 1",
+		"is_set": "size(groups(choice, 'value')) == 1",
+		"is_run": "count(choice) > 1 and (count(matching(choice, 'steps_up')) == count(choice) - 1 or count(matching(choice, 'steps_down')) == count(choice) - 1)",
+		"choice_kind": "'set' if is_set else 'run'",
+		"choice_low": "number(lowest(choice, 'value'), 'value')",
+		"beats_show": "count(show) == 0 or count(choice) > count(show) or (count(choice) == count(show) and ((choice_kind == 'set' and show_kind == 'run') or (choice_kind == show_kind and choice_low > show_low)))",
+		"show_end": "position(card) == 1 or position(card) == count(show)",
+		"round_points": "count(collected) + tokens - (0 if player == round_ender else count(hand))"
+	},
+	"actions": {
+		"Show": {
+			"choose": "hand",
+			"up_to": "count(hand)",
+			// Cheapest checks first: most picks fail on size or being side by side, before the slower set and run checks.
+			"allow": "count(choice) > 0 and count(choice) >= count(show) and side_by_side and (is_set or is_run) and beats_show",
+			"steps": [
+				"log('%s shows %s' % [name_of(player), 'a set' if is_set else 'a run'])",
+				"move(show, collected)",
+				"show_kind = choice_kind",
+				"show_low = choice_low",
+				{
+					"for": "held",
+					"in": "hand",
+					"do": {
+						"if": "held in choice",
+						"then": "move(held, show)"
+					}
+				},
+				"show_owner = player",
+				"may_turn_round = false"
+			]
+		},
+		"Scout": {
+			"drag": {
+				"from": "show",
+				"to": "hand"
+			},
+			"click": true,
+			"when": "show_owner != player and show_end",
+			"steps": [
+				"tokens[show_owner] += 1",
+				"may_turn_round = false",
+				"log('%s scouts a card from %s\\'s show' % [name_of(player), name_of(show_owner)])",
+				{
+					"if": "choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round'",
+					"then": "swap(card, other_side(card))"
+				}
+			]
+		},
+		"Scout & Show": {
+			"when": "scout_and_show_left and count(show) > 0 and show_owner != player",
+			"steps": [
+				"log('%s will Scout & Show' % [name_of(player)])",
+				"scout_and_show_left = false"
+			]
+		},
+		"Turn hand round": {
+			"when": "may_turn_round",
+			"steps": [
+				"log('%s turns their hand round' % [name_of(player)])",
+				{
+					"for": "held",
+					"in": "hand",
+					"do": "swap(held, other_side(held))"
+				},
+				"may_turn_round = false"
+			]
+		},
+		"Next round": {
+			"human_only": true,
+			"steps": []
+		}
+	},
+	"turn": [
+		{
+			"if": "count(show) > 0 and show_owner == player",
+			"then": [
+				"log('Everyone scouted %s\\'s show' % [name_of(player)])",
+				"round_ender = player",
+				"trigger('round_over')"
+			],
+			"else": [
+				"done = offer(['Show', 'Scout', 'Scout & Show', 'Turn hand round'])",
+				{
+					"if": "done == 'Turn hand round'",
+					"then": "done = offer(['Show', 'Scout', 'Scout & Show'])"
+				},
+				{
+					"if": "done == 'Scout & Show'",
+					"then": [
+						"offer('Scout')",
+						"offer('Show')"
+					]
+				},
+				{
+					"if": "count(hand) == 0",
+					"then": [
+						"log('%s has played every card' % [name_of(player)])",
+						"round_ender = player",
+						"trigger('round_over')"
+					],
+					"else": "end_turn()"
+				}
+			]
+		}
+	],
+	"triggers": {
+		"start": [
+			"trigger('deal')"
+		],
+		"deal": [
+			"move([all_hand, all_collected, show, deck], box)",
+			{
+				"for": "both_ways",
+				"in": "groups(matching(box, 'in_play'), 'pair')",
+				"do": "move(one_of(both_ways), deck)"
+			},
+			"shuffle(deck)",
+			"deal(deck, all_hand, count(deck) / size(players))",
+			"reset(['tokens', 'may_turn_round', 'scout_and_show_left', 'show_owner', 'show_kind', 'show_low', 'round_ender'])",
+			"round += 1",
+			"player = round"
+		],
+		"round_over": [
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					"log('%s scores %d' % [name_of(player), round_points])",
+					"score += round_points"
+				]
+			},
+			"reveal(all_hand)",
+			{
+				"if": "round == size(players)",
+				"then": "end_game(players_with_most('score'))"
+			},
+			"offer('Next round')",
+			"trigger('deal')"
+		]
+	},
+	"status": {
+		"your score": "score[viewer()]",
+		"your points this round": "tokens[viewer()]",
+		"round": "'%d of %d' % [round, size(players)]",
+		"to beat": "'anything' if count(show) == 0 else '%d cards, a %s from %d' % [count(show), show_kind, show_low]"
+	},
+	"bot": {
+		"players": [
+			2,
+			3,
+			4,
+			5
+		],
+		"prefer": "count(collected) + tokens - count(hand)"
+	},
+	"card_face": {
+		"corner": "name",
+		"title": "value",
+		"body": [
+			"other"
+		],
+		"background": "paint",
+		"color": "#1b1b1b",
+		"card_back": "#37474f"
+	}
+}

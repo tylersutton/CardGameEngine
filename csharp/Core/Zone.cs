@@ -34,6 +34,10 @@ public class Zone
     public double Rotation { get; }
     public bool DragsStack { get; }
     public int Spread { get; }
+    /// Whether the table shows how many cards the zone holds (seeds in a Mancala pit).
+    public bool ShowsCount { get; }
+    /// Whether players may rearrange its cards by dragging them (not Scout's hand, which keeps its order).
+    public bool Reorders { get; }
     public List<object?> CoveredBy { get; } = [];
     public List<Card> Cards { get; } = [];
     public List<string> SortColumns { get; private set; } = [];
@@ -86,6 +90,8 @@ public class Zone
         }
         DragsStack = Read(definition, "drag", "") == DragStack;
         Spread = (int)Read(definition, "spread", 0.0);
+        ShowsCount = Read(definition, "show_count", false);
+        Reorders = Read(definition, "reorder", true);
         List<object?> covering = Read<List<object?>>(definition, "covered_by", []);
         if (number > 0 && covering.Count >= number)
         {
@@ -112,9 +118,13 @@ public class Zone
 
     public bool IsEmpty => Cards.Count == 0;
 
+    /// Anchored off the table, as a box or supply is: moves between two such zones aren't news to players.
+    public bool IsOffTable => Anchor.X < 0 || Anchor.X > 1 || Anchor.Y < 0 || Anchor.Y > 1;
+
     public void Add(Card card)
     {
         card.FaceUp = Face != FaceDown;
+        card.Revealed = false;
         card.Marks.Clear();
         card.ZoneName = Name;
         Cards.Add(card);
@@ -127,6 +137,7 @@ public class Zone
         foreach (Card card in newCards)
         {
             card.FaceUp = Face != FaceDown;
+            card.Revealed = false;
             card.ZoneName = Name;
         }
         Cards.AddRange(newCards);
@@ -196,6 +207,8 @@ public class Zone
         {
             "name" => Name,
             "cards" => Cards.Cast<object?>().ToList(),
+            "number" => (long)Number,
+            "owner" => (long)Owner,
             "column" when Board != null => (long)Board.Column(Number),
             "row" when Board != null => (long)Board.Row(Number),
             _ => null,

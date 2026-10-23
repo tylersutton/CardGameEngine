@@ -5,7 +5,7 @@ namespace Editing;
 /// heading.
 public record Field(string Key, string Kind, string Help, string Group = "", string[]? Options = null, string Example = "");
 
-/// What each part of a game file can hold. Kinds: text, long_text, number, whole, yes_no, choice (with options), spot
+/// What each part of a game file can hold. Kinds: text, long_text, lines (a list of text, one item per line), number, whole, yes_no, choice (with options), spot
 /// ([x, y] on the table), list (comma-separated; one item stays text), names and numbers (comma-separated lists),
 /// column (a deck column), columns, deck, expression and steps (checked as typed), drag (its from and to zones),
 /// click (zones clicked), board (shape, columns, rows, size and paint), json (anything else, as text, with an example).
@@ -15,6 +15,7 @@ public static class EditorFields
     [
         new("title", "text", "The name on the title screen."),
         new("description", "long_text", "A line or two about the game, shown on the title screen."),
+        new("how_to_play", "lines", "The rules for players, shown by the table's How to play button: one paragraph per line, \"# \" starts a heading and \"- \" a bullet."),
     ];
 
     public static readonly Field[] Zone =
@@ -30,6 +31,8 @@ public static class EditorFields
         new("rotation", "number", "Turn the zone, in degrees (90 for the left side of the table).", "Layout"),
         new("outline", "yes_no", "Draw the zone's outline. Default: yes.", "Layout"),
         new("spread", "whole", "For a pile: fan out its top few cards (3 for a draw-three waste).", "Layout"),
+        new("reorder", "yes_no", "Let players rearrange its cards by dragging. No keeps the order the game gives them (Scout's hand); a card dragged in still goes where it's dropped. Default: yes.", "Layout"),
+        new("show_count", "yes_no", "Show how many cards it holds, under it (seeds in a pit, cards in a deck).", "Layout"),
         new("drag", "choice", "stack: dragging a card also carries every card on top of it.", "Advanced", ["stack"]),
         new("group", "text", "With copies: also put them in a group with this name, shared with other zones.", "Advanced"),
         new("columns", "json", "With cards: columns to add or change on every card, e.g. { \"points\": \"min(card.value, 10)\" }.", "Advanced", Example: "{ \"points\": \"min(card.value, 10)\" }"),
@@ -38,7 +41,7 @@ public static class EditorFields
         new("labels", "json", "With per_player or copies: one label each.", "Advanced", Example: "[\"You\", \"Them\"]"),
         new("grid", "json", "With copies: lay them out in rows, e.g. { \"columns\": 5, \"spacing\": [0.09, 0.19] }.", "Advanced", Example: "{ \"columns\": 5, \"spacing\": [0.09, 0.19] }"),
         new("covered_by", "json", "With copies: which copies lie on top of each one (Pyramid).", "Advanced", Example: "[[1, 2], [2, 3]]"),
-        new("board", "board", "Make it a board: one space per column and row (square_1, square_2, ...), square or hex, its spaces size pixels apart. paint colors spaces by conditions about the space, e.g. { \"top_edge\": \"#c8443a\" }.", "Board"),
+        new("board", "board", "Make it a board: one space per column and row (square_1, square_2, ...), square or hex, its spaces size pixels apart. paint colors spaces by conditions about the space, e.g. { \"top_edge\": \"#c8443a\" }, and a color can be followed by dot, hbar or vbar; labels names spaces the same way, e.g. { \"start_space\": \"Start\" }.", "Board"),
     ];
 
     public static readonly Field[] Action =
@@ -52,8 +55,9 @@ public static class EditorFields
         new("pick", "expression", "How many cards to choose (a number, or e.g. count(hand) - 3).", "Choosing"),
         new("up_to", "expression", "Choose from none up to this many, then press Done.", "Choosing"),
         new("allow", "expression", "A condition the whole choice must meet, e.g. size(groups(choice, 'rank')) == 1.", "Choosing"),
-        new("button", "yes_no", "Show it in the toolbar. Default: yes, unless it's done by a drag or click (then yes asks for a card to do it with). No: it only happens through ask('name').", "Advanced"),
+        new("button", "yes_no", "Show it as a button under the table. Default: yes, unless it's done by a drag or click (then yes asks for a card to do it with). No: it only happens through ask('name').", "Advanced"),
         new("human_only", "yes_no", "Bots never do it (e.g. Next hand).", "Advanced"),
+        new("any_time", "yes_no", "Anyone may do it, even on someone else's turn or while a choice is being made, and it's done as them: hand is their hand (e.g. Sort hand). Its steps can't wait for a choice.", "Advanced"),
         new("prefer", "expression", "For a bot making this choice: what to aim for instead of the bot's usual prefer.", "Advanced"),
     ];
 
@@ -76,7 +80,7 @@ public static class EditorFields
 
     public static readonly Field[] Players =
     [
-        new("players", "whole", "How many players. Turns pass with end_turn(); player is whose turn it is."),
+        new("players", "counts", "How many players, or the numbers it can be played with (comma-separated, e.g. 2, 3, 4; the first is the usual one). Turns pass with end_turn(); player is whose turn it is."),
         new("player_names", "names", "Names on the seat tags, in seat order (comma-separated). Otherwise Player 1, Player 2, ..."),
         new("seats", "json", "Where the name tags go: [[x, y]] for seat 1 (the rest go round the table), or one [x, y] per player.", "Advanced", Example: "[[0.22, 0.86]]"),
         new("teams", "json", "Partnerships, e.g. [[1, 3], [2, 4]]: every player on exactly one team.", "Advanced", Example: "[[1, 3], [2, 4]]"),
@@ -88,6 +92,7 @@ public static class EditorFields
         new("prefer", "expression", "How good a position is for the bot, e.g. score - opponent_score. It tries every legal input and takes the best."),
         new("samples", "whole", "How many ways to shuffle the cards it can't see when judging a move. More is fairer but slower.", "Advanced"),
         new("peek", "yes_no", "Let the bot see every card: stronger and faster.", "Advanced"),
+        new("depth", "whole", "2: also weigh the other player's best answer to each move, for board games like Checkers. Slower.", "Advanced"),
     ];
 
     public static readonly Field[] Scoring =

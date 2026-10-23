@@ -1,0 +1,844 @@
+{
+	"rules": {
+		"title": "Yahtzee",
+		"description": "One to four players, you against bots. Each turn you roll five dice up to three times: after a roll, click dice to keep them (click again to put them back), then Roll the rest. Score by clicking a box on your scorecard; each box shows what it would score now, and each can be used once. Upper boxes count that number's dice, with 35 extra for 63 or more; 3 and 4 of a Kind count all the dice, Full House 25, Small Straight 30, Large Straight 40, Yahtzee 50 (and 100 for each extra Yahtzee), Chance all the dice. After 13 rounds, the highest score wins.",
+		"how_to_play": [
+			"# Goal",
+			"Score the most points over 13 rounds by rolling combinations of five dice. Your scorecard is the row of boxes on your side of the table.",
+			"# Your turn",
+			"- The dice are rolled for you. After a roll, click dice to move them down to Kept; click a kept die to put it back.",
+			"- Press Roll to roll the dice that aren't kept. You get up to three rolls in all.",
+			"- Then click one box on your scorecard to score in it. Each open box shows what it would score right now. Every box is used once, so you may have to take a 0 somewhere.",
+			"# The boxes",
+			"- Ones to Sixes: add up the dice of that number. If those six boxes total 63 or more, you get 35 extra.",
+			"- 3 of a Kind, 4 of a Kind: at least that many dice the same; scores all five dice.",
+			"- Full House (three of one number and two of another): 25. Small Straight (four in a row): 30. Large Straight (five in a row): 40.",
+			"- Yahtzee (all five the same): 50, and each extra Yahtzee afterwards scores another 100.",
+			"- Chance: any dice, scores all five."
+		],
+		"zones": {
+			"boxes": {
+				"outline": false,
+				"layout": "pile",
+				"anchor": [
+					-0.3,
+					0.5
+				],
+				"cards": "res://decks/yahtzee_categories.csv"
+			},
+			"rolled": {
+				"label": "Roll",
+				"cards": "res://decks/dice.csv",
+				"layout": "row",
+				"width": 0.4,
+				"anchor": [
+					0.5,
+					0.42
+				]
+			},
+			"kept": {
+				"label": "Kept",
+				"layout": "row",
+				"width": 0.4,
+				"anchor": [
+					0.5,
+					0.6
+				]
+			},
+			"sheet": {
+				"per_player": true,
+				"outline": false,
+				"layout": "row",
+				"width": 0.62,
+				"anchors": [
+					[
+						0.5,
+						0.92
+					],
+					[
+						0.5,
+						0.08
+					],
+					[
+						0.5,
+						0.2
+					],
+					[
+						0.5,
+						0.8
+					]
+				],
+				"rotations": [
+					0.0,
+					0.0,
+					0.0,
+					0.0
+				]
+			}
+		},
+		"actions": {
+			"Roll": {
+				"when": "rolls_left > 0 and count(kept) < 5",
+				"steps": [
+					"scored = false",
+					"trigger('roll')"
+				]
+			},
+			"Keep": {
+				"drag": {
+					"from": "rolled",
+					"to": "kept"
+				},
+				"click": true,
+				"when": "rolls_left > 0"
+			},
+			"Put back": {
+				"drag": {
+					"from": "kept",
+					"to": "rolled"
+				},
+				"click": true,
+				"when": "rolls_left > 0"
+			},
+			"Score": {
+				"click": "sheet",
+				"when": "card.face_up",
+				"steps": [
+					"points = points_for(card)",
+					"scored = true",
+					{
+						"if": "of_a_kind == 5 and got_yahtzee",
+						"then": [
+							"log('Another Yahtzee: 100 more!')",
+							"score += 100"
+						]
+					},
+					{
+						"if": "card.kind == 'yahtzee' and points == 50",
+						"then": [
+							"got_yahtzee = true"
+						]
+					},
+					"score += points",
+					{
+						"if": "card.kind == 'upper'",
+						"then": [
+							"upper += points"
+						]
+					},
+					{
+						"if": "upper >= 63 and not upper_bonus",
+						"then": [
+							"log('%s gets the upper section bonus: 35' % [name_of(player)])",
+							"score += 35",
+							"upper_bonus = true"
+						]
+					},
+					"log('%s scores %d for %s' % [name_of(player), points, card.name])",
+					"unmark(open_boxes, 'could')",
+					"flip(card)",
+					"mark(card, 'scored', '%s %d' % [card.name, points])",
+					"move(kept, rolled)"
+				]
+			}
+		},
+		"triggers": {
+			"start": [
+				{
+					"for": "player",
+					"in": "players",
+					"do": [
+						"sort(sheet, ['order'])",
+						{
+							"for": "group",
+							"in": "groups(boxes, 'name')",
+							"do": [
+								"move(top(group), sheet)"
+							]
+						}
+					]
+				},
+				"player = one_of(players)"
+			],
+			"roll": [
+				{
+					"for": "die",
+					"in": "rolled",
+					"do": [
+						"set(die, 'value', random(1, 6))",
+						"set(die, 'image', 'dice/%d.svg' % [die.value])"
+					]
+				},
+				"rolls_left -= 1",
+				{
+					"for": "box",
+					"in": "open_boxes",
+					"do": [
+						"mark(box, 'could', points_for(box))"
+					]
+				}
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"dice": "[rolled, kept]",
+			"of_a_kind": "lookup(group_sizes(dice, 'value'), 0)",
+			"total": "sum(dice, 'value')",
+			"upper_points": "number(box, 'face') * count(where(dice, 'value', number(box, 'face')))",
+			"points_for": "upper_points(box) if box.kind == 'upper' else (total if box.kind == 'three_of_a_kind' and of_a_kind >= 3 else (total if box.kind == 'four_of_a_kind' and of_a_kind >= 4 else (25 if box.kind == 'full_house' and of_a_kind == 3 and size(groups(dice, 'value')) == 2 else (30 if box.kind == 'small_straight' and size(runs(dice, 'value', 4)) > 0 else (40 if box.kind == 'large_straight' and size(runs(dice, 'value', 5)) > 0 else (50 if box.kind == 'yahtzee' and of_a_kind == 5 else (total if box.kind == 'chance' else 0)))))))",
+			"open_boxes": "without(sheet, face_down(sheet))",
+			"best_open_box": "max_of(open_boxes, 'points_for') if count(open_boxes) > 0 else 0"
+		},
+		"condition_parameters": {
+			"dice": [],
+			"of_a_kind": [],
+			"total": [],
+			"upper_points": [
+				"box"
+			],
+			"points_for": [
+				"box"
+			],
+			"open_boxes": [],
+			"best_open_box": []
+		},
+		"condition_errors": [],
+		"constants": {},
+		"turn": [
+			"rolls_left = 3",
+			"trigger('roll')",
+			"offer_until('Roll', 'Score')",
+			{
+				"if": "count(without(all_sheet, face_down(all_sheet))) == 0",
+				"then": [
+					"end_game(players_with_most('score'))"
+				]
+			},
+			"end_turn()"
+		],
+		"variables": {
+			"rolls_left": 3,
+			"scored": false
+		},
+		"players": 2,
+		"seats": [
+			[
+				0.08,
+				0.92
+			],
+			[
+				0.08,
+				0.08
+			],
+			[
+				0.08,
+				0.2
+			],
+			[
+				0.08,
+				0.8
+			]
+		],
+		"player_names": [
+			"You",
+			"Bot 1",
+			"Bot 2",
+			"Bot 3"
+		],
+		"player_variables": {
+			"score": 0,
+			"upper": 0,
+			"upper_bonus": false,
+			"got_yahtzee": false
+		},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"your score": "score[viewer()]",
+			"upper section": "'%d of 63%s' % [upper[viewer()], ' (bonus 35)' if upper_bonus[viewer()] else '']",
+			"rolls left": "rolls_left",
+			"best score": "most('score')"
+		},
+		"show_variables": [],
+		"bot": {
+			"players": [
+				2.0,
+				3.0,
+				4.0
+			],
+			"prefer": "score + (0 if scored else best_open_box) - count(open_boxes) / 100.0"
+		},
+		"card_face": {
+			"title": "name",
+			"shape": "square",
+			"size": "size",
+			"image": "image",
+			"color": "#1b1b1b",
+			"background": "#fff8e1",
+			"back": "#9e9e9e"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "boxes",
+			"label": "",
+			"has_outline": false,
+			"kind": "boxes",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "rolled",
+			"label": "Roll",
+			"has_outline": true,
+			"kind": "rolled",
+			"owner": 0,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.41999998688697815
+			],
+			"width": 0.4,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "kept",
+			"label": "Kept",
+			"has_outline": true,
+			"kind": "kept",
+			"owner": 0,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.6000000238418579
+			],
+			"width": 0.4,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "sheet_1",
+			"label": "",
+			"has_outline": false,
+			"kind": "sheet",
+			"owner": 1,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.9200000166893005
+			],
+			"width": 0.62,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "sheet_2",
+			"label": "",
+			"has_outline": false,
+			"kind": "sheet",
+			"owner": 2,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.07999999821186066
+			],
+			"width": 0.62,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/yahtzee_categories.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"face",
+				"order",
+				"image",
+				"size"
+			],
+			"cards": [
+				{
+					"name": "Ones",
+					"kind": "upper",
+					"face": "1",
+					"order": "1",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Ones",
+					"kind": "upper",
+					"face": "1",
+					"order": "1",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Ones",
+					"kind": "upper",
+					"face": "1",
+					"order": "1",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Ones",
+					"kind": "upper",
+					"face": "1",
+					"order": "1",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Twos",
+					"kind": "upper",
+					"face": "2",
+					"order": "2",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Twos",
+					"kind": "upper",
+					"face": "2",
+					"order": "2",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Twos",
+					"kind": "upper",
+					"face": "2",
+					"order": "2",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Twos",
+					"kind": "upper",
+					"face": "2",
+					"order": "2",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Threes",
+					"kind": "upper",
+					"face": "3",
+					"order": "3",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Threes",
+					"kind": "upper",
+					"face": "3",
+					"order": "3",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Threes",
+					"kind": "upper",
+					"face": "3",
+					"order": "3",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Threes",
+					"kind": "upper",
+					"face": "3",
+					"order": "3",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Fours",
+					"kind": "upper",
+					"face": "4",
+					"order": "4",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Fours",
+					"kind": "upper",
+					"face": "4",
+					"order": "4",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Fours",
+					"kind": "upper",
+					"face": "4",
+					"order": "4",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Fours",
+					"kind": "upper",
+					"face": "4",
+					"order": "4",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Fives",
+					"kind": "upper",
+					"face": "5",
+					"order": "5",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Fives",
+					"kind": "upper",
+					"face": "5",
+					"order": "5",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Fives",
+					"kind": "upper",
+					"face": "5",
+					"order": "5",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Fives",
+					"kind": "upper",
+					"face": "5",
+					"order": "5",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Sixes",
+					"kind": "upper",
+					"face": "6",
+					"order": "6",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Sixes",
+					"kind": "upper",
+					"face": "6",
+					"order": "6",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Sixes",
+					"kind": "upper",
+					"face": "6",
+					"order": "6",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Sixes",
+					"kind": "upper",
+					"face": "6",
+					"order": "6",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "3 of a Kind",
+					"kind": "three_of_a_kind",
+					"face": "",
+					"order": "7",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "3 of a Kind",
+					"kind": "three_of_a_kind",
+					"face": "",
+					"order": "7",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "3 of a Kind",
+					"kind": "three_of_a_kind",
+					"face": "",
+					"order": "7",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "3 of a Kind",
+					"kind": "three_of_a_kind",
+					"face": "",
+					"order": "7",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "4 of a Kind",
+					"kind": "four_of_a_kind",
+					"face": "",
+					"order": "8",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "4 of a Kind",
+					"kind": "four_of_a_kind",
+					"face": "",
+					"order": "8",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "4 of a Kind",
+					"kind": "four_of_a_kind",
+					"face": "",
+					"order": "8",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "4 of a Kind",
+					"kind": "four_of_a_kind",
+					"face": "",
+					"order": "8",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Full House",
+					"kind": "full_house",
+					"face": "",
+					"order": "9",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Full House",
+					"kind": "full_house",
+					"face": "",
+					"order": "9",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Full House",
+					"kind": "full_house",
+					"face": "",
+					"order": "9",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Full House",
+					"kind": "full_house",
+					"face": "",
+					"order": "9",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Small Straight",
+					"kind": "small_straight",
+					"face": "",
+					"order": "10",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Small Straight",
+					"kind": "small_straight",
+					"face": "",
+					"order": "10",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Small Straight",
+					"kind": "small_straight",
+					"face": "",
+					"order": "10",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Small Straight",
+					"kind": "small_straight",
+					"face": "",
+					"order": "10",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Large Straight",
+					"kind": "large_straight",
+					"face": "",
+					"order": "11",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Large Straight",
+					"kind": "large_straight",
+					"face": "",
+					"order": "11",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Large Straight",
+					"kind": "large_straight",
+					"face": "",
+					"order": "11",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Large Straight",
+					"kind": "large_straight",
+					"face": "",
+					"order": "11",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Yahtzee",
+					"kind": "yahtzee",
+					"face": "",
+					"order": "12",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Yahtzee",
+					"kind": "yahtzee",
+					"face": "",
+					"order": "12",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Yahtzee",
+					"kind": "yahtzee",
+					"face": "",
+					"order": "12",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Yahtzee",
+					"kind": "yahtzee",
+					"face": "",
+					"order": "12",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Chance",
+					"kind": "chance",
+					"face": "",
+					"order": "13",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Chance",
+					"kind": "chance",
+					"face": "",
+					"order": "13",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Chance",
+					"kind": "chance",
+					"face": "",
+					"order": "13",
+					"image": "",
+					"size": "62"
+				},
+				{
+					"name": "Chance",
+					"kind": "chance",
+					"face": "",
+					"order": "13",
+					"image": "",
+					"size": "62"
+				}
+			]
+		},
+		"res://decks/dice.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"value",
+				"size"
+			],
+			"cards": [
+				{
+					"name": "Die",
+					"value": "1",
+					"image": "dice/1.svg",
+					"size": "56"
+				},
+				{
+					"name": "Die",
+					"value": "1",
+					"image": "dice/1.svg",
+					"size": "56"
+				},
+				{
+					"name": "Die",
+					"value": "1",
+					"image": "dice/1.svg",
+					"size": "56"
+				},
+				{
+					"name": "Die",
+					"value": "1",
+					"image": "dice/1.svg",
+					"size": "56"
+				},
+				{
+					"name": "Die",
+					"value": "1",
+					"image": "dice/1.svg",
+					"size": "56"
+				}
+			]
+		}
+	}
+}
