@@ -119,7 +119,9 @@ public partial class ActionDock : MarginContainer
         }
         if (!choice.IsOpen)
         {
-            choiceBar.AddChild(new Label { Text = "Your turn: " + string.Join(" or ", offeredHere) });
+            // Only what can be done now, so President's "Play or Pass" says just "Pass" when nothing beats the table.
+            List<string> doable = offeredHere.Where(game.Plays.CanPerform).ToList();
+            choiceBar.AddChild(new Label { Text = "Your turn: " + string.Join(" or ", doable.Count > 0 ? doable : offeredHere) });
             return;
         }
         Label prompt = new() { Text = choice.Title + ":" };

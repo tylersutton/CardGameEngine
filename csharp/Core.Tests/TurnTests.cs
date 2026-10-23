@@ -49,6 +49,37 @@ public class TurnTests
     static PlayerInput DragTo(Card card, string zone) => new("drag") { Card = card.Id, To = zone };
 
     [Fact]
+    public void AButtonWithNothingToChooseCantBePressed()
+    {
+        Game game = GameWith("""
+            {
+                "actions": {
+                    "Play a joker": { "choose": "where(hand, 'suit', 'Jokers')" },
+                    "Play a card": { "choose": "hand" },
+                    "Play five": { "choose": "hand", "pick": 5 }
+                },
+                "turn": ["offer(['Play a joker', 'Play a card', 'Play five'])"]
+            }
+            """);
+        Assert.False(game.Plays.CanPerform("Play a joker"), "nothing to choose");
+        Assert.True(game.Plays.CanPerform("Play a card"));
+        Assert.False(game.Plays.CanPerform("Play five"), "not enough to choose from");
+        Assert.True(game.Plays.PlaysFrom(game.Zones["hand_1"]), "both play from the hand, even with nothing to choose");
+        Assert.False(game.Plays.PlaysFrom(game.Zones["hand_2"]));
+    }
+
+    [Fact]
+    public void PlaysFromIsWhereTheActionsOfferedNowTakeCards()
+    {
+        Game game = GameWith();
+        Assert.True(game.Plays.PlaysFrom(game.Zones["deck"]), "Draw");
+        Assert.True(game.Plays.PlaysFrom(game.Zones["discard"]), "Tap the discard isn't offered, so it's always there");
+        Assert.False(game.Plays.PlaysFrom(game.Zones["hand_1"]), "Discard and Lay down aren't offered yet");
+        game.Apply(PlayerInput.Click(game.Zones["deck"].Cards[^1]));
+        Assert.True(game.Plays.PlaysFrom(game.Zones["hand_1"]));
+    }
+
+    [Fact]
     public void PlayableIsWhatTheOfferedActionsCouldBeDoneWith()
     {
         Game game = GameWith();

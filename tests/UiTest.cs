@@ -3,8 +3,8 @@ using Editing;
 using Godot;
 
 /// Opens the real screens: the title screen, the lobby, every game on the table screen with bots playing every seat
-/// for a few moves, the dock's keys, dimmed cards (also while choosing), Next hand on a bot's turn, and every game in the editor (edited and undone back to the file). Reports load
-/// errors, failed steps and errors Godot reports.
+/// for a few moves, the dock's keys, dimmed cards (also while choosing), Next hand on a bot's turn, and every game in
+/// the editor (edited and undone back to the file). Reports load errors, failed steps and errors Godot reports.
 /// Run: godot --headless res://tests/ui_test.tscn
 public partial class UiTest : Node
 {
@@ -31,7 +31,7 @@ public partial class UiTest : Node
         }
         await PressKeys();
         await DimOffSuitCards();
-        await KeepDimmedWhileChoosing();
+        await DimInPresident();
         await NextHandOnABotsTurn();
         problems.AddRange(scriptErrors.Messages);
         GD.Print("UI TEST: ", problems.Count == 0 ? "all passed" : "FAILED\n  " + string.Join("\n  ", problems));
@@ -266,9 +266,6 @@ public partial class UiTest : Node
         AddChild(main);
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Game game = main.Game!;
-        List<object?> bots = (List<object?>)game.Rules.Bot["players"]!;
-        game.Rules.Bot["players"] = Enumerable.Range(1, game.Rules.Players).Select(player => (object?)(double)player).ToList();
-        Bot bot = new(game);
         List<Card> hand = game.Zones["hand_1"].Cards;
         bool MustFollowWithOthers()
         {
@@ -276,12 +273,7 @@ public partial class UiTest : Node
             return game.CurrentPlayer() == 1 && game.Plays.Offered.Contains("Play a card") && lead != ""
                 && hand.Any(card => card.Data["suit"] == lead) && hand.Any(card => card.Data["suit"] != lead);
         }
-        for (int move = 0; move < 200 && !MustFollowWithOthers(); move++)
-        {
-            bot.TakeInput();
-        }
-        game.Rules.Bot["players"] = bots;
-        game.AnnounceStateChanged();
+        PlayUntil(game, MustFollowWithOthers);
         TableView table = main.GetNode<TableView>("%TableView");
         string leadSuit = Values.Text(game.Variables["lead"]);
         List<Card> dimmed = hand.Where(card => table.CardViews[card].Dimmed).ToList();
@@ -294,7 +286,8 @@ public partial class UiTest : Node
     }
 
     /// President: the cards that can't beat the table stay dimmed after clicking one that can starts choosing a set.
-    async Task KeepDimmedWhileChoosing()
+    /// When none can, the whole hand is dimmed and Play can't be pressed: the turn only offers Pass.
+    async Task DimInPresident()
     {
         Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
         main.RulesPath = "res://games/president.jsonc";
@@ -302,31 +295,15 @@ public partial class UiTest : Node
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Game game = main.Game!;
         TableView table = main.GetNode<TableView>("%TableView");
-        List<object?> bots = (List<object?>)game.Rules.Bot["players"]!;
-        List<object?> everyone = Enumerable.Range(1, game.Rules.Players).Select(player => (object?)(double)player).ToList();
-        Bot bot = new(game);
         List<Card> hand = game.Zones["hand_1"].Cards;
         List<Card> Dimmed() => hand.Where(card => table.CardViews[card].Dimmed).ToList();
-        for (int move = 0; move < 300; move++)
-        {
-            if (game.CurrentPlayer() == 1 && !game.Choice.IsOpen)
-            {
-                game.Rules.Bot["players"] = bots;
-                game.AnnounceStateChanged();
-                if (Dimmed().Count > 0)
-                {
-                    break;
-                }
-            }
-            game.Rules.Bot["players"] = everyone;
-            bot.TakeInput();
-        }
-        game.Rules.Bot["players"] = bots;
+
+        PlayUntil(game, () => Dimmed().Count > 0 && Dimmed().Count < hand.Count);
         List<Card> before = Dimmed();
         Card? playable = hand.FirstOrDefault(card => !before.Contains(card));
         if (before.Count == 0 || playable == null)
         {
-            problems.Add("dimming: President never had cards that couldn't beat the table");
+            problems.Add("dimming: President never had some cards that couldn't beat the table");
         }
         else
         {
@@ -335,9 +312,50 @@ public partial class UiTest : Node
             {
                 problems.Add($"dimming: choosing in President dimmed {string.Join(", ", Dimmed().Select(card => card.Title))}, not {string.Join(", ", before.Select(card => card.Title))}");
             }
+            game.Apply(new("undo") { Player = 1 });
+        }
+
+        PlayUntil(game, () => hand.Count > 0 && Dimmed().Count == hand.Count);
+        Button play = main.GetNode("%ActionButtons").GetChildren().OfType<Button>().First(button => button.Text == "Play");
+        string prompt = string.Join(" ", main.GetNode("%ChoiceBar").GetChildren().OfType<Label>().Select(label => label.Text));
+        if (Dimmed().Count != hand.Count || !play.Disabled || prompt != "Your turn: Pass")
+        {
+            problems.Add($"dimming: with nothing to beat the table in President, dimmed {Dimmed().Count} of {hand.Count}, Play pressable: {!play.Disabled}, \"{prompt}\"");
         }
         main.QueueFree();
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+    }
+
+    /// Bots play every seat (and a person presses the "human_only" buttons, like Collect trick) until it's player 1's
+    /// turn, with nothing being chosen, and the screen shows what's asked.
+    static void PlayUntil(Game game, Func<bool> shown)
+    {
+        List<object?> bots = (List<object?>)game.Rules.Bot["players"]!;
+        List<object?> everyone = Enumerable.Range(1, game.Rules.Players).Select(player => (object?)(double)player).ToList();
+        Bot bot = new(game);
+        for (int move = 0; move < 500; move++)
+        {
+            if (game.CurrentPlayer() == 1 && !game.Choice.IsOpen)
+            {
+                game.Rules.Bot["players"] = bots;
+                game.AnnounceStateChanged();
+                if (shown())
+                {
+                    return;
+                }
+            }
+            game.Rules.Bot["players"] = everyone;
+            string? button = game.Rules.Actions.Keys.FirstOrDefault(action => game.Rules.Actions[action].GetValueOrDefault("human_only") is true && game.Plays.CanPerform(action));
+            if (button != null)
+            {
+                game.Apply(PlayerInput.Perform(button));
+            }
+            else
+            {
+                bot.TakeInput();
+            }
+        }
+        game.Rules.Bot["players"] = bots;
     }
 
     /// Gin Rummy: a hand that ends on the bot's turn waits for a person to press Next hand, so the dock offers it.

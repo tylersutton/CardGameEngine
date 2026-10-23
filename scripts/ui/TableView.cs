@@ -43,8 +43,9 @@ public partial class TableView : Control
     bool hoverAllowed;
     /// The cards and empty zones outlined with ShowPlays (Plays.Playable).
     HashSet<object> outlined = [];
-    /// The cards in this screen's player's own zones that they can't play now, while they can play some of the others
-    /// (like the cards that don't follow suit). When all or none can be played, nothing is dimmed: it would say nothing.
+    /// The cards in this screen's player's own zones that they can't play now, in the zones something plays from now
+    /// (Plays.PlaysFrom): the cards that don't follow suit, or a whole hand when nothing in it beats the table. A zone
+    /// nothing plays from now (a hand while drawing or bidding) isn't dimmed: it would say nothing.
     HashSet<Card> dimmed = [];
     /// Each card's zone before the input being carried out, to see which cards it moves (see ShowMoved).
     readonly Dictionary<Card, string> zonesBefore = [];
@@ -199,16 +200,15 @@ public partial class TableView : Control
         HashSet<object> playable = !pointsOut ? [] : game.Choice.IsOpen ? [.. game.Choice.Options.OfType<Card>()] : game.Plays.Playable();
         outlined = ShowPlays && !game.Choice.IsOpen ? playable : [];
         dimmed = [];
-        foreach (Zone zone in game.Zones.Values.Where(zone => pointsOut && zone.Owner == game.Viewer()))
+        foreach (Zone zone in game.Zones.Values.Where(zone => pointsOut && zone.Owner == game.Viewer() && PlaysFrom(zone)))
         {
-            List<Card> cards = Plays.ReachableCards(zone);
-            List<Card> unplayable = cards.Where(card => !playable.Contains(card)).ToList();
-            if (unplayable.Count < cards.Count)
-            {
-                dimmed.UnionWith(unplayable);
-            }
+            dimmed.UnionWith(Plays.ReachableCards(zone).Where(card => !playable.Contains(card)));
         }
     }
+
+    /// While choosing, the zones holding the options; otherwise the zones the actions that may be done now play from.
+    bool PlaysFrom(Zone zone) =>
+        game!.Choice.IsOpen ? game.Choice.Options.Any(option => option is Card card && game.ZoneOf(card) == zone) : game.Plays.PlaysFrom(zone);
 
     /// Shows or hides the plays (see ShowPlays) at once, without waiting for the next change.
     public void RefreshPlays()

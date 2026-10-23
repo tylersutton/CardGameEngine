@@ -71,13 +71,23 @@ public class Choice(Game game)
         Dictionary<string, object?> button = game.Rules.Actions[actionName];
         List<object?> offered = OptionsFrom(game.Evaluate((string)button["choose"]!));
         (int count, bool exactly) = PickRule(button, offered.Count);
-        if (offered.Count == 0 || offered.Count < count)
+        if (!Enough(offered.Count, count))
         {
             game.LogLine("  nothing to choose");
             return;
         }
         Open(actionName, actionName, offered, count, exactly, PerformingAsked);
     }
+
+    /// Whether pressing a button with "choose" would open its choice: there's enough to pick from.
+    public bool HasOptionsFor(string actionName)
+    {
+        Dictionary<string, object?> button = game.Rules.Actions[actionName];
+        List<object?> offered = OptionsFrom(game.Evaluate((string)button["choose"]!));
+        return Enough(offered.Count, PickRule(button, offered.Count).Count);
+    }
+
+    static bool Enough(int optionCount, int pickCount) => optionCount > 0 && optionCount >= pickCount;
 
     /// A choose(...) step is waiting: the current player picks, and must (nothing else happens until they do).
     /// The step's answer is a single option, or for several (exactly or up to so many) a list.

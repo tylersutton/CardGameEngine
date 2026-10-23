@@ -866,7 +866,7 @@ public class StepCompiler
     }
 
     /// The names a tree reads, and the names it calls (so a condition called with parameters counts).
-    static List<string> NamesIn(StepNode node)
+    public static List<string> NamesIn(StepNode node)
     {
         List<string> names = node switch
         {

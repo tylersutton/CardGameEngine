@@ -109,7 +109,7 @@ Everything a player can do, each with a name. How an action is done:
 |---|---|
 | `steps` | What the action does. For a drag, these run after the card has moved. |
 | `when` | The action is only allowed while this is true. A button is greyed out otherwise. |
-| `choose` | For a button: what the player chooses before the steps run, e.g. `"hand"` (the cards are highlighted) or `"['Red', 'Blue']"` (buttons above the table). The steps get the pick as `choice`, and a single card as `card` too. Clicking elsewhere cancels the choice. When it picks several cards (`pick` above 1, or `up_to`), clicking one of them while the button can be pressed starts the choice with it. |
+| `choose` | For a button: what the player chooses before the steps run, e.g. `"hand"` (the cards are highlighted) or `"['Red', 'Blue']"` (buttons under the table). The steps get the pick as `choice`, and a single card as `card` too. The button can't be pressed while there's nothing (or not enough) to choose. Clicking elsewhere cancels the choice. When it picks several cards (`pick` above 1, or `up_to`), clicking one of them while the button can be pressed starts the choice with it. |
 | `pick` | With `choose`: exactly how many cards to pick, a number or an expression. `choice` is then a list. |
 | `up_to` | With `choose`: any number of cards up to this many, then **Done**. Use `pick` or `up_to`, not both. |
 | `allow` | With `choose`: a condition the whole pick must meet, e.g. `"size(groups(choice, 'rank')) == 1"` (all the same rank) |

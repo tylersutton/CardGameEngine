@@ -66,7 +66,7 @@ public class Plays
     }
 
     /// Whether an action's button can be pressed now. A drag or click action with "button": true needs a card it
-    /// could be done with, which pressing the button then asks for.
+    /// could be done with, which pressing the button then asks for; a button with "choose", something to choose.
     public bool CanPerform(string actionName)
     {
         if (game.Sandbox)
@@ -81,7 +81,8 @@ public class Plays
         {
             return PlayableCards(actionName).Count > 0;
         }
-        return game.Holds(WhenOf(game.Rules.Actions[actionName]));
+        Dictionary<string, object?> action = game.Rules.Actions[actionName];
+        return game.Holds(WhenOf(action)) && (!action.ContainsKey("choose") || game.Choice.HasOptionsFor(actionName));
     }
 
     /// The button whose choice of several cards clicking this card starts, with the card picked (President's Play:
@@ -111,6 +112,26 @@ public class Plays
             }
         }
         return playable;
+    }
+
+    /// Whether something that may be done now takes its cards from the zone: a drag from it or a click on it, or a
+    /// button (whose "when" holds) choosing from it. Its cards that can't be played now are then worth dimming, even
+    /// all of them (President's hand when nothing beats the table), unlike a zone nothing plays from now.
+    public bool PlaysFrom(Zone zone) =>
+        game.Rules.Actions.Any(pair => !IsAnyTime(pair.Key) && IsOfferedNow(pair.Key) && TakesFrom(pair.Value, zone));
+
+    bool TakesFrom(Dictionary<string, object?> action, Zone zone)
+    {
+        if (action.GetValueOrDefault(DragKey) is Dictionary<string, object?> dragZones)
+        {
+            return Names(dragZones.GetValueOrDefault("from"), zone);
+        }
+        if (Binds(action, ClickKey, zone) || Binds(action, DoubleClickKey, zone))
+        {
+            return true;
+        }
+        return action.GetValueOrDefault("choose") is string options && game.Holds(WhenOf(action))
+            && StepCompiler.NamesIn(game.TreeOf(options)).Any(name => Names(name, zone));
     }
 
     /// "any_time" actions (like sorting a hand) can be done by anyone, on anyone's turn, as themselves.
