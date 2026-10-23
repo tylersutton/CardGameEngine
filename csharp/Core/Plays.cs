@@ -7,12 +7,12 @@ public record ClickAction(string Action, Zone? Destination = null);
 /// Where cards could be dragged from a zone, and the drag actions that go there.
 record DragRoute(Zone Destination, List<string> Actions);
 
-/// What players can do: the game's actions, each done by a drag, a click or its toolbar button; which action an
+/// What players can do: the game's actions, each done by a drag, a click or its button; which action an
 /// input is; which actions are offered right now (offer(...)); and every legal input, for bots. Game carries the
 /// inputs out.
 public class Plays
 {
-    /// Ways to do an action other than its toolbar button.
+    /// Ways to do an action other than its button.
     public const string DragKey = "drag";
     public const string ClickKey = "click";
     public const string DoubleClickKey = "double_click";
@@ -58,14 +58,14 @@ public class Plays
     /// An action's "when" ("" if it has none, so it's always allowed).
     public static string WhenOf(Dictionary<string, object?> action) => action.GetValueOrDefault("when") as string ?? "";
 
-    /// Toolbar buttons: actions done by pressing them (not by a drag or click, unless they also say "button": true).
+    /// Buttons: actions done by pressing them (not by a drag or click, unless they also say "button": true).
     public bool ShowsButton(string actionName)
     {
         Dictionary<string, object?> action = game.Rules.Actions[actionName];
         return action.GetValueOrDefault("button") as bool? ?? !IsCardAction(action);
     }
 
-    /// Whether a toolbar button can be pressed now. A drag or click action with "button": true needs a card it
+    /// Whether an action's button can be pressed now. A drag or click action with "button": true needs a card it
     /// could be done with, which pressing the button then asks for.
     public bool CanPerform(string actionName)
     {

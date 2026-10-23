@@ -52,7 +52,7 @@ public static class EditorFields
         new("pick", "expression", "How many cards to choose (a number, or e.g. count(hand) - 3).", "Choosing"),
         new("up_to", "expression", "Choose from none up to this many, then press Done.", "Choosing"),
         new("allow", "expression", "A condition the whole choice must meet, e.g. size(groups(choice, 'rank')) == 1.", "Choosing"),
-        new("button", "yes_no", "Show it in the toolbar. Default: yes, unless it's done by a drag or click (then yes asks for a card to do it with). No: it only happens through ask('name').", "Advanced"),
+        new("button", "yes_no", "Show it as a button under the table. Default: yes, unless it's done by a drag or click (then yes asks for a card to do it with). No: it only happens through ask('name').", "Advanced"),
         new("human_only", "yes_no", "Bots never do it (e.g. Next hand).", "Advanced"),
         new("any_time", "yes_no", "Anyone may do it, even on someone else's turn or while a choice is being made, and it's done as them: hand is their hand (e.g. Sort hand). Its steps can't wait for a choice.", "Advanced"),
         new("prefer", "expression", "For a bot making this choice: what to aim for instead of the bot's usual prefer.", "Advanced"),

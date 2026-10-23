@@ -94,7 +94,7 @@ Everything a player can do, each with a name. How an action is done:
 
 - **By dragging:** `"drag": { "from": "hand", "to": "pile" }`. Each end can be a zone, a group of copies, or a list of those. Leave one end out to mean any zone. In the action, `card` is the dragged card, `from` is where it came from and `to` is where it's going. To let a click do the drag too, add `"click": true` or `"double_click": true`. The card then goes to the first zone it's allowed to go to.
 - **By clicking:** `"click": "deck"`, or `"double_click"`. Clicking a card there makes it the `card`. Clicking the empty zone makes `card` be `null`. `clicked_zone` is the zone that was clicked.
-- **By a button:** an action with neither is a toolbar button, and the buttons appear in the order listed. An action written as just a list of steps is a button: `"Shuffle": ["shuffle(deck)"]`.
+- **By a button:** an action with neither is a button under the table, and the buttons appear in the order listed. An action written as just a list of steps is a button: `"Shuffle": ["shuffle(deck)"]`.
 
 ```json
 "Tableau to foundation": {

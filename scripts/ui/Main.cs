@@ -1,8 +1,8 @@
 using Core;
 using Godot;
 
-/// The play screen: the table, the toolbar (action buttons, undo, sandbox), the bar for choices and offers, and
-/// the log. Bots take their turns here; online, inputs go through Net.
+/// The play screen: the toolbar (undo, sandbox), the table, the dock under it (the bar for choices and offers,
+/// and the action buttons), and the log. Bots take their turns here; online, inputs go through Net.
 public partial class Main : Control
 {
     const float BotDelay = 0.6f;
@@ -91,11 +91,12 @@ public partial class Main : Control
         ForgetGame();
     }
 
-    /// The variables and log beside the table. The editor hides the toolbar and log while it is laying out the
-    /// table, not playing.
+    /// The toolbar, the dock and the log around the table. The editor hides them while it is laying out the table,
+    /// not playing.
     public void ShowPlayControls(bool shown)
     {
         GetNode<Control>("Layout/TableColumn/ToolbarMargin").Visible = shown;
+        GetNode<Control>("%ActionDock").Visible = shown;
         GetNode<Control>("Layout/LogPanel").Visible = shown;
     }
 

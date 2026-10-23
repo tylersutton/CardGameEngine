@@ -40,8 +40,8 @@ All but Color Match use `decks/standard_deck.csv`, or a deck named after the gam
 |---|---|
 | Drag a card | Moves it to the zone nearest where you drop it. While you drag, the outline turns green if the move is allowed and red if not. A refused drop snaps back, and the log says why. Dragging within your own hand reorders it. |
 | Click a card or zone | Does the game's click action there, if it has one (for example, drawing from the deck). |
-| Choosing | The cards you can choose are outlined in yellow. Click them; picked cards turn blue. Anything else to pick, like a color, appears as buttons above the table. On your turn, clicking a card can also start a button's choice of several cards with it, as in President's Play. |
-| Toolbar buttons | The game's other actions. A button is greyed out while it can't be done. The bar above the table says what you can do now. |
+| Choosing | The cards you can choose are outlined in yellow. Click them; picked cards turn blue. Anything else to pick, like a color, appears as buttons under the table. On your turn, clicking a card can also start a button's choice of several cards with it, as in President's Play. |
+| Action buttons | The game's other actions, under the table. A button is greyed out while it can't be done. The bar above them says what you can do now. |
 | **Undo** (Ctrl+Z) | Goes back one of your inputs, including one step of a choice. |
 | **Reload** | Starts over from the files on disk. Saving a game file or deck reloads it automatically. |
 | **Sandbox** | Ignores the rules so you can set up a situation by hand. |
@@ -183,7 +183,7 @@ A card's effect runs as the card arrives, before the action's `steps` and before
 
 ### 7. Add buttons
 
-An action without `drag` or `click` is a toolbar button. These two aren't offered by the turn, and `any_time` lets either player press them even on the other's turn, sorting their own hand:
+An action without `drag` or `click` is a button under the table. These two aren't offered by the turn, and `any_time` lets either player press them even on the other's turn, sorting their own hand:
 
 ```json
 "Sort by color": { "any_time": true, "steps": ["sort(hand, ['color', 'number'])"] },
