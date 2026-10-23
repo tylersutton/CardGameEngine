@@ -69,13 +69,21 @@
 				"shape": "square",
 				"columns": 16,
 				"rows": 16,
-				"size": 44,
+				"size": 38,
 				"paint": {
 					"yellow": "#f2d043",
 					"green": "#4caf50",
 					"red": "#d64545",
 					"blue": "#4a7fd6",
+					"yellow_slide": "#f6e39a",
+					"green_slide": "#a3d9a5",
+					"red_slide": "#eb9a9a",
+					"blue_slide": "#a3bfee",
 					"track": "#f4efe1"
+				},
+				"labels": {
+					"any_start": "Start",
+					"any_home": "Home"
 				}
 			},
 			"outline": false,
@@ -173,12 +181,20 @@
 		"lane_side(space)": "0 if space.column == 3 and space.row >= 2 and space.row <= 7 else (1 if space.row == 3 and space.column >= 10 and space.column <= 15 else (2 if space.column == 14 and space.row >= 10 and space.row <= 15 else (3 if space.row == 14 and space.column >= 2 and space.column <= 7 else -1)))",
 		"start_side(space)": "0 if space == start_space(0) else (1 if space == start_space(1) else (2 if space == start_space(2) else (3 if space == start_space(3) else -1)))",
 		"on_slide(space)": "is_track(space) and track_index(space) % 15 in [1, 2, 3, 4, 9, 10, 11, 12, 13]",
-		"colored_side(space)": "lane_side(space) if lane_side(space) >= 0 else (start_side(space) if start_side(space) >= 0 else (track_index(space) / 15 if on_slide(space) else -1))",
-		"yellow(space)": "colored_side(space) == 0",
-		"green(space)": "colored_side(space) == 1",
-		"red(space)": "colored_side(space) == 2",
-		"blue(space)": "colored_side(space) == 3",
+		// Each color's Start and lane are painted solid, and its slides lighter.
+		"own_side(space)": "lane_side(space) if lane_side(space) >= 0 else start_side(space)",
+		"slide_side(space)": "track_index(space) / 15 if on_slide(space) else -1",
+		"yellow(space)": "own_side(space) == 0",
+		"green(space)": "own_side(space) == 1",
+		"red(space)": "own_side(space) == 2",
+		"blue(space)": "own_side(space) == 3",
+		"yellow_slide(space)": "slide_side(space) == 0",
+		"green_slide(space)": "slide_side(space) == 1",
+		"red_slide(space)": "slide_side(space) == 2",
+		"blue_slide(space)": "slide_side(space) == 3",
 		"track(space)": "is_track(space)",
+		"any_start(space)": "start_side(space) >= 0",
+		"any_home(space)": "space == lane_space(0, 6) or space == lane_space(1, 6) or space == lane_space(2, 6) or space == lane_space(3, 6)",
 		// How far a pawn of mine has come: -2 in Start, -1 just behind the start's exit, 0 at the exit, 58 at the
 		// lane's entry, 59 to 63 up the lane, 64 Home.
 		"progress_of(space, side)": "-2 if space == start_space(side) else ((track_index(space) - exit_index(side) + 61) % 60 - 1 if is_track(space) else 58 + abs(space.column - track_space(entry_index(side)).column) + abs(space.row - track_space(entry_index(side)).row))",
@@ -336,10 +352,11 @@
 		"prefer": "travelled + 20 * at_home - most('travelled') / 3.0"
 	},
 	"card_face": {
-		"title": "name",
+		// Only the cards have a label: pawns are plain discs.
+		"title": "label",
 		"text": "text",
 		"shape": "shape",
-		"size": 24,
+		"size": 20,
 		"background": "paint",
 		"color": "#1b1b1b",
 		"card_back": "#c62828"

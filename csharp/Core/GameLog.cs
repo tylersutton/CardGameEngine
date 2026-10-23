@@ -7,6 +7,9 @@ public class GameLog
     /// Indented lines players see: the rest are the steps' workings.
     static readonly string[] PlayerDetails = ["face up in ", "face down in ", "shown from ", "shuffle ", "swap "];
 
+    /// Starts a move between two zones off the table (a box filling a supply), which only designers see.
+    public const string OutOfSight = "out of sight: ";
+
     public event Action<string>? Logged;
 
     /// While a bot tries moves out, nothing is logged.
@@ -25,7 +28,7 @@ public class GameLog
         {
             return !line.StartsWith("[trigger]") && !line.StartsWith("[bot ");
         }
-        bool isMove = detail.Contains(" → ") && !detail.StartsWith("if ");
+        bool isMove = detail.Contains(" → ") && !detail.StartsWith("if ") && !detail.StartsWith(OutOfSight);
         return isMove || PlayerDetails.Any(detail.StartsWith) || detail.EndsWith(" is out");
     }
 

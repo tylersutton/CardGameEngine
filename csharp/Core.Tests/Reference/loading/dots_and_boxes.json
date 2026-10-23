@@ -6,9 +6,9 @@
 			"# Goal",
 			"Claim more of the 16 boxes than your opponent. You play Red.",
 			"# The board",
-			"- The black squares are dots. The pale squares between two dots are where lines go; the cream squares are boxes.",
+			"- The faint lines between the dots are where lines can go; the squares they surround are boxes.",
 			"# Your turn",
-			"- Click an empty gap between two dots to draw a line there.",
+			"- Click a faint line between two dots to draw it in your color.",
 			"- If your line closes the fourth side of a box, the box gets your color and you go again.",
 			"# Tips",
 			"- Don't draw the third side of a box: your opponent will take it.",
@@ -45,12 +45,14 @@
 					"columns": 9.0,
 					"rows": 9.0,
 					"size": 60.0,
+					"image": "boards/paper.svg",
 					"paint": {
-						"dot": "#1b1b1b",
-						"box_space": "#f5efe0",
-						"gap": "#d9cfb8"
+						"dot": "#1b1b1b dot",
+						"gap_across": "#ddd2b8 hbar",
+						"gap_down": "#ddd2b8 vbar"
 					}
 				},
+				"outline": false,
 				"anchor": [
 					0.5,
 					0.5
@@ -93,6 +95,8 @@
 			"dot": "space.column % 2 == 1 and space.row % 2 == 1",
 			"box_space": "space.column % 2 == 0 and space.row % 2 == 0",
 			"gap": "not dot(space) and not box_space(space)",
+			"gap_across": "space.row % 2 == 1 and space.column % 2 == 0",
+			"gap_down": "space.row % 2 == 0 and space.column % 2 == 1",
 			"drawn": "count(space) > 0",
 			"sides": "count(zones_where(neighbors(space, 'orthogonal'), 'drawn'))",
 			"closed": "box_space(space) and count(space) == 0 and sides(space) == 4",
@@ -106,6 +110,12 @@
 				"space"
 			],
 			"gap": [
+				"space"
+			],
+			"gap_across": [
+				"space"
+			],
+			"gap_down": [
 				"space"
 			],
 			"drawn": [
@@ -240,7 +250,7 @@
 		{
 			"name": "grid_1",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -258,7 +268,7 @@
 		{
 			"name": "grid_2",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -276,7 +286,7 @@
 		{
 			"name": "grid_3",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -294,7 +304,7 @@
 		{
 			"name": "grid_4",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -312,7 +322,7 @@
 		{
 			"name": "grid_5",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -330,7 +340,7 @@
 		{
 			"name": "grid_6",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -348,7 +358,7 @@
 		{
 			"name": "grid_7",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -366,7 +376,7 @@
 		{
 			"name": "grid_8",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -384,7 +394,7 @@
 		{
 			"name": "grid_9",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -402,7 +412,7 @@
 		{
 			"name": "grid_10",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -420,7 +430,7 @@
 		{
 			"name": "grid_11",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -438,7 +448,7 @@
 		{
 			"name": "grid_12",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -456,7 +466,7 @@
 		{
 			"name": "grid_13",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -474,7 +484,7 @@
 		{
 			"name": "grid_14",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -492,7 +502,7 @@
 		{
 			"name": "grid_15",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -510,7 +520,7 @@
 		{
 			"name": "grid_16",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -528,7 +538,7 @@
 		{
 			"name": "grid_17",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -546,7 +556,7 @@
 		{
 			"name": "grid_18",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -564,7 +574,7 @@
 		{
 			"name": "grid_19",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -582,7 +592,7 @@
 		{
 			"name": "grid_20",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -600,7 +610,7 @@
 		{
 			"name": "grid_21",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -618,7 +628,7 @@
 		{
 			"name": "grid_22",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -636,7 +646,7 @@
 		{
 			"name": "grid_23",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -654,7 +664,7 @@
 		{
 			"name": "grid_24",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -672,7 +682,7 @@
 		{
 			"name": "grid_25",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -690,7 +700,7 @@
 		{
 			"name": "grid_26",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -708,7 +718,7 @@
 		{
 			"name": "grid_27",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -726,7 +736,7 @@
 		{
 			"name": "grid_28",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -744,7 +754,7 @@
 		{
 			"name": "grid_29",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -762,7 +772,7 @@
 		{
 			"name": "grid_30",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -780,7 +790,7 @@
 		{
 			"name": "grid_31",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -798,7 +808,7 @@
 		{
 			"name": "grid_32",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -816,7 +826,7 @@
 		{
 			"name": "grid_33",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -834,7 +844,7 @@
 		{
 			"name": "grid_34",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -852,7 +862,7 @@
 		{
 			"name": "grid_35",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -870,7 +880,7 @@
 		{
 			"name": "grid_36",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -888,7 +898,7 @@
 		{
 			"name": "grid_37",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -906,7 +916,7 @@
 		{
 			"name": "grid_38",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -924,7 +934,7 @@
 		{
 			"name": "grid_39",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -942,7 +952,7 @@
 		{
 			"name": "grid_40",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -960,7 +970,7 @@
 		{
 			"name": "grid_41",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -978,7 +988,7 @@
 		{
 			"name": "grid_42",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -996,7 +1006,7 @@
 		{
 			"name": "grid_43",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1014,7 +1024,7 @@
 		{
 			"name": "grid_44",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1032,7 +1042,7 @@
 		{
 			"name": "grid_45",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1050,7 +1060,7 @@
 		{
 			"name": "grid_46",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1068,7 +1078,7 @@
 		{
 			"name": "grid_47",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1086,7 +1096,7 @@
 		{
 			"name": "grid_48",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1104,7 +1114,7 @@
 		{
 			"name": "grid_49",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1122,7 +1132,7 @@
 		{
 			"name": "grid_50",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1140,7 +1150,7 @@
 		{
 			"name": "grid_51",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1158,7 +1168,7 @@
 		{
 			"name": "grid_52",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1176,7 +1186,7 @@
 		{
 			"name": "grid_53",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1194,7 +1204,7 @@
 		{
 			"name": "grid_54",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1212,7 +1222,7 @@
 		{
 			"name": "grid_55",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1230,7 +1240,7 @@
 		{
 			"name": "grid_56",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1248,7 +1258,7 @@
 		{
 			"name": "grid_57",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1266,7 +1276,7 @@
 		{
 			"name": "grid_58",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1284,7 +1294,7 @@
 		{
 			"name": "grid_59",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1302,7 +1312,7 @@
 		{
 			"name": "grid_60",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1320,7 +1330,7 @@
 		{
 			"name": "grid_61",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1338,7 +1348,7 @@
 		{
 			"name": "grid_62",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1356,7 +1366,7 @@
 		{
 			"name": "grid_63",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1374,7 +1384,7 @@
 		{
 			"name": "grid_64",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1392,7 +1402,7 @@
 		{
 			"name": "grid_65",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1410,7 +1420,7 @@
 		{
 			"name": "grid_66",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1428,7 +1438,7 @@
 		{
 			"name": "grid_67",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1446,7 +1456,7 @@
 		{
 			"name": "grid_68",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1464,7 +1474,7 @@
 		{
 			"name": "grid_69",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1482,7 +1492,7 @@
 		{
 			"name": "grid_70",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1500,7 +1510,7 @@
 		{
 			"name": "grid_71",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1518,7 +1528,7 @@
 		{
 			"name": "grid_72",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1536,7 +1546,7 @@
 		{
 			"name": "grid_73",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1554,7 +1564,7 @@
 		{
 			"name": "grid_74",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1572,7 +1582,7 @@
 		{
 			"name": "grid_75",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1590,7 +1600,7 @@
 		{
 			"name": "grid_76",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1608,7 +1618,7 @@
 		{
 			"name": "grid_77",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1626,7 +1636,7 @@
 		{
 			"name": "grid_78",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1644,7 +1654,7 @@
 		{
 			"name": "grid_79",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1662,7 +1672,7 @@
 		{
 			"name": "grid_80",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1680,7 +1690,7 @@
 		{
 			"name": "grid_81",
 			"label": "",
-			"has_outline": true,
+			"has_outline": false,
 			"kind": "grid",
 			"owner": 0,
 			"layout": "pile",
@@ -1709,640 +1719,640 @@
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red line",
 					"kind": "line",
 					"seat": "1",
 					"paint": "#d64545",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Blue line",
 					"kind": "line",
 					"seat": "2",
 					"paint": "#3f74d6",
-					"shape": "square",
-					"size": "52"
+					"shape": "fill",
+					"size": "60"
 				},
 				{
 					"name": "Red box",

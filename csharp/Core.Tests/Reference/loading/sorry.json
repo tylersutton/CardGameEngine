@@ -51,13 +51,21 @@
 					"shape": "square",
 					"columns": 16.0,
 					"rows": 16.0,
-					"size": 44.0,
+					"size": 38.0,
 					"paint": {
 						"yellow": "#f2d043",
 						"green": "#4caf50",
 						"red": "#d64545",
 						"blue": "#4a7fd6",
+						"yellow_slide": "#f6e39a",
+						"green_slide": "#a3d9a5",
+						"red_slide": "#eb9a9a",
+						"blue_slide": "#a3bfee",
 						"track": "#f4efe1"
+					},
+					"labels": {
+						"any_start": "Start",
+						"any_home": "Home"
 					}
 				},
 				"outline": false,
@@ -196,12 +204,19 @@
 			"lane_side": "0 if space.column == 3 and space.row >= 2 and space.row <= 7 else (1 if space.row == 3 and space.column >= 10 and space.column <= 15 else (2 if space.column == 14 and space.row >= 10 and space.row <= 15 else (3 if space.row == 14 and space.column >= 2 and space.column <= 7 else -1)))",
 			"start_side": "0 if space == start_space(0) else (1 if space == start_space(1) else (2 if space == start_space(2) else (3 if space == start_space(3) else -1)))",
 			"on_slide": "is_track(space) and track_index(space) % 15 in [1, 2, 3, 4, 9, 10, 11, 12, 13]",
-			"colored_side": "lane_side(space) if lane_side(space) >= 0 else (start_side(space) if start_side(space) >= 0 else (track_index(space) / 15 if on_slide(space) else -1))",
-			"yellow": "colored_side(space) == 0",
-			"green": "colored_side(space) == 1",
-			"red": "colored_side(space) == 2",
-			"blue": "colored_side(space) == 3",
+			"own_side": "lane_side(space) if lane_side(space) >= 0 else start_side(space)",
+			"slide_side": "track_index(space) / 15 if on_slide(space) else -1",
+			"yellow": "own_side(space) == 0",
+			"green": "own_side(space) == 1",
+			"red": "own_side(space) == 2",
+			"blue": "own_side(space) == 3",
+			"yellow_slide": "slide_side(space) == 0",
+			"green_slide": "slide_side(space) == 1",
+			"red_slide": "slide_side(space) == 2",
+			"blue_slide": "slide_side(space) == 3",
 			"track": "is_track(space)",
+			"any_start": "start_side(space) >= 0",
+			"any_home": "space == lane_space(0, 6) or space == lane_space(1, 6) or space == lane_space(2, 6) or space == lane_space(3, 6)",
 			"progress_of": "-2 if space == start_space(side) else ((track_index(space) - exit_index(side) + 61) % 60 - 1 if is_track(space) else 58 + abs(space.column - track_space(entry_index(side)).column) + abs(space.row - track_space(entry_index(side)).row))",
 			"progress": "progress_of(space, my_side)",
 			"space_for": "start_space(my_side) if steps == -2 else (track_space((exit_index(my_side) + steps + 60) % 60) if steps <= 58 else lane_space(my_side, steps - 58))",
@@ -261,7 +276,10 @@
 			"on_slide": [
 				"space"
 			],
-			"colored_side": [
+			"own_side": [
+				"space"
+			],
+			"slide_side": [
 				"space"
 			],
 			"yellow": [
@@ -276,7 +294,25 @@
 			"blue": [
 				"space"
 			],
+			"yellow_slide": [
+				"space"
+			],
+			"green_slide": [
+				"space"
+			],
+			"red_slide": [
+				"space"
+			],
+			"blue_slide": [
+				"space"
+			],
 			"track": [
+				"space"
+			],
+			"any_start": [
+				"space"
+			],
+			"any_home": [
 				"space"
 			],
 			"progress_of": [
@@ -454,10 +490,10 @@
 			"prefer": "travelled + 20 * at_home - most('travelled') / 3.0"
 		},
 		"card_face": {
-			"title": "name",
+			"title": "label",
 			"text": "text",
 			"shape": "shape",
-			"size": 24.0,
+			"size": 20.0,
 			"background": "paint",
 			"color": "#1b1b1b",
 			"card_back": "#c62828"
@@ -5242,226 +5278,271 @@
 			"cards": [
 				{
 					"name": "1",
+					"label": "1",
 					"value": "1",
 					"text": "Move a pawn out of Start, or forward 1"
 				},
 				{
 					"name": "1",
+					"label": "1",
 					"value": "1",
 					"text": "Move a pawn out of Start, or forward 1"
 				},
 				{
 					"name": "1",
+					"label": "1",
 					"value": "1",
 					"text": "Move a pawn out of Start, or forward 1"
 				},
 				{
 					"name": "1",
+					"label": "1",
 					"value": "1",
 					"text": "Move a pawn out of Start, or forward 1"
 				},
 				{
 					"name": "1",
+					"label": "1",
 					"value": "1",
 					"text": "Move a pawn out of Start, or forward 1"
 				},
 				{
 					"name": "2",
+					"label": "2",
 					"value": "2",
 					"text": "Move a pawn out of Start, or forward 2. Then draw again"
 				},
 				{
 					"name": "2",
+					"label": "2",
 					"value": "2",
 					"text": "Move a pawn out of Start, or forward 2. Then draw again"
 				},
 				{
 					"name": "2",
+					"label": "2",
 					"value": "2",
 					"text": "Move a pawn out of Start, or forward 2. Then draw again"
 				},
 				{
 					"name": "2",
+					"label": "2",
 					"value": "2",
 					"text": "Move a pawn out of Start, or forward 2. Then draw again"
 				},
 				{
 					"name": "3",
+					"label": "3",
 					"value": "3",
 					"text": "Forward 3"
 				},
 				{
 					"name": "3",
+					"label": "3",
 					"value": "3",
 					"text": "Forward 3"
 				},
 				{
 					"name": "3",
+					"label": "3",
 					"value": "3",
 					"text": "Forward 3"
 				},
 				{
 					"name": "3",
+					"label": "3",
 					"value": "3",
 					"text": "Forward 3"
 				},
 				{
 					"name": "4",
+					"label": "4",
 					"value": "4",
 					"text": "Backward 4"
 				},
 				{
 					"name": "4",
+					"label": "4",
 					"value": "4",
 					"text": "Backward 4"
 				},
 				{
 					"name": "4",
+					"label": "4",
 					"value": "4",
 					"text": "Backward 4"
 				},
 				{
 					"name": "4",
+					"label": "4",
 					"value": "4",
 					"text": "Backward 4"
 				},
 				{
 					"name": "5",
+					"label": "5",
 					"value": "5",
 					"text": "Forward 5"
 				},
 				{
 					"name": "5",
+					"label": "5",
 					"value": "5",
 					"text": "Forward 5"
 				},
 				{
 					"name": "5",
+					"label": "5",
 					"value": "5",
 					"text": "Forward 5"
 				},
 				{
 					"name": "5",
+					"label": "5",
 					"value": "5",
 					"text": "Forward 5"
 				},
 				{
 					"name": "7",
+					"label": "7",
 					"value": "7",
 					"text": "Forward 7"
 				},
 				{
 					"name": "7",
+					"label": "7",
 					"value": "7",
 					"text": "Forward 7"
 				},
 				{
 					"name": "7",
+					"label": "7",
 					"value": "7",
 					"text": "Forward 7"
 				},
 				{
 					"name": "7",
+					"label": "7",
 					"value": "7",
 					"text": "Forward 7"
 				},
 				{
 					"name": "8",
+					"label": "8",
 					"value": "8",
 					"text": "Forward 8"
 				},
 				{
 					"name": "8",
+					"label": "8",
 					"value": "8",
 					"text": "Forward 8"
 				},
 				{
 					"name": "8",
+					"label": "8",
 					"value": "8",
 					"text": "Forward 8"
 				},
 				{
 					"name": "8",
+					"label": "8",
 					"value": "8",
 					"text": "Forward 8"
 				},
 				{
 					"name": "10",
+					"label": "10",
 					"value": "10",
 					"text": "Forward 10, or backward 1"
 				},
 				{
 					"name": "10",
+					"label": "10",
 					"value": "10",
 					"text": "Forward 10, or backward 1"
 				},
 				{
 					"name": "10",
+					"label": "10",
 					"value": "10",
 					"text": "Forward 10, or backward 1"
 				},
 				{
 					"name": "10",
+					"label": "10",
 					"value": "10",
 					"text": "Forward 10, or backward 1"
 				},
 				{
 					"name": "11",
+					"label": "11",
 					"value": "11",
 					"text": "Forward 11, or swap places with another player's pawn"
 				},
 				{
 					"name": "11",
+					"label": "11",
 					"value": "11",
 					"text": "Forward 11, or swap places with another player's pawn"
 				},
 				{
 					"name": "11",
+					"label": "11",
 					"value": "11",
 					"text": "Forward 11, or swap places with another player's pawn"
 				},
 				{
 					"name": "11",
+					"label": "11",
 					"value": "11",
 					"text": "Forward 11, or swap places with another player's pawn"
 				},
 				{
 					"name": "12",
+					"label": "12",
 					"value": "12",
 					"text": "Forward 12"
 				},
 				{
 					"name": "12",
+					"label": "12",
 					"value": "12",
 					"text": "Forward 12"
 				},
 				{
 					"name": "12",
+					"label": "12",
 					"value": "12",
 					"text": "Forward 12"
 				},
 				{
 					"name": "12",
+					"label": "12",
 					"value": "12",
 					"text": "Forward 12"
 				},
 				{
 					"name": "Sorry!",
+					"label": "Sorry!",
 					"value": "0",
 					"text": "Move a pawn out of Start onto another player's pawn, which goes back to its Start"
 				},
 				{
 					"name": "Sorry!",
+					"label": "Sorry!",
 					"value": "0",
 					"text": "Move a pawn out of Start onto another player's pawn, which goes back to its Start"
 				},
 				{
 					"name": "Sorry!",
+					"label": "Sorry!",
 					"value": "0",
 					"text": "Move a pawn out of Start onto another player's pawn, which goes back to its Start"
 				},
 				{
 					"name": "Sorry!",
+					"label": "Sorry!",
 					"value": "0",
 					"text": "Move a pawn out of Start onto another player's pawn, which goes back to its Start"
 				}

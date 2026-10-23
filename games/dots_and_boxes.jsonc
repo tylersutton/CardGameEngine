@@ -5,9 +5,9 @@
 		"# Goal",
 		"Claim more of the 16 boxes than your opponent. You play Red.",
 		"# The board",
-		"- The black squares are dots. The pale squares between two dots are where lines go; the cream squares are boxes.",
+		"- The faint lines between the dots are where lines can go; the squares they surround are boxes.",
 		"# Your turn",
-		"- Click an empty gap between two dots to draw a line there.",
+		"- Click a faint line between two dots to draw it in your color.",
 		"- If your line closes the fourth side of a box, the box gets your color and you go again.",
 		"# Tips",
 		"- Don't draw the third side of a box: your opponent will take it.",
@@ -60,12 +60,14 @@
 				"columns": 9,
 				"rows": 9,
 				"size": 60,
+				"image": "boards/paper.svg",
 				"paint": {
-					"dot": "#1b1b1b",
-					"box_space": "#f5efe0",
-					"gap": "#d9cfb8"
+					"dot": "#1b1b1b dot",
+					"gap_across": "#ddd2b8 hbar",
+					"gap_down": "#ddd2b8 vbar"
 				}
 			},
+			"outline": false,
 			"anchor": [
 				0.5,
 				0.5
@@ -85,6 +87,8 @@
 		"dot(space)": "space.column % 2 == 1 and space.row % 2 == 1",
 		"box_space(space)": "space.column % 2 == 0 and space.row % 2 == 0",
 		"gap(space)": "not dot(space) and not box_space(space)",
+		"gap_across(space)": "space.row % 2 == 1 and space.column % 2 == 0",
+		"gap_down(space)": "space.row % 2 == 0 and space.column % 2 == 1",
 		"drawn(space)": "count(space) > 0",
 		"sides(space)": "count(zones_where(neighbors(space, 'orthogonal'), 'drawn'))",
 		"closed(space)": "box_space(space) and count(space) == 0 and sides(space) == 4",

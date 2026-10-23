@@ -9,6 +9,8 @@ public partial class CardView : Control
     const float DefaultPieceSize = 50;
     const string Disc = "disc";
     const string SquarePiece = "square";
+    /// A piece drawn as the painted shape of the board space it's on, in its own color: a line in Dots and Boxes.
+    const string FillPiece = "fill";
     const string ArtLayout = "art";
     const float CornerRadius = 8;
     const float ArtTop = 26;
@@ -82,6 +84,8 @@ public partial class CardView : Control
     bool playable;
     DropHint hint;
     string marksText = "";
+    string spaceShape = "";
+    float spaceSize = DefaultPieceSize;
     float lift;
     /// How strongly the glow of Flash still shows: 1 when the card has just moved, fading to 0.
     float flash;
@@ -180,7 +184,7 @@ public partial class CardView : Control
         face = cardFace;
         images = cardImages;
         TextureFilter = TextureFilterEnum.LinearWithMipmaps;
-        Size = IsPiece ? Vector2.One * PieceSize() : CardSize;
+        Size = IsFill ? SpaceShape.Extent(spaceShape, spaceSize) : IsPiece ? Vector2.One * PieceSize() : CardSize;
         PivotOffset = Size / 2;
         MouseEntered += () =>
         {
@@ -315,7 +319,23 @@ public partial class CardView : Control
     }
 
     /// "shape" in card_face: a column or one shape for every card. Anything but a disc or a square is a card.
-    public bool IsPiece => Card != null && Shape() is Disc or SquarePiece;
+    public bool IsPiece => Card != null && Shape() is Disc or SquarePiece or FillPiece;
+
+    bool IsFill => Card != null && Shape() == FillPiece;
+
+    /// The board space the card is on: its painted shape ("" for the whole space) and size, which a "fill" piece takes.
+    public void ShowOnSpace(string shape, float size)
+    {
+        if (!IsFill || shape == spaceShape && size == spaceSize)
+        {
+            return;
+        }
+        spaceShape = shape;
+        spaceSize = size;
+        Size = SpaceShape.Extent(shape, size);
+        PivotOffset = Size / 2;
+        QueueRedraw();
+    }
 
     string Shape() => FaceValue("shape");
 
@@ -334,6 +354,11 @@ public partial class CardView : Control
         string side = Card!.FaceUp ? "image" : "back";
         Texture2D? image = FaceUp ? ImageOf(side) : null;
         Color fill = !FaceUp ? HiddenPieceColor : image != null ? Colors.White : Color.FromString(FaceValue(Card.FaceUp ? "background" : "back"), Colors.White);
+        if (Shape() == FillPiece)
+        {
+            SpaceShape.Draw(this, rect.GetCenter(), spaceShape, spaceSize, fill);
+            return;
+        }
         bool disc = Shape() == Disc;
         if (disc)
         {

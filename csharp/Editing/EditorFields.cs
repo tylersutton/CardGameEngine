@@ -41,7 +41,7 @@ public static class EditorFields
         new("labels", "json", "With per_player or copies: one label each.", "Advanced", Example: "[\"You\", \"Them\"]"),
         new("grid", "json", "With copies: lay them out in rows, e.g. { \"columns\": 5, \"spacing\": [0.09, 0.19] }.", "Advanced", Example: "{ \"columns\": 5, \"spacing\": [0.09, 0.19] }"),
         new("covered_by", "json", "With copies: which copies lie on top of each one (Pyramid).", "Advanced", Example: "[[1, 2], [2, 3]]"),
-        new("board", "board", "Make it a board: one space per column and row (square_1, square_2, ...), square or hex, its spaces size pixels apart. paint colors spaces by conditions about the space, e.g. { \"top_edge\": \"#c8443a\" }.", "Board"),
+        new("board", "board", "Make it a board: one space per column and row (square_1, square_2, ...), square or hex, its spaces size pixels apart. paint colors spaces by conditions about the space, e.g. { \"top_edge\": \"#c8443a\" }, and a color can be followed by dot, hbar or vbar; labels names spaces the same way, e.g. { \"start_space\": \"Start\" }.", "Board"),
     ];
 
     public static readonly Field[] Action =

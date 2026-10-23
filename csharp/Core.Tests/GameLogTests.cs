@@ -15,6 +15,7 @@ public class GameLogTests
     [InlineData("  face up in tableau_1: 9♦")]
     [InlineData("  shuffle deck")]
     [InlineData("  Player 2 is out")]
+    [InlineData("  swap hand_1 ↔ box: 2/1 ↔ 1/2")]
     public void PlayersSeeWhatHappened(string line)
     {
         Assert.True(GameLog.ForPlayers(line));
@@ -32,6 +33,7 @@ public class GameLogTests
     [InlineData("  You: choose 2 (click the highlighted cards)")]
     [InlineData("  sort hand_1 by color, number")]
     [InlineData("  mark number = 4: a hidden card, a hidden card")]
+    [InlineData("  out of sight: box → supply_1: Red line, Red line")]
     public void PlayersDontSeeHowTheStepsWorkedItOut(string line)
     {
         Assert.False(GameLog.ForPlayers(line));

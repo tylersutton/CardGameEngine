@@ -1,12 +1,12 @@
-name,value,text,count
-1,1,"Move a pawn out of Start, or forward 1",5
-2,2,"Move a pawn out of Start, or forward 2. Then draw again",4
-3,3,Forward 3,4
-4,4,Backward 4,4
-5,5,Forward 5,4
-7,7,Forward 7,4
-8,8,Forward 8,4
-10,10,"Forward 10, or backward 1",4
-11,11,"Forward 11, or swap places with another player's pawn",4
-12,12,Forward 12,4
-Sorry!,0,"Move a pawn out of Start onto another player's pawn, which goes back to its Start",4
+name,label,value,text,count
+1,1,1,"Move a pawn out of Start, or forward 1",5
+2,2,2,"Move a pawn out of Start, or forward 2. Then draw again",4
+3,3,3,Forward 3,4
+4,4,4,Backward 4,4
+5,5,5,Forward 5,4
+7,7,7,Forward 7,4
+8,8,8,Forward 8,4
+10,10,10,"Forward 10, or backward 1",4
+11,11,11,"Forward 11, or swap places with another player's pawn",4
+12,12,12,Forward 12,4
+Sorry!,Sorry!,0,"Move a pawn out of Start onto another player's pawn, which goes back to its Start",4

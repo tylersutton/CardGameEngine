@@ -67,7 +67,8 @@ A zone with a `board` is a grid of spaces, and each space is a zone of its own, 
 - **`shape`:** `square` (the default) or `hex`. A hex board is a rhombus, as in the game Hex: each row sits half a space right of the one above.
 - **`size`:** how far apart neighbouring spaces are, in pixels. Default 60.
 - **`image`:** a picture stretched over the whole board, under its spaces, e.g. `"boards/reversi.svg"` (see [Images](#images)). Add `"outline": false` to the zone to show the picture alone.
-- **`paint`:** colors for spaces, each by a condition about the space: `{ "top_edge": "#c8443a80", "dark": "#5a3a22" }`. A space takes the first color whose condition holds for it, so Hex shows each player's goal edges and checkers a checkerboard (`"dark(space)": "(space.row + space.column) % 2 == 0"`).
+- **`paint`:** colors for spaces, each by a condition about the space: `{ "top_edge": "#c8443a80", "dark": "#5a3a22" }`. A space takes the first color whose condition holds for it, so Hex shows each player's goal edges and checkers a checkerboard (`"dark(space)": "(space.row + space.column) % 2 == 0"`). After the color can come a shape, drawn instead of filling the space: `dot`, or a bar across (`hbar`) or down (`vbar`) reaching the middles of the spaces either side, as Dots and Boxes draws its dots and lines: `"dot": "#1b1b1b dot"`. With `"outline": false` on the zone, unpainted spaces aren't drawn at all.
+- **`labels`:** text for spaces, by conditions in the same way: `{ "start_space": "Start", "home_space": "Home" }`.
 - **A space's place:** `space.column` and `space.row`, counting from 1. `space_at(square, 4, 4)` finds a space by them.
 - **Sharing a space:** pieces in the same space sit round its middle, so each one shows (Sorry!'s pawns in Start).
 - **Looking along the board:** the [board building blocks](#building-blocks) take conditions with one parameter, the space, e.g. `"empty(space)": "count(space) == 0"` or Hex's `"mine(space)": "text(top(space), 'name') == my_color"`.
@@ -222,7 +223,7 @@ Name players with `name_of(...)` and use `viewer()` for "you", so a readout is r
 | `image` | A picture for the card: a column of [image](#images) file names, or one file for every card. |
 | `layout` | `full` (the default): the image covers the whole card, for cards whose picture has everything on it. `art`: the image sits in a box above the title and text. |
 | `card_back` | What face-down cards show: an image or a color, for every card or from a column. A plain blue back if not set. |
-| `shape` | `disc` or `square` draws cards as pieces, `size` pixels across (a column or one number; 50 if not set), in their `background` color with their `title` on top. A column or one shape for every card. |
+| `shape` | `disc` or `square` draws cards as pieces, `size` pixels across (a column or one number; 50 if not set), in their `background` color with their `title` on top. `fill` draws a piece as the painted shape of the board space it's on, in its own color: Dots and Boxes' lines. A column or one shape for every card. |
 | `back` | A piece's other side, as a color or an image: a two-sided piece like Reversi's discs. `flip` turns it over, and both sides are public. |
 
 Without a `card_face`, a card shows its `name`.

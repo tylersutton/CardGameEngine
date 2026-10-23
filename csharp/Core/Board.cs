@@ -14,6 +14,9 @@ public class Board
     public const string Diagonal = "diagonal";
     public static readonly string[] DirectionKinds = ["", Orthogonal, Diagonal];
     public const double DefaultSpaceSize = 60;
+    /// What may follow a paint's color, drawing the space as that shape instead of filling it: a dot, or a bar across
+    /// (hbar) or down (vbar) that reaches the middles of the spaces on either side, as Dots and Boxes' lines do.
+    public static readonly string[] PaintShapes = ["dot", "hbar", "vbar"];
     static readonly float RowHeight = MathF.Sqrt(3) / 2;
 
     static readonly (int Across, int Down)[] OrthogonalSteps = [(1, 0), (0, 1), (-1, 0), (0, -1)];
@@ -28,6 +31,8 @@ public class Board
     /// Colors for spaces, each by a condition with one parameter (the space), in order: a space takes the first
     /// that holds, e.g. Hex's goal edges, or a checkerboard.
     public Dictionary<string, string> Paint { get; } = [];
+    /// Text for spaces, by the same kind of conditions as Paint: Sorry!'s "Start" and "Home".
+    public Dictionary<string, string> Labels { get; } = [];
     /// A picture drawn under the board's spaces (an image in images/), or "".
     public string Image { get; }
 
@@ -42,6 +47,17 @@ public class Board
         {
             Paint[condition] = (string)color!;
         }
+        foreach ((string condition, object? text) in settings.GetValueOrDefault("labels") as Dictionary<string, object?> ?? [])
+        {
+            Labels[condition] = (string)text!;
+        }
+    }
+
+    /// A paint's color and shape: "#1b1b1b dot" is a black dot; just a color fills the space ("" shape).
+    public static (string Color, string Shape) PaintParts(string paint)
+    {
+        string[] parts = paint.Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
+        return (parts.Length > 0 ? parts[0] : "", parts.Length > 1 ? parts[1].Trim() : "");
     }
 
     /// The zone's board, if it has one.

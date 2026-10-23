@@ -470,10 +470,14 @@ public partial class EditorForm : VBoxContainer
         grid.AddChild(image);
         VBoxContainer box = new();
         box.AddChild(grid);
-        box.AddChild(new Label { Text = "paint (conditions with their colors)" });
-        TextEdit paint = JsonBox([.. path, "paint"], board?.GetValueOrDefault("paint"), "{ \"top_edge\": \"#c8443a\" }");
+        box.AddChild(new Label { Text = "paint (conditions with their colors, and maybe dot, hbar or vbar)" });
+        TextEdit paint = JsonBox([.. path, "paint"], board?.GetValueOrDefault("paint"), "{ \"top_edge\": \"#c8443a\", \"dot\": \"#1b1b1b dot\" }");
         paint.Editable = board != null;
         box.AddChild(paint);
+        box.AddChild(new Label { Text = "labels (conditions with their text)" });
+        TextEdit labels = JsonBox([.. path, "labels"], board?.GetValueOrDefault("labels"), "{ \"start_space\": \"Start\" }");
+        labels.Editable = board != null;
+        box.AddChild(labels);
         return box;
     }
 

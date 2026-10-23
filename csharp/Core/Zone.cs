@@ -118,6 +118,9 @@ public class Zone
 
     public bool IsEmpty => Cards.Count == 0;
 
+    /// Anchored off the table, as a box or supply is: moves between two such zones aren't news to players.
+    public bool IsOffTable => Anchor.X < 0 || Anchor.X > 1 || Anchor.Y < 0 || Anchor.Y > 1;
+
     public void Add(Card card)
     {
         card.FaceUp = Face != FaceDown;

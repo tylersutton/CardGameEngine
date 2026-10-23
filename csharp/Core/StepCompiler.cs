@@ -157,23 +157,35 @@ public class StepCompiler
             || WholeNumber(board.GetValueOrDefault("rows")) < 1 || board.GetValueOrDefault("size") is not (null or double)
             || board.GetValueOrDefault("shape", Board.Square) is not string shape || !Board.Shapes.Contains(shape)
             || board.GetValueOrDefault("image") is not (null or string)
-            || board.Keys.Any(key => key is not ("shape" or "columns" or "rows" or "size" or "paint" or "image")))
+            || board.Keys.Any(key => key is not ("shape" or "columns" or "rows" or "size" or "paint" or "labels" or "image")))
         {
             errors.Add($"Zone \"{zoneKind}\": \"board\" should look like {{ \"shape\": \"square\", \"columns\": 8, \"rows\": 8, \"size\": 60 }} (shape square or hex; size in pixels)");
             return 0;
         }
-        if (board.GetValueOrDefault("paint", new Dictionary<string, object?>()) is not Dictionary<string, object?> paint || paint.Values.Any(color => color is not string))
+        CheckSpaceConditions(zoneKind, board, "paint", "colors", "{ \"top_edge\": \"#c8443a\", \"dot\": \"#1b1b1b dot\" }");
+        CheckSpaceConditions(zoneKind, board, "labels", "text", "{ \"start_space\": \"Start\" }");
+        foreach (object? paint in (board.GetValueOrDefault("paint") as Dictionary<string, object?> ?? []).Values)
         {
-            errors.Add($"Zone \"{zoneKind}\": \"paint\" should be conditions with their colors, e.g. {{ \"top_edge\": \"#c8443a\" }}");
-        }
-        else
-        {
-            foreach (string condition in paint.Keys.Where(condition => rules.ConditionParameters.GetValueOrDefault(condition)?.Count != 1))
+            if (paint is string text && Board.PaintParts(text).Shape is { Length: > 0 } paintShape && !Board.PaintShapes.Contains(paintShape))
             {
-                errors.Add($"Zone \"{zoneKind}\": \"paint\" names \"{condition}\", which should be a condition with one parameter, e.g. \"{condition}(space)\"");
+                errors.Add($"Zone \"{zoneKind}\": paint \"{text}\": after the color can come {string.Join(", ", Board.PaintShapes)}, not \"{paintShape}\"");
             }
         }
         return WholeNumber(board["columns"]) * WholeNumber(board["rows"]);
+    }
+
+    /// A board's paint or labels: conditions with one parameter (the space), each with its text.
+    void CheckSpaceConditions(string zoneKind, Dictionary<string, object?> board, string key, string what, string example)
+    {
+        if (board.GetValueOrDefault(key, new Dictionary<string, object?>()) is not Dictionary<string, object?> byCondition || byCondition.Values.Any(value => value is not string))
+        {
+            errors.Add($"Zone \"{zoneKind}\": \"{key}\" should be conditions with their {what}, e.g. {example}");
+            return;
+        }
+        foreach (string condition in byCondition.Keys.Where(condition => rules.ConditionParameters.GetValueOrDefault(condition)?.Count != 1))
+        {
+            errors.Add($"Zone \"{zoneKind}\": \"{key}\" names \"{condition}\", which should be a condition with one parameter, e.g. \"{condition}(space)\"");
+        }
     }
 
     /// After the zones and variables exist: everything else, then every step is compiled.

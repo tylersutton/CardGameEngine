@@ -8,11 +8,14 @@ public partial class TableView : Control
     public static readonly Color FeltColor = new(0.12f, 0.38f, 0.22f);
     static readonly Color LabelColor = new(1, 1, 1, 0.7f);
     static readonly Color ZoneLabelColor = new(1, 1, 1, 0.45f);
+    static readonly Color LabelOnLightColor = new(0, 0, 0, 0.6f);
+    static readonly Color LabelOnDarkColor = new(1, 1, 1, 0.85f);
     static readonly Color SlotBorder = new(1, 1, 1, 0.25f);
     static readonly Color CurrentSlotBorder = new(1, 0.85f, 0.4f, 0.8f);
     static readonly Color SpaceColor = new(0, 0, 0, 0.15f);
     const float SpaceBorderWidth = 1.5f;
     const int LabelFontSize = 14;
+    const int MinLabelFontSize = 8;
     const float LabelGap = 22;
     const float BottomMargin = 8;
     const float ZoomGap = 12;
@@ -167,6 +170,10 @@ public partial class TableView : Control
                 }
                 CardView view = ViewFor(group[i], center);
                 view.FaceUp = ShowsFace(group[i]);
+                if (zone.Board != null)
+                {
+                    view.ShowOnSpace(Board.PaintParts(game!.PaintOf(zone)).Shape, zone.Board.SpaceSize);
+                }
                 MoveChild(view, -1);
                 Transform2D placement = zone.Layout == "column"
                     ? new(0, new Vector2(0, columnOffsets[i]))
@@ -544,26 +551,29 @@ public partial class TableView : Control
         }
         Font font = GetThemeDefaultFont();
         DrawBoardImages();
+        DrawSpaces();
         foreach (Zone zone in game.Zones.Values)
         {
-            if (!zone.HasOutline || zone.Layout == "melds" && zone.IsEmpty)
+            if (zone.Board == null && (!zone.HasOutline || zone.Layout == "melds" && zone.IsEmpty))
             {
                 continue;
             }
             Rect2 slot = SlotRect(zone);
-            bool isCurrent = game.Rules.Players > 1 && zone.Owner == game.CurrentPlayer();
-            if (zone.Board != null)
+            if (zone.Board == null)
             {
-                DrawSpace(zone, slot);
-            }
-            else
-            {
+                bool isCurrent = game.Rules.Players > 1 && zone.Owner == game.CurrentPlayer();
                 DrawStyleBox(isCurrent ? currentSlotStyle : slotStyle, slot);
             }
-            if (zone.Label.Length > 0)
+            string label = zone.Board != null ? game.LabelOf(zone) : zone.Label;
+            if (label.Length > 0)
             {
-                Vector2 baseline = new(slot.Position.X, slot.GetCenter().Y + LabelFontSize / 3f);
-                DrawString(font, baseline, zone.Label, HorizontalAlignment.Center, slot.Size.X, LabelFontSize, ZoneLabelColor);
+                int fontSize = LabelFontSize;
+                while (fontSize > MinLabelFontSize && font.GetStringSize(label, HorizontalAlignment.Left, -1, fontSize).X > slot.Size.X - 2)
+                {
+                    fontSize--;
+                }
+                Vector2 baseline = new(slot.Position.X, slot.GetCenter().Y + fontSize / 3f);
+                DrawString(font, baseline, label, HorizontalAlignment.Center, slot.Size.X, fontSize, LabelColorOn(zone));
             }
             if (ShowZoneNames)
             {
@@ -605,18 +615,62 @@ public partial class TableView : Control
 
     /// Board spaces touch, so they're drawn without the rounded corners of card slots: squares, or pointy-topped
     /// hexagons, in the board's paint where it has some.
-    void DrawSpace(Zone zone, Rect2 slot)
+    /// A label on a painted space is dark or light to stand out from the paint; elsewhere it's faint.
+    Color LabelColorOn(Zone zone)
     {
-        Color fill = Color.FromString(game!.PaintOf(zone), SpaceColor);
-        if (zone.Board!.Shape != Board.Hex)
+        (string color, string shape) = zone.Board != null ? Board.PaintParts(game!.PaintOf(zone)) : ("", "");
+        if (color.Length == 0 || shape.Length > 0)
         {
-            DrawRect(slot, fill);
-            DrawRect(slot, SlotBorder, false, SpaceBorderWidth);
+            return ZoneLabelColor;
+        }
+        return Color.FromString(color, SpaceColor).Luminance > 0.5f ? LabelOnLightColor : LabelOnDarkColor;
+    }
+
+    /// Every board space's paint, under the cards: bars before dots, so a line's ends sit under the dots it joins.
+    void DrawSpaces()
+    {
+        List<(Zone Space, string Color, string Shape)> painted = [];
+        foreach (Zone space in game!.Zones.Values.Where(zone => zone.Board != null))
+        {
+            (string color, string shape) = Board.PaintParts(game.PaintOf(space));
+            painted.Add((space, color, shape));
+        }
+        foreach ((Zone space, string color, string shape) in painted.OrderBy(each => each.Shape == SpaceShape.Dot))
+        {
+            DrawSpace(space, SlotRect(space), color, shape);
+        }
+    }
+
+    /// A board space: its paint, filling it or as a dot or bar, and its outline unless the zone has none (then an
+    /// unpainted space isn't drawn at all, leaving the board's picture).
+    void DrawSpace(Zone zone, Rect2 slot, string color, string shape)
+    {
+        if (color.Length == 0 && !zone.HasOutline)
+        {
             return;
         }
-        Vector2[] corners = HexCorners(zone, 0);
-        DrawColoredPolygon(corners[..6], fill);
-        DrawPolyline(corners, SlotBorder, SpaceBorderWidth, true);
+        Color fill = Color.FromString(color, SpaceColor);
+        bool hex = zone.Board!.Shape == Board.Hex;
+        if (shape.Length > 0)
+        {
+            SpaceShape.Draw(this, slot.GetCenter(), shape, zone.Board.SpaceSize, fill);
+        }
+        else if (hex)
+        {
+            DrawColoredPolygon(HexCorners(zone, 0)[..6], fill);
+        }
+        else
+        {
+            DrawRect(slot, fill);
+        }
+        if (zone.HasOutline && hex)
+        {
+            DrawPolyline(HexCorners(zone, 0), SlotBorder, SpaceBorderWidth, true);
+        }
+        else if (zone.HasOutline)
+        {
+            DrawRect(slot, SlotBorder, false, SpaceBorderWidth);
+        }
     }
 
     /// Each board's picture, stretched over all its spaces, under them.

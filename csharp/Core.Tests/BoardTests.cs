@@ -61,6 +61,30 @@ public class BoardTests
     }
 
     [Fact]
+    public void SpacesArePaintedAndLabelledByConditions()
+    {
+        Game game = GameWith("""{ "zones": { "deck": { "layout": "pile", "cards": "res://decks/standard_deck.csv" }, "square": { "board": { "columns": 4, "rows": 3, "paint": { "top_edge": "#1b1b1b dot" }, "labels": { "top_edge": "Top" } }, "label": "Space" } } }""");
+        Assert.Equal("#1b1b1b dot", game.PaintOf(game.Zones["square_2"]));
+        Assert.Equal(("#1b1b1b", "dot"), Board.PaintParts(game.PaintOf(game.Zones["square_2"])));
+        Assert.Equal("Top", game.LabelOf(game.Zones["square_2"]));
+        Assert.Equal("Space", game.LabelOf(game.Zones["square_6"]));
+        Assert.Empty(failures);
+    }
+
+    [Theory]
+    [InlineData("""{ "paint": { "top_edge": "#1b1b1b star" } }""", "not \"star\"")]
+    [InlineData("""{ "labels": { "nowhere": "Start" } }""", "\"labels\" names \"nowhere\"")]
+    public void PaintShapesAndLabelsAreChecked(string boardSettings, string error)
+    {
+        Dictionary<string, object?> settings = (Dictionary<string, object?>)GameRules.Parse(boardSettings)!;
+        settings["columns"] = 2.0;
+        settings["rows"] = 2.0;
+        string changes = System.Text.Json.JsonSerializer.Serialize(new Dictionary<string, object?> { ["zones"] = new Dictionary<string, object?> { ["square"] = new Dictionary<string, object?> { ["board"] = settings } } });
+        Game game = TestGames.Create(Rules, changes, 1, "res://board_test.jsonc");
+        Assert.Contains(game.Errors, each => each.Contains(error));
+    }
+
+    [Fact]
     public void HexRowsShiftHalfASpace()
     {
         Game game = GameWith();

@@ -703,17 +703,22 @@ public class Game : IStepContext
         };
     }
 
-    /// A board space's color from its board's "paint": the first whose condition holds for it, or "" for none.
-    public string PaintOf(Zone space)
+    /// A board space's color (and shape) from its board's "paint": the first whose condition holds for it, or "".
+    public string PaintOf(Zone space) => FirstHolding(space.Board?.Paint ?? [], space) ?? "";
+
+    /// A board space's text from its board's "labels" (the first whose condition holds), or else the zone's label.
+    public string LabelOf(Zone space) => FirstHolding(space.Board?.Labels ?? [], space) ?? space.Label;
+
+    string? FirstHolding(Dictionary<string, string> byCondition, Zone space)
     {
-        foreach ((string condition, string color) in space.Board?.Paint ?? [])
+        foreach ((string condition, string value) in byCondition)
         {
             if (ConditionFor(condition) is { } holds && holds(space))
             {
-                return color;
+                return value;
             }
         }
-        return "";
+        return null;
     }
 
     public int CurrentPlayer() => (int)Values.ToDouble(Variables.GetValueOrDefault(PlayerVariable, 1L));
@@ -991,7 +996,8 @@ public class Game : IStepContext
         Zone source = ZoneOf(card);
         bool seenBefore = ShowsFace(card);
         Place(card, destination, faceUp);
-        GameLog.Item($"{source.Name} → {destination.Name}", seenBefore || ShowsFace(card) ? card.Title : "");
+        string outOfSight = source.IsOffTable && destination.IsOffTable ? GameLog.OutOfSight : "";
+        GameLog.Item($"{outOfSight}{source.Name} → {destination.Name}", seenBefore || ShowsFace(card) ? card.Title : "");
         Run(CardEffect(card, destination.Kind), card);
     }
 
