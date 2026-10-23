@@ -1,0 +1,680 @@
+{
+	"rules": {
+		"title": "Mancala",
+		"description": "Kalah, you against a bot. Your pits are the bottom row and your store is on the right. Click one of your pits to sow: its seeds go one by one into the next pits counter-clockwise, through your store but never your opponent's. Last seed in your store: go again. Last seed in an empty pit of yours: capture it and the seeds opposite. When one side is empty, the other player banks what's left on theirs, and the fuller store wins.",
+		"how_to_play": [
+			"# Goal",
+			"Get more seeds in your store than your opponent. Your six pits are the bottom row of the board; your store is the big pile on the right. The numbers show how many seeds each pit holds.",
+			"# Your turn",
+			"- Click one of your pits that has seeds in it. All its seeds are picked up and sown, one at a time, into the following pits, going counter-clockwise: right along the bottom row, into your store, then left along the top row.",
+			"- Sowing passes through your own store, but skips your opponent's store (on the left).",
+			"# Extra turns and captures",
+			"- If your last seed lands in your store, you go again.",
+			"- If your last seed lands in an empty pit on your side, you capture it, along with every seed in the opponent's pit directly opposite. They all go to your store.",
+			"# The end",
+			"- The game ends when all the pits on one side are empty. Each player adds the seeds still on their own side to their store, and the fuller store wins."
+		],
+		"zones": {
+			"box": {
+				"outline": false,
+				"layout": "pile",
+				"anchor": [
+					-0.3,
+					0.5
+				],
+				"cards": "res://decks/mancala.csv"
+			},
+			"pit": {
+				"board": {
+					"shape": "square",
+					"columns": 6.0,
+					"rows": 2.0,
+					"size": 96.0,
+					"paint": {
+						"any_pit": "#7a4f2a"
+					}
+				},
+				"show_count": true,
+				"anchor": [
+					0.5,
+					0.5
+				]
+			},
+			"store": {
+				"label": "Store",
+				"per_player": true,
+				"layout": "pile",
+				"show_count": true,
+				"anchors": [
+					[
+						0.79,
+						0.5
+					],
+					[
+						0.21,
+						0.5
+					]
+				],
+				"rotations": [
+					0.0,
+					0.0
+				]
+			}
+		},
+		"actions": {
+			"Sow": {
+				"click": "pit",
+				"when": "my_pit(clicked_zone) and count(clicked_zone) > 0",
+				"steps": [
+					"at = ring_place(clicked_zone)",
+					{
+						"for": "seed",
+						"in": "clicked_zone",
+						"do": [
+							"at = (at + 1) % 14",
+							{
+								"if": "at == their_store_place",
+								"then": [
+									"at = (at + 1) % 14"
+								]
+							},
+							"move(seed, ring(at))"
+						]
+					},
+					{
+						"if": "at == my_store_place",
+						"then": [
+							"log('%s ends in their store, and goes again' % [name_of(player)])",
+							"extra_turn = true"
+						],
+						"else": [
+							{
+								"if": "my_pit(ring(at)) and count(ring(at)) == 1 and count(opposite(ring(at))) > 0",
+								"then": [
+									"log('%s captures %d seeds' % [name_of(player), 1 + count(opposite(ring(at)))])",
+									"move([ring(at), opposite(ring(at))], store)"
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		"triggers": {
+			"start": [
+				"deal(box, pit, 4)",
+				"player = one_of(players)"
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"any_pit": "true",
+			"my_pit": "pit.row == (2 if player == 1 else 1)",
+			"ring": "space_at(pit, place + 1, 2) if place < 6 else (store[1] if place == 6 else (space_at(pit, 13 - place, 1) if place < 13 else store[2]))",
+			"ring_place": "pit.column - 1 if pit.row == 2 else 13 - pit.column",
+			"my_store_place": "6 if player == 1 else 13",
+			"their_store_place": "13 if player == 1 else 6",
+			"opposite": "space_at(pit, pit.column, 3 - pit.row)",
+			"side_empty": "count(zones_where(pit, 'my_pit')) == 0",
+			"banked": "count(store)"
+		},
+		"condition_parameters": {
+			"any_pit": [
+				"pit"
+			],
+			"my_pit": [
+				"pit"
+			],
+			"ring": [
+				"place"
+			],
+			"ring_place": [
+				"pit"
+			],
+			"my_store_place": [],
+			"their_store_place": [],
+			"opposite": [
+				"pit"
+			],
+			"side_empty": [],
+			"banked": []
+		},
+		"condition_errors": [],
+		"constants": {},
+		"turn": [
+			"extra_turn = false",
+			"offer('Sow')",
+			{
+				"if": "size(players_where('side_empty')) > 0",
+				"then": [
+					{
+						"for": "player",
+						"in": "players",
+						"do": [
+							"move(zones_where(pit, 'my_pit'), store)"
+						]
+					},
+					"end_game(players_with_most('banked'))"
+				]
+			},
+			{
+				"if": "not extra_turn",
+				"then": [
+					"end_turn()"
+				]
+			}
+		],
+		"variables": {
+			"extra_turn": false
+		},
+		"players": 2,
+		"seats": [
+			[
+				0.5,
+				0.92
+			],
+			[
+				0.5,
+				0.08
+			]
+		],
+		"player_names": [
+			"You",
+			"Bot"
+		],
+		"player_variables": {},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"your store": "count(store[viewer()])",
+			"their store": "count(store[3 - viewer()])"
+		},
+		"show_variables": [],
+		"bot": {
+			"players": [
+				2.0
+			],
+			"prefer": "count(store) - count(opponent_store)"
+		},
+		"card_face": {
+			"shape": "disc",
+			"size": 18.0,
+			"background": "paint"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "box",
+			"label": "",
+			"has_outline": false,
+			"kind": "box",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pit_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "pit",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pit_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "pit",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pit_3",
+			"label": "",
+			"has_outline": true,
+			"kind": "pit",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pit_4",
+			"label": "",
+			"has_outline": true,
+			"kind": "pit",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pit_5",
+			"label": "",
+			"has_outline": true,
+			"kind": "pit",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pit_6",
+			"label": "",
+			"has_outline": true,
+			"kind": "pit",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pit_7",
+			"label": "",
+			"has_outline": true,
+			"kind": "pit",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pit_8",
+			"label": "",
+			"has_outline": true,
+			"kind": "pit",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pit_9",
+			"label": "",
+			"has_outline": true,
+			"kind": "pit",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pit_10",
+			"label": "",
+			"has_outline": true,
+			"kind": "pit",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pit_11",
+			"label": "",
+			"has_outline": true,
+			"kind": "pit",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pit_12",
+			"label": "",
+			"has_outline": true,
+			"kind": "pit",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "store_1",
+			"label": "Store",
+			"has_outline": true,
+			"kind": "store",
+			"owner": 1,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.7900000214576721,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "store_2",
+			"label": "Store",
+			"has_outline": true,
+			"kind": "store",
+			"owner": 2,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.20999999344348907,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/mancala.csv": {
+			"title_column": "name",
+			"number_columns": [],
+			"cards": [
+				{
+					"name": "Seed",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Seed",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Seed",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Seed",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Seed",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Seed",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Seed",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Seed",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Seed",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Seed",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Seed",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Seed",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Seed",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Seed",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Seed",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Seed",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Seed",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Seed",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Seed",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Seed",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Seed",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Seed",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Seed",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Seed",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Seed",
+					"paint": "#4caf50"
+				}
+			]
+		}
+	}
+}

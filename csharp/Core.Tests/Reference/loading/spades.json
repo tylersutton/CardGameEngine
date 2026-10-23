@@ -2,6 +2,20 @@
 	"rules": {
 		"title": "Spades",
 		"description": "Four players in two partnerships: you and North against West and East. Bid your tricks, spades are trump; the first team to 500 wins.",
+		"how_to_play": [
+			"# Goal",
+			"With your partner (North), be the first team to 500 points. Spades are always trump.",
+			"# Bidding",
+			"- Before play, everyone bids how many tricks they expect to take: press a number under the table. Partners' bids are added together.",
+			"- A bid of 0 (nil) scores 100 if you take no tricks at all, and loses 100 if you take any.",
+			"# Tricks",
+			"- Drag a card from your hand to the middle. Follow the suit led if you can; if you can't, play anything, including a spade.",
+			"- The highest spade wins the trick, or if there's none, the highest card of the suit led. Press Collect trick to go on.",
+			"- Spades can't be led until a spade has been played.",
+			"# Scoring",
+			"- Make your team's bid: 10 points per trick bid, plus 1 per extra trick (a bag). Miss it: lose 10 per trick bid.",
+			"- Every 10 bags costs your team 100 points."
+		],
 		"zones": {
 			"deck": {
 				"outline": false,

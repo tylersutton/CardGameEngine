@@ -674,6 +674,7 @@
 			],
 			[
 				"[action] Last chance",
+				"Last chance called by You, with 9 points",
 				"  last_chance_caller = 1",
 				"  if extra_turn and ending == 'End turn' → else",
 				"  extra_turn = false",
@@ -701,6 +702,10 @@
 				"  player = 1",
 				"[turn] You",
 				"  if player == last_chance_caller → then",
+				"[trigger] show_points",
+				"  for seat in players (2)",
+				"Points for You: 9",
+				"Points for Player 2: 2",
 				"[game over] Winner: You"
 			]
 		],
@@ -723,7 +728,7 @@
 					"▼Shell",
 					"▼Boat",
 					"▼Shark",
-					"▼2/Boat",
+					"▼1/Boat",
 					"▼Crab",
 					"▼Crab",
 					"▼Octopus",
@@ -1530,6 +1535,7 @@
 			],
 			[
 				"[action] Last chance",
+				"Last chance called by You, with 10 points",
 				"  last_chance_caller = 1",
 				"  if extra_turn and ending == 'End turn' → else",
 				"  extra_turn = false",
@@ -1551,6 +1557,10 @@
 				"  player = 1",
 				"[turn] You",
 				"  if player == last_chance_caller → then",
+				"[trigger] show_points",
+				"  for seat in players (2)",
+				"Points for You: 10",
+				"Points for Player 2: 7",
 				"[game over] Winner: You"
 			]
 		],
@@ -1563,7 +1573,7 @@
 					"▼Fish",
 					"▼Shell",
 					"▼Octopus",
-					"▼2/Boat",
+					"▼1/Boat",
 					"▼Swimmer",
 					"▼Crab",
 					"▼Crab",

@@ -2,6 +2,16 @@
 	"rules": {
 		"title": "President",
 		"description": "Four players, you against three bots. Play a single, pair, triple or four of a kind that beats or matches the last one (matching skips the next player), or pass. 2s are high and a single 2 beats anything, but you can't lead with a 2. Get rid of your cards first to become President.",
+		"how_to_play": [
+			"# Goal",
+			"Get rid of all your cards first to become President. Players finish in order: President, Vice President, Vice Scum, Scum.",
+			"# Your turn",
+			"- Press Play and click a single card, a pair, three or four of a kind, then Done. It must be the same number of cards as the last play, of an equal or higher rank. 2s are the highest.",
+			"- Matching the last play's rank skips the next player. A single 2 beats anything. You can't lead with a 2.",
+			"- Or press Pass. When everyone else has passed, whoever played last starts a new round with anything.",
+			"# The next hand",
+			"- The Scum gives the President their two best cards, and the Vice Scum gives the Vice President their best one; they give back any cards they like in return."
+		],
 		"zones": {
 			"deck": {
 				"outline": false,

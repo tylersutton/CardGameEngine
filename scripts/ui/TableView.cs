@@ -170,6 +170,8 @@ public partial class TableView : Control
                 MoveChild(view, -1);
                 Transform2D placement = zone.Layout == "column"
                     ? new(0, new Vector2(0, columnOffsets[i]))
+                    : zone.Board != null && zone.Layout == "pile"
+                    ? ZoneLayout.Cluster(i, group.Count, zone.Board.SpaceSize)
                     : ZoneLayout.Place(zone.Layout, i, group.Count, MaxSpread(zone), zone.Spread);
                 Vector2 offset = (new Vector2(groupCenters[groupIndex], 0) + placement.Origin).Rotated(turn);
                 view.MoveTo(center + offset - view.Size / 2, placement.Rotation + turn);
@@ -566,6 +568,20 @@ public partial class TableView : Control
             {
                 Vector2 namePosition = slot.Position - new Vector2(LabelOverhang, LabelGap);
                 DrawString(font, namePosition, $"{zone.Name} ({zone.Cards.Count})", HorizontalAlignment.Center, slot.Size.X + LabelOverhang * 2, LabelFontSize, LabelColor);
+            }
+        }
+        foreach (Zone zone in game.Zones.Values.Where(zone => zone.ShowsCount))
+        {
+            // Board spaces touch, so a space's count goes in its corner rather than under it.
+            Rect2 slot = SlotRect(zone);
+            string count = zone.Cards.Count.ToString();
+            if (zone.Board != null)
+            {
+                DrawString(font, slot.End - new Vector2(slot.Size.X + 4, 4), count, HorizontalAlignment.Right, slot.Size.X, LabelFontSize, LabelColor);
+            }
+            else
+            {
+                DrawString(font, new Vector2(slot.Position.X, slot.End.Y + LabelFontSize + 2), count, HorizontalAlignment.Center, slot.Size.X, LabelFontSize, LabelColor);
             }
         }
         foreach (Zone zone in outlined.OfType<Zone>())

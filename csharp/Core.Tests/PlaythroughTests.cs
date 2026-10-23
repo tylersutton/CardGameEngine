@@ -10,10 +10,13 @@ public class PlaythroughTests
     const int EndlessInputs = 300;
     /// Games that never call end_game(): one player games, the sandbox, and President (hands go on for ever).
     static readonly string[] Endless = ["pyramid", "solitaire", "standard", "president"];
+    /// Random bots forget every card they've seen, so their games of Trio run long.
+    static readonly Dictionary<string, int> MoreInputs = new() { ["trio"] = 10000 };
     /// Games too long for random bots to finish (they rarely knock in Gin): finishing a hand will do.
     static readonly string[] Long = ["gin_rummy"];
-    /// Bots with an aim, for games random play wouldn't finish (Color Match's random bots draw as often as they play).
-    static readonly Dictionary<string, string> Prefer = new() { ["color_match"] = "count(opponent_hand) - count(hand)" };
+    /// Bots with an aim, for games random play wouldn't finish (Color Match's random bots draw as often as they play,
+    /// and Yahtzee's keep and put back the same dice).
+    static readonly Dictionary<string, string> Prefer = new() { ["color_match"] = "count(opponent_hand) - count(hand)", ["yahtzee"] = "score - count(open_boxes) / 100.0" };
 
     static readonly GameFiles files = new(RepositoryFiles.PathOf(""));
 
@@ -53,7 +56,8 @@ public class PlaythroughTests
         int inputs = 0;
         int nextHands = 0;
         game.InputApplied += input => nextHands += input.Action == "Next hand" ? 1 : 0;
-        while (inputs < (endless ? EndlessInputs : MostInputs) && !game.Over && failures.Count == 0)
+        int mostInputs = endless ? EndlessInputs : MoreInputs.GetValueOrDefault(gameName, MostInputs);
+        while (inputs < mostInputs && !game.Over && failures.Count == 0)
         {
             bool moved = endless ? RandomMove(game, chooser) : bots.TakeInput();
             if (!moved && !PressAButton(game))

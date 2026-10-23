@@ -14,7 +14,7 @@ public partial class EditorForm : VBoxContainer
     /// Expression settings that may also be a plain number.
     static readonly string[] NumberOrText = ["pick", "up_to"];
     /// Kinds whose control takes the whole width, under the setting's name.
-    static readonly string[] WideKinds = ["long_text", "json", "expression", "steps", "drag", "board"];
+    static readonly string[] WideKinds = ["long_text", "lines", "json", "expression", "steps", "drag", "board"];
     /// The keys that say an action is done by clicking.
     static readonly string[] ClickKeys = ["click", "double_click"];
 
@@ -153,6 +153,17 @@ public partial class EditorForm : VBoxContainer
                 TextEdit box = new() { Text = value != null ? Values.Text(value) : "", CustomMinimumSize = new Vector2(0, 54), WrapMode = TextEdit.LineWrappingMode.Boundary };
                 box.FocusExited += () => Changed?.Invoke(path, box.Text.Length > 0 ? box.Text : null);
                 return box;
+            case "lines":
+                TextEdit linesBox = new()
+                {
+                    Text = string.Join("\n", value as List<object?> ?? []), CustomMinimumSize = new Vector2(0, 160), WrapMode = TextEdit.LineWrappingMode.Boundary,
+                };
+                linesBox.FocusExited += () =>
+                {
+                    List<object?> lines = linesBox.Text.Split('\n').Where(line => line.Trim().Length > 0).Select(line => (object?)line.TrimEnd()).ToList();
+                    Changed?.Invoke(path, lines.Count > 0 ? lines : null);
+                };
+                return linesBox;
             case "number":
             case "whole":
                 SpinBox spin = new()

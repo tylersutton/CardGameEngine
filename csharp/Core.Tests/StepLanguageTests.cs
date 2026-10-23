@@ -62,6 +62,38 @@ public class StepLanguageTests
     }
 
     [Fact]
+    public void ZonesKnowTheirNumberAndOwner()
+    {
+        Expect("hand_2.number", 2L);
+        Expect("hand_2.owner", 2L);
+        Expect("pile.owner", 0L);
+    }
+
+    [Fact]
+    public void PositionCountsFromTheBottom()
+    {
+        game.Run(["draw(deck, hand, 3)"]);
+        Card middle = game.Zones["hand_1"].Cards[1];
+        Assert.Equal(2L, game.Evaluate("position(card)", middle));
+        Assert.Equal(middle, game.Evaluate("all(hand)[position(card) - 1]", middle));
+        Expect("position(top(pile))", 0L);
+    }
+
+    [Fact]
+    public void SwappedCardsTradeZoneAndSpot()
+    {
+        game.Run(["draw(deck, hand, 3)", "draw(deck, pile)"]);
+        Card middle = game.Zones["hand_1"].Cards[1];
+        Card piled = game.Zones["pile"].Cards[0];
+        game.Run(["swap(all(hand)[1], top(pile))"]);
+        Assert.Empty(failures);
+        Assert.Equal(piled, game.Zones["hand_1"].Cards[1]);
+        Assert.Equal([middle], game.Zones["pile"].Cards);
+        game.Run(["swap(all(hand)[0], all(hand)[2])"]);
+        Assert.Equal(piled, game.Zones["hand_1"].Cards[1]);
+    }
+
+    [Fact]
     public void ConditionsAndColumnsSeeTheStepsCard()
     {
         Assert.Equal(true, game.Evaluate("is_ace", Ace));

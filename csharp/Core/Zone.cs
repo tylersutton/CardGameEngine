@@ -34,6 +34,8 @@ public class Zone
     public double Rotation { get; }
     public bool DragsStack { get; }
     public int Spread { get; }
+    /// Whether the table shows how many cards the zone holds (seeds in a Mancala pit).
+    public bool ShowsCount { get; }
     public List<object?> CoveredBy { get; } = [];
     public List<Card> Cards { get; } = [];
     public List<string> SortColumns { get; private set; } = [];
@@ -86,6 +88,7 @@ public class Zone
         }
         DragsStack = Read(definition, "drag", "") == DragStack;
         Spread = (int)Read(definition, "spread", 0.0);
+        ShowsCount = Read(definition, "show_count", false);
         List<object?> covering = Read<List<object?>>(definition, "covered_by", []);
         if (number > 0 && covering.Count >= number)
         {
@@ -198,6 +201,8 @@ public class Zone
         {
             "name" => Name,
             "cards" => Cards.Cast<object?>().ToList(),
+            "number" => (long)Number,
+            "owner" => (long)Owner,
             "column" when Board != null => (long)Board.Column(Number),
             "row" when Board != null => (long)Board.Row(Number),
             _ => null,

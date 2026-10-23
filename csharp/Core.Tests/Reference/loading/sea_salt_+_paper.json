@@ -2,6 +2,22 @@
 	"rules": {
 		"title": "Sea Salt + Paper",
 		"description": "2 to 4 players, one round. Draw two cards and keep one, or take the top of a discard pile; then play duos for their effects. With 7 points, Stop (most points wins) or call Last chance (everyone else gets one more turn, then you win if you still have the most).",
+		"how_to_play": [
+			"# Goal",
+			"Score points with your cards and call the end of the round at the right time.",
+			"# Your turn",
+			"- First, draw: click the deck to look at its top two cards, keep one and put the other on a discard pile. Or take the top card of a discard pile (click it).",
+			"- Then play as many duos as you like: press Play duo and click two matching cards. Their effect happens at once.",
+			"- Press End turn when you're done.",
+			"# Duos",
+			"- Two Crabs: look through a discard pile and take a card.",
+			"- Two Boats: take another turn.",
+			"- Two Fish: draw the top card of the deck.",
+			"- A Shark and a Swimmer: steal a random card from your opponent.",
+			"# Scoring and ending",
+			"- Duos, collections (Shells, Octopuses, Penguins, Sailors), multipliers and Mermaids score points.",
+			"- With 7 points or more you may end your turn with Stop (the round ends now, most points wins) or Last chance (everyone else gets one more turn; you win if you still have the most)."
+		],
 		"zones": {
 			"deck": {
 				"label": "Deck",
@@ -103,12 +119,15 @@
 			"Stop": {
 				"when": "my_points >= 7 and last_chance_caller == 0",
 				"steps": [
+					"log('Stop called by %s, with %d points' % [name_of(player), my_points])",
+					"trigger('show_points')",
 					"end_game(players_with_most('my_points'))"
 				]
 			},
 			"Last chance": {
 				"when": "my_points >= 7 and last_chance_caller == 0",
 				"steps": [
+					"log('Last chance called by %s, with %d points' % [name_of(player), my_points])",
 					"last_chance_caller = player"
 				]
 			},
@@ -148,6 +167,15 @@
 			],
 			"duo_Swimmer": [
 				"trigger('duo_Shark')"
+			],
+			"show_points": [
+				{
+					"for": "seat",
+					"in": "players",
+					"do": [
+						"log('Points for %s: %d' % [name_of(seat), points([hand[seat], played[seat]])])"
+					]
+				}
 			]
 		},
 		"effects": {},
@@ -158,7 +186,7 @@
 			"kinds": "count(where(cards, 'Kind', kind))",
 			"duo_points": "kinds(cards, 'Crab') / 2 + kinds(cards, 'Boat') / 2 + kinds(cards, 'Fish') / 2 + min(kinds(cards, 'Shark'), kinds(cards, 'Swimmer'))",
 			"collection_points": "lookup(shell_points, kinds(cards, 'Shell')) + lookup(octopus_points, kinds(cards, 'Octopus')) + lookup(penguin_points, kinds(cards, 'Penguin')) + lookup(sailor_points, kinds(cards, 'Anchor'))",
-			"multiplier_points": "3 * kinds(cards, 'Anchor') * kinds(cards, '3/Anchor') + kinds(cards, 'Fish') * kinds(cards, '1/Fish') + 2 * kinds(cards, 'Penguin') * kinds(cards, '2/Penguin') + 2 * kinds(cards, 'Boat') * kinds(cards, '2/Boat')",
+			"multiplier_points": "3 * kinds(cards, 'Anchor') * kinds(cards, '3/Anchor') + kinds(cards, 'Fish') * kinds(cards, '1/Fish') + 2 * kinds(cards, 'Penguin') * kinds(cards, '2/Penguin') + kinds(cards, 'Boat') * kinds(cards, '1/Boat')",
 			"mermaid_points": "sum(first(group_sizes(without(cards, where(cards, 'Kind', 'Mermaid')), 'Color'), kinds(cards, 'Mermaid')))",
 			"points": "duo_points(cards) + collection_points(cards) + multiplier_points(cards) + mermaid_points(cards)",
 			"my_points": "points([hand, played])"
@@ -223,6 +251,7 @@
 			{
 				"if": "player == last_chance_caller",
 				"then": [
+					"trigger('show_points')",
 					"end_game(player if my_points >= most('my_points') else players_with_most('my_points'))"
 				]
 			},
@@ -711,7 +740,7 @@
 					"cardtype": "Multiplier"
 				},
 				{
-					"Kind": "2/Boat",
+					"Kind": "1/Boat",
 					"Color": "Purple",
 					"Text": "",
 					"Background": "#845EC2",

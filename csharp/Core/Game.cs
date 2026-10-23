@@ -156,7 +156,8 @@ public class Game : IStepContext
         {
             Variables[name] = Values.DeepCopy(start);
         }
-        if (Rules.Players > 1)
+        // A game for several players keeps whose turn it is even when played alone, so its steps work unchanged.
+        if (Rules.PlayerCounts.Max() > 1)
         {
             Variables[PlayerVariable] = 1L;
         }

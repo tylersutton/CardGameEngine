@@ -1,6 +1,19 @@
 {
 	"title": "Hearts",
 	"description": "Four players, you against three bots. Pass three cards (left, right, across, then keep), follow suit, and avoid hearts and the queen of spades. Take every point card to shoot the moon. The game ends when someone reaches 100; lowest score wins.",
+	"how_to_play": [
+		"# Goal",
+		"Take as few points as possible. Each heart is worth 1 and the Queen of Spades 13. The game ends when someone reaches 100; the lowest score wins.",
+		"# Passing",
+		"- Each hand starts with passing three cards: left, then right, then across, then no passing. Click three cards to pass.",
+		"# Tricks",
+		"- The 2 of Clubs leads the first trick. Play by dragging a card from your hand to the middle.",
+		"- Follow the suit that was led if you can; otherwise play anything.",
+		"- The highest card of the suit led takes the trick and leads the next. Press Collect trick to go on.",
+		"- Hearts can't be led until a heart has been played.",
+		"# Shooting the moon",
+		"- Take every heart and the Queen of Spades, and everyone else gets 26 points instead of you."
+	],
 	"players": 4,
 	"player_names": [
 		"You",

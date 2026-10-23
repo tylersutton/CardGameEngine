@@ -1,0 +1,3141 @@
+{
+	"rules": {
+		"title": "Candy Land",
+		"description": "Two to four players race along the candy path to the Castle. On your turn, click the deck: a color card moves your pawn to the next space of that color, a double card to the second one, and a picture card straight to its picture's space, forward or back. Landing exactly on the Rainbow Trail or the Gumdrop Pass takes a shortcut; landing on Licorice loses your next turn. No choices, all luck: made for small children.",
+		"how_to_play": [
+			"# Goal",
+			"Be the first to move your pawn along the candy path from Start (bottom left) to the Castle. The path snakes up the board, row by row.",
+			"# Your turn",
+			"- Click the deck to draw a card. Your pawn moves by itself.",
+			"- A color card moves you to the next space of that color; a double card to the second one.",
+			"- A picture card (Peppermint, Gingerbread, Gumdrop, Peanut, Lollipop, Frost) sends you straight to its pink space, even if that's backwards.",
+			"# Special spaces",
+			"- Land exactly on Trail or Pass and you take a shortcut further up the path.",
+			"- Land on Licorice and you miss your next turn.",
+			"- There are no choices to make: it's all in the cards."
+		],
+		"zones": {
+			"path": {
+				"board": {
+					"shape": "square",
+					"columns": 12.0,
+					"rows": 10.0,
+					"size": 48.0,
+					"paint": {
+						"start_space": "#fdf6e3",
+						"castle": "#ffd54a",
+						"picture": "#f4a6c8",
+						"licorice": "#5b3a33",
+						"red": "#d64545",
+						"purple": "#8e5bc2",
+						"yellow": "#f2d043",
+						"blue": "#4a7fd6",
+						"orange": "#f08a32",
+						"green": "#4caf50"
+					}
+				},
+				"labels": [
+					"Castle",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"Frost",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"Licorice",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"Lollipop",
+					"",
+					"Licorice",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"Peanut",
+					"",
+					"",
+					"Pass",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"Gumdrop",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"Gingerbread",
+					"",
+					"",
+					"",
+					"",
+					"Licorice",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"Start",
+					"",
+					"",
+					"",
+					"",
+					"Trail",
+					"",
+					"",
+					"",
+					"Peppermint",
+					"",
+					""
+				],
+				"anchor": [
+					0.42,
+					0.47
+				]
+			},
+			"pawns": {
+				"outline": false,
+				"layout": "pile",
+				"anchor": [
+					-0.3,
+					0.5
+				],
+				"cards": "res://decks/candy_land_pawns.csv"
+			},
+			"deck": {
+				"label": "Deck",
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					0.86,
+					0.32
+				],
+				"cards": "res://decks/candy_land.csv"
+			},
+			"discard": {
+				"label": "Drawn",
+				"layout": "pile",
+				"anchor": [
+					0.86,
+					0.66
+				]
+			}
+		},
+		"actions": {
+			"Draw": {
+				"drag": {
+					"from": "deck",
+					"to": "discard"
+				},
+				"click": true,
+				"steps": [
+					{
+						"if": "card.color == 'Pink'",
+						"then": [
+							"at = int(number(card, 'target'))"
+						],
+						"else": [
+							{
+								"for": "step",
+								"in": "number(card, 'steps')",
+								"do": [
+									"at = min(at + 1, last_space)",
+									{
+										"while": "at < last_space and color_at(at) != card.color",
+										"do": [
+											"at += 1"
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"if": "at == rainbow_trail[0]",
+						"then": [
+							"log('%s takes the Rainbow Trail!' % [name_of(player)])",
+							"at = rainbow_trail[1]"
+						]
+					},
+					{
+						"if": "at == gumdrop_pass[0]",
+						"then": [
+							"log('%s takes the Gumdrop Pass!' % [name_of(player)])",
+							"at = gumdrop_pass[1]"
+						]
+					},
+					"move(my_pawn, path_space(at))",
+					{
+						"if": "at in licorice_spaces",
+						"then": [
+							"log('%s is stuck on Licorice, and loses a turn' % [name_of(player)])",
+							"stuck = true"
+						]
+					}
+				]
+			}
+		},
+		"triggers": {
+			"start": [
+				{
+					"for": "player",
+					"in": "players",
+					"do": [
+						"move(where(pawns, 'seat', player), path_space(0))"
+					]
+				},
+				"shuffle(deck)",
+				"player = one_of(players)"
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"path_index": "(10 - space.row) * 12 + (space.column - 1 if (10 - space.row) % 2 == 0 else 12 - space.column)",
+			"path_space": "space_at(path, index % 12 + 1 if (index / 12) % 2 == 0 else 12 - index % 12, 10 - index / 12)",
+			"color_at": "'Pink' if index in picture_spaces else lookup(colors, (index - 1) % 6)",
+			"start_space": "path_index(space) == 0",
+			"castle": "path_index(space) == last_space",
+			"picture": "path_index(space) in picture_spaces",
+			"licorice": "path_index(space) in licorice_spaces",
+			"red": "color_at(path_index(space)) == 'Red'",
+			"purple": "color_at(path_index(space)) == 'Purple'",
+			"yellow": "color_at(path_index(space)) == 'Yellow'",
+			"blue": "color_at(path_index(space)) == 'Blue'",
+			"orange": "color_at(path_index(space)) == 'Orange'",
+			"green": "color_at(path_index(space)) == 'Green'",
+			"my_pawn": "top(where(path, 'seat', player))"
+		},
+		"condition_parameters": {
+			"path_index": [
+				"space"
+			],
+			"path_space": [
+				"index"
+			],
+			"color_at": [
+				"index"
+			],
+			"start_space": [
+				"space"
+			],
+			"castle": [
+				"space"
+			],
+			"picture": [
+				"space"
+			],
+			"licorice": [
+				"space"
+			],
+			"red": [
+				"space"
+			],
+			"purple": [
+				"space"
+			],
+			"yellow": [
+				"space"
+			],
+			"blue": [
+				"space"
+			],
+			"orange": [
+				"space"
+			],
+			"green": [
+				"space"
+			],
+			"my_pawn": []
+		},
+		"condition_errors": [],
+		"constants": {
+			"colors": [
+				"Red",
+				"Purple",
+				"Yellow",
+				"Blue",
+				"Orange",
+				"Green"
+			],
+			"picture_spaces": [
+				9,
+				25,
+				44,
+				62,
+				85,
+				102
+			],
+			"licorice_spaces": [
+				30,
+				72,
+				95
+			],
+			"last_space": 119,
+			"rainbow_trail": [
+				5,
+				40
+			],
+			"gumdrop_pass": [
+				48,
+				66
+			]
+		},
+		"turn": [
+			{
+				"if": "count(deck) == 0",
+				"then": [
+					"move(discard, deck)",
+					"shuffle(deck)"
+				]
+			},
+			{
+				"if": "stuck",
+				"then": [
+					"stuck = false"
+				],
+				"else": [
+					"offer('Draw')"
+				]
+			},
+			{
+				"if": "at == last_space",
+				"then": [
+					"end_game(player)"
+				]
+			},
+			"end_turn()"
+		],
+		"variables": {},
+		"players": 2,
+		"seats": [
+			[
+				0.12,
+				0.92
+			]
+		],
+		"player_names": [
+			"You",
+			"West",
+			"North",
+			"East"
+		],
+		"player_variables": {
+			"at": 0,
+			"stuck": false
+		},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"your space": "'%d of %d' % [at[viewer()], last_space]",
+			"furthest": "most('at')"
+		},
+		"show_variables": [],
+		"bot": {
+			"players": [
+				2.0,
+				3.0,
+				4.0
+			]
+		},
+		"card_face": {
+			"title": "name",
+			"color": "#1b1b1b",
+			"background": "paint",
+			"shape": "shape",
+			"size": 24.0,
+			"card_back": "#f4a6c8"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "path_1",
+			"label": "Castle",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_3",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_4",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_5",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_6",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_7",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_8",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_9",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_10",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_11",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_12",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_13",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_14",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_15",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_16",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_17",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_18",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_19",
+			"label": "Frost",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_20",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_21",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_22",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_23",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_24",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_25",
+			"label": "Licorice",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_26",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_27",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_28",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_29",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_30",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_31",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_32",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_33",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_34",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_35",
+			"label": "Lollipop",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_36",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_37",
+			"label": "Licorice",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_38",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_39",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_40",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_41",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_42",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_43",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_44",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_45",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_46",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_47",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_48",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_49",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_50",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_51",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_52",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_53",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_54",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_55",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_56",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_57",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_58",
+			"label": "Peanut",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_59",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_60",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_61",
+			"label": "Pass",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_62",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_63",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_64",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_65",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_66",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_67",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_68",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_69",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_70",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_71",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_72",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_73",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_74",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_75",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_76",
+			"label": "Gumdrop",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_77",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_78",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_79",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_80",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_81",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_82",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_83",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_84",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_85",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_86",
+			"label": "Gingerbread",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_87",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_88",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_89",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_90",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_91",
+			"label": "Licorice",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_92",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_93",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_94",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_95",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_96",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_97",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_98",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_99",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_100",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_101",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_102",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_103",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_104",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_105",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_106",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_107",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_108",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_109",
+			"label": "Start",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_110",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_111",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_112",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_113",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_114",
+			"label": "Trail",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_115",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_116",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_117",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_118",
+			"label": "Peppermint",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_119",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "path_120",
+			"label": "",
+			"has_outline": true,
+			"kind": "path",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.41999998688697815,
+				0.4699999988079071
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "pawns",
+			"label": "",
+			"has_outline": false,
+			"kind": "pawns",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "deck",
+			"label": "Deck",
+			"has_outline": true,
+			"kind": "deck",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.8600000143051147,
+				0.3199999928474426
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "discard",
+			"label": "Drawn",
+			"has_outline": true,
+			"kind": "discard",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.8600000143051147,
+				0.6600000262260437
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/candy_land_pawns.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"seat"
+			],
+			"cards": [
+				{
+					"name": "Red pawn",
+					"seat": "1",
+					"paint": "#c0392b",
+					"shape": "disc"
+				},
+				{
+					"name": "Blue pawn",
+					"seat": "2",
+					"paint": "#2e6fd8",
+					"shape": "disc"
+				},
+				{
+					"name": "Green pawn",
+					"seat": "3",
+					"paint": "#2e9e4f",
+					"shape": "disc"
+				},
+				{
+					"name": "Yellow pawn",
+					"seat": "4",
+					"paint": "#e5b622",
+					"shape": "disc"
+				}
+			]
+		},
+		"res://decks/candy_land.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"steps",
+				"target"
+			],
+			"cards": [
+				{
+					"name": "Red",
+					"color": "Red",
+					"steps": "1",
+					"target": "",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"steps": "1",
+					"target": "",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"steps": "1",
+					"target": "",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"steps": "1",
+					"target": "",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"steps": "1",
+					"target": "",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"steps": "1",
+					"target": "",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Purple",
+					"color": "Purple",
+					"steps": "1",
+					"target": "",
+					"paint": "#8e5bc2"
+				},
+				{
+					"name": "Purple",
+					"color": "Purple",
+					"steps": "1",
+					"target": "",
+					"paint": "#8e5bc2"
+				},
+				{
+					"name": "Purple",
+					"color": "Purple",
+					"steps": "1",
+					"target": "",
+					"paint": "#8e5bc2"
+				},
+				{
+					"name": "Purple",
+					"color": "Purple",
+					"steps": "1",
+					"target": "",
+					"paint": "#8e5bc2"
+				},
+				{
+					"name": "Purple",
+					"color": "Purple",
+					"steps": "1",
+					"target": "",
+					"paint": "#8e5bc2"
+				},
+				{
+					"name": "Purple",
+					"color": "Purple",
+					"steps": "1",
+					"target": "",
+					"paint": "#8e5bc2"
+				},
+				{
+					"name": "Yellow",
+					"color": "Yellow",
+					"steps": "1",
+					"target": "",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Yellow",
+					"color": "Yellow",
+					"steps": "1",
+					"target": "",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Yellow",
+					"color": "Yellow",
+					"steps": "1",
+					"target": "",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Yellow",
+					"color": "Yellow",
+					"steps": "1",
+					"target": "",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Yellow",
+					"color": "Yellow",
+					"steps": "1",
+					"target": "",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Yellow",
+					"color": "Yellow",
+					"steps": "1",
+					"target": "",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Blue",
+					"color": "Blue",
+					"steps": "1",
+					"target": "",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Blue",
+					"color": "Blue",
+					"steps": "1",
+					"target": "",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Blue",
+					"color": "Blue",
+					"steps": "1",
+					"target": "",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Blue",
+					"color": "Blue",
+					"steps": "1",
+					"target": "",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Blue",
+					"color": "Blue",
+					"steps": "1",
+					"target": "",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Blue",
+					"color": "Blue",
+					"steps": "1",
+					"target": "",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Orange",
+					"color": "Orange",
+					"steps": "1",
+					"target": "",
+					"paint": "#f08a32"
+				},
+				{
+					"name": "Orange",
+					"color": "Orange",
+					"steps": "1",
+					"target": "",
+					"paint": "#f08a32"
+				},
+				{
+					"name": "Orange",
+					"color": "Orange",
+					"steps": "1",
+					"target": "",
+					"paint": "#f08a32"
+				},
+				{
+					"name": "Orange",
+					"color": "Orange",
+					"steps": "1",
+					"target": "",
+					"paint": "#f08a32"
+				},
+				{
+					"name": "Orange",
+					"color": "Orange",
+					"steps": "1",
+					"target": "",
+					"paint": "#f08a32"
+				},
+				{
+					"name": "Orange",
+					"color": "Orange",
+					"steps": "1",
+					"target": "",
+					"paint": "#f08a32"
+				},
+				{
+					"name": "Green",
+					"color": "Green",
+					"steps": "1",
+					"target": "",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Green",
+					"color": "Green",
+					"steps": "1",
+					"target": "",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Green",
+					"color": "Green",
+					"steps": "1",
+					"target": "",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Green",
+					"color": "Green",
+					"steps": "1",
+					"target": "",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Green",
+					"color": "Green",
+					"steps": "1",
+					"target": "",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Green",
+					"color": "Green",
+					"steps": "1",
+					"target": "",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Double Red",
+					"color": "Red",
+					"steps": "2",
+					"target": "",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Double Red",
+					"color": "Red",
+					"steps": "2",
+					"target": "",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Double Red",
+					"color": "Red",
+					"steps": "2",
+					"target": "",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Double Red",
+					"color": "Red",
+					"steps": "2",
+					"target": "",
+					"paint": "#d64545"
+				},
+				{
+					"name": "Double Purple",
+					"color": "Purple",
+					"steps": "2",
+					"target": "",
+					"paint": "#8e5bc2"
+				},
+				{
+					"name": "Double Purple",
+					"color": "Purple",
+					"steps": "2",
+					"target": "",
+					"paint": "#8e5bc2"
+				},
+				{
+					"name": "Double Purple",
+					"color": "Purple",
+					"steps": "2",
+					"target": "",
+					"paint": "#8e5bc2"
+				},
+				{
+					"name": "Double Purple",
+					"color": "Purple",
+					"steps": "2",
+					"target": "",
+					"paint": "#8e5bc2"
+				},
+				{
+					"name": "Double Yellow",
+					"color": "Yellow",
+					"steps": "2",
+					"target": "",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Double Yellow",
+					"color": "Yellow",
+					"steps": "2",
+					"target": "",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Double Yellow",
+					"color": "Yellow",
+					"steps": "2",
+					"target": "",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Double Yellow",
+					"color": "Yellow",
+					"steps": "2",
+					"target": "",
+					"paint": "#f2d043"
+				},
+				{
+					"name": "Double Blue",
+					"color": "Blue",
+					"steps": "2",
+					"target": "",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Double Blue",
+					"color": "Blue",
+					"steps": "2",
+					"target": "",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Double Blue",
+					"color": "Blue",
+					"steps": "2",
+					"target": "",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Double Blue",
+					"color": "Blue",
+					"steps": "2",
+					"target": "",
+					"paint": "#4a7fd6"
+				},
+				{
+					"name": "Double Orange",
+					"color": "Orange",
+					"steps": "2",
+					"target": "",
+					"paint": "#f08a32"
+				},
+				{
+					"name": "Double Orange",
+					"color": "Orange",
+					"steps": "2",
+					"target": "",
+					"paint": "#f08a32"
+				},
+				{
+					"name": "Double Orange",
+					"color": "Orange",
+					"steps": "2",
+					"target": "",
+					"paint": "#f08a32"
+				},
+				{
+					"name": "Double Orange",
+					"color": "Orange",
+					"steps": "2",
+					"target": "",
+					"paint": "#f08a32"
+				},
+				{
+					"name": "Double Green",
+					"color": "Green",
+					"steps": "2",
+					"target": "",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Double Green",
+					"color": "Green",
+					"steps": "2",
+					"target": "",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Double Green",
+					"color": "Green",
+					"steps": "2",
+					"target": "",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Double Green",
+					"color": "Green",
+					"steps": "2",
+					"target": "",
+					"paint": "#4caf50"
+				},
+				{
+					"name": "Peppermint",
+					"color": "Pink",
+					"steps": "",
+					"target": "9",
+					"paint": "#f4a6c8"
+				},
+				{
+					"name": "Gingerbread",
+					"color": "Pink",
+					"steps": "",
+					"target": "25",
+					"paint": "#f4a6c8"
+				},
+				{
+					"name": "Gumdrop",
+					"color": "Pink",
+					"steps": "",
+					"target": "44",
+					"paint": "#f4a6c8"
+				},
+				{
+					"name": "Peanut",
+					"color": "Pink",
+					"steps": "",
+					"target": "62",
+					"paint": "#f4a6c8"
+				},
+				{
+					"name": "Lollipop",
+					"color": "Pink",
+					"steps": "",
+					"target": "85",
+					"paint": "#f4a6c8"
+				},
+				{
+					"name": "Frost",
+					"color": "Pink",
+					"steps": "",
+					"target": "102",
+					"paint": "#f4a6c8"
+				}
+			]
+		}
+	}
+}

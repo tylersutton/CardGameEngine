@@ -1,0 +1,14 @@
+name,kind,face,order,image,size,count
+Ones,upper,1,1,,62,4
+Twos,upper,2,2,,62,4
+Threes,upper,3,3,,62,4
+Fours,upper,4,4,,62,4
+Fives,upper,5,5,,62,4
+Sixes,upper,6,6,,62,4
+3 of a Kind,three_of_a_kind,,7,,62,4
+4 of a Kind,four_of_a_kind,,8,,62,4
+Full House,full_house,,9,,62,4
+Small Straight,small_straight,,10,,62,4
+Large Straight,large_straight,,11,,62,4
+Yahtzee,yahtzee,,12,,62,4
+Chance,chance,,13,,62,4

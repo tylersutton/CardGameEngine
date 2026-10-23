@@ -11,7 +11,7 @@ public partial class GameRules
 {
     public static readonly string[] Keys =
     [
-        "title", "description", "players", "player_names", "seats", "teams", "zones", "variables", "player_variables",
+        "title", "description", "how_to_play", "players", "player_names", "seats", "teams", "zones", "variables", "player_variables",
         "team_variables", "show_variables", "status", "conditions", "constants", "effects", "actions", "turn", "triggers",
         "melds", "bot", "card_face",
     ];
@@ -19,6 +19,8 @@ public partial class GameRules
 
     public string Title { get; private set; } = "";
     public string Description { get; private set; } = "";
+    /// The rules for players, line by line, for the table's How to play window: "# " starts a heading, "- " a bullet.
+    public List<string> HowToPlay { get; private set; } = [];
     public Dictionary<string, object?> Zones { get; private set; } = [];
     /// Each action's settings; an action written as just steps becomes {"steps": [...]}.
     public Dictionary<string, Dictionary<string, object?>> Actions { get; } = [];
@@ -107,6 +109,7 @@ public partial class GameRules
         UnknownKeys.AddRange(data.Keys.Where(key => !Keys.Contains(key)));
         Title = Section(data, "title", Capitalize(Path.GetFileNameWithoutExtension(path)));
         Description = Section(data, "description", "");
+        HowToPlay = Section<List<object?>>(data, "how_to_play", []).Select(line => line as string ?? Values.Format(line)).ToList();
         Zones = Section<Dictionary<string, object?>>(data, "zones", []);
         foreach ((string actionName, object? action) in Section<Dictionary<string, object?>>(data, "actions", []))
         {

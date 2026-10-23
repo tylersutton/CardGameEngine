@@ -1,0 +1,1799 @@
+[
+	{
+		"seed": 1,
+		"inputs": [
+			{
+				"type": "click_empty",
+				"zone": "grid_36"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_70"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_42"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_48"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_20"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_32"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_66"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_26"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_52"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_16"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_72"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_62"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_64"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_34"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_68"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_22"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_58"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_12"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_6"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_24"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_76"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_30"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_18"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_54"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_14"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_38"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_28"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_10"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_44"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_60"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_46"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_80"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_2"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_56"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_74"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_40"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_8"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_78"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_50"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_4"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  for player in players (2)",
+				"  box → supply_1: Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box",
+				"  box → supply_2: Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_36: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_70: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_42: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_48: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_20: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_32: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_66: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_26: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_52: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_16: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_72: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_62: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_64: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_34: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_68: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_22: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_58: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_12: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_6: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_24: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_33: Red box",
+				"  score_1 = 1",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_76: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_67: Red box",
+				"  score_1 = 2",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_30: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_18: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_54: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_14: Blue line",
+				"  for space in closed_now (1)",
+				"  supply_2 → grid_15: Blue box",
+				"  score_2 = 1",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_38: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_28: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_29: Red box",
+				"  score_1 = 3",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_10: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_44: Blue line",
+				"  for space in closed_now (2)",
+				"  supply_2 → grid_53: Blue box",
+				"  score_2 = 2",
+				"  supply_2 → grid_35: Blue box",
+				"  score_2 = 3",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_60: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_46: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_80: Blue line",
+				"  for space in closed_now (1)",
+				"  supply_2 → grid_71: Blue box",
+				"  score_2 = 4",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_2: Blue line",
+				"  for space in closed_now (1)",
+				"  supply_2 → grid_11: Blue box",
+				"  score_2 = 5",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_56: Blue line",
+				"  for space in closed_now (1)",
+				"  supply_2 → grid_47: Blue box",
+				"  score_2 = 6",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_74: Blue line",
+				"  for space in closed_now (1)",
+				"  supply_2 → grid_65: Blue box",
+				"  score_2 = 7",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_40: Blue line",
+				"  for space in closed_now (1)",
+				"  supply_2 → grid_31: Blue box",
+				"  score_2 = 8",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_8: Blue line",
+				"  for space in closed_now (1)",
+				"  supply_2 → grid_17: Blue box",
+				"  score_2 = 9",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_78: Blue line",
+				"  for space in closed_now (1)",
+				"  supply_2 → grid_69: Blue box",
+				"  score_2 = 10",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_50: Blue line",
+				"  for space in closed_now (2)",
+				"  supply_2 → grid_51: Blue box",
+				"  score_2 = 11",
+				"  supply_2 → grid_49: Blue box",
+				"  score_2 = 12",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_4: Blue line",
+				"  for space in closed_now (1)",
+				"  supply_2 → grid_13: Blue box",
+				"  score_2 = 13",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → then",
+				"[game over] Winner: Blue"
+			]
+		],
+		"end": {
+			"zones": {
+				"box": [],
+				"supply_1": [
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red box",
+					"Red box",
+					"Red box",
+					"Red box",
+					"Red box",
+					"Red box",
+					"Red box",
+					"Red box",
+					"Red box",
+					"Red box",
+					"Red box",
+					"Red box",
+					"Red box"
+				],
+				"supply_2": [
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue box",
+					"Blue box",
+					"Blue box"
+				],
+				"grid_1": [],
+				"grid_2": [
+					"Blue line"
+				],
+				"grid_3": [],
+				"grid_4": [
+					"Blue line"
+				],
+				"grid_5": [],
+				"grid_6": [
+					"Blue line"
+				],
+				"grid_7": [],
+				"grid_8": [
+					"Blue line"
+				],
+				"grid_9": [],
+				"grid_10": [
+					"Red line"
+				],
+				"grid_11": [
+					"Blue box"
+				],
+				"grid_12": [
+					"Red line"
+				],
+				"grid_13": [
+					"Blue box"
+				],
+				"grid_14": [
+					"Blue line"
+				],
+				"grid_15": [
+					"Blue box"
+				],
+				"grid_16": [
+					"Red line"
+				],
+				"grid_17": [
+					"Blue box"
+				],
+				"grid_18": [
+					"Blue line"
+				],
+				"grid_19": [],
+				"grid_20": [
+					"Blue line"
+				],
+				"grid_21": [],
+				"grid_22": [
+					"Red line"
+				],
+				"grid_23": [],
+				"grid_24": [
+					"Red line"
+				],
+				"grid_25": [],
+				"grid_26": [
+					"Red line"
+				],
+				"grid_27": [],
+				"grid_28": [
+					"Red line"
+				],
+				"grid_29": [
+					"Red box"
+				],
+				"grid_30": [
+					"Red line"
+				],
+				"grid_31": [
+					"Blue box"
+				],
+				"grid_32": [
+					"Red line"
+				],
+				"grid_33": [
+					"Red box"
+				],
+				"grid_34": [
+					"Red line"
+				],
+				"grid_35": [
+					"Blue box"
+				],
+				"grid_36": [
+					"Blue line"
+				],
+				"grid_37": [],
+				"grid_38": [
+					"Blue line"
+				],
+				"grid_39": [],
+				"grid_40": [
+					"Blue line"
+				],
+				"grid_41": [],
+				"grid_42": [
+					"Blue line"
+				],
+				"grid_43": [],
+				"grid_44": [
+					"Blue line"
+				],
+				"grid_45": [],
+				"grid_46": [
+					"Red line"
+				],
+				"grid_47": [
+					"Blue box"
+				],
+				"grid_48": [
+					"Red line"
+				],
+				"grid_49": [
+					"Blue box"
+				],
+				"grid_50": [
+					"Blue line"
+				],
+				"grid_51": [
+					"Blue box"
+				],
+				"grid_52": [
+					"Blue line"
+				],
+				"grid_53": [
+					"Blue box"
+				],
+				"grid_54": [
+					"Red line"
+				],
+				"grid_55": [],
+				"grid_56": [
+					"Blue line"
+				],
+				"grid_57": [],
+				"grid_58": [
+					"Blue line"
+				],
+				"grid_59": [],
+				"grid_60": [
+					"Blue line"
+				],
+				"grid_61": [],
+				"grid_62": [
+					"Red line"
+				],
+				"grid_63": [],
+				"grid_64": [
+					"Blue line"
+				],
+				"grid_65": [
+					"Blue box"
+				],
+				"grid_66": [
+					"Blue line"
+				],
+				"grid_67": [
+					"Red box"
+				],
+				"grid_68": [
+					"Blue line"
+				],
+				"grid_69": [
+					"Blue box"
+				],
+				"grid_70": [
+					"Red line"
+				],
+				"grid_71": [
+					"Blue box"
+				],
+				"grid_72": [
+					"Blue line"
+				],
+				"grid_73": [],
+				"grid_74": [
+					"Blue line"
+				],
+				"grid_75": [],
+				"grid_76": [
+					"Red line"
+				],
+				"grid_77": [],
+				"grid_78": [
+					"Blue line"
+				],
+				"grid_79": [],
+				"grid_80": [
+					"Blue line"
+				],
+				"grid_81": []
+			},
+			"variables": {
+				"another_go": "true",
+				"player": "2",
+				"score_1": "3",
+				"score_2": "13"
+			},
+			"over": true,
+			"result": "Winner: Blue"
+		}
+	},
+	{
+		"seed": 2,
+		"inputs": [
+			{
+				"type": "click_empty",
+				"zone": "grid_22"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_52"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_66"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_60"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_56"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_18"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_70"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_10"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_24"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_4"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_20"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_30"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_8"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_78"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_42"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_74"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_68"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_50"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_72"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_2"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_46"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_16"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_26"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_76"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_14"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_28"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_36"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_38"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_80"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_34"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_58"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_64"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_6"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_12"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_48"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_32"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_62"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_54"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_44"
+			},
+			{
+				"type": "click_empty",
+				"zone": "grid_40"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  for player in players (2)",
+				"  box → supply_1: Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red line, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box, Red box",
+				"  box → supply_2: Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue line, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box, Blue box",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_22: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_52: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_66: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_60: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_56: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_18: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_70: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_10: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_24: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_4: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_20: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_30: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_8: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_78: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_42: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_74: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_68: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_69: Red box",
+				"  score_1 = 1",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_50: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_51: Red box",
+				"  score_1 = 2",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_72: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_2: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_46: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_16: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_26: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_17: Red box",
+				"  score_1 = 3",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_76: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_14: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_28: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_36: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_38: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_29: Red box",
+				"  score_1 = 4",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_80: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_34: Blue line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_58: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_67: Red box",
+				"  score_1 = 5",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_64: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_65: Red box",
+				"  score_1 = 6",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_6: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_15: Red box",
+				"  score_1 = 7",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_12: Red line",
+				"  for space in closed_now (2)",
+				"  supply_1 → grid_13: Red box",
+				"  score_1 = 8",
+				"  supply_1 → grid_11: Red box",
+				"  score_1 = 9",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_48: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_47: Red box",
+				"  score_1 = 10",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_32: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_33: Red box",
+				"  score_1 = 11",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_62: Red line",
+				"  for space in closed_now (1)",
+				"  supply_1 → grid_71: Red box",
+				"  score_1 = 12",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Red",
+				"  Red may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_1 → grid_54: Red line",
+				"  for space in closed_now (0)",
+				"  another_go = false",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → then",
+				"  player = 2",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_44: Blue line",
+				"  for space in closed_now (2)",
+				"  supply_2 → grid_53: Blue box",
+				"  score_2 = 1",
+				"  supply_2 → grid_35: Blue box",
+				"  score_2 = 2",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → else",
+				"  if not another_go → else",
+				"[turn] Blue (bot)",
+				"  Blue (bot) may: Draw a line"
+			],
+			[
+				"[action] Draw a line",
+				"  supply_2 → grid_40: Blue line",
+				"  for space in closed_now (2)",
+				"  supply_2 → grid_49: Blue box",
+				"  score_2 = 3",
+				"  supply_2 → grid_31: Blue box",
+				"  score_2 = 4",
+				"  another_go = true",
+				"  if score_1 + score_2 == boxes → then",
+				"[game over] Winner: Red"
+			]
+		],
+		"end": {
+			"zones": {
+				"box": [],
+				"supply_1": [
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red line",
+					"Red box",
+					"Red box",
+					"Red box",
+					"Red box"
+				],
+				"supply_2": [
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue line",
+					"Blue box",
+					"Blue box",
+					"Blue box",
+					"Blue box",
+					"Blue box",
+					"Blue box",
+					"Blue box",
+					"Blue box",
+					"Blue box",
+					"Blue box",
+					"Blue box",
+					"Blue box"
+				],
+				"grid_1": [],
+				"grid_2": [
+					"Blue line"
+				],
+				"grid_3": [],
+				"grid_4": [
+					"Blue line"
+				],
+				"grid_5": [],
+				"grid_6": [
+					"Red line"
+				],
+				"grid_7": [],
+				"grid_8": [
+					"Red line"
+				],
+				"grid_9": [],
+				"grid_10": [
+					"Blue line"
+				],
+				"grid_11": [
+					"Red box"
+				],
+				"grid_12": [
+					"Red line"
+				],
+				"grid_13": [
+					"Red box"
+				],
+				"grid_14": [
+					"Blue line"
+				],
+				"grid_15": [
+					"Red box"
+				],
+				"grid_16": [
+					"Blue line"
+				],
+				"grid_17": [
+					"Red box"
+				],
+				"grid_18": [
+					"Blue line"
+				],
+				"grid_19": [],
+				"grid_20": [
+					"Red line"
+				],
+				"grid_21": [],
+				"grid_22": [
+					"Red line"
+				],
+				"grid_23": [],
+				"grid_24": [
+					"Red line"
+				],
+				"grid_25": [],
+				"grid_26": [
+					"Red line"
+				],
+				"grid_27": [],
+				"grid_28": [
+					"Red line"
+				],
+				"grid_29": [
+					"Red box"
+				],
+				"grid_30": [
+					"Blue line"
+				],
+				"grid_31": [
+					"Blue box"
+				],
+				"grid_32": [
+					"Red line"
+				],
+				"grid_33": [
+					"Red box"
+				],
+				"grid_34": [
+					"Blue line"
+				],
+				"grid_35": [
+					"Blue box"
+				],
+				"grid_36": [
+					"Blue line"
+				],
+				"grid_37": [],
+				"grid_38": [
+					"Red line"
+				],
+				"grid_39": [],
+				"grid_40": [
+					"Blue line"
+				],
+				"grid_41": [],
+				"grid_42": [
+					"Red line"
+				],
+				"grid_43": [],
+				"grid_44": [
+					"Blue line"
+				],
+				"grid_45": [],
+				"grid_46": [
+					"Red line"
+				],
+				"grid_47": [
+					"Red box"
+				],
+				"grid_48": [
+					"Red line"
+				],
+				"grid_49": [
+					"Blue box"
+				],
+				"grid_50": [
+					"Red line"
+				],
+				"grid_51": [
+					"Red box"
+				],
+				"grid_52": [
+					"Blue line"
+				],
+				"grid_53": [
+					"Blue box"
+				],
+				"grid_54": [
+					"Red line"
+				],
+				"grid_55": [],
+				"grid_56": [
+					"Red line"
+				],
+				"grid_57": [],
+				"grid_58": [
+					"Red line"
+				],
+				"grid_59": [],
+				"grid_60": [
+					"Blue line"
+				],
+				"grid_61": [],
+				"grid_62": [
+					"Red line"
+				],
+				"grid_63": [],
+				"grid_64": [
+					"Red line"
+				],
+				"grid_65": [
+					"Red box"
+				],
+				"grid_66": [
+					"Red line"
+				],
+				"grid_67": [
+					"Red box"
+				],
+				"grid_68": [
+					"Red line"
+				],
+				"grid_69": [
+					"Red box"
+				],
+				"grid_70": [
+					"Red line"
+				],
+				"grid_71": [
+					"Red box"
+				],
+				"grid_72": [
+					"Red line"
+				],
+				"grid_73": [],
+				"grid_74": [
+					"Blue line"
+				],
+				"grid_75": [],
+				"grid_76": [
+					"Red line"
+				],
+				"grid_77": [],
+				"grid_78": [
+					"Blue line"
+				],
+				"grid_79": [],
+				"grid_80": [
+					"Red line"
+				],
+				"grid_81": []
+			},
+			"variables": {
+				"another_go": "true",
+				"player": "2",
+				"score_1": "12",
+				"score_2": "4"
+			},
+			"over": true,
+			"result": "Winner: Red"
+		}
+	}
+]

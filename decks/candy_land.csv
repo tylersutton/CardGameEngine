@@ -1,0 +1,19 @@
+name,color,steps,target,paint,count
+Red,Red,1,,#d64545,6
+Purple,Purple,1,,#8e5bc2,6
+Yellow,Yellow,1,,#f2d043,6
+Blue,Blue,1,,#4a7fd6,6
+Orange,Orange,1,,#f08a32,6
+Green,Green,1,,#4caf50,6
+Double Red,Red,2,,#d64545,4
+Double Purple,Purple,2,,#8e5bc2,4
+Double Yellow,Yellow,2,,#f2d043,4
+Double Blue,Blue,2,,#4a7fd6,4
+Double Orange,Orange,2,,#f08a32,4
+Double Green,Green,2,,#4caf50,4
+Peppermint,Pink,,9,#f4a6c8,1
+Gingerbread,Pink,,25,#f4a6c8,1
+Gumdrop,Pink,,44,#f4a6c8,1
+Peanut,Pink,,62,#f4a6c8,1
+Lollipop,Pink,,85,#f4a6c8,1
+Frost,Pink,,102,#f4a6c8,1

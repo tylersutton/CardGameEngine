@@ -2,6 +2,16 @@
 	"rules": {
 		"title": "Connect Four",
 		"description": "You play Red against a Yellow bot. Click a column, or drag a disc there from your pile, to drop it in: it falls to the lowest empty space. Four of your discs in a line, across, down or diagonally, wins. A full board is a draw.",
+		"how_to_play": [
+			"# Goal",
+			"Get four of your discs in a line: across, down or diagonally. You play Red.",
+			"# Your turn",
+			"- Click any space in a column (or drag a disc from your pile onto it) to drop a disc there. It falls to the lowest empty space in that column.",
+			"- A full column can't take any more.",
+			"# The end",
+			"- Four in a row wins at once.",
+			"- If the board fills up first, it's a draw."
+		],
 		"zones": {
 			"space": {
 				"board": {

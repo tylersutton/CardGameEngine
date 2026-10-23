@@ -2,6 +2,20 @@
 	"rules": {
 		"title": "Fireworks",
 		"description": "Cooperative, in the style of Hanabi: you and a bot partner build five fireworks (Red, Yellow, Green, Blue, White) from 1 to 5. You can see your partner's cards but not your own. Spend a clue to mark all of your partner's cards of one color or number; play a card by dragging it to Play, or discard it for a clue. Three wrong plays and it's over.",
+		"how_to_play": [
+			"# Goal",
+			"Work together with your bot partner to build five fireworks, one per color, each from 1 up to 5. Your score is the number of cards in the fireworks (25 is perfect).",
+			"# The catch",
+			"- You can see your partner's cards, but not your own. Clues marked on your cards tell you what you know.",
+			"# Your turn",
+			"Do one of these:",
+			"- Clue: press Clue color or Clue number, then click one of your partner's cards. Every card of that color (or number) in their hand gets marked. Uses one clue token.",
+			"- Play: drag a card from your hand to Play. If it's the next number of its color, it goes on that firework; if not, it's discarded and you lose a fuse.",
+			"- Discard: drag a card to Discard to get a clue token back.",
+			"# The end",
+			"- Three lost fuses and the fireworks fail.",
+			"- The game also ends when all five fireworks are finished, or a round after the deck runs out. Finishing a firework (a 5) earns a clue token."
+		],
 		"zones": {
 			"deck": {
 				"label": "Deck",

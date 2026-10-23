@@ -2,6 +2,13 @@
 	"rules": {
 		"title": "Free Play",
 		"description": "A standard deck with no rules: draw, play, discard, and sort.",
+		"how_to_play": [
+			"# A sandbox",
+			"A standard deck with no rules: use it to try out ideas.",
+			"- Click the deck (or press Draw) to draw a card.",
+			"- Drag cards anywhere you like: to your hand, to the table, back to the deck.",
+			"- Press Shuffle to shuffle the deck, and the sort buttons to sort your hand."
+		],
 		"zones": {
 			"deck": {
 				"label": "Deck",

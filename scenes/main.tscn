@@ -14,6 +14,12 @@ keycode = 90
 [sub_resource type="Shortcut" id="Shortcut_undo"]
 events = [SubResource("InputEventKey_undo")]
 
+[sub_resource type="InputEventKey" id="InputEventKey_help"]
+keycode = 4194332
+
+[sub_resource type="Shortcut" id="Shortcut_help"]
+events = [SubResource("InputEventKey_help")]
+
 [node name="Main" type="Control" unique_id=383874150]
 layout_mode = 3
 anchors_preset = 15
@@ -62,6 +68,15 @@ focus_mode = 0
 size_flags_vertical = 4
 shortcut = SubResource("Shortcut_undo")
 text = "Undo"
+
+[node name="HowToPlayButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+size_flags_vertical = 4
+tooltip_text = "How to play this game (F1)"
+shortcut = SubResource("Shortcut_help")
+text = "How to play"
 
 [node name="DesignerMenu" type="MenuButton" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
 unique_name_in_owner = true

@@ -93,28 +93,35 @@ public class Bot
     public List<Card> HiddenFrom(int player) => game.Cards.Where(card => !game.CanSee(player, card)).ToList();
 
     /// The game before trying moves out, shared by every move compared from it: to go back to, and to tell whether
-    /// a move changed anything.
-    public record StartingPoint(Snapshot State, Dictionary<string, object?> Contents)
+    /// a move changed anything. A move that only leads on to another offer (a choice answered, then "Go fish") changes
+    /// the game too.
+    public record StartingPoint(Snapshot State, Dictionary<string, object?> Contents, List<string> Offered)
     {
-        public static StartingPoint Of(Game game) => new(Snapshot.Take(game), Snapshot.Describe(game, false));
+        public static StartingPoint Of(Game game) => new(Snapshot.Take(game), Snapshot.Describe(game, false), [.. game.Plays.Offered]);
     }
 
+    /// The move that scores best; among equally good ones, any, so a bot doesn't make the same move every time.
     List<PlayerInput> BestMove(string prefer)
     {
-        List<PlayerInput> bestMove = [];
+        List<List<PlayerInput>> bestMoves = [];
         double bestValue = double.NegativeInfinity;
         List<Dictionary<Card, Dictionary<string, string>>> deals = Deals();
         StartingPoint start = StartingPoint.Of(game);
         foreach (List<PlayerInput> move in game.Plays.LegalMoves())
         {
             object? value = TryOut(move, prefer, deals, start);
-            if (Values.IsNumber(value) && Values.ToDouble(value) > bestValue)
+            if (!Values.IsNumber(value) || Values.ToDouble(value) < bestValue)
             {
-                bestMove = move;
+                continue;
+            }
+            if (Values.ToDouble(value) > bestValue)
+            {
+                bestMoves.Clear();
                 bestValue = Values.ToDouble(value);
             }
+            bestMoves.Add(move);
         }
-        return bestMove;
+        return bestMoves.Count > 0 ? bestMoves[random.Next(bestMoves.Count)] : [];
     }
 
     /// With no "prefer", any legal move that changes something (not one that only sorts, say): enough to play a
@@ -183,7 +190,7 @@ public class Bot
         {
             value = BestChoiceValue(measure);
         }
-        else if (!Values.DeepEquals(Snapshot.Describe(game, false), start.Contents) || game.CurrentPlayer() != player)
+        else if (!Values.DeepEquals(Snapshot.Describe(game, false), start.Contents) || game.CurrentPlayer() != player || !game.Plays.Offered.SequenceEqual(start.Offered))
         {
             if (game.Variables.ContainsKey(Game.PlayerVariable))
             {

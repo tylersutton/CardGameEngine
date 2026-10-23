@@ -42,6 +42,36 @@ public class Actions(Game game, Card? stepCard = null)
         }
     }
 
+    /// Two cards trade places, each taking the other's zone and spot in it: Sorry!'s 11, or turning a two-way card
+    /// round by trading it for its other side, kept in a box. A sorted zone stays sorted.
+    public void Swap(Card? card, Card? other)
+    {
+        if (card == null || other == null || card == other)
+        {
+            return;
+        }
+        Zone cardZone = game.ZoneOf(card);
+        Zone otherZone = game.ZoneOf(other);
+        int cardIndex = cardZone.Cards.IndexOf(card);
+        int otherIndex = otherZone.Cards.IndexOf(other);
+        if (cardZone != otherZone)
+        {
+            game.Move(card, otherZone);
+            game.Move(other, cardZone);
+        }
+        if (cardZone.SortColumns.Count == 0)
+        {
+            cardZone.Reorder(other, cardIndex);
+        }
+        if (otherZone.SortColumns.Count == 0)
+        {
+            otherZone.Reorder(card, otherIndex);
+        }
+    }
+
+    /// Where a card lies in its zone, counting from 1 at the bottom (the left of a row), or 0 for no card.
+    public int Position(Card? card) => card != null ? game.ZoneOf(card).Cards.IndexOf(card) + 1 : 0;
+
     public void TryMove(Card? card, object? to)
     {
         if (card == null)
@@ -174,6 +204,12 @@ public class Actions(Game game, Card? stepCard = null)
     public void EndGame(object? winners = null)
     {
         game.EndGame(PlayersIn(winners));
+    }
+
+    /// Writes a line in the action log for everyone to read, e.g. log('%s scores %d' % [name_of(player), score]).
+    public void Log(string text)
+    {
+        game.LogLine(text);
     }
 
     /// Players out of the game: turns, next_player() and opponent_ skip them. A number or a list.

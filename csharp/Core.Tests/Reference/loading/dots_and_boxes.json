@@ -1,0 +1,2606 @@
+{
+	"rules": {
+		"title": "Dots and Boxes",
+		"description": "You (Red) against a Blue bot, on a grid of 4 by 4 boxes. Take turns clicking the gap between two neighbouring dots to draw a line there. Draw the fourth side of a box and it's yours, and you go again. When every box is taken, whoever has more wins.",
+		"how_to_play": [
+			"# Goal",
+			"Claim more of the 16 boxes than your opponent. You play Red.",
+			"# The board",
+			"- The black squares are dots. The pale squares between two dots are where lines go; the cream squares are boxes.",
+			"# Your turn",
+			"- Click an empty gap between two dots to draw a line there.",
+			"- If your line closes the fourth side of a box, the box gets your color and you go again.",
+			"# Tips",
+			"- Don't draw the third side of a box: your opponent will take it.",
+			"- When the game is over, the player with more boxes wins."
+		],
+		"zones": {
+			"box": {
+				"outline": false,
+				"layout": "pile",
+				"anchor": [
+					-0.3,
+					0.5
+				],
+				"cards": "res://decks/dots_and_boxes.csv"
+			},
+			"supply": {
+				"per_player": true,
+				"outline": false,
+				"layout": "pile",
+				"anchors": [
+					[
+						-0.3,
+						0.5
+					],
+					[
+						-0.3,
+						0.5
+					]
+				]
+			},
+			"grid": {
+				"board": {
+					"shape": "square",
+					"columns": 9.0,
+					"rows": 9.0,
+					"size": 60.0,
+					"paint": {
+						"dot": "#1b1b1b",
+						"box_space": "#f5efe0",
+						"gap": "#d9cfb8"
+					}
+				},
+				"anchor": [
+					0.5,
+					0.5
+				]
+			}
+		},
+		"actions": {
+			"Draw a line": {
+				"click": "grid",
+				"when": "gap(clicked_zone) and count(clicked_zone) == 0",
+				"steps": [
+					"move(top(where(supply, 'kind', 'line')), clicked_zone)",
+					"closed_now = zones_where(neighbors(clicked_zone, 'orthogonal'), 'closed')",
+					{
+						"for": "space",
+						"in": "closed_now",
+						"do": [
+							"move(top(where(supply, 'kind', 'box')), space)",
+							"score += 1"
+						]
+					},
+					"another_go = size(closed_now) > 0"
+				]
+			}
+		},
+		"triggers": {
+			"start": [
+				{
+					"for": "player",
+					"in": "players",
+					"do": [
+						"move(where(box, 'seat', player), supply)"
+					]
+				},
+				"player = one_of(players)"
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"dot": "space.column % 2 == 1 and space.row % 2 == 1",
+			"box_space": "space.column % 2 == 0 and space.row % 2 == 0",
+			"gap": "not dot(space) and not box_space(space)",
+			"drawn": "count(space) > 0",
+			"sides": "count(zones_where(neighbors(space, 'orthogonal'), 'drawn'))",
+			"closed": "box_space(space) and count(space) == 0 and sides(space) == 4",
+			"three_sided": "box_space(space) and sides(space) == 3"
+		},
+		"condition_parameters": {
+			"dot": [
+				"space"
+			],
+			"box_space": [
+				"space"
+			],
+			"gap": [
+				"space"
+			],
+			"drawn": [
+				"space"
+			],
+			"sides": [
+				"space"
+			],
+			"closed": [
+				"space"
+			],
+			"three_sided": [
+				"space"
+			]
+		},
+		"condition_errors": [],
+		"constants": {
+			"boxes": 16
+		},
+		"turn": [
+			"offer('Draw a line')",
+			{
+				"if": "score_1 + score_2 == boxes",
+				"then": [
+					"end_game(players_with_most('score'))"
+				]
+			},
+			{
+				"if": "not another_go",
+				"then": [
+					"end_turn()"
+				]
+			}
+		],
+		"variables": {
+			"another_go": false
+		},
+		"players": 2,
+		"seats": [
+			[
+				0.5,
+				0.96
+			],
+			[
+				0.5,
+				0.04
+			]
+		],
+		"player_names": [
+			"Red",
+			"Blue"
+		],
+		"player_variables": {
+			"score": 0
+		},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"boxes": "'Red %d, Blue %d' % [score_1, score_2]"
+		},
+		"show_variables": [],
+		"bot": {
+			"players": [
+				2.0
+			],
+			"prefer": "score - opponent_score - (0 if another_go else 0.6) * count(zones_where(grid, 'three_sided'))"
+		},
+		"card_face": {
+			"shape": "shape",
+			"size": "size",
+			"background": "paint"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "box",
+			"label": "",
+			"has_outline": false,
+			"kind": "box",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "supply_1",
+			"label": "",
+			"has_outline": false,
+			"kind": "supply",
+			"owner": 1,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "supply_2",
+			"label": "",
+			"has_outline": false,
+			"kind": "supply",
+			"owner": 2,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_3",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_4",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_5",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_6",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_7",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_8",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_9",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_10",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_11",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_12",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_13",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_14",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_15",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_16",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_17",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_18",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_19",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_20",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_21",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_22",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_23",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_24",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_25",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_26",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_27",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_28",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_29",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_30",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_31",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_32",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_33",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_34",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_35",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_36",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_37",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_38",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_39",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_40",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_41",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_42",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_43",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_44",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_45",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_46",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_47",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_48",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_49",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_50",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_51",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_52",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_53",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_54",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_55",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_56",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_57",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_58",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_59",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_60",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_61",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_62",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_63",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_64",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_65",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_66",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_67",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_68",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_69",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_70",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_71",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_72",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_73",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_74",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_75",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_76",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_77",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_78",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_79",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_80",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_81",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/dots_and_boxes.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"seat",
+				"size"
+			],
+			"cards": [
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red line",
+					"kind": "line",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Blue line",
+					"kind": "line",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "square",
+					"size": "52"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Red box",
+					"kind": "box",
+					"seat": "1",
+					"paint": "#d64545",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				},
+				{
+					"name": "Blue box",
+					"kind": "box",
+					"seat": "2",
+					"paint": "#3f74d6",
+					"shape": "disc",
+					"size": "44"
+				}
+			]
+		}
+	}
+}

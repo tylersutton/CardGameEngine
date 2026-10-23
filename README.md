@@ -28,11 +28,19 @@ To go straight into one game while you work on it, set **Rules Path** on the **M
 | Kaboom | Responding to other players' cards (Nope chains), knocking players out |
 | President | Playing several cards at once, passing, finishing order |
 | Goofspiel | Everyone bidding at once, face down |
+| Go Fish | Asking another player for cards (click a card, then their hand), going again |
+| Blackjack | A dealer run by steps, bets chosen from buttons, one to three players |
+| Trio | Asking for the lowest or highest card of anyone's sorted hand, memory |
+| Dnup, Scout | Cards with a number at each end, turned round with `swap`; Scout's shows of cards side by side in a hand you can't rearrange |
+| Yahtzee | Dice (a box of die faces), keeping and rerolling, a scorecard of pieces showing what each box would score |
+| Mancala, Dots and Boxes, Checkers | Boards: sowing round a ring of pits, claiming boxes and going again, jumping, forced captures and crowning |
+| Sorry!, Candy Land | Races round a board: bumping pawns back to Start, slides, swaps, shortcuts and lost turns |
+| War | No decisions at all, just the Battle button |
 | Fireworks | Co-op (Hanabi-style): holding your cards facing away, clues marked on cards |
 | Pyramid, Solitaire | Solitaire: overlapping cards, cascading columns, dragging stacks, double-click to send a card up |
 | Standard deck | A free-play sandbox |
 
-All but Color Match use `decks/standard_deck.csv`, or a deck named after the game.
+The card games use `decks/standard_deck.csv` or a deck named after the game; the others have their own decks of pieces in `decks/`.
 
 ## Playing
 
@@ -43,6 +51,7 @@ All but Color Match use `decks/standard_deck.csv`, or a deck named after the gam
 | Choosing | The cards you can choose are outlined in yellow. Click them; picked cards turn blue. Anything else to pick, like a color, appears as buttons under the table. On your turn, clicking a card can also start a button's choice of several cards with it, as in President's Play. |
 | Action buttons | The game's other actions, under the table. The ones you can do now are gold; the rest are greyed out, and an offered action's button only shows while your turn offers it. Buttons anyone can press at any time, like sorting your hand, sit apart on the right. The bar above them says what you can do now, or who the game is waiting for. Keys **1**–**9** press the buttons shown, left to right (choosing a number, like a bid, the number's own key), and **Space** presses the gold one when there's only one. |
 | **Undo** (Ctrl+Z) | Goes back one of your inputs, including one step of a choice. |
+| **How to play** (F1) | The rules of the game you're playing, and how to do each thing on the table. |
 | **Designer** menu | Tools for making the game: **Reload** starts over from the files on disk (saving a game file or deck reloads it automatically); **Sandbox** ignores the rules so you can set up a situation by hand; **Zone names** shows each zone's name and card count, the names your rules use; **Show plays** outlines every card and zone the player whose turn it is could use now, to check your rules; **Designer info** shows every variable and how the steps worked each move out. |
 
 The side panel shows the game's readouts, with a log of what happened beneath them. With **Designer info** (on unless you play online), it also shows every variable, and the log shows each step's workings: triggers, conditions, variables changing. Cards you can't see are logged as "hidden card", and errors appear in red. Cards a bot or another player just moved glow orange for a moment. When the game ends, a banner says who won (click it away), and every hand is shown.

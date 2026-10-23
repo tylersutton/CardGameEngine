@@ -36,7 +36,7 @@ public partial class EditorScreen : Control
     /// Which section each part of the file is edited in.
     static readonly Dictionary<string, string> SectionOf = new()
     {
-        ["title"] = "Game", ["description"] = "Game", ["zones"] = "Table", ["card_face"] = "Deck", ["variables"] = "Variables",
+        ["title"] = "Game", ["description"] = "Game", ["how_to_play"] = "Game", ["zones"] = "Table", ["card_face"] = "Deck", ["variables"] = "Variables",
         ["player_variables"] = "Variables", ["team_variables"] = "Variables", ["constants"] = "Variables", ["actions"] = "Actions", ["turn"] = "Turn",
         ["triggers"] = "Triggers", ["conditions"] = "Conditions", ["players"] = "Players", ["player_names"] = "Players", ["seats"] = "Players",
         ["teams"] = "Players", ["bot"] = "Players", ["status"] = "Scoring", ["show_variables"] = "Scoring", ["melds"] = "Melds",

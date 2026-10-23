@@ -1,0 +1,359 @@
+{
+	"title": "Candy Land",
+	"description": "Two to four players race along the candy path to the Castle. On your turn, click the deck: a color card moves your pawn to the next space of that color, a double card to the second one, and a picture card straight to its picture's space, forward or back. Landing exactly on the Rainbow Trail or the Gumdrop Pass takes a shortcut; landing on Licorice loses your next turn. No choices, all luck: made for small children.",
+	"how_to_play": [
+		"# Goal",
+		"Be the first to move your pawn along the candy path from Start (bottom left) to the Castle. The path snakes up the board, row by row.",
+		"# Your turn",
+		"- Click the deck to draw a card. Your pawn moves by itself.",
+		"- A color card moves you to the next space of that color; a double card to the second one.",
+		"- A picture card (Peppermint, Gingerbread, Gumdrop, Peanut, Lollipop, Frost) sends you straight to its pink space, even if that's backwards.",
+		"# Special spaces",
+		"- Land exactly on Trail or Pass and you take a shortcut further up the path.",
+		"- Land on Licorice and you miss your next turn.",
+		"- There are no choices to make: it's all in the cards."
+	],
+	"players": [
+		2,
+		3,
+		4
+	],
+	"player_names": [
+		"You",
+		"West",
+		"North",
+		"East"
+	],
+	"seats": [
+		[
+			0.12,
+			0.92
+		]
+	],
+	"zones": {
+		"path": {
+			"board": {
+				"shape": "square",
+				"columns": 12,
+				"rows": 10,
+				"size": 48,
+				"paint": {
+					"start_space": "#fdf6e3",
+					"castle": "#ffd54a",
+					"picture": "#f4a6c8",
+					"licorice": "#5b3a33",
+					"red": "#d64545",
+					"purple": "#8e5bc2",
+					"yellow": "#f2d043",
+					"blue": "#4a7fd6",
+					"orange": "#f08a32",
+					"green": "#4caf50"
+				}
+			},
+			"labels": [
+				"Castle",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"Frost",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"Licorice",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"Lollipop",
+				"",
+				"Licorice",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"Peanut",
+				"",
+				"",
+				"Pass",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"Gumdrop",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"Gingerbread",
+				"",
+				"",
+				"",
+				"",
+				"Licorice",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"Start",
+				"",
+				"",
+				"",
+				"",
+				"Trail",
+				"",
+				"",
+				"",
+				"Peppermint",
+				"",
+				""
+			],
+			"anchor": [
+				0.42,
+				0.47
+			]
+		},
+		"pawns": {
+			"outline": false,
+			"layout": "pile",
+			"anchor": [
+				-0.3,
+				0.5
+			],
+			"cards": "res://decks/candy_land_pawns.csv"
+		},
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.86,
+				0.32
+			],
+			"cards": "res://decks/candy_land.csv"
+		},
+		"discard": {
+			"label": "Drawn",
+			"layout": "pile",
+			"anchor": [
+				0.86,
+				0.66
+			]
+		}
+	},
+	"constants": {
+		"colors": [
+			"Red",
+			"Purple",
+			"Yellow",
+			"Blue",
+			"Orange",
+			"Green"
+		],
+		"picture_spaces": [
+			9,
+			25,
+			44,
+			62,
+			85,
+			102
+		],
+		"licorice_spaces": [
+			30,
+			72,
+			95
+		],
+		"last_space": 119,
+		// Shortcuts: from the first space to the second.
+		"rainbow_trail": [
+			5,
+			40
+		],
+		"gumdrop_pass": [
+			48,
+			66
+		]
+	},
+	"player_variables": {
+		"at": 0,
+		"stuck": false
+	},
+	"conditions": {
+		// The path snakes up the board from the bottom left: space 0 is Start, 119 the Castle.
+		"path_index(space)": "(10 - space.row) * 12 + (space.column - 1 if (10 - space.row) % 2 == 0 else 12 - space.column)",
+		"path_space(index)": "space_at(path, index % 12 + 1 if (index / 12) % 2 == 0 else 12 - index % 12, 10 - index / 12)",
+		"color_at(index)": "'Pink' if index in picture_spaces else lookup(colors, (index - 1) % 6)",
+		"start_space(space)": "path_index(space) == 0",
+		"castle(space)": "path_index(space) == last_space",
+		"picture(space)": "path_index(space) in picture_spaces",
+		"licorice(space)": "path_index(space) in licorice_spaces",
+		"red(space)": "color_at(path_index(space)) == 'Red'",
+		"purple(space)": "color_at(path_index(space)) == 'Purple'",
+		"yellow(space)": "color_at(path_index(space)) == 'Yellow'",
+		"blue(space)": "color_at(path_index(space)) == 'Blue'",
+		"orange(space)": "color_at(path_index(space)) == 'Orange'",
+		"green(space)": "color_at(path_index(space)) == 'Green'",
+		"my_pawn": "top(where(path, 'seat', player))"
+	},
+	"actions": {
+		"Draw": {
+			"drag": {
+				"from": "deck",
+				"to": "discard"
+			},
+			"click": true,
+			"steps": [
+				{
+					"if": "card.color == 'Pink'",
+					"then": "at = int(number(card, 'target'))",
+					"else": {
+						"for": "step",
+						"in": "number(card, 'steps')",
+						"do": [
+							"at = min(at + 1, last_space)",
+							{
+								"while": "at < last_space and color_at(at) != card.color",
+								"do": "at += 1"
+							}
+						]
+					}
+				},
+				{
+					"if": "at == rainbow_trail[0]",
+					"then": [
+						"log('%s takes the Rainbow Trail!' % [name_of(player)])",
+						"at = rainbow_trail[1]"
+					]
+				},
+				{
+					"if": "at == gumdrop_pass[0]",
+					"then": [
+						"log('%s takes the Gumdrop Pass!' % [name_of(player)])",
+						"at = gumdrop_pass[1]"
+					]
+				},
+				"move(my_pawn, path_space(at))",
+				{
+					"if": "at in licorice_spaces",
+					"then": [
+						"log('%s is stuck on Licorice, and loses a turn' % [name_of(player)])",
+						"stuck = true"
+					]
+				}
+			]
+		}
+	},
+	"turn": [
+		{
+			"if": "count(deck) == 0",
+			"then": [
+				"move(discard, deck)",
+				"shuffle(deck)"
+			]
+		},
+		{
+			"if": "stuck",
+			"then": "stuck = false",
+			"else": "offer('Draw')"
+		},
+		{
+			"if": "at == last_space",
+			"then": "end_game(player)"
+		},
+		"end_turn()"
+	],
+	"triggers": {
+		"start": [
+			{
+				"for": "player",
+				"in": "players",
+				"do": "move(where(pawns, 'seat', player), path_space(0))"
+			},
+			"shuffle(deck)",
+			"player = one_of(players)"
+		]
+	},
+	"status": {
+		"your space": "'%d of %d' % [at[viewer()], last_space]",
+		"furthest": "most('at')"
+	},
+	"bot": {
+		"players": [
+			2,
+			3,
+			4
+		]
+	},
+	"card_face": {
+		"title": "name",
+		"color": "#1b1b1b",
+		"background": "paint",
+		"shape": "shape",
+		"size": 24,
+		"card_back": "#f4a6c8"
+	}
+}

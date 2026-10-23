@@ -1,0 +1,768 @@
+{
+	"rules": {
+		"title": "Trio",
+		"description": "Three to six players, you against bots. Find three cards of the same number. On your turn, reveal cards one at a time: click the leftmost (lowest) or rightmost (highest) card of anyone's hand, yours included, or turn over a card in the middle. While every revealed card matches, keep going; three that match are a trio, and yours to keep. A card that doesn't match ends your turn, and everything goes back. Collect three trios, or the trio of 7s, to win. Hands stay sorted, so remember what you've seen!",
+		"how_to_play": [
+			"# Goal",
+			"Collect three trios (three cards of the same number), or the trio of 7s.",
+			"# Hands",
+			"- Everyone's hand is kept sorted from lowest (left) to highest (right), even the parts you can't see.",
+			"# Your turn",
+			"Reveal cards one at a time:",
+			"- Click the leftmost (lowest) or rightmost (highest) card of anyone's hand, yours included, to reveal it in the middle.",
+			"- Or click a face-down card in the middle to turn it over.",
+			"- Keep going while every revealed card shows the same number. Three that match are a trio: you keep it, and your turn ends.",
+			"- As soon as a card doesn't match, your turn ends and everything goes back where it came from. Press Continue.",
+			"# Tip",
+			"- Everyone sees every revealed card. Remember them!"
+		],
+		"zones": {
+			"box": {
+				"outline": false,
+				"layout": "pile",
+				"face": "down",
+				"anchor": [
+					-0.3,
+					0.5
+				],
+				"cards": "res://decks/trio.csv"
+			},
+			"middle": {
+				"copies": 9.0,
+				"layout": "pile",
+				"face": "down",
+				"grid": {
+					"columns": 5.0,
+					"spacing": [
+						0.07,
+						0.2
+					]
+				},
+				"anchor": [
+					0.27,
+					0.4
+				]
+			},
+			"revealed": {
+				"label": "Revealed",
+				"layout": "row",
+				"width": 0.18,
+				"anchor": [
+					0.71,
+					0.5
+				]
+			},
+			"hand": {
+				"per_player": true,
+				"layout": "fan",
+				"face": "private",
+				"width": 0.3,
+				"anchor": [
+					0.5,
+					0.86
+				]
+			},
+			"trios": {
+				"label": "Trios",
+				"per_player": true,
+				"layout": "row",
+				"width": 0.14,
+				"anchor": [
+					0.82,
+					0.86
+				]
+			}
+		},
+		"actions": {
+			"Reveal": {
+				"click": "all_hand",
+				"when": "hand_end",
+				"steps": [
+					"revealed_from += [owner(card)]",
+					"log('%s reveals %s\\'s %s' % [name_of(player), name_of(owner(card)), 'lowest' if position(card) == 1 else 'highest'])",
+					"move(card, revealed)"
+				]
+			},
+			"Turn over": {
+				"click": "middle",
+				"when": "card != null and not card.face_up",
+				"steps": [
+					"flip(card)"
+				]
+			},
+			"Continue": {
+				"human_only": true,
+				"steps": []
+			}
+		},
+		"triggers": {
+			"start": [
+				{
+					"for": "player",
+					"in": "players",
+					"do": [
+						"sort(hand, ['value'])"
+					]
+				},
+				"shuffle(box)",
+				"deal(box, all_hand, lookup(hand_sizes, size(players) - 3))",
+				"deal(box, middle, 1)",
+				"player = one_of(players)"
+			],
+			"put_back": [
+				{
+					"for": "shown_card",
+					"in": "revealed",
+					"do": [
+						"move(shown_card, hand[revealed_from[shown_card_number - 1]])"
+					]
+				},
+				"revealed_from = []",
+				"flip(without(middle, face_down(middle)))"
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"hand_end": "owner(card) > 0 and (position(card) == 1 or position(card) == count(hand[owner(card)]))",
+			"shown": "[revealed, without(middle, face_down(middle))]",
+			"mismatch": "size(groups(shown, 'value')) > 1",
+			"trio_count": "count(trios) / 3",
+			"won": "trio_count >= 3 or count(where(trios, 'value', 7)) == 3"
+		},
+		"condition_parameters": {
+			"hand_end": [],
+			"shown": [],
+			"mismatch": [],
+			"trio_count": [],
+			"won": []
+		},
+		"condition_errors": [],
+		"constants": {
+			"hand_sizes": [
+				9,
+				7,
+				6,
+				5
+			]
+		},
+		"turn": [
+			"done = false",
+			{
+				"while": "not done",
+				"do": [
+					"offer(['Reveal', 'Turn over'])",
+					{
+						"if": "mismatch",
+						"then": [
+							"log('No match: everything goes back')",
+							"offer('Continue')",
+							"trigger('put_back')",
+							"done = true"
+						],
+						"else": [
+							{
+								"if": "count(shown) == 3",
+								"then": [
+									"log('%s takes a trio of %ss!' % [name_of(player), text(top(shown), 'value')])",
+									"move(shown, trios)",
+									"revealed_from = []",
+									"offer('Continue')",
+									"done = true"
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"if": "won",
+				"then": [
+					"end_game(player)"
+				]
+			},
+			"end_turn()"
+		],
+		"variables": {
+			"revealed_from": [],
+			"done": false
+		},
+		"players": 4,
+		"seats": [
+			[
+				0.12,
+				0.86
+			]
+		],
+		"player_names": [
+			"You",
+			"West",
+			"North",
+			"East",
+			"Player 5",
+			"Player 6"
+		],
+		"player_variables": {},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"your trios": "count(trios[viewer()]) / 3",
+			"most trios": "most('trio_count')"
+		},
+		"show_variables": [],
+		"bot": {
+			"players": [
+				2.0,
+				3.0,
+				4.0,
+				5.0,
+				6.0
+			],
+			"prefer": "trio_count"
+		},
+		"card_face": {
+			"corner": "name",
+			"title": "name",
+			"background": "paint",
+			"color": "#1b1b1b",
+			"card_back": "#37474f"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "box",
+			"label": "",
+			"has_outline": false,
+			"kind": "box",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "middle_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "middle",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.27000001072883606,
+				0.4000000059604645
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "middle_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "middle",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.3400000035762787,
+				0.4000000059604645
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "middle_3",
+			"label": "",
+			"has_outline": true,
+			"kind": "middle",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.4100000262260437,
+				0.4000000059604645
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "middle_4",
+			"label": "",
+			"has_outline": true,
+			"kind": "middle",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.48000001907348633,
+				0.4000000059604645
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "middle_5",
+			"label": "",
+			"has_outline": true,
+			"kind": "middle",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.550000011920929,
+				0.4000000059604645
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "middle_6",
+			"label": "",
+			"has_outline": true,
+			"kind": "middle",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.27000001072883606,
+				0.6000000238418579
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "middle_7",
+			"label": "",
+			"has_outline": true,
+			"kind": "middle",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.3400000035762787,
+				0.6000000238418579
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "middle_8",
+			"label": "",
+			"has_outline": true,
+			"kind": "middle",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.4100000262260437,
+				0.6000000238418579
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "middle_9",
+			"label": "",
+			"has_outline": true,
+			"kind": "middle",
+			"owner": 0,
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.48000001907348633,
+				0.6000000238418579
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "revealed",
+			"label": "Revealed",
+			"has_outline": true,
+			"kind": "revealed",
+			"owner": 0,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.7099999785423279,
+				0.5
+			],
+			"width": 0.18,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 1,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.8600000143051147
+			],
+			"width": 0.3,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 2,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.13999998569488525,
+				0.4999999701976776
+			],
+			"width": 0.3,
+			"rotation": 90.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_3",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 3,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5000000596046448,
+				0.13999998569488525
+			],
+			"width": 0.3,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "hand_4",
+			"label": "",
+			"has_outline": true,
+			"kind": "hand",
+			"owner": 4,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.8600000143051147,
+				0.5
+			],
+			"width": 0.3,
+			"rotation": 270.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "trios_1",
+			"label": "Trios",
+			"has_outline": true,
+			"kind": "trios",
+			"owner": 1,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.8199999928474426,
+				0.8600000143051147
+			],
+			"width": 0.14,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "trios_2",
+			"label": "Trios",
+			"has_outline": true,
+			"kind": "trios",
+			"owner": 2,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.13999998569488525,
+				0.8199999332427979
+			],
+			"width": 0.14,
+			"rotation": 90.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "trios_3",
+			"label": "Trios",
+			"has_outline": true,
+			"kind": "trios",
+			"owner": 3,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.18000003695487976,
+				0.13999995589256287
+			],
+			"width": 0.14,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "trios_4",
+			"label": "Trios",
+			"has_outline": true,
+			"kind": "trios",
+			"owner": 4,
+			"layout": "row",
+			"face": "up",
+			"anchor": [
+				0.8600000143051147,
+				0.18000000715255737
+			],
+			"width": 0.14,
+			"rotation": 270.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/trio.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"name",
+				"value"
+			],
+			"cards": [
+				{
+					"name": "1",
+					"value": "1",
+					"paint": "#e57373"
+				},
+				{
+					"name": "1",
+					"value": "1",
+					"paint": "#e57373"
+				},
+				{
+					"name": "1",
+					"value": "1",
+					"paint": "#e57373"
+				},
+				{
+					"name": "2",
+					"value": "2",
+					"paint": "#f06292"
+				},
+				{
+					"name": "2",
+					"value": "2",
+					"paint": "#f06292"
+				},
+				{
+					"name": "2",
+					"value": "2",
+					"paint": "#f06292"
+				},
+				{
+					"name": "3",
+					"value": "3",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "3",
+					"value": "3",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "3",
+					"value": "3",
+					"paint": "#ba68c8"
+				},
+				{
+					"name": "4",
+					"value": "4",
+					"paint": "#9575cd"
+				},
+				{
+					"name": "4",
+					"value": "4",
+					"paint": "#9575cd"
+				},
+				{
+					"name": "4",
+					"value": "4",
+					"paint": "#9575cd"
+				},
+				{
+					"name": "5",
+					"value": "5",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "5",
+					"value": "5",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "5",
+					"value": "5",
+					"paint": "#7986cb"
+				},
+				{
+					"name": "6",
+					"value": "6",
+					"paint": "#64b5f6"
+				},
+				{
+					"name": "6",
+					"value": "6",
+					"paint": "#64b5f6"
+				},
+				{
+					"name": "6",
+					"value": "6",
+					"paint": "#64b5f6"
+				},
+				{
+					"name": "7",
+					"value": "7",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "7",
+					"value": "7",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "7",
+					"value": "7",
+					"paint": "#4fc3f7"
+				},
+				{
+					"name": "8",
+					"value": "8",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "8",
+					"value": "8",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "8",
+					"value": "8",
+					"paint": "#4db6ac"
+				},
+				{
+					"name": "9",
+					"value": "9",
+					"paint": "#81c784"
+				},
+				{
+					"name": "9",
+					"value": "9",
+					"paint": "#81c784"
+				},
+				{
+					"name": "9",
+					"value": "9",
+					"paint": "#81c784"
+				},
+				{
+					"name": "10",
+					"value": "10",
+					"paint": "#dce775"
+				},
+				{
+					"name": "10",
+					"value": "10",
+					"paint": "#dce775"
+				},
+				{
+					"name": "10",
+					"value": "10",
+					"paint": "#dce775"
+				},
+				{
+					"name": "11",
+					"value": "11",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "11",
+					"value": "11",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "11",
+					"value": "11",
+					"paint": "#ffd54f"
+				},
+				{
+					"name": "12",
+					"value": "12",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "12",
+					"value": "12",
+					"paint": "#ffb74d"
+				},
+				{
+					"name": "12",
+					"value": "12",
+					"paint": "#ffb74d"
+				}
+			]
+		}
+	}
+}

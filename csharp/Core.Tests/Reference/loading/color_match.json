@@ -2,6 +2,17 @@
 	"rules": {
 		"title": "Color Match",
 		"description": "Two players sharing the screen. Match the color or number; +2 and Wild cards. The README tutorial builds it.",
+		"how_to_play": [
+			"# Goal",
+			"Be the first to play every card in your hand.",
+			"# Your turn",
+			"- Play a card by dragging it from your hand to the pile. It must match the top card's color or number, or be a Wild.",
+			"- If you can't (or don't want to) play, click the deck to draw a card instead. Either way, your turn ends.",
+			"# Special cards",
+			"- +2: the next player draws two cards.",
+			"- Wild: plays on anything; choose the new color from the buttons under the table.",
+			"- The sort buttons on the right arrange your hand by color or number."
+		],
 		"zones": {
 			"deck": {
 				"label": "Deck",

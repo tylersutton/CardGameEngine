@@ -39,7 +39,7 @@ Then add it to the [reference](reference.md#building-blocks).
 
 ## Tests
 
-Run the engine and editor tests with `dotnet test` in `csharp/`. They take about ten seconds.
+Run the engine and editor tests with `dotnet test` in `csharp/`. They take about a minute.
 
 | Tests | Run them after changing |
 |---|---|

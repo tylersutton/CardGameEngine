@@ -1,0 +1,203 @@
+{
+	"title": "Checkers",
+	"description": "You play Red against a Black bot. Drag a piece one square diagonally forward, or jump over an enemy piece to the empty square beyond to capture it. Capturing is compulsory, and a piece that can jump again must keep jumping. A piece reaching the far row is crowned King (which ends the move), and Kings move and jump backwards too. A player who can't move loses; 80 moves without a capture is a draw.",
+	"how_to_play": [
+		"# Goal",
+		"Capture all of your opponent's pieces, or leave them with no move. You play Red, at the bottom, and move up the board.",
+		"# Moving",
+		"- Drag one of your pieces one square diagonally forward onto an empty dark square.",
+		"- Jump: drag a piece over an enemy piece next to it, diagonally, onto the empty square beyond. The jumped piece is captured.",
+		"- If you can jump, you must. If the piece that jumped can jump again, it must keep going (drag it again).",
+		"# Kings",
+		"- A piece that reaches the far row is crowned King (it shows a K), and its move ends there.",
+		"- Kings move and jump backwards as well as forwards.",
+		"# The end",
+		"- A player with no pieces, or no legal move, loses.",
+		"- 80 moves in a row without a capture is a draw."
+	],
+	"players": 2,
+	"player_names": [
+		"Red",
+		"Black"
+	],
+	"seats": [
+		[
+			0.5,
+			0.96
+		],
+		[
+			0.5,
+			0.04
+		]
+	],
+	"zones": {
+		"box": {
+			"outline": false,
+			"layout": "pile",
+			"anchor": [
+				-0.3,
+				0.5
+			],
+			"cards": "res://decks/checkers.csv"
+		},
+		"grid": {
+			"board": {
+				"shape": "square",
+				"columns": 8,
+				"rows": 8,
+				"size": 76,
+				"paint": {
+					"dark": "#6b4226",
+					"light": "#ead6ad"
+				}
+			},
+			"anchor": [
+				0.5,
+				0.5
+			]
+		},
+		// The pieces each player has captured.
+		"taken": {
+			"label": "Taken",
+			"per_player": true,
+			"layout": "pile",
+			"show_count": true,
+			"anchors": [
+				[
+					0.85,
+					0.75
+				],
+				[
+					0.15,
+					0.25
+				]
+			],
+			"rotations": [
+				0,
+				0
+			]
+		}
+	},
+	"variables": {
+		"must_jump": false,
+		"chain_column": 0,
+		"chain_row": 0,
+		"quiet_moves": 0
+	},
+	"conditions": {
+		"dark(space)": "(space.column + space.row) % 2 == 1",
+		"light(space)": "not dark(space)",
+		"my_color": "'Red' if player == 1 else 'Black'",
+		"their_color": "'Black' if player == 1 else 'Red'",
+		"mine(space)": "text(top(space), 'color') == my_color",
+		"theirs(space)": "text(top(space), 'color') == their_color",
+		"empty(space)": "space != null and count(space) == 0",
+		"king(space)": "text(top(space), 'king') == 'yes'",
+		"forward": "-1 if player == 1 else 1",
+		"may_go(space, rows)": "king(space) or rows == forward",
+		"can_jump_toward(space, columns, rows)": "may_go(space, rows) and theirs(space_at(grid, space.column + columns, space.row + rows)) and empty(space_at(grid, space.column + 2 * columns, space.row + 2 * rows))",
+		"can_jump(space)": "mine(space) and (can_jump_toward(space, 1, 1) or can_jump_toward(space, -1, 1) or can_jump_toward(space, 1, -1) or can_jump_toward(space, -1, -1))",
+		"columns_moved": "to.column - from.column",
+		"rows_moved": "to.row - from.row",
+		"is_step": "abs(columns_moved) == 1 and abs(rows_moved) == 1 and may_go(from, rows_moved)",
+		"is_jump": "abs(columns_moved) == 2 and abs(rows_moved) == 2 and can_jump_toward(from, columns_moved / 2, rows_moved / 2)",
+		"continues_chain": "chain_column == 0 or (from.column == chain_column and from.row == chain_row)",
+		"far_row": "1 if player == 1 else 8",
+		// For bots: a piece of mine an enemy piece could jump (ignoring which way that piece may move).
+		"exposed_toward(space, columns, rows)": "theirs(space_at(grid, space.column + columns, space.row + rows)) and empty(space_at(grid, space.column - columns, space.row - rows))",
+		"exposed(space)": "mine(space) and (exposed_toward(space, 1, 1) or exposed_toward(space, -1, 1) or exposed_toward(space, 1, -1) or exposed_toward(space, -1, -1))",
+		// Kings are worth two men.
+		"material(color)": "count(where(grid, 'color', color)) + count(where(where(grid, 'color', color), 'king', 'yes'))"
+	},
+	"actions": {
+		"Move": {
+			"drag": {
+				"from": "grid",
+				"to": "grid"
+			},
+			"when": "mine(from) and count(to) == 0 and continues_chain and (is_jump if must_jump else is_step)",
+			"steps": [
+				"jumped = abs(to.column - from.column) == 2",
+				{
+					"if": "jumped",
+					"then": [
+						"move(space_at(grid, (from.column + to.column) / 2, (from.row + to.row) / 2), taken)",
+						"quiet_moves = 0"
+					],
+					"else": "quiet_moves += 1"
+				},
+				"crowned = not king(to) and to.row == far_row",
+				{
+					"if": "crowned",
+					"then": [
+						"log('%s is crowned King' % [my_color])",
+						"swap(card, top(where(box, 'name', my_color + ' king')))"
+					]
+				},
+				{
+					"if": "jumped and not crowned and can_jump(to)",
+					"then": [
+						"chain_column = to.column",
+						"chain_row = to.row"
+					],
+					"else": "chain_column = 0"
+				}
+			]
+		}
+	},
+	"turn": [
+		"chain_column = 0",
+		"must_jump = count(zones_where(grid, 'can_jump')) > 0",
+		{
+			"if": "offer('Move') == null",
+			"then": "end_game(next_player())"
+		},
+		{
+			"while": "chain_column > 0",
+			"do": [
+				"must_jump = true",
+				"offer('Move')"
+			]
+		},
+		{
+			"if": "quiet_moves >= 80",
+			"then": "end_game()"
+		},
+		"end_turn()"
+	],
+	"triggers": {
+		"start": [
+			{
+				"for": "space",
+				"in": "zones_where(grid, 'dark')",
+				"do": [
+					{
+						"if": "space.row <= 3",
+						"then": "move(top(where(box, 'name', 'Black')), space)"
+					},
+					{
+						"if": "space.row >= 6",
+						"then": "move(top(where(box, 'name', 'Red')), space)"
+					}
+				]
+			}
+		]
+	},
+	"status": {
+		"you play": "lookup(['Red', 'Black'], viewer() - 1)",
+		"must capture": "'yes' if must_jump else 'no'"
+	},
+	"bot": {
+		"players": [
+			2
+		],
+		"prefer": "material(my_color) - material(their_color) - 0.8 * count(zones_where(grid, 'exposed'))"
+	},
+	"card_face": {
+		"shape": "disc",
+		"size": 60,
+		"background": "paint",
+		"title": "crown",
+		"color": "#ffd54a"
+	}
+}

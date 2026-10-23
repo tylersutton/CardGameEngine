@@ -75,8 +75,12 @@ public class Snapshot
         game.Plays.Offered = [.. offered];
         game.Over = over;
         game.Winners = [.. winners];
-        game.KnockedOut = [.. knockedOut];
-        game.ClearPlayerCaches();
+        // Bots restore after every move they try, so the caches built from who's out are kept unless that changed.
+        if (!game.KnockedOut.SequenceEqual(knockedOut))
+        {
+            game.KnockedOut = [.. knockedOut];
+            game.ClearPlayerCaches();
+        }
         game.Random.State = randomState;
     }
 

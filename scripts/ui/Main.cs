@@ -1,7 +1,7 @@
 using Core;
 using Godot;
 
-/// The play screen: the toolbar (undo, the designer menu), the table, the dock under it (ActionDock) and the log.
+/// The play screen: the toolbar (undo, how to play, the designer menu), the table, the dock under it (ActionDock) and the log.
 /// Bots take their turns here; online, inputs go through Net.
 public partial class Main : Control
 {
@@ -33,6 +33,7 @@ public partial class Main : Control
     ActionDock dock = null!;
     DesignerMenu designerMenu = null!;
     WinnerBanner banner = null!;
+    readonly HowToPlayWindow howToPlay = new();
     Net Net => Net.Instance;
 
     public override void _Ready()
@@ -45,6 +46,14 @@ public partial class Main : Control
         designerMenu = GetNode<DesignerMenu>("%DesignerMenu");
         banner = new() { Over = table };
         AddChild(banner);
+        AddChild(howToPlay);
+        GetNode<Button>("%HowToPlayButton").Pressed += () =>
+        {
+            if (Game != null)
+            {
+                howToPlay.ShowRules(Game.Rules);
+            }
+        };
         GetNode<Button>("%GamesButton").Pressed += LeaveTable;
         GetNode<Button>("%UndoButton").Pressed += () =>
         {

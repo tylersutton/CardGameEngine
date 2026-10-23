@@ -2,6 +2,15 @@
 	"rules": {
 		"title": "Hex",
 		"description": "You play Red against a Blue bot. Take turns placing a stone on any empty cell: click it, or drag a stone there from your pile. Red wins by joining the top and bottom edges with a chain of red stones, Blue by joining the left and right edges. Someone always wins.",
+		"how_to_play": [
+			"# Goal",
+			"You play Red: join the top and bottom edges of the board with a chain of your stones. Blue tries to join the left and right edges.",
+			"# Your turn",
+			"- Click any empty cell (or drag a stone there from your pile) to place a stone.",
+			"- Stones never move or get captured.",
+			"# The end",
+			"- The first chain from edge to edge wins. Someone always wins: there are no draws in Hex."
+		],
 		"zones": {
 			"cell": {
 				"board": {

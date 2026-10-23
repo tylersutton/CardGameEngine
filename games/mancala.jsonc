@@ -1,0 +1,170 @@
+{
+	"title": "Mancala",
+	"description": "Kalah, you against a bot. Your pits are the bottom row and your store is on the right. Click one of your pits to sow: its seeds go one by one into the next pits counter-clockwise, through your store but never your opponent's. Last seed in your store: go again. Last seed in an empty pit of yours: capture it and the seeds opposite. When one side is empty, the other player banks what's left on theirs, and the fuller store wins.",
+	"how_to_play": [
+		"# Goal",
+		"Get more seeds in your store than your opponent. Your six pits are the bottom row of the board; your store is the big pile on the right. The numbers show how many seeds each pit holds.",
+		"# Your turn",
+		"- Click one of your pits that has seeds in it. All its seeds are picked up and sown, one at a time, into the following pits, going counter-clockwise: right along the bottom row, into your store, then left along the top row.",
+		"- Sowing passes through your own store, but skips your opponent's store (on the left).",
+		"# Extra turns and captures",
+		"- If your last seed lands in your store, you go again.",
+		"- If your last seed lands in an empty pit on your side, you capture it, along with every seed in the opponent's pit directly opposite. They all go to your store.",
+		"# The end",
+		"- The game ends when all the pits on one side are empty. Each player adds the seeds still on their own side to their store, and the fuller store wins."
+	],
+	"players": 2,
+	"player_names": [
+		"You",
+		"Bot"
+	],
+	"seats": [
+		[
+			0.5,
+			0.92
+		],
+		[
+			0.5,
+			0.08
+		]
+	],
+	"zones": {
+		"box": {
+			"outline": false,
+			"layout": "pile",
+			"anchor": [
+				-0.3,
+				0.5
+			],
+			"cards": "res://decks/mancala.csv"
+		},
+		// Two rows of six pits: yours along the bottom, your opponent's along the top.
+		"pit": {
+			"board": {
+				"shape": "square",
+				"columns": 6,
+				"rows": 2,
+				"size": 96,
+				"paint": {
+					"any_pit": "#7a4f2a"
+				}
+			},
+			"show_count": true,
+			"anchor": [
+				0.5,
+				0.5
+			]
+		},
+		"store": {
+			"label": "Store",
+			"per_player": true,
+			"layout": "pile",
+			"show_count": true,
+			"anchors": [
+				[
+					0.79,
+					0.5
+				],
+				[
+					0.21,
+					0.5
+				]
+			],
+			"rotations": [
+				0,
+				0
+			]
+		}
+	},
+	"variables": {
+		"extra_turn": false
+	},
+	"conditions": {
+		"any_pit(pit)": "true",
+		"my_pit(pit)": "pit.row == (2 if player == 1 else 1)",
+		// Sowing goes round a ring of 14 places, counter-clockwise from the bottom left pit: 0 to 5 are player 1's
+		// pits, 6 their store, 7 to 12 player 2's pits (right to left), 13 player 2's store.
+		"ring(place)": "space_at(pit, place + 1, 2) if place < 6 else (store[1] if place == 6 else (space_at(pit, 13 - place, 1) if place < 13 else store[2]))",
+		"ring_place(pit)": "pit.column - 1 if pit.row == 2 else 13 - pit.column",
+		"my_store_place": "6 if player == 1 else 13",
+		"their_store_place": "13 if player == 1 else 6",
+		"opposite(pit)": "space_at(pit, pit.column, 3 - pit.row)",
+		"side_empty": "count(zones_where(pit, 'my_pit')) == 0",
+		"banked": "count(store)"
+	},
+	"actions": {
+		"Sow": {
+			"click": "pit",
+			"when": "my_pit(clicked_zone) and count(clicked_zone) > 0",
+			"steps": [
+				"at = ring_place(clicked_zone)",
+				{
+					"for": "seed",
+					"in": "clicked_zone",
+					"do": [
+						"at = (at + 1) % 14",
+						{
+							"if": "at == their_store_place",
+							"then": "at = (at + 1) % 14"
+						},
+						"move(seed, ring(at))"
+					]
+				},
+				{
+					"if": "at == my_store_place",
+					"then": [
+						"log('%s ends in their store, and goes again' % [name_of(player)])",
+						"extra_turn = true"
+					],
+					"else": {
+						"if": "my_pit(ring(at)) and count(ring(at)) == 1 and count(opposite(ring(at))) > 0",
+						"then": [
+							"log('%s captures %d seeds' % [name_of(player), 1 + count(opposite(ring(at)))])",
+							"move([ring(at), opposite(ring(at))], store)"
+						]
+					}
+				}
+			]
+		}
+	},
+	"turn": [
+		"extra_turn = false",
+		"offer('Sow')",
+		{
+			"if": "size(players_where('side_empty')) > 0",
+			"then": [
+				{
+					"for": "player",
+					"in": "players",
+					"do": "move(zones_where(pit, 'my_pit'), store)"
+				},
+				"end_game(players_with_most('banked'))"
+			]
+		},
+		{
+			"if": "not extra_turn",
+			"then": "end_turn()"
+		}
+	],
+	"triggers": {
+		"start": [
+			"deal(box, pit, 4)",
+			"player = one_of(players)"
+		]
+	},
+	"status": {
+		"your store": "count(store[viewer()])",
+		"their store": "count(store[3 - viewer()])"
+	},
+	"bot": {
+		"players": [
+			2
+		],
+		"prefer": "count(store) - count(opponent_store)"
+	},
+	"card_face": {
+		"shape": "disc",
+		"size": 18,
+		"background": "paint"
+	}
+}

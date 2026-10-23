@@ -1,0 +1,1828 @@
+{
+	"rules": {
+		"title": "Checkers",
+		"description": "You play Red against a Black bot. Drag a piece one square diagonally forward, or jump over an enemy piece to the empty square beyond to capture it. Capturing is compulsory, and a piece that can jump again must keep jumping. A piece reaching the far row is crowned King (which ends the move), and Kings move and jump backwards too. A player who can't move loses; 80 moves without a capture is a draw.",
+		"how_to_play": [
+			"# Goal",
+			"Capture all of your opponent's pieces, or leave them with no move. You play Red, at the bottom, and move up the board.",
+			"# Moving",
+			"- Drag one of your pieces one square diagonally forward onto an empty dark square.",
+			"- Jump: drag a piece over an enemy piece next to it, diagonally, onto the empty square beyond. The jumped piece is captured.",
+			"- If you can jump, you must. If the piece that jumped can jump again, it must keep going (drag it again).",
+			"# Kings",
+			"- A piece that reaches the far row is crowned King (it shows a K), and its move ends there.",
+			"- Kings move and jump backwards as well as forwards.",
+			"# The end",
+			"- A player with no pieces, or no legal move, loses.",
+			"- 80 moves in a row without a capture is a draw."
+		],
+		"zones": {
+			"box": {
+				"outline": false,
+				"layout": "pile",
+				"anchor": [
+					-0.3,
+					0.5
+				],
+				"cards": "res://decks/checkers.csv"
+			},
+			"grid": {
+				"board": {
+					"shape": "square",
+					"columns": 8.0,
+					"rows": 8.0,
+					"size": 76.0,
+					"paint": {
+						"dark": "#6b4226",
+						"light": "#ead6ad"
+					}
+				},
+				"anchor": [
+					0.5,
+					0.5
+				]
+			},
+			"taken": {
+				"label": "Taken",
+				"per_player": true,
+				"layout": "pile",
+				"show_count": true,
+				"anchors": [
+					[
+						0.85,
+						0.75
+					],
+					[
+						0.15,
+						0.25
+					]
+				],
+				"rotations": [
+					0.0,
+					0.0
+				]
+			}
+		},
+		"actions": {
+			"Move": {
+				"drag": {
+					"from": "grid",
+					"to": "grid"
+				},
+				"when": "mine(from) and count(to) == 0 and continues_chain and (is_jump if must_jump else is_step)",
+				"steps": [
+					"jumped = abs(to.column - from.column) == 2",
+					{
+						"if": "jumped",
+						"then": [
+							"move(space_at(grid, (from.column + to.column) / 2, (from.row + to.row) / 2), taken)",
+							"quiet_moves = 0"
+						],
+						"else": [
+							"quiet_moves += 1"
+						]
+					},
+					"crowned = not king(to) and to.row == far_row",
+					{
+						"if": "crowned",
+						"then": [
+							"log('%s is crowned King' % [my_color])",
+							"swap(card, top(where(box, 'name', my_color + ' king')))"
+						]
+					},
+					{
+						"if": "jumped and not crowned and can_jump(to)",
+						"then": [
+							"chain_column = to.column",
+							"chain_row = to.row"
+						],
+						"else": [
+							"chain_column = 0"
+						]
+					}
+				]
+			}
+		},
+		"triggers": {
+			"start": [
+				{
+					"for": "space",
+					"in": "zones_where(grid, 'dark')",
+					"do": [
+						{
+							"if": "space.row <= 3",
+							"then": [
+								"move(top(where(box, 'name', 'Black')), space)"
+							]
+						},
+						{
+							"if": "space.row >= 6",
+							"then": [
+								"move(top(where(box, 'name', 'Red')), space)"
+							]
+						}
+					]
+				}
+			]
+		},
+		"effects": {},
+		"conditions": {
+			"dark": "(space.column + space.row) % 2 == 1",
+			"light": "not dark(space)",
+			"my_color": "'Red' if player == 1 else 'Black'",
+			"their_color": "'Black' if player == 1 else 'Red'",
+			"mine": "text(top(space), 'color') == my_color",
+			"theirs": "text(top(space), 'color') == their_color",
+			"empty": "space != null and count(space) == 0",
+			"king": "text(top(space), 'king') == 'yes'",
+			"forward": "-1 if player == 1 else 1",
+			"may_go": "king(space) or rows == forward",
+			"can_jump_toward": "may_go(space, rows) and theirs(space_at(grid, space.column + columns, space.row + rows)) and empty(space_at(grid, space.column + 2 * columns, space.row + 2 * rows))",
+			"can_jump": "mine(space) and (can_jump_toward(space, 1, 1) or can_jump_toward(space, -1, 1) or can_jump_toward(space, 1, -1) or can_jump_toward(space, -1, -1))",
+			"columns_moved": "to.column - from.column",
+			"rows_moved": "to.row - from.row",
+			"is_step": "abs(columns_moved) == 1 and abs(rows_moved) == 1 and may_go(from, rows_moved)",
+			"is_jump": "abs(columns_moved) == 2 and abs(rows_moved) == 2 and can_jump_toward(from, columns_moved / 2, rows_moved / 2)",
+			"continues_chain": "chain_column == 0 or (from.column == chain_column and from.row == chain_row)",
+			"far_row": "1 if player == 1 else 8",
+			"exposed_toward": "theirs(space_at(grid, space.column + columns, space.row + rows)) and empty(space_at(grid, space.column - columns, space.row - rows))",
+			"exposed": "mine(space) and (exposed_toward(space, 1, 1) or exposed_toward(space, -1, 1) or exposed_toward(space, 1, -1) or exposed_toward(space, -1, -1))",
+			"material": "count(where(grid, 'color', color)) + count(where(where(grid, 'color', color), 'king', 'yes'))"
+		},
+		"condition_parameters": {
+			"dark": [
+				"space"
+			],
+			"light": [
+				"space"
+			],
+			"my_color": [],
+			"their_color": [],
+			"mine": [
+				"space"
+			],
+			"theirs": [
+				"space"
+			],
+			"empty": [
+				"space"
+			],
+			"king": [
+				"space"
+			],
+			"forward": [],
+			"may_go": [
+				"space",
+				"rows"
+			],
+			"can_jump_toward": [
+				"space",
+				"columns",
+				"rows"
+			],
+			"can_jump": [
+				"space"
+			],
+			"columns_moved": [],
+			"rows_moved": [],
+			"is_step": [],
+			"is_jump": [],
+			"continues_chain": [],
+			"far_row": [],
+			"exposed_toward": [
+				"space",
+				"columns",
+				"rows"
+			],
+			"exposed": [
+				"space"
+			],
+			"material": [
+				"color"
+			]
+		},
+		"condition_errors": [],
+		"constants": {},
+		"turn": [
+			"chain_column = 0",
+			"must_jump = count(zones_where(grid, 'can_jump')) > 0",
+			{
+				"if": "offer('Move') == null",
+				"then": [
+					"end_game(next_player())"
+				]
+			},
+			{
+				"while": "chain_column > 0",
+				"do": [
+					"must_jump = true",
+					"offer('Move')"
+				]
+			},
+			{
+				"if": "quiet_moves >= 80",
+				"then": [
+					"end_game()"
+				]
+			},
+			"end_turn()"
+		],
+		"variables": {
+			"must_jump": false,
+			"chain_column": 0,
+			"chain_row": 0,
+			"quiet_moves": 0
+		},
+		"players": 2,
+		"seats": [
+			[
+				0.5,
+				0.96
+			],
+			[
+				0.5,
+				0.04
+			]
+		],
+		"player_names": [
+			"Red",
+			"Black"
+		],
+		"player_variables": {},
+		"teams": [],
+		"team_variables": {},
+		"melds": {},
+		"status": {
+			"you play": "lookup(['Red', 'Black'], viewer() - 1)",
+			"must capture": "'yes' if must_jump else 'no'"
+		},
+		"show_variables": [],
+		"bot": {
+			"players": [
+				2.0
+			],
+			"prefer": "material(my_color) - material(their_color) - 0.8 * count(zones_where(grid, 'exposed'))"
+		},
+		"card_face": {
+			"shape": "disc",
+			"size": 60.0,
+			"background": "paint",
+			"title": "crown",
+			"color": "#ffd54a"
+		},
+		"unknown_keys": [],
+		"error": ""
+	},
+	"zones": [
+		{
+			"name": "box",
+			"label": "",
+			"has_outline": false,
+			"kind": "box",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				-0.30000001192092896,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_1",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_2",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_3",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_4",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_5",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_6",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_7",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_8",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_9",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_10",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_11",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_12",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_13",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_14",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_15",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_16",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_17",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_18",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_19",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_20",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_21",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_22",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_23",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_24",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_25",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_26",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_27",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_28",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_29",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_30",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_31",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_32",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_33",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_34",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_35",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_36",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_37",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_38",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_39",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_40",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_41",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_42",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_43",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_44",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_45",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_46",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_47",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_48",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_49",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_50",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_51",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_52",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_53",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_54",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_55",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_56",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_57",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_58",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_59",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_60",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_61",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_62",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_63",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "grid_64",
+			"label": "",
+			"has_outline": true,
+			"kind": "grid",
+			"owner": 0,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "taken_1",
+			"label": "Taken",
+			"has_outline": true,
+			"kind": "taken",
+			"owner": 1,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.8500000238418579,
+				0.75
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		},
+		{
+			"name": "taken_2",
+			"label": "Taken",
+			"has_outline": true,
+			"kind": "taken",
+			"owner": 2,
+			"layout": "pile",
+			"face": "up",
+			"anchor": [
+				0.15000000596046448,
+				0.25
+			],
+			"width": 0.0,
+			"rotation": 0.0,
+			"drags_stack": false,
+			"spread": 0,
+			"covered_by": []
+		}
+	],
+	"decks": {
+		"res://decks/checkers.csv": {
+			"title_column": "name",
+			"number_columns": [],
+			"cards": [
+				{
+					"name": "Red",
+					"color": "Red",
+					"king": "no",
+					"paint": "#c0392b",
+					"crown": ""
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"king": "no",
+					"paint": "#c0392b",
+					"crown": ""
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"king": "no",
+					"paint": "#c0392b",
+					"crown": ""
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"king": "no",
+					"paint": "#c0392b",
+					"crown": ""
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"king": "no",
+					"paint": "#c0392b",
+					"crown": ""
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"king": "no",
+					"paint": "#c0392b",
+					"crown": ""
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"king": "no",
+					"paint": "#c0392b",
+					"crown": ""
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"king": "no",
+					"paint": "#c0392b",
+					"crown": ""
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"king": "no",
+					"paint": "#c0392b",
+					"crown": ""
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"king": "no",
+					"paint": "#c0392b",
+					"crown": ""
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"king": "no",
+					"paint": "#c0392b",
+					"crown": ""
+				},
+				{
+					"name": "Red",
+					"color": "Red",
+					"king": "no",
+					"paint": "#c0392b",
+					"crown": ""
+				},
+				{
+					"name": "Black",
+					"color": "Black",
+					"king": "no",
+					"paint": "#262626",
+					"crown": ""
+				},
+				{
+					"name": "Black",
+					"color": "Black",
+					"king": "no",
+					"paint": "#262626",
+					"crown": ""
+				},
+				{
+					"name": "Black",
+					"color": "Black",
+					"king": "no",
+					"paint": "#262626",
+					"crown": ""
+				},
+				{
+					"name": "Black",
+					"color": "Black",
+					"king": "no",
+					"paint": "#262626",
+					"crown": ""
+				},
+				{
+					"name": "Black",
+					"color": "Black",
+					"king": "no",
+					"paint": "#262626",
+					"crown": ""
+				},
+				{
+					"name": "Black",
+					"color": "Black",
+					"king": "no",
+					"paint": "#262626",
+					"crown": ""
+				},
+				{
+					"name": "Black",
+					"color": "Black",
+					"king": "no",
+					"paint": "#262626",
+					"crown": ""
+				},
+				{
+					"name": "Black",
+					"color": "Black",
+					"king": "no",
+					"paint": "#262626",
+					"crown": ""
+				},
+				{
+					"name": "Black",
+					"color": "Black",
+					"king": "no",
+					"paint": "#262626",
+					"crown": ""
+				},
+				{
+					"name": "Black",
+					"color": "Black",
+					"king": "no",
+					"paint": "#262626",
+					"crown": ""
+				},
+				{
+					"name": "Black",
+					"color": "Black",
+					"king": "no",
+					"paint": "#262626",
+					"crown": ""
+				},
+				{
+					"name": "Black",
+					"color": "Black",
+					"king": "no",
+					"paint": "#262626",
+					"crown": ""
+				},
+				{
+					"name": "Red king",
+					"color": "Red",
+					"king": "yes",
+					"paint": "#c0392b",
+					"crown": "K"
+				},
+				{
+					"name": "Red king",
+					"color": "Red",
+					"king": "yes",
+					"paint": "#c0392b",
+					"crown": "K"
+				},
+				{
+					"name": "Red king",
+					"color": "Red",
+					"king": "yes",
+					"paint": "#c0392b",
+					"crown": "K"
+				},
+				{
+					"name": "Red king",
+					"color": "Red",
+					"king": "yes",
+					"paint": "#c0392b",
+					"crown": "K"
+				},
+				{
+					"name": "Red king",
+					"color": "Red",
+					"king": "yes",
+					"paint": "#c0392b",
+					"crown": "K"
+				},
+				{
+					"name": "Red king",
+					"color": "Red",
+					"king": "yes",
+					"paint": "#c0392b",
+					"crown": "K"
+				},
+				{
+					"name": "Red king",
+					"color": "Red",
+					"king": "yes",
+					"paint": "#c0392b",
+					"crown": "K"
+				},
+				{
+					"name": "Red king",
+					"color": "Red",
+					"king": "yes",
+					"paint": "#c0392b",
+					"crown": "K"
+				},
+				{
+					"name": "Red king",
+					"color": "Red",
+					"king": "yes",
+					"paint": "#c0392b",
+					"crown": "K"
+				},
+				{
+					"name": "Red king",
+					"color": "Red",
+					"king": "yes",
+					"paint": "#c0392b",
+					"crown": "K"
+				},
+				{
+					"name": "Red king",
+					"color": "Red",
+					"king": "yes",
+					"paint": "#c0392b",
+					"crown": "K"
+				},
+				{
+					"name": "Red king",
+					"color": "Red",
+					"king": "yes",
+					"paint": "#c0392b",
+					"crown": "K"
+				},
+				{
+					"name": "Black king",
+					"color": "Black",
+					"king": "yes",
+					"paint": "#262626",
+					"crown": "K"
+				},
+				{
+					"name": "Black king",
+					"color": "Black",
+					"king": "yes",
+					"paint": "#262626",
+					"crown": "K"
+				},
+				{
+					"name": "Black king",
+					"color": "Black",
+					"king": "yes",
+					"paint": "#262626",
+					"crown": "K"
+				},
+				{
+					"name": "Black king",
+					"color": "Black",
+					"king": "yes",
+					"paint": "#262626",
+					"crown": "K"
+				},
+				{
+					"name": "Black king",
+					"color": "Black",
+					"king": "yes",
+					"paint": "#262626",
+					"crown": "K"
+				},
+				{
+					"name": "Black king",
+					"color": "Black",
+					"king": "yes",
+					"paint": "#262626",
+					"crown": "K"
+				},
+				{
+					"name": "Black king",
+					"color": "Black",
+					"king": "yes",
+					"paint": "#262626",
+					"crown": "K"
+				},
+				{
+					"name": "Black king",
+					"color": "Black",
+					"king": "yes",
+					"paint": "#262626",
+					"crown": "K"
+				},
+				{
+					"name": "Black king",
+					"color": "Black",
+					"king": "yes",
+					"paint": "#262626",
+					"crown": "K"
+				},
+				{
+					"name": "Black king",
+					"color": "Black",
+					"king": "yes",
+					"paint": "#262626",
+					"crown": "K"
+				},
+				{
+					"name": "Black king",
+					"color": "Black",
+					"king": "yes",
+					"paint": "#262626",
+					"crown": "K"
+				},
+				{
+					"name": "Black king",
+					"color": "Black",
+					"king": "yes",
+					"paint": "#262626",
+					"crown": "K"
+				}
+			]
+		}
+	}
+}

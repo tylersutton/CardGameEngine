@@ -1,0 +1,1387 @@
+[
+	{
+		"seed": 1,
+		"inputs": [
+			{
+				"type": "choose",
+				"option": 5
+			},
+			{
+				"type": "perform",
+				"action": "Hit"
+			},
+			{
+				"type": "perform",
+				"action": "Stand"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 10
+			},
+			{
+				"type": "perform",
+				"action": "Hit"
+			},
+			{
+				"type": "perform",
+				"action": "Stand"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 10
+			},
+			{
+				"type": "perform",
+				"action": "Double down"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 5
+			},
+			{
+				"type": "perform",
+				"action": "Double down"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 10
+			},
+			{
+				"type": "perform",
+				"action": "Stand"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 25
+			},
+			{
+				"type": "perform",
+				"action": "Hit"
+			},
+			{
+				"type": "perform",
+				"action": "Stand"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 5
+			},
+			{
+				"type": "perform",
+				"action": "Hit"
+			},
+			{
+				"type": "perform",
+				"action": "Hit"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 25
+			},
+			{
+				"type": "perform",
+				"action": "Stand"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 5
+			},
+			{
+				"type": "perform",
+				"action": "Double down"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 25
+			},
+			{
+				"type": "perform",
+				"action": "Stand"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  shuffle shoe",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 5",
+				"  bet_1 = 5",
+				"You bets 5",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 6♠, A♣",
+				"  shoe → dealer: Q♥, 2♠",
+				"  face down in dealer: 2♠",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Hit",
+				"  shoe → hand_1: 8♦",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Stand",
+				"  while done == 'Hit' and my_total < 21: repeated 2 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: 2♠",
+				"  shoe → dealer: 9♣",
+				"  while dealer_total < 17: repeated 1 times",
+				"Dealer has 21",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 95",
+				"You: 15 against the dealer's 21, loses 5 chips",
+				"  hands_played = 1",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 6♠, A♣, 8♦",
+				"  dealer → discard: Q♥, 2♠, 9♣",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 10",
+				"  bet_1 = 10",
+				"You bets 10",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 5♣, 7♥",
+				"  shoe → dealer: 2♥, 10♠",
+				"  face down in dealer: 10♠",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Hit",
+				"  shoe → hand_1: 8♠",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Stand",
+				"  while done == 'Hit' and my_total < 21: repeated 2 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: 10♠",
+				"  shoe → dealer: 10♥",
+				"  while dealer_total < 17: repeated 1 times",
+				"Dealer has 22",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 105",
+				"You: 20 against the dealer's 22, wins 10 chips",
+				"  hands_played = 2",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 5♣, 7♥, 8♠",
+				"  dealer → discard: 2♥, 10♠, 10♥",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 10",
+				"  bet_1 = 10",
+				"You bets 10",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 6♥, K♥",
+				"  shoe → dealer: J♣, 5♦",
+				"  face down in dealer: 5♦",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Double down",
+				"  bet_1 = 20",
+				"  shoe → hand_1: K♦",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: 5♦",
+				"  shoe → dealer: K♣",
+				"  while dealer_total < 17: repeated 1 times",
+				"Dealer has 25",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → then",
+				"  chips_1 = 85",
+				"You: 26 against the dealer's 25, loses 20 chips",
+				"  hands_played = 3",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 6♥, K♥, K♦",
+				"  dealer → discard: J♣, 5♦, K♣",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 5",
+				"  bet_1 = 5",
+				"You bets 5",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: K♠, 5♥",
+				"  shoe → dealer: 3♥, 2♣",
+				"  face down in dealer: 2♣",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Double down",
+				"  bet_1 = 10",
+				"  shoe → hand_1: 4♦",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: 2♣",
+				"  shoe → dealer: J♥",
+				"  shoe → dealer: 5♠",
+				"  while dealer_total < 17: repeated 2 times",
+				"Dealer has 20",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 75",
+				"You: 19 against the dealer's 20, loses 10 chips",
+				"  hands_played = 4",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: K♠, 5♥, 4♦",
+				"  dealer → discard: 3♥, 2♣, J♥, 5♠",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 10",
+				"  bet_1 = 10",
+				"You bets 10",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 9♠, 7♦",
+				"  shoe → dealer: 2♦, Q♦",
+				"  face down in dealer: Q♦",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Stand",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: Q♦",
+				"  shoe → dealer: A♠",
+				"  shoe → dealer: 8♥",
+				"  while dealer_total < 17: repeated 2 times",
+				"Dealer has 21",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 65",
+				"You: 16 against the dealer's 21, loses 10 chips",
+				"  hands_played = 5",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 9♠, 7♦",
+				"  dealer → discard: 2♦, Q♦, A♠, 8♥",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 25",
+				"  bet_1 = 25",
+				"You bets 25",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 3♠, 9♥",
+				"  shoe → dealer: 8♣, J♠",
+				"  face down in dealer: J♠",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Hit",
+				"  shoe → hand_1: 3♣",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Stand",
+				"  while done == 'Hit' and my_total < 21: repeated 2 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: J♠",
+				"  while dealer_total < 17: repeated 0 times",
+				"Dealer has 18",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 40",
+				"You: 15 against the dealer's 18, loses 25 chips",
+				"  hands_played = 6",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 3♠, 9♥, 3♣",
+				"  dealer → discard: 8♣, J♠",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 5",
+				"  bet_1 = 5",
+				"You bets 5",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 4♣, 4♥",
+				"  shoe → dealer: 6♣, 7♣",
+				"  face down in dealer: 7♣",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Hit",
+				"  shoe → hand_1: J♦",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Hit",
+				"  shoe → hand_1: 10♣",
+				"  while done == 'Hit' and my_total < 21: repeated 2 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: 7♣",
+				"  shoe → dealer: 6♦",
+				"  while dealer_total < 17: repeated 1 times",
+				"Dealer has 19",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → then",
+				"  chips_1 = 35",
+				"You: 28 against the dealer's 19, loses 5 chips",
+				"  hands_played = 7",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 4♣, 4♥, J♦, 10♣",
+				"  dealer → discard: 6♣, 7♣, 6♦",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 25",
+				"  bet_1 = 25",
+				"You bets 25",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 9♦, Q♠",
+				"  shoe → dealer: A♦, A♥",
+				"  face down in dealer: A♥",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Stand",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: A♥",
+				"  shoe → dealer: 4♠",
+				"  shoe → dealer: 10♦",
+				"  shoe → dealer: 3♦",
+				"  while dealer_total < 17: repeated 3 times",
+				"Dealer has 19",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 35",
+				"You: 19 against the dealer's 19, wins 0 chips",
+				"  hands_played = 8",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 9♦, Q♠",
+				"  dealer → discard: A♦, A♥, 4♠, 10♦, 3♦",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 5",
+				"  bet_1 = 5",
+				"You bets 5",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: Q♣",
+				"  shoe → dealer: 7♠",
+				"[trigger] shoe_empty",
+				"  discard → shoe: 50 hidden cards",
+				"  shuffle shoe",
+				"  shoe → hand_1: 7♦",
+				"  shoe → dealer: 3♥",
+				"  face down in dealer: 3♥",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Double down",
+				"  bet_1 = 10",
+				"  shoe → hand_1: 6♦",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: 3♥",
+				"  shoe → dealer: 5♠",
+				"  shoe → dealer: 5♥",
+				"  while dealer_total < 17: repeated 2 times",
+				"Dealer has 20",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → then",
+				"  chips_1 = 25",
+				"You: 23 against the dealer's 20, loses 10 chips",
+				"  hands_played = 9",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: Q♣, 7♦, 6♦",
+				"  dealer → discard: 7♠, 3♥, 5♠, 5♥",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 25",
+				"  bet_1 = 25",
+				"You bets 25",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 2♣, 9♣",
+				"  shoe → dealer: 8♣, J♦",
+				"  face down in dealer: J♦",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Stand",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: J♦",
+				"  while dealer_total < 17: repeated 0 times",
+				"Dealer has 18",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 0",
+				"You: 11 against the dealer's 18, loses 25 chips",
+				"  hands_played = 10",
+				"  if hands_played == hands_per_game or least('chips') < 5 → then",
+				"[game over] Game over",
+				"  hand_1 → discard: 2♣, 9♣",
+				"  dealer → discard: 8♣, J♦",
+				"  phase = bet"
+			]
+		],
+		"end": {
+			"zones": {
+				"shoe": [
+					"▼6♠",
+					"▼A♦",
+					"▼6♣",
+					"▼4♠",
+					"▼4♦",
+					"▼10♣",
+					"▼J♣",
+					"▼3♦",
+					"▼Q♠",
+					"▼9♥",
+					"▼Q♥",
+					"▼10♠",
+					"▼10♦",
+					"▼3♠",
+					"▼Q♦",
+					"▼8♥",
+					"▼8♠",
+					"▼3♣",
+					"▼A♣",
+					"▼5♣",
+					"▼5♦",
+					"▼8♦",
+					"▼4♥",
+					"▼10♥",
+					"▼J♠",
+					"▼4♣",
+					"▼9♦",
+					"▼7♥",
+					"▼2♦",
+					"▼K♦",
+					"▼J♥",
+					"▼A♠",
+					"▼K♥",
+					"▼K♠",
+					"▼2♠",
+					"▼K♣",
+					"▼9♠",
+					"▼2♥",
+					"▼7♣",
+					"▼A♥",
+					"▼6♥"
+				],
+				"discard": [
+					"▼Q♣",
+					"▼7♦",
+					"▼6♦",
+					"▼7♠",
+					"▼3♥",
+					"▼5♠",
+					"▼5♥",
+					"▼2♣",
+					"▼9♣",
+					"▼8♣",
+					"▼J♦"
+				],
+				"dealer": [],
+				"hand_1": []
+			},
+			"variables": {
+				"phase": "bet",
+				"hands_played": "10",
+				"player": "1",
+				"chips_1": "0",
+				"bet_1": "25"
+			},
+			"over": true,
+			"result": "Game over"
+		}
+	},
+	{
+		"seed": 2,
+		"inputs": [
+			{
+				"type": "choose",
+				"option": 10
+			},
+			{
+				"type": "perform",
+				"action": "Hit"
+			},
+			{
+				"type": "perform",
+				"action": "Hit"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 25
+			},
+			{
+				"type": "perform",
+				"action": "Stand"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 10
+			},
+			{
+				"type": "perform",
+				"action": "Stand"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 10
+			},
+			{
+				"type": "perform",
+				"action": "Hit"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 5
+			},
+			{
+				"type": "perform",
+				"action": "Hit"
+			},
+			{
+				"type": "perform",
+				"action": "Stand"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 5
+			},
+			{
+				"type": "perform",
+				"action": "Stand"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 10
+			},
+			{
+				"type": "perform",
+				"action": "Stand"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 25
+			},
+			{
+				"type": "perform",
+				"action": "Hit"
+			},
+			{
+				"type": "perform",
+				"action": "Stand"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 5
+			},
+			{
+				"type": "perform",
+				"action": "Double down"
+			},
+			{
+				"type": "perform",
+				"action": "Next hand"
+			},
+			{
+				"type": "choose",
+				"option": 10
+			},
+			{
+				"type": "perform",
+				"action": "Hit"
+			}
+		],
+		"logs": [
+			[
+				"[trigger] start",
+				"  shuffle shoe",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 10",
+				"  bet_1 = 10",
+				"You bets 10",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 3♠, 6♥",
+				"  shoe → dealer: 3♥, Q♥",
+				"  face down in dealer: Q♥",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Hit",
+				"  shoe → hand_1: Q♦",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Hit",
+				"  shoe → hand_1: J♦",
+				"  while done == 'Hit' and my_total < 21: repeated 2 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: Q♥",
+				"  shoe → dealer: 9♠",
+				"  while dealer_total < 17: repeated 1 times",
+				"Dealer has 22",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → then",
+				"  chips_1 = 90",
+				"You: 29 against the dealer's 22, loses 10 chips",
+				"  hands_played = 1",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 3♠, 6♥, Q♦, J♦",
+				"  dealer → discard: 3♥, Q♥, 9♠",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 25",
+				"  bet_1 = 25",
+				"You bets 25",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 9♦, K♣",
+				"  shoe → dealer: 3♦, J♣",
+				"  face down in dealer: J♣",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Stand",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: J♣",
+				"  shoe → dealer: 10♥",
+				"  while dealer_total < 17: repeated 1 times",
+				"Dealer has 23",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 115",
+				"You: 19 against the dealer's 23, wins 25 chips",
+				"  hands_played = 2",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 9♦, K♣",
+				"  dealer → discard: 3♦, J♣, 10♥",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 10",
+				"  bet_1 = 10",
+				"You bets 10",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: K♦, 8♥",
+				"  shoe → dealer: 5♣, A♥",
+				"  face down in dealer: A♥",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Stand",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: A♥",
+				"  shoe → dealer: 7♦",
+				"  shoe → dealer: 6♦",
+				"  while dealer_total < 17: repeated 2 times",
+				"Dealer has 19",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 105",
+				"You: 18 against the dealer's 19, loses 10 chips",
+				"  hands_played = 3",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: K♦, 8♥",
+				"  dealer → discard: 5♣, A♥, 7♦, 6♦",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 10",
+				"  bet_1 = 10",
+				"You bets 10",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 2♠, 9♣",
+				"  shoe → dealer: Q♣, 10♣",
+				"  face down in dealer: 10♣",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Hit",
+				"  shoe → hand_1: 10♠",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: 10♣",
+				"  while dealer_total < 17: repeated 0 times",
+				"Dealer has 20",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 115",
+				"You: 21 against the dealer's 20, wins 10 chips",
+				"  hands_played = 4",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 2♠, 9♣, 10♠",
+				"  dealer → discard: Q♣, 10♣",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 5",
+				"  bet_1 = 5",
+				"You bets 5",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 3♣, 6♣",
+				"  shoe → dealer: J♠, 5♦",
+				"  face down in dealer: 5♦",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Hit",
+				"  shoe → hand_1: 6♠",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Stand",
+				"  while done == 'Hit' and my_total < 21: repeated 2 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: 5♦",
+				"  shoe → dealer: Q♠",
+				"  while dealer_total < 17: repeated 1 times",
+				"Dealer has 25",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 120",
+				"You: 15 against the dealer's 25, wins 5 chips",
+				"  hands_played = 5",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 3♣, 6♣, 6♠",
+				"  dealer → discard: J♠, 5♦, Q♠",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 5",
+				"  bet_1 = 5",
+				"You bets 5",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 9♥, 7♣",
+				"  shoe → dealer: 8♦, A♠",
+				"  face down in dealer: A♠",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Stand",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: A♠",
+				"  while dealer_total < 17: repeated 0 times",
+				"Dealer has 19",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 115",
+				"You: 16 against the dealer's 19, loses 5 chips",
+				"  hands_played = 6",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 9♥, 7♣",
+				"  dealer → discard: 8♦, A♠",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 10",
+				"  bet_1 = 10",
+				"You bets 10",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 10♦, K♥",
+				"  shoe → dealer: A♣, 5♥",
+				"  face down in dealer: 5♥",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Stand",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: 5♥",
+				"  shoe → dealer: 4♥",
+				"  while dealer_total < 17: repeated 1 times",
+				"Dealer has 20",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 115",
+				"You: 20 against the dealer's 20, wins 0 chips",
+				"  hands_played = 7",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 10♦, K♥",
+				"  dealer → discard: A♣, 5♥, 4♥",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 25",
+				"  bet_1 = 25",
+				"You bets 25",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 2♥, 4♦",
+				"  shoe → dealer: 2♦, 5♠",
+				"  face down in dealer: 5♠",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Hit",
+				"  shoe → hand_1: 4♣",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Stand",
+				"  while done == 'Hit' and my_total < 21: repeated 2 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: 5♠",
+				"  shoe → dealer: 8♣",
+				"  shoe → dealer: 8♠",
+				"  while dealer_total < 17: repeated 2 times",
+				"Dealer has 23",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 140",
+				"You: 10 against the dealer's 23, wins 25 chips",
+				"  hands_played = 8",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 2♥, 4♦, 4♣",
+				"  dealer → discard: 2♦, 5♠, 8♣, 8♠",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 5",
+				"  bet_1 = 5",
+				"You bets 5",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: 7♠, 4♠",
+				"  shoe → dealer: 7♥, 2♣",
+				"  face down in dealer: 2♣",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Double down",
+				"  bet_1 = 10",
+				"  shoe → hand_1: J♥",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: 2♣",
+				"  shoe → dealer: A♦",
+				"  while dealer_total < 17: repeated 1 times",
+				"Dealer has 20",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → else",
+				"  if blackjack(hand) and not blackjack(dealer) → else",
+				"  if blackjack(dealer) and not blackjack(hand) → else",
+				"  chips_1 = 150",
+				"You: 21 against the dealer's 20, wins 10 chips",
+				"  hands_played = 9",
+				"  if hands_played == hands_per_game or least('chips') < 5 → else",
+				"  You may: Next hand"
+			],
+			[
+				"[action] Next hand",
+				"  hand_1 → discard: 7♠, 4♠, J♥",
+				"  dealer → discard: 7♥, 2♣, A♦",
+				"  phase = bet",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → then",
+				"  choose one: 5, 10, 25"
+			],
+			[
+				"[Your bet] chose 10",
+				"  bet_1 = 10",
+				"You bets 10",
+				"  if last_to_act → then",
+				"[trigger] deal",
+				"  shoe → hand_1: K♠",
+				"[trigger] shoe_empty",
+				"  discard → shoe: 51 hidden cards",
+				"  shuffle shoe",
+				"  shoe → dealer: J♦, 3♣",
+				"  shoe → hand_1: 10♣",
+				"  face down in dealer: 3♣",
+				"  phase = play",
+				"  player = 1",
+				"[turn] You",
+				"  if phase == 'bet' → else",
+				"  if blackjack(hand) → else",
+				"  You may: Hit, Stand, Double down"
+			],
+			[
+				"[action] Hit",
+				"  shoe → hand_1: 4♦",
+				"  while done == 'Hit' and my_total < 21: repeated 1 times",
+				"  if last_to_act → then",
+				"[trigger] dealer_plays",
+				"  face up in dealer: 3♣",
+				"  shoe → dealer: 7♥",
+				"  while dealer_total < 17: repeated 1 times",
+				"Dealer has 20",
+				"  for player in players (1)",
+				"[trigger] settle",
+				"  if my_total > 21 → then",
+				"  chips_1 = 140",
+				"You: 24 against the dealer's 20, loses 10 chips",
+				"  hands_played = 10",
+				"  if hands_played == hands_per_game or least('chips') < 5 → then",
+				"[game over] Winner: You",
+				"  hand_1 → discard: K♠, 10♣, 4♦",
+				"  dealer → discard: J♦, 3♣, 7♥",
+				"  phase = bet"
+			]
+		],
+		"end": {
+			"zones": {
+				"shoe": [
+					"▼9♠",
+					"▼3♥",
+					"▼4♣",
+					"▼5♥",
+					"▼10♦",
+					"▼2♥",
+					"▼A♦",
+					"▼K♣",
+					"▼7♦",
+					"▼8♥",
+					"▼3♠",
+					"▼Q♥",
+					"▼6♦",
+					"▼7♠",
+					"▼J♣",
+					"▼J♥",
+					"▼6♥",
+					"▼5♠",
+					"▼A♣",
+					"▼A♥",
+					"▼6♠",
+					"▼10♥",
+					"▼7♣",
+					"▼9♥",
+					"▼8♠",
+					"▼2♠",
+					"▼K♦",
+					"▼Q♦",
+					"▼9♣",
+					"▼4♠",
+					"▼Q♠",
+					"▼Q♣",
+					"▼3♦",
+					"▼10♠",
+					"▼8♦",
+					"▼5♦",
+					"▼6♣",
+					"▼J♠",
+					"▼2♣",
+					"▼2♦",
+					"▼4♥",
+					"▼K♥",
+					"▼8♣",
+					"▼9♦",
+					"▼A♠",
+					"▼5♣"
+				],
+				"discard": [
+					"▼K♠",
+					"▼10♣",
+					"▼4♦",
+					"▼J♦",
+					"▼3♣",
+					"▼7♥"
+				],
+				"dealer": [],
+				"hand_1": []
+			},
+			"variables": {
+				"phase": "bet",
+				"hands_played": "10",
+				"player": "1",
+				"chips_1": "140",
+				"bet_1": "10"
+			},
+			"over": true,
+			"result": "Winner: You"
+		}
+	}
+]

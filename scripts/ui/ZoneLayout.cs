@@ -13,6 +13,8 @@ public static class ZoneLayout
     const float FaceDownSpacing = 12;
     const float PileSpread = 25;
     const float MeldGap = 24;
+    /// How far from a board space's middle pieces sharing it sit, as a fraction of the space.
+    const float ClusterRadius = 0.22f;
 
     public static Transform2D Place(string layout, int index, int count, float maxSpread = MaxWidth, int spreadTop = 0)
     {
@@ -30,6 +32,16 @@ public static class ZoneLayout
             default:
                 return new(0, new Vector2(stepsFromMiddle * Mathf.Min(RowSpacing, widestSpacing), 0));
         }
+    }
+
+    /// Pieces sharing a board space sit round its middle, so each one shows (a pawn on another's square).
+    public static Transform2D Cluster(int index, int count, float spaceSize)
+    {
+        if (count == 1)
+        {
+            return Transform2D.Identity;
+        }
+        return new(0, Vector2.Up.Rotated(Mathf.Tau * index / count) * spaceSize * ClusterRadius);
     }
 
     /// How far down each card of a column sits: face-down cards overlap more, and a long column squeezes to fit.

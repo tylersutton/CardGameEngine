@@ -2,6 +2,19 @@
 	"rules": {
 		"title": "Kaboom",
 		"description": "Two to five players, you against bots. On your turn, play any action cards you like (drag them to the pile), then draw a card to end your turn. Draw a Bomb without a Defuse and you're out; the last player standing wins. Anyone can answer an action with a Nope, and a Nope can be Noped.",
+		"how_to_play": [
+			"# Goal",
+			"Be the last player not blown up.",
+			"# Your turn",
+			"- Play as many action cards as you like by dragging them to the pile, then draw a card from the deck to end your turn.",
+			"- Draw a Bomb and you're out, unless you have a Defuse: it's used up, and the Bomb goes back into the deck at random.",
+			"# Action cards",
+			"- Skip: end your turn without drawing.",
+			"- Shuffle: shuffle the deck.",
+			"- Peek: look at the top three cards of the deck.",
+			"- Steal: the next player gives you a card of their choice.",
+			"- Nope: when anyone plays an action, the others may answer with a Nope to cancel it, and a Nope can be Noped back. Choose with the buttons when asked."
+		],
 		"zones": {
 			"box": {
 				"outline": false,

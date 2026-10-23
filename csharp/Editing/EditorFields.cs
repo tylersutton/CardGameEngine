@@ -5,7 +5,7 @@ namespace Editing;
 /// heading.
 public record Field(string Key, string Kind, string Help, string Group = "", string[]? Options = null, string Example = "");
 
-/// What each part of a game file can hold. Kinds: text, long_text, number, whole, yes_no, choice (with options), spot
+/// What each part of a game file can hold. Kinds: text, long_text, lines (a list of text, one item per line), number, whole, yes_no, choice (with options), spot
 /// ([x, y] on the table), list (comma-separated; one item stays text), names and numbers (comma-separated lists),
 /// column (a deck column), columns, deck, expression and steps (checked as typed), drag (its from and to zones),
 /// click (zones clicked), board (shape, columns, rows, size and paint), json (anything else, as text, with an example).
@@ -15,6 +15,7 @@ public static class EditorFields
     [
         new("title", "text", "The name on the title screen."),
         new("description", "long_text", "A line or two about the game, shown on the title screen."),
+        new("how_to_play", "lines", "The rules for players, shown by the table's How to play button: one paragraph per line, \"# \" starts a heading and \"- \" a bullet."),
     ];
 
     public static readonly Field[] Zone =
@@ -30,6 +31,7 @@ public static class EditorFields
         new("rotation", "number", "Turn the zone, in degrees (90 for the left side of the table).", "Layout"),
         new("outline", "yes_no", "Draw the zone's outline. Default: yes.", "Layout"),
         new("spread", "whole", "For a pile: fan out its top few cards (3 for a draw-three waste).", "Layout"),
+        new("show_count", "yes_no", "Show how many cards it holds, under it (seeds in a pit, cards in a deck).", "Layout"),
         new("drag", "choice", "stack: dragging a card also carries every card on top of it.", "Advanced", ["stack"]),
         new("group", "text", "With copies: also put them in a group with this name, shared with other zones.", "Advanced"),
         new("columns", "json", "With cards: columns to add or change on every card, e.g. { \"points\": \"min(card.value, 10)\" }.", "Advanced", Example: "{ \"points\": \"min(card.value, 10)\" }"),

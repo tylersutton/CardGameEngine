@@ -3,6 +3,14 @@
 	// Every key is explained in docs/reference.md.
 	"title": "{title}",
 	"description": "{players} players. Describe your game here.",
+	// Shown by the How to play button: one paragraph per line, "# " starts a heading and "- " a bullet.
+	"how_to_play": [
+		"# Goal",
+		"What wins the game.",
+		"# On your turn",
+		"- Draw a card: click the deck.",
+		"- Discard a card: drag it from your hand to the discard pile."
+	],
 	"players": {players},
 	"player_names": {player_names},
 	"zones": {

@@ -1,6 +1,21 @@
 {
 	"title": "Cribbage",
 	"description": "Two players, you against a bot. Discard two cards to the dealer's crib, peg to 31, then count your hand. First to 121 wins.",
+	"how_to_play": [
+		"# Goal",
+		"Be the first to 121 points. You play against a bot; the deal goes back and forth.",
+		"# A hand",
+		"- Both players get six cards. Click two of yours to put them in the dealer's crib (an extra hand the dealer scores).",
+		"- A starter card is turned up. If it's a Jack, the dealer scores 2.",
+		"# Pegging",
+		"- Take turns playing a card (click it, or drag it to the middle), adding up the running total, which can't go past 31.",
+		"- Making the total 15 or exactly 31 scores 2. Playing a card that pairs the last one, or completes a run with the last few, scores too.",
+		"- If you can't play without going over 31, your opponent plays on; the last player to play scores 1 for the go, and the count starts again from 0.",
+		"# Counting",
+		"- Press Count hand, then Count crib. Each hand counts with the starter card:",
+		"- 2 for every combination adding to 15, 2 for every pair, 1 per card in each run of three or more, 4 or 5 for a flush, and 1 for the Jack of the starter's suit (nobs).",
+		"- Press Next hand to deal again."
+	],
 	"players": 2,
 	"player_names": [
 		"You",

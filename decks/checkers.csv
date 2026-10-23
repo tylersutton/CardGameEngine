@@ -1,0 +1,5 @@
+name,color,king,paint,crown,count
+Red,Red,no,#c0392b,,12
+Black,Black,no,#262626,,12
+Red king,Red,yes,#c0392b,K,12
+Black king,Black,yes,#262626,K,12

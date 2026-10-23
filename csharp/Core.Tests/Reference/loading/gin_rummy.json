@@ -2,6 +2,21 @@
 	"rules": {
 		"title": "Gin Rummy",
 		"description": "Two players, you against a bot. Knock with 10 or less deadwood; first to 100 wins the match.",
+		"how_to_play": [
+			"# Goal",
+			"Form melds and get down to 10 points of deadwood or less, then knock. First to 100 points wins the match.",
+			"# Melds and deadwood",
+			"- A meld is three or more cards of the same rank, or three or more in a row of the same suit.",
+			"- Deadwood is everything not in a meld. Aces count 1, face cards 10, others their number.",
+			"# Your turn",
+			"- Draw: click the stock, or take the discard (click the top discard). At the start of a hand, the first player may take the upcard or press Pass.",
+			"- Then discard: drag a card from your hand to the discard pile.",
+			"- Or knock instead of discarding: drag a card to Knock (or press Knock) when what's left has 10 deadwood or less. Big Gin: press it when all 11 cards are melded.",
+			"# Scoring",
+			"- The knocker scores the difference in deadwood. Gin (no deadwood) scores 25 extra; Big Gin 31.",
+			"- If the other player has as little deadwood or less (an undercut), they score 25 plus the difference instead.",
+			"- Press Next hand to deal again."
+		],
 		"zones": {
 			"stock": {
 				"label": "Stock",

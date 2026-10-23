@@ -11,6 +11,7 @@ A game file is **JSONC**: JSON that also allows `//` and `/* */` comments, and t
 | Key | What it holds |
 |---|---|
 | `title`, `description` | Shown on the title screen. Without a title, the file name is used. |
+| `how_to_play` | The rules for players, shown by the table's **How to play** button (F1) under the description: a list of lines, one paragraph each. A line starting `# ` is a heading, and one starting `- ` a bullet. Say how each thing is done on this table: "click the deck", "drag a card to the pile". |
 | [`zones`](#zones) | The places cards can be: decks, hands, piles, boards. |
 | [`players`](#players-and-variables), `player_names`, `seats`, `teams` | How many players there are (or may be), what they're called, where their name tags sit, and partnerships. |
 | [`variables`](#players-and-variables), `player_variables`, `team_variables` | Values the game keeps track of, with their starting values. |
@@ -44,6 +45,7 @@ Wherever a list of steps goes, a single step will also do: `"then": "end_turn()"
 | `width` | The widest a `row` or `fan` may spread, as a fraction of the table | 800 px |
 | `rotation` | Turns the zone, in degrees | `0` |
 | `spread` | For a `pile`: how many top cards to fan out sideways, e.g. `3` for a draw-three waste | `0` |
+| `show_count` | `true` shows how many cards the zone holds, under it: seeds in a Mancala pit, cards left in a deck | `false` |
 | `drag` | `"stack"`: dragging a card also carries every card on top of it | one card |
 | `per_player` | `true` makes one zone per player: `hand_1`, `hand_2`, ... | `false` |
 | `copies` | A number: makes that many zones, e.g. `7` gives `tableau_1` to `tableau_7` | |
@@ -66,6 +68,7 @@ A zone with a `board` is a grid of spaces, and each space is a zone of its own, 
 - **`image`:** a picture stretched over the whole board, under its spaces, e.g. `"boards/reversi.svg"` (see [Images](#images)). Add `"outline": false` to the zone to show the picture alone.
 - **`paint`:** colors for spaces, each by a condition about the space: `{ "top_edge": "#c8443a80", "dark": "#5a3a22" }`. A space takes the first color whose condition holds for it, so Hex shows each player's goal edges and checkers a checkerboard (`"dark(space)": "(space.row + space.column) % 2 == 0"`).
 - **A space's place:** `space.column` and `space.row`, counting from 1. `space_at(square, 4, 4)` finds a space by them.
+- **Sharing a space:** pieces in the same space sit round its middle, so each one shows (Sorry!'s pawns in Start).
 - **Looking along the board:** the [board building blocks](#building-blocks) take conditions with one parameter, the space, e.g. `"empty(space)": "count(space) == 0"` or Hex's `"mine(space)": "text(top(space), 'name') == my_color"`.
 
 ## players and variables
@@ -244,7 +247,7 @@ A meld is at least `min` cards sharing a value in the `same` column. With `seque
 
 - **Without `prefer`,** the bot plays a random legal move, which is enough to play a prototype through.
 - **With `prefer`,** the bot tries every legal input, scores the result of each from its own point of view, and takes the best. Write `prefer` as "how good is this position for me?"
-- **It looks one input ahead.**
+- **It looks one input ahead.** Among equally good inputs, it picks one at random.
 - **It doesn't peek.** Cards it can't see are shuffled among themselves before each try. `"samples": 4` sets how many shuffles it averages over, and `"peek": true` lets it see everything.
 - **It never makes inputs that only reorder cards,** such as sorting.
 
@@ -258,6 +261,7 @@ A step is one line of text that does something or works something out, like `dra
 | The card involved: dragged, clicked, chosen, or whose effect is running | `card` (`null` if there isn't one) |
 | A card's columns, with any capitals | `card.suit == lead`, `card.value > 5` |
 | A board space's place | `space.column`, `space.row` |
+| Which copy, space or player's zone a zone is | `clicked_zone.number` (from 1), `clicked_zone.owner` (the player whose per-player zone it is, `0` for a shared one) |
 | Where a drag goes, and what was clicked or chosen | `from`, `to`, `clicked_zone`, `choice` |
 | Text in single quotes | `'Hearts'`. A quote inside text takes a backslash, `'King\'s Court'`, which is doubled in the game file's JSON: `'King\\'s Court'`. |
 | Lists, read by position from 0 | `[1, 2]`, `ranking[0]`, `finish_order + [player]` |
@@ -319,6 +323,7 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 | `draw(from, to, amount)` | Moves the top card(s) of `from` to `to` (1 card unless you say). Fires `<from>_empty` if `from` runs out. |
 | `deal(from, to, amount)` | Deals `amount` cards to each zone in `to`, one at a time, e.g. `deal(deck, all_hand, 13)` |
 | `move(cards, to)` | Moves cards to a zone |
+| `swap(card, other)` | The two cards trade places, zone and spot. Sorry!'s 11; and Scout turns a card round by swapping it for its other way up, kept in a box. |
 | `try_move(card, to)` | Moves a card only if a drag action allows it, and does that action. `to` can be a group. |
 | `shuffle(zone)` | Shuffles a zone |
 | `flip(cards)` | Turns cards over, until they move to another zone |
@@ -331,6 +336,7 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 | `reset(['variable', ...])` | Puts variables back to their starting values, for every player if they're player variables |
 | `knock_out(players)`, `bring_back(players)` | Takes players out of the game, or puts them back |
 | `end_game(winners)` | Ends the game (see [turn](#turn)) |
+| `log('text')` | Writes a line in the action log for everyone, e.g. `log('%s has %d points' % [name_of(player), score])` |
 
 **Waiting for players**
 
@@ -349,6 +355,7 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 | Building block | Gives |
 |---|---|
 | `top(cards)`, `all(zone)` | The top card (`null` if there's none), or all of a zone's cards |
+| `position(card)` | Where a card lies in its zone, from 1 at the bottom (the left of a row). `all(hand)[position(card) - 2]` is the card to its left. |
 | `count(cards)` | How many cards there are |
 | `where(cards, 'column', value)` | The cards with that value in the column |
 | `matching(cards, 'condition')` | The cards for which a condition holds, with each one as `card` |
