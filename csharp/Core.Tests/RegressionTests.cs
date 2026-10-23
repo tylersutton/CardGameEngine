@@ -264,4 +264,36 @@ public class RegressionTests
         Assert.Empty(hand.SortColumns);
         Assert.Empty(failures);
     }
+
+    /// A 2 can't lead: after a 2 wins the round, a player holding only 2s is skipped. The 2 stays on the table, in
+    /// sight, until the next lead.
+    [Fact]
+    public void PresidentSkipsALeaderWithOnlyTwos()
+    {
+        Game game = Started("res://games/president.jsonc", 3);
+        int leader = game.CurrentPlayer();
+        int next = leader % 4 + 1;
+        Card Named(string name) => game.Cards.Single(card => card.Column("name") == name);
+        foreach (Card card in game.Zones[$"hand_{leader}"].Cards.Concat(game.Zones[$"hand_{next}"].Cards).ToList())
+        {
+            game.Move(card, game.Zones["deck"]);
+        }
+        foreach (string name in new[] { "3♣", "4♣" })
+        {
+            game.Move(Named(name), game.Zones[$"hand_{leader}"]);
+        }
+        foreach (string name in new[] { "2♥", "2♦" })
+        {
+            game.Move(Named(name), game.Zones[$"hand_{next}"]);
+        }
+        foreach (string name in new[] { "3♣", "2♥" })
+        {
+            game.ApplyMove([PlayerInput.Perform("Play"), PlayerInput.Click(Named(name)), PlayerInput.Finish()]);
+        }
+        Assert.Equal(next % 4 + 1, game.CurrentPlayer());
+        Assert.Contains("Play", game.Plays.Offered);
+        Assert.Equal(["2♥"], game.Zones["table"].Cards.Select(card => card.Column("name")));
+        Assert.Equal("nothing: lead anything but a 2", game.Evaluate((string)game.Rules.Status["to beat"]!));
+        Assert.Empty(failures);
+    }
 }
