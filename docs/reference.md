@@ -115,7 +115,7 @@ Everything a player can do, each with a name. How an action is done:
 | `allow` | With `choose`: a condition the whole pick must meet, e.g. `"size(groups(choice, 'rank')) == 1"` (all the same rank) |
 | `button` | `false` hides a button, for actions that are only started with `ask(...)`. `true` gives a drag or click action a button too, which asks for the card. |
 | `human_only` | `true`: bots never do it |
-| `any_time` | `true`: anyone may do it, even on someone else's turn or while a choice is being made, and it's done as them, so `hand` is their own hand: a Sort button. Its steps can't wait for a choice. |
+| `any_time` | `true`: anyone may do it, even on someone else's turn or while a choice is being made, and it's done as them, so `hand` is their own hand: a Sort button. Its steps can't wait for a choice, and bots never do it. |
 | `prefer` | What a bot aims for when making this action's choice, instead of the game's `bot.prefer` |
 
 **When an action can be done:**
@@ -323,7 +323,7 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 | `shuffle(zone)` | Shuffles a zone |
 | `flip(cards)` | Turns cards over, until they move to another zone |
 | `reveal(cards)` | Shows cards to everyone, even in a private zone, until they move: hands at the end of a round |
-| `sort(zone, ['column', ...])` | Keeps a zone sorted by these columns. `sort(zone, [])` stops sorting. |
+| `sort(zone, ['column', ...])` | Keeps a zone sorted by these columns, until a player drags a card to a new place in it. `sort(zone, [])` stops sorting. |
 | `mark(cards, 'key', value)`, `unmark(cards, 'key')` | Puts a note on cards, or takes it off, e.g. a clue `mark(cards, 'color', 'Red')`. Marks show on the card and last until it moves. A mark named after a column tells bots what the card is. |
 | `end_turn()` | Passes the turn to the next player and fires `turn_start` |
 | `trigger('name')` | Runs a trigger right after this step, with the same `card` |

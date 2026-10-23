@@ -124,6 +124,12 @@
 				"steps": [
 					"move(choice, hand[actor])"
 				]
+			},
+			"Sort hand": {
+				"any_time": true,
+				"steps": [
+					"sort(hand, ['kind', 'name'])"
+				]
 			}
 		},
 		"triggers": {

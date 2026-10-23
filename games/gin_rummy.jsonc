@@ -265,14 +265,14 @@
 	],
 	"triggers": {
 		"start": [
-			"sort(hand_1, ['value', 'suit'])",
-			"sort(hand_2, ['value', 'suit'])",
 			"dealer = one_of(players)",
 			"trigger('deal')"
 		],
 		"deal": [
 			"move([hand_1, hand_2, table_1, table_2, discard, knock], stock)",
 			"shuffle(stock)",
+			"sort(hand_1, ['value', 'suit'])",
+			"sort(hand_2, ['value', 'suit'])",
 			"player = 3 - dealer",
 			"deal(stock, [hand, opponent_hand], 10)",
 			"move(top(stock), discard)",

@@ -250,4 +250,18 @@ public class RegressionTests
         }
         Assert.Empty(failures);
     }
+
+    /// A card dropped back where it was is no reorder: the hand keeps sorting, and nothing is recorded.
+    [Fact]
+    public void DroppingACardInPlaceKeepsSorting()
+    {
+        Game game = Started("res://games/hearts.jsonc", 3);
+        Zone hand = game.Zones["hand_1"];
+        Assert.False(game.Apply(new("reorder") { Card = hand.Cards[2].Id, Index = 2 }));
+        Assert.NotEmpty(hand.SortColumns);
+        Assert.Empty(game.Inputs);
+        Assert.True(game.Apply(new("reorder") { Card = hand.Cards[2].Id, Index = 0 }));
+        Assert.Empty(hand.SortColumns);
+        Assert.Empty(failures);
+    }
 }

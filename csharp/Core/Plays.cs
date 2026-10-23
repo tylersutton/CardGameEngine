@@ -233,7 +233,7 @@ public class Plays
     }
 
     /// Every move the current player could make, for bots. A move is a list of inputs (see Game.Apply), e.g.
-    /// pressing an action and then clicking the cards to choose.
+    /// pressing an action and then clicking the cards to choose. "any_time" actions (sorting) are left to people.
     public List<List<PlayerInput>> LegalMoves()
     {
         if (game.Choice.IsOpen)
@@ -269,7 +269,7 @@ public class Plays
         }
         foreach ((string actionName, Dictionary<string, object?> action) in game.Rules.Actions)
         {
-            if (IsCardAction(action) || !ShowsButton(actionName) || action.GetValueOrDefault("human_only") is true || !CanPerform(actionName))
+            if (IsCardAction(action) || !ShowsButton(actionName) || action.GetValueOrDefault("human_only") is true || IsAnyTime(actionName) || !CanPerform(actionName))
             {
                 continue;
             }

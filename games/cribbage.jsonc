@@ -269,6 +269,18 @@
 			"steps": [
 				"trigger('deal')"
 			]
+		},
+		"Sort by rank": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['order', 'suit'])"
+			]
+		},
+		"Sort by suit": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['suit', 'order'])"
+			]
 		}
 	},
 	"turn": [
@@ -276,13 +288,6 @@
 	],
 	"triggers": {
 		"start": [
-			{
-				"for": "player",
-				"in": "players",
-				"do": [
-					"sort(hand, ['order', 'suit'])"
-				]
-			},
 			"dealer = one_of(players)",
 			"trigger('deal')"
 		],
@@ -291,6 +296,13 @@
 			"shuffle(deck)",
 			"player = dealer",
 			"dealer = next_player()",
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					"sort(hand, ['order', 'suit'])"
+				]
+			},
 			"deal(deck, all_hand, 6)",
 			"reset(['discarded', 'total', 'counting_crib'])",
 			"ask('Discard to crib', 1)",

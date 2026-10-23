@@ -350,8 +350,7 @@ public class Game : IStepContext
                 FinishChoice();
                 break;
             case "reorder":
-                Reorder(card!, input.Index!.Value);
-                break;
+                return Reorder(card!, input.Index!.Value);
             case "undo":
                 Undo();
                 break;
@@ -601,10 +600,16 @@ public class Game : IStepContext
         return result;
     }
 
-    public void Reorder(Card card, int index)
+    /// Puts a card in a new place in its zone by hand, so the zone stops sorting. Dropping it back where it was is no
+    /// reorder, so a sorted hand stays sorted.
+    public bool Reorder(Card card, int index)
     {
-        Snapshot? before = UndoPoint();
         Zone zone = ZoneOf(card);
+        if (zone.Cards.IndexOf(card) == index)
+        {
+            return false;
+        }
+        Snapshot? before = UndoPoint();
         zone.Reorder(card, index);
         Remember(before);
         // Rearranging a hand is nobody else's business: only cards this screen can see are named.
@@ -614,6 +619,7 @@ public class Game : IStepContext
         }
         GameLog.Flush();
         AnnounceStateChanged();
+        return true;
     }
 
     /// A trigger called from a step runs with that step's card, so it can say "if it's a King, remove it".

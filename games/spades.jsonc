@@ -149,6 +149,18 @@
 			"steps": [
 				"trigger('deal')"
 			]
+		},
+		"Sort by suit": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['suit', 'value'])"
+			]
+		},
+		"Sort by rank": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['value', 'suit'])"
+			]
 		}
 	},
 	"turn": [
@@ -173,6 +185,12 @@
 	],
 	"triggers": {
 		"start": [
+			"dealer = random(1, 4)",
+			"trigger('deal')"
+		],
+		"deal": [
+			"move([all_hand, all_played, all_won], deck)",
+			"shuffle(deck)",
 			{
 				"for": "player",
 				"in": "players",
@@ -180,12 +198,6 @@
 					"sort(hand, ['suit', 'value'])"
 				]
 			},
-			"dealer = random(1, 4)",
-			"trigger('deal')"
-		],
-		"deal": [
-			"move([all_hand, all_played, all_won], deck)",
-			"shuffle(deck)",
 			"deal(deck, all_hand, 13)",
 			"player = dealer",
 			"dealer = next_player()",

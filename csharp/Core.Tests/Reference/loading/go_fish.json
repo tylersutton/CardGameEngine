@@ -35,10 +35,10 @@
 			}
 		},
 		"actions": {
-			"Sort hand": {
+			"Sort by rank": {
 				"any_time": true,
 				"steps": [
-					"sort(hand, ['name'])"
+					"sort(hand, ['value', 'suit'])"
 				]
 			},
 			"Ask": {

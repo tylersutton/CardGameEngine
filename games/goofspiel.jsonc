@@ -156,6 +156,12 @@
 		"Next round": {
 			"human_only": true,
 			"steps": []
+		},
+		"Sort hand": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['value'])"
+			]
 		}
 	},
 	"triggers": {

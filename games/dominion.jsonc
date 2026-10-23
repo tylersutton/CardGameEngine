@@ -276,6 +276,12 @@
 			"steps": [
 				"move(choice, discard)"
 			]
+		},
+		"Sort hand": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['type', 'cost'])"
+			]
 		}
 	},
 	"triggers": {

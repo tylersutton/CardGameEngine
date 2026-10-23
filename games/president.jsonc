@@ -180,6 +180,12 @@
 			"steps": [
 				"trigger('deal')"
 			]
+		},
+		"Sort by rank": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['order', 'suit'])"
+			]
 		}
 	},
 	"turn": [
@@ -192,7 +198,6 @@
 		"deal": [
 			"move([all_hand, table, beaten], deck)",
 			"shuffle(deck)",
-			"deal(deck, all_hand, 13)",
 			{
 				"for": "player",
 				"in": "players",
@@ -200,6 +205,7 @@
 					"sort(hand, ['order', 'suit'])"
 				]
 			},
+			"deal(deck, all_hand, 13)",
 			"bring_back(players)",
 			"reset(['finish_order', 'first_play', 'set_size', 'top_order', 'passes'])",
 			{

@@ -129,6 +129,18 @@
 			"steps": [
 				"trigger('deal')"
 			]
+		},
+		"Sort by suit": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['suit', 'value'])"
+			]
+		},
+		"Sort by rank": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['value', 'suit'])"
+			]
 		}
 	},
 	"turn": [
@@ -153,13 +165,6 @@
 	],
 	"triggers": {
 		"start": [
-			{
-				"for": "player",
-				"in": "players",
-				"do": [
-					"sort(hand, ['suit', 'value'])"
-				]
-			},
 			"trigger('deal')"
 		],
 		"deal": [
@@ -167,6 +172,13 @@
 			"pass_to = [1, 3, 2, 0][int(hand_number - 1) % 4]",
 			"move([all_hand, all_played, all_won], deck)",
 			"shuffle(deck)",
+			{
+				"for": "player",
+				"in": "players",
+				"do": [
+					"sort(hand, ['suit', 'value'])"
+				]
+			},
 			"deal(deck, all_hand, 13)",
 			"reset(['tricks', 'lead', 'hearts_broken'])",
 			"player = 1",

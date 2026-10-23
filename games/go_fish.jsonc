@@ -55,9 +55,9 @@
 	},
 	// What players can do. "drag" and "click" say how; an action without them is a button.
 	"actions": {
-		"Sort hand": {
+		"Sort by rank": {
 			"any_time": true,
-			"steps": "sort(hand, ['name'])"
+			"steps": "sort(hand, ['value', 'suit'])"
 		},
 		"Ask": {
 			"steps": [

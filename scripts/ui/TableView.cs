@@ -333,7 +333,7 @@ public partial class TableView : Control
         ShowDropHint(view, null);
         if (destination == source && MakesRoom(source))
         {
-            if (!Submit(new("reorder") { Card = view.Card!.Id, Index = index }))
+            if (index == source.Cards.IndexOf(view.Card!) || !Submit(new("reorder") { Card = view.Card!.Id, Index = index }))
             {
                 LayoutZone(source);
             }
