@@ -3,8 +3,8 @@ using Editing;
 using Godot;
 
 /// Opens the real screens: the title screen, the lobby, every game on the table screen with bots playing every seat
-/// for a few moves, and every game in the editor (edited and undone back to the file). Reports load errors, failed
-/// steps and errors Godot reports.
+/// for a few moves, the dock's keys, and every game in the editor (edited and undone back to the file). Reports load
+/// errors, failed steps and errors Godot reports.
 /// Run: godot --headless res://tests/ui_test.tscn
 public partial class UiTest : Node
 {
@@ -29,6 +29,7 @@ public partial class UiTest : Node
             await Play(path);
             await Edit(path);
         }
+        await PressKeys();
         problems.AddRange(scriptErrors.Messages);
         GD.Print("UI TEST: ", problems.Count == 0 ? "all passed" : "FAILED\n  " + string.Join("\n  ", problems));
         GetTree().Quit(problems.Count == 0 ? 0 : 1);
@@ -205,6 +206,32 @@ public partial class UiTest : Node
         {
             problems.Add($"{name}: undoing step edits didn't give back the trigger");
         }
+    }
+
+    /// Gin Rummy starts with each player taking the upcard or passing: Pass is the one gold button and the first
+    /// one shown, so Space presses it, and then 1 does for the other player.
+    async Task PressKeys()
+    {
+        Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
+        main.RulesPath = "res://games/gin_rummy.jsonc";
+        AddChild(main);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Game game = main.Game!;
+        game.Rules.Bot["players"] = new List<object?>();
+        game.AnnounceStateChanged();
+        foreach (Key key in new[] { Key.Space, Key.Key1 })
+        {
+            int inputs = game.Inputs.Count;
+            GetViewport().PushInput(new InputEventKey { Keycode = key, Pressed = true });
+            GetViewport().PushInput(new InputEventKey { Keycode = key, Pressed = false });
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            if (game.Inputs.Count != inputs + 1 || game.Inputs[^1].Action != "Pass")
+            {
+                problems.Add($"dock keys: {key} didn't press Pass (inputs: {string.Join(", ", game.Inputs)})");
+            }
+        }
+        main.QueueFree();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
 
     static List<string> Suggestions(SmartField field) =>

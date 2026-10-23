@@ -3,7 +3,8 @@ using Godot;
 
 /// The dock under the table: the bar for choices and offers (what to do now) above the game's action buttons, with
 /// the "any_time" ones (like sorting) apart on the right. A button for an offered action shows only while it's
-/// offered to this screen, and what can be done now is gold, like the name tag of the player whose turn it is.
+/// offered to this screen, and what can be done now is gold, like the name tag of the player whose turn it is. Keys
+/// 1 to 9 press the buttons shown, left to right, and Space the gold one when there's only one.
 public partial class ActionDock : MarginContainer
 {
     const float ButtonRowHeight = 32;
@@ -43,7 +44,7 @@ public partial class ActionDock : MarginContainer
         }
         foreach (string actionName in game.Rules.Actions.Keys.Where(game.Plays.ShowsButton))
         {
-            Button button = new() { Text = actionName };
+            Button button = new() { Text = actionName, FocusMode = FocusModeEnum.None };
             button.Pressed += () => Submit(PlayerInput.Perform(actionName));
             (game.Plays.IsAnyTime(actionName) ? anyTimeButtons : actionButtons).AddChild(button);
         }
@@ -55,6 +56,7 @@ public partial class ActionDock : MarginContainer
     {
         RefreshActionButtons();
         RefreshChoiceBar();
+        AssignKeys();
     }
 
     void RefreshActionButtons()
@@ -132,9 +134,32 @@ public partial class ActionDock : MarginContainer
         }
     }
 
+    void AssignKeys()
+    {
+        List<Button> shown = [.. choiceBar.GetChildren().OfType<Button>(), .. Buttons().Where(button => button.Visible)];
+        List<Button> gold = shown.Where(button => !button.Disabled && button.HasThemeStyleboxOverride("normal")).ToList();
+        foreach (Button button in Buttons())
+        {
+            button.Shortcut = null;
+        }
+        for (int i = 0; i < shown.Count; i++)
+        {
+            Godot.Collections.Array keys = [];
+            if (i < 9)
+            {
+                keys.Add(new InputEventKey { Keycode = Key.Key1 + i });
+            }
+            if (gold.Count == 1 && gold[0] == shown[i])
+            {
+                keys.Add(new InputEventKey { Keycode = Key.Space });
+            }
+            shown[i].Shortcut = keys.Count > 0 ? new Shortcut { Events = keys } : null;
+        }
+    }
+
     void AddChoiceButton(string text, Action onPressed)
     {
-        Button button = new() { Text = text };
+        Button button = new() { Text = text, FocusMode = FocusModeEnum.None };
         button.Pressed += onPressed;
         SetAccent(button, true);
         choiceBar.AddChild(button);

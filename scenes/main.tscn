@@ -50,6 +50,7 @@ layout_mode = 2
 [node name="GamesButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 size_flags_vertical = 4
 tooltip_text = "Back to the list of games"
 text = "Games"
@@ -57,6 +58,7 @@ text = "Games"
 [node name="UndoButton" type="Button" parent="Layout/TableColumn/ToolbarMargin/Toolbar" unique_id=1169205054]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 size_flags_vertical = 4
 shortcut = SubResource("Shortcut_undo")
 text = "Undo"
@@ -64,6 +66,7 @@ text = "Undo"
 [node name="DesignerMenu" type="MenuButton" parent="Layout/TableColumn/ToolbarMargin/Toolbar"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 size_flags_vertical = 4
 tooltip_text = "Tools for making the game: reload, sandbox, zone names, designer info"
 text = "Designer"
