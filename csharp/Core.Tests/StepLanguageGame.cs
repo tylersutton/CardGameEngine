@@ -39,7 +39,10 @@ public static class StepLanguageGame
                 "is_ace": "card.rank == 'A'",
                 "deck_full": "count(deck) == 52",
                 "suited(cards, suit)": "count(where(cards, 'SUIT', suit))",
-                "hearts_and_spades(cards)": "suited(cards, 'Hearts') + suited(cards, 'Spades')"
+                "hearts_and_spades(cards)": "suited(cards, 'Hearts') + suited(cards, 'Spades')",
+                "doubled(number)": "number * 2",
+                "ace(one)": "one.rank == 'A'",
+                "rank_of(card)": "card.rank"
             }
         }
         """;

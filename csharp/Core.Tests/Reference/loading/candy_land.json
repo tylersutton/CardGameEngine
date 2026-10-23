@@ -91,7 +91,7 @@
 					{
 						"if": "card.color == 'Pink'",
 						"then": [
-							"at = int(number(card, 'target'))"
+							"at = number(card, 'target')"
 						],
 						"else": [
 							{

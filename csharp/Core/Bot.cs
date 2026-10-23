@@ -14,6 +14,8 @@ public class Bot
     int turnPlayer;
     int inputsThisTurn;
     int historyAfterLastInput = -1;
+    /// Whether the last move tried out rolled dice or shuffled (used the random numbers).
+    bool lastTryUsedRandom;
 
     public Bot(Game game, int? seed = null)
     {
@@ -65,7 +67,18 @@ public class Bot
         start ??= StartingPoint.Of(game);
         if (deals == null || deals.Count == 0)
         {
-            return TryOnce(move, measure, start, 0, lookAhead);
+            object? first = TryOnce(move, measure, start, 0, lookAhead);
+            if (!lastTryUsedRandom || !Values.IsNumber(first))
+            {
+                return first;
+            }
+            // A roll of the dice: one try is one possible outcome, so several are averaged.
+            double rolled = Values.ToDouble(first);
+            for (int sample = 1; sample < Samples; sample++)
+            {
+                rolled += Values.ToDouble(TryOnce(move, measure, start, 0, lookAhead) ?? 0.0);
+            }
+            return rolled / Samples;
         }
         double total = 0;
         foreach (Dictionary<Card, Dictionary<string, string>> deal in deals)
@@ -100,6 +113,9 @@ public class Bot
     {
         public static StartingPoint Of(Game game) => new(Snapshot.Take(game), Snapshot.Describe(game, false), [.. game.Plays.Offered]);
     }
+
+    /// "samples" in the game's bot: how many guesses at hidden cards, or rolls of the dice, a move is judged by.
+    int Samples => (int)(game.Rules.Bot.GetValueOrDefault("samples") as double? ?? DefaultSamples);
 
     /// "depth": 2 in the game's bot: also look at the other player's best answer to each move.
     bool LooksAhead => Values.IsNumber(game.Rules.Bot.GetValueOrDefault("depth")) && Values.ToDouble(game.Rules.Bot["depth"]) >= 2;
@@ -151,7 +167,7 @@ public class Bot
         bool Known(Card card) => game.ZoneOf(card).Owner == player && game.ZoneOf(card).Face != Zone.FaceOthers;
         List<Card> own = hidden.Where(Known).ToList();
         List<Card> others = hidden.Where(card => !Known(card)).ToList();
-        int samples = (int)(game.Rules.Bot.GetValueOrDefault("samples") as double? ?? DefaultSamples);
+        int samples = Samples;
         List<Dictionary<Card, Dictionary<string, string>>> deals = [];
         for (int sample = 0; sample < samples; sample++)
         {
@@ -190,11 +206,13 @@ public class Bot
         game.Remembering = false;
         // The bot can't know how dice will roll or a deck will shuffle, so it tries the move with random numbers of
         // its own rather than the ones the match will really use.
-        game.Random.State = (ulong)random.NextInt64();
+        ulong scrambled = (ulong)random.NextInt64();
+        game.Random.State = scrambled;
         foreach (PlayerInput input in move)
         {
             game.RunInput(input);
         }
+        bool usedRandom = game.Random.State != scrambled;
         object? value = null;
         if (game.Choice.IsOpen && start.State.ChoiceTitle == "" && game.CurrentPlayer() == player)
         {
@@ -209,6 +227,7 @@ public class Bot
         game.GameLog.Discard();
         game.SetQuiet(wasQuiet);
         game.Remembering = wasRemembering;
+        lastTryUsedRandom = usedRandom;
         return value;
     }
 

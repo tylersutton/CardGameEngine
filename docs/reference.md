@@ -183,7 +183,7 @@ A condition can take **parameters** and be used like a building block. Sea Salt 
 "my_points": "points([hand, played])"
 ```
 
-Inside a condition, the parameter names stand for whatever was passed in. Dividing whole numbers gives a whole number, so `kinds(cards, 'Crab') / 2` counts pairs of crabs.
+Inside a condition, the parameter names stand for whatever was passed in, even one named `card`. Dividing whole numbers gives a whole number, so `kinds(cards, 'Crab') / 2` counts pairs of crabs.
 
 A refused drag is logged with the names of the conditions it failed, which keeps the message short.
 
@@ -332,6 +332,7 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 | `flip(cards)` | Turns cards over, until they move to another zone |
 | `reveal(cards)` | Shows cards to everyone, even in a private zone, until they move: hands at the end of a round |
 | `sort(zone, ['column', ...])` | Keeps a zone sorted by these columns, until a player drags a card to a new place in it. `sort(zone, [])` stops sorting. |
+| `set(cards, 'column', value)` | Changes a column for the rest of the game, kept as the cards move: rolling a die is `set(die, 'value', random(1, 6))`. The column must be in the deck. |
 | `mark(cards, 'key', value)`, `unmark(cards, 'key')` | Puts a note on cards, or takes it off, e.g. a clue `mark(cards, 'color', 'Red')`. Marks show on the card and last until it moves. A mark named after a column tells bots what the card is. |
 | `end_turn()` | Passes the turn to the next player and fires `turn_start` |
 | `trigger('name')` | Runs a trigger right after this step, with the same `card` |
@@ -361,11 +362,12 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 | `position(card)` | Where a card lies in its zone, from 1 at the bottom (the left of a row). `all(hand)[position(card) - 2]` is the card to its left. |
 | `count(cards)` | How many cards there are |
 | `where(cards, 'column', value)` | The cards with that value in the column |
-| `matching(cards, 'condition')` | The cards for which a condition holds, with each one as `card` |
-| `without(cards, removed)` | The cards, minus the removed ones |
+| `matching(cards, 'condition')` | The cards for which a condition holds: one that reads `card` (`"is_ace": "card.rank == 'A'"`), or one with a parameter (`"ace(one)": "one.rank == 'A'"`) |
+| `without(cards, removed)` | The cards, minus the removed ones; or a list of values without those values, e.g. `without(open, ['Chance'])` |
 | `highest(cards, 'column')`, `lowest(cards, 'column')` | The card with the biggest or smallest number in the column |
-| `number(card, 'column')`, `text(card, 'column')` | A column as a number or as text, giving `0` or `''` when `card` is `null` |
-| `sum(cards, 'column')` | The total of a column, or `sum(list)` for a list of numbers |
+| `number(card, 'column')`, `text(card, 'column')` | A column as a number (whole unless written with a point) or as text, giving `0` or `''` when `card` is `null` |
+| `sum(cards, 'column')` | The total of a column, or `sum(list)` for a list of numbers: whole if they all are |
+| `sum_of(items, 'condition')`, `max_of(items, 'condition')` | A condition with one parameter worked out for each item (a zone's cards, or each card, zone or value of a list), then added up, or the largest. e.g. `sum_of(zones_where(board, 'mine_here'), 'progress')` adds up how far a player's pawns have come. |
 | `last(cards, amount)`, `first(list, amount)` | The last cards (the top of a pile) or the first ones, or the last or first items of a list |
 | `tops(zones)` | The top card of each zone, e.g. `tops(supply)` |
 | `face_down(cards)` | The cards that are face down |
@@ -374,6 +376,7 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 | `mark_of(card, 'key')` | A card's mark, or `null` |
 | `one_of(items)` | A random card or item, or `null` if there are none |
 | `zone('kind', number)` | That copy or player's zone, e.g. `zone('basic_pile', 7)` |
+| `zone_of(card)` | The zone the card is in |
 | `follows_suit(card, hand, lead)` | Whether playing the card follows suit (uses the `suit` column) |
 | `trick_winner(cards, lead, trump)` | The card that takes the trick (uses `suit` and `value`; `trump` is optional) |
 
@@ -430,7 +433,7 @@ See [Boards](#boards). A `'condition'` here is a condition's name in quotes, wit
 - **An empty zone's top card is `null`,** and `card.value` fails on it. Use `number(top(pile), 'value')` and `text(top(pile), 'suit')` instead. Alternatively, `and` and `or` stop as soon as the answer is known, so `count(to) > 0 and top(to).color == 'Red'` is safe.
 - **To reuse steps,** put them in a trigger and call `trigger('deal')`. **To reuse a check,** name it in `conditions`.
 - **"Draw only if you can't play"** is a drag action with `"when": "count(movable(hand, pile)) == 0"`.
-- **Whole numbers stay whole,** so `dealer % 4` and `list[index]` work.
+- **Whole numbers stay whole,** so `dealer % 4` and `list[index]` work, and so do `number(...)` and `sum(...)` of whole columns.
 
 ## Decks
 

@@ -708,11 +708,17 @@ public class Game : IStepContext
     public bool Covered(Zone zone) =>
         zone.CoveredBy.Any(number => Zones.TryGetValue($"{zone.Kind}_{(int)Values.ToDouble(number)}", out Zone? covering) && !covering.IsEmpty);
 
+    /// The cards a condition holds for: one that reads card ("is_ace": "card.rank == 'A'"), or one that takes the card
+    /// as its parameter ("ace(one)": "one.rank == 'A'").
     public List<Card> Matching(List<Card> cards, string condition)
     {
+        if (Rules.ConditionParameters.GetValueOrDefault(condition)?.Count == 1)
+        {
+            return ConditionFor(condition) is { } holds ? cards.Where(card => holds(card)).ToList() : [];
+        }
         if (!Rules.Conditions.TryGetValue(condition, out object? expression) || Rules.ConditionParameters[condition].Count > 0)
         {
-            ReportFailure($"No condition named \"{condition}\" (without parameters) in \"conditions\"");
+            ReportFailure($"No condition named \"{condition}\" in \"conditions\" that reads card, or takes it as its one parameter");
             return [];
         }
         return cards.Where(card => Holds((string)expression!, card)).ToList();
@@ -720,7 +726,12 @@ public class Game : IStepContext
 
     /// A condition with one parameter, as a check on any value, e.g. "mine(space)" for each space of a board; null
     /// (reported) if there's no such condition.
-    public Func<object?, bool>? ConditionFor(string condition)
+    public Func<object?, bool>? ConditionFor(string condition) =>
+        ConditionValueFor(condition) is { } valueOf ? value => Values.IsTrue(valueOf(value)) : null;
+
+    /// A condition with one parameter, worked out for any value, e.g. "progress(space)" for sum_of; null (reported) if
+    /// there's no such condition. A failure is reported, and gives null.
+    public Func<object?, object?>? ConditionValueFor(string condition)
     {
         if (!Rules.ConditionParameters.TryGetValue(condition, out List<string>? parameters) || parameters.Count != 1)
         {
@@ -734,9 +745,9 @@ public class Game : IStepContext
             if (evaluator.Failure.Length > 0)
             {
                 ReportFailure($"Step failed: \"{condition}\": {evaluator.Failure}");
-                return false;
+                return null;
             }
-            return Values.IsTrue(result);
+            return result;
         };
     }
 
@@ -1078,6 +1089,14 @@ public class Game : IStepContext
             card.FaceUp = face;
             destination.AnnounceChanged();
         }
+    }
+
+    /// A card's column changed for the rest of the game (a die rolled), kept as it moves.
+    public void SetColumn(Card card, string column, object? value)
+    {
+        card.Changed = new(card.Changed) { [column] = Values.Format(value) };
+        GameLog.Item($"set {column} = {Values.Format(value)}", Describe(card));
+        ZoneOf(card).AnnounceChanged();
     }
 
     public void Mark(Card card, string key, object? value)

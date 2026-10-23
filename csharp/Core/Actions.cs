@@ -312,16 +312,24 @@ public class Actions(Game game, Card? stepCard = null)
     public Card? Top(object? cards) => CardsIn(cards).LastOrDefault();
 
     /// The total of a column over cards, or of a list of numbers: sum(hand, 'points'), sum([1, 2, 3]).
-    public double Sum(object? items, string column = "")
+    /// A whole number when every part is whole, so sum(dice, 'value') / 2 counts in whole numbers.
+    public object Sum(object? items, string column = "")
     {
-        if (column.Length == 0 && items is List<object?> numbers)
-        {
-            return numbers.Where(Values.IsNumber).Sum(Values.ToDouble);
-        }
-        return CardsIn(items).Sum(card => Number(card, column));
+        List<object> parts = column.Length == 0 && items is List<object?> numbers
+            ? numbers.Where(Values.IsNumber).Cast<object>().ToList()
+            : CardsIn(items).Select(card => Number(card, column)).ToList();
+        return parts.All(part => part is long) ? (object)parts.Sum(part => (long)part) : parts.Sum(Values.ToDouble);
     }
 
-    public double Number(Card? card, string column) => card != null ? Values.ToFloat(card.Column(column, "0")) : 0;
+    /// A column as a number: whole unless it's written with a point (as card.value reads it), and 0 for no card or text
+    /// that isn't a number.
+    public object Number(Card? card, string column)
+    {
+        string text = card?.Column(column, "0") ?? "0";
+        return Values.IsValidFloat(text) && !text.Contains('.') ? (object)Values.ToInt(text) : Values.ToFloat(text);
+    }
+
+    static double NumberOf(Card? card, string column) => card != null ? Values.ToFloat(card.Column(column, "0")) : 0;
 
     public string Text(Card? card, string column) => card?.Column(column) ?? "";
 
@@ -330,7 +338,7 @@ public class Actions(Game game, Card? stepCard = null)
         Card? best = null;
         foreach (Card candidate in CardsIn(cards))
         {
-            if (best == null || Number(candidate, column) > Number(best, column))
+            if (best == null || NumberOf(candidate, column) > NumberOf(best, column))
             {
                 best = candidate;
             }
@@ -343,7 +351,7 @@ public class Actions(Game game, Card? stepCard = null)
         Card? best = null;
         foreach (Card candidate in CardsIn(cards))
         {
-            if (best == null || Number(candidate, column) < Number(best, column))
+            if (best == null || NumberOf(candidate, column) < NumberOf(best, column))
             {
                 best = candidate;
             }
@@ -443,11 +451,45 @@ public class Actions(Game game, Card? stepCard = null)
 
     public List<Card> FaceDown(object? cards) => CardsIn(cards).Where(card => !card.FaceUp).ToList();
 
-    public List<Card> Without(object? cards, object? removed)
+    /// The cards, minus the removed ones; or a list of values (names, numbers) without the removed values.
+    public object Without(object? cards, object? removed)
     {
+        if (cards is List<object?> { Count: > 0 } values && values.All(item => item is not (Card or Core.Zone or List<object?>)))
+        {
+            List<object?> gone = removed as List<object?> ?? [removed];
+            return values.Where(item => !gone.Any(each => Values.AreEqual(item, each))).ToList();
+        }
         List<Card> removedCards = CardsIn(removed);
         return CardsIn(cards).Where(card => !removedCards.Contains(card)).ToList();
     }
+
+    /// The total of a condition with one parameter, worked out for each item: a zone's cards, or each card, zone or
+    /// value of a list, e.g. sum_of(zones_where(board, 'mine_here'), 'progress').
+    public object SumOf(object? items, string condition) =>
+        game.ConditionValueFor(condition) is { } valueOf ? Sum(ItemsOf(items).Select(valueOf).Where(Values.IsNumber).ToList()) : 0L;
+
+    /// The largest value of a condition with one parameter over the items (as sum_of), or null if there are none,
+    /// e.g. max_of(open_boxes, 'points_for').
+    public object? MaxOf(object? items, string condition) =>
+        game.ConditionValueFor(condition) is { } valueOf ? ItemsOf(items).Select(valueOf).Where(Values.IsNumber).MaxBy(Values.ToDouble) : null;
+
+    /// Changes a column of cards for the rest of the game, kept as they move, e.g. rolling a die:
+    /// set(die, 'value', random(1, 6)).
+    public void Set(object? cards, string column, object? value)
+    {
+        foreach (Card card in CardsIn(cards))
+        {
+            if (card.ColumnMatching(column) is not { } named)
+            {
+                game.ReportFailure($"set: {card.Title} has no column \"{column}\"");
+                return;
+            }
+            game.SetColumn(card, named, value);
+        }
+    }
+
+    /// The zone a card is in, or null for no card.
+    public Zone? ZoneOf(Card? card) => card != null ? game.ZoneOf(card) : null;
 
     public List<Card> Where(object? cards, string column, object? value) =>
         CardsIn(cards).Where(card => card.Column(column) == Values.Format(value)).ToList();
@@ -497,7 +539,7 @@ public class Actions(Game game, Card? stepCard = null)
 
     /// Every set of cards whose column adds up to total. Tries every subset, so keep it to small hands.
     public List<List<Card>> Sums(object? cards, string column, double total) =>
-        Core.Melds.Subsets(CardsIn(cards)).Where(subset => subset.Count > 0 && Sum(subset, column) == total).ToList();
+        Core.Melds.Subsets(CardsIn(cards)).Where(subset => subset.Count > 0 && Values.ToDouble(Sum(subset, column)) == total).ToList();
 
     /// Every longest run of consecutive values, at least length long. A repeated value gives one run per copy
     /// (3, 4, 4, 5 is two runs), so count(runs(...)) scores runs the cribbage way.
@@ -506,7 +548,7 @@ public class Actions(Game game, Card? stepCard = null)
         Dictionary<long, List<Card>> byValue = [];
         foreach (Card card in CardsIn(cards))
         {
-            long value = (long)Number(card, column);
+            long value = (long)NumberOf(card, column);
             if (!byValue.TryGetValue(value, out List<Card>? same))
             {
                 byValue[value] = same = [];
@@ -595,6 +637,15 @@ public class Actions(Game game, Card? stepCard = null)
     /// The condition as a check on the spaces of a board, by their numbers (null if there's no such condition).
     Func<int, bool>? HoldsAt(Zone anySpace, string condition) =>
         game.ConditionFor(condition) is { } holds ? number => holds(SpaceNumbered(anySpace, number)) : null;
+
+    /// What sum_of and max_of go through: a zone's cards, or a list's items as they are.
+    static List<object?> ItemsOf(object? items) => items switch
+    {
+        null => [],
+        Core.Zone zone => [.. zone.Cards],
+        List<object?> list => list,
+        _ => [items],
+    };
 
     /// Cards stay cards (a zone gives its cards); any other list is kept as it is.
     static List<object?> ListOf(object? items)

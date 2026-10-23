@@ -17,15 +17,6 @@
 			"- Chance: any dice, scores all five."
 		],
 		"zones": {
-			"faces": {
-				"outline": false,
-				"layout": "pile",
-				"anchor": [
-					-0.3,
-					0.5
-				],
-				"cards": "res://decks/dice.csv"
-			},
 			"boxes": {
 				"outline": false,
 				"layout": "pile",
@@ -37,6 +28,7 @@
 			},
 			"rolled": {
 				"label": "Roll",
+				"cards": "res://decks/dice.csv",
 				"layout": "row",
 				"width": 0.4,
 				"anchor": [
@@ -88,6 +80,7 @@
 			"Roll": {
 				"when": "rolls_left > 0 and count(kept) < 5",
 				"steps": [
+					"scored = false",
 					"trigger('roll')"
 				]
 			},
@@ -112,6 +105,7 @@
 				"when": "card.face_up",
 				"steps": [
 					"points = points_for(card)",
+					"scored = true",
 					{
 						"if": "of_a_kind == 5 and got_yahtzee",
 						"then": [
@@ -144,7 +138,7 @@
 					"unmark(open_boxes, 'could')",
 					"flip(card)",
 					"mark(card, 'scored', '%s %d' % [card.name, points])",
-					"move(dice, faces)"
+					"move(kept, rolled)"
 				]
 			}
 		},
@@ -167,12 +161,12 @@
 				"player = one_of(players)"
 			],
 			"roll": [
-				"move(rolled, faces)",
 				{
 					"for": "die",
-					"in": "5 - count(kept)",
+					"in": "rolled",
 					"do": [
-						"move(top(where(faces, 'value', random(1, 6))), rolled)"
+						"set(die, 'value', random(1, 6))",
+						"set(die, 'image', 'dice/%d.svg' % [die.value])"
 					]
 				},
 				"rolls_left -= 1",
@@ -189,10 +183,11 @@
 		"conditions": {
 			"dice": "[rolled, kept]",
 			"of_a_kind": "lookup(group_sizes(dice, 'value'), 0)",
-			"total": "int(sum(dice, 'value'))",
-			"upper_points": "int(number(box, 'face')) * count(where(dice, 'value', int(number(box, 'face'))))",
+			"total": "sum(dice, 'value')",
+			"upper_points": "number(box, 'face') * count(where(dice, 'value', number(box, 'face')))",
 			"points_for": "upper_points(box) if box.kind == 'upper' else (total if box.kind == 'three_of_a_kind' and of_a_kind >= 3 else (total if box.kind == 'four_of_a_kind' and of_a_kind >= 4 else (25 if box.kind == 'full_house' and of_a_kind == 3 and size(groups(dice, 'value')) == 2 else (30 if box.kind == 'small_straight' and size(runs(dice, 'value', 4)) > 0 else (40 if box.kind == 'large_straight' and size(runs(dice, 'value', 5)) > 0 else (50 if box.kind == 'yahtzee' and of_a_kind == 5 else (total if box.kind == 'chance' else 0)))))))",
-			"open_boxes": "without(sheet, face_down(sheet))"
+			"open_boxes": "without(sheet, face_down(sheet))",
+			"best_open_box": "max_of(open_boxes, 'points_for') if count(open_boxes) > 0 else 0"
 		},
 		"condition_parameters": {
 			"dice": [],
@@ -204,7 +199,8 @@
 			"points_for": [
 				"box"
 			],
-			"open_boxes": []
+			"open_boxes": [],
+			"best_open_box": []
 		},
 		"condition_errors": [],
 		"constants": {},
@@ -221,7 +217,8 @@
 			"end_turn()"
 		],
 		"variables": {
-			"rolls_left": 3
+			"rolls_left": 3,
+			"scored": false
 		},
 		"players": 2,
 		"seats": [
@@ -270,7 +267,7 @@
 				3.0,
 				4.0
 			],
-			"prefer": "score - count(open_boxes) / 100.0"
+			"prefer": "score + (0 if scored else best_open_box) - count(open_boxes) / 100.0"
 		},
 		"card_face": {
 			"title": "name",
@@ -285,24 +282,6 @@
 		"error": ""
 	},
 	"zones": [
-		{
-			"name": "faces",
-			"label": "",
-			"has_outline": false,
-			"kind": "faces",
-			"owner": 0,
-			"layout": "pile",
-			"face": "up",
-			"anchor": [
-				-0.30000001192092896,
-				0.5
-			],
-			"width": 0.0,
-			"rotation": 0.0,
-			"drags_stack": false,
-			"spread": 0,
-			"covered_by": []
-		},
 		{
 			"name": "boxes",
 			"label": "",
@@ -395,196 +374,6 @@
 		}
 	],
 	"decks": {
-		"res://decks/dice.csv": {
-			"title_column": "name",
-			"number_columns": [
-				"name",
-				"value",
-				"size"
-			],
-			"cards": [
-				{
-					"name": "1",
-					"value": "1",
-					"image": "dice/1.svg",
-					"size": "56"
-				},
-				{
-					"name": "1",
-					"value": "1",
-					"image": "dice/1.svg",
-					"size": "56"
-				},
-				{
-					"name": "1",
-					"value": "1",
-					"image": "dice/1.svg",
-					"size": "56"
-				},
-				{
-					"name": "1",
-					"value": "1",
-					"image": "dice/1.svg",
-					"size": "56"
-				},
-				{
-					"name": "1",
-					"value": "1",
-					"image": "dice/1.svg",
-					"size": "56"
-				},
-				{
-					"name": "2",
-					"value": "2",
-					"image": "dice/2.svg",
-					"size": "56"
-				},
-				{
-					"name": "2",
-					"value": "2",
-					"image": "dice/2.svg",
-					"size": "56"
-				},
-				{
-					"name": "2",
-					"value": "2",
-					"image": "dice/2.svg",
-					"size": "56"
-				},
-				{
-					"name": "2",
-					"value": "2",
-					"image": "dice/2.svg",
-					"size": "56"
-				},
-				{
-					"name": "2",
-					"value": "2",
-					"image": "dice/2.svg",
-					"size": "56"
-				},
-				{
-					"name": "3",
-					"value": "3",
-					"image": "dice/3.svg",
-					"size": "56"
-				},
-				{
-					"name": "3",
-					"value": "3",
-					"image": "dice/3.svg",
-					"size": "56"
-				},
-				{
-					"name": "3",
-					"value": "3",
-					"image": "dice/3.svg",
-					"size": "56"
-				},
-				{
-					"name": "3",
-					"value": "3",
-					"image": "dice/3.svg",
-					"size": "56"
-				},
-				{
-					"name": "3",
-					"value": "3",
-					"image": "dice/3.svg",
-					"size": "56"
-				},
-				{
-					"name": "4",
-					"value": "4",
-					"image": "dice/4.svg",
-					"size": "56"
-				},
-				{
-					"name": "4",
-					"value": "4",
-					"image": "dice/4.svg",
-					"size": "56"
-				},
-				{
-					"name": "4",
-					"value": "4",
-					"image": "dice/4.svg",
-					"size": "56"
-				},
-				{
-					"name": "4",
-					"value": "4",
-					"image": "dice/4.svg",
-					"size": "56"
-				},
-				{
-					"name": "4",
-					"value": "4",
-					"image": "dice/4.svg",
-					"size": "56"
-				},
-				{
-					"name": "5",
-					"value": "5",
-					"image": "dice/5.svg",
-					"size": "56"
-				},
-				{
-					"name": "5",
-					"value": "5",
-					"image": "dice/5.svg",
-					"size": "56"
-				},
-				{
-					"name": "5",
-					"value": "5",
-					"image": "dice/5.svg",
-					"size": "56"
-				},
-				{
-					"name": "5",
-					"value": "5",
-					"image": "dice/5.svg",
-					"size": "56"
-				},
-				{
-					"name": "5",
-					"value": "5",
-					"image": "dice/5.svg",
-					"size": "56"
-				},
-				{
-					"name": "6",
-					"value": "6",
-					"image": "dice/6.svg",
-					"size": "56"
-				},
-				{
-					"name": "6",
-					"value": "6",
-					"image": "dice/6.svg",
-					"size": "56"
-				},
-				{
-					"name": "6",
-					"value": "6",
-					"image": "dice/6.svg",
-					"size": "56"
-				},
-				{
-					"name": "6",
-					"value": "6",
-					"image": "dice/6.svg",
-					"size": "56"
-				},
-				{
-					"name": "6",
-					"value": "6",
-					"image": "dice/6.svg",
-					"size": "56"
-				}
-			]
-		},
 		"res://decks/yahtzee_categories.csv": {
 			"title_column": "name",
 			"number_columns": [
@@ -1009,6 +798,45 @@
 					"order": "13",
 					"image": "",
 					"size": "62"
+				}
+			]
+		},
+		"res://decks/dice.csv": {
+			"title_column": "name",
+			"number_columns": [
+				"value",
+				"size"
+			],
+			"cards": [
+				{
+					"name": "Die",
+					"value": "1",
+					"image": "dice/1.svg",
+					"size": "56"
+				},
+				{
+					"name": "Die",
+					"value": "1",
+					"image": "dice/1.svg",
+					"size": "56"
+				},
+				{
+					"name": "Die",
+					"value": "1",
+					"image": "dice/1.svg",
+					"size": "56"
+				},
+				{
+					"name": "Die",
+					"value": "1",
+					"image": "dice/1.svg",
+					"size": "56"
+				},
+				{
+					"name": "Die",
+					"value": "1",
+					"image": "dice/1.svg",
+					"size": "56"
 				}
 			]
 		}

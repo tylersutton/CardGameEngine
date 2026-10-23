@@ -169,7 +169,7 @@
 			"steps": [
 				{
 					"if": "card.color == 'Pink'",
-					"then": "at = int(number(card, 'target'))",
+					"then": "at = number(card, 'target')",
 					"else": {
 						"for": "step",
 						"in": "number(card, 'steps')",

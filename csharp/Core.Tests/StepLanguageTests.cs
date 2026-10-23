@@ -47,9 +47,13 @@ public class StepLanguageTests
     [InlineData("lookup(table, -1)", 0L)]
     [InlineData("suited(deck, 'Hearts')", 13L)]
     [InlineData("hearts_and_spades(deck)", 26L)]
-    [InlineData("sum(first(group_sizes(deck, 'color'), 1))", 26.0)]
+    [InlineData("sum(first(group_sizes(deck, 'color'), 1))", 26L)]
     [InlineData("max([3, 9, 4]) + min([3, 9, 4])", 12L)]
-    [InlineData("sum([1, 2, 3])", 6.0)]
+    [InlineData("sum([1, 2, 3])", 6L)]
+    [InlineData("sum([1, 2.5])", 3.5)]
+    [InlineData("sum(where(deck, 'rank', 'K'), 'value') / 8", 6L)]
+    [InlineData("number(top(deck), 'value') / 2", 6L)]
+    [InlineData("number(top(deck), 'rank')", 0.0)]
     [InlineData("count(where(deck, 'SUIT', 'Clubs'))", 13L)]
     public void WorksOut(string step, object wanted) => Expect(step, wanted);
 
@@ -125,6 +129,39 @@ public class StepLanguageTests
         Expect("is_bot(1)", false);
         Game withBot = StepLanguageGame.Create("""{ "bot": { "players": [2] } }""");
         Assert.Equal(true, withBot.Evaluate("is_bot(2)"));
+    }
+
+    [Fact]
+    public void ConditionsWorkedOutOverLists()
+    {
+        Expect("sum_of([1, 2, 3], 'doubled')", 12L);
+        Expect("max_of([1, 5, 3], 'doubled')", 10L);
+        Expect("count(matching(deck, 'ace'))", 4L);
+        Expect("count(matching(deck, 'is_ace'))", 4L);
+        Expect("size(without(['a', 'b', 'c'], 'b'))", 2L);
+        Expect("without(['a', 'b', 'c'], ['a', 'c'])[0]", "b");
+        Expect("zone_of(top(deck)) == deck", true);
+    }
+
+    [Fact]
+    public void AParameterNamedCardIsWhatWasPassed()
+    {
+        Card king = game.Cards.First(card => card.Title == "K♠");
+        Assert.Equal("A", game.Evaluate("rank_of(top(where(deck, 'name', 'A♠')))", king));
+    }
+
+    [Fact]
+    public void SetChangesAColumnForTheRestOfTheGame()
+    {
+        Snapshot before = Snapshot.Take(game);
+        game.Run(["set(top(where(deck, 'name', 'A♠')), 'value', 14)", "move(top(where(deck, 'name', 'A♠')), pile)"]);
+        Assert.Empty(failures);
+        Assert.Equal(14L, game.Evaluate("card.value", Ace));
+        Assert.Equal(14L, game.Evaluate("number(top(pile), 'value')"));
+        before.Restore(game);
+        Assert.Equal(1L, game.Evaluate("card.value", Ace));
+        game.Run(["set(top(deck), 'colour', 1)"]);
+        Assert.Contains(failures, failure => failure.Contains("no column \"colour\""));
     }
 
     [Fact]

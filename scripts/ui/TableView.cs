@@ -170,6 +170,8 @@ public partial class TableView : Control
                 }
                 CardView view = ViewFor(group[i], center);
                 view.FaceUp = ShowsFace(group[i]);
+                // A column changed by set(...) (a die rolled) changes how the card looks.
+                view.QueueRedraw();
                 if (zone.Board != null)
                 {
                     view.ShowOnSpace(Board.PaintParts(game!.PaintOf(zone)).Shape, zone.Board.SpaceSize);

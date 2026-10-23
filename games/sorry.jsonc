@@ -93,36 +93,12 @@
 			]
 		}
 	},
-	"player_variables": {
-		// How far all of a player's pawns have come, for bots.
-		"travelled": 0
-	},
 	"variables": {
 		"drawn": -1,
 		"can_move": false,
 		"again": false
 	},
 	"constants": {
-		"seats_by_side": [
-			[
-				2,
-				0,
-				1,
-				0
-			],
-			[
-				0,
-				3,
-				1,
-				2
-			],
-			[
-				3,
-				4,
-				1,
-				2
-			]
-		],
 		// Which side of the board each player plays from, for 2, 3 and 4 players.
 		"sides_by_count": [
 			[
@@ -169,7 +145,6 @@
 	"conditions": {
 		"side_of(seat)": "lookup(sides_by_count, size(players) - 2)[seat - 1]",
 		"my_side": "side_of(player)",
-		"seat_of_side(side)": "lookup(seats_by_side, size(players) - 2)[side]",
 		"is_track(space)": "space.row == 1 or space.row == 16 or space.column == 1 or space.column == 16",
 		"track_index(space)": "space.column - 1 if space.row == 1 and space.column < 16 else (14 + space.row if space.column == 16 and space.row < 16 else (46 - space.column if space.row == 16 and space.column > 1 else 61 - space.row))",
 		"track_space(index)": "space_at(board, [1 + index % 15, 16, 16 - index % 15, 1][index / 15], [1, 1 + index % 15, 16, 16 - index % 15][index / 15])",
@@ -215,6 +190,9 @@
 		"ways_to_move(space)": "(['Sorry!' if drawn == 0 else 'Move out'] if may_leave_start(space) and (drawn == 0 or can_go_to(0)) else []) + (['Forward %d' % [forward_steps]] if may_go_forward(space) else []) + (['Back %d' % [back_steps]] if may_go_back(space) else []) + (['Swap'] if may_swap(space) else [])",
 		"can_move_from(space)": "mine_here(space) and size(ways_to_move(space)) > 0",
 		"at_home": "count(where(home, 'side', my_side))",
+		// How far all of a player's pawns have come, for bots.
+		"pawn_progress(pawn)": "progress(zone_of(pawn))",
+		"travelled": "sum_of(where(board, 'side', my_side), 'pawn_progress')",
 		"in_start(side)": "count(where(start_space(side), 'side', side))"
 	},
 	"actions": {
@@ -235,7 +213,6 @@
 			"when": "can_move_from(clicked_zone)",
 			"steps": [
 				"pawn = top(where(clicked_zone, 'side', my_side))",
-				"before = progress(clicked_zone)",
 				"ways = ways_to_move(clicked_zone)",
 				"way = ways[0] if size(ways) == 1 else choose(ways, 'Move how?')",
 				"goal = null",
@@ -260,7 +237,6 @@
 					"then": [
 						"log('%s swaps places' % [name_of(player)])",
 						"rival = top(goal)",
-						"travelled[seat_of_side(rival.side)] += progress_of(clicked_zone, rival.side) - progress_of(goal, rival.side)",
 						"swap(pawn, rival)"
 					],
 					"else": [
@@ -269,7 +245,6 @@
 							"in": "without(goal, where(goal, 'side', my_side))",
 							"do": [
 								"log('Sorry! A %s goes back to Start' % [rival.name])",
-								"travelled[seat_of_side(rival.side)] -= progress_of(goal, rival.side) + 2",
 								"move(rival, start_space(rival.side))"
 							]
 						},
@@ -289,7 +264,6 @@
 								"for": "rival",
 								"in": "track_space((slide_from + step_number) % 60)",
 								"do": [
-									"travelled[seat_of_side(rival.side)] -= progress_of(track_space((slide_from + step_number) % 60), rival.side) + 2",
 									"move(rival, start_space(rival.side))"
 								]
 							}
@@ -297,8 +271,7 @@
 						"goal = track_space((slide_from + length) % 60)",
 						"move(pawn, goal)"
 					]
-				},
-				"travelled += progress(goal) - before"
+				}
 			]
 		},
 		"Pass": {
