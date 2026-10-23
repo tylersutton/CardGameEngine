@@ -41,6 +41,8 @@ public partial class TableView : Control
     bool hoverAllowed;
     /// The cards and empty zones this screen's player could do something with now (Plays.Playable).
     HashSet<object> playable = [];
+    /// Each card's zone before the input being carried out, to see which cards it moves (see ShowMoved).
+    readonly Dictionary<Card, string> zonesBefore = [];
     readonly List<CardView> carriedViews = [];
     readonly List<Vector2> carriedOffsets = [];
 
@@ -50,6 +52,11 @@ public partial class TableView : Control
         TextureFilter = TextureFilterEnum.LinearWithMipmaps;
     }
 
+    public override void _ExitTree()
+    {
+        ForgetInputs();
+    }
+
     public void ShowGame(Game gameToShow)
     {
         foreach (CardView view in views.Values)
@@ -57,7 +64,10 @@ public partial class TableView : Control
             view.QueueFree();
         }
         views.Clear();
+        ForgetInputs();
         game = gameToShow;
+        game.InputApplying += RememberZones;
+        game.InputApplied += ShowMoved;
         images = new(game.Files);
         MakeZoomView();
         foreach (Zone zone in game.Zones.Values)
@@ -80,6 +90,38 @@ public partial class TableView : Control
         };
         LayoutAll();
         QueueRedraw();
+    }
+
+    void ForgetInputs()
+    {
+        if (game != null)
+        {
+            game.InputApplying -= RememberZones;
+            game.InputApplied -= ShowMoved;
+        }
+    }
+
+    void RememberZones(PlayerInput input)
+    {
+        foreach (Card card in game!.Cards)
+        {
+            zonesBefore[card] = card.ZoneName;
+        }
+    }
+
+    /// The cards someone else's input moved (a bot's, or another player's online) glow for a moment, to show what
+    /// changed.
+    void ShowMoved(PlayerInput input)
+    {
+        bool madeElsewhere = input.Player is int player && (game!.IsBot(player) || game.LocalSeat != 0 && player != game.LocalSeat);
+        if (!madeElsewhere || input.Type == "undo")
+        {
+            return;
+        }
+        foreach (Card card in game!.Cards.Where(card => card.ZoneName != zonesBefore.GetValueOrDefault(card) && views.ContainsKey(card)))
+        {
+            views[card].Flash();
+        }
     }
 
     void LayoutAll()

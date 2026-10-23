@@ -32,6 +32,8 @@ public class Game : IStepContext
     public event Action<string>? Failed;
     public event Action? VariablesChanged;
     public event Action? StateChanged;
+    /// An input that may be made is about to be carried out (InputApplied follows if it was).
+    public event Action<PlayerInput>? InputApplying;
     public event Action<PlayerInput>? InputApplied;
 
     public GameRules Rules { get; } = new();
@@ -262,6 +264,7 @@ public class Game : IStepContext
             GameLog.Flush();
             return false;
         }
+        InputApplying?.Invoke(input);
         if (!RunInput(input))
         {
             return false;

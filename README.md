@@ -45,7 +45,7 @@ All but Color Match use `decks/standard_deck.csv`, or a deck named after the gam
 | **Undo** (Ctrl+Z) | Goes back one of your inputs, including one step of a choice. |
 | **Designer** menu | Tools for making the game: **Reload** starts over from the files on disk (saving a game file or deck reloads it automatically); **Sandbox** ignores the rules so you can set up a situation by hand; **Zone names** shows each zone's name and card count, the names your rules use; **Designer info** shows every variable and how the steps worked each move out. |
 
-The side panel shows the game's readouts, with a log of what happened beneath them. With **Designer info** (on unless you play online), it also shows every variable, and the log shows each step's workings: triggers, conditions, variables changing. Cards you can't see are logged as "hidden card", and errors appear in red. When the game ends, a banner says who won (click it away), and every hand is shown.
+The side panel shows the game's readouts, with a log of what happened beneath them. With **Designer info** (on unless you play online), it also shows every variable, and the log shows each step's workings: triggers, conditions, variables changing. Cards you can't see are logged as "hidden card", and errors appear in red. Cards a bot or another player just moved glow orange for a moment. When the game ends, a banner says who won (click it away), and every hand is shown.
 
 **Online:** press **Play online...** on the title screen.
 

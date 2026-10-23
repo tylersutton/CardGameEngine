@@ -31,6 +31,8 @@ public partial class CardView : Control
     static readonly Color HighlightColor = new(1, 0.85f, 0.2f);
     static readonly Color SelectedColor = new(0.3f, 0.75f, 1);
     static readonly Color PlayableColor = new(1, 1, 1, 0.7f);
+    static readonly Color FlashColor = new(1, 0.6f, 0.2f);
+    const float FlashTime = 1.5f;
     static readonly Color AllowedColor = new(0.35f, 0.9f, 0.45f);
     static readonly Color RefusedColor = new(0.95f, 0.35f, 0.3f);
     static readonly Color MarksBackground = new(0.1f, 0.1f, 0.1f, 0.8f);
@@ -80,6 +82,10 @@ public partial class CardView : Control
     DropHint hint;
     string marksText = "";
     float lift;
+    /// How strongly the glow of Flash still shows: 1 when the card has just moved, fading to 0.
+    float flash;
+    Tween? flashTween;
+    StyleBoxFlat? flashStyle;
 
     /// Off for cards this screen's player can't move (another player's, online): they can still be clicked.
     public bool Movable { get; set; } = true;
@@ -194,6 +200,19 @@ public partial class CardView : Control
         tween?.Kill();
     }
 
+    /// Glows for a moment, to show that someone else (a bot, or another player online) just moved this card.
+    public void Flash()
+    {
+        flashStyle ??= OutlineBox(FlashColor, HighlightWidth, 12, 3);
+        flashTween?.Kill();
+        flashTween = CreateTween().SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.In);
+        flashTween.TweenMethod(Callable.From<float>(strength =>
+        {
+            flash = strength;
+            QueueRedraw();
+        }), 1f, 0f, FlashTime);
+    }
+
     public override void _GuiInput(InputEvent @event)
     {
         if (@event is InputEventMouseButton { ButtonIndex: MouseButton.Left } button)
@@ -266,14 +285,25 @@ public partial class CardView : Control
         {
             DrawMarks(rect);
         }
-        if (OutlineStyle() is { } outline && Shape() == Disc)
+        if (OutlineStyle() is { } outline)
+        {
+            DrawOutline(rect, outline);
+        }
+        if (flash > 0)
+        {
+            flashStyle!.BorderColor = new Color(FlashColor, flash);
+            DrawOutline(rect, flashStyle);
+        }
+    }
+
+    void DrawOutline(Rect2 rect, StyleBoxFlat outline)
+    {
+        if (Shape() == Disc)
         {
             DrawArc(rect.GetCenter(), rect.Size.X / 2 + HighlightWidth / 2f + outline.ExpandMarginTop, 0, Mathf.Tau, 48, outline.BorderColor, outline.BorderWidthTop, true);
+            return;
         }
-        else if (OutlineStyle() is { } box)
-        {
-            DrawStyleBox(box, rect.Grow(HighlightWidth / 2f));
-        }
+        DrawStyleBox(outline, rect.Grow(HighlightWidth / 2f));
     }
 
     /// "shape" in card_face: a column or one shape for every card. Anything but a disc or a square is a card.
