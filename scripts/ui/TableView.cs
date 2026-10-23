@@ -29,6 +29,8 @@ public partial class TableView : Control
     /// Where inputs go: the game itself, or the online session (set by Main).
     public Func<PlayerInput, bool> Submit { get; set; } = _ => false;
     public bool ShowZoneNames { get; set; }
+    /// Designer > Show plays: outline everything this screen's player could do something with now, to check the rules.
+    public bool ShowPlays { get; set; }
     public Game? Game => game;
     public IReadOnlyDictionary<Card, CardView> CardViews => views;
 
@@ -39,8 +41,11 @@ public partial class TableView : Control
     CardView? zoomView;
     Zone? hoverZone;
     bool hoverAllowed;
-    /// The cards and empty zones this screen's player could do something with now (Plays.Playable).
-    HashSet<object> playable = [];
+    /// The cards and empty zones outlined with ShowPlays (Plays.Playable).
+    HashSet<object> outlined = [];
+    /// The cards in this screen's player's own zones that they can't play now, while they can play some of the others
+    /// (like the cards that don't follow suit). When all or none can be played, nothing is dimmed: it would say nothing.
+    HashSet<Card> dimmed = [];
     /// Each card's zone before the input being carried out, to see which cards it moves (see ShowMoved).
     readonly Dictionary<Card, string> zonesBefore = [];
     readonly List<CardView> carriedViews = [];
@@ -186,11 +191,32 @@ public partial class TableView : Control
         return groups;
     }
 
-    /// Pointed out only on this screen's turn, when nothing is being chosen, and while the rules hold.
+    /// Plays are pointed out only on this screen's turn, when nothing is being chosen, and while the rules hold.
     void FindPlayable()
     {
         bool pointsOut = game!.IsLocalTurn() && !game.Choice.IsOpen && !game.Sandbox && !game.Over;
-        playable = pointsOut ? game.Plays.Playable() : [];
+        HashSet<object> playable = pointsOut ? game.Plays.Playable() : [];
+        outlined = ShowPlays ? playable : [];
+        dimmed = [];
+        foreach (Zone zone in game.Zones.Values.Where(zone => pointsOut && zone.Owner == game.Viewer()))
+        {
+            List<Card> cards = Plays.ReachableCards(zone);
+            List<Card> unplayable = cards.Where(card => !playable.Contains(card)).ToList();
+            if (unplayable.Count < cards.Count)
+            {
+                dimmed.UnionWith(unplayable);
+            }
+        }
+    }
+
+    /// Shows or hides the plays (see ShowPlays) at once, without waiting for the next change.
+    public void RefreshPlays()
+    {
+        if (game != null)
+        {
+            FindPlayable();
+            RefreshViews();
+        }
     }
 
     void RefreshViews()
@@ -200,7 +226,8 @@ public partial class TableView : Control
         {
             view.FaceUp = ShowsFace(card);
             view.Highlighted = game!.Choice.Options.Contains(card) && game.IsLocalTurn();
-            view.Playable = playable.Contains(card);
+            view.Playable = outlined.Contains(card);
+            view.Dimmed = dimmed.Contains(card);
             view.Selected = game.Choice.Selected.Contains(card);
             view.Movable = game.MayHandle(card);
             view.MarksText = string.Join(" ", card.Marks.Values.Select(Values.Format));
@@ -540,7 +567,7 @@ public partial class TableView : Control
                 DrawString(font, namePosition, $"{zone.Name} ({zone.Cards.Count})", HorizontalAlignment.Center, slot.Size.X + LabelOverhang * 2, LabelFontSize, LabelColor);
             }
         }
-        foreach (Zone zone in playable.OfType<Zone>())
+        foreach (Zone zone in outlined.OfType<Zone>())
         {
             DrawHighlight(zone, CardView.PlayableStyle);
         }

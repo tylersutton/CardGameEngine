@@ -1,18 +1,20 @@
 using Godot;
 
-/// The toolbar's menu of tools for making a game rather than playing it: reload, sandbox, zone names and designer
-/// info.
+/// The toolbar's menu of tools for making a game rather than playing it: reload, sandbox, zone names, plays and
+/// designer info.
 public partial class DesignerMenu : MenuButton
 {
     const int ReloadId = 0;
     const int SandboxId = 1;
     const int ZoneNamesId = 2;
     const int DesignerInfoId = 3;
+    const int ShowPlaysId = 4;
 
     public event Action? ReloadPressed;
     public event Action<bool>? SandboxToggled;
     public event Action<bool>? ZoneNamesToggled;
     public event Action<bool>? DesignerInfoToggled;
+    public event Action<bool>? ShowPlaysToggled;
 
     public bool Sandbox => IsChecked(SandboxId);
 
@@ -29,10 +31,12 @@ public partial class DesignerMenu : MenuButton
         Items.AddItem("Reload", ReloadId);
         Items.AddCheckItem("Sandbox", SandboxId);
         Items.AddCheckItem("Zone names", ZoneNamesId);
+        Items.AddCheckItem("Show plays", ShowPlaysId);
         Items.AddCheckItem("Designer info", DesignerInfoId);
         SetTooltip(ReloadId, "Start over from the files on disk");
         SetTooltip(SandboxId, "Ignore move rules and action conditions");
         SetTooltip(ZoneNamesId, "Show each zone's name and card count, as used in rules");
+        SetTooltip(ShowPlaysId, "Outline every card and zone the player whose turn it is could use now");
         SetTooltip(DesignerInfoId, "Show every variable, and the steps' workings in the log");
         Items.IdPressed += OnItemPressed;
     }
@@ -64,6 +68,7 @@ public partial class DesignerMenu : MenuButton
         {
             SandboxId => SandboxToggled,
             ZoneNamesId => ZoneNamesToggled,
+            ShowPlaysId => ShowPlaysToggled,
             _ => DesignerInfoToggled,
         };
         toggled?.Invoke(on);

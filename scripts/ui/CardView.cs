@@ -32,6 +32,7 @@ public partial class CardView : Control
     static readonly Color SelectedColor = new(0.3f, 0.75f, 1);
     static readonly Color PlayableColor = new(1, 1, 1, 0.7f);
     static readonly Color FlashColor = new(1, 0.6f, 0.2f);
+    static readonly Color DimmedTint = new(0.6f, 0.6f, 0.6f);
     const float FlashTime = 1.5f;
     static readonly Color AllowedColor = new(0.35f, 0.9f, 0.45f);
     static readonly Color RefusedColor = new(0.95f, 0.35f, 0.3f);
@@ -109,6 +110,13 @@ public partial class CardView : Control
             highlighted = value;
             QueueRedraw();
         }
+    }
+
+    /// The player can't play this card now, though they could play others beside it (TableView.FindPlayable).
+    public bool Dimmed
+    {
+        get => Modulate != Colors.White;
+        set => Modulate = value ? DimmedTint : Colors.White;
     }
 
     /// Something the player could do now would use this card (Plays.Playable): fainter than a choice's highlight.

@@ -60,6 +60,11 @@ public partial class Main : Control
             table.ShowZoneNames = on;
             table.QueueRedraw();
         };
+        designerMenu.ShowPlaysToggled += on =>
+        {
+            table.ShowPlays = on;
+            table.RefreshPlays();
+        };
         designerMenu.DesignerInfoToggled += ShowDesignerInfo;
         // Offline, whoever plays is most likely making the game; online, they're playing it with others.
         designerMenu.DesignerInfo = !Net.Online;

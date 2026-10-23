@@ -3,7 +3,7 @@ using Editing;
 using Godot;
 
 /// Opens the real screens: the title screen, the lobby, every game on the table screen with bots playing every seat
-/// for a few moves, the dock's keys, and every game in the editor (edited and undone back to the file). Reports load
+/// for a few moves, the dock's keys, dimmed cards, and every game in the editor (edited and undone back to the file). Reports load
 /// errors, failed steps and errors Godot reports.
 /// Run: godot --headless res://tests/ui_test.tscn
 public partial class UiTest : Node
@@ -30,6 +30,7 @@ public partial class UiTest : Node
             await Edit(path);
         }
         await PressKeys();
+        await DimOffSuitCards();
         problems.AddRange(scriptErrors.Messages);
         GD.Print("UI TEST: ", problems.Count == 0 ? "all passed" : "FAILED\n  " + string.Join("\n  ", problems));
         GetTree().Quit(problems.Count == 0 ? 0 : 1);
@@ -250,6 +251,41 @@ public partial class UiTest : Node
         if (game.Inputs.Count != 1 || Values.Format(game.Inputs[0].Option) != "3")
         {
             problems.Add($"dock keys: 3 didn't bid 3 in Spades (inputs: {string.Join(", ", game.Inputs)})");
+        }
+        main.QueueFree();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+    }
+
+    /// Hearts: when you must follow suit and hold other suits too, those other cards are dimmed, and only those.
+    async Task DimOffSuitCards()
+    {
+        Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
+        main.RulesPath = "res://games/hearts.jsonc";
+        AddChild(main);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Game game = main.Game!;
+        List<object?> bots = (List<object?>)game.Rules.Bot["players"]!;
+        game.Rules.Bot["players"] = Enumerable.Range(1, game.Rules.Players).Select(player => (object?)(double)player).ToList();
+        Bot bot = new(game);
+        List<Card> hand = game.Zones["hand_1"].Cards;
+        bool MustFollowWithOthers()
+        {
+            string lead = Values.Text(game.Variables["lead"]);
+            return game.CurrentPlayer() == 1 && !game.Choice.IsOpen && lead != ""
+                && hand.Any(card => card.Data["suit"] == lead) && hand.Any(card => card.Data["suit"] != lead);
+        }
+        for (int move = 0; move < 200 && !MustFollowWithOthers(); move++)
+        {
+            bot.TakeInput();
+        }
+        game.Rules.Bot["players"] = bots;
+        game.AnnounceStateChanged();
+        TableView table = main.GetNode<TableView>("%TableView");
+        string leadSuit = Values.Text(game.Variables["lead"]);
+        List<Card> dimmed = hand.Where(card => table.CardViews[card].Dimmed).ToList();
+        if (!MustFollowWithOthers() || !dimmed.SequenceEqual(hand.Where(card => card.Data["suit"] != leadSuit)))
+        {
+            problems.Add($"dimming: in Hearts, following {leadSuit}, dimmed {string.Join(", ", dimmed.Select(card => card.Title))}");
         }
         main.QueueFree();
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
