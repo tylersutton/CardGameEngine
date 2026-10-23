@@ -3,7 +3,7 @@ using Editing;
 using Godot;
 
 /// Opens the real screens: the title screen, the lobby, every game on the table screen with bots playing every seat
-/// for a few moves, the dock's keys, dimmed cards, Next hand on a bot's turn, and every game in the editor (edited and undone back to the file). Reports load
+/// for a few moves, the dock's keys, dimmed cards (also while choosing), Next hand on a bot's turn, and every game in the editor (edited and undone back to the file). Reports load
 /// errors, failed steps and errors Godot reports.
 /// Run: godot --headless res://tests/ui_test.tscn
 public partial class UiTest : Node
@@ -31,6 +31,7 @@ public partial class UiTest : Node
         }
         await PressKeys();
         await DimOffSuitCards();
+        await KeepDimmedWhileChoosing();
         await NextHandOnABotsTurn();
         problems.AddRange(scriptErrors.Messages);
         GD.Print("UI TEST: ", problems.Count == 0 ? "all passed" : "FAILED\n  " + string.Join("\n  ", problems));
@@ -272,7 +273,7 @@ public partial class UiTest : Node
         bool MustFollowWithOthers()
         {
             string lead = Values.Text(game.Variables["lead"]);
-            return game.CurrentPlayer() == 1 && !game.Choice.IsOpen && lead != ""
+            return game.CurrentPlayer() == 1 && game.Plays.Offered.Contains("Play a card") && lead != ""
                 && hand.Any(card => card.Data["suit"] == lead) && hand.Any(card => card.Data["suit"] != lead);
         }
         for (int move = 0; move < 200 && !MustFollowWithOthers(); move++)
@@ -287,6 +288,53 @@ public partial class UiTest : Node
         if (!MustFollowWithOthers() || !dimmed.SequenceEqual(hand.Where(card => card.Data["suit"] != leadSuit)))
         {
             problems.Add($"dimming: in Hearts, following {leadSuit}, dimmed {string.Join(", ", dimmed.Select(card => card.Title))}");
+        }
+        main.QueueFree();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+    }
+
+    /// President: the cards that can't beat the table stay dimmed after clicking one that can starts choosing a set.
+    async Task KeepDimmedWhileChoosing()
+    {
+        Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
+        main.RulesPath = "res://games/president.jsonc";
+        AddChild(main);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Game game = main.Game!;
+        TableView table = main.GetNode<TableView>("%TableView");
+        List<object?> bots = (List<object?>)game.Rules.Bot["players"]!;
+        List<object?> everyone = Enumerable.Range(1, game.Rules.Players).Select(player => (object?)(double)player).ToList();
+        Bot bot = new(game);
+        List<Card> hand = game.Zones["hand_1"].Cards;
+        List<Card> Dimmed() => hand.Where(card => table.CardViews[card].Dimmed).ToList();
+        for (int move = 0; move < 300; move++)
+        {
+            if (game.CurrentPlayer() == 1 && !game.Choice.IsOpen)
+            {
+                game.Rules.Bot["players"] = bots;
+                game.AnnounceStateChanged();
+                if (Dimmed().Count > 0)
+                {
+                    break;
+                }
+            }
+            game.Rules.Bot["players"] = everyone;
+            bot.TakeInput();
+        }
+        game.Rules.Bot["players"] = bots;
+        List<Card> before = Dimmed();
+        Card? playable = hand.FirstOrDefault(card => !before.Contains(card));
+        if (before.Count == 0 || playable == null)
+        {
+            problems.Add("dimming: President never had cards that couldn't beat the table");
+        }
+        else
+        {
+            game.Apply(PlayerInput.Click(playable) with { Player = 1 });
+            if (!game.Choice.IsOpen || !Dimmed().SequenceEqual(before))
+            {
+                problems.Add($"dimming: choosing in President dimmed {string.Join(", ", Dimmed().Select(card => card.Title))}, not {string.Join(", ", before.Select(card => card.Title))}");
+            }
         }
         main.QueueFree();
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);

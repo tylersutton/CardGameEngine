@@ -191,12 +191,13 @@ public partial class TableView : Control
         return groups;
     }
 
-    /// Plays are pointed out only on this screen's turn, when nothing is being chosen, and while the rules hold.
+    /// Plays are pointed out only on this screen's turn and while the rules hold. While choosing (like picking the
+    /// cards for President's Play), the plays are the choice's options, which are outlined already.
     void FindPlayable()
     {
-        bool pointsOut = game!.IsLocalTurn() && !game.Choice.IsOpen && !game.Sandbox && !game.Over;
-        HashSet<object> playable = pointsOut ? game.Plays.Playable() : [];
-        outlined = ShowPlays ? playable : [];
+        bool pointsOut = game!.IsLocalTurn() && !game.Sandbox && !game.Over;
+        HashSet<object> playable = !pointsOut ? [] : game.Choice.IsOpen ? [.. game.Choice.Options.OfType<Card>()] : game.Plays.Playable();
+        outlined = ShowPlays && !game.Choice.IsOpen ? playable : [];
         dimmed = [];
         foreach (Zone zone in game.Zones.Values.Where(zone => pointsOut && zone.Owner == game.Viewer()))
         {
