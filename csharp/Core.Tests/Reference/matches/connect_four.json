@@ -4,7 +4,7 @@
 		"inputs": [
 			{
 				"type": "drag",
-				"card": 20,
+				"card": 41,
 				"to": "space_28"
 			},
 			{
@@ -13,12 +13,12 @@
 			},
 			{
 				"type": "drag",
-				"card": 19,
+				"card": 40,
 				"to": "space_20"
 			},
 			{
 				"type": "drag",
-				"card": 40,
+				"card": 19,
 				"to": "space_23"
 			},
 			{
@@ -27,7 +27,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 39,
+				"card": 18,
 				"to": "space_36"
 			},
 			{
@@ -36,7 +36,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 38,
+				"card": 17,
 				"to": "space_36"
 			},
 			{
@@ -45,26 +45,26 @@
 			},
 			{
 				"type": "drag",
-				"card": 37,
+				"card": 16,
 				"to": "space_42"
 			},
 			{
 				"type": "drag",
-				"card": 15,
+				"card": 36,
 				"to": "space_8"
 			},
 			{
 				"type": "click",
-				"card": 37
-			},
-			{
-				"type": "drag",
-				"card": 14,
-				"to": "space_9"
+				"card": 16
 			},
 			{
 				"type": "drag",
 				"card": 35,
+				"to": "space_9"
+			},
+			{
+				"type": "drag",
+				"card": 14,
 				"to": "space_10"
 			},
 			{
@@ -73,7 +73,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 34,
+				"card": 13,
 				"to": "space_28"
 			},
 			{
@@ -82,17 +82,17 @@
 			},
 			{
 				"type": "drag",
-				"card": 33,
+				"card": 12,
 				"to": "space_13"
 			},
 			{
 				"type": "drag",
-				"card": 11,
+				"card": 32,
 				"to": "space_33"
 			},
 			{
 				"type": "drag",
-				"card": 32,
+				"card": 11,
 				"to": "space_28"
 			},
 			{
@@ -105,6 +105,160 @@
 				"[trigger] start",
 				"  box → discs_1: Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red",
 				"  box → discs_2: Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop by dragging",
+				"  discs_2 → space_28: Yellow",
+				"  if landed != to → then",
+				"  space_28 → space_42: Yellow",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop",
+				"  discs_1 → space_36: Red",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop by dragging",
+				"  discs_2 → space_20: Yellow",
+				"  if landed != to → then",
+				"  space_20 → space_41: Yellow",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop by dragging",
+				"  discs_1 → space_23: Red",
+				"  if landed != to → then",
+				"  space_23 → space_37: Red",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop",
+				"  discs_2 → space_34: Yellow",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop by dragging",
+				"  discs_1 → space_36: Red",
+				"  if landed != to → then",
+				"  space_36 → space_29: Red",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop",
+				"  discs_2 → space_30: Yellow",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop by dragging",
+				"  discs_1 → space_36: Red",
+				"  if landed != to → then",
+				"  space_36 → space_22: Red",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop",
+				"  discs_2 → space_23: Yellow",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop by dragging",
+				"  discs_1 → space_42: Red",
+				"  if landed != to → then",
+				"  space_42 → space_35: Red",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop by dragging",
+				"  discs_2 → space_8: Yellow",
+				"  if landed != to → then",
+				"  space_8 → space_15: Yellow",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop",
+				"  discs_1 → space_28: Red",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop by dragging",
+				"  discs_2 → space_9: Yellow",
+				"  if landed != to → then",
+				"  space_9 → space_16: Yellow",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
+				"[turn] Red",
+				"  Red may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop by dragging",
+				"  discs_1 → space_10: Red",
+				"  if landed != to → then",
+				"  space_10 → space_38: Red",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 2",
+				"[turn] Yellow (bot)",
+				"  Yellow (bot) may: Drop, Drop by dragging"
+			],
+			[
+				"[action] Drop",
+				"  discs_2 → space_31: Yellow",
+				"  if won → else",
+				"  if count(space) == 42 → else",
+				"  player = 1",
 				"[turn] Red",
 				"  Red may: Drop, Drop by dragging"
 			],
@@ -112,7 +266,7 @@
 				"[action] Drop by dragging",
 				"  discs_1 → space_28: Red",
 				"  if landed != to → then",
-				"  space_28 → space_42: Red",
+				"  space_28 → space_21: Red",
 				"  if won → else",
 				"  if count(space) == 42 → else",
 				"  player = 2",
@@ -121,7 +275,7 @@
 			],
 			[
 				"[action] Drop",
-				"  discs_2 → space_36: Yellow",
+				"  discs_2 → space_14: Yellow",
 				"  if won → else",
 				"  if count(space) == 42 → else",
 				"  player = 1",
@@ -130,9 +284,9 @@
 			],
 			[
 				"[action] Drop by dragging",
-				"  discs_1 → space_20: Red",
+				"  discs_1 → space_13: Red",
 				"  if landed != to → then",
-				"  space_20 → space_41: Red",
+				"  space_13 → space_27: Red",
 				"  if won → else",
 				"  if count(space) == 42 → else",
 				"  player = 2",
@@ -141,69 +295,9 @@
 			],
 			[
 				"[action] Drop by dragging",
-				"  discs_2 → space_23: Yellow",
+				"  discs_2 → space_33: Yellow",
 				"  if landed != to → then",
-				"  space_23 → space_37: Yellow",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 1",
-				"[turn] Red",
-				"  Red may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop",
-				"  discs_1 → space_34: Red",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 2",
-				"[turn] Yellow (bot)",
-				"  Yellow (bot) may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop by dragging",
-				"  discs_2 → space_36: Yellow",
-				"  if landed != to → then",
-				"  space_36 → space_29: Yellow",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 1",
-				"[turn] Red",
-				"  Red may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop",
-				"  discs_1 → space_30: Red",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 2",
-				"[turn] Yellow (bot)",
-				"  Yellow (bot) may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop by dragging",
-				"  discs_2 → space_36: Yellow",
-				"  if landed != to → then",
-				"  space_36 → space_22: Yellow",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 1",
-				"[turn] Red",
-				"  Red may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop",
-				"  discs_1 → space_23: Red",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 2",
-				"[turn] Yellow (bot)",
-				"  Yellow (bot) may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop by dragging",
-				"  discs_2 → space_42: Yellow",
-				"  if landed != to → then",
-				"  space_42 → space_35: Yellow",
+				"  space_33 → space_40: Yellow",
 				"  if won → else",
 				"  if count(space) == 42 → else",
 				"  player = 1",
@@ -212,9 +306,9 @@
 			],
 			[
 				"[action] Drop by dragging",
-				"  discs_1 → space_8: Red",
+				"  discs_1 → space_28: Red",
 				"  if landed != to → then",
-				"  space_8 → space_15: Red",
+				"  space_28 → space_7: Red",
 				"  if won → else",
 				"  if count(space) == 42 → else",
 				"  player = 2",
@@ -223,102 +317,9 @@
 			],
 			[
 				"[action] Drop",
-				"  discs_2 → space_28: Yellow",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 1",
-				"[turn] Red",
-				"  Red may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop by dragging",
-				"  discs_1 → space_9: Red",
-				"  if landed != to → then",
-				"  space_9 → space_16: Red",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 2",
-				"[turn] Yellow (bot)",
-				"  Yellow (bot) may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop by dragging",
-				"  discs_2 → space_10: Yellow",
-				"  if landed != to → then",
-				"  space_10 → space_38: Yellow",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 1",
-				"[turn] Red",
-				"  Red may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop",
-				"  discs_1 → space_31: Red",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 2",
-				"[turn] Yellow (bot)",
-				"  Yellow (bot) may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop by dragging",
-				"  discs_2 → space_28: Yellow",
-				"  if landed != to → then",
-				"  space_28 → space_21: Yellow",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 1",
-				"[turn] Red",
-				"  Red may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop",
-				"  discs_1 → space_14: Red",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 2",
-				"[turn] Yellow (bot)",
-				"  Yellow (bot) may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop by dragging",
-				"  discs_2 → space_13: Yellow",
-				"  if landed != to → then",
-				"  space_13 → space_27: Yellow",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 1",
-				"[turn] Red",
-				"  Red may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop by dragging",
-				"  discs_1 → space_33: Red",
-				"  if landed != to → then",
-				"  space_33 → space_40: Red",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 2",
-				"[turn] Yellow (bot)",
-				"  Yellow (bot) may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop by dragging",
-				"  discs_2 → space_28: Yellow",
-				"  if landed != to → then",
-				"  space_28 → space_7: Yellow",
-				"  if won → else",
-				"  if count(space) == 42 → else",
-				"  player = 1",
-				"[turn] Red",
-				"  Red may: Drop, Drop by dragging"
-			],
-			[
-				"[action] Drop",
-				"  discs_1 → space_39: Red",
+				"  discs_2 → space_39: Yellow",
 				"  if won → then",
-				"[game over] Winner: Red"
+				"[game over] Winner: Yellow"
 			]
 		],
 		"end": {
@@ -330,7 +331,7 @@
 				"space_5": [],
 				"space_6": [],
 				"space_7": [
-					"Yellow"
+					"Red"
 				],
 				"space_8": [],
 				"space_9": [],
@@ -339,76 +340,77 @@
 				"space_12": [],
 				"space_13": [],
 				"space_14": [
-					"Red"
+					"Yellow"
 				],
 				"space_15": [
-					"Red"
+					"Yellow"
 				],
 				"space_16": [
-					"Red"
+					"Yellow"
 				],
 				"space_17": [],
 				"space_18": [],
 				"space_19": [],
 				"space_20": [],
 				"space_21": [
-					"Yellow"
+					"Red"
 				],
 				"space_22": [
-					"Yellow"
+					"Red"
 				],
 				"space_23": [
-					"Red"
+					"Yellow"
 				],
 				"space_24": [],
 				"space_25": [],
 				"space_26": [],
 				"space_27": [
-					"Yellow"
+					"Red"
 				],
 				"space_28": [
-					"Yellow"
+					"Red"
 				],
 				"space_29": [
-					"Yellow"
+					"Red"
 				],
 				"space_30": [
-					"Red"
+					"Yellow"
 				],
 				"space_31": [
-					"Red"
+					"Yellow"
 				],
 				"space_32": [],
 				"space_33": [],
 				"space_34": [
-					"Red"
+					"Yellow"
 				],
 				"space_35": [
-					"Yellow"
+					"Red"
 				],
 				"space_36": [
-					"Yellow"
+					"Red"
 				],
 				"space_37": [
-					"Yellow"
+					"Red"
 				],
 				"space_38": [
-					"Yellow"
+					"Red"
 				],
 				"space_39": [
-					"Red"
+					"Yellow"
 				],
 				"space_40": [
-					"Red"
+					"Yellow"
 				],
 				"space_41": [
-					"Red"
+					"Yellow"
 				],
 				"space_42": [
-					"Red"
+					"Yellow"
 				],
 				"box": [],
 				"discs_1": [
+					"Red",
 					"Red",
 					"Red",
 					"Red",
@@ -430,15 +432,14 @@
 					"Yellow",
 					"Yellow",
 					"Yellow",
-					"Yellow",
 					"Yellow"
 				]
 			},
 			"variables": {
-				"player": "1"
+				"player": "2"
 			},
 			"over": true,
-			"result": "Winner: Red"
+			"result": "Winner: Yellow"
 		}
 	},
 	{
@@ -531,6 +532,7 @@
 				"[trigger] start",
 				"  box → discs_1: Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red, Red",
 				"  box → discs_2: Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow, Yellow",
+				"  player = 1",
 				"[turn] Red",
 				"  Red may: Drop, Drop by dragging"
 			],

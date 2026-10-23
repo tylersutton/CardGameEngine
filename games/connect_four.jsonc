@@ -113,8 +113,12 @@
 	"triggers": {
 		"start": [
 			"move(where(box, 'name', 'Red'), discs[1])",
-			"move(where(box, 'name', 'Yellow'), discs[2])"
+			"move(where(box, 'name', 'Yellow'), discs[2])",
+			"player = one_of(players)"
 		]
+	},
+	"status": {
+		"you play": "lookup(['Red', 'Yellow'], viewer() - 1)"
 	},
 	"bot": {
 		"players": [

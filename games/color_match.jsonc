@@ -89,12 +89,18 @@
 				}
 			]
 		},
-		"Sort by color": [
-			"sort(hand, ['color', 'number'])"
-		],
-		"Sort by number": [
-			"sort(hand, ['number', 'color'])"
-		]
+		"Sort by color": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['color', 'number'])"
+			]
+		},
+		"Sort by number": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['number', 'color'])"
+			]
+		}
 	},
 	"turn": [
 		"offer(['Play a card', 'Draw'])",
@@ -119,7 +125,8 @@
 				]
 			},
 			"move(top(deck), pile)",
-			"active_color = top(pile).color"
+			"active_color = top(pile).color",
+			"player = one_of(players)"
 		],
 		"deck_empty": [
 			"move(without(pile, top(pile)), deck)",

@@ -10,8 +10,8 @@ public class Seat
     public string Name { get; set; } = "";
 }
 
-/// The game the host chose, and its seats.
-public record Lobby(string Game, string Title, string Description, bool CanBot, List<Seat> Seats);
+/// The game the host chose, the numbers of players it allows, and its seats (one per player).
+public record Lobby(string Game, string Title, string Description, bool CanBot, List<int> PlayerCounts, List<Seat> Seats);
 
 /// Online play (an autoload, so it lasts across scenes). In the lobby, people take seats and the host fills the rest
 /// with bots. In a match, every machine runs its own Game from the same rules, decks and seed; the host checks each
@@ -125,7 +125,22 @@ public partial class Net : Node
     {
         GameRules rules = GameRules.Load(ProjectFiles.With(), path);
         List<Seat> seats = Enumerable.Range(0, rules.Players).Select(_ => new Seat()).ToList();
-        Lobby = new(path, rules.Title, rules.Description, rules.Bot.ContainsKey("prefer"), seats);
+        Lobby = new(path, rules.Title, rules.Description, rules.Bot.ContainsKey("prefer"), rules.PlayerCounts, seats);
+        ShareLobby();
+    }
+
+    /// For a game that allows different numbers of players: seats are added or taken away at the end.
+    public void ChoosePlayers(int count)
+    {
+        if (!IsHost() || Game != null || Lobby == null || !Lobby.PlayerCounts.Contains(count))
+        {
+            return;
+        }
+        while (Lobby.Seats.Count < count)
+        {
+            Lobby.Seats.Add(new());
+        }
+        Lobby.Seats.RemoveRange(count, Lobby.Seats.Count - count);
         ShareLobby();
     }
 
@@ -266,6 +281,7 @@ public partial class Net : Node
         Godot.Collections.Dictionary package = new()
         {
             ["path"] = Lobby.Game, ["files"] = MatchFiles(Lobby.Game), ["images"] = MatchImages(Lobby.Game), ["seed"] = (long)GD.Randi(), ["bots"] = bots,
+            ["players"] = Lobby.Seats.Count,
         };
         Rpc(MethodName.BeginMatch, package, new Godot.Collections.Array());
     }
@@ -297,30 +313,38 @@ public partial class Net : Node
     [Rpc(CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
     void BeginMatch(Godot.Collections.Dictionary package, Godot.Collections.Array inputsSoFar)
     {
-        Dictionary<string, string> files = package["files"].AsGodotDictionary().ToDictionary(pair => pair.Key.AsString(), pair => pair.Value.AsString());
-        Dictionary<string, byte[]> images = package["images"].AsGodotDictionary().ToDictionary(pair => pair.Key.AsString(), pair => pair.Value.AsByteArray());
-        Game newGame = new(ProjectFiles.With(files, images), package["path"].AsString(), package["seed"].AsInt64());
-        if (newGame.Errors.Count > 0)
+        Game? newGame = BuildMatch(package);
+        if (newGame == null)
         {
-            Notice?.Invoke("Couldn't load the host's game: " + string.Join("; ", newGame.Errors));
             return;
         }
-        newGame.Rules.Bot["players"] = package["bots"].AsGodotArray().Select(bot => (object?)(double)bot.AsInt32()).ToList();
-        newGame.Rules.PlayerNames = SeatNames();
-        int seat = MySeat();
-        newGame.LocalSeat = seat != NoSeat ? seat : newGame.Rules.Players + 1;
         matchPackage = package;
         Game = newGame;
         waitingInputs = inputsSoFar.Select(input => (input.AsGodotDictionary(), (long?)null)).ToList();
         TableReady = false;
         catchingUp = false;
-        if (IsHost())
-        {
-            Game.InputApplied += SendInput;
-        }
         MatchStarted?.Invoke();
     }
 
+    /// This machine's copy of the match, before any inputs: null (with a notice) if the game doesn't load.
+    Game? BuildMatch(Godot.Collections.Dictionary package)
+    {
+        Dictionary<string, string> files = package["files"].AsGodotDictionary().ToDictionary(pair => pair.Key.AsString(), pair => pair.Value.AsString());
+        Dictionary<string, byte[]> images = package["images"].AsGodotDictionary().ToDictionary(pair => pair.Key.AsString(), pair => pair.Value.AsByteArray());
+        Game newGame = new(ProjectFiles.With(files, images), package["path"].AsString(), package["seed"].AsInt64(), package["players"].AsInt32());
+        if (newGame.Errors.Count > 0)
+        {
+            Notice?.Invoke("Couldn't load the host's game: " + string.Join("; ", newGame.Errors));
+            return null;
+        }
+        newGame.Rules.Bot["players"] = package["bots"].AsGodotArray().Select(bot => (object?)(double)bot.AsInt32()).ToList();
+        newGame.Rules.PlayerNames = SeatNames();
+        int seat = MySeat();
+        newGame.LocalSeat = seat != NoSeat ? seat : newGame.Rules.Players + 1;
+        return newGame;
+    }
+
+    /// The host only starts sending its inputs once it has caught up, so a rebuilt match isn't sent twice.
     public void CatchUp()
     {
         TableReady = true;
@@ -329,6 +353,10 @@ public partial class Net : Node
             ApplyFromHost(input, hostHash);
         }
         waitingInputs.Clear();
+        if (IsHost())
+        {
+            Game!.InputApplied += SendInput;
+        }
     }
 
     /// Someone joining a match in progress gets back the seat they left (same name), or watches.
@@ -405,9 +433,28 @@ public partial class Net : Node
     }
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+    /// A copy that drifted is rebuilt from the host's inputs. The host first checks its own copy against those inputs
+    /// replayed: if even that differs, every copy (the host's too) is rebuilt from them, so they all agree again.
     void RequestResync()
     {
-        RpcId(Multiplayer.GetRemoteSenderId(), MethodName.BeginMatch, matchPackage, InputsAsVariants(Game!.Inputs));
+        Godot.Collections.Array inputs = InputsAsVariants(Game!.Inputs);
+        Game? replayed = BuildMatch(matchPackage);
+        if (replayed == null)
+        {
+            return;
+        }
+        replayed.Start();
+        foreach (PlayerInput input in Game.Inputs)
+        {
+            replayed.Apply(input);
+        }
+        if (Snapshot.StateHash(replayed) != Snapshot.StateHash(Game))
+        {
+            Notice?.Invoke("The host's copy was out of step with its own moves; rebuilding the match");
+            Rpc(MethodName.BeginMatch, matchPackage, inputs);
+            return;
+        }
+        RpcId(Multiplayer.GetRemoteSenderId(), MethodName.BeginMatch, matchPackage, inputs);
     }
 
     int SeatOf(long peer) => (Lobby?.Seats.FindIndex(seat => seat.Peer == peer) ?? -1) + 1;
@@ -538,7 +585,8 @@ public partial class Net : Node
         }));
         return new()
         {
-            ["game"] = Lobby.Game, ["title"] = Lobby.Title, ["description"] = Lobby.Description, ["can_bot"] = Lobby.CanBot, ["seats"] = seats,
+            ["game"] = Lobby.Game, ["title"] = Lobby.Title, ["description"] = Lobby.Description, ["can_bot"] = Lobby.CanBot,
+            ["player_counts"] = new Godot.Collections.Array(Lobby.PlayerCounts.Select(count => (Variant)count)), ["seats"] = seats,
         };
     }
 
@@ -553,6 +601,7 @@ public partial class Net : Node
             Godot.Collections.Dictionary seat = each.AsGodotDictionary();
             return new Seat { Peer = seat["peer"].AsInt64(), Bot = seat["bot"].AsBool(), Name = seat["name"].AsString() };
         }).ToList();
-        return new(sent["game"].AsString(), sent["title"].AsString(), sent["description"].AsString(), sent["can_bot"].AsBool(), seats);
+        List<int> counts = sent["player_counts"].AsGodotArray().Select(count => count.AsInt32()).ToList();
+        return new(sent["game"].AsString(), sent["title"].AsString(), sent["description"].AsString(), sent["can_bot"].AsBool(), counts, seats);
     }
 }

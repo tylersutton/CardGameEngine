@@ -1,7 +1,7 @@
 {
 	"rules": {
 		"title": "Sea Salt + Paper",
-		"description": "2 players, one round. Draw two cards and keep one, or take the top of a discard pile; then play duos for their effects. With 7 points, Stop (most points wins) or call Last chance (everyone else gets one more turn, then you win if you still have the most).",
+		"description": "2 to 4 players, one round. Draw two cards and keep one, or take the top of a discard pile; then play duos for their effects. With 7 points, Stop (most points wins) or call Last chance (everyone else gets one more turn, then you win if you still have the most).",
 		"zones": {
 			"deck": {
 				"label": "Deck",
@@ -113,6 +113,7 @@
 				]
 			},
 			"Sort hand": {
+				"any_time": true,
 				"steps": [
 					"sort(hand, ['Kind', 'Color'])"
 				]
@@ -127,7 +128,8 @@
 					"do": [
 						"move(top(deck), pile)"
 					]
-				}
+				},
+				"player = one_of(players)"
 			],
 			"duo_Crab": [
 				"pile = choose(discard_piles, 'Crabs: look through which pile?')",
@@ -270,7 +272,9 @@
 		"show_variables": [],
 		"bot": {
 			"players": [
-				2.0
+				2.0,
+				3.0,
+				4.0
 			]
 		},
 		"card_face": {

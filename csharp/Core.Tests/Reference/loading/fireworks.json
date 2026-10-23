@@ -125,7 +125,8 @@
 		"triggers": {
 			"start": [
 				"shuffle(deck)",
-				"deal(deck, all_hand, 5)"
+				"deal(deck, all_hand, 5)",
+				"player = one_of(players)"
 			],
 			"end_of_turn": [
 				{

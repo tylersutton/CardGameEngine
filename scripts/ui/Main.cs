@@ -12,6 +12,8 @@ public partial class Main : Control
     [Export(PropertyHint.File, "*.jsonc,*.json")]
     public string RulesPath { get; set; } = "res://games/gin_rummy.jsonc";
 
+    /// How many play, for a game that allows different numbers (0: the game's usual number).
+    public int Players { get; set; }
     public Game? Game { get; private set; }
     /// Game and deck text to play instead of the files on disk (the editor's unsaved edits).
     public Dictionary<string, string> GivenFiles { get; set; } = [];
@@ -26,12 +28,15 @@ public partial class Main : Control
     // Kept from _Ready: by the time _ExitTree runs, the children have left the tree and can't be looked up.
     TableView table = null!;
     LogView log = null!;
+    WinnerBanner banner = null!;
     Net Net => Net.Instance;
 
     public override void _Ready()
     {
         table = GetNode<TableView>("%TableView");
         log = GetNode<LogView>("%LogView");
+        banner = new() { Over = table };
+        AddChild(banner);
         GetNode<Button>("%GamesButton").Pressed += Leave;
         GetNode<Button>("%ReloadButton").Pressed += LoadGame;
         GetNode<Button>("%UndoButton").Pressed += () =>
@@ -85,8 +90,9 @@ public partial class Main : Control
         GetNode<Control>("Layout/LogPanel").Visible = shown;
     }
 
-    /// Offline the table changes the game directly; online, inputs go through the session.
-    bool Submit(PlayerInput input) => Net.Online ? Net.Submit(input) : Game!.Apply(input);
+    /// Offline the table changes the game directly, as the person at this screen (so not on a bot's turn); online,
+    /// inputs go through the session.
+    bool Submit(PlayerInput input) => Net.Online ? Net.Submit(input) : Game!.Apply(input with { Player = Game.Viewer() });
 
     void Leave()
     {
@@ -122,7 +128,7 @@ public partial class Main : Control
 
     public void LoadGame()
     {
-        Game newGame = Net.Online ? Net.Game! : new(ProjectFiles.With(GivenFiles), RulesPath);
+        Game newGame = Net.Online ? Net.Game! : new(ProjectFiles.With(GivenFiles), RulesPath, -1, Players);
         watchedFiles.Clear();
         foreach (string path in newGame.Rules.FilesUsed(RulesPath))
         {
@@ -149,6 +155,7 @@ public partial class Main : Control
         table.Submit = Submit;
         table.ShowGame(Game);
         GetNode<StatusView>("%StatusView").ShowGame(Game);
+        banner.ShowGame(Game);
         AddActionButtons();
         Game.Start();
         if (Net.Online)
@@ -204,7 +211,7 @@ public partial class Main : Control
         }
     }
 
-    bool MayPress(string actionName) => !Net.Online || Game!.MayAct(Game.LocalSeat, PlayerInput.Perform(actionName));
+    bool MayPress(string actionName) => Game!.MayAct(Game.Viewer(), PlayerInput.Perform(actionName));
 
     void RefreshChoiceBar()
     {

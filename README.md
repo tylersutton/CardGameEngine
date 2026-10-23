@@ -9,7 +9,7 @@ Prototype card games in Godot 4.7 (the .NET build) without writing code. The car
 ## Quick start
 
 1. Open the project folder in Godot 4.7 (the .NET build, which runs C#) and press **F5**.
-2. Pick a game on the title screen. Every file in `games/` is listed there.
+2. Pick a game on the title screen. Every file in `games/` is listed there. For a game that can be played by different numbers of players, choose how many beside **Play**.
 3. To make your own game, press **New game...**. Give it a name, a player count and a deck, and it writes a small playable game for you to change. That game deals, lets players draw and discard, and puts bots in the other seats, and it has comments explaining each part. Change the game in the editor (**Open in editor**), or by hand (**Edit file**). Saving reloads the table.
 
 To go straight into one game while you work on it, set **Rules Path** on the **Main** node of `scenes/main.tscn`, then press **F6**.
@@ -40,18 +40,18 @@ All but Color Match use `decks/standard_deck.csv`, or a deck named after the gam
 |---|---|
 | Drag a card | Moves it to the zone nearest where you drop it. While you drag, the outline turns green if the move is allowed and red if not. A refused drop snaps back, and the log says why. Dragging within your own hand reorders it. |
 | Click a card or zone | Does the game's click action there, if it has one (for example, drawing from the deck). |
-| Choosing | The cards you can choose are outlined in yellow. Click them; picked cards turn blue. Anything else to pick, like a color, appears as buttons above the table. |
+| Choosing | The cards you can choose are outlined in yellow. Click them; picked cards turn blue. Anything else to pick, like a color, appears as buttons above the table. On your turn, clicking a card can also start a button's choice of several cards with it, as in President's Play. |
 | Toolbar buttons | The game's other actions. A button is greyed out while it can't be done. The bar above the table says what you can do now. |
 | **Undo** (Ctrl+Z) | Goes back one of your inputs, including one step of a choice. |
 | **Reload** | Starts over from the files on disk. Saving a game file or deck reloads it automatically. |
 | **Sandbox** | Ignores the rules so you can set up a situation by hand. |
 | **Zone names** | Shows each zone's name and card count: the names your rules use. |
 
-The side panel shows the game's variables and readouts, with a log of everything that happened beneath them. Cards you can't see are logged as "hidden card", and errors appear in red.
+The side panel shows the game's variables and readouts, with a log of everything that happened beneath them. Cards you can't see are logged as "hidden card", and errors appear in red. When the game ends, a banner says who won (click it away), and every hand is shown.
 
 **Online:** press **Play online...** on the title screen.
 
-1. The host presses **Host** (port 7777) and picks the game.
+1. The host presses **Host** (port 7777) and picks the game, and how many play if it allows different numbers.
 2. The other players press **Join** with the host's address. Use the local address on the same network. Over the internet, the host forwards the port, or everyone joins a virtual network like Tailscale.
 3. Everyone takes a seat, the host can put bots in empty seats, and the host presses **Start**.
 
@@ -66,7 +66,7 @@ Only the host needs the game's files. Each player sees the table from their own 
 - **Right:** the inspector: the settings of whatever is selected, with less-used ones folded away. Point at a setting to read what it does at the bottom. Steps are edited as a list, with suggestions and problems shown as you type; the turn also gets a summary in words.
 - **Bottom:** problems with the game (Ctrl+J shows or hides them). Click one to go to it.
 - **Ctrl+P** finds any command or part of the game. Ctrl+S saves, Ctrl+Z undoes.
-- **File > Export to Tabletop Simulator** sets the game's table up in Tabletop Simulator, to play by hand: every zone that starts with cards becomes a deck there, drawn with the game's own card faces. In Tabletop Simulator, **Load > Card Game Prototypes** opens it. The pictures stay on this computer, so to play online, upload them first (Tabletop Simulator's **Modding > Cloud Manager**) and put their new addresses in the deck (right-click it, **Custom**).
+- **File > Export to Tabletop Simulator** sets the game's table up in Tabletop Simulator, to play by hand, as it is once the game's `start` has run, so each export is a new deal. Cards are drawn with the game's own card faces; piles become decks, and each player's private zone becomes their hand. In Tabletop Simulator, **Load > Card Game Prototypes** opens it. The pictures stay on this computer, so to play online, upload them first (Tabletop Simulator's **Modding > Cloud Manager**) and put their new addresses in the deck (right-click it, **Custom**).
 
 ## Tutorial: making a game
 
@@ -181,11 +181,11 @@ A card's effect runs as the card arrives, before the action's `steps` and before
 
 ### 7. Add buttons
 
-An action without `drag` or `click` is a toolbar button. These two aren't offered by the turn, so they can be pressed at any time:
+An action without `drag` or `click` is a toolbar button. These two aren't offered by the turn, and `any_time` lets either player press them even on the other's turn, sorting their own hand:
 
 ```json
-"Sort by color": ["sort(hand, ['color', 'number'])"],
-"Sort by number": ["sort(hand, ['number', 'color'])"]
+"Sort by color": { "any_time": true, "steps": ["sort(hand, ['color', 'number'])"] },
+"Sort by number": { "any_time": true, "steps": ["sort(hand, ['number', 'color'])"] }
 ```
 
 The game is now playable.

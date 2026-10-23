@@ -1,7 +1,7 @@
 {
 	"rules": {
 		"title": "Goofspiel",
-		"description": "Three players, you against two bots, all bidding at once. Each round a diamond is turned up as the prize; everyone secretly bids a card from their suit, then the bids are revealed. The highest bid takes the prize (a tie leaves it for the next round). Most prize points after 13 rounds wins.",
+		"description": "Two or three players, you against bots, all bidding at once. Each round a diamond is turned up as the prize; everyone secretly bids a card from their suit, then the bids are revealed. The highest bid takes the prize (a tie leaves it for the next round). Most prize points after 13 rounds wins.",
 		"zones": {
 			"box": {
 				"outline": false,
@@ -11,7 +11,10 @@
 					-0.3,
 					0.5
 				],
-				"cards": "res://decks/standard_deck.csv"
+				"cards": "res://decks/standard_deck.csv",
+				"columns": {
+					"art": "'cards/' + card.rank + '_' + card.suit + '.png'"
+				}
 			},
 			"prizes": {
 				"label": "Prizes",
@@ -196,7 +199,8 @@
 		"team_variables": {},
 		"melds": {},
 		"status": {
-			"points": "'%s %d, %s %d, %s %d' % [name_of(1), sum(won_1, 'value'), name_of(2), sum(won_2, 'value'), name_of(3), sum(won_3, 'value')]",
+			"your points": "sum(won[viewer()], 'value')",
+			"most points": "most('prize_points')",
 			"prize worth": "stake"
 		},
 		"show_variables": [
@@ -215,7 +219,9 @@
 			"body": [
 				"suit"
 			],
-			"color": "color"
+			"color": "color",
+			"image": "art",
+			"card_back": "card_back.svg"
 		},
 		"unknown_keys": [],
 		"error": ""

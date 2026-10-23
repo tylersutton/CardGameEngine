@@ -62,6 +62,8 @@ public partial class CardView : Control
     public event Action<CardView>? Unhovered;
 
     public Card? Card { get; set; }
+    /// Where the card is moving to (see MoveTo), for laying the table out elsewhere without waiting for it to get there.
+    public (Vector2 Position, float Rotation) Destination { get; private set; }
     Dictionary<string, object?> face = [];
     readonly ImageCache? images;
     Tween? tween;
@@ -166,6 +168,7 @@ public partial class CardView : Control
 
     public void MoveTo(Vector2 targetPosition, float targetRotation)
     {
+        Destination = (targetPosition, targetRotation);
         StopMoving();
         tween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
         tween.TweenProperty(this, "position", targetPosition, MoveTime);

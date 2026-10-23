@@ -12,7 +12,7 @@ A game file is **JSONC**: JSON that also allows `//` and `/* */` comments, and t
 |---|---|
 | `title`, `description` | Shown on the title screen. Without a title, the file name is used. |
 | [`zones`](#zones) | The places cards can be: decks, hands, piles, boards. |
-| [`players`](#players-and-variables), `player_names`, `seats`, `teams` | How many players there are, what they're called, where their name tags sit, and partnerships. |
+| [`players`](#players-and-variables), `player_names`, `seats`, `teams` | How many players there are (or may be), what they're called, where their name tags sit, and partnerships. |
 | [`variables`](#players-and-variables), `player_variables`, `team_variables` | Values the game keeps track of, with their starting values. |
 | [`actions`](#actions) | What players can do: drag, click, or press a button. |
 | [`turn`](#turn) | The steps of one player's turn. |
@@ -35,8 +35,8 @@ Wherever a list of steps goes, a single step will also do: `"then": "end_turn()"
 | Key | Meaning | Default |
 |---|---|---|
 | `anchor` | Where the zone sits, as `[x, y]` fractions of the table. For a per-player zone, this is seat 1's spot. The other seats' spots are worked out round the table, with the side seats turned sideways. | `[0.5, 0.5]` |
-| `layout` | How the cards spread: `pile`, `row`, `fan`, `column` (cascading downward, as in solitaire), or `melds` (grouped into melds) | `row` |
-| `face` | `up`; `down`; `private` (only its owner sees the cards); or `others` (everyone but its owner sees them, like holding cards facing out in Hanabi). Cards take this face as they arrive. | `up` |
+| `layout` | How the cards spread: `pile` (only the top card shows), `row`, `fan`, `column` (cascading downward, as in solitaire), or `melds` (grouped into melds) | `row` |
+| `face` | `up`; `down`; `private` (only its owner sees the cards); or `others` (everyone but its owner sees them, like holding cards facing out in Hanabi). Cards take this face as they arrive. Once the game is over, everyone sees every card that isn't face down. | `up` |
 | `cards` | A deck to start with, e.g. `"res://decks/my_deck.csv"` | empty |
 | `columns` | With `cards`: columns to add or change on every card as the game loads, each an expression about `card`, e.g. Hearts' `{ "value": "14 if card.rank == 'A' else card.value" }` | |
 | `label` | Text shown faintly inside the zone while it's empty. `#` becomes the number in per-player zones and copies: `"Tricks #"`. | none |
@@ -80,7 +80,8 @@ A zone with a `board` is a grid of spaces, and each space is a zone of its own, 
 "team_variables": { "team_score": 0 }
 ```
 
-- **Whose turn:** `player` holds whose turn it is, starting at 1. `end_turn()` passes the turn on, and `player = ...` gives it to someone in particular, e.g. the winner of a trick. `players` is the list `[1, 2, 3, 4]`.
+- **Whose turn:** `player` holds whose turn it is, starting at 1. `end_turn()` passes the turn on, and `player = ...` gives it to someone in particular, e.g. the winner of a trick. `players` is the list `[1, 2, 3, 4]`, so `player = one_of(players)` in `start` picks who goes first at random.
+- **How many:** `"players": [2, 3, 4]` lets the game be played by any of those numbers, chosen on the title screen or in the online lobby; the first is the usual one. Place per-player zones and name tags round the table from seat 1's spot (or give `anchors` and `seats` for the most players), list bots for every seat they might play, and write readouts without a fixed number of seats, e.g. `score[viewer()]`.
 - **Name tags:** `seats` places them. Give seat 1's spot and the others go round the table, or give one `[x, y]` per player. Without `player_names`, players are "Player 1", "Player 2", ...
 - **Per-player variables:** these work like per-player zones. `score` is the current player's, `opponent_score` is the next player's, and `score[2]` or `score_2` is player 2's.
 - **Teams:** each list in `teams` is one team. `team_score` is the current player's team's score, `team_won` is every won zone on that team, and `team(player)` gives a player's team number.
@@ -108,18 +109,19 @@ Everything a player can do, each with a name. How an action is done:
 |---|---|
 | `steps` | What the action does. For a drag, these run after the card has moved. |
 | `when` | The action is only allowed while this is true. A button is greyed out otherwise. |
-| `choose` | For a button: what the player chooses before the steps run, e.g. `"hand"` (the cards are highlighted) or `"['Red', 'Blue']"` (buttons above the table). The steps get the pick as `choice`, and a single card as `card` too. Clicking elsewhere cancels the choice. |
+| `choose` | For a button: what the player chooses before the steps run, e.g. `"hand"` (the cards are highlighted) or `"['Red', 'Blue']"` (buttons above the table). The steps get the pick as `choice`, and a single card as `card` too. Clicking elsewhere cancels the choice. When it picks several cards (`pick` above 1, or `up_to`), clicking one of them while the button can be pressed starts the choice with it. |
 | `pick` | With `choose`: exactly how many cards to pick, a number or an expression. `choice` is then a list. |
 | `up_to` | With `choose`: any number of cards up to this many, then **Done**. Use `pick` or `up_to`, not both. |
 | `allow` | With `choose`: a condition the whole pick must meet, e.g. `"size(groups(choice, 'rank')) == 1"` (all the same rank) |
 | `button` | `false` hides a button, for actions that are only started with `ask(...)`. `true` gives a drag or click action a button too, which asks for the card. |
 | `human_only` | `true`: bots never do it |
+| `any_time` | `true`: anyone may do it, even on someone else's turn or while a choice is being made, and it's done as them, so `hand` is their own hand: a Sort button. Its steps can't wait for a choice. |
 | `prefer` | What a bot aims for when making this action's choice, instead of the game's `bot.prefer` |
 
 **When an action can be done:**
 
 - An action named in an [`offer(...)`](#turn) can only be done while that offer waits.
-- Any other action can be done whenever its `when` holds, like sorting your hand.
+- Any other action can be done whenever its `when` holds, on the current player's turn. With `any_time`, by anyone at any time.
 - For a drag or click, the first action in the file that allows it is the one that's done.
 - A game with no drag actions that never offers an action allows every drag, as a free-play sandbox. Any other game refuses a drag no action allows.
 
@@ -320,6 +322,7 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 | `try_move(card, to)` | Moves a card only if a drag action allows it, and does that action. `to` can be a group. |
 | `shuffle(zone)` | Shuffles a zone |
 | `flip(cards)` | Turns cards over, until they move to another zone |
+| `reveal(cards)` | Shows cards to everyone, even in a private zone, until they move: hands at the end of a round |
 | `sort(zone, ['column', ...])` | Keeps a zone sorted by these columns. `sort(zone, [])` stops sorting. |
 | `mark(cards, 'key', value)`, `unmark(cards, 'key')` | Puts a note on cards, or takes it off, e.g. a clue `mark(cards, 'color', 'Red')`. Marks show on the card and last until it moves. A mark named after a column tells bots what the card is. |
 | `end_turn()` | Passes the turn to the next player and fires `turn_start` |

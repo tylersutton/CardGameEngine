@@ -13,6 +13,7 @@
 				],
 				"cards": "res://decks/standard_deck.csv",
 				"columns": {
+					"art": "'cards/' + card.rank + '_' + card.suit + '.png'",
 					"order": "card.value",
 					"value": "min(card.value, 10)"
 				}
@@ -227,6 +228,7 @@
 						"sort(hand, ['order', 'suit'])"
 					]
 				},
+				"dealer = one_of(players)",
 				"trigger('deal')"
 			],
 			"deal": [
@@ -357,7 +359,9 @@
 			"body": [
 				"suit"
 			],
-			"color": "color"
+			"color": "color",
+			"image": "art",
+			"card_back": "card_back.svg"
 		},
 		"unknown_keys": [],
 		"error": ""

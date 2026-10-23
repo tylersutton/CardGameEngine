@@ -1,24 +1,23 @@
 {
 	"title": "Kaboom",
-	"description": "Three players, you against two bots. On your turn, play any action cards you like (drag them to the pile), then draw a card to end your turn. Draw a Bomb without a Defuse and you're out; the last player standing wins. Anyone can answer an action with a Nope, and a Nope can be Noped.",
-	"players": 3,
+	"description": "Two to five players, you against bots. On your turn, play any action cards you like (drag them to the pile), then draw a card to end your turn. Draw a Bomb without a Defuse and you're out; the last player standing wins. Anyone can answer an action with a Nope, and a Nope can be Noped.",
+	"players": [
+		3,
+		2,
+		4,
+		5
+	],
 	"player_names": [
 		"You",
-		"West",
-		"East"
+		"Player 2",
+		"Player 3",
+		"Player 4",
+		"Player 5"
 	],
 	"seats": [
 		[
 			0.16,
 			0.86
-		],
-		[
-			0.09,
-			0.18
-		],
-		[
-			0.91,
-			0.18
 		]
 	],
 	"zones": {
@@ -63,19 +62,9 @@
 			"layout": "row",
 			"face": "private",
 			"width": 0.2,
-			"anchors": [
-				[
-					0.5,
-					0.64
-				],
-				[
-					0.3,
-					0.2
-				],
-				[
-					0.7,
-					0.2
-				]
+			"anchor": [
+				0.5,
+				0.64
 			]
 		},
 		"hand": {
@@ -83,24 +72,9 @@
 			"layout": "fan",
 			"face": "private",
 			"width": 0.45,
-			"anchors": [
-				[
-					0.5,
-					0.86
-				],
-				[
-					0.09,
-					0.5
-				],
-				[
-					0.91,
-					0.5
-				]
-			],
-			"rotations": [
-				0,
-				90,
-				270
+			"anchor": [
+				0.5,
+				0.86
 			]
 		}
 	},
@@ -121,7 +95,9 @@
 	"bot": {
 		"players": [
 			2,
-			3
+			3,
+			4,
+			5
 		],
 		"prefer": "100 * int(player in players_left()) + 20 * count(matching(hand, 'is_defuse')) + 2 * count(hand)"
 	},
@@ -219,9 +195,9 @@
 			},
 			"deal(deck, all_hand, 4)",
 			"move(where(box, 'kind', 'defuse'), deck)",
-			"move(where(box, 'kind', 'bomb'), deck)",
+			"move(first(where(box, 'kind', 'bomb'), size(players) - 1), deck)",
 			"shuffle(deck)",
-			"player = random(1, 3)"
+			"player = one_of(players)"
 		],
 		"resolve": [
 			{

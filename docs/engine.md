@@ -33,9 +33,9 @@ Then add it to the [reference](reference.md#building-blocks).
 ## Inputs, seeds and replays
 
 - **Inputs:** everything a player does reaches the game as a `PlayerInput` through `Game.Apply(input)`, e.g. `new("drag") { Card = 12, To = "pile" }`. The table, the bots and online play all go through it, and `Game.Inputs` keeps the list.
-- **Seeds:** all randomness comes from the seed given to `new Game(files, path, seed)`. Its random numbers are Godot's own (`RandomNumbers`), so a seed deals the same cards it did in the GDScript version.
-- **Replays:** `Game.Record()` gives the rules, seed and inputs, and `Game.Replay(files, record)` rebuilds the match. `Snapshot.StateHash(game)` sums up the whole state as one number, to check that two copies agree.
-- **Seats:** `Game.LocalSeat` is the player this screen belongs to (`0` when people share a screen). An input from a player is refused unless `Game.MayAct` allows it.
+- **Seeds:** all randomness comes from the seed given to `new Game(files, path, seed, players)` (`players`: how many play, for a game that allows several numbers). Its random numbers are Godot's own (`RandomNumbers`), so a seed deals the same cards it did in the GDScript version.
+- **Replays:** `Game.Record()` gives the rules, seed, inputs and number of players, and `Game.Replay(files, record)` rebuilds the match. `Snapshot.StateHash(game)` sums up the whole state as one number, to check that two copies agree.
+- **Seats:** `Game.LocalSeat` is the player this screen belongs to (`0` when people share a screen), and `Game.Viewer()` the player the table acts as. An input from a player is refused unless `Game.MayAct` allows it. A refused input mustn't change anything, since it isn't recorded: online, every copy of a match comes out the same from the inputs alone. If a copy drifts, the host replays its own inputs, and when even its own copy differs from that replay, every copy is rebuilt from it.
 
 ## Tests
 
@@ -44,7 +44,7 @@ Run the engine and editor tests with `dotnet test` in `csharp/`. They take about
 | Tests | Run them after changing |
 |---|---|
 | `ReplayTests` | Anything. They play two recorded matches of every game, which must log exactly as recorded. |
-| `PlaythroughTests` | A game or turns. They play every game to its end with bots. |
+| `PlaythroughTests` | A game or turns. They play every game to its end with bots, with each number of players it allows. |
 | `DeterminismTests` | The engine. They check that every game replays exactly. |
 | `RegressionTests` | Anything. Gin, Hearts and Color Match with bots, and situations that once went wrong. |
 | `StepLanguageTests` | The step language: operators, `if ... else`, `=` and `+=`, and error messages |

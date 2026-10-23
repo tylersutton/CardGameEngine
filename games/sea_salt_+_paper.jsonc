@@ -1,8 +1,12 @@
 {
 	// Every key is explained in docs/reference.md.
 	"title": "Sea Salt + Paper",
-	"description": "2 players, one round. Draw two cards and keep one, or take the top of a discard pile; then play duos for their effects. With 7 points, Stop (most points wins) or call Last chance (everyone else gets one more turn, then you win if you still have the most).",
-	"players": 2,
+	"description": "2 to 4 players, one round. Draw two cards and keep one, or take the top of a discard pile; then play duos for their effects. With 7 points, Stop (most points wins) or call Last chance (everyone else gets one more turn, then you win if you still have the most).",
+	"players": [
+		2,
+		3,
+		4
+	],
 	"player_names": [
 		"You",
 		"Player 2",
@@ -90,7 +94,9 @@
 	// The other seats are bots that play random legal moves. Add "prefer" to make them try to win.
 	"bot": {
 		"players": [
-			2
+			2,
+			3,
+			4
 		]
 	},
 	"variables": {
@@ -191,9 +197,12 @@
 				"last_chance_caller = player"
 			]
 		},
-		"Sort hand": [
-			"sort(hand, ['Kind', 'Color'])"
-		]
+		"Sort hand": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['Kind', 'Color'])"
+			]
+		}
 	},
 	// A turn: draw (two from the deck, or one from a discard pile), then play any duos, then end it.
 	"turn": [
@@ -233,7 +242,8 @@
 				"do": [
 					"move(top(deck), pile)"
 				]
-			}
+			},
+			"player = one_of(players)"
 		],
 		// Two crabs: look through a discard pile and take one card from it.
 		"duo_Crab": [

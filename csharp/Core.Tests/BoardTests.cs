@@ -147,15 +147,16 @@ public class BoardTests
         game.Rules.Bot["players"] = new List<object?>();
         game.Failed += failures.Add;
         game.Start();
-        // Red clicks the top of column 1 each time, Yellow column 2.
+        int first = game.CurrentPlayer();
+        // Whoever starts clicks the top of column 1 each time, the other player column 2.
         foreach (int column in new[] { 1, 2, 1, 2, 1, 2, 1 })
         {
             Assert.True(game.Apply(PlayerInput.ClickEmpty(game.Zones[$"space_{column}"])));
         }
-        // Red's four discs fill column 1 from the bottom row (6) up: rows 3 to 6.
+        // Their four discs fill column 1 from the bottom row (6) up: rows 3 to 6.
         Assert.Equal(["space_15", "space_22", "space_29", "space_36"], Names(game.Evaluate("zones_where(space, 'mine')")));
         Assert.True(game.Over);
-        Assert.Equal([1], game.Winners);
+        Assert.Equal([first], game.Winners);
         Assert.Empty(failures);
     }
 
@@ -166,10 +167,11 @@ public class BoardTests
         game.Rules.Bot["players"] = new List<object?>();
         game.Failed += failures.Add;
         game.Start();
-        Assert.True(game.Apply(PlayerInput.Drag(game.Zones["discs_1"].Cards[^1], game.Zones["space_3"])));
+        int first = game.CurrentPlayer();
+        Assert.True(game.Apply(PlayerInput.Drag(game.Zones[$"discs_{first}"].Cards[^1], game.Zones["space_3"])));
         Assert.Single(game.Zones["space_38"].Cards);
-        // Yellow drops onto the space Red's disc took: theirs stacks on top of it.
-        Assert.True(game.Apply(PlayerInput.Drag(game.Zones["discs_2"].Cards[^1], game.Zones["space_38"])));
+        // The other player drops onto the space the first disc took: theirs stacks on top of it.
+        Assert.True(game.Apply(PlayerInput.Drag(game.Zones[$"discs_{3 - first}"].Cards[^1], game.Zones["space_38"])));
         Assert.Single(game.Zones["space_31"].Cards);
         Assert.Equal(2L, game.Evaluate("count(space)"));
         Assert.False(game.Apply(PlayerInput.Drag(game.Zones["space_38"].Cards[0], game.Zones["space_1"])));
@@ -183,7 +185,9 @@ public class BoardTests
         game.Rules.Bot["players"] = new List<object?>();
         game.Failed += failures.Add;
         game.Start();
-        Zone supply = game.Zones["supply"];
+        // Black's move, whoever the game picked to start.
+        game.Variables[Game.PlayerVariable] = 1L;
+        Zone supply = game.Zones["supply_1"];
         Assert.False(game.Apply(PlayerInput.Drag(supply.Cards[^1], game.Zones["square_1"])));
         // Black at (4, 3) traps White's disc at (4, 4) against Black's at (4, 5).
         Assert.True(game.Apply(PlayerInput.Drag(supply.Cards[^1], game.Zones["square_20"])));

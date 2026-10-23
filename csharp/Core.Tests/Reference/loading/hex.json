@@ -65,7 +65,8 @@
 		"triggers": {
 			"start": [
 				"move(where(box, 'name', 'Red'), stones[1])",
-				"move(where(box, 'name', 'Blue'), stones[2])"
+				"move(where(box, 'name', 'Blue'), stones[2])",
+				"player = one_of(players)"
 			]
 		},
 		"effects": {},
@@ -130,6 +131,7 @@
 		"team_variables": {},
 		"melds": {},
 		"status": {
+			"you play": "lookup(['Red', 'Blue'], viewer() - 1)",
 			"goal": "'Red joins the red edges; Blue joins the blue edges'"
 		},
 		"show_variables": [],

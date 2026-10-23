@@ -1,5 +1,5 @@
 name,kind,text,color,count
-Bomb,bomb,"Drawing this knocks you out, unless you have a Defuse.",#c0392b,2
+Bomb,bomb,"Drawing this knocks you out, unless you have a Defuse.",#c0392b,4
 Defuse,defuse,"When you draw a Bomb, discard this and slip the Bomb back into the deck.",#1e8449,5
 Skip,action,End your turn without drawing.,#1f5fbf,4
 Shuffle,action,Shuffle the deck.,#7d3c98,4

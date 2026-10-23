@@ -10,7 +10,10 @@
 				0.42,
 				0.5
 			],
-			"cards": "res://decks/standard_deck.csv"
+			"cards": "res://decks/standard_deck.csv",
+			"columns": {
+				"art": "'cards/' + card.rank + '_' + card.suit + '.png'"
+			}
 		},
 		"discard": {
 			"label": "Discard",
@@ -49,12 +52,18 @@
 		"Draw": [
 			"draw(deck, hand)"
 		],
-		"Sort by suit": [
-			"sort(hand, ['suit', 'value'])"
-		],
-		"Sort by value": [
-			"sort(hand, ['value', 'suit'])"
-		]
+		"Sort by suit": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['suit', 'value'])"
+			]
+		},
+		"Sort by value": {
+			"any_time": true,
+			"steps": [
+				"sort(hand, ['value', 'suit'])"
+			]
+		}
 	},
 	"triggers": {
 		"start": [
@@ -73,6 +82,8 @@
 		"body": [
 			"suit"
 		],
-		"color": "color"
+		"color": "color",
+		"image": "art",
+		"card_back": "card_back.svg"
 	}
 }

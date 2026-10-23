@@ -62,7 +62,7 @@ public class Actions(Game game, Card? stepCard = null)
                 return;
             }
         }
-        game.LogLine($"[not allowed] {card.Title}: no move rule allows any of {string.Join(", ", destinations.Select(destination => destination.Name))}");
+        game.LogLine($"[not allowed] {game.Describe(card)}: no move rule allows any of {string.Join(", ", destinations.Select(destination => destination.Name))}");
     }
 
     public List<Card> All(Zone zone) => [.. zone.Cards];
@@ -90,6 +90,14 @@ public class Actions(Game game, Card? stepCard = null)
         foreach (Card card in CardsIn(cards))
         {
             game.Flip(card);
+        }
+    }
+
+    public void Reveal(object? cards)
+    {
+        foreach (Card card in CardsIn(cards).Where(card => !card.Revealed))
+        {
+            game.Reveal(card);
         }
     }
 

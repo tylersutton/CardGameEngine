@@ -2,7 +2,7 @@ using System.Text.Json;
 using Core;
 
 /// tests/playthrough_test.gd: every game played to its end with random bots in every seat (pressing the buttons only
-/// people press, like Next hand), with nothing failing on the way. Games with no end (solitaire, the sandbox,
+/// people press, like Next hand), with each number of players it allows, with nothing failing on the way. Games with no end (solitaire, the sandbox,
 /// President's endless hands) just play a while at random.
 public class PlaythroughTests
 {
@@ -17,30 +17,32 @@ public class PlaythroughTests
 
     static readonly GameFiles files = new(RepositoryFiles.PathOf(""));
 
-    public static TheoryData<string> Games()
+    public static TheoryData<string, int> Games()
     {
-        TheoryData<string> games = [];
+        TheoryData<string, int> games = [];
         foreach (string path in files.GamePaths())
         {
-            games.Add(Path.GetFileNameWithoutExtension(path));
+            foreach (int players in GameRules.Load(files, path).PlayerCounts)
+            {
+                games.Add(Path.GetFileNameWithoutExtension(path), players);
+            }
         }
         return games;
     }
 
     [Theory]
     [MemberData(nameof(Games))]
-    public void BotsPlayToTheEnd(string gameName)
+    public void BotsPlayToTheEnd(string gameName, int players)
     {
         string path = files.GamePaths().Single(each => Path.GetFileNameWithoutExtension(each) == gameName);
         Dictionary<string, object?> data = (Dictionary<string, object?>)GameRules.Parse(files.Read(path))!;
-        int players = (int)(data.GetValueOrDefault("players") as double? ?? 1);
         Dictionary<string, object?> bot = new() { ["players"] = Enumerable.Range(1, players).Select(player => (object?)(double)player).ToList() };
         if (Prefer.TryGetValue(gameName, out string? prefer))
         {
             bot["prefer"] = prefer;
         }
         data["bot"] = bot;
-        Game game = new(new(RepositoryFiles.PathOf(""), new() { [path] = JsonSerializer.Serialize(data) }), path, 11);
+        Game game = new(new(RepositoryFiles.PathOf(""), new() { [path] = JsonSerializer.Serialize(data) }), path, 11, players);
         Assert.Empty(game.Errors);
         List<string> failures = [];
         game.Failed += failures.Add;

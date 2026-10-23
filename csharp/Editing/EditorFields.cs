@@ -54,6 +54,7 @@ public static class EditorFields
         new("allow", "expression", "A condition the whole choice must meet, e.g. size(groups(choice, 'rank')) == 1.", "Choosing"),
         new("button", "yes_no", "Show it in the toolbar. Default: yes, unless it's done by a drag or click (then yes asks for a card to do it with). No: it only happens through ask('name').", "Advanced"),
         new("human_only", "yes_no", "Bots never do it (e.g. Next hand).", "Advanced"),
+        new("any_time", "yes_no", "Anyone may do it, even on someone else's turn or while a choice is being made, and it's done as them: hand is their hand (e.g. Sort hand). Its steps can't wait for a choice.", "Advanced"),
         new("prefer", "expression", "For a bot making this choice: what to aim for instead of the bot's usual prefer.", "Advanced"),
     ];
 
@@ -76,7 +77,7 @@ public static class EditorFields
 
     public static readonly Field[] Players =
     [
-        new("players", "whole", "How many players. Turns pass with end_turn(); player is whose turn it is."),
+        new("players", "counts", "How many players, or the numbers it can be played with (comma-separated, e.g. 2, 3, 4; the first is the usual one). Turns pass with end_turn(); player is whose turn it is."),
         new("player_names", "names", "Names on the seat tags, in seat order (comma-separated). Otherwise Player 1, Player 2, ..."),
         new("seats", "json", "Where the name tags go: [[x, y]] for seat 1 (the rest go round the table), or one [x, y] per player.", "Advanced", Example: "[[0.22, 0.86]]"),
         new("teams", "json", "Partnerships, e.g. [[1, 3], [2, 4]]: every player on exactly one team.", "Advanced", Example: "[[1, 3], [2, 4]]"),

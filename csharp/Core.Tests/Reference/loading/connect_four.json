@@ -71,7 +71,8 @@
 		"triggers": {
 			"start": [
 				"move(where(box, 'name', 'Red'), discs[1])",
-				"move(where(box, 'name', 'Yellow'), discs[2])"
+				"move(where(box, 'name', 'Yellow'), discs[2])",
+				"player = one_of(players)"
 			]
 		},
 		"effects": {},
@@ -145,7 +146,9 @@
 		"teams": [],
 		"team_variables": {},
 		"melds": {},
-		"status": {},
+		"status": {
+			"you play": "lookup(['Red', 'Yellow'], viewer() - 1)"
+		},
 		"show_variables": [],
 		"bot": {
 			"players": [

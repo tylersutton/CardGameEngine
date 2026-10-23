@@ -119,9 +119,10 @@ public class RegressionTests
     {
         Game game = Started("res://games/dominion.jsonc");
         Card smithy = TestGames.Named(game, "Smithy");
-        int handBefore = game.Zones["hand_1"].Cards.Count;
+        Zone hand = game.Zones["hand_" + game.CurrentPlayer()];
+        int handBefore = hand.Cards.Count;
         new Actions(game).RunEffect(smithy, "play");
-        Assert.Equal(handBefore + 3, game.Zones["hand_1"].Cards.Count);
+        Assert.Equal(handBefore + 3, hand.Cards.Count);
         Assert.Empty(failures);
     }
 
@@ -130,11 +131,12 @@ public class RegressionTests
     public void RemodelChoosesTwice()
     {
         Game game = Started("res://games/dominion.jsonc", 4);
-        Card Named(string title) => game.Cards.First(card => card.Title == title && game.ZoneOf(card) != game.Zones["hand_1"]);
+        Zone hand = game.Zones["hand_" + game.CurrentPlayer()];
+        Card Named(string title) => game.Cards.First(card => card.Title == title && game.ZoneOf(card) != hand);
         Card remodel = Named("Remodel");
         Card estate = Named("Estate");
-        game.Move(remodel, game.Zones["hand_1"]);
-        game.Move(estate, game.Zones["hand_1"]);
+        game.Move(remodel, hand);
+        game.Move(estate, hand);
         game.Apply(PlayerInput.Click(remodel));
         Assert.StartsWith("Remodel: trash", game.Choice.Title);
         game.Apply(PlayerInput.Click(estate));
@@ -143,7 +145,7 @@ public class RegressionTests
         Card silver = game.Choice.Options.Cast<Card>().First(card => card.Title == "Silver");
         Assert.All(game.Choice.Options.Cast<Card>(), card => Assert.True(Values.ToInt(card.Data["cost"]) <= 4));
         game.Apply(PlayerInput.Click(silver));
-        Assert.Contains(silver, game.Zones["discard_1"].Cards);
+        Assert.Contains(silver, game.Zones["discard_" + game.CurrentPlayer()].Cards);
         Assert.False(game.Choice.IsOpen);
         Assert.Empty(failures);
     }
@@ -153,12 +155,13 @@ public class RegressionTests
     public void SeaSaltDrawingAndCrabs()
     {
         Game game = Started("res://games/sea_salt_+_paper.jsonc", 2);
+        Zone hand = game.Zones["hand_" + game.CurrentPlayer()];
         game.Apply(PlayerInput.Click(game.Zones["deck"].Cards[^1]));
         Assert.Equal("Keep one card", game.Choice.Title);
         Assert.Equal(2, game.Choice.Options.Count);
         Card kept = (Card)game.Choice.Options[0]!;
         game.Apply(PlayerInput.Click(kept));
-        Assert.Contains(kept, game.Zones["hand_1"].Cards);
+        Assert.Contains(kept, hand.Cards);
         Assert.Equal("Discard the other card onto a pile", game.Choice.Title);
         game.Apply(PlayerInput.Choose("discard_piles_2"));
         Assert.Equal(2, game.Zones["discard_piles_2"].Cards.Count);
@@ -166,7 +169,7 @@ public class RegressionTests
         List<Card> crabs = game.Zones["deck"].Cards.Where(card => card.Data["Kind"] == "Crab").Take(2).ToList();
         foreach (Card crab in crabs)
         {
-            game.Move(crab, game.Zones["hand_1"]);
+            game.Move(crab, hand);
         }
         game.Apply(PlayerInput.Perform("Play duo"));
         foreach (Card crab in crabs)
@@ -178,7 +181,7 @@ public class RegressionTests
         Assert.Equal(2, game.Zones["browsing"].Cards.Count);
         Card taken = game.Zones["browsing"].Cards[0];
         game.Apply(PlayerInput.Click(taken));
-        Assert.Contains(taken, game.Zones["hand_1"].Cards);
+        Assert.Contains(taken, hand.Cards);
         Assert.Single(game.Zones["discard_piles_2"].Cards);
         Assert.True(game.Zones["browsing"].IsEmpty);
         Assert.Empty(failures);

@@ -248,7 +248,7 @@ public class StepCompiler
         Dictionary<string, Kind[]> actionFields = new()
         {
             ["when"] = [Kind.Text], ["choose"] = [Kind.Text], ["pick"] = [Kind.Number, Kind.Text], ["up_to"] = [Kind.Number, Kind.Text],
-            ["allow"] = [Kind.Text], ["human_only"] = [Kind.Bool], ["button"] = [Kind.Bool], ["prefer"] = [Kind.Text], ["steps"] = [Kind.List],
+            ["allow"] = [Kind.Text], ["human_only"] = [Kind.Bool], ["any_time"] = [Kind.Bool], ["button"] = [Kind.Bool], ["prefer"] = [Kind.Text], ["steps"] = [Kind.List],
             ["drag"] = [Kind.Object], ["click"] = [Kind.Bool, Kind.Text, Kind.List], ["double_click"] = [Kind.Bool, Kind.Text, Kind.List],
         };
         foreach ((string actionName, Dictionary<string, object?> action) in rules.Actions)
@@ -298,7 +298,7 @@ public class StepCompiler
                 }
             }
         }
-        if (rules.Seats.Count is not 0 and not 1 && rules.Seats.Count != rules.Players)
+        if (rules.Seats.Count is not 0 and not 1 && rules.Seats.Count < rules.Players)
         {
             errors.Add($"\"seats\" needs one spot per player ({rules.Players}), or just seat 1's to place the rest round the table");
         }

@@ -35,6 +35,7 @@
 			],
 			"cards": "res://decks/standard_deck.csv",
 			"columns": {
+				"art": "'cards/' + card.rank + '_' + card.suit + '.png'",
 				"value": "14 if card.rank == 'A' else card.value"
 			}
 		},
@@ -261,6 +262,8 @@
 		"body": [
 			"suit"
 		],
-		"color": "color"
+		"color": "color",
+		"image": "art",
+		"card_back": "card_back.svg"
 	}
 }

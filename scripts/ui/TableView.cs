@@ -30,6 +30,7 @@ public partial class TableView : Control
     public Func<PlayerInput, bool> Submit { get; set; } = _ => false;
     public bool ShowZoneNames { get; set; }
     public Game? Game => game;
+    public IReadOnlyDictionary<Card, CardView> CardViews => views;
 
     Game? game;
     ImageCache images = new(ProjectFiles.With());
@@ -111,7 +112,7 @@ public partial class TableView : Control
                     continue;
                 }
                 CardView view = ViewFor(group[i], center);
-                view.FaceUp = game!.ShowsFace(group[i]);
+                view.FaceUp = ShowsFace(group[i]);
                 MoveChild(view, -1);
                 Transform2D placement = zone.Layout == "column"
                     ? new(0, new Vector2(0, columnOffsets[i]))
@@ -142,12 +143,21 @@ public partial class TableView : Control
         QueueRedraw();
         foreach ((Card card, CardView view) in views)
         {
-            view.FaceUp = game!.ShowsFace(card);
-            view.Highlighted = game.Choice.Options.Contains(card) && game.IsLocalTurn();
+            view.FaceUp = ShowsFace(card);
+            view.Highlighted = game!.Choice.Options.Contains(card) && game.IsLocalTurn();
             view.Selected = game.Choice.Selected.Contains(card);
             view.Movable = game.MayHandle(card);
             view.MarksText = string.Join(" ", card.Marks.Values.Select(Values.Format));
         }
+    }
+
+    /// Whether the card is drawn face up: if this screen can see it and, in a pile, it's on top (or one of the top
+    /// cards the pile spreads), as the cards under it are hidden by it.
+    bool ShowsFace(Card card)
+    {
+        Zone zone = game!.ZoneOf(card);
+        bool underTop = zone.Layout == "pile" && zone.Board == null && zone.Cards.IndexOf(card) < zone.Cards.Count - Mathf.Max(zone.Spread, 1);
+        return game.ShowsFace(card) && !underTop;
     }
 
     CardView ViewFor(Card card, Vector2 spawnCenter)
@@ -264,7 +274,7 @@ public partial class TableView : Control
         if (target != hoverZone)
         {
             hoverZone = target;
-            hoverAllowed = target != null && game!.Plays.CanMove(view.Card!, target);
+            hoverAllowed = target != null && game!.MayAct(game.Viewer(), PlayerInput.Drag(view.Card!, target)) && game.Plays.CanMove(view.Card!, target);
             QueueRedraw();
         }
         view.Hint = hoverZone == null ? CardView.DropHint.None : hoverAllowed ? CardView.DropHint.Allowed : CardView.DropHint.Refused;

@@ -421,7 +421,8 @@
 					"shuffle(deck)",
 					"draw(deck, hand, 5)"
 				]
-			}
+			},
+			"player = one_of(players)"
 		],
 		"deck_empty": [
 			"move(discard, deck)",

@@ -8,6 +8,9 @@ public partial class LobbyScreen : Control
     const string MainScene = "res://scenes/main.tscn";
     static readonly Color OpenSeatColor = new(1, 1, 1, 0.5f);
 
+    /// The host's choice of how many play, for a game that allows different numbers.
+    readonly OptionButton playerCount = new();
+
     Net Net => Net.Instance;
     OptionButton GamePicker => GetNode<OptionButton>("%GamePicker");
 
@@ -26,6 +29,8 @@ public partial class LobbyScreen : Control
         GetNode<Button>("%HostButton").Pressed += HostGame;
         GetNode<Button>("%JoinButton").Pressed += Join;
         GamePicker.ItemSelected += index => Net.ChooseGame((string)GamePicker.GetItemMetadata((int)index));
+        GamePicker.AddSibling(playerCount);
+        playerCount.ItemSelected += index => Net.ChoosePlayers(playerCount.GetItemId((int)index));
         GetNode<Button>("%StartButton").Pressed += Net.StartMatch;
         GetNode<Button>("%LeaveButton").Pressed += Net.Leave;
         GetNode<Button>("%BackButton").Pressed += () =>
@@ -90,6 +95,13 @@ public partial class LobbyScreen : Control
                 GamePicker.Select(index);
             }
         }
+        playerCount.Clear();
+        foreach (int count in lobby.PlayerCounts.Order())
+        {
+            playerCount.AddItem($"{count} players", count);
+        }
+        playerCount.Select(playerCount.GetItemIndex(lobby.Seats.Count));
+        playerCount.Visible = Net.IsHost() && lobby.PlayerCounts.Count > 1;
         GetNode<Label>("%GameTitle").Visible = !Net.IsHost();
         GetNode<Label>("%GameTitle").Text = lobby.Title;
         GetNode<Label>("%Description").Text = lobby.Description;

@@ -18,6 +18,8 @@ public partial class TitleScreen : Control
     static readonly StyleBoxFlat selectedStyle = SelectedBox();
 
     string selectedPath = "";
+    /// For a game that can be played with different numbers of players: how many.
+    readonly OptionButton playerCount = new();
 
     Button PlayButton => GetNode<Button>("%Play");
 
@@ -26,6 +28,8 @@ public partial class TitleScreen : Control
         GetNode<ColorRect>("%Felt").Color = TableView.FeltColor;
         FitWindowToScreen();
         PlayButton.Pressed += () => Play(selectedPath);
+        PlayButton.AddSibling(playerCount);
+        PlayButton.GetParent().MoveChild(playerCount, PlayButton.GetIndex());
         GetNode<Button>("%OnlineButton").Pressed += () => GetTree().ChangeSceneToFile(LobbyScene);
         GetNode<Button>("%NewGameButton").Pressed += AskForNewGame;
         GetNode<Button>("%EditButton").Pressed += () => OS.ShellOpen(ProjectSettings.GlobalizePath(selectedPath));
@@ -161,6 +165,13 @@ public partial class TitleScreen : Control
         GetNode<Label>("%GameTitle").Text = TitleOf(path, rules);
         GetNode<Label>("%Description").Text = rules.Error.Length > 0 ? rules.Error : rules.Description;
         PlayButton.Disabled = rules.Error.Length > 0;
+        playerCount.Clear();
+        foreach (int count in rules.PlayerCounts.Order())
+        {
+            playerCount.AddItem($"{count} players", count);
+        }
+        playerCount.Select(playerCount.GetItemIndex(rules.Players));
+        playerCount.Visible = rules.PlayerCounts.Count > 1;
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -214,6 +225,7 @@ public partial class TitleScreen : Control
     {
         Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
         main.RulesPath = path;
+        main.Players = playerCount.Visible ? playerCount.GetSelectedId() : 0;
         SwitchTo(main);
     }
 

@@ -13,6 +13,7 @@
 				],
 				"cards": "res://decks/standard_deck.csv",
 				"columns": {
+					"art": "'cards/' + card.rank + '_' + card.suit + '.png'",
 					"points": "min(card.value, 10)"
 				}
 			},
@@ -71,7 +72,6 @@
 				},
 				"click": true,
 				"steps": [
-					"taken = null",
 					"stage = 'draw'"
 				]
 			},
@@ -82,7 +82,6 @@
 				},
 				"click": true,
 				"steps": [
-					"taken = card",
 					"stage = 'draw'"
 				]
 			},
@@ -90,8 +89,7 @@
 				"drag": {
 					"from": "hand",
 					"to": "discard"
-				},
-				"when": "card != taken"
+				}
 			},
 			"Knock": {
 				"drag": {
@@ -99,7 +97,7 @@
 					"to": "knock"
 				},
 				"button": true,
-				"when": "card != taken and sum(deadwood(without(hand, card)), 'points') <= 10",
+				"when": "sum(deadwood(without(hand, card)), 'points') <= 10",
 				"steps": [
 					"knocker_deadwood = sum(deadwood(hand), 'points')",
 					{
@@ -164,11 +162,13 @@
 				]
 			},
 			"Sort by suit": {
+				"any_time": true,
 				"steps": [
 					"sort(hand, ['suit', 'value'])"
 				]
 			},
 			"Sort by rank": {
+				"any_time": true,
 				"steps": [
 					"sort(hand, ['value', 'suit'])"
 				]
@@ -178,6 +178,7 @@
 			"start": [
 				"sort(hand_1, ['value', 'suit'])",
 				"sort(hand_2, ['value', 'suit'])",
+				"dealer = one_of(players)",
 				"trigger('deal')"
 			],
 			"deal": [
@@ -186,7 +187,7 @@
 				"player = 3 - dealer",
 				"deal(stock, [hand, opponent_hand], 10)",
 				"move(top(stock), discard)",
-				"reset(['stage', 'passes', 'taken', 'result', 'knocker_deadwood', 'defender_deadwood'])"
+				"reset(['stage', 'passes', 'result', 'knocker_deadwood', 'defender_deadwood'])"
 			],
 			"hand_over": [
 				{
@@ -258,7 +259,6 @@
 		],
 		"variables": {
 			"stage": "upcard",
-			"taken": null,
 			"passes": 0,
 			"result": "",
 			"knocker_deadwood": 0,
@@ -314,7 +314,9 @@
 			"body": [
 				"suit"
 			],
-			"color": "color"
+			"color": "color",
+			"image": "art",
+			"card_back": "card_back.svg"
 		},
 		"unknown_keys": [],
 		"error": ""

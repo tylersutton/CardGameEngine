@@ -4,16 +4,31 @@
 		"inputs": [
 			{
 				"type": "click_empty",
-				"zone": "square_27"
+				"zone": "square_30"
 			},
 			{
 				"type": "click_empty",
-				"zone": "square_19"
+				"zone": "square_20"
 			},
 			{
 				"type": "drag",
-				"card": 57,
-				"to": "square_20"
+				"card": 6,
+				"to": "square_43"
+			},
+			{
+				"type": "drag",
+				"card": 7,
+				"to": "square_31"
+			},
+			{
+				"type": "drag",
+				"card": 8,
+				"to": "square_23"
+			},
+			{
+				"type": "drag",
+				"card": 9,
+				"to": "square_50"
 			},
 			{
 				"type": "click_empty",
@@ -21,204 +36,22 @@
 			},
 			{
 				"type": "drag",
-				"card": 55,
-				"to": "square_10"
-			},
-			{
-				"type": "drag",
-				"card": 54,
-				"to": "square_1"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_12"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_43"
-			},
-			{
-				"type": "drag",
-				"card": 51,
-				"to": "square_14"
-			},
-			{
-				"type": "drag",
-				"card": 50,
-				"to": "square_13"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_30"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_18"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_17"
-			},
-			{
-				"type": "drag",
-				"card": 46,
-				"to": "square_31"
-			},
-			{
-				"type": "drag",
-				"card": 45,
-				"to": "square_5"
-			},
-			{
-				"type": "drag",
-				"card": 44,
-				"to": "square_26"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_3"
-			},
-			{
-				"type": "drag",
-				"card": 42,
-				"to": "square_2"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_45"
-			},
-			{
-				"type": "drag",
-				"card": 40,
-				"to": "square_4"
-			},
-			{
-				"type": "drag",
-				"card": 39,
-				"to": "square_35"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_25"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_34"
-			},
-			{
-				"type": "drag",
-				"card": 36,
+				"card": 11,
 				"to": "square_46"
-			},
-			{
-				"type": "drag",
-				"card": 35,
-				"to": "square_9"
-			},
-			{
-				"type": "drag",
-				"card": 34,
-				"to": "square_53"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_50"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_33"
-			},
-			{
-				"type": "drag",
-				"card": 31,
-				"to": "square_55"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_47"
-			},
-			{
-				"type": "drag",
-				"card": 29,
-				"to": "square_54"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_61"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_44"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_6"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_11"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_57"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_39"
-			},
-			{
-				"type": "drag",
-				"card": 22,
-				"to": "square_40"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_48"
-			},
-			{
-				"type": "drag",
-				"card": 20,
-				"to": "square_56"
-			},
-			{
-				"type": "drag",
-				"card": 19,
-				"to": "square_38"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_52"
 			},
 			{
 				"type": "click_empty",
 				"zone": "square_32"
 			},
 			{
-				"type": "click_empty",
-				"zone": "square_24"
+				"type": "drag",
+				"card": 13,
+				"to": "square_16"
 			},
 			{
 				"type": "drag",
-				"card": 15,
-				"to": "square_62"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_60"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_41"
-			},
-			{
-				"type": "drag",
-				"card": 12,
-				"to": "square_49"
-			},
-			{
-				"type": "drag",
-				"card": 11,
-				"to": "square_23"
+				"card": 14,
+				"to": "square_27"
 			},
 			{
 				"type": "click_empty",
@@ -226,35 +59,213 @@
 			},
 			{
 				"type": "drag",
-				"card": 9,
+				"card": 16,
+				"to": "square_13"
+			},
+			{
+				"type": "drag",
+				"card": 17,
+				"to": "square_11"
+			},
+			{
+				"type": "drag",
+				"card": 18,
+				"to": "square_19"
+			},
+			{
+				"type": "drag",
+				"card": 19,
+				"to": "square_26"
+			},
+			{
+				"type": "drag",
+				"card": 20,
 				"to": "square_15"
 			},
 			{
 				"type": "drag",
-				"card": 8,
-				"to": "square_7"
+				"card": 21,
+				"to": "square_5"
 			},
 			{
 				"type": "drag",
-				"card": 7,
-				"to": "square_59"
+				"card": 22,
+				"to": "square_4"
 			},
 			{
 				"type": "click_empty",
-				"zone": "square_42"
+				"zone": "square_14"
 			},
 			{
 				"type": "click_empty",
-				"zone": "square_64"
+				"zone": "square_45"
 			},
 			{
 				"type": "click_empty",
-				"zone": "square_63"
+				"zone": "square_10"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_18"
 			},
 			{
 				"type": "drag",
-				"card": 3,
-				"to": "square_51"
+				"card": 27,
+				"to": "square_53"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_8"
+			},
+			{
+				"type": "drag",
+				"card": 29,
+				"to": "square_44"
+			},
+			{
+				"type": "drag",
+				"card": 30,
+				"to": "square_57"
+			},
+			{
+				"type": "drag",
+				"card": 31,
+				"to": "square_12"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_47"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_40"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_38"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_7"
+			},
+			{
+				"type": "drag",
+				"card": 36,
+				"to": "square_48"
+			},
+			{
+				"type": "drag",
+				"card": 37,
+				"to": "square_55"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_25"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_51"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_3"
+			},
+			{
+				"type": "drag",
+				"card": 41,
+				"to": "square_35"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_59"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_56"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_1"
+			},
+			{
+				"type": "drag",
+				"card": 45,
+				"to": "square_34"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_24"
+			},
+			{
+				"type": "drag",
+				"card": 47,
+				"to": "square_42"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_33"
+			},
+			{
+				"type": "drag",
+				"card": 49,
+				"to": "square_17"
+			},
+			{
+				"type": "drag",
+				"card": 50,
+				"to": "square_9"
+			},
+			{
+				"type": "drag",
+				"card": 51,
+				"to": "square_2"
+			},
+			{
+				"type": "drag",
+				"card": 52,
+				"to": "square_39"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_49"
+			},
+			{
+				"type": "drag",
+				"card": 54,
+				"to": "square_64"
+			},
+			{
+				"type": "drag",
+				"card": 55,
+				"to": "square_41"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_61"
+			},
+			{
+				"type": "drag",
+				"card": 57,
+				"to": "square_52"
+			},
+			{
+				"type": "click_empty",
+				"zone": "square_60"
+			},
+			{
+				"type": "drag",
+				"card": 59,
+				"to": "square_63"
+			},
+			{
+				"type": "drag",
+				"card": 60,
+				"to": "square_6"
+			},
+			{
+				"type": "drag",
+				"card": 61,
+				"to": "square_54"
 			},
 			{
 				"type": "click_empty",
@@ -262,58 +273,21 @@
 			},
 			{
 				"type": "click_empty",
-				"zone": "square_8"
-			},
-			{
-				"type": "click_empty",
-				"zone": "square_16"
+				"zone": "square_62"
 			}
 		],
 		"logs": [
 			[
 				"[trigger] start",
-				"  supply → square_28: Disc",
+				"  box → supply_1: Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc",
+				"  box → supply_2: Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc",
+				"  face down in supply_2: Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc",
+				"  supply_2 → square_28: Disc",
 				"  face down in square_28: Disc",
-				"  supply → square_29: Disc",
-				"  supply → square_36: Disc",
-				"  supply → square_37: Disc",
+				"  supply_1 → square_29: Disc",
+				"  supply_1 → square_36: Disc",
+				"  supply_2 → square_37: Disc",
 				"  face down in square_37: Disc",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face up in square_28: Disc",
-				"  supply → square_27: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face down in square_28: Disc",
-				"  supply → square_19: Disc",
-				"  if player == 2 → then",
-				"  face down in square_19: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_20: Disc",
-				"  face up in square_28: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
 				"  player = 2",
 				"[turn] White (bot)",
 				"  White (bot) may: Place, Place by dragging"
@@ -321,37 +295,9 @@
 			[
 				"[action] Place",
 				"  face down in square_29: Disc",
-				"  face down in square_20: Disc",
-				"  supply → square_21: Disc",
+				"  supply_2 → square_30: Disc",
 				"  if player == 2 → then",
-				"  face down in square_21: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_10: Disc",
-				"  face up in square_19: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_1: Disc",
-				"  face down in square_10: Disc",
-				"  face down in square_19: Disc",
-				"  face down in square_28: Disc",
-				"  if player == 2 → then",
-				"  face down in square_1: Disc",
+				"  face down in square_30: Disc",
 				"  if placed == null → else",
 				"  passes = 0",
 				"  if passes == 2 → else",
@@ -361,9 +307,8 @@
 			],
 			[
 				"[action] Place",
-				"  face up in square_20: Disc",
 				"  face up in square_28: Disc",
-				"  supply → square_12: Disc",
+				"  supply_1 → square_20: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -373,9 +318,9 @@
 				"  White (bot) may: Place, Place by dragging"
 			],
 			[
-				"[action] Place",
+				"[action] Place by dragging",
+				"  supply_2 → square_43: Disc",
 				"  face down in square_36: Disc",
-				"  supply → square_43: Disc",
 				"  if player == 2 → then",
 				"  face down in square_43: Disc",
 				"  if placed == null → else",
@@ -387,8 +332,9 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_14: Disc",
-				"  face up in square_21: Disc",
+				"  supply_1 → square_31: Disc",
+				"  face up in square_30: Disc",
+				"  face up in square_29: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -399,8 +345,112 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_13: Disc",
+				"  supply_2 → square_23: Disc",
+				"  face down in square_30: Disc",
+				"  if player == 2 → then",
+				"  face down in square_23: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_50: Disc",
+				"  face up in square_43: Disc",
+				"  face up in square_36: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face down in square_29: Disc",
+				"  supply_2 → square_21: Disc",
+				"  if player == 2 → then",
 				"  face down in square_21: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_46: Disc",
+				"  face up in square_37: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face down in square_31: Disc",
+				"  supply_2 → square_32: Disc",
+				"  if player == 2 → then",
+				"  face down in square_32: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_16: Disc",
+				"  face up in square_23: Disc",
+				"  face up in square_30: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_2 → square_27: Disc",
+				"  face down in square_28: Disc",
+				"  if player == 2 → then",
+				"  face down in square_27: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face up in square_21: Disc",
+				"  face up in square_29: Disc",
+				"  supply_1 → square_22: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_2 → square_13: Disc",
+				"  face down in square_22: Disc",
+				"  face down in square_20: Disc",
 				"  if player == 2 → then",
 				"  face down in square_13: Disc",
 				"  if placed == null → else",
@@ -411,36 +461,9 @@
 				"  Black may: Place, Place by dragging"
 			],
 			[
-				"[action] Place",
-				"  face up in square_29: Disc",
-				"  face up in square_21: Disc",
-				"  supply → square_30: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face down in square_27: Disc",
-				"  supply → square_18: Disc",
-				"  if player == 2 → then",
-				"  face down in square_18: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face up in square_18: Disc",
-				"  face up in square_19: Disc",
-				"  supply → square_17: Disc",
+				"[action] Place by dragging",
+				"  supply_1 → square_11: Disc",
+				"  face up in square_20: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -451,90 +474,11 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_31: Disc",
-				"  face down in square_30: Disc",
-				"  face down in square_29: Disc",
-				"  face down in square_28: Disc",
-				"  if player == 2 → then",
-				"  face down in square_31: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_5: Disc",
-				"  face up in square_13: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_26: Disc",
-				"  face down in square_18: Disc",
-				"  if player == 2 → then",
-				"  face down in square_26: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face up in square_10: Disc",
-				"  supply → square_3: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_2: Disc",
-				"  face down in square_10: Disc",
-				"  if player == 2 → then",
-				"  face down in square_2: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face up in square_37: Disc",
-				"  face up in square_29: Disc",
-				"  supply → square_45: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_4: Disc",
-				"  face down in square_12: Disc",
+				"  supply_2 → square_19: Disc",
 				"  face down in square_20: Disc",
-				"  face down in square_3: Disc",
+				"  face down in square_21: Disc",
 				"  if player == 2 → then",
-				"  face down in square_4: Disc",
+				"  face down in square_19: Disc",
 				"  if placed == null → else",
 				"  passes = 0",
 				"  if passes == 2 → else",
@@ -544,10 +488,8 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_35: Disc",
-				"  face up in square_36: Disc",
+				"  supply_1 → square_26: Disc",
 				"  face up in square_27: Disc",
-				"  face up in square_26: Disc",
 				"  face up in square_28: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
@@ -558,12 +500,256 @@
 				"  White (bot) may: Place, Place by dragging"
 			],
 			[
+				"[action] Place by dragging",
+				"  supply_2 → square_15: Disc",
+				"  face down in square_23: Disc",
+				"  if player == 2 → then",
+				"  face down in square_15: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_5: Disc",
+				"  face up in square_13: Disc",
+				"  face up in square_21: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_2 → square_4: Disc",
+				"  face down in square_13: Disc",
+				"  if player == 2 → then",
+				"  face down in square_4: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face up in square_15: Disc",
+				"  face up in square_22: Disc",
+				"  supply_1 → square_14: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face down in square_37: Disc",
+				"  face down in square_29: Disc",
+				"  face down in square_21: Disc",
+				"  supply_2 → square_45: Disc",
+				"  if player == 2 → then",
+				"  face down in square_45: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face up in square_19: Disc",
+				"  supply_1 → square_10: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face down in square_19: Disc",
+				"  face down in square_27: Disc",
+				"  face down in square_36: Disc",
+				"  face down in square_11: Disc",
+				"  supply_2 → square_18: Disc",
+				"  if player == 2 → then",
+				"  face down in square_18: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_53: Disc",
+				"  face up in square_45: Disc",
+				"  face up in square_37: Disc",
+				"  face up in square_29: Disc",
+				"  face up in square_21: Disc",
+				"  face up in square_13: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face down in square_15: Disc",
+				"  face down in square_22: Disc",
+				"  face down in square_29: Disc",
+				"  supply_2 → square_8: Disc",
+				"  if player == 2 → then",
+				"  face down in square_8: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_44: Disc",
+				"  face up in square_36: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_2 → square_57: Disc",
+				"  face down in square_50: Disc",
+				"  face down in square_43: Disc",
+				"  face down in square_36: Disc",
+				"  if player == 2 → then",
+				"  face down in square_57: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_12: Disc",
+				"  face up in square_20: Disc",
+				"  face up in square_11: Disc",
+				"  face up in square_19: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face down in square_46: Disc",
+				"  face down in square_45: Disc",
+				"  face down in square_44: Disc",
+				"  supply_2 → square_47: Disc",
+				"  if player == 2 → then",
+				"  face down in square_47: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face up in square_31: Disc",
+				"  face up in square_22: Disc",
+				"  supply_1 → square_40: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face down in square_37: Disc",
+				"  supply_2 → square_38: Disc",
+				"  if player == 2 → then",
+				"  face down in square_38: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face up in square_15: Disc",
+				"  face up in square_23: Disc",
+				"  supply_1 → square_7: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_2 → square_48: Disc",
+				"  face down in square_40: Disc",
+				"  if player == 2 → then",
+				"  face down in square_48: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_55: Disc",
+				"  face up in square_46: Disc",
+				"  face up in square_37: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
 				"[action] Place",
 				"  face down in square_26: Disc",
-				"  face down in square_27: Disc",
-				"  face down in square_28: Disc",
-				"  face down in square_29: Disc",
-				"  supply → square_25: Disc",
+				"  supply_2 → square_25: Disc",
 				"  if player == 2 → then",
 				"  face down in square_25: Disc",
 				"  if placed == null → else",
@@ -575,9 +761,8 @@
 			],
 			[
 				"[action] Place",
-				"  face up in square_27: Disc",
-				"  face up in square_20: Disc",
-				"  supply → square_34: Disc",
+				"  face up in square_44: Disc",
+				"  supply_1 → square_51: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -587,11 +772,12 @@
 				"  White (bot) may: Place, Place by dragging"
 			],
 			[
-				"[action] Place by dragging",
-				"  supply → square_46: Disc",
-				"  face down in square_37: Disc",
+				"[action] Place",
+				"  face down in square_11: Disc",
+				"  face down in square_19: Disc",
+				"  supply_2 → square_3: Disc",
 				"  if player == 2 → then",
-				"  face down in square_46: Disc",
+				"  face down in square_3: Disc",
 				"  if placed == null → else",
 				"  passes = 0",
 				"  if passes == 2 → else",
@@ -601,8 +787,9 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_9: Disc",
-				"  face up in square_18: Disc",
+				"  supply_1 → square_35: Disc",
+				"  face up in square_36: Disc",
+				"  face up in square_43: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -612,11 +799,13 @@
 				"  White (bot) may: Place, Place by dragging"
 			],
 			[
-				"[action] Place by dragging",
-				"  supply → square_53: Disc",
-				"  face down in square_45: Disc",
+				"[action] Place",
+				"  face down in square_51: Disc",
+				"  face down in square_43: Disc",
+				"  face down in square_35: Disc",
+				"  supply_2 → square_59: Disc",
 				"  if player == 2 → then",
-				"  face down in square_53: Disc",
+				"  face down in square_59: Disc",
 				"  if placed == null → else",
 				"  passes = 0",
 				"  if passes == 2 → else",
@@ -626,8 +815,67 @@
 			],
 			[
 				"[action] Place",
+				"  face up in square_47: Disc",
+				"  face up in square_38: Disc",
+				"  face up in square_29: Disc",
+				"  supply_1 → square_56: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face down in square_10: Disc",
+				"  supply_2 → square_1: Disc",
+				"  if player == 2 → then",
+				"  face down in square_1: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_34: Disc",
+				"  face up in square_35: Disc",
+				"  face up in square_27: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face down in square_23: Disc",
+				"  face down in square_22: Disc",
+				"  face down in square_21: Disc",
+				"  face down in square_20: Disc",
+				"  face down in square_16: Disc",
+				"  face down in square_31: Disc",
+				"  face down in square_38: Disc",
+				"  supply_2 → square_24: Disc",
+				"  if player == 2 → then",
+				"  face down in square_24: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_42: Disc",
 				"  face up in square_43: Disc",
-				"  supply → square_50: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -641,7 +889,9 @@
 				"  face down in square_34: Disc",
 				"  face down in square_35: Disc",
 				"  face down in square_36: Disc",
-				"  supply → square_33: Disc",
+				"  face down in square_37: Disc",
+				"  face down in square_42: Disc",
+				"  supply_2 → square_33: Disc",
 				"  if player == 2 → then",
 				"  face down in square_33: Disc",
 				"  if placed == null → else",
@@ -653,10 +903,91 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_55: Disc",
-				"  face up in square_46: Disc",
-				"  face up in square_37: Disc",
-				"  face up in square_28: Disc",
+				"  supply_1 → square_17: Disc",
+				"  face up in square_26: Disc",
+				"  face up in square_35: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_2 → square_9: Disc",
+				"  face down in square_17: Disc",
+				"  if player == 2 → then",
+				"  face down in square_9: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_2: Disc",
+				"  face up in square_3: Disc",
+				"  face up in square_4: Disc",
+				"  face up in square_10: Disc",
+				"  face up in square_18: Disc",
+				"  face up in square_11: Disc",
+				"  face up in square_20: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_2 → square_39: Disc",
+				"  face down in square_30: Disc",
+				"  if player == 2 → then",
+				"  face down in square_39: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face up in square_42: Disc",
+				"  supply_1 → square_49: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_2 → square_64: Disc",
+				"  face down in square_56: Disc",
+				"  face down in square_55: Disc",
+				"  face down in square_46: Disc",
+				"  if player == 2 → then",
+				"  face down in square_64: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_41: Disc",
+				"  face up in square_34: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -667,10 +998,10 @@
 			],
 			[
 				"[action] Place",
-				"  face down in square_46: Disc",
-				"  supply → square_47: Disc",
+				"  face down in square_53: Disc",
+				"  supply_2 → square_61: Disc",
 				"  if player == 2 → then",
-				"  face down in square_47: Disc",
+				"  face down in square_61: Disc",
 				"  if placed == null → else",
 				"  passes = 0",
 				"  if passes == 2 → else",
@@ -680,7 +1011,70 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_54: Disc",
+				"  supply_1 → square_52: Disc",
+				"  face up in square_51: Disc",
+				"  face up in square_50: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place",
+				"  face down in square_52: Disc",
+				"  face down in square_44: Disc",
+				"  face down in square_51: Disc",
+				"  face down in square_42: Disc",
+				"  supply_2 → square_60: Disc",
+				"  if player == 2 → then",
+				"  face down in square_60: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_63: Disc",
+				"  face up in square_55: Disc",
+				"  if player == 2 → else",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 2",
+				"[turn] White (bot)",
+				"  White (bot) may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_2 → square_6: Disc",
+				"  face down in square_7: Disc",
+				"  face down in square_14: Disc",
+				"  face down in square_5: Disc",
+				"  face down in square_4: Disc",
+				"  face down in square_3: Disc",
+				"  face down in square_2: Disc",
+				"  face down in square_15: Disc",
+				"  if player == 2 → then",
+				"  face down in square_6: Disc",
+				"  if placed == null → else",
+				"  passes = 0",
+				"  if passes == 2 → else",
+				"  player = 1",
+				"[turn] Black",
+				"  Black may: Place, Place by dragging"
+			],
+			[
+				"[action] Place by dragging",
+				"  supply_1 → square_54: Disc",
+				"  face up in square_53: Disc",
+				"  face up in square_52: Disc",
+				"  face up in square_51: Disc",
 				"  face up in square_45: Disc",
 				"  face up in square_36: Disc",
 				"  if player == 2 → else",
@@ -693,390 +1087,9 @@
 			],
 			[
 				"[action] Place",
-				"  face down in square_54: Disc",
-				"  supply → square_61: Disc",
-				"  if player == 2 → then",
-				"  face down in square_61: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face up in square_35: Disc",
-				"  face up in square_26: Disc",
-				"  supply → square_44: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face down in square_5: Disc",
-				"  face down in square_13: Disc",
-				"  face down in square_20: Disc",
-				"  face down in square_27: Disc",
-				"  supply → square_6: Disc",
-				"  if player == 2 → then",
-				"  face down in square_6: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face up in square_12: Disc",
-				"  face up in square_13: Disc",
-				"  face up in square_10: Disc",
-				"  supply → square_11: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
 				"  face down in square_50: Disc",
-				"  face down in square_43: Disc",
-				"  face down in square_36: Disc",
-				"  supply → square_57: Disc",
-				"  if player == 2 → then",
-				"  face down in square_57: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face up in square_47: Disc",
-				"  face up in square_30: Disc",
-				"  supply → square_39: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_40: Disc",
-				"  face down in square_47: Disc",
-				"  if player == 2 → then",
-				"  face down in square_40: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face up in square_47: Disc",
-				"  face up in square_46: Disc",
-				"  supply → square_48: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_56: Disc",
-				"  face down in square_55: Disc",
-				"  face down in square_48: Disc",
-				"  if player == 2 → then",
-				"  face down in square_56: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_38: Disc",
-				"  face up in square_29: Disc",
-				"  face up in square_20: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face down in square_44: Disc",
-				"  face down in square_45: Disc",
-				"  face down in square_38: Disc",
-				"  supply → square_52: Disc",
-				"  if player == 2 → then",
-				"  face down in square_52: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face up in square_31: Disc",
-				"  supply → square_32: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face down in square_32: Disc",
-				"  face down in square_31: Disc",
-				"  supply → square_24: Disc",
-				"  if player == 2 → then",
-				"  face down in square_24: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_62: Disc",
-				"  face up in square_54: Disc",
-				"  face up in square_53: Disc",
-				"  face up in square_44: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face down in square_53: Disc",
-				"  face down in square_46: Disc",
-				"  face down in square_39: Disc",
-				"  supply → square_60: Disc",
-				"  if player == 2 → then",
-				"  face down in square_60: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face up in square_33: Disc",
-				"  face up in square_25: Disc",
-				"  face up in square_34: Disc",
-				"  face up in square_27: Disc",
-				"  supply → square_41: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_49: Disc",
-				"  face down in square_41: Disc",
-				"  face down in square_33: Disc",
-				"  face down in square_25: Disc",
-				"  face down in square_17: Disc",
-				"  face down in square_9: Disc",
-				"  if player == 2 → then",
-				"  face down in square_49: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_23: Disc",
-				"  face up in square_31: Disc",
-				"  face up in square_39: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face down in square_23: Disc",
-				"  face down in square_30: Disc",
-				"  face down in square_21: Disc",
-				"  face down in square_20: Disc",
-				"  face down in square_19: Disc",
-				"  face down in square_18: Disc",
-				"  face down in square_14: Disc",
-				"  face down in square_31: Disc",
-				"  face down in square_29: Disc",
-				"  face down in square_13: Disc",
-				"  supply → square_22: Disc",
-				"  if player == 2 → then",
-				"  face down in square_22: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_15: Disc",
-				"  face up in square_23: Disc",
-				"  face up in square_31: Disc",
-				"  face up in square_14: Disc",
-				"  face up in square_13: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_7: Disc",
-				"  face down in square_15: Disc",
-				"  face down in square_23: Disc",
-				"  face down in square_31: Disc",
-				"  face down in square_39: Disc",
-				"  face down in square_47: Disc",
-				"  face down in square_14: Disc",
-				"  if player == 2 → then",
-				"  face down in square_7: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_59: Disc",
-				"  face up in square_60: Disc",
-				"  face up in square_61: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face down in square_34: Disc",
-				"  face down in square_26: Disc",
-				"  face down in square_35: Disc",
-				"  face down in square_28: Disc",
-				"  supply → square_42: Disc",
-				"  if player == 2 → then",
-				"  face down in square_42: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face up in square_55: Disc",
-				"  face up in square_46: Disc",
-				"  supply → square_64: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face down in square_55: Disc",
-				"  face down in square_54: Disc",
-				"  supply → square_63: Disc",
-				"  if player == 2 → then",
-				"  face down in square_63: Disc",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 1",
-				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place by dragging",
-				"  supply → square_51: Disc",
-				"  face up in square_43: Disc",
-				"  face up in square_35: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
-				"  if passes == 2 → else",
-				"  player = 2",
-				"[turn] White (bot)",
-				"  White (bot) may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face down in square_59: Disc",
-				"  face down in square_60: Disc",
-				"  face down in square_61: Disc",
-				"  face down in square_62: Disc",
 				"  face down in square_51: Disc",
-				"  face down in square_44: Disc",
-				"  face down in square_37: Disc",
-				"  supply → square_58: Disc",
+				"  supply_2 → square_58: Disc",
 				"  if player == 2 → then",
 				"  face down in square_58: Disc",
 				"  if placed == null → else",
@@ -1084,18 +1097,8 @@
 				"  if passes == 2 → else",
 				"  player = 1",
 				"[turn] Black",
-				"  Black may: Place, Place by dragging"
-			],
-			[
-				"[action] Place",
-				"  face up in square_15: Disc",
-				"  face up in square_22: Disc",
-				"  face up in square_29: Disc",
-				"  face up in square_36: Disc",
-				"  supply → square_8: Disc",
-				"  if player == 2 → else",
-				"  if placed == null → else",
-				"  passes = 0",
+				"  if placed == null → then",
+				"  passes = 1",
 				"  if passes == 2 → else",
 				"  player = 2",
 				"[turn] White (bot)",
@@ -1103,10 +1106,13 @@
 			],
 			[
 				"[action] Place",
-				"  face down in square_15: Disc",
-				"  supply → square_16: Disc",
+				"  face down in square_63: Disc",
+				"  face down in square_54: Disc",
+				"  face down in square_53: Disc",
+				"  face down in square_55: Disc",
+				"  supply_1 → square_62: Disc",
 				"  if player == 2 → then",
-				"  face down in square_16: Disc",
+				"  face down in square_62: Disc",
 				"  if placed == null → else",
 				"  passes = 0",
 				"  if passes == 2 → else",
@@ -1147,7 +1153,7 @@
 					"▼Disc"
 				],
 				"square_8": [
-					"Disc"
+					"▼Disc"
 				],
 				"square_9": [
 					"▼Disc"
@@ -1177,19 +1183,19 @@
 					"▼Disc"
 				],
 				"square_18": [
-					"▼Disc"
+					"Disc"
 				],
 				"square_19": [
 					"▼Disc"
 				],
 				"square_20": [
-					"▼Disc"
+					"Disc"
 				],
 				"square_21": [
 					"▼Disc"
 				],
 				"square_22": [
-					"Disc"
+					"▼Disc"
 				],
 				"square_23": [
 					"▼Disc"
@@ -1201,13 +1207,13 @@
 					"▼Disc"
 				],
 				"square_26": [
-					"▼Disc"
+					"Disc"
 				],
 				"square_27": [
 					"Disc"
 				],
 				"square_28": [
-					"▼Disc"
+					"Disc"
 				],
 				"square_29": [
 					"Disc"
@@ -1225,7 +1231,7 @@
 					"▼Disc"
 				],
 				"square_34": [
-					"▼Disc"
+					"Disc"
 				],
 				"square_35": [
 					"Disc"
@@ -1246,7 +1252,7 @@
 					"▼Disc"
 				],
 				"square_41": [
-					"▼Disc"
+					"Disc"
 				],
 				"square_42": [
 					"▼Disc"
@@ -1258,19 +1264,19 @@
 					"▼Disc"
 				],
 				"square_45": [
-					"▼Disc"
-				],
-				"square_46": [
 					"Disc"
 				],
-				"square_47": [
+				"square_46": [
 					"▼Disc"
+				],
+				"square_47": [
+					"Disc"
 				],
 				"square_48": [
 					"▼Disc"
 				],
 				"square_49": [
-					"▼Disc"
+					"Disc"
 				],
 				"square_50": [
 					"▼Disc"
@@ -1279,7 +1285,7 @@
 					"▼Disc"
 				],
 				"square_52": [
-					"▼Disc"
+					"Disc"
 				],
 				"square_53": [
 					"▼Disc"
@@ -1315,9 +1321,11 @@
 					"▼Disc"
 				],
 				"square_64": [
-					"Disc"
+					"▼Disc"
 				],
-				"supply": []
+				"box": [],
+				"supply_1": [],
+				"supply_2": []
 			},
 			"variables": {
 				"passes": "2",
@@ -1336,12 +1344,12 @@
 			},
 			{
 				"type": "drag",
-				"card": 58,
+				"card": 4,
 				"to": "square_30"
 			},
 			{
 				"type": "drag",
-				"card": 57,
+				"card": 7,
 				"to": "square_22"
 			},
 			{
@@ -1350,22 +1358,22 @@
 			},
 			{
 				"type": "drag",
-				"card": 55,
+				"card": 9,
 				"to": "square_20"
 			},
 			{
 				"type": "drag",
-				"card": 54,
+				"card": 8,
 				"to": "square_35"
 			},
 			{
 				"type": "drag",
-				"card": 53,
+				"card": 11,
 				"to": "square_42"
 			},
 			{
 				"type": "drag",
-				"card": 52,
+				"card": 10,
 				"to": "square_15"
 			},
 			{
@@ -1374,7 +1382,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 50,
+				"card": 12,
 				"to": "square_11"
 			},
 			{
@@ -1383,17 +1391,17 @@
 			},
 			{
 				"type": "drag",
-				"card": 48,
+				"card": 14,
 				"to": "square_47"
 			},
 			{
 				"type": "drag",
-				"card": 47,
+				"card": 17,
 				"to": "square_55"
 			},
 			{
 				"type": "drag",
-				"card": 46,
+				"card": 16,
 				"to": "square_54"
 			},
 			{
@@ -1406,7 +1414,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 43,
+				"card": 21,
 				"to": "square_48"
 			},
 			{
@@ -1415,12 +1423,12 @@
 			},
 			{
 				"type": "drag",
-				"card": 41,
+				"card": 23,
 				"to": "square_39"
 			},
 			{
 				"type": "drag",
-				"card": 40,
+				"card": 22,
 				"to": "square_4"
 			},
 			{
@@ -1429,7 +1437,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 38,
+				"card": 24,
 				"to": "square_34"
 			},
 			{
@@ -1442,22 +1450,22 @@
 			},
 			{
 				"type": "drag",
-				"card": 35,
+				"card": 29,
 				"to": "square_19"
 			},
 			{
 				"type": "drag",
-				"card": 34,
+				"card": 28,
 				"to": "square_49"
 			},
 			{
 				"type": "drag",
-				"card": 33,
+				"card": 31,
 				"to": "square_27"
 			},
 			{
 				"type": "drag",
-				"card": 32,
+				"card": 30,
 				"to": "square_44"
 			},
 			{
@@ -1474,12 +1482,12 @@
 			},
 			{
 				"type": "drag",
-				"card": 28,
+				"card": 34,
 				"to": "square_41"
 			},
 			{
 				"type": "drag",
-				"card": 27,
+				"card": 37,
 				"to": "square_52"
 			},
 			{
@@ -1492,7 +1500,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 24,
+				"card": 38,
 				"to": "square_18"
 			},
 			{
@@ -1501,7 +1509,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 22,
+				"card": 40,
 				"to": "square_40"
 			},
 			{
@@ -1510,7 +1518,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 20,
+				"card": 42,
 				"to": "square_64"
 			},
 			{
@@ -1519,17 +1527,17 @@
 			},
 			{
 				"type": "drag",
-				"card": 18,
+				"card": 44,
 				"to": "square_13"
 			},
 			{
 				"type": "drag",
-				"card": 17,
+				"card": 47,
 				"to": "square_5"
 			},
 			{
 				"type": "drag",
-				"card": 16,
+				"card": 46,
 				"to": "square_32"
 			},
 			{
@@ -1538,12 +1546,12 @@
 			},
 			{
 				"type": "drag",
-				"card": 14,
+				"card": 48,
 				"to": "square_59"
 			},
 			{
 				"type": "drag",
-				"card": 13,
+				"card": 51,
 				"to": "square_51"
 			},
 			{
@@ -1552,17 +1560,17 @@
 			},
 			{
 				"type": "drag",
-				"card": 11,
+				"card": 53,
 				"to": "square_8"
 			},
 			{
 				"type": "drag",
-				"card": 10,
+				"card": 52,
 				"to": "square_3"
 			},
 			{
 				"type": "drag",
-				"card": 9,
+				"card": 55,
 				"to": "square_31"
 			},
 			{
@@ -1579,7 +1587,7 @@
 			},
 			{
 				"type": "drag",
-				"card": 5,
+				"card": 59,
 				"to": "square_57"
 			},
 			{
@@ -1592,13 +1600,12 @@
 			},
 			{
 				"type": "drag",
-				"card": 2,
+				"card": 63,
 				"to": "square_58"
 			},
 			{
-				"type": "drag",
-				"card": 1,
-				"to": "square_2"
+				"type": "click_empty",
+				"zone": "square_2"
 			},
 			{
 				"type": "click_empty",
@@ -1608,19 +1615,23 @@
 		"logs": [
 			[
 				"[trigger] start",
-				"  supply → square_28: Disc",
+				"  box → supply_1: Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc",
+				"  box → supply_2: Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc",
+				"  face down in supply_2: Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc, Disc",
+				"  supply_2 → square_28: Disc",
 				"  face down in square_28: Disc",
-				"  supply → square_29: Disc",
-				"  supply → square_36: Disc",
-				"  supply → square_37: Disc",
+				"  supply_1 → square_29: Disc",
+				"  supply_1 → square_36: Disc",
+				"  supply_2 → square_37: Disc",
 				"  face down in square_37: Disc",
+				"  player = 1",
 				"[turn] Black",
 				"  Black may: Place, Place by dragging"
 			],
 			[
 				"[action] Place",
 				"  face up in square_37: Disc",
-				"  supply → square_38: Disc",
+				"  supply_1 → square_38: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -1631,7 +1642,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_30: Disc",
+				"  supply_2 → square_30: Disc",
 				"  face down in square_29: Disc",
 				"  if player == 2 → then",
 				"  face down in square_30: Disc",
@@ -1644,7 +1655,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_22: Disc",
+				"  supply_1 → square_22: Disc",
 				"  face up in square_30: Disc",
 				"  face up in square_29: Disc",
 				"  if player == 2 → else",
@@ -1658,7 +1669,7 @@
 			[
 				"[action] Place",
 				"  face down in square_37: Disc",
-				"  supply → square_46: Disc",
+				"  supply_2 → square_46: Disc",
 				"  if player == 2 → then",
 				"  face down in square_46: Disc",
 				"  if placed == null → else",
@@ -1670,7 +1681,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_20: Disc",
+				"  supply_1 → square_20: Disc",
 				"  face up in square_28: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
@@ -1682,7 +1693,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_35: Disc",
+				"  supply_2 → square_35: Disc",
 				"  face down in square_36: Disc",
 				"  if player == 2 → then",
 				"  face down in square_35: Disc",
@@ -1695,7 +1706,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_42: Disc",
+				"  supply_1 → square_42: Disc",
 				"  face up in square_35: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
@@ -1707,7 +1718,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_15: Disc",
+				"  supply_2 → square_15: Disc",
 				"  face down in square_22: Disc",
 				"  face down in square_29: Disc",
 				"  if player == 2 → then",
@@ -1722,7 +1733,7 @@
 			[
 				"[action] Place",
 				"  face up in square_22: Disc",
-				"  supply → square_14: Disc",
+				"  supply_1 → square_14: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -1733,7 +1744,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_11: Disc",
+				"  supply_2 → square_11: Disc",
 				"  face down in square_20: Disc",
 				"  if player == 2 → then",
 				"  face down in square_11: Disc",
@@ -1747,7 +1758,7 @@
 			[
 				"[action] Place",
 				"  face up in square_20: Disc",
-				"  supply → square_12: Disc",
+				"  supply_1 → square_12: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -1758,7 +1769,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_47: Disc",
+				"  supply_2 → square_47: Disc",
 				"  face down in square_38: Disc",
 				"  if player == 2 → then",
 				"  face down in square_47: Disc",
@@ -1771,7 +1782,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_55: Disc",
+				"  supply_1 → square_55: Disc",
 				"  face up in square_46: Disc",
 				"  face up in square_37: Disc",
 				"  if player == 2 → else",
@@ -1784,7 +1795,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_54: Disc",
+				"  supply_2 → square_54: Disc",
 				"  face down in square_46: Disc",
 				"  if player == 2 → then",
 				"  face down in square_54: Disc",
@@ -1800,7 +1811,7 @@
 				"  face up in square_54: Disc",
 				"  face up in square_46: Disc",
 				"  face up in square_38: Disc",
-				"  supply → square_62: Disc",
+				"  supply_1 → square_62: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -1812,7 +1823,7 @@
 			[
 				"[action] Place",
 				"  face down in square_54: Disc",
-				"  supply → square_61: Disc",
+				"  supply_2 → square_61: Disc",
 				"  if player == 2 → then",
 				"  face down in square_61: Disc",
 				"  if placed == null → else",
@@ -1824,7 +1835,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_48: Disc",
+				"  supply_1 → square_48: Disc",
 				"  face up in square_47: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
@@ -1841,7 +1852,7 @@
 				"  face down in square_30: Disc",
 				"  face down in square_38: Disc",
 				"  face down in square_46: Disc",
-				"  supply → square_6: Disc",
+				"  supply_2 → square_6: Disc",
 				"  if player == 2 → then",
 				"  face down in square_6: Disc",
 				"  if placed == null → else",
@@ -1853,7 +1864,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_39: Disc",
+				"  supply_1 → square_39: Disc",
 				"  face up in square_38: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
@@ -1865,7 +1876,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_4: Disc",
+				"  supply_2 → square_4: Disc",
 				"  face down in square_12: Disc",
 				"  face down in square_20: Disc",
 				"  face down in square_28: Disc",
@@ -1881,7 +1892,7 @@
 			[
 				"[action] Place",
 				"  face up in square_46: Disc",
-				"  supply → square_45: Disc",
+				"  supply_1 → square_45: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -1892,7 +1903,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_34: Disc",
+				"  supply_2 → square_34: Disc",
 				"  face down in square_35: Disc",
 				"  if player == 2 → then",
 				"  face down in square_34: Disc",
@@ -1906,7 +1917,7 @@
 			[
 				"[action] Place",
 				"  face up in square_54: Disc",
-				"  supply → square_63: Disc",
+				"  supply_1 → square_63: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -1919,7 +1930,7 @@
 				"[action] Place",
 				"  face down in square_45: Disc",
 				"  face down in square_37: Disc",
-				"  supply → square_53: Disc",
+				"  supply_2 → square_53: Disc",
 				"  if player == 2 → then",
 				"  face down in square_53: Disc",
 				"  if placed == null → else",
@@ -1931,7 +1942,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_19: Disc",
+				"  supply_1 → square_19: Disc",
 				"  face up in square_28: Disc",
 				"  face up in square_37: Disc",
 				"  if player == 2 → else",
@@ -1944,7 +1955,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_49: Disc",
+				"  supply_2 → square_49: Disc",
 				"  face down in square_42: Disc",
 				"  if player == 2 → then",
 				"  face down in square_49: Disc",
@@ -1957,7 +1968,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_27: Disc",
+				"  supply_1 → square_27: Disc",
 				"  face up in square_36: Disc",
 				"  face up in square_45: Disc",
 				"  if player == 2 → else",
@@ -1970,7 +1981,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_44: Disc",
+				"  supply_2 → square_44: Disc",
 				"  face down in square_36: Disc",
 				"  face down in square_28: Disc",
 				"  face down in square_37: Disc",
@@ -1987,7 +1998,7 @@
 				"[action] Place",
 				"  face up in square_61: Disc",
 				"  face up in square_53: Disc",
-				"  supply → square_60: Disc",
+				"  supply_1 → square_60: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -2000,7 +2011,7 @@
 				"[action] Place",
 				"  face down in square_27: Disc",
 				"  face down in square_19: Disc",
-				"  supply → square_26: Disc",
+				"  supply_2 → square_26: Disc",
 				"  if player == 2 → then",
 				"  face down in square_26: Disc",
 				"  if placed == null → else",
@@ -2016,7 +2027,7 @@
 				"  face up in square_35: Disc",
 				"  face up in square_36: Disc",
 				"  face up in square_37: Disc",
-				"  supply → square_33: Disc",
+				"  supply_1 → square_33: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -2027,7 +2038,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_41: Disc",
+				"  supply_2 → square_41: Disc",
 				"  face down in square_34: Disc",
 				"  if player == 2 → then",
 				"  face down in square_41: Disc",
@@ -2040,7 +2051,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_52: Disc",
+				"  supply_1 → square_52: Disc",
 				"  face up in square_44: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
@@ -2054,7 +2065,7 @@
 				"[action] Place",
 				"  face down in square_35: Disc",
 				"  face down in square_36: Disc",
-				"  supply → square_43: Disc",
+				"  supply_2 → square_43: Disc",
 				"  if player == 2 → then",
 				"  face down in square_43: Disc",
 				"  if placed == null → else",
@@ -2068,7 +2079,7 @@
 				"[action] Place",
 				"  face up in square_26: Disc",
 				"  face up in square_35: Disc",
-				"  supply → square_17: Disc",
+				"  supply_1 → square_17: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -2079,7 +2090,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_18: Disc",
+				"  supply_2 → square_18: Disc",
 				"  face down in square_26: Disc",
 				"  if player == 2 → then",
 				"  face down in square_18: Disc",
@@ -2095,7 +2106,7 @@
 				"  face up in square_18: Disc",
 				"  face up in square_27: Disc",
 				"  face up in square_36: Disc",
-				"  supply → square_9: Disc",
+				"  supply_1 → square_9: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -2106,7 +2117,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_40: Disc",
+				"  supply_2 → square_40: Disc",
 				"  face down in square_39: Disc",
 				"  face down in square_38: Disc",
 				"  face down in square_37: Disc",
@@ -2129,7 +2140,7 @@
 				"  face up in square_19: Disc",
 				"  face up in square_30: Disc",
 				"  face up in square_39: Disc",
-				"  supply → square_21: Disc",
+				"  supply_1 → square_21: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -2140,7 +2151,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_64: Disc",
+				"  supply_2 → square_64: Disc",
 				"  face down in square_55: Disc",
 				"  face down in square_46: Disc",
 				"  face down in square_37: Disc",
@@ -2156,7 +2167,7 @@
 			[
 				"[action] Place",
 				"  face up in square_55: Disc",
-				"  supply → square_56: Disc",
+				"  supply_1 → square_56: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -2167,7 +2178,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_13: Disc",
+				"  supply_2 → square_13: Disc",
 				"  face down in square_21: Disc",
 				"  face down in square_29: Disc",
 				"  face down in square_20: Disc",
@@ -2183,7 +2194,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_5: Disc",
+				"  supply_1 → square_5: Disc",
 				"  face up in square_13: Disc",
 				"  face up in square_21: Disc",
 				"  face up in square_29: Disc",
@@ -2199,7 +2210,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_32: Disc",
+				"  supply_2 → square_32: Disc",
 				"  face down in square_39: Disc",
 				"  if player == 2 → then",
 				"  face down in square_32: Disc",
@@ -2214,7 +2225,7 @@
 				"[action] Place",
 				"  face up in square_15: Disc",
 				"  face up in square_14: Disc",
-				"  supply → square_16: Disc",
+				"  supply_1 → square_16: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -2225,7 +2236,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_59: Disc",
+				"  supply_2 → square_59: Disc",
 				"  face down in square_60: Disc",
 				"  face down in square_61: Disc",
 				"  face down in square_62: Disc",
@@ -2243,7 +2254,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_51: Disc",
+				"  supply_1 → square_51: Disc",
 				"  face up in square_52: Disc",
 				"  face up in square_43: Disc",
 				"  face up in square_35: Disc",
@@ -2261,7 +2272,7 @@
 				"[action] Place",
 				"  face down in square_14: Disc",
 				"  face down in square_21: Disc",
-				"  supply → square_7: Disc",
+				"  supply_2 → square_7: Disc",
 				"  if player == 2 → then",
 				"  face down in square_7: Disc",
 				"  if placed == null → else",
@@ -2273,7 +2284,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_8: Disc",
+				"  supply_1 → square_8: Disc",
 				"  face up in square_7: Disc",
 				"  face up in square_6: Disc",
 				"  if player == 2 → else",
@@ -2286,7 +2297,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_3: Disc",
+				"  supply_2 → square_3: Disc",
 				"  face down in square_12: Disc",
 				"  if player == 2 → then",
 				"  face down in square_3: Disc",
@@ -2299,7 +2310,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_31: Disc",
+				"  supply_1 → square_31: Disc",
 				"  face up in square_39: Disc",
 				"  face up in square_38: Disc",
 				"  face up in square_45: Disc",
@@ -2318,7 +2329,7 @@
 				"  face down in square_38: Disc",
 				"  face down in square_45: Disc",
 				"  face down in square_52: Disc",
-				"  supply → square_24: Disc",
+				"  supply_2 → square_24: Disc",
 				"  if player == 2 → then",
 				"  face down in square_24: Disc",
 				"  if placed == null → else",
@@ -2332,7 +2343,7 @@
 				"[action] Place",
 				"  face up in square_31: Disc",
 				"  face up in square_14: Disc",
-				"  supply → square_23: Disc",
+				"  supply_1 → square_23: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -2345,7 +2356,7 @@
 				"[action] Place",
 				"  face down in square_18: Disc",
 				"  face down in square_19: Disc",
-				"  supply → square_10: Disc",
+				"  supply_2 → square_10: Disc",
 				"  if player == 2 → then",
 				"  face down in square_10: Disc",
 				"  if placed == null → else",
@@ -2357,7 +2368,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_57: Disc",
+				"  supply_1 → square_57: Disc",
 				"  face up in square_49: Disc",
 				"  face up in square_41: Disc",
 				"  if player == 2 → else",
@@ -2373,7 +2384,7 @@
 				"  face down in square_51: Disc",
 				"  face down in square_42: Disc",
 				"  face down in square_43: Disc",
-				"  supply → square_50: Disc",
+				"  supply_2 → square_50: Disc",
 				"  if player == 2 → then",
 				"  face down in square_50: Disc",
 				"  if placed == null → else",
@@ -2386,7 +2397,7 @@
 			[
 				"[action] Place",
 				"  face up in square_26: Disc",
-				"  supply → square_25: Disc",
+				"  supply_1 → square_25: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -2402,7 +2413,7 @@
 			],
 			[
 				"[action] Place by dragging",
-				"  supply → square_58: Disc",
+				"  supply_1 → square_58: Disc",
 				"  face up in square_50: Disc",
 				"  face up in square_42: Disc",
 				"  face up in square_34: Disc",
@@ -2421,14 +2432,14 @@
 				"  Black may: Place, Place by dragging"
 			],
 			[
-				"[action] Place by dragging",
-				"  supply → square_2: Disc",
+				"[action] Place",
 				"  face up in square_3: Disc",
 				"  face up in square_4: Disc",
 				"  face up in square_10: Disc",
 				"  face up in square_18: Disc",
 				"  face up in square_11: Disc",
 				"  face up in square_20: Disc",
+				"  supply_2 → square_2: Disc",
 				"  if player == 2 → else",
 				"  if placed == null → else",
 				"  passes = 0",
@@ -2440,7 +2451,7 @@
 			[
 				"[action] Place",
 				"  face down in square_10: Disc",
-				"  supply → square_1: Disc",
+				"  supply_2 → square_1: Disc",
 				"  if player == 2 → then",
 				"  face down in square_1: Disc",
 				"  if placed == null → else",
@@ -2653,7 +2664,9 @@
 				"square_64": [
 					"▼Disc"
 				],
-				"supply": []
+				"box": [],
+				"supply_1": [],
+				"supply_2": []
 			},
 			"variables": {
 				"passes": "2",

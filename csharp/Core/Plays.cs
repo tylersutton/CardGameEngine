@@ -73,7 +73,7 @@ public class Plays
         {
             return true;
         }
-        if (game.Choice.MustBeMade || !IsOfferedNow(actionName))
+        if (game.Choice.MustBeMade && !IsAnyTime(actionName) || !IsOfferedNow(actionName))
         {
             return false;
         }
@@ -83,6 +83,20 @@ public class Plays
         }
         return game.Holds(WhenOf(game.Rules.Actions[actionName]));
     }
+
+    /// The button whose choice of several cards clicking this card starts, with the card picked (President's Play:
+    /// click the cards, then Done), or "". A choice of one card isn't started by a click, which would make it at once.
+    public string ChoiceStartedBy(Card card) =>
+        game.Rules.Actions.Keys.FirstOrDefault(actionName =>
+        {
+            Dictionary<string, object?> action = game.Rules.Actions[actionName];
+            bool picksSeveral = action.ContainsKey("up_to") || action.GetValueOrDefault("pick") is not (null or 1.0);
+            return action.GetValueOrDefault("choose") is string options && picksSeveral && !IsCardAction(action) && ShowsButton(actionName)
+                && CanPerform(actionName) && Choice.OptionsFrom(game.Evaluate(options)).Contains(card);
+        }) ?? "";
+
+    /// "any_time" actions (like sorting a hand) can be done by anyone, on anyone's turn, as themselves.
+    public bool IsAnyTime(string actionName) => game.Rules.Actions[actionName].GetValueOrDefault("any_time") is true;
 
     /// Actions named in an offer(...) can only be done while an offer naming them is waiting; the others whenever
     /// their "when" holds.

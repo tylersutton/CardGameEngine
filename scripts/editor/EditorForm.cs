@@ -180,6 +180,7 @@ public partial class EditorForm : VBoxContainer
             case "list":
             case "names":
             case "numbers":
+            case "counts":
                 LineEdit line = new()
                 {
                     Text = value is List<object?> items ? string.Join(", ", items.Select(AsText)) : AsText(value),
@@ -187,8 +188,8 @@ public partial class EditorForm : VBoxContainer
                 };
                 void Commit()
                 {
-                    List<object?> entries = SplitNames(line.Text).Select(item => field.Kind == "numbers" ? (object?)Values.ToInt(item) : item).ToList();
-                    bool oneAllowed = field.Kind == "list" && entries.Count == 1;
+                    List<object?> entries = SplitNames(line.Text).Select(item => field.Kind is "numbers" or "counts" ? (object?)Values.ToInt(item) : item).ToList();
+                    bool oneAllowed = field.Kind is "list" or "counts" && entries.Count == 1;
                     Changed?.Invoke(path, entries.Count == 0 ? null : oneAllowed ? entries[0] : entries);
                 }
                 line.TextSubmitted += _ => Commit();

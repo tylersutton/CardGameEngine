@@ -17,6 +17,9 @@ public class Card(Dictionary<string, string> data)
 
     public bool FaceUp { get; set; } = true;
 
+    /// Shown to every player (reveal), even in a private zone, until it moves.
+    public bool Revealed { get; set; }
+
     public Dictionary<string, object?> Marks { get; } = [];
 
     /// The deck's columns whose every entry is a number (shared by the deck's cards).

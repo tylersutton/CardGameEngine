@@ -35,7 +35,10 @@ public partial class GameRules
     /// The steps of a turn, run again and again for whoever's turn it is (empty: no turns run by themselves).
     public List<object?> Turn { get; private set; } = [];
     public Dictionary<string, object?> Variables { get; private set; } = [];
-    public int Players { get; private set; } = 1;
+    /// How many players this match has: the first of PlayerCounts, unless another was chosen (see Game).
+    public int Players { get; set; } = 1;
+    /// The numbers of players the game can be played with: "players": 2, or a list of them, e.g. [2, 3, 4].
+    public List<int> PlayerCounts { get; private set; } = [1];
     public List<object?> Seats { get; private set; } = [];
     /// Online, each person's name in place of the file's.
     public List<object?> PlayerNames { get; set; } = [];
@@ -131,7 +134,7 @@ public partial class GameRules
         ReadConditions(Section<Dictionary<string, object?>>(data, "conditions", []));
         Constants = WholeNumbers(Section<Dictionary<string, object?>>(data, "constants", []), insideLists: true);
         Variables = WholeNumbers(Section<Dictionary<string, object?>>(data, "variables", []));
-        Players = (int)Section(data, "players", 1.0);
+        ReadPlayers(data.GetValueOrDefault("players", 1.0));
         Seats = Section<List<object?>>(data, "seats", []);
         PlayerNames = Section<List<object?>>(data, "player_names", []);
         PlayerVariables = WholeNumbers(Section<Dictionary<string, object?>>(data, "player_variables", []));
@@ -158,6 +161,26 @@ public partial class GameRules
         }
         Error = Error.Length > 0 ? Error : $"\"{key}\" should be {KindName(typeof(T))}";
         return fallback;
+    }
+
+    void ReadPlayers(object? players)
+    {
+        List<object?> counts = players as List<object?> ?? [players];
+        if (counts.Count == 0 || !counts.All(count => count is double number && number >= 1 && number == Math.Floor(number)))
+        {
+            Error = Error.Length > 0 ? Error : "\"players\" should be a number, or a list of the numbers of players the game allows, e.g. [2, 3, 4]";
+            return;
+        }
+        PlayerCounts = counts.Select(count => (int)(double)count!).ToList();
+        Players = PlayerCounts[0];
+    }
+
+    /// "2", "2 or 4", "2 to 4": the numbers of players the game allows.
+    public string PlayerCountText()
+    {
+        List<int> counts = PlayerCounts.Order().ToList();
+        bool consecutive = counts.Count > 2 && counts.Zip(counts.Skip(1)).All(pair => pair.Second == pair.First + 1);
+        return consecutive ? $"{counts[0]} to {counts[^1]}" : string.Join(" or ", counts);
     }
 
     static string KindName(Type type)

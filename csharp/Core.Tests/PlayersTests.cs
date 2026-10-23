@@ -115,4 +115,36 @@ public class PlayersTests
     {
         Assert.Contains(GameWith(changes).Errors, error => error.Contains("only works for player (or team) variables"));
     }
+
+    [Fact]
+    public void RevealedCardsAreSeenByEveryoneUntilTheyMove()
+    {
+        Game game = GameWith("""{ "zones": { "deck": { "layout": "pile", "cards": "res://decks/standard_deck.csv" }, "hand": { "per_player": true, "face": "private" } } }""");
+        Card card = game.Zones["hand_2"].Cards[0];
+        Assert.False(game.CanSee(1, card));
+        Run(game, ["reveal(hand_2)"]);
+        Assert.True(game.CanSee(1, card));
+        Run(game, ["move(hand_2, hand_3)"]);
+        Assert.False(game.CanSee(1, card));
+        Run(game, ["end_game()"]);
+        Assert.True(game.CanSee(1, card), "every hand is shown once the game is over");
+        Assert.Empty(failures);
+    }
+
+    [Fact]
+    public void AGameCanBePlayedWithAnyNumberOfPlayersItAllows()
+    {
+        string rules = """{ "players": [3, 2, 4], "zones": { "hand": { "per_player": true } } }""";
+        GameFiles files = TestGames.Files("res://counts_test.jsonc", rules);
+        Assert.Equal(3, new Game(files, "res://counts_test.jsonc").Rules.Players);
+        Game four = new(files, "res://counts_test.jsonc", 1, 4);
+        Assert.Empty(four.Errors);
+        Assert.Equal(4, four.ZoneGroups["all_hand"].Count);
+        Assert.Equal("2 to 4", four.Rules.PlayerCountText());
+        four.Start();
+        Assert.Equal(4, Game.Replay(files, four.Record()).Rules.Players);
+        Assert.Contains(new Game(files, "res://counts_test.jsonc", 1, 5).Errors, error => error.Contains("is for 2 to 4 players, not 5"));
+        GameFiles wrong = TestGames.Files("res://counts_test.jsonc", """{ "players": ["two"], "zones": {} }""");
+        Assert.Contains(new Game(wrong, "res://counts_test.jsonc").Errors, error => error.Contains("\"players\" should be a number"));
+    }
 }

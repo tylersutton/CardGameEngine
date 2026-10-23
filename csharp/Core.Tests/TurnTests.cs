@@ -148,4 +148,105 @@ public class TurnTests
         Game game = TestGames.Create(Rules, changes, 1, "res://turn_mistake.jsonc");
         Assert.Contains(game.Errors, error => error.Contains(message));
     }
+
+    /// Cards dealt to private hands, and buttons people press out of turn or to pick several cards.
+    const string TableRules = """
+        {
+            "players": 2,
+            "zones": {
+                "deck": { "layout": "pile", "face": "down", "cards": "res://decks/standard_deck.csv" },
+                "pile": { "layout": "pile" },
+                "hand": { "per_player": true, "face": "private" }
+            },
+            "actions": {
+                "Draw": { "drag": { "from": "deck", "to": "hand" }, "click": true },
+                "Play": { "choose": "hand", "up_to": 3, "steps": "move(choice, pile)" },
+                "Pass": [],
+                "Sort hand": { "any_time": true, "steps": "sort(hand, ['value'])" }
+            },
+            "turn": ["offer(['Play', 'Pass'])", "end_turn()"],
+            "triggers": { "start": ["deal(deck, all_hand, 5)", "player = 1"] }
+        }
+        """;
+
+    static Game TableGame()
+    {
+        Game game = TestGames.Create(TableRules, "{}", 3, "res://table_test.jsonc");
+        Assert.Empty(game.Errors);
+        game.Start();
+        return game;
+    }
+
+    [Fact]
+    public void AnyTimeActionsRunAsWhoeverDidThem()
+    {
+        Game game = TableGame();
+        Zone otherHand = game.Zones["hand_2"];
+        List<Card> before = [.. game.Zones["hand_1"].Cards];
+        Assert.True(game.Apply(PlayerInput.Perform("Sort hand") with { Player = 2 }));
+        Assert.Equal(otherHand.Cards.OrderBy(card => Values.ToInt(card.Data["value"])).Select(card => card.Data["value"]), otherHand.Cards.Select(card => card.Data["value"]));
+        Assert.Equal(before, game.Zones["hand_1"].Cards);
+        Assert.Equal(1, game.CurrentPlayer());
+        Assert.Equal(["Play", "Pass"], game.Plays.Offered);
+    }
+
+    [Fact]
+    public void AnyTimeActionsLeaveAChoiceBeingMadeAlone()
+    {
+        Game game = TableGame();
+        game.Apply(PlayerInput.Click(game.Zones["hand_1"].Cards[0]) with { Player = 1 });
+        Assert.True(game.Apply(PlayerInput.Perform("Sort hand") with { Player = 2 }));
+        Assert.Equal("Play", game.Choice.Title);
+        Assert.Single(game.Choice.Selected);
+    }
+
+    [Fact]
+    public void PlayersRearrangeTheirOwnHandOnAnyTurnWithoutShowingIt()
+    {
+        Game game = TableGame();
+        game.LocalSeat = 1;
+        List<string> logged = [];
+        game.GameLog.Logged += logged.Add;
+        Card moved = game.Zones["hand_2"].Cards[0];
+        Assert.True(game.Apply(new("reorder") { Card = moved.Id, Index = 3, Player = 2 }));
+        Assert.Equal(moved, game.Zones["hand_2"].Cards[3]);
+        Assert.DoesNotContain(logged, line => line.Contains(moved.Title));
+        Assert.False(game.Apply(new("reorder") { Card = game.Zones["hand_1"].Cards[0].Id, Index = 3, Player = 2 }), "nobody rearranges someone else's hand");
+    }
+
+    [Fact]
+    public void ClickingACardStartsAChoiceOfSeveralWithIt()
+    {
+        Game game = TableGame();
+        Card first = game.Zones["hand_1"].Cards[0];
+        Card second = game.Zones["hand_1"].Cards[1];
+        game.Apply(PlayerInput.Click(first) with { Player = 1 });
+        Assert.Equal("Play", game.Choice.Title);
+        Assert.Equal([first], game.Choice.Selected);
+        game.Apply(PlayerInput.Click(second) with { Player = 1 });
+        game.Apply(PlayerInput.Finish() with { Player = 1 });
+        Assert.Equal([first, second], game.Zones["pile"].Cards);
+        Assert.Equal(2, game.CurrentPlayer());
+    }
+
+    [Fact]
+    public void ARefusedDragChangesNothing()
+    {
+        Game game = TableGame();
+        game.Apply(PlayerInput.Click(game.Zones["hand_1"].Cards[0]) with { Player = 1 });
+        Assert.False(game.Apply(PlayerInput.Drag(game.Zones["hand_1"].Cards[1], game.Zones["deck"]) with { Player = 1 }));
+        Assert.Equal("Play", game.Choice.Title);
+        Assert.Single(game.Choice.Selected);
+    }
+
+    [Fact]
+    public void ThePersonAtTheScreenActsOnlyOnTheirTurn()
+    {
+        Game game = TableGame();
+        game.Rules.Bot["players"] = new List<object?> { 2.0 };
+        game.Apply(PlayerInput.Perform("Pass") with { Player = 1 });
+        Assert.Equal(1, game.Viewer());
+        Assert.False(game.MayAct(game.Viewer(), PlayerInput.Drag(game.Zones["deck"].Cards[^1], game.Zones["hand_2"])), "the bot's draw isn't theirs to make");
+        Assert.True(game.MayAct(game.Viewer(), PlayerInput.Perform("Sort hand")));
+    }
 }

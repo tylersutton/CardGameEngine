@@ -115,6 +115,7 @@ public class Zone
     public void Add(Card card)
     {
         card.FaceUp = Face != FaceDown;
+        card.Revealed = false;
         card.Marks.Clear();
         card.ZoneName = Name;
         Cards.Add(card);
@@ -127,6 +128,7 @@ public class Zone
         foreach (Card card in newCards)
         {
             card.FaceUp = Face != FaceDown;
+            card.Revealed = false;
             card.ZoneName = Name;
         }
         Cards.AddRange(newCards);

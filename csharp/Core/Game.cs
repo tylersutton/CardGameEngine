@@ -2,8 +2,8 @@ using System.Text.Json;
 
 namespace Core;
 
-/// A match's rules, seed and inputs: replaying them rebuilds it exactly.
-public record MatchRecord(string Rules, long Seed, List<PlayerInput> Inputs);
+/// A match's rules, seed, inputs and number of players (0: the game's usual number): replaying them rebuilds it exactly.
+public record MatchRecord(string Rules, long Seed, List<PlayerInput> Inputs, int Players = 0);
 
 /// A game being played: its zones, cards, variables and players. It carries out inputs (Apply) and runs the
 /// game file's steps (with StepRunner); Plays knows what players can do and Choice is the choice being made.
@@ -85,8 +85,9 @@ public class Game : IStepContext
     bool checkingMoves;
     bool checkedItself;
 
-    /// A seed makes the match repeatable: the same seed and inputs always give the same game.
-    public Game(GameFiles files, string path, long seed = -1)
+    /// A seed makes the match repeatable: the same seed and inputs always give the same game. players: how many
+    /// play, one of the numbers the game allows (0: the first of them).
+    public Game(GameFiles files, string path, long seed = -1, int players = 0)
     {
         Runner = new(this);
         Choice = new(this);
@@ -100,6 +101,15 @@ public class Game : IStepContext
         {
             Errors.Add(Rules.Error);
             return;
+        }
+        if (players != 0 && !Rules.PlayerCounts.Contains(players))
+        {
+            Errors.Add($"{Rules.Title} is for {Rules.PlayerCountText()} players, not {players}");
+            return;
+        }
+        if (players != 0)
+        {
+            Rules.Players = players;
         }
         Plays = new(this, Rules.Actions);
         StepCompiler compiler = new(this);
@@ -168,14 +178,57 @@ public class Game : IStepContext
         AnnounceStateChanged();
     }
 
-    public void Perform(string actionName)
+    /// player: who pressed the button, which matters for "any_time" actions (0: whoever's turn it is).
+    public void Perform(string actionName, int player = 0)
     {
+        if (Plays.IsAnyTime(actionName))
+        {
+            PerformAnyTime(actionName, player != 0 ? player : CurrentPlayer());
+            return;
+        }
         if (!Plays.CanPerform(actionName))
         {
             return;
         }
         Choice.Cancel();
         Snapshot? before = UndoPoint();
+        StartAction(actionName);
+        FinishInput(before);
+    }
+
+    /// An "any_time" action (sorting a hand) runs at once as whoever did it, as if it were their turn, and leaves the
+    /// turn and any choice being made as they were, so its steps can't wait for a choice.
+    void PerformAnyTime(string actionName, int player)
+    {
+        if (!AsPlayer(player, () => Plays.CanPerform(actionName)))
+        {
+            return;
+        }
+        Snapshot? before = UndoPoint();
+        LogLine("[action] " + actionName);
+        AsPlayer(player, () =>
+        {
+            Runner.RunNow(Plays.StepsOf(Rules.Actions[actionName]), null);
+            return true;
+        });
+        FinishInput(before);
+    }
+
+    /// Works something out as if it were that player's turn.
+    T AsPlayer<T>(int player, Func<T> work)
+    {
+        if (!Variables.TryGetValue(PlayerVariable, out object? turn))
+        {
+            return work();
+        }
+        Variables[PlayerVariable] = (long)player;
+        T result = work();
+        Variables[PlayerVariable] = turn;
+        return result;
+    }
+
+    void StartAction(string actionName)
+    {
         Dictionary<string, object?> action = Rules.Actions[actionName];
         LogLine("[action] " + actionName);
         if (action.ContainsKey("choose"))
@@ -191,7 +244,6 @@ public class Game : IStepContext
             Plays.AcceptOffer(actionName);
             Run(Plays.StepsOf(action));
         }
-        FinishInput(before);
     }
 
     /// The one way in for people, bots and the network. An input is plain data, so it can be sent, recorded and
@@ -229,13 +281,15 @@ public class Game : IStepContext
     }
 
     /// Who may make an input: the player whose turn (or choice) it is. Human-only buttons are for any person,
-    /// anyone may rearrange their own cards, and undo is for the table to agree on.
+    /// anyone may rearrange their own cards and do "any_time" actions, and undo is for the table to agree on.
     public bool MayAct(int player, PlayerInput input)
     {
         switch (input.Type)
         {
             case "undo":
                 return true;
+            case "perform" when Plays.IsAnyTime(input.Action!):
+                return player >= 1 && player <= Rules.Players;
             case "reorder":
                 return ZoneOf(Cards[input.Card!.Value]).Owner is 0 || ZoneOf(Cards[input.Card!.Value]).Owner == player;
             case "perform" when Rules.Actions[input.Action!].GetValueOrDefault("human_only") is true:
@@ -281,7 +335,7 @@ public class Game : IStepContext
                 ClickEmpty(Zones[input.Zone!]);
                 break;
             case "perform":
-                Perform(input.Action!);
+                Perform(input.Action!, input.Player ?? 0);
                 break;
             case "choose":
                 // Sent numbers may arrive as decimals (4.0), so options are matched by value; zones are sent by name.
@@ -319,11 +373,11 @@ public class Game : IStepContext
     }
 
     /// A match is its rules, seed and inputs; replaying them rebuilds it exactly.
-    public MatchRecord Record() => new(RulesPath, MatchSeed, [.. Inputs]);
+    public MatchRecord Record() => new(RulesPath, MatchSeed, [.. Inputs], Rules.Players);
 
     public static Game Replay(GameFiles files, MatchRecord record)
     {
-        Game game = new(files, record.Rules, record.Seed);
+        Game game = new(files, record.Rules, record.Seed, record.Players);
         game.Start();
         foreach (PlayerInput input in record.Inputs)
         {
@@ -465,15 +519,17 @@ public class Game : IStepContext
             GameLog.Flush();
             return false;
         }
-        Choice.Cancel();
         Zone source = ZoneOf(card);
         string actionName = Sandbox ? "" : Plays.DragAction(card, source, destination);
+        // A refused input isn't recorded, so it mustn't change anything (not even cancel a choice): online, every
+        // copy of the match has to come out the same from the inputs alone.
         if (actionName.Length == 0 && !Plays.CanMove(card, destination))
         {
-            LogLine($"[not allowed] {card.Title}: {source.Name} → {destination.Name} ({Plays.RefusalReason(source, destination)})");
+            LogLine($"[not allowed] {Describe(card)}: {source.Name} → {destination.Name} ({Plays.RefusalReason(source, destination)})");
             GameLog.Flush();
             return false;
         }
+        Choice.Cancel();
         Snapshot? before = UndoPoint();
         DragBy(actionName, card, destination, index);
         FinishInput(before);
@@ -551,7 +607,11 @@ public class Game : IStepContext
         Zone zone = ZoneOf(card);
         zone.Reorder(card, index);
         Remember(before);
-        LogLine($"  {card.Title}: position {index + 1} in {zone.Name} (manual order)");
+        // Rearranging a hand is nobody else's business: only cards this screen can see are named.
+        if (ShowsFace(card))
+        {
+            LogLine($"  {card.Title}: position {index + 1} in {zone.Name} (manual order)");
+        }
         GameLog.Flush();
         AnnounceStateChanged();
     }
@@ -678,9 +738,17 @@ public class Game : IStepContext
         {
             Choice.Cancel();
         }
-        else
+        else if (Plays.ClickActionFor(zone, card, Plays.ClickKey) is { } found)
         {
-            ClickBy(Plays.ClickActionFor(zone, card, Plays.ClickKey), zone, card);
+            ClickBy(found, zone, card);
+        }
+        else if (Plays.ChoiceStartedBy(card) is { Length: > 0 } actionName)
+        {
+            StartAction(actionName);
+            if (Choice.IsOpen)
+            {
+                Choice.Select(card);
+            }
         }
         FinishInput(before);
     }
@@ -925,6 +993,14 @@ public class Game : IStepContext
         }
     }
 
+    public void Reveal(Card card)
+    {
+        card.Revealed = true;
+        Zone zone = ZoneOf(card);
+        GameLog.Item("shown from " + zone.Name, card.Title);
+        zone.AnnounceChanged();
+    }
+
     public void Flip(Card card)
     {
         card.FaceUp = !card.FaceUp;
@@ -961,12 +1037,17 @@ public class Game : IStepContext
     public bool ShowsFace(Card card) => CanSee(Viewer(), card);
 
     /// Whether that player can see the card's face: not if it's face down (unless both its sides are public), nor in
-    /// another player's private zone ("private"), nor in their own zone held facing away from them ("others").
+    /// another player's private zone ("private"), nor in their own zone held facing away from them ("others"), unless
+    /// it was revealed or the game is over (hands are shown at the end).
     public bool CanSee(int player, Card card)
     {
         if (!card.FaceUp && !IsTwoSided(card))
         {
             return false;
+        }
+        if (card.Revealed || Over)
+        {
+            return true;
         }
         Zone zone = ZoneOf(card);
         return zone.Face switch

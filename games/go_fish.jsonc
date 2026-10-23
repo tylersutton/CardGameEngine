@@ -1,0 +1,147 @@
+{
+	// A starting point made by "New game...". Change anything and save: the table reloads by itself.
+	// Every key is explained in docs/reference.md.
+	"title": "Go Fish",
+	"description": "2 players. Describe your game here.",
+	"players": 2,
+	"player_names": [
+		"You",
+		"Player 2"
+	],
+	"zones": {
+		"deck": {
+			"label": "Deck",
+			"layout": "pile",
+			"face": "down",
+			"anchor": [
+				0.5,
+				0.5
+			],
+			"cards": "res://decks/standard_deck.csv",
+			"columns": {
+				"art": "'cards/' + card.rank + '_' + card.suit + '.png'"
+			}
+		},
+		// One hand per player. The anchor is seat 1's (the bottom); the other seats go round the table.
+		"hand": {
+			"per_player": true,
+			"layout": "fan",
+			"face": "private",
+			"anchor": [
+				0.5,
+				0.84
+			]
+		},
+		"books": {
+			"layout": "pile",
+			"anchor": [
+				0.8,
+				0.84
+			],
+			"per_player": true
+		}
+	},
+	"seats": [
+		[
+			0.22,
+			0.86
+		]
+	],
+	// The other seats are bots that play random legal moves. Add "prefer" to make them try to win.
+	"bot": {
+		"players": [
+			2
+		]
+	},
+	// What players can do. "drag" and "click" say how; an action without them is a button.
+	"actions": {
+		"Sort hand": {
+			"any_time": true,
+			"steps": "sort(hand, ['name'])"
+		},
+		"Ask": {
+			"steps": [
+				"asked_rank = choose(hand, 'Click the card whose rank you want').rank",
+				"got = where(opponent_hand, 'rank', asked_rank)",
+				{
+					"if": "count(got) > 0",
+					"then": [
+						"move(got, hand)"
+					],
+					"else": [
+						"offer('Go Fish')",
+						{
+							"if": "got.rank != asked_rank",
+							"then": [
+								"go_again = false"
+							]
+						}
+					]
+				}
+			]
+		},
+		"Go Fish": {
+			"steps": [
+				"got = card"
+			],
+			"drag": {
+				"from": "deck",
+				"to": "hand"
+			},
+			"click": true
+		}
+	},
+	// A turn: draw a card, then discard one. offer(...) waits for the player to do one of those actions.
+	"turn": [
+		{
+			"while": "go_again",
+			"do": [
+				"offer('Ask')",
+				{
+					"for": "group",
+					"in": "groups(hand, 'rank')",
+					"do": [
+						{
+							"if": "count(where(hand, 'rank', top(group).rank)) == 4",
+							"then": [
+								"move(where(hand, 'rank', top(group).rank), books)"
+							]
+						}
+					]
+				}
+			]
+		},
+		"go_again = true",
+		"end_turn()"
+	],
+	"triggers": {
+		"start": [
+			"sort(hand_1, ['value','suit'])",
+			"sort(hand_2, ['value','suit'])",
+			"shuffle(deck)",
+			"deal(deck, all_hand, starting_hand_size)",
+			"player = one_of(players)"
+		]
+	},
+	"variables": {
+		"asked_rank": 0,
+		"starting_hand_size": 7
+	},
+	"player_variables": {
+		"player_books": 0,
+		"got": 0,
+		"go_again": true
+	},
+	"conditions": {},
+	"constants": {},
+	"card_face": {
+		"corner": "name",
+		"title": "name",
+		"body": [
+			"suit"
+		],
+		"color": "color",
+		"image": "art",
+		"card_back": "card_back.svg"
+	}
+}
