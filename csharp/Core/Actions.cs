@@ -129,6 +129,7 @@ public class Actions(Game game, Card? stepCard = null)
     public void Shuffle(Zone zone)
     {
         zone.Shuffle(game.Random);
+        game.Forget(zone.Cards);
         game.LogLine("  shuffle " + zone.Name);
     }
 

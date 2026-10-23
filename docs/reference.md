@@ -249,8 +249,9 @@ A meld is at least `min` cards sharing a value in the `same` column. With `seque
 
 - **Without `prefer`,** the bot plays a random legal move, which is enough to play a prototype through.
 - **With `prefer`,** the bot tries every legal input, scores the result of each from its own point of view, and takes the best. Write `prefer` as "how good is this position for me?"
-- **It looks one input ahead.** Among equally good inputs, it picks one at random.
-- **It doesn't peek.** Cards it can't see are shuffled among themselves before each try. `"samples": 4` sets how many shuffles it averages over, and `"peek": true` lets it see everything.
+- **It looks one input ahead.** Among equally good inputs, it picks one at random. With `"depth": 2`, it also weighs the next player's best answer to each move, for board games like Checkers. That's slower, especially with hidden cards.
+- **It doesn't peek.** Cards it can't see are shuffled among themselves before each try, and so are dice and shuffles: it tries moves with random numbers of its own. `"samples": 4` sets how many shuffles it averages over, and `"peek": true` lets it see everything.
+- **It remembers.** A card it has seen face up keeps its identity, even back in someone's hand or face down, until it's shuffled.
 - **It never makes inputs that only reorder cards,** such as sorting.
 
 ## Steps

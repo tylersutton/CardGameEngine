@@ -145,8 +145,6 @@
 			"is_jump": "abs(columns_moved) == 2 and abs(rows_moved) == 2 and can_jump_toward(from, columns_moved / 2, rows_moved / 2)",
 			"continues_chain": "chain_column == 0 or (from.column == chain_column and from.row == chain_row)",
 			"far_row": "1 if player == 1 else 8",
-			"exposed_toward": "theirs(space_at(grid, space.column + columns, space.row + rows)) and empty(space_at(grid, space.column - columns, space.row - rows))",
-			"exposed": "mine(space) and (exposed_toward(space, 1, 1) or exposed_toward(space, -1, 1) or exposed_toward(space, 1, -1) or exposed_toward(space, -1, -1))",
 			"material": "count(where(grid, 'color', color)) + count(where(where(grid, 'color', color), 'king', 'yes'))"
 		},
 		"condition_parameters": {
@@ -189,14 +187,6 @@
 			"is_jump": [],
 			"continues_chain": [],
 			"far_row": [],
-			"exposed_toward": [
-				"space",
-				"columns",
-				"rows"
-			],
-			"exposed": [
-				"space"
-			],
 			"material": [
 				"color"
 			]
@@ -261,7 +251,8 @@
 			"players": [
 				2.0
 			],
-			"prefer": "material(my_color) - material(their_color) - 0.8 * count(zones_where(grid, 'exposed'))"
+			"prefer": "material(my_color) - material(their_color)",
+			"depth": 2.0
 		},
 		"card_face": {
 			"shape": "disc",

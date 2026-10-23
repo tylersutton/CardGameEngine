@@ -185,8 +185,10 @@ public class ChooseTests
         Game game = GameWith("""{ "actions": { "Play kings": { "choose": "hand", "up_to": 3, "allow": "count(choice) > 0 and count(where(choice, 'rank', 'K')) == count(choice)", "steps": [] } } }""");
         game.Run(["move(hand, deck)", "move(where(deck, 'rank', '2'), hand)"]);
         Assert.False(game.Plays.CanPerform("Play kings"));
+        Assert.False(game.Plays.CanDo("Play kings"), "so offer('Play kings') wouldn't wait");
         game.Run(["move(top(where(deck, 'rank', 'K')), hand)"]);
         Assert.True(game.Plays.CanPerform("Play kings"));
+        Assert.True(game.Plays.CanDo("Play kings"));
         Assert.Empty(failures);
     }
 
@@ -201,6 +203,19 @@ public class ChooseTests
         game.Run(["move(top(deck), piles_1)"]);
         Assert.True(game.Apply(new("drag") { Card = drawn.Id, To = "hand_1", Index = 1 }), "a card dragged in still goes where it's dropped");
         Assert.Equal(drawn, game.Zones["hand_1"].Cards[1]);
+    }
+
+    [Fact]
+    public void PlayersRememberCardsTheyveSeenUntilShuffled()
+    {
+        Game game = GameWith("""{ "zones": { "deck": { "layout": "pile", "face": "down", "cards": "res://decks/standard_deck.csv" }, "piles": { "layout": "pile", "copies": 2 }, "hand": { "per_player": true, "face": "private" } } }""");
+        Card mine = game.Zones["hand_1"].Cards[0];
+        Assert.True(game.HasSeen(1, mine));
+        Assert.False(game.HasSeen(2, mine));
+        game.Run(["move(hand, deck)"]);
+        Assert.True(game.HasSeen(1, mine), "still known, face down in the deck");
+        game.Run(["shuffle(deck)"]);
+        Assert.False(game.HasSeen(1, mine));
     }
 
     [Fact]

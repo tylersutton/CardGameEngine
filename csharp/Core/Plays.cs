@@ -153,7 +153,7 @@ public class Plays
         {
             return PlayableCards(actionName).Count > 0 || ClickableEmptyZones(actionName).Count > 0;
         }
-        return game.Holds(WhenOf(action));
+        return game.Holds(WhenOf(action)) && (!action.ContainsKey("choose") || game.Choice.HasOptionsFor(actionName));
     }
 
     /// An offer(...) step is waiting: the current player may do one of these actions (and anything not offered).

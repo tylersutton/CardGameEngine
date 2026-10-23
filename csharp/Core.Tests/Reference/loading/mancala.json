@@ -195,7 +195,8 @@
 			"players": [
 				2.0
 			],
-			"prefer": "count(store) - count(opponent_store)"
+			"prefer": "count(store) - count(opponent_store)",
+			"depth": 2.0
 		},
 		"card_face": {
 			"shape": "disc",

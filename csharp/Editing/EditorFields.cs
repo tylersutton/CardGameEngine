@@ -92,6 +92,7 @@ public static class EditorFields
         new("prefer", "expression", "How good a position is for the bot, e.g. score - opponent_score. It tries every legal input and takes the best."),
         new("samples", "whole", "How many ways to shuffle the cards it can't see when judging a move. More is fairer but slower.", "Advanced"),
         new("peek", "yes_no", "Let the bot see every card: stronger and faster.", "Advanced"),
+        new("depth", "whole", "2: also weigh the other player's best answer to each move, for board games like Checkers. Slower.", "Advanced"),
     ];
 
     public static readonly Field[] Scoring =

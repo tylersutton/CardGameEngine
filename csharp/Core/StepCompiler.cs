@@ -320,7 +320,7 @@ public class StepCompiler
         }
         if (rules.Bot.Count > 0)
         {
-            CheckEntry("bot", rules.Bot, new() { ["players"] = [Kind.List], ["prefer"] = [Kind.Text], ["peek"] = [Kind.Bool], ["samples"] = [Kind.Number] });
+            CheckEntry("bot", rules.Bot, new() { ["players"] = [Kind.List], ["prefer"] = [Kind.Text], ["peek"] = [Kind.Bool], ["samples"] = [Kind.Number], ["depth"] = [Kind.Number] });
         }
         foreach (string name in rules.Effects.Keys)
         {

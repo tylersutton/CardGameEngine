@@ -123,7 +123,8 @@
 		"Show": {
 			"choose": "hand",
 			"up_to": "count(hand)",
-			"allow": "count(choice) > 0 and side_by_side and (is_set or is_run) and beats_show",
+			// Cheapest checks first: most picks fail on size or being side by side, before the slower set and run checks.
+			"allow": "count(choice) > 0 and count(choice) >= count(show) and side_by_side and (is_set or is_run) and beats_show",
 			"steps": [
 				"log('%s shows %s' % [name_of(player), 'a set' if is_set else 'a run'])",
 				"move(show, collected)",

@@ -72,6 +72,7 @@ public class Game : IStepContext
     public List<Snapshot> History { get; } = [];
     /// Whether inputs are kept for undo: a bot trying inputs out turns it off, as it undoes them itself.
     public bool Remembering { get; set; } = true;
+    readonly Dictionary<int, HashSet<Card>> seenBy = [];
     public GameLog GameLog { get; } = new();
     /// Names that steps remember without declaring them: loop items (and their _number) and names set with =.
     public List<string> LocalNames { get; } = [];
@@ -178,6 +179,7 @@ public class Game : IStepContext
         Trigger("start");
         GameLog.Flush();
         Choice.PerformAsked();
+        NoteSeen();
         AnnounceStateChanged();
     }
 
@@ -509,7 +511,42 @@ public class Game : IStepContext
         GameLog.Flush();
         Choice.PerformAsked();
         Remember(before);
+        NoteSeen();
         AnnounceStateChanged();
+    }
+
+    /// Whether the player has seen the card's face since it was last shuffled: what a bot remembers (Trio's
+    /// revealed cards, the cards it handed over in Go Fish).
+    public bool HasSeen(int player, Card card) => seenBy.TryGetValue(player, out HashSet<Card>? seen) && seen.Contains(card);
+
+    /// Shuffled cards are anyone's guess again.
+    public void Forget(IEnumerable<Card> cards)
+    {
+        if (!Remembering)
+        {
+            return;
+        }
+        foreach (HashSet<Card> seen in seenBy.Values)
+        {
+            seen.ExceptWith(cards);
+        }
+    }
+
+    /// After each input (not while a bot tries moves out), every card each player can see now is remembered.
+    void NoteSeen()
+    {
+        if (!Remembering)
+        {
+            return;
+        }
+        for (int player = 1; player <= Rules.Players; player++)
+        {
+            if (!seenBy.TryGetValue(player, out HashSet<Card>? seen))
+            {
+                seenBy[player] = seen = [];
+            }
+            seen.UnionWith(Cards.Where(card => CanSee(player, card)));
+        }
     }
 
     /// A card dragged onto a zone: done by the first drag action that allows it (see Plays.DragAction). With no drag
