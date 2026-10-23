@@ -299,6 +299,7 @@
 			"points": "points"
 		},
 		"status": {
+			"scores": "'%s %d, %s %d' % [name_of(1), score_1, name_of(2), score_2]",
 			"your deadwood": "sum(deadwood(hand[min(viewer(), 2)]), 'points')"
 		},
 		"show_variables": [],

@@ -43,11 +43,9 @@ All but Color Match use `decks/standard_deck.csv`, or a deck named after the gam
 | Choosing | The cards you can choose are outlined in yellow. Click them; picked cards turn blue. Anything else to pick, like a color, appears as buttons under the table. On your turn, clicking a card can also start a button's choice of several cards with it, as in President's Play. |
 | Action buttons | The game's other actions, under the table. A button is greyed out while it can't be done. The bar above them says what you can do now. |
 | **Undo** (Ctrl+Z) | Goes back one of your inputs, including one step of a choice. |
-| **Reload** | Starts over from the files on disk. Saving a game file or deck reloads it automatically. |
-| **Sandbox** | Ignores the rules so you can set up a situation by hand. |
-| **Zone names** | Shows each zone's name and card count: the names your rules use. |
+| **Designer** menu | Tools for making the game: **Reload** starts over from the files on disk (saving a game file or deck reloads it automatically); **Sandbox** ignores the rules so you can set up a situation by hand; **Zone names** shows each zone's name and card count, the names your rules use; **Designer info** shows every variable and how the steps worked each move out. |
 
-The side panel shows the game's variables and readouts, with a log of everything that happened beneath them. Cards you can't see are logged as "hidden card", and errors appear in red. When the game ends, a banner says who won (click it away), and every hand is shown.
+The side panel shows the game's readouts, with a log of what happened beneath them. With **Designer info** (on unless you play online), it also shows every variable, and the log shows each step's workings: triggers, conditions, variables changing. Cards you can't see are logged as "hidden card", and errors appear in red. When the game ends, a banner says who won (click it away), and every hand is shown.
 
 **Online:** press **Play online...** on the title screen.
 
@@ -200,7 +198,7 @@ Change anything and save, and the game reloads. Mistakes show in the log in red,
 Step "draw(deck, hnad)": unknown zone or variable "hnad"
 ```
 
-When a drag is refused, the log shows the `when` it failed. Turn on **Sandbox** to set up a situation by hand.
+When a drag is refused, the log shows the `when` it failed. Turn on **Sandbox** (in the **Designer** menu) to set up a situation by hand.
 
 ### 9. Add wild cards
 

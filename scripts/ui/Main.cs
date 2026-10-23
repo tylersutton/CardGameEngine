@@ -1,7 +1,7 @@
 using Core;
 using Godot;
 
-/// The play screen: the toolbar (undo, sandbox), the table, the dock under it (the bar for choices and offers,
+/// The play screen: the toolbar (undo, the designer menu), the table, the dock under it (the bar for choices and offers,
 /// and the action buttons), and the log. Bots take their turns here; online, inputs go through Net.
 public partial class Main : Control
 {
@@ -29,6 +29,8 @@ public partial class Main : Control
     // Kept from _Ready: by the time _ExitTree runs, the children have left the tree and can't be looked up.
     TableView table = null!;
     LogView log = null!;
+    StatusView status = null!;
+    DesignerMenu designerMenu = null!;
     WinnerBanner banner = null!;
     Net Net => Net.Instance;
 
@@ -36,10 +38,11 @@ public partial class Main : Control
     {
         table = GetNode<TableView>("%TableView");
         log = GetNode<LogView>("%LogView");
+        status = GetNode<StatusView>("%StatusView");
+        designerMenu = GetNode<DesignerMenu>("%DesignerMenu");
         banner = new() { Over = table };
         AddChild(banner);
         GetNode<Button>("%GamesButton").Pressed += LeaveTable;
-        GetNode<Button>("%ReloadButton").Pressed += LoadGame;
         GetNode<Button>("%UndoButton").Pressed += () =>
         {
             if (Game != null)
@@ -47,14 +50,22 @@ public partial class Main : Control
                 Submit(new("undo"));
             }
         };
-        GetNode<CheckButton>("%SandboxToggle").Toggled += SetSandbox;
-        GetNode<CheckButton>("%ZoneNamesToggle").Toggled += on =>
+        designerMenu.ReloadPressed += LoadGame;
+        designerMenu.SandboxToggled += SetSandbox;
+        designerMenu.ZoneNamesToggled += on =>
         {
             table.ShowZoneNames = on;
             table.QueueRedraw();
         };
+        designerMenu.DesignerInfoToggled += ShowDesignerInfo;
+        // Offline, whoever plays is most likely making the game; online, they're playing it with others.
+        designerMenu.DesignerInfo = !Net.Online;
+        ShowDesignerInfo(designerMenu.DesignerInfo);
         GetNode<Button>("%GamesButton").Visible = !Embedded;
-        GetNode<Button>("%ReloadButton").Visible = !Embedded;
+        if (Embedded)
+        {
+            designerMenu.HideReload();
+        }
         if (!Net.Online && !Embedded)
         {
             Timer watcher = new();
@@ -64,8 +75,7 @@ public partial class Main : Control
         }
         if (Net.Online)
         {
-            GetNode<Button>("%ReloadButton").Disabled = true;
-            GetNode<CheckButton>("%SandboxToggle").Disabled = true;
+            designerMenu.DisableReloadAndSandbox();
             GetNode<Button>("%GamesButton").Text = Net.IsHost() ? "Lobby" : "Leave";
             GetNode<Button>("%GamesButton").TooltipText = Net.IsHost() ? "Back to the lobby, for everyone" : "Leave the match (rejoin under the same name)";
             foreach ((string text, Action pressed) in HostChoicesWhenOver())
@@ -182,8 +192,8 @@ public partial class Main : Control
         }
         ForgetGame();
         Game = newGame;
-        Game.Sandbox = GetNode<CheckButton>("%SandboxToggle").ButtonPressed;
-        log.Clear();
+        Game.Sandbox = designerMenu.Sandbox;
+        log.ClearLines();
         Game.GameLog.Logged += log.Add;
         Game.Failed += log.AddError;
         Game.StateChanged += RefreshActionButtons;
@@ -192,7 +202,7 @@ public partial class Main : Control
         bot = new(Game);
         table.Submit = Submit;
         table.ShowGame(Game);
-        GetNode<StatusView>("%StatusView").ShowGame(Game);
+        status.ShowGame(Game);
         banner.ShowGame(Game);
         AddActionButtons();
         Game.Start();
@@ -214,6 +224,12 @@ public partial class Main : Control
         Game.StateChanged -= RefreshActionButtons;
         Game.StateChanged -= RefreshChoiceBar;
         Game.StateChanged -= ScheduleBot;
+    }
+
+    void ShowDesignerInfo(bool shown)
+    {
+        log.ShowDesignerInfo(shown);
+        status.ShowDesignerInfo(shown);
     }
 
     void SetSandbox(bool enabled)

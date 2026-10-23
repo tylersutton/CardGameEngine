@@ -202,7 +202,7 @@ Named values that steps can read but never change:
 
 Name players with `name_of(...)` and use `viewer()` for "you", so a readout is right on every player's screen when playing online.
 
-`"show_variables": ["actions", "buys", "coins"]` lists only those variables in the side panel. Without it, every variable is listed.
+`"show_variables": ["actions", "buys", "coins"]` lists those variables in the side panel too. With **Designer info** on, every variable is listed.
 
 ## card_face
 

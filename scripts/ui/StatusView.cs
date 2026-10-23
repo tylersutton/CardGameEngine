@@ -1,10 +1,11 @@
 using Core;
 using Godot;
 
-/// The variables (or "show_variables") and the game's "status" lines beside the table.
+/// The game's "status" lines beside the table, under the "show_variables" (with designer info, every variable).
 public partial class StatusView : Label
 {
     Game? game;
+    bool designerInfo;
 
     public void ShowGame(Game gameToShow)
     {
@@ -14,10 +15,19 @@ public partial class StatusView : Label
         Refresh();
     }
 
+    public void ShowDesignerInfo(bool shown)
+    {
+        designerInfo = shown;
+        if (game != null)
+        {
+            Refresh();
+        }
+    }
+
     void Refresh()
     {
         Dictionary<string, string> values = [];
-        IEnumerable<string> shown = game!.Rules.ShowVariables.Count > 0 ? game.Rules.ShowVariables.Select(Values.Text) : game.Variables.Keys;
+        IEnumerable<string> shown = designerInfo ? game!.Variables.Keys : game!.Rules.ShowVariables.Select(Values.Text);
         foreach (string name in shown)
         {
             values[name] = Values.Format(game.Variables.GetValueOrDefault(name));
