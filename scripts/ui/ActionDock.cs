@@ -4,7 +4,8 @@ using Godot;
 /// The dock under the table: the bar for choices and offers (what to do now) above the game's action buttons, with
 /// the "any_time" ones (like sorting) apart on the right. A button for an offered action shows only while it's
 /// offered to this screen, and what can be done now is gold, like the name tag of the player whose turn it is. Keys
-/// 1 to 9 press the buttons shown, left to right, and Space the gold one when there's only one.
+/// 1 to 9 press the buttons shown, left to right (or, choosing a number, that number), and Space the gold one when
+/// there's only one.
 public partial class ActionDock : MarginContainer
 {
     const float ButtonRowHeight = 32;
@@ -148,12 +149,14 @@ public partial class ActionDock : MarginContainer
         {
             button.Shortcut = null;
         }
+        // Choosing a number (like a bid), each number's own key presses it rather than its place in the row.
+        bool choosingNumbers = shown.Any(IsDigit);
         for (int i = 0; i < shown.Count; i++)
         {
             Godot.Collections.Array keys = [];
-            if (i < 9)
+            if (choosingNumbers ? IsDigit(shown[i]) : i < 9)
             {
-                keys.Add(new InputEventKey { Keycode = Key.Key1 + i });
+                keys.Add(new InputEventKey { Keycode = choosingNumbers ? Key.Key0 + (shown[i].Text[0] - '0') : Key.Key1 + i });
             }
             if (gold.Count == 1 && gold[0] == shown[i])
             {
@@ -162,6 +165,8 @@ public partial class ActionDock : MarginContainer
             shown[i].Shortcut = keys.Count > 0 ? new Shortcut { Events = keys } : null;
         }
     }
+
+    static bool IsDigit(Button button) => button.Text.Length == 1 && char.IsAsciiDigit(button.Text[0]);
 
     void AddChoiceButton(string text, Action onPressed)
     {

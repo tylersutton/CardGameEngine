@@ -232,6 +232,27 @@ public partial class UiTest : Node
         }
         main.QueueFree();
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await PressNumberKey();
+    }
+
+    /// Spades' bids are the buttons 0 to 13: 3 bids 3, not the third button.
+    async Task PressNumberKey()
+    {
+        Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
+        main.RulesPath = "res://games/spades.jsonc";
+        AddChild(main);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Game game = main.Game!;
+        game.Rules.Bot["players"] = new List<object?>();
+        game.AnnounceStateChanged();
+        GetViewport().PushInput(new InputEventKey { Keycode = Key.Key3, Pressed = true });
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        if (game.Inputs.Count != 1 || Values.Format(game.Inputs[0].Option) != "3")
+        {
+            problems.Add($"dock keys: 3 didn't bid 3 in Spades (inputs: {string.Join(", ", game.Inputs)})");
+        }
+        main.QueueFree();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
 
     static List<string> Suggestions(SmartField field) =>
