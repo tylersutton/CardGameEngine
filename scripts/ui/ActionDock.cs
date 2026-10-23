@@ -1,9 +1,9 @@
 using Core;
 using Godot;
 
-/// The dock under the table: the bar for choices and offers (what to do now) above the game's action buttons. A
-/// button for an offered action shows only while it's offered to this screen, and what can be done now is gold, like
-/// the name tag of the player whose turn it is.
+/// The dock under the table: the bar for choices and offers (what to do now) above the game's action buttons, with
+/// the "any_time" ones (like sorting) apart on the right. A button for an offered action shows only while it's
+/// offered to this screen, and what can be done now is gold, like the name tag of the player whose turn it is.
 public partial class ActionDock : MarginContainer
 {
     const float ButtonRowHeight = 32;
@@ -22,18 +22,22 @@ public partial class ActionDock : MarginContainer
 
     Game? game;
     Container choiceBar = null!;
+    Container buttonRow = null!;
     Container actionButtons = null!;
+    Container anyTimeButtons = null!;
 
     public override void _Ready()
     {
         choiceBar = GetNode<Container>("%ChoiceBar");
+        buttonRow = GetNode<Container>("%ButtonRow");
         actionButtons = GetNode<Container>("%ActionButtons");
+        anyTimeButtons = GetNode<Container>("%AnyTimeButtons");
     }
 
     public void ShowGame(Game gameToShow)
     {
         game = gameToShow;
-        foreach (Node button in actionButtons.GetChildren())
+        foreach (Node button in Buttons())
         {
             button.Free();
         }
@@ -41,10 +45,10 @@ public partial class ActionDock : MarginContainer
         {
             Button button = new() { Text = actionName };
             button.Pressed += () => Submit(PlayerInput.Perform(actionName));
-            actionButtons.AddChild(button);
+            (game.Plays.IsAnyTime(actionName) ? anyTimeButtons : actionButtons).AddChild(button);
         }
         // The row keeps its height while every button is hidden, so the table doesn't jump as offers come and go.
-        actionButtons.CustomMinimumSize = new(0, actionButtons.GetChildCount() > 0 ? ButtonRowHeight : 0);
+        buttonRow.CustomMinimumSize = new(0, Buttons().Count > 0 ? ButtonRowHeight : 0);
     }
 
     public void Refresh()
@@ -55,7 +59,7 @@ public partial class ActionDock : MarginContainer
 
     void RefreshActionButtons()
     {
-        foreach (Button button in actionButtons.GetChildren().Cast<Button>())
+        foreach (Button button in Buttons())
         {
             string actionName = button.Text;
             bool canPress = game!.Plays.CanPerform(actionName) && game.MayAct(game.Viewer(), PlayerInput.Perform(actionName));
@@ -64,6 +68,8 @@ public partial class ActionDock : MarginContainer
             SetAccent(button, canPress && !game.Plays.IsAnyTime(actionName));
         }
     }
+
+    List<Button> Buttons() => [.. actionButtons.GetChildren().Cast<Button>(), .. anyTimeButtons.GetChildren().Cast<Button>()];
 
     /// An action that's only done when offered shows while it's offered to this screen; the others always show.
     bool ShowsNow(string actionName) =>
