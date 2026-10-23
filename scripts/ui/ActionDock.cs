@@ -86,8 +86,14 @@ public partial class ActionDock : MarginContainer
         }
         Choice choice = game!.Choice;
         bool pickingCards = choice.CardsOffered && !choice.Exactly;
+        if (!game.Over && !game.IsLocalTurn())
+        {
+            string waitingFor = game.SeatName(game.CurrentPlayer());
+            choiceBar.AddChild(new Label { Text = game.IsBotTurn() ? $"{waitingFor} is thinking…" : $"Waiting for {waitingFor}…" });
+            return;
+        }
         // The bar keeps its space even when empty, so the table doesn't jump up and down as choices come and go.
-        bool shown = game.Over || (choice.IsOpen || game.Plays.Offered.Count > 0) && game.IsLocalTurn();
+        bool shown = game.Over || choice.IsOpen || game.Plays.Offered.Count > 0;
         if (!shown)
         {
             return;
