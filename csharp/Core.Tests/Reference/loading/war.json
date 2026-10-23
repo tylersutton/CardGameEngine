@@ -8,6 +8,7 @@
 			"# A battle",
 			"- Press Battle: both players turn up the top card of their deck. The higher card (Aces high) wins both, and they go to the winner's Won pile.",
 			"- A tie is War: each player lays three cards face down and one face up, and the higher face-up card takes them all. Another tie means another War.",
+			"- The cards stay face up on the table until the next battle, then go to the winner's Won pile.",
 			"- When your deck runs out, your Won pile is shuffled to become your deck.",
 			"# The end",
 			"- Run out of cards and you lose. After 300 battles, whoever has more cards wins."
@@ -41,9 +42,19 @@
 				"per_player": true,
 				"layout": "row",
 				"width": 0.35,
-				"anchor": [
-					0.55,
-					0.62
+				"anchors": [
+					[
+						0.5,
+						0.62
+					],
+					[
+						0.5,
+						0.37
+					]
+				],
+				"rotations": [
+					0.0,
+					0.0
 				]
 			},
 			"won": {
@@ -60,6 +71,13 @@
 		"actions": {
 			"Battle": {
 				"steps": [
+					{
+						"if": "taker > 0",
+						"then": [
+							"move(all_battle, won[taker])",
+							"taker = 0"
+						]
+					},
 					"battles += 1",
 					{
 						"for": "player",
@@ -90,8 +108,7 @@
 						],
 						"else": [
 							"taker = players_with_most('face_up_strength')[0]",
-							"log('%s takes %d cards' % [name_of(taker), count(all_battle)])",
-							"move(all_battle, won[taker])"
+							"log('%s takes %d cards' % [name_of(taker), count(all_battle)])"
 						]
 					}
 				]
@@ -110,7 +127,7 @@
 		},
 		"effects": {},
 		"conditions": {
-			"cards_left": "count(deck) + count(won)",
+			"cards_left": "count(deck) + count(won) + (count(all_battle) if taker == player else 0)",
 			"face_up_strength": "number(top(battle), 'strength')",
 			"tied": "number(top(battle[1]), 'strength') == number(top(battle[2]), 'strength')",
 			"can_go_to_war": "cards_left >= 4"
@@ -140,7 +157,8 @@
 			"end_turn()"
 		],
 		"variables": {
-			"battles": 0
+			"battles": 0,
+			"taker": 0
 		},
 		"players": 2,
 		"seats": [
@@ -244,7 +262,7 @@
 			"layout": "row",
 			"face": "up",
 			"anchor": [
-				0.550000011920929,
+				0.5,
 				0.6200000047683716
 			],
 			"width": 0.35,
@@ -262,8 +280,8 @@
 			"layout": "row",
 			"face": "up",
 			"anchor": [
-				0.44999998807907104,
-				0.3799999952316284
+				0.5,
+				0.3700000047683716
 			],
 			"width": 0.35,
 			"rotation": 0.0,
