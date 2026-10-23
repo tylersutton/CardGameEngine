@@ -131,19 +131,19 @@
 		},
 		"triggers": {
 			"start": [
-				"trigger('deal')",
+				"trigger('deal')"
+			],
+			"deal": [
+				"move([all_hand, table, beaten], deck)",
+				"shuffle(deck)",
+				"deal(deck, all_hand, 13)",
 				{
 					"for": "player",
 					"in": "players",
 					"do": [
 						"sort(hand, ['order', 'suit'])"
 					]
-				}
-			],
-			"deal": [
-				"move([all_hand, table, beaten], deck)",
-				"shuffle(deck)",
-				"deal(deck, all_hand, 13)",
+				},
 				"bring_back(players)",
 				"reset(['finish_order', 'first_play', 'set_size', 'top_order', 'passes'])",
 				{

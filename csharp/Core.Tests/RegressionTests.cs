@@ -228,4 +228,26 @@ public class RegressionTests
         Game game = new(TestGames.Files("res://pick_test.jsonc", rules), "res://pick_test.jsonc", 1);
         Assert.Contains(game.Errors, error => error.Contains("not both"));
     }
+
+    /// Each new hand is dealt sorted, even when a player put their last hand in their own order.
+    [Fact]
+    public void PresidentDealsSortedHands()
+    {
+        Game game = Started("res://games/president.jsonc", 3);
+        game.Apply(new("reorder") { Card = game.Zones["hand_1"].Cards[0].Id, Index = 1 });
+        RandomNumbers chooser = new(3);
+        for (int input = 0; input < 400 && !game.Plays.Offered.Contains("Next hand"); input++)
+        {
+            List<List<PlayerInput>> moves = game.Plays.LegalMoves();
+            game.ApplyMove(moves[chooser.NextInRange(0, moves.Count - 1)]);
+        }
+        Assert.Contains("Next hand", game.Plays.Offered);
+        game.Perform("Next hand");
+        for (int player = 1; player <= 4; player++)
+        {
+            List<string> orders = game.Zones["hand_" + player].Cards.Select(card => card.Column("order")).ToList();
+            Assert.Equal(orders.OrderBy(int.Parse), orders);
+        }
+        Assert.Empty(failures);
+    }
 }
