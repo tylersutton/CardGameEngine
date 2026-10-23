@@ -335,7 +335,8 @@ public partial class TableView : Control
         Zone source = game!.ZoneOf(view.Card!);
         Zone? target = NearestZone(GetLocalMousePosition(), DraggedViews(view));
         ShowDropHint(view, target == source ? null : target);
-        if (target != null && (!MakesRoom(target) || target != source && !hoverAllowed))
+        bool keepsOrder = target == source && !source.Reorders && !game.Sandbox;
+        if (target != null && (!MakesRoom(target) || target != source && !hoverAllowed || keepsOrder))
         {
             target = null;
         }

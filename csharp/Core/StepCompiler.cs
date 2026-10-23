@@ -25,7 +25,7 @@ public class StepCompiler
     public static readonly string[] ZoneKeys =
     [
         "label", "labels", "outline", "layout", "face", "anchor", "anchors", "width", "rotation", "rotations", "cards",
-        "spread", "show_count", "drag", "per_player", "copies", "grid", "group", "covered_by", "columns", "board",
+        "spread", "show_count", "reorder", "drag", "per_player", "copies", "grid", "group", "covered_by", "columns", "board",
     ];
     public static readonly string[] CardFaceKeys = ["corner", "title", "body", "text", "color", "background", "zoom", "shape", "size", "back", "image", "layout", "card_back"];
     public static readonly string[] CardLayouts = ["full", "art"];

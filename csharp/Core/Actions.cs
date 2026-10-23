@@ -166,7 +166,7 @@ public class Actions(Game game, Card? stepCard = null)
 
     /// Waits for the current player to pick one option, and gives it: a card of a zone or list, a zone of a list of
     /// zones (a pile), or a value of a list (a color), e.g. pile = choose(discard_piles, 'Take from which pile?').
-    /// With nothing to choose from, it gives null straight away.
+    /// With nothing to choose from, it gives null straight away, and with only one card or zone, that one.
     public object? Choose(object? options, string prompt = "") => WaitForChoice(options, 1, true, true, prompt);
 
     /// Waits for the current player to pick exactly that many cards, and gives them as a list, e.g.
@@ -652,6 +652,10 @@ public class Actions(Game game, Card? stepCard = null)
         if (exactly && !single && offered.Count <= amount)
         {
             return offered;
+        }
+        if (single && Choice.IsOnlyPick(offered, 1, true))
+        {
+            return offered[0];
         }
         return game.Runner.AnswerOrWait(new ChoiceRequest(offered, Math.Min(amount, offered.Count), exactly, prompt));
     }

@@ -5402,10 +5402,6 @@
 				"card": 15
 			},
 			{
-				"type": "choose",
-				"option": "board_241"
-			},
-			{
 				"type": "drag",
 				"card": 49,
 				"to": "discard"
@@ -5431,10 +5427,6 @@
 			{
 				"type": "click",
 				"card": 11
-			},
-			{
-				"type": "choose",
-				"option": "board_241"
 			},
 			{
 				"type": "click",
@@ -6564,6 +6556,15 @@
 			{
 				"type": "choose",
 				"option": "Back 1"
+			},
+			{
+				"type": "drag",
+				"card": 32,
+				"to": "discard"
+			},
+			{
+				"type": "click",
+				"card": 6
 			}
 		],
 		"logs": [
@@ -6831,10 +6832,6 @@
 				"  if way == 'Forward %d' % [forward_steps] → else",
 				"  if way == 'Back %d' % [back_steps] → else",
 				"  if way == 'Swap' or way == 'Sorry!' → then",
-				"  choose one: board_241"
-			],
-			[
-				"[Whose pawn? Click it] chose board_241",
 				"  if way == 'Swap' → else",
 				"  for rival in without(goal, where(goal, 'side', my_side)) (1)",
 				"Sorry! A Red pawn goes back to Start",
@@ -6903,10 +6900,6 @@
 				"  if way == 'Forward %d' % [forward_steps] → else",
 				"  if way == 'Back %d' % [back_steps] → else",
 				"  if way == 'Swap' or way == 'Sorry!' → then",
-				"  choose one: board_241"
-			],
-			[
-				"[Whose pawn? Click it] chose board_241",
 				"  if way == 'Swap' → else",
 				"  for rival in without(goal, where(goal, 'side', my_side)) (1)",
 				"Sorry! A Blue pawn goes back to Start",
@@ -10039,6 +10032,33 @@
 				"  again = true",
 				"  if count(deck) == 0 → else",
 				"  East (bot) may: Draw"
+			],
+			[
+				"[action] Draw",
+				"  deck → discard: 4",
+				"  drawn = 4",
+				"  again = false",
+				"  can_move = true",
+				"  East (bot) may: Move, Pass"
+			],
+			[
+				"[action] Move",
+				"  if way == 'Move out' → else",
+				"  if way == 'Forward %d' % [forward_steps] → else",
+				"  if way == 'Back %d' % [back_steps] → then",
+				"  if way == 'Swap' or way == 'Sorry!' → else",
+				"  if way == 'Swap' → else",
+				"  for rival in without(goal, where(goal, 'side', my_side)) (0)",
+				"  board_254 → board_224: Green pawn",
+				"  if is_track(goal) and track_index(goal) / 15 != my_side and track_index(goal) % 15 in [1, 9] → else",
+				"  travelled_4 = 68",
+				"  while again and at_home < 4: repeated 1 times",
+				"  if at_home == 4 → else",
+				"  player = 1",
+				"[turn] You",
+				"  again = true",
+				"  if count(deck) == 0 → else",
+				"  You may: Draw"
 			]
 		],
 		"end": {
@@ -10087,11 +10107,11 @@
 					"▼8",
 					"▼11",
 					"▼1",
-					"▼Sorry!",
-					"▼4"
+					"▼Sorry!"
 				],
 				"discard": [
-					"10"
+					"10",
+					"4"
 				],
 				"board_1": [],
 				"board_2": [],
@@ -10335,7 +10355,9 @@
 				"board_221": [],
 				"board_222": [],
 				"board_223": [],
-				"board_224": [],
+				"board_224": [
+					"Green pawn"
+				],
 				"board_225": [],
 				"board_226": [],
 				"board_227": [],
@@ -10371,21 +10393,19 @@
 				],
 				"board_252": [],
 				"board_253": [],
-				"board_254": [
-					"Green pawn"
-				],
+				"board_254": [],
 				"board_255": [],
 				"board_256": []
 			},
 			"variables": {
-				"drawn": "10",
+				"drawn": "4",
 				"can_move": "true",
 				"again": "true",
-				"player": "4",
+				"player": "1",
 				"travelled_1": "21",
 				"travelled_2": "0",
 				"travelled_3": "146",
-				"travelled_4": "72"
+				"travelled_4": "68"
 			},
 			"over": false,
 			"result": ""

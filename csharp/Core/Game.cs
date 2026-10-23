@@ -613,6 +613,12 @@ public class Game : IStepContext
         {
             return false;
         }
+        if (!zone.Reorders && !Sandbox)
+        {
+            LogLine($"[not allowed] {zone.Name} keeps its order");
+            GameLog.Flush();
+            return false;
+        }
         Snapshot? before = UndoPoint();
         zone.Reorder(card, index);
         Remember(before);

@@ -12,7 +12,7 @@
 		"- Show: press Show and click cards that sit next to each other in your hand, then Done. They must all be the same number (a set) or count up or down by one (a run).",
 		"- A show must beat the one on the table: more cards wins; with the same number of cards a set beats a run; otherwise the higher numbers win. You collect the cards you beat, face down.",
 		"- Scout: drag a card from either end of the show on the table into your hand, anywhere you like, then choose which way up. The show's owner earns a point.",
-		"- Scout & Show (once a round): press it, scout a card, then show (or Skip the show if you can't).",
+		"- Scout & Show (once a round): press it, scout a card, then show. If nothing in your hand can beat the show by then, your turn just ends.",
 		"# End of a round",
 		"- A round ends when someone plays their last card, or when everyone else has scouted from your show and it comes back to you.",
 		"- Score 1 for every card you collected and every point you earned, minus 1 for every card left in your hand (unless you ended the round)."
@@ -69,6 +69,7 @@
 			"per_player": true,
 			"layout": "fan",
 			"face": "private",
+			"reorder": false,
 			"width": 0.36,
 			"anchor": [
 				0.5,
@@ -176,10 +177,6 @@
 				"may_turn_round = false"
 			]
 		},
-		// After scouting for a Scout & Show, when nothing in hand beats the show.
-		"Skip the show": {
-			"steps": "log('%s can\\'t show after all' % [name_of(player)])"
-		},
 		"Next round": {
 			"human_only": true,
 			"steps": []
@@ -203,7 +200,7 @@
 					"if": "done == 'Scout & Show'",
 					"then": [
 						"offer('Scout')",
-						"offer(['Show', 'Skip the show'])"
+						"offer('Show')"
 					]
 				},
 				{

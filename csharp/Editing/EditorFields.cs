@@ -31,6 +31,7 @@ public static class EditorFields
         new("rotation", "number", "Turn the zone, in degrees (90 for the left side of the table).", "Layout"),
         new("outline", "yes_no", "Draw the zone's outline. Default: yes.", "Layout"),
         new("spread", "whole", "For a pile: fan out its top few cards (3 for a draw-three waste).", "Layout"),
+        new("reorder", "yes_no", "Let players rearrange its cards by dragging. No keeps the order the game gives them (Scout's hand); a card dragged in still goes where it's dropped. Default: yes.", "Layout"),
         new("show_count", "yes_no", "Show how many cards it holds, under it (seeds in a pit, cards in a deck).", "Layout"),
         new("drag", "choice", "stack: dragging a card also carries every card on top of it.", "Advanced", ["stack"]),
         new("group", "text", "With copies: also put them in a group with this name, shared with other zones.", "Advanced"),

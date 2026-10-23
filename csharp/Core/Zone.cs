@@ -36,6 +36,8 @@ public class Zone
     public int Spread { get; }
     /// Whether the table shows how many cards the zone holds (seeds in a Mancala pit).
     public bool ShowsCount { get; }
+    /// Whether players may rearrange its cards by dragging them (not Scout's hand, which keeps its order).
+    public bool Reorders { get; }
     public List<object?> CoveredBy { get; } = [];
     public List<Card> Cards { get; } = [];
     public List<string> SortColumns { get; private set; } = [];
@@ -89,6 +91,7 @@ public class Zone
         DragsStack = Read(definition, "drag", "") == DragStack;
         Spread = (int)Read(definition, "spread", 0.0);
         ShowsCount = Read(definition, "show_count", false);
+        Reorders = Read(definition, "reorder", true);
         List<object?> covering = Read<List<object?>>(definition, "covered_by", []);
         if (number > 0 && covering.Count >= number)
         {

@@ -79,12 +79,14 @@ public class Choice(Game game)
         Open(actionName, actionName, offered, count, exactly, PerformingAsked);
     }
 
-    /// Whether pressing a button with "choose" would open its choice: there's enough to pick from.
+    /// Whether pressing a button with "choose" would open its choice: there's enough to pick from, and some pick
+    /// its "allow" accepts (a show that beats the table), so a button nothing could be picked for is greyed out.
     public bool HasOptionsFor(string actionName)
     {
         Dictionary<string, object?> button = game.Rules.Actions[actionName];
         List<object?> offered = OptionsFrom(game.Evaluate((string)button["choose"]!));
-        return Enough(offered.Count, PickRule(button, offered.Count).Count);
+        (int count, bool exactly) = PickRule(button, offered.Count);
+        return Enough(offered.Count, count) && AllowedPicks(actionName, offered, count, exactly).Any();
     }
 
     static bool Enough(int optionCount, int pickCount) => optionCount > 0 && optionCount >= pickCount;
@@ -105,6 +107,11 @@ public class Choice(Game game)
         Exactly = onlyExactly;
         Selected = [];
         Must = mustMake;
+        if (actionName.Length > 0 && IsOnlyPick(options, howMany, onlyExactly))
+        {
+            Complete(options[0]);
+            return;
+        }
         string chooser = game.PlayerName(game.CurrentPlayer());
         if (!CardsOffered)
         {
@@ -308,8 +315,17 @@ public class Choice(Game game)
         Dictionary<string, object?> button = game.Rules.Actions[actionName];
         List<object?> offered = OptionsFrom(game.Evaluate((string)button["choose"]!));
         (int count, bool exactly) = PickRule(button, offered.Count);
+        if (IsOnlyPick(offered, count, exactly))
+        {
+            return Allows(actionName, offered[0]) ? [[]] : [];
+        }
         return MovesFor(actionName, offered, count, exactly);
     }
+
+    /// One card or zone to pick, and only one: it's picked without asking. A choice of values (buttons) still asks,
+    /// as a lone "Done" is a pause for the player.
+    public static bool IsOnlyPick(List<object?> options, int howMany, bool onlyExactly) =>
+        onlyExactly && howMany == 1 && options.Count == 1 && options[0] is Card or Zone;
 
     public ChoiceState State() => new(Title, Action, [.. Options], Pick, Exactly, [.. Selected], Must, ReturnPlayer, [.. Asked]);
 
@@ -340,72 +356,67 @@ public class Choice(Game game)
 
     static int WholeNumber(object? value) => Values.IsNumber(value) ? (int)Values.ToDouble(value) : 0;
 
-    List<List<PlayerInput>> MovesFor(string actionName, List<object?> options, int howMany, bool onlyExactly)
+    List<List<PlayerInput>> MovesFor(string actionName, List<object?> options, int howMany, bool onlyExactly) =>
+        AllowedPicks(actionName, options, howMany, onlyExactly).Select(pick => InputsFor(pick, onlyExactly)).ToList();
+
+    /// Every pick the action's "allow" accepts, one at a time (so looking for any stops at the first): a list of
+    /// cards, a single card, or a value or zone.
+    IEnumerable<object?> AllowedPicks(string actionName, List<object?> options, int howMany, bool onlyExactly)
     {
-        List<List<PlayerInput>> found = [];
         if (options.Count < howMany)
         {
-            return found;
+            yield break;
         }
-        static List<PlayerInput> Clicks(List<object?> cards) => cards.Select(card => PlayerInput.Click((Card)card!)).ToList();
         if (!onlyExactly)
         {
             for (int size = 0; size <= howMany; size++)
             {
-                foreach (List<object?> combination in Combinations(options, size))
+                foreach (List<object?> combination in Combinations(options, size).Where(combination => Allows(actionName, combination)))
                 {
-                    if (Allows(actionName, combination))
-                    {
-                        found.Add([.. Clicks(combination), PlayerInput.Finish()]);
-                    }
+                    yield return combination;
                 }
             }
         }
-        else if (!options.All(option => option is Card))
+        else if (howMany == 1 || !options.All(option => option is Card))
         {
-            foreach (object? option in options)
+            foreach (object? option in options.Where(option => Allows(actionName, option)))
             {
-                if (Allows(actionName, option))
-                {
-                    found.Add([PlayerInput.Choose(option is Zone zone ? zone.Name : option)]);
-                }
-            }
-        }
-        else if (howMany == 1)
-        {
-            foreach (object? card in options)
-            {
-                if (Allows(actionName, card))
-                {
-                    found.Add(Clicks([card]));
-                }
+                yield return option;
             }
         }
         else
         {
-            foreach (List<object?> combination in Combinations(options, howMany))
+            foreach (List<object?> combination in Combinations(options, howMany).Where(combination => Allows(actionName, combination)))
             {
-                if (Allows(actionName, combination))
-                {
-                    found.Add(Clicks(combination));
-                }
+                yield return combination;
             }
         }
-        return found;
     }
 
-    static List<List<object?>> Combinations(List<object?> items, int size)
+    /// The inputs that make a pick: clicking its cards (then Done, for "up to"), or choosing a value or zone.
+    static List<PlayerInput> InputsFor(object? pick, bool onlyExactly) => pick switch
+    {
+        List<object?> cards when !onlyExactly => [.. cards.Select(card => PlayerInput.Click((Card)card!)), PlayerInput.Finish()],
+        List<object?> cards => cards.Select(card => PlayerInput.Click((Card)card!)).ToList(),
+        Card card => [PlayerInput.Click(card)],
+        Zone zone => [PlayerInput.Choose(zone.Name)],
+        _ => [PlayerInput.Choose(pick)],
+    };
+
+    /// Every way to pick size of the items, in order, one at a time.
+    static IEnumerable<List<object?>> Combinations(List<object?> items, int size, int from = 0)
     {
         if (size == 0)
         {
-            return [[]];
+            yield return [];
+            yield break;
         }
-        if (items.Count < size)
+        for (int first = from; first <= items.Count - size; first++)
         {
-            return [];
+            foreach (List<object?> rest in Combinations(items, size - 1, first + 1))
+            {
+                yield return [items[first], .. rest];
+            }
         }
-        List<object?> rest = items[1..];
-        List<List<object?>> withFirst = Combinations(rest, size - 1).Select(combination => (List<object?>)[items[0], .. combination]).ToList();
-        return [.. withFirst, .. Combinations(rest, size)];
     }
 }

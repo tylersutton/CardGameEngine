@@ -115,10 +115,6 @@
 				"option": "discard_piles_1"
 			},
 			{
-				"type": "click",
-				"card": 5
-			},
-			{
 				"type": "perform",
 				"action": "End turn"
 			},
@@ -242,10 +238,6 @@
 			{
 				"type": "choose",
 				"option": "discard_piles_2"
-			},
-			{
-				"type": "click",
-				"card": 7
 			},
 			{
 				"type": "perform",
@@ -456,10 +448,6 @@
 			[
 				"[Crabs: look through which pile?] chose discard_piles_1",
 				"  discard_piles_1 → browsing: Boat",
-				"  You: choose 1 (click the highlighted cards)"
-			],
-			[
-				"[Take one card] chose Boat",
 				"  browsing → hand_1: Boat",
 				"  You may: Play duo, End turn, Stop, Last chance"
 			],
@@ -650,10 +638,6 @@
 			[
 				"[Crabs: look through which pile?] chose discard_piles_2",
 				"  discard_piles_2 → browsing: Boat",
-				"  Player 2 (bot): choose 1 (click the highlighted cards)"
-			],
-			[
-				"[Take one card] chose Boat",
 				"  browsing → hand_2: Boat",
 				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
 			],
@@ -959,10 +943,6 @@
 			{
 				"type": "choose",
 				"option": "discard_piles_2"
-			},
-			{
-				"type": "click",
-				"card": 25
 			},
 			{
 				"type": "perform",
@@ -1362,10 +1342,6 @@
 			[
 				"[Crabs: look through which pile?] chose discard_piles_2",
 				"  discard_piles_2 → browsing: Fish",
-				"  Player 2 (bot): choose 1 (click the highlighted cards)"
-			],
-			[
-				"[Take one card] chose Fish",
 				"  browsing → hand_2: Fish",
 				"  Player 2 (bot) may: Play duo, End turn, Stop, Last chance"
 			],

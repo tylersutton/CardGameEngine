@@ -45,6 +45,7 @@ Wherever a list of steps goes, a single step will also do: `"then": "end_turn()"
 | `width` | The widest a `row` or `fan` may spread, as a fraction of the table | 800 px |
 | `rotation` | Turns the zone, in degrees | `0` |
 | `spread` | For a `pile`: how many top cards to fan out sideways, e.g. `3` for a draw-three waste | `0` |
+| `reorder` | `false` stops players rearranging the zone's cards by dragging, for a hand whose order is a rule (Scout). A card dragged in from elsewhere still goes where it's dropped. | `true` |
 | `show_count` | `true` shows how many cards the zone holds, under it: seeds in a Mancala pit, cards left in a deck | `false` |
 | `drag` | `"stack"`: dragging a card also carries every card on top of it | one card |
 | `per_player` | `true` makes one zone per player: `hand_1`, `hand_2`, ... | `false` |
@@ -112,7 +113,7 @@ Everything a player can do, each with a name. How an action is done:
 |---|---|
 | `steps` | What the action does. For a drag, these run after the card has moved. |
 | `when` | The action is only allowed while this is true. A button is greyed out otherwise. |
-| `choose` | For a button: what the player chooses before the steps run, e.g. `"hand"` (the cards are highlighted) or `"['Red', 'Blue']"` (buttons under the table). The steps get the pick as `choice`, and a single card as `card` too. The button can't be pressed while there's nothing (or not enough) to choose. Clicking elsewhere cancels the choice. When it picks several cards (`pick` above 1, or `up_to`), clicking one of them while the button can be pressed starts the choice with it. |
+| `choose` | For a button: what the player chooses before the steps run, e.g. `"hand"` (the cards are highlighted) or `"['Red', 'Blue']"` (buttons under the table). The steps get the pick as `choice`, and a single card as `card` too. The button can't be pressed while there's nothing (or not enough) to choose, or no pick its `allow` accepts. With only one card or zone to choose, it's chosen without asking. Clicking elsewhere cancels the choice. When it picks several cards (`pick` above 1, or `up_to`), clicking one of them while the button can be pressed starts the choice with it. |
 | `pick` | With `choose`: exactly how many cards to pick, a number or an expression. `choice` is then a list. |
 | `up_to` | With `choose`: any number of cards up to this many, then **Done**. Use `pick` or `up_to`, not both. |
 | `allow` | With `choose`: a condition the whole pick must meet, e.g. `"size(groups(choice, 'rank')) == 1"` (all the same rank) |
@@ -307,7 +308,7 @@ Wherever a list of steps goes, you can also use these:
 - **What can be chosen:** cards (`hand`); zones (`discard_piles`), which the player clicks; or values (`['Red', 'Blue']`, `numbers(1, 6)`), which appear as buttons. The prompt shows above the table.
 - **Who chooses:** the current player. Inside a loop over players, each of them chooses in turn.
 - **While waiting,** nothing else can be done but the choice. Undo goes back to before the choice.
-- **When there's nothing to choose,** `choose` gives `null` and the others give `[]`. If there are no more cards than `choose_exactly` asks for, it gives them all without asking.
+- **When there's nothing to choose,** `choose` gives `null` and the others give `[]`. With only one card or zone, `choose` gives it without asking, and with no more cards than `choose_exactly` asks for, it gives them all. A choice of values always asks, so `choose(['Done'])` is a pause.
 - **In a trigger,** a choice holds up the steps that called the trigger.
 - **Where it works:** only in steps, not in a `when`, a condition or `status`.
 - **`choose` or an action's `choose`?** Choosing through an action's `choose` key can be cancelled, can check the whole pick with `allow`, and can have its own bot `prefer`.

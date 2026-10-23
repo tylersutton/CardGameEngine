@@ -81,7 +81,7 @@
 			"when": "size(askable) > 0",
 			"steps": [
 				"asked_rank = card.rank",
-				"asked = askable[0] if size(askable) == 1 else choose(askable, 'Ask whom for %ss? Click their hand' % [asked_rank])",
+				"asked = choose(askable, 'Ask whom for %ss? Click their hand' % [asked_rank])",
 				"got = where(asked, 'rank', asked_rank)",
 				"log('%s asks %s for %ss' % [name_of(player), name_of(asked.owner), asked_rank])",
 				{

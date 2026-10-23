@@ -128,10 +128,6 @@
 				"to": "pile"
 			},
 			{
-				"type": "click",
-				"card": 10
-			},
-			{
 				"type": "drag",
 				"card": 11,
 				"to": "hand_2"
@@ -557,16 +553,13 @@
 				"  pending = ",
 				"  player = 3",
 				"[action] Give a card",
-				"  Player 3 (bot): choose 1 (click the highlighted cards)"
-			],
-			[
 				"[Give a card] chose a hidden card",
 				"  hand_3 → hand_2: 1 hidden card",
 				"[turn] Player 3 (bot)",
-				"  Player 3 (bot) may: Play an action, Draw",
-				"  player = 2"
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
+				"  player = 2",
 				"[action] Draw",
 				"  deck → hand_2: 1 hidden card",
 				"  if card.data.kind == 'bomb' → else",
@@ -1034,10 +1027,6 @@
 				"to": "pile"
 			},
 			{
-				"type": "click",
-				"card": 24
-			},
-			{
 				"type": "drag",
 				"card": 12,
 				"to": "pile"
@@ -1056,10 +1045,6 @@
 				"type": "drag",
 				"card": 24,
 				"to": "pile"
-			},
-			{
-				"type": "click",
-				"card": 4
 			},
 			{
 				"type": "drag",
@@ -1466,16 +1451,13 @@
 				"  pending = ",
 				"  player = 3",
 				"[action] Give a card",
-				"  Player 3 (bot): choose 1 (click the highlighted cards)"
-			],
-			[
 				"[Give a card] chose a hidden card",
 				"  hand_3 → hand_2: 1 hidden card",
 				"[turn] Player 3 (bot)",
-				"  Player 3 (bot) may: Play an action, Draw",
-				"  player = 2"
+				"  Player 3 (bot) may: Play an action, Draw"
 			],
 			[
+				"  player = 2",
 				"[action] Play an action",
 				"  hand_2 → pile: Skip",
 				"  pending = Skip",
@@ -1544,16 +1526,13 @@
 				"  pending = ",
 				"  player = 1",
 				"[action] Give a card",
-				"  You: choose 1 (click the highlighted cards)"
-			],
-			[
 				"[Give a card] chose Defuse",
 				"  hand_1 → hand_2: Defuse",
 				"[turn] You",
-				"  You may: Play an action, Draw",
-				"  player = 2"
+				"  You may: Play an action, Draw"
 			],
 			[
+				"  player = 2",
 				"[action] Draw",
 				"  deck → hand_2: 1 hidden card",
 				"  if card.data.kind == 'bomb' → else",
