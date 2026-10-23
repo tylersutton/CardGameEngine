@@ -2,7 +2,8 @@ using Core;
 using Godot;
 
 /// The game's result over the middle of the table once it's over: "You win!", or who won. A click puts it away, to
-/// look at the table (every hand is shown at the end); it comes back if the game ends again after an undo.
+/// look at the table (every hand is shown at the end); it comes back if the game ends again after an undo. Online,
+/// the host also gets buttons for what's next.
 public partial class WinnerBanner : PanelContainer
 {
     static readonly Color Gold = new(1, 0.82f, 0.3f);
@@ -20,6 +21,7 @@ public partial class WinnerBanner : PanelContainer
 
     readonly Label headline = new() { HorizontalAlignment = HorizontalAlignment.Center };
     readonly Label detail = new() { HorizontalAlignment = HorizontalAlignment.Center };
+    readonly HBoxContainer buttons = new() { Alignment = BoxContainer.AlignmentMode.Center, Visible = false };
     Game? game;
     bool putAway;
 
@@ -39,6 +41,7 @@ public partial class WinnerBanner : PanelContainer
         VBoxContainer lines = new();
         lines.AddChild(headline);
         lines.AddChild(detail);
+        lines.AddChild(buttons);
         AddChild(lines);
         Visible = false;
     }
@@ -52,6 +55,14 @@ public partial class WinnerBanner : PanelContainer
     {
         Over.Resized -= PlaceInMiddle;
         Forget();
+    }
+
+    public void AddButton(string text, Action pressed)
+    {
+        Button button = new() { Text = text };
+        button.Pressed += pressed;
+        buttons.AddChild(button);
+        buttons.Visible = true;
     }
 
     public void ShowGame(Game gameToShow)

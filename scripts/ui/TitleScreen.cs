@@ -3,7 +3,8 @@ using Core;
 using Editing;
 using Godot;
 
-/// The list of games: play one, open it in the editor, make a new one from a template, or go online.
+/// The list of games: play one, open it in the editor, make a new one from a template, or go online (or straight
+/// back online, hosting or joining as last time).
 public partial class TitleScreen : Control
 {
     const string MainScene = "res://scenes/main.tscn";
@@ -31,6 +32,7 @@ public partial class TitleScreen : Control
         PlayButton.AddSibling(playerCount);
         PlayButton.GetParent().MoveChild(playerCount, PlayButton.GetIndex());
         GetNode<Button>("%OnlineButton").Pressed += () => GetTree().ChangeSceneToFile(LobbyScene);
+        ShowOnlineAgain();
         GetNode<Button>("%NewGameButton").Pressed += AskForNewGame;
         GetNode<Button>("%EditButton").Pressed += () => OS.ShellOpen(ProjectSettings.GlobalizePath(selectedPath));
         GetNode<Button>("%OpenEditorButton").Pressed += () => OpenEditor(selectedPath);
@@ -65,6 +67,20 @@ public partial class TitleScreen : Control
             chosen.ButtonPressed = true;
             chosen.GrabFocus();
         }
+    }
+
+    void ShowOnlineAgain()
+    {
+        OnlineSettings online = OnlineSettings.Load();
+        Button again = GetNode<Button>("%OnlineAgainButton");
+        again.Visible = online.LastConnection != "";
+        again.Text = online.LastConnection == OnlineSettings.Hosted ? "Host again" : $"Rejoin {online.Address}";
+        again.Pressed += () =>
+        {
+            LobbyScreen lobby = GD.Load<PackedScene>(LobbyScene).Instantiate<LobbyScreen>();
+            lobby.ConnectAtOnce = true;
+            SwitchTo(lobby);
+        };
     }
 
     /// "New game...": a name, a player count and a deck make a playable game file from a template, ready to edit.

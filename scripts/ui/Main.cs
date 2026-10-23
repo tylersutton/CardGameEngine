@@ -7,6 +7,7 @@ public partial class Main : Control
 {
     const float BotDelay = 0.6f;
     const string TitleScene = "res://scenes/title.tscn";
+    const string LobbyScene = "res://scenes/lobby.tscn";
     const double WatchInterval = 1.0;
 
     [Export(PropertyHint.File, "*.jsonc,*.json")]
@@ -37,7 +38,7 @@ public partial class Main : Control
         log = GetNode<LogView>("%LogView");
         banner = new() { Over = table };
         AddChild(banner);
-        GetNode<Button>("%GamesButton").Pressed += Leave;
+        GetNode<Button>("%GamesButton").Pressed += LeaveTable;
         GetNode<Button>("%ReloadButton").Pressed += LoadGame;
         GetNode<Button>("%UndoButton").Pressed += () =>
         {
@@ -65,7 +66,14 @@ public partial class Main : Control
         {
             GetNode<Button>("%ReloadButton").Disabled = true;
             GetNode<CheckButton>("%SandboxToggle").Disabled = true;
+            GetNode<Button>("%GamesButton").Text = Net.IsHost() ? "Lobby" : "Leave";
+            GetNode<Button>("%GamesButton").TooltipText = Net.IsHost() ? "Back to the lobby, for everyone" : "Leave the match (rejoin under the same name)";
+            foreach ((string text, Action pressed) in HostChoicesWhenOver())
+            {
+                banner.AddButton(text, pressed);
+            }
             Net.MatchStarted += LoadGame;
+            Net.MatchEnded += GoToLobby;
             Net.UndoAsked += AskUndo;
             Net.Notice += log.Add;
             Net.Disconnected += Leave;
@@ -76,6 +84,7 @@ public partial class Main : Control
     public override void _ExitTree()
     {
         Net.MatchStarted -= LoadGame;
+        Net.MatchEnded -= GoToLobby;
         Net.UndoAsked -= AskUndo;
         Net.Notice -= log.Add;
         Net.Disconnected -= Leave;
@@ -94,11 +103,39 @@ public partial class Main : Control
     /// inputs go through the session.
     bool Submit(PlayerInput input) => Net.Online ? Net.Submit(input) : Game!.Apply(input with { Player = Game.Viewer() });
 
+    /// Offline, back to the list of games. Online, the host takes everyone back to the lobby (asking first if the match
+    /// isn't over); anyone else leaves the match.
+    void LeaveTable()
+    {
+        if (!Net.IsHost())
+        {
+            Leave();
+            return;
+        }
+        if (Game?.Over ?? true)
+        {
+            Net.ReturnToLobby();
+            return;
+        }
+        ConfirmationDialog dialog = new() { DialogText = "End this match for everyone and go back to the lobby?", OkButtonText = "End match" };
+        dialog.Confirmed += Net.ReturnToLobby;
+        AddChild(dialog);
+        dialog.PopupCentered();
+    }
+
     void Leave()
     {
         Net.Leave();
         GetTree().ChangeSceneToFile(TitleScene);
     }
+
+    void GoToLobby()
+    {
+        GetTree().ChangeSceneToFile(LobbyScene);
+    }
+
+    /// The host's ways on once a match is over: the same game and seats again with a new deal, or the lobby.
+    List<(string Text, Action Pressed)> HostChoicesWhenOver() => Net.IsHost() ? [("Play again", Net.StartMatch), ("Back to lobby", Net.ReturnToLobby)] : [];
 
     void AskUndo(string asker)
     {
@@ -232,6 +269,14 @@ public partial class Main : Control
         if (Game.Over)
         {
             bar.AddChild(new Label { Text = Game.ResultText() });
+            foreach ((string text, Action pressed) in HostChoicesWhenOver())
+            {
+                AddChoiceButton(text, pressed);
+            }
+            if (Net.Online && !Net.IsHost())
+            {
+                bar.AddChild(new Label { Text = "Waiting for the host to play again or go back to the lobby" });
+            }
             return;
         }
         if (!choice.IsOpen)

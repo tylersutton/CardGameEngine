@@ -59,6 +59,6 @@ The recordings are in `csharp/Core.Tests/Reference/`. Changing a game file, or w
 Two tests are scenes, run with the Godot .NET build:
 
 - `godot --headless res://tests/ui_test.tscn` opens every screen, and every game on the table and in the editor, with bots playing.
-- `godot --headless res://tests/net_test.tscn -- host` plays a hand of Hearts over the network. Run it with `-- guest` in a second terminal. The two final state numbers must match.
+- `godot --headless res://tests/net_test.tscn -- host` plays a hand of Hearts over the network, then a second one after going back to the lobby. Run it with `-- guest` in a second terminal. The two final state numbers must match.
 
 Both also fail if Godot reports an error while they run.

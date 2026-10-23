@@ -53,7 +53,9 @@ The side panel shows the game's variables and readouts, with a log of everything
 
 1. The host presses **Host** (port 7777) and picks the game, and how many play if it allows different numbers.
 2. The other players press **Join** with the host's address. Use the local address on the same network. Over the internet, the host forwards the port, or everyone joins a virtual network like Tailscale.
-3. Everyone takes a seat, the host can put bots in empty seats, and the host presses **Start**.
+3. Everyone is seated as they arrive (**Sit here** moves), the host can put bots in empty seats, and the host presses **Start**.
+
+When a match ends, the host presses **Play again** (same game and seats, a new deal) or **Back to lobby** to pick another game; everyone stays connected and seated. The host's **Lobby** button ends a match early. The screen remembers your name, address and the host's game, and the title screen's **Host again** / **Rejoin** button goes straight back online.
 
 Only the host needs the game's files. Each player sees the table from their own seat and only their own hidden cards. Undo asks the other players first. A player who drops out can rejoin under the same name.
 

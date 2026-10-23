@@ -14,7 +14,7 @@ public class Seat
 public record Lobby(string Game, string Title, string Description, bool CanBot, List<int> PlayerCounts, List<Seat> Seats);
 
 /// Online play (an autoload, so it lasts across scenes). In the lobby, people take seats and the host fills the rest
-/// with bots. In a match, every machine runs its own Game from the same rules, decks and seed; the host checks each
+/// with bots; between matches everyone goes back to it, still connected and seated. In a match, every machine runs its own Game from the same rules, decks and seed; the host checks each
 /// input with Game.Apply, numbers it and sends it to everyone, so all copies stay identical. Bots run only on the
 /// host. Each input comes with the host's state hash, so a copy that drifts is rebuilt.
 public partial class Net : Node
@@ -29,6 +29,7 @@ public partial class Net : Node
 
     public event Action? LobbyChanged;
     public event Action? MatchStarted;
+    public event Action? MatchEnded;
     public event Action<string>? Notice;
     public event Action<string>? UndoAsked;
     public event Action? Disconnected;
@@ -121,27 +122,57 @@ public partial class Net : Node
 
     // Lobby
 
+    /// Everyone keeps their seat in the new game, and the number of players stays the same if the game allows it.
     public void ChooseGame(string path)
     {
         GameRules rules = GameRules.Load(ProjectFiles.With(), path);
-        List<Seat> seats = Enumerable.Range(0, rules.Players).Select(_ => new Seat()).ToList();
-        Lobby = new(path, rules.Title, rules.Description, rules.Bot.ContainsKey("prefer"), rules.PlayerCounts, seats);
+        bool canBot = rules.Bot.ContainsKey("prefer");
+        List<Seat> seats = (Lobby?.Seats ?? []).Select(seat => seat.Bot && !canBot ? new Seat() : seat).ToList();
+        Resize(seats, rules.PlayerCounts.Contains(seats.Count) ? seats.Count : rules.Players);
+        Lobby = new(path, rules.Title, rules.Description, canBot, rules.PlayerCounts, seats);
+        SeatEveryone();
         ShareLobby();
     }
 
-    /// For a game that allows different numbers of players: seats are added or taken away at the end.
+    /// For a game that allows different numbers of players.
     public void ChoosePlayers(int count)
     {
         if (!IsHost() || Game != null || Lobby == null || !Lobby.PlayerCounts.Contains(count))
         {
             return;
         }
-        while (Lobby.Seats.Count < count)
-        {
-            Lobby.Seats.Add(new());
-        }
-        Lobby.Seats.RemoveRange(count, Lobby.Seats.Count - count);
+        Resize(Lobby.Seats, count);
+        SeatEveryone();
         ShareLobby();
+    }
+
+    /// Seats are added at the end; when there are too many, empty seats and bots go before people.
+    static void Resize(List<Seat> seats, int count)
+    {
+        while (seats.Count < count)
+        {
+            seats.Add(new());
+        }
+        while (seats.Count > count)
+        {
+            int lastWithoutPerson = seats.FindLastIndex(seat => seat.Peer == 0);
+            seats.RemoveAt(lastWithoutPerson >= 0 ? lastWithoutPerson : seats.Count - 1);
+        }
+    }
+
+    /// Everyone not yet seated takes the first open seat, so the lobby is ready to start without clicking around.
+    void SeatEveryone()
+    {
+        foreach (long peer in names.Keys.Where(peer => SeatOf(peer) == NoSeat).Order())
+        {
+            Seat? open = Lobby!.Seats.FirstOrDefault(seat => !seat.Bot && seat.Peer == 0);
+            if (open == null)
+            {
+                return;
+            }
+            open.Peer = peer;
+            open.Name = names[peer];
+        }
     }
 
     public int MySeat()
@@ -182,14 +213,20 @@ public partial class Net : Node
             playerName += "+";
         }
         names[peer] = playerName;
-        if (Game != null)
+        // Checked first: sharing the lobby may start a match (a test host starts once every seat is full).
+        bool inMatch = Game != null;
+        if (inMatch)
         {
             TakeBackSeat(peer, playerName);
         }
-        ShareLobby();
-        if (Game != null)
+        else if (Lobby != null)
         {
-            RpcId(peer, MethodName.BeginMatch, matchPackage, InputsAsVariants(Game.Inputs));
+            SeatEveryone();
+        }
+        ShareLobby();
+        if (inMatch)
+        {
+            RpcId(peer, MethodName.BeginMatch, matchPackage, InputsAsVariants(Game!.Inputs));
         }
     }
 
@@ -324,6 +361,35 @@ public partial class Net : Node
         TableReady = false;
         catchingUp = false;
         MatchStarted?.Invoke();
+    }
+
+    /// The host ends the match (over or not) and everyone goes back to the lobby, still connected and in their seats.
+    /// Seats of people who left are opened, and anyone who was watching sits down if there's room.
+    public void ReturnToLobby()
+    {
+        if (!IsHost() || Game == null)
+        {
+            return;
+        }
+        foreach (Seat seat in Lobby!.Seats.Where(seat => !seat.Bot && !names.ContainsKey(seat.Peer)))
+        {
+            seat.Peer = 0;
+            seat.Name = "";
+        }
+        SeatEveryone();
+        Rpc(MethodName.EndMatch);
+        ShareLobby();
+    }
+
+    [Rpc(CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+    void EndMatch()
+    {
+        Game = null;
+        TableReady = false;
+        catchingUp = false;
+        waitingInputs.Clear();
+        undoRequest = null;
+        MatchEnded?.Invoke();
     }
 
     /// This machine's copy of the match, before any inputs: null (with a notice) if the game doesn't load.
