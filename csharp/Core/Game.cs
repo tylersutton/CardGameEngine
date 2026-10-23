@@ -985,14 +985,56 @@ public class Game : IStepContext
         return tree;
     }
 
-    public void Move(Card card, Zone destination)
+    /// faceUp: how the card lands, instead of the zone's way (War's cards laid face down on the table).
+    public void Move(Card card, Zone destination, bool? faceUp = null)
     {
         Zone source = ZoneOf(card);
         bool seenBefore = ShowsFace(card);
-        source.Remove(card);
-        destination.Add(card);
+        Place(card, destination, faceUp);
         GameLog.Item($"{source.Name} → {destination.Name}", seenBefore || ShowsFace(card) ? card.Title : "");
         Run(CardEffect(card, destination.Kind), card);
+    }
+
+    /// Two cards trade places, zone and spot, logged as one change (a card turned round for its other way up). A
+    /// sorted zone stays sorted.
+    public void Swap(Card card, Card other)
+    {
+        Zone cardZone = ZoneOf(card);
+        Zone otherZone = ZoneOf(other);
+        int cardIndex = cardZone.Cards.IndexOf(card);
+        int otherIndex = otherZone.Cards.IndexOf(other);
+        bool cardSeen = ShowsFace(card);
+        bool otherSeen = ShowsFace(other);
+        if (cardZone != otherZone)
+        {
+            Place(card, otherZone);
+            Place(other, cardZone);
+        }
+        if (cardZone.SortColumns.Count == 0)
+        {
+            cardZone.Reorder(other, cardIndex);
+        }
+        if (otherZone.SortColumns.Count == 0)
+        {
+            otherZone.Reorder(card, otherIndex);
+        }
+        cardSeen = cardSeen || ShowsFace(card);
+        otherSeen = otherSeen || ShowsFace(other);
+        string kind = cardZone == otherZone ? $"swap in {cardZone.Name}" : $"swap {cardZone.Name} ↔ {otherZone.Name}";
+        GameLog.Item(kind, cardSeen || otherSeen ? $"{(cardSeen ? card.Title : HiddenCard)} ↔ {(otherSeen ? other.Title : HiddenCard)}" : "");
+        Run(CardEffect(card, otherZone.Kind), card);
+        Run(CardEffect(other, cardZone.Kind), other);
+    }
+
+    void Place(Card card, Zone destination, bool? faceUp = null)
+    {
+        ZoneOf(card).Remove(card);
+        destination.Add(card);
+        if (faceUp is bool face && card.FaceUp != face)
+        {
+            card.FaceUp = face;
+            destination.AnnounceChanged();
+        }
     }
 
     public void Mark(Card card, string key, object? value)

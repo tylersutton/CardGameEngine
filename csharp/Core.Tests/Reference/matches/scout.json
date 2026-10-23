@@ -1280,8 +1280,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_2 → box: 1 hidden card",
-				"  box → hand_2: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -1362,8 +1361,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_1 → box: 2/1",
-				"  box → hand_1: 1/2",
+				"  swap hand_1 ↔ box: 2/1 ↔ 1/2",
 				"  You may: Show"
 			],
 			[
@@ -1588,8 +1586,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_1 → box: 9/3",
-				"  box → hand_1: 3/9",
+				"  swap hand_1 ↔ box: 9/3 ↔ 3/9",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -1634,8 +1631,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -1856,8 +1852,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  North (bot) may: Show"
 			],
 			[
@@ -1970,8 +1965,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -2083,8 +2077,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -2254,8 +2247,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -2354,8 +2346,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -2472,8 +2463,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -2684,8 +2674,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_1 → box: 1/6",
-				"  box → hand_1: 6/1",
+				"  swap hand_1 ↔ box: 1/6 ↔ 6/1",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -2796,8 +2785,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_2 → box: 1 hidden card",
-				"  box → hand_2: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -2817,8 +2805,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -2865,8 +2852,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_1 → box: 2/7",
-				"  box → hand_1: 7/2",
+				"  swap hand_1 ↔ box: 2/7 ↔ 7/2",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -2914,8 +2900,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -2935,8 +2920,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -2981,8 +2965,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_2 → box: 1 hidden card",
-				"  box → hand_2: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -3026,8 +3009,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -3094,8 +3076,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -3139,8 +3120,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_1 → box: 6/5",
-				"  box → hand_1: 5/6",
+				"  swap hand_1 ↔ box: 6/5 ↔ 5/6",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -3254,8 +3234,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_2 → box: 1 hidden card",
-				"  box → hand_2: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -3372,8 +3351,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -3418,8 +3396,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_1 → box: 3/2",
-				"  box → hand_1: 2/3",
+				"  swap hand_1 ↔ box: 3/2 ↔ 2/3",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -3608,28 +3585,17 @@
 				"[action] Turn hand round",
 				"East turns their hand round",
 				"  for held in hand (11)",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
 				"  may_turn_round_4 = false",
 				"  if done == 'Turn hand round' → then",
 				"  East (bot) may: Show, Scout, Scout & Show"
@@ -3784,8 +3750,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_2 → box: 1 hidden card",
-				"  box → hand_2: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -3805,8 +3770,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -3859,8 +3823,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_1 → box: 8/5",
-				"  box → hand_1: 5/8",
+				"  swap hand_1 ↔ box: 8/5 ↔ 5/8",
 				"  You may: Show"
 			],
 			[
@@ -5780,8 +5743,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_2 → box: 1 hidden card",
-				"  box → hand_2: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -5923,8 +5885,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -6001,8 +5962,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  North (bot) may: Show"
 			],
 			[
@@ -6068,8 +6028,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_1 → box: 6/8",
-				"  box → hand_1: 8/6",
+				"  swap hand_1 ↔ box: 6/8 ↔ 8/6",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -6118,8 +6077,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -6363,8 +6321,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_1 → box: 4/3",
-				"  box → hand_1: 3/4",
+				"  swap hand_1 ↔ box: 4/3 ↔ 3/4",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -6427,8 +6384,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -6682,8 +6638,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_2 → box: 1 hidden card",
-				"  box → hand_2: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -6727,8 +6682,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -6797,8 +6751,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -7167,8 +7120,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_2 → box: 1 hidden card",
-				"  box → hand_2: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -7214,8 +7166,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -7289,8 +7240,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -7361,8 +7311,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_2 → box: 1 hidden card",
-				"  box → hand_2: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -7451,8 +7400,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_2 → box: 1 hidden card",
-				"  box → hand_2: 1 hidden card",
+				"  swap hand_2 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -7527,8 +7475,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_1 → box: 5/7",
-				"  box → hand_1: 7/5",
+				"  swap hand_1 ↔ box: 5/7 ↔ 7/5",
 				"  You may: Show"
 			],
 			[
@@ -7618,8 +7565,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_4 → box: 1 hidden card",
-				"  box → hand_4: 1 hidden card",
+				"  swap hand_4 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",
@@ -7683,8 +7629,7 @@
 			[
 				"[Which way up?] chose Turn it round",
 				"  if choose(['Keep it', 'Turn it round'], 'Which way up?') == 'Turn it round' → then",
-				"  hand_3 → box: 1 hidden card",
-				"  box → hand_3: 1 hidden card",
+				"  swap hand_3 ↔ box: 1 hidden card",
 				"  if done == 'Turn hand round' → else",
 				"  if done == 'Scout & Show' → else",
 				"  if count(hand) == 0 → else",

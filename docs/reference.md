@@ -321,9 +321,9 @@ Wherever a building block takes `cards`, you can give a zone, a card, or a list 
 
 | Building block | Does |
 |---|---|
-| `draw(from, to, amount)` | Moves the top card(s) of `from` to `to` (1 card unless you say). Fires `<from>_empty` if `from` runs out. |
+| `draw(from, to, amount, face)` | Moves the top card(s) of `from` to `to` (1 card unless you say). Fires `<from>_empty` if `from` runs out. `face` is `'up'` or `'down'` to land the cards that way instead of the zone's way, e.g. War's `draw(deck, battle, 3, 'down')`. |
 | `deal(from, to, amount)` | Deals `amount` cards to each zone in `to`, one at a time, e.g. `deal(deck, all_hand, 13)` |
-| `move(cards, to)` | Moves cards to a zone |
+| `move(cards, to, face)` | Moves cards to a zone; `face` as for `draw` |
 | `swap(card, other)` | The two cards trade places, zone and spot. Sorry!'s 11; and Scout turns a card round by swapping it for its other way up, kept in a box. |
 | `try_move(card, to)` | Moves a card only if a drag action allows it, and does that action. `to` can be a group. |
 | `shuffle(zone)` | Shuffles a zone |
@@ -400,6 +400,7 @@ See [Boards](#boards). A `'condition'` here is a condition's name in quotes, wit
 | `players_with_most('name')`, `players_with_least('name')` | The players who have it (several when tied), e.g. `end_game(players_with_most('score'))` |
 | `players_where('name')` | The players for whom a player variable or condition is true |
 | `players_left()` | The players who aren't knocked out |
+| `is_bot(player)` | Whether the computer plays that seat, e.g. to `offer` a people-only Continue after a bot's turn, so people can see what it did |
 | `team(player)` | A player's team number |
 
 **Numbers and lists**

@@ -5,7 +5,7 @@ namespace Core;
 public class GameLog
 {
     /// Indented lines players see: the rest are the steps' workings.
-    static readonly string[] PlayerDetails = ["face up in ", "face down in ", "shown from ", "shuffle "];
+    static readonly string[] PlayerDetails = ["face up in ", "face down in ", "shown from ", "shuffle ", "swap "];
 
     public event Action<string>? Logged;
 

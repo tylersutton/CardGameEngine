@@ -76,8 +76,7 @@
 								"for": "player",
 								"in": "players",
 								"do": [
-									"draw(deck, battle, 3)",
-									"flip(last(battle, 3))",
+									"draw(deck, battle, 3, 'down')",
 									"draw(deck, battle)"
 								]
 							}

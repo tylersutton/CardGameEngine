@@ -23,10 +23,6 @@
 				"card": 11
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 12
 			},
@@ -69,10 +65,6 @@
 			{
 				"type": "click",
 				"card": 6
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -123,10 +115,6 @@
 				"card": 35
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 20
 			},
@@ -169,10 +157,6 @@
 			{
 				"type": "click",
 				"card": 20
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -223,10 +207,6 @@
 				"card": 21
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 30
 			},
@@ -269,10 +249,6 @@
 			{
 				"type": "click",
 				"card": 4
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -323,10 +299,6 @@
 				"card": 30
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 10
 			},
@@ -369,10 +341,6 @@
 			{
 				"type": "click",
 				"card": 34
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -419,10 +387,6 @@
 				"card": 32
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 5
 			},
@@ -465,10 +429,6 @@
 			{
 				"type": "click",
 				"card": 1
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -515,10 +475,6 @@
 				"card": 5
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 10
 			},
@@ -563,10 +519,6 @@
 				"card": 6
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 30
 			},
@@ -609,10 +561,6 @@
 			{
 				"type": "click",
 				"card": 20
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -663,10 +611,6 @@
 				"card": 4
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 33
 			},
@@ -709,10 +653,6 @@
 			{
 				"type": "click",
 				"card": 8
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -759,10 +699,6 @@
 				"card": 34
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 10
 			},
@@ -805,10 +741,6 @@
 			{
 				"type": "click",
 				"card": 10
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -855,10 +787,6 @@
 				"card": 21
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 34
 			},
@@ -907,10 +835,6 @@
 				"card": 34
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 11
 			},
@@ -953,10 +877,6 @@
 			{
 				"type": "click",
 				"card": 30
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -1005,10 +925,6 @@
 			{
 				"type": "click",
 				"card": 22
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -1055,10 +971,6 @@
 				"card": 27
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 5
 			},
@@ -1101,10 +1013,6 @@
 			{
 				"type": "click",
 				"card": 10
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -1151,10 +1059,6 @@
 				"card": 21
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 0
 			},
@@ -1197,6 +1101,102 @@
 			{
 				"type": "click",
 				"card": 35
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "perform",
+				"action": "Continue"
+			},
+			{
+				"type": "click",
+				"card": 8
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "perform",
+				"action": "Continue"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "perform",
+				"action": "Continue"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "click",
+				"card": 34
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "click",
+				"card": 7
+			},
+			{
+				"type": "perform",
+				"action": "Continue"
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "click",
+				"card": 21
+			},
+			{
+				"type": "perform",
+				"action": "Continue"
+			},
+			{
+				"type": "click",
+				"card": 3
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "perform",
+				"action": "Continue"
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "click",
+				"card": 11
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "click",
+				"card": 10
 			},
 			{
 				"type": "perform",
@@ -1245,6 +1245,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -1276,10 +1277,7 @@
 				"  face up in middle_5: 4",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_3: 12",
@@ -1307,6 +1305,7 @@
 				"  hand_4 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -1338,6 +1337,7 @@
 				"  hand_4 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -1367,6 +1367,7 @@
 				"  face up in middle_3: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -1400,10 +1401,7 @@
 				"  hand_4 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_1: 12",
@@ -1429,6 +1427,7 @@
 				"  face up in middle_8: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -1460,6 +1459,7 @@
 				"  face up in middle_6: 4",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -1500,6 +1500,7 @@
 				"  face up in middle_7: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -1532,10 +1533,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_3: 12",
@@ -1563,6 +1561,7 @@
 				"  hand_4 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -1594,6 +1593,7 @@
 				"  face up in middle_5: 4",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -1627,6 +1627,7 @@
 				"  hand_4 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -1656,10 +1657,7 @@
 				"  face up in middle_3: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (0)",
 				"  revealed_from = []",
@@ -1687,6 +1685,7 @@
 				"  hand_4 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -1716,6 +1715,7 @@
 				"  face up in middle_3: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -1747,6 +1747,7 @@
 				"  face up in middle_1: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -1787,10 +1788,7 @@
 				"  face up in middle_7: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_4: 12",
@@ -1821,6 +1819,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -1852,6 +1851,7 @@
 				"  face up in middle_4: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -1881,6 +1881,7 @@
 				"  face up in middle_3: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -1914,10 +1915,7 @@
 				"  hand_2 → revealed: 2",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_3: 12",
@@ -1947,6 +1945,7 @@
 				"  hand_2 → revealed: 2",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -1978,6 +1977,7 @@
 				"  face up in middle_2: 5",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -2009,6 +2009,7 @@
 				"  face up in middle_3: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -2051,10 +2052,7 @@
 				"  hand_2 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (3)",
 				"  revealed → hand_3: 2",
@@ -2083,6 +2081,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -2112,6 +2111,7 @@
 				"  face up in middle_2: 5",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -2143,6 +2143,7 @@
 				"  face up in middle_4: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -2176,10 +2177,7 @@
 				"  hand_4 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_1: 1",
@@ -2209,6 +2207,7 @@
 				"  hand_2 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -2240,6 +2239,7 @@
 				"  hand_4 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -2271,6 +2271,7 @@
 				"  hand_2 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -2304,10 +2305,7 @@
 				"  hand_3 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_3: 12",
@@ -2337,6 +2335,7 @@
 				"  hand_1 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -2368,6 +2367,7 @@
 				"  face up in middle_8: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -2399,6 +2399,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -2432,10 +2433,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_2: 11",
@@ -2463,6 +2461,7 @@
 				"  hand_4 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -2494,6 +2493,7 @@
 				"  hand_2 → revealed: 2",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -2527,6 +2527,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -2560,10 +2561,7 @@
 				"  hand_2 → revealed: 2",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_2: 11",
@@ -2591,6 +2589,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -2622,6 +2621,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -2653,6 +2653,7 @@
 				"  face up in middle_7: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -2684,10 +2685,7 @@
 				"  hand_4 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_4: 3",
@@ -2717,6 +2715,7 @@
 				"  hand_3 → revealed: 2",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -2746,6 +2745,7 @@
 				"  face up in middle_3: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -2775,6 +2775,7 @@
 				"  face up in middle_7: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -2804,10 +2805,7 @@
 				"  face up in middle_3: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (0)",
 				"  revealed_from = []",
@@ -2844,6 +2842,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -2874,6 +2873,7 @@
 				"  face up in middle_2: 5",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -2905,6 +2905,7 @@
 				"  hand_4 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -2936,10 +2937,7 @@
 				"  hand_2 → revealed: 2",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_2: 2",
@@ -2967,6 +2965,7 @@
 				"  face up in middle_7: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -2998,6 +2997,7 @@
 				"  face up in middle_5: 4",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -3029,6 +3029,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -3060,10 +3061,7 @@
 				"  hand_4 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_4: 3",
@@ -3093,6 +3091,7 @@
 				"  hand_2 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -3124,6 +3123,7 @@
 				"  face up in middle_3: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -3155,6 +3155,7 @@
 				"  hand_3 → revealed: 2",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -3186,10 +3187,7 @@
 				"  hand_4 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_4: 12",
@@ -3217,6 +3215,7 @@
 				"  hand_4 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -3248,6 +3247,7 @@
 				"  hand_3 → revealed: 2",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -3279,6 +3279,7 @@
 				"  face up in middle_4: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -3308,10 +3309,7 @@
 				"  face up in middle_6: 4",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (0)",
 				"  revealed_from = []",
@@ -3341,6 +3339,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -3374,6 +3373,7 @@
 				"  hand_3 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -3405,6 +3405,7 @@
 				"  hand_4 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -3436,10 +3437,7 @@
 				"  face up in middle_7: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_2: 11",
@@ -3478,6 +3476,7 @@
 				"  hand_4 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -3510,6 +3509,7 @@
 				"  face up in middle_8: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -3541,6 +3541,7 @@
 				"  hand_2 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -3572,10 +3573,7 @@
 				"  hand_4 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_4: 12",
@@ -3603,6 +3601,7 @@
 				"  hand_4 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -3634,6 +3633,7 @@
 				"  hand_4 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -3665,6 +3665,7 @@
 				"  face up in middle_4: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -3696,10 +3697,7 @@
 				"  hand_2 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_2: 11",
@@ -3727,6 +3725,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -3765,6 +3764,7 @@
 				"  hand_1 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -3797,6 +3797,7 @@
 				"  face up in middle_2: 5",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -3826,10 +3827,7 @@
 				"  face up in middle_1: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (0)",
 				"  revealed_from = []",
@@ -3855,6 +3853,7 @@
 				"  face up in middle_7: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -3886,6 +3885,7 @@
 				"  face up in middle_2: 5",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -3915,6 +3915,7 @@
 				"  face up in middle_2: 5",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -3946,10 +3947,7 @@
 				"  face up in middle_4: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_2: 11",
@@ -3979,6 +3977,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -4012,6 +4011,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -4041,6 +4041,7 @@
 				"  face up in middle_5: 4",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -4072,10 +4073,7 @@
 				"  face up in middle_6: 4",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_3: 2",
@@ -4103,6 +4101,7 @@
 				"  face up in middle_2: 5",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -4132,6 +4131,7 @@
 				"  face up in middle_4: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -4163,6 +4163,7 @@
 				"  face up in middle_8: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -4194,10 +4195,7 @@
 				"  face up in middle_7: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_4: 3",
@@ -4227,6 +4225,7 @@
 				"  hand_4 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -4260,6 +4259,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -4291,6 +4291,7 @@
 				"  face up in middle_4: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -4324,10 +4325,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_2: 11",
@@ -4340,6 +4338,284 @@
 				"[turn] West (bot)",
 				"  done = false",
 				"  West (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_1: 8",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  West (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [4]",
+				"West reveals East's lowest",
+				"  hand_4 → revealed: 3",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  West (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_4: 3",
+				"  revealed_from = []",
+				"  face down in middle_1: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  done = false",
+				"  North (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [4]",
+				"North reveals East's lowest",
+				"  hand_4 → revealed: 3",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  North (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_7: 8",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  North (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_4: 3",
+				"  revealed_from = []",
+				"  face down in middle_7: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  done = false",
+				"  East (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [3]",
+				"East reveals North's lowest",
+				"  hand_3 → revealed: 2",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  East (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [3, 4]",
+				"East reveals East's lowest",
+				"  hand_4 → revealed: 3",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  East (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (2)",
+				"  revealed → hand_3: 2",
+				"  revealed → hand_4: 3",
+				"  revealed_from = []",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 1",
+				"[turn] You",
+				"  done = false",
+				"  You may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_4: 10",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  You may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [4]",
+				"You reveals East's highest",
+				"  hand_4 → revealed: 12",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → else",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_4: 12",
+				"  revealed_from = []",
+				"  face down in middle_4: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  done = false",
+				"  West (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_3: 7",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  West (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_8: 3",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  West (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (0)",
+				"  revealed_from = []",
+				"  face down in middle_3: 1 hidden card",
+				"  face down in middle_8: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  done = false",
+				"  North (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_3: 7",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  North (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_7: 8",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  North (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (0)",
+				"  revealed_from = []",
+				"  face down in middle_3: 1 hidden card",
+				"  face down in middle_7: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  done = false",
+				"  East (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [3]",
+				"East reveals North's lowest",
+				"  hand_3 → revealed: 2",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  East (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_3: 7",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  East (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_3: 2",
+				"  revealed_from = []",
+				"  face down in middle_3: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 1",
+				"[turn] You",
+				"  done = false",
+				"  You may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [1]",
+				"You reveals You's lowest",
+				"  hand_1 → revealed: 1",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  You may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_5: 4",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → else",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_1: 1",
+				"  revealed_from = []",
+				"  face down in middle_5: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  done = false",
+				"  West (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [1]",
+				"West reveals You's lowest",
+				"  hand_1 → revealed: 1",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  West (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_6: 4",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  West (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_1: 1",
+				"  revealed_from = []",
+				"  face down in middle_6: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  done = false",
+				"  North (bot) may: Reveal, Turn over"
 			]
 		],
 		"end": {
@@ -4415,7 +4691,7 @@
 			"variables": {
 				"revealed_from": "[]",
 				"done": "false",
-				"player": "2"
+				"player": "3"
 			},
 			"over": false,
 			"result": ""
@@ -4455,10 +4731,6 @@
 			{
 				"type": "click",
 				"card": 1
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -4505,10 +4777,6 @@
 				"card": 6
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 7
 			},
@@ -4551,10 +4819,6 @@
 			{
 				"type": "click",
 				"card": 1
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -4601,10 +4865,6 @@
 				"card": 7
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 30
 			},
@@ -4647,10 +4907,6 @@
 			{
 				"type": "click",
 				"card": 34
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -4701,10 +4957,6 @@
 				"card": 1
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 29
 			},
@@ -4747,10 +4999,6 @@
 			{
 				"type": "click",
 				"card": 2
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -4797,10 +5045,6 @@
 				"card": 2
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 30
 			},
@@ -4843,10 +5087,6 @@
 			{
 				"type": "click",
 				"card": 9
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -4893,10 +5133,6 @@
 				"card": 30
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 2
 			},
@@ -4941,10 +5177,6 @@
 				"card": 5
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 30
 			},
@@ -4987,10 +5219,6 @@
 			{
 				"type": "click",
 				"card": 33
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -5041,10 +5269,6 @@
 				"card": 9
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 34
 			},
@@ -5087,10 +5311,6 @@
 			{
 				"type": "click",
 				"card": 35
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -5137,10 +5357,6 @@
 				"card": 7
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 34
 			},
@@ -5183,10 +5399,6 @@
 			{
 				"type": "click",
 				"card": 6
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -5233,10 +5445,6 @@
 				"card": 35
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 27
 			},
@@ -5281,10 +5489,6 @@
 				"card": 22
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 20
 			},
@@ -5327,10 +5531,6 @@
 			{
 				"type": "click",
 				"card": 22
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -5381,10 +5581,6 @@
 				"card": 30
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 5
 			},
@@ -5427,10 +5623,6 @@
 			{
 				"type": "click",
 				"card": 35
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -5477,10 +5669,6 @@
 				"card": 0
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 20
 			},
@@ -5523,10 +5711,6 @@
 			{
 				"type": "click",
 				"card": 27
-			},
-			{
-				"type": "perform",
-				"action": "Continue"
 			},
 			{
 				"type": "click",
@@ -5573,10 +5757,6 @@
 				"card": 29
 			},
 			{
-				"type": "perform",
-				"action": "Continue"
-			},
-			{
 				"type": "click",
 				"card": 35
 			},
@@ -5619,6 +5799,102 @@
 			{
 				"type": "click",
 				"card": 32
+			},
+			{
+				"type": "click",
+				"card": 33
+			},
+			{
+				"type": "click",
+				"card": 2
+			},
+			{
+				"type": "perform",
+				"action": "Continue"
+			},
+			{
+				"type": "click",
+				"card": 35
+			},
+			{
+				"type": "click",
+				"card": 5
+			},
+			{
+				"type": "perform",
+				"action": "Continue"
+			},
+			{
+				"type": "click",
+				"card": 1
+			},
+			{
+				"type": "click",
+				"card": 22
+			},
+			{
+				"type": "perform",
+				"action": "Continue"
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "click",
+				"card": 30
+			},
+			{
+				"type": "perform",
+				"action": "Continue"
+			},
+			{
+				"type": "click",
+				"card": 27
+			},
+			{
+				"type": "click",
+				"card": 0
+			},
+			{
+				"type": "perform",
+				"action": "Continue"
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "click",
+				"card": 29
+			},
+			{
+				"type": "perform",
+				"action": "Continue"
+			},
+			{
+				"type": "click",
+				"card": 20
+			},
+			{
+				"type": "click",
+				"card": 6
+			},
+			{
+				"type": "click",
+				"card": 9
+			},
+			{
+				"type": "click",
+				"card": 5
 			},
 			{
 				"type": "perform",
@@ -5667,6 +5943,7 @@
 				"  hand_2 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -5700,6 +5977,7 @@
 				"  hand_3 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -5731,10 +6009,7 @@
 				"  hand_4 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_4: 1",
@@ -5764,6 +6039,7 @@
 				"  hand_2 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -5795,6 +6071,7 @@
 				"  face up in middle_7: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -5826,6 +6103,7 @@
 				"  hand_4 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -5859,10 +6137,7 @@
 				"  hand_3 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_4: 1",
@@ -5890,6 +6165,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -5921,6 +6197,7 @@
 				"  face up in middle_4: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -5950,6 +6227,7 @@
 				"  face up in middle_4: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -5981,10 +6259,7 @@
 				"  hand_4 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_4: 1",
@@ -6010,6 +6285,7 @@
 				"  face up in middle_3: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -6039,6 +6315,7 @@
 				"  face up in middle_4: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -6070,6 +6347,7 @@
 				"  face up in middle_8: 2",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -6099,10 +6377,7 @@
 				"  face up in middle_3: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (0)",
 				"  revealed_from = []",
@@ -6130,6 +6405,7 @@
 				"  face up in middle_5: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -6161,6 +6437,7 @@
 				"  hand_3 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -6190,6 +6467,7 @@
 				"  face up in middle_1: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -6221,10 +6499,7 @@
 				"  face up in middle_1: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_4: 11",
@@ -6252,6 +6527,7 @@
 				"  face up in middle_8: 2",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -6285,6 +6561,7 @@
 				"  hand_1 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -6327,6 +6604,7 @@
 				"  hand_4 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -6361,10 +6639,7 @@
 				"  hand_4 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_4: 11",
@@ -6390,6 +6665,7 @@
 				"  face up in middle_7: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -6419,6 +6695,7 @@
 				"  face up in middle_2: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -6448,6 +6725,7 @@
 				"  face up in middle_4: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -6479,10 +6757,7 @@
 				"  hand_2 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_2: 1",
@@ -6510,6 +6785,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -6539,6 +6815,7 @@
 				"  face up in middle_7: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -6570,6 +6847,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -6603,10 +6881,7 @@
 				"  hand_2 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_3: 12",
@@ -6634,6 +6909,7 @@
 				"  face up in middle_7: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -6667,6 +6943,7 @@
 				"  hand_4 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -6698,6 +6975,7 @@
 				"  face up in middle_7: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -6729,10 +7007,7 @@
 				"  face up in middle_6: 4",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_4: 1",
@@ -6762,6 +7037,7 @@
 				"  hand_2 → revealed: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -6791,6 +7067,7 @@
 				"  face up in middle_3: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -6822,6 +7099,7 @@
 				"  hand_3 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -6853,10 +7131,7 @@
 				"  hand_4 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_4: 11",
@@ -6886,6 +7161,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -6917,6 +7193,7 @@
 				"  hand_2 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -6948,6 +7225,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -6977,10 +7255,7 @@
 				"  face up in middle_8: 2",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (0)",
 				"  revealed_from = []",
@@ -7008,6 +7283,7 @@
 				"  face up in middle_1: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -7039,6 +7315,7 @@
 				"  face up in middle_2: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -7068,6 +7345,7 @@
 				"  face up in middle_7: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -7101,10 +7379,7 @@
 				"  hand_1 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_1: 1",
@@ -7134,6 +7409,7 @@
 				"  hand_4 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -7165,6 +7441,7 @@
 				"  hand_4 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -7205,6 +7482,7 @@
 				"  face up in middle_7: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -7237,10 +7515,7 @@
 				"  face up in middle_6: 4",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_3: 3",
@@ -7266,6 +7541,7 @@
 				"  face up in middle_5: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -7299,6 +7575,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -7332,6 +7609,7 @@
 				"  hand_1 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -7363,10 +7641,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_3: 12",
@@ -7392,6 +7667,7 @@
 				"  face up in middle_4: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -7423,6 +7699,7 @@
 				"  hand_1 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -7454,6 +7731,7 @@
 				"  hand_3 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -7483,10 +7761,7 @@
 				"  face up in middle_3: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (0)",
 				"  revealed_from = []",
@@ -7512,6 +7787,7 @@
 				"  face up in middle_3: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -7541,6 +7817,7 @@
 				"  face up in middle_7: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -7572,6 +7849,7 @@
 				"  face up in middle_2: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -7605,10 +7883,7 @@
 				"  hand_3 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_1: 12",
@@ -7636,6 +7911,7 @@
 				"  hand_3 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -7665,6 +7941,7 @@
 				"  face up in middle_3: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -7698,6 +7975,7 @@
 				"  hand_4 → revealed: 4",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -7731,10 +8009,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_4: 1",
@@ -7762,6 +8037,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -7795,6 +8071,7 @@
 				"  hand_1 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -7826,6 +8103,7 @@
 				"  face up in middle_6: 4",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -7855,10 +8133,7 @@
 				"  face up in middle_4: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (0)",
 				"  revealed_from = []",
@@ -7886,6 +8161,7 @@
 				"  hand_2 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -7917,6 +8193,7 @@
 				"  face up in middle_1: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -7948,6 +8225,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -7977,10 +8255,7 @@
 				"  face up in middle_4: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (0)",
 				"  revealed_from = []",
@@ -8008,6 +8283,7 @@
 				"  hand_3 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -8048,6 +8324,7 @@
 				"  face up in middle_4: 8",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -8080,6 +8357,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -8113,10 +8391,7 @@
 				"  hand_4 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (2)",
 				"  revealed → hand_3: 12",
@@ -8144,6 +8419,7 @@
 				"  hand_4 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -8175,6 +8451,7 @@
 				"  hand_1 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -8204,6 +8481,7 @@
 				"  face up in middle_1: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -8235,10 +8513,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_3: 12",
@@ -8266,6 +8541,7 @@
 				"  hand_3 → revealed: 12",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -8297,6 +8573,7 @@
 				"  hand_2 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -8330,6 +8607,7 @@
 				"  hand_2 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -8361,10 +8639,7 @@
 				"  hand_1 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_1: 1",
@@ -8392,6 +8667,7 @@
 				"  hand_4 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -8421,6 +8697,7 @@
 				"  face up in middle_6: 4",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -8454,6 +8731,7 @@
 				"  hand_2 → revealed: 1",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -8483,10 +8761,7 @@
 				"  face up in middle_5: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (0)",
 				"  revealed_from = []",
@@ -8512,6 +8787,7 @@
 				"  face up in middle_7: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -8543,6 +8819,7 @@
 				"  hand_2 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -8576,6 +8853,7 @@
 				"  hand_3 → revealed: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -8607,10 +8885,7 @@
 				"  face up in middle_2: 10",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_4: 11",
@@ -8640,6 +8915,7 @@
 				"  hand_3 → revealed: 7",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  West (bot) may: Continue"
 			],
 			[
@@ -8671,6 +8947,7 @@
 				"  face up in middle_3: 3",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  North (bot) may: Continue"
 			],
 			[
@@ -8702,6 +8979,7 @@
 				"  face up in middle_8: 2",
 				"  if mismatch → then",
 				"No match: everything goes back",
+				"  if is_bot(player) → then",
 				"  East (bot) may: Continue"
 			],
 			[
@@ -8733,10 +9011,7 @@
 				"  hand_2 → revealed: 11",
 				"  if mismatch → then",
 				"No match: everything goes back",
-				"  You may: Continue"
-			],
-			[
-				"[action] Continue",
+				"  if is_bot(player) → else",
 				"[trigger] put_back",
 				"  for shown_card in revealed (1)",
 				"  revealed → hand_2: 11",
@@ -8749,6 +9024,286 @@
 				"[turn] West (bot)",
 				"  done = false",
 				"  West (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [1]",
+				"West reveals You's highest",
+				"  hand_1 → revealed: 12",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  West (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [1, 2]",
+				"West reveals West's lowest",
+				"  hand_2 → revealed: 1",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  West (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (2)",
+				"  revealed → hand_1: 12",
+				"  revealed → hand_2: 1",
+				"  revealed_from = []",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  done = false",
+				"  North (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [3]",
+				"North reveals North's highest",
+				"  hand_3 → revealed: 12",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  North (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_8: 2",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  North (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_3: 12",
+				"  revealed_from = []",
+				"  face down in middle_8: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  done = false",
+				"  East (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [4]",
+				"East reveals East's lowest",
+				"  hand_4 → revealed: 1",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  East (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_4: 8",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  East (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_4: 1",
+				"  revealed_from = []",
+				"  face down in middle_4: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 1",
+				"[turn] You",
+				"  done = false",
+				"  You may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [4]",
+				"You reveals East's highest",
+				"  hand_4 → revealed: 11",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  You may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_6: 4",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → else",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_4: 11",
+				"  revealed_from = []",
+				"  face down in middle_6: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  done = false",
+				"  West (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_7: 7",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  West (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [4]",
+				"West reveals East's highest",
+				"  hand_4 → revealed: 11",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  West (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_4: 11",
+				"  revealed_from = []",
+				"  face down in middle_7: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  done = false",
+				"  North (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_5: 10",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  North (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [1]",
+				"North reveals You's lowest",
+				"  hand_1 → revealed: 1",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  North (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_1: 1",
+				"  revealed_from = []",
+				"  face down in middle_5: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 4",
+				"[turn] East (bot)",
+				"  done = false",
+				"  East (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [3]",
+				"East reveals North's lowest",
+				"  hand_3 → revealed: 3",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  East (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_2: 10",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  East (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_3: 3",
+				"  revealed_from = []",
+				"  face down in middle_2: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 1",
+				"[turn] You",
+				"  done = false",
+				"  You may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_7: 7",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  You may: Reveal, Turn over"
+			],
+			[
+				"[action] Reveal",
+				"  revealed_from = [3]",
+				"You reveals North's lowest",
+				"  hand_3 → revealed: 3",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → else",
+				"[trigger] put_back",
+				"  for shown_card in revealed (1)",
+				"  revealed → hand_3: 3",
+				"  revealed_from = []",
+				"  face down in middle_7: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 2",
+				"[turn] West (bot)",
+				"  done = false",
+				"  West (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_6: 4",
+				"  if mismatch → else",
+				"  if count(shown) == 3 → else",
+				"  West (bot) may: Reveal, Turn over"
+			],
+			[
+				"[action] Turn over",
+				"  face up in middle_8: 2",
+				"  if mismatch → then",
+				"No match: everything goes back",
+				"  if is_bot(player) → then",
+				"  West (bot) may: Continue"
+			],
+			[
+				"[action] Continue",
+				"[trigger] put_back",
+				"  for shown_card in revealed (0)",
+				"  revealed_from = []",
+				"  face down in middle_6: 1 hidden card",
+				"  face down in middle_8: 1 hidden card",
+				"  done = true",
+				"  while not done: repeated 2 times",
+				"  if won → else",
+				"  player = 3",
+				"[turn] North (bot)",
+				"  done = false",
+				"  North (bot) may: Reveal, Turn over"
 			]
 		],
 		"end": {
@@ -8824,7 +9379,7 @@
 			"variables": {
 				"revealed_from": "[]",
 				"done": "false",
-				"player": "2"
+				"player": "3"
 			},
 			"over": false,
 			"result": ""

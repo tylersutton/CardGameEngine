@@ -12,7 +12,8 @@
 			"- Click the leftmost (lowest) or rightmost (highest) card of anyone's hand, yours included, to reveal it in the middle.",
 			"- Or click a face-down card in the middle to turn it over.",
 			"- Keep going while every revealed card shows the same number. Three that match are a trio: you keep it, and your turn ends.",
-			"- As soon as a card doesn't match, your turn ends and everything goes back where it came from. Press Continue.",
+			"- As soon as a card doesn't match, your turn ends and everything goes back where it came from.",
+			"- After a bot's turn, the revealed cards stay in the middle until you press Continue, so you can see them.",
 			"# Tip",
 			"- Everyone sees every revealed card. Remember them!"
 		],
@@ -155,7 +156,12 @@
 						"if": "mismatch",
 						"then": [
 							"log('No match: everything goes back')",
-							"offer('Continue')",
+							{
+								"if": "is_bot(player)",
+								"then": [
+									"offer('Continue')"
+								]
+							},
 							"trigger('put_back')",
 							"done = true"
 						],
@@ -166,7 +172,12 @@
 									"log('%s takes a trio of %ss!' % [name_of(player), text(top(shown), 'value')])",
 									"move(shown, trios)",
 									"revealed_from = []",
-									"offer('Continue')",
+									{
+										"if": "is_bot(player)",
+										"then": [
+											"offer('Continue')"
+										]
+									},
 									"done = true"
 								]
 							}

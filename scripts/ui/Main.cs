@@ -5,7 +5,6 @@ using Godot;
 /// Bots take their turns here; online, inputs go through Net.
 public partial class Main : Control
 {
-    const float BotDelay = 0.6f;
     const string TitleScene = "res://scenes/title.tscn";
     const string LobbyScene = "res://scenes/lobby.tscn";
     const double WatchInterval = 1.0;
@@ -75,8 +74,9 @@ public partial class Main : Control
             table.RefreshPlays();
         };
         designerMenu.DesignerInfoToggled += ShowDesignerInfo;
-        // Offline, whoever plays is most likely making the game; online, they're playing it with others.
-        designerMenu.DesignerInfo = !Net.Online;
+        designerMenu.PlaysForMeToggled += _ => ScheduleBot();
+        // In the editor, whoever plays is making the game; on the table, they're playing it.
+        designerMenu.DesignerInfo = Embedded;
         ShowDesignerInfo(designerMenu.DesignerInfo);
         GetNode<Button>("%GamesButton").Visible = !Embedded;
         if (Embedded)
@@ -92,7 +92,7 @@ public partial class Main : Control
         }
         if (Net.Online)
         {
-            designerMenu.DisableReloadAndSandbox();
+            designerMenu.DisableForOnline();
             GetNode<Button>("%GamesButton").Text = Net.IsHost() ? "Lobby" : "Leave";
             GetNode<Button>("%GamesButton").TooltipText = Net.IsHost() ? "Back to the lobby, for everyone" : "Leave the match (rejoin under the same name)";
             foreach ((string text, Action pressed) in HostChoicesWhenOver())
@@ -265,19 +265,21 @@ public partial class Main : Control
         GetNode<Button>("%UndoButton").Disabled = Game!.History.Count == 0;
     }
 
-    /// Bots play on the host only; everyone else gets their moves like any other input.
+    /// Bots play on the host only; everyone else gets their moves like any other input. Offline, a bot can also
+    /// play for the people at this screen (Bot plays for me).
     async void ScheduleBot()
     {
-        if (botWaiting || !Game!.IsBotTurn() || Net.Online && !Net.IsHost())
+        bool playsForMe = designerMenu.PlaysForMe && !Net.Online;
+        if (botWaiting || Game == null || !(Game.IsBotTurn() || playsForMe) || Net.Online && !Net.IsHost())
         {
             return;
         }
         botWaiting = true;
-        await ToSignal(GetTree().CreateTimer(BotDelay), Timer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(designerMenu.BotDelay), Timer.SignalName.Timeout);
         botWaiting = false;
         if (IsInsideTree())
         {
-            bot!.TakeInput();
+            bot!.TakeInput(designerMenu.PlaysForMe && !Net.Online);
         }
     }
 }

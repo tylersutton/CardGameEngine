@@ -6,8 +6,13 @@ namespace Core;
 /// group_sizes). Static methods are helpers, not building blocks. See docs/reference.md.
 public class Actions(Game game, Card? stepCard = null)
 {
-    public void Draw(Zone from, Zone to, int amount = 1)
+    /// face: 'up' or 'down' to land the cards that way, instead of the way the zone shows them.
+    public void Draw(Zone from, Zone to, int amount = 1, string face = "")
     {
+        if (!ReadFace(face, out bool? faceUp))
+        {
+            return;
+        }
         for (int i = 0; i < amount; i++)
         {
             if (from.IsEmpty)
@@ -18,7 +23,7 @@ public class Actions(Game game, Card? stepCard = null)
             {
                 return;
             }
-            game.Move(from.Cards[^1], to);
+            game.Move(from.Cards[^1], to, faceUp);
         }
     }
 
@@ -34,38 +39,28 @@ public class Actions(Game game, Card? stepCard = null)
         }
     }
 
-    public void Move(object? cards, Zone to)
+    public void Move(object? cards, Zone to, string face = "")
     {
+        if (!ReadFace(face, out bool? faceUp))
+        {
+            return;
+        }
         foreach (Card card in CardsIn(cards))
         {
-            game.Move(card, to);
+            game.Move(card, to, faceUp);
         }
     }
+
+    /// Whether the player is played by the computer, e.g. to pause for people to see what a bot revealed.
+    public bool IsBot(int player) => game.IsBot(player);
 
     /// Two cards trade places, each taking the other's zone and spot in it: Sorry!'s 11, or turning a two-way card
     /// round by trading it for its other side, kept in a box. A sorted zone stays sorted.
     public void Swap(Card? card, Card? other)
     {
-        if (card == null || other == null || card == other)
+        if (card != null && other != null && card != other)
         {
-            return;
-        }
-        Zone cardZone = game.ZoneOf(card);
-        Zone otherZone = game.ZoneOf(other);
-        int cardIndex = cardZone.Cards.IndexOf(card);
-        int otherIndex = otherZone.Cards.IndexOf(other);
-        if (cardZone != otherZone)
-        {
-            game.Move(card, otherZone);
-            game.Move(other, cardZone);
-        }
-        if (cardZone.SortColumns.Count == 0)
-        {
-            cardZone.Reorder(other, cardIndex);
-        }
-        if (otherZone.SortColumns.Count == 0)
-        {
-            otherZone.Reorder(card, otherIndex);
+            game.Swap(card, other);
         }
     }
 
@@ -562,6 +557,18 @@ public class Actions(Game game, Card? stepCard = null)
         IEnumerable items and not string and not IDictionary => items.Cast<object?>().SelectMany(CardsIn).ToList(),
         _ => [],
     };
+
+    /// '' (the zone's way), 'up' or 'down'.
+    bool ReadFace(string face, out bool? faceUp)
+    {
+        faceUp = face switch { "up" => true, "down" => false, _ => null };
+        if (face.Length > 0 && faceUp == null)
+        {
+            game.ReportFailure($"face should be 'up' or 'down', not '{face}'");
+            return false;
+        }
+        return true;
+    }
 
     Board? BoardOf(Zone space)
     {

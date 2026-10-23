@@ -94,6 +94,40 @@ public class StepLanguageTests
     }
 
     [Fact]
+    public void CardsCanLandFaceDownInAFaceUpZone()
+    {
+        game.Run(["flip(deck)"]);
+        List<string> lines = [];
+        game.GameLog.Logged += lines.Add;
+        game.Run(["draw(deck, pile, 2, 'down')", "move(top(deck), pile, 'up')"]);
+        Assert.Empty(failures);
+        Assert.Equal([false, false, true], game.Zones["pile"].Cards.Select(card => card.FaceUp));
+        Assert.Contains(lines, line => line.Contains("2 hidden cards"));
+        game.Run(["draw(deck, pile, 1, 'sideways')"]);
+        Assert.Contains(failures, failure => failure.Contains("'up' or 'down'"));
+    }
+
+    [Fact]
+    public void ASwapIsLoggedAsOneChange()
+    {
+        game.Run(["draw(deck, hand, 2)", "draw(deck, pile)"]);
+        List<string> lines = [];
+        game.GameLog.Logged += lines.Add;
+        game.Run(["swap(all(hand)[0], top(pile))"]);
+        Assert.Single(lines, line => line.Contains('↔'));
+        Assert.DoesNotContain(lines, line => line.Contains('→'));
+        Assert.True(GameLog.ForPlayers(lines.Single(line => line.Contains('↔'))));
+    }
+
+    [Fact]
+    public void IsBot()
+    {
+        Expect("is_bot(1)", false);
+        Game withBot = StepLanguageGame.Create("""{ "bot": { "players": [2] } }""");
+        Assert.Equal(true, withBot.Evaluate("is_bot(2)"));
+    }
+
+    [Fact]
     public void ConditionsAndColumnsSeeTheStepsCard()
     {
         Assert.Equal(true, game.Evaluate("is_ace", Ace));

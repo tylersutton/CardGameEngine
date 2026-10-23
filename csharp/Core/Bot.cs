@@ -21,10 +21,11 @@ public class Bot
         random = seed is int fixedSeed ? new(fixedSeed) : new();
     }
 
-    /// The bot whose turn it is makes one move; false if it isn't a bot's turn, or it can't move.
-    public bool TakeInput()
+    /// The bot whose turn it is makes one move; false if it isn't a bot's turn, or it can't move. forPeople: on a
+    /// person's turn too, playing for them.
+    public bool TakeInput(bool forPeople = false)
     {
-        if (!game.IsBotTurn() || game.Over)
+        if (!(forPeople || game.IsBotTurn()) || game.Over)
         {
             return false;
         }
