@@ -39,6 +39,8 @@ public partial class TableView : Control
     CardView? zoomView;
     Zone? hoverZone;
     bool hoverAllowed;
+    /// The cards and empty zones this screen's player could do something with now (Plays.Playable).
+    HashSet<object> playable = [];
     readonly List<CardView> carriedViews = [];
     readonly List<Vector2> carriedOffsets = [];
 
@@ -71,7 +73,11 @@ public partial class TableView : Control
             QueueRedraw();
             RefreshViews();
         };
-        game.StateChanged += RefreshViews;
+        game.StateChanged += () =>
+        {
+            FindPlayable();
+            RefreshViews();
+        };
         LayoutAll();
         QueueRedraw();
     }
@@ -138,6 +144,13 @@ public partial class TableView : Control
         return groups;
     }
 
+    /// Pointed out only on this screen's turn, when nothing is being chosen, and while the rules hold.
+    void FindPlayable()
+    {
+        bool pointsOut = game!.IsLocalTurn() && !game.Choice.IsOpen && !game.Sandbox && !game.Over;
+        playable = pointsOut ? game.Plays.Playable() : [];
+    }
+
     void RefreshViews()
     {
         QueueRedraw();
@@ -145,6 +158,7 @@ public partial class TableView : Control
         {
             view.FaceUp = ShowsFace(card);
             view.Highlighted = game!.Choice.Options.Contains(card) && game.IsLocalTurn();
+            view.Playable = playable.Contains(card);
             view.Selected = game.Choice.Selected.Contains(card);
             view.Movable = game.MayHandle(card);
             view.MarksText = string.Join(" ", card.Marks.Values.Select(Values.Format));
@@ -484,6 +498,10 @@ public partial class TableView : Control
                 DrawString(font, namePosition, $"{zone.Name} ({zone.Cards.Count})", HorizontalAlignment.Center, slot.Size.X + LabelOverhang * 2, LabelFontSize, LabelColor);
             }
         }
+        foreach (Zone zone in playable.OfType<Zone>())
+        {
+            DrawHighlight(zone, CardView.PlayableStyle);
+        }
         if (game.IsLocalTurn())
         {
             foreach (Zone zone in game.Choice.Options.OfType<Zone>())
@@ -548,7 +566,7 @@ public partial class TableView : Control
     {
         if (zone.Board?.Shape == Board.Hex)
         {
-            DrawPolyline(HexCorners(zone, CardView.HighlightWidth / 2f), style.BorderColor, CardView.HighlightWidth, true);
+            DrawPolyline(HexCorners(zone, CardView.HighlightWidth / 2f), style.BorderColor, style.BorderWidthTop, true);
             return;
         }
         DrawStyleBox(style, SlotRect(zone).Grow(CardView.HighlightWidth / 2f));

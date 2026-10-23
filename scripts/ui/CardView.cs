@@ -30,6 +30,7 @@ public partial class CardView : Control
     const int MarksFontSize = 13;
     static readonly Color HighlightColor = new(1, 0.85f, 0.2f);
     static readonly Color SelectedColor = new(0.3f, 0.75f, 1);
+    static readonly Color PlayableColor = new(1, 1, 1, 0.7f);
     static readonly Color AllowedColor = new(0.35f, 0.9f, 0.45f);
     static readonly Color RefusedColor = new(0.95f, 0.35f, 0.3f);
     static readonly Color MarksBackground = new(0.1f, 0.1f, 0.1f, 0.8f);
@@ -49,6 +50,7 @@ public partial class CardView : Control
     static readonly StyleBoxFlat imageEdgeStyle = OutlineBox(FaceBorder, 1, CornerRadius);
     static readonly Dictionary<Color, StyleBoxFlat> backStylesByColor = [];
     public static readonly StyleBoxFlat HighlightStyle = OutlineBox(HighlightColor);
+    public static readonly StyleBoxFlat PlayableStyle = OutlineBox(PlayableColor, 3, 12, 3);
     static readonly StyleBoxFlat selectedStyle = OutlineBox(SelectedColor);
     public static readonly StyleBoxFlat AllowedStyle = OutlineBox(AllowedColor);
     public static readonly StyleBoxFlat RefusedStyle = OutlineBox(RefusedColor);
@@ -74,6 +76,7 @@ public partial class CardView : Control
     bool faceUp = true;
     bool highlighted;
     bool selected;
+    bool playable;
     DropHint hint;
     string marksText = "";
     float lift;
@@ -98,6 +101,17 @@ public partial class CardView : Control
         set
         {
             highlighted = value;
+            QueueRedraw();
+        }
+    }
+
+    /// Something the player could do now would use this card (Plays.Playable): fainter than a choice's highlight.
+    public bool Playable
+    {
+        get => playable;
+        set
+        {
+            playable = value;
             QueueRedraw();
         }
     }
@@ -254,7 +268,7 @@ public partial class CardView : Control
         }
         if (OutlineStyle() is { } outline && Shape() == Disc)
         {
-            DrawArc(rect.GetCenter(), rect.Size.X / 2 + HighlightWidth / 2f, 0, Mathf.Tau, 48, outline.BorderColor, HighlightWidth, true);
+            DrawArc(rect.GetCenter(), rect.Size.X / 2 + HighlightWidth / 2f + outline.ExpandMarginTop, 0, Mathf.Tau, 48, outline.BorderColor, outline.BorderWidthTop, true);
         }
         else if (OutlineStyle() is { } box)
         {
@@ -337,7 +351,11 @@ public partial class CardView : Control
         {
             return selectedStyle;
         }
-        return Highlighted ? HighlightStyle : null;
+        if (Highlighted)
+        {
+            return HighlightStyle;
+        }
+        return Playable ? PlayableStyle : null;
     }
 
     /// A card's face: its image covering the whole card ("full", the default layout, for cards whose picture has
@@ -510,11 +528,13 @@ public partial class CardView : Control
         return box;
     }
 
-    static StyleBoxFlat OutlineBox(Color color, int width = HighlightWidth, float radius = 10)
+    /// An outline drawn round a card; "outside" moves it that far out, onto the table, to show on white cards too.
+    static StyleBoxFlat OutlineBox(Color color, int width = HighlightWidth, float radius = 10, float outside = 0)
     {
         StyleBoxFlat box = new() { DrawCenter = false, BorderColor = color };
         box.SetBorderWidthAll(width);
         box.SetCornerRadiusAll((int)radius);
+        box.SetExpandMarginAll(outside);
         return box;
     }
 }

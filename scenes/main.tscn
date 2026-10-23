@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scripts/ui/LogView.cs" id="3_log"]
 [ext_resource type="Script" path="res://scripts/ui/StatusView.cs" id="4_status"]
 [ext_resource type="Script" path="res://scripts/ui/DesignerMenu.cs" id="5_designer"]
+[ext_resource type="Script" path="res://scripts/ui/ActionDock.cs" id="6_dock"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_undo"]
 command_or_control_autoremap = true
@@ -82,6 +83,7 @@ theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
+script = ExtResource("6_dock")
 
 [node name="DockRows" type="VBoxContainer" parent="Layout/TableColumn/ActionDock"]
 layout_mode = 2

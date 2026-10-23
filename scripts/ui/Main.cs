@@ -1,8 +1,8 @@
 using Core;
 using Godot;
 
-/// The play screen: the toolbar (undo, the designer menu), the table, the dock under it (the bar for choices and offers,
-/// and the action buttons), and the log. Bots take their turns here; online, inputs go through Net.
+/// The play screen: the toolbar (undo, the designer menu), the table, the dock under it (ActionDock) and the log.
+/// Bots take their turns here; online, inputs go through Net.
 public partial class Main : Control
 {
     const float BotDelay = 0.6f;
@@ -30,6 +30,7 @@ public partial class Main : Control
     TableView table = null!;
     LogView log = null!;
     StatusView status = null!;
+    ActionDock dock = null!;
     DesignerMenu designerMenu = null!;
     WinnerBanner banner = null!;
     Net Net => Net.Instance;
@@ -39,6 +40,8 @@ public partial class Main : Control
         table = GetNode<TableView>("%TableView");
         log = GetNode<LogView>("%LogView");
         status = GetNode<StatusView>("%StatusView");
+        dock = GetNode<ActionDock>("%ActionDock");
+        dock.Submit = Submit;
         designerMenu = GetNode<DesignerMenu>("%DesignerMenu");
         banner = new() { Over = table };
         AddChild(banner);
@@ -82,6 +85,8 @@ public partial class Main : Control
             {
                 banner.AddButton(text, pressed);
             }
+            dock.ChoicesWhenOver = HostChoicesWhenOver();
+            dock.WaitingWhenOver = Net.IsHost() ? "" : "Waiting for the host to play again or go back to the lobby";
             Net.MatchStarted += LoadGame;
             Net.MatchEnded += GoToLobby;
             Net.UndoAsked += AskUndo;
@@ -106,7 +111,7 @@ public partial class Main : Control
     public void ShowPlayControls(bool shown)
     {
         GetNode<Control>("Layout/TableColumn/ToolbarMargin").Visible = shown;
-        GetNode<Control>("%ActionDock").Visible = shown;
+        dock.Visible = shown;
         GetNode<Control>("Layout/LogPanel").Visible = shown;
     }
 
@@ -196,15 +201,15 @@ public partial class Main : Control
         log.ClearLines();
         Game.GameLog.Logged += log.Add;
         Game.Failed += log.AddError;
-        Game.StateChanged += RefreshActionButtons;
-        Game.StateChanged += RefreshChoiceBar;
+        Game.StateChanged += RefreshUndo;
+        Game.StateChanged += dock.Refresh;
         Game.StateChanged += ScheduleBot;
         bot = new(Game);
         table.Submit = Submit;
         table.ShowGame(Game);
         status.ShowGame(Game);
         banner.ShowGame(Game);
-        AddActionButtons();
+        dock.ShowGame(Game);
         Game.Start();
         if (Net.Online)
         {
@@ -221,8 +226,8 @@ public partial class Main : Control
         }
         Game.GameLog.Logged -= log.Add;
         Game.Failed -= log.AddError;
-        Game.StateChanged -= RefreshActionButtons;
-        Game.StateChanged -= RefreshChoiceBar;
+        Game.StateChanged -= RefreshUndo;
+        Game.StateChanged -= dock.Refresh;
         Game.StateChanged -= ScheduleBot;
     }
 
@@ -237,99 +242,13 @@ public partial class Main : Control
         if (Game != null)
         {
             Game.Sandbox = enabled;
-            RefreshActionButtons();
+            Game.AnnounceStateChanged();
         }
     }
 
-    void AddActionButtons()
-    {
-        Container buttons = GetNode<Container>("%ActionButtons");
-        foreach (Node button in buttons.GetChildren())
-        {
-            button.Free();
-        }
-        foreach (string actionName in Game!.Rules.Actions.Keys.Where(Game.Plays.ShowsButton))
-        {
-            Button button = new() { Text = actionName };
-            button.Pressed += () => Submit(PlayerInput.Perform(actionName));
-            buttons.AddChild(button);
-        }
-    }
-
-    void RefreshActionButtons()
+    void RefreshUndo()
     {
         GetNode<Button>("%UndoButton").Disabled = Game!.History.Count == 0;
-        foreach (Button button in GetNode<Container>("%ActionButtons").GetChildren().Cast<Button>())
-        {
-            button.Disabled = !Game.Plays.CanPerform(button.Text) || !MayPress(button.Text);
-        }
-    }
-
-    bool MayPress(string actionName) => Game!.MayAct(Game.Viewer(), PlayerInput.Perform(actionName));
-
-    void RefreshChoiceBar()
-    {
-        Container bar = GetNode<Container>("%ChoiceBar");
-        foreach (Node child in bar.GetChildren())
-        {
-            bar.RemoveChild(child);
-            child.QueueFree();
-        }
-        Choice choice = Game!.Choice;
-        bool pickingCards = choice.CardsOffered && !choice.Exactly;
-        // The bar keeps its space even when empty, so the table doesn't jump up and down as choices come and go.
-        bool shown = Game.Over || (choice.IsOpen || Game.Plays.Offered.Count > 0) && Game.IsLocalTurn();
-        if (!shown)
-        {
-            return;
-        }
-        if (Game.Over)
-        {
-            bar.AddChild(new Label { Text = Game.ResultText() });
-            foreach ((string text, Action pressed) in HostChoicesWhenOver())
-            {
-                AddChoiceButton(text, pressed);
-            }
-            if (Net.Online && !Net.IsHost())
-            {
-                bar.AddChild(new Label { Text = "Waiting for the host to play again or go back to the lobby" });
-            }
-            return;
-        }
-        if (!choice.IsOpen)
-        {
-            bar.AddChild(new Label { Text = "Your turn: " + string.Join(" or ", Game.Plays.Offered) });
-            return;
-        }
-        Label prompt = new() { Text = choice.Title + ":" };
-        if (pickingCards)
-        {
-            prompt.Text += $" choose up to {choice.Pick} ({choice.Selected.Count} selected)";
-        }
-        else if (choice.CardsOffered)
-        {
-            prompt.Text += " click " + (choice.Pick == 1 ? "a highlighted card" : $"{choice.Pick} highlighted cards ({choice.Selected.Count} selected)");
-        }
-        bar.AddChild(prompt);
-        if (pickingCards)
-        {
-            AddChoiceButton("Done", () => Submit(PlayerInput.Finish()));
-        }
-        else if (!choice.CardsOffered)
-        {
-            foreach (object? option in choice.Options)
-            {
-                object? sent = option is Zone zone ? zone.Name : option;
-                AddChoiceButton(choice.OptionText(option), () => Submit(PlayerInput.Choose(sent)));
-            }
-        }
-    }
-
-    void AddChoiceButton(string text, Action onPressed)
-    {
-        Button button = new() { Text = text };
-        button.Pressed += onPressed;
-        GetNode<Container>("%ChoiceBar").AddChild(button);
     }
 
     /// Bots play on the host only; everyone else gets their moves like any other input.

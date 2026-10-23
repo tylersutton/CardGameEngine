@@ -87,13 +87,31 @@ public class Plays
     /// The button whose choice of several cards clicking this card starts, with the card picked (President's Play:
     /// click the cards, then Done), or "". A choice of one card isn't started by a click, which would make it at once.
     public string ChoiceStartedBy(Card card) =>
-        game.Rules.Actions.Keys.FirstOrDefault(actionName =>
+        game.Rules.Actions.Keys.FirstOrDefault(actionName => StartsChoiceOnClick(actionName) && ChoiceOptions(actionName).Contains(card)) ?? "";
+
+    /// What the current player could do something with now, for the table to point out: the cards a drag or click
+    /// could be done with (or a click would start a button's choice with), and the empty zones a click works on.
+    public HashSet<object> Playable()
+    {
+        HashSet<object> playable = [];
+        foreach ((string actionName, Dictionary<string, object?> action) in game.Rules.Actions)
         {
-            Dictionary<string, object?> action = game.Rules.Actions[actionName];
-            bool picksSeveral = action.ContainsKey("up_to") || action.GetValueOrDefault("pick") is not (null or 1.0);
-            return action.GetValueOrDefault("choose") is string options && picksSeveral && !IsCardAction(action) && ShowsButton(actionName)
-                && CanPerform(actionName) && Choice.OptionsFrom(game.Evaluate(options)).Contains(card);
-        }) ?? "";
+            if (IsAnyTime(actionName) || !IsOfferedNow(actionName))
+            {
+                continue;
+            }
+            if (IsCardAction(action))
+            {
+                playable.UnionWith(PlayableCards(actionName));
+                playable.UnionWith(ClickableEmptyZones(actionName));
+            }
+            else if (StartsChoiceOnClick(actionName))
+            {
+                playable.UnionWith(ChoiceOptions(actionName).OfType<Card>());
+            }
+        }
+        return playable;
+    }
 
     /// "any_time" actions (like sorting a hand) can be done by anyone, on anyone's turn, as themselves.
     public bool IsAnyTime(string actionName) => game.Rules.Actions[actionName].GetValueOrDefault("any_time") is true;
@@ -311,6 +329,16 @@ public class Plays
     {
         dragRoutesByPlayer.Clear();
     }
+
+    /// A button whose choice is of several cards, which a click on one of them starts (see ChoiceStartedBy).
+    bool StartsChoiceOnClick(string actionName)
+    {
+        Dictionary<string, object?> action = game.Rules.Actions[actionName];
+        bool picksSeveral = action.ContainsKey("up_to") || action.GetValueOrDefault("pick") is not (null or 1.0);
+        return action.GetValueOrDefault("choose") is string && picksSeveral && !IsCardAction(action) && ShowsButton(actionName) && CanPerform(actionName);
+    }
+
+    List<object?> ChoiceOptions(string actionName) => Choice.OptionsFrom(game.Evaluate((string)game.Rules.Actions[actionName]["choose"]!));
 
     string FirstAllowed(List<string> actionNames, Card card, Zone source, Zone destination) =>
         game.WithMove(source, destination, () =>

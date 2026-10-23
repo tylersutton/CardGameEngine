@@ -49,6 +49,15 @@ public class TurnTests
     static PlayerInput DragTo(Card card, string zone) => new("drag") { Card = card.Id, To = zone };
 
     [Fact]
+    public void PlayableIsWhatTheOfferedActionsCouldBeDoneWith()
+    {
+        Game game = GameWith();
+        Assert.Equal([game.Zones["deck"].Cards[^1], game.Zones["discard"]], game.Plays.Playable());
+        game.Apply(PlayerInput.Click(game.Zones["deck"].Cards[^1]));
+        Assert.Equal([.. game.Zones["hand_1"].Cards, game.Zones["discard"]], game.Plays.Playable());
+    }
+
+    [Fact]
     public void OffersAndActions()
     {
         Game game = GameWith();
