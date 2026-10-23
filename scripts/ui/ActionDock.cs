@@ -65,7 +65,7 @@ public partial class ActionDock : MarginContainer
         foreach (Button button in Buttons())
         {
             string actionName = button.Text;
-            bool canPress = game!.Plays.CanPerform(actionName) && game.MayAct(game.Viewer(), PlayerInput.Perform(actionName));
+            bool canPress = game!.Plays.CanPerform(actionName) && MayPress(actionName);
             button.Visible = ShowsNow(actionName);
             button.Disabled = !canPress;
             SetAccent(button, canPress && !game.Plays.IsAnyTime(actionName));
@@ -76,7 +76,11 @@ public partial class ActionDock : MarginContainer
 
     /// An action that's only done when offered shows while it's offered to this screen; the others always show.
     bool ShowsNow(string actionName) =>
-        game!.Sandbox || !game.Plays.OfferedActions.Contains(actionName) || game.Plays.Offered.Contains(actionName) && game.IsLocalTurn();
+        game!.Sandbox || !game.Plays.OfferedActions.Contains(actionName) || game.Plays.Offered.Contains(actionName) && MayPress(actionName);
+
+    /// Whether the person at this screen may press it: on their turn, or any time for a "human_only" button (like
+    /// Next hand, which waits for a person even on a bot's turn) or an "any_time" one.
+    bool MayPress(string actionName) => game!.MayAct(game.Viewer(), PlayerInput.Perform(actionName));
 
     void RefreshChoiceBar()
     {
@@ -87,7 +91,8 @@ public partial class ActionDock : MarginContainer
         }
         Choice choice = game!.Choice;
         bool pickingCards = choice.CardsOffered && !choice.Exactly;
-        if (!game.Over && !game.IsLocalTurn())
+        List<string> offeredHere = game.Plays.Offered.Where(MayPress).ToList();
+        if (!game.Over && !game.IsLocalTurn() && (choice.IsOpen || offeredHere.Count == 0))
         {
             string waitingFor = game.SeatName(game.CurrentPlayer());
             choiceBar.AddChild(new Label { Text = game.IsBotTurn() ? $"{waitingFor} is thinking…" : $"Waiting for {waitingFor}…" });
@@ -114,7 +119,7 @@ public partial class ActionDock : MarginContainer
         }
         if (!choice.IsOpen)
         {
-            choiceBar.AddChild(new Label { Text = "Your turn: " + string.Join(" or ", game.Plays.Offered) });
+            choiceBar.AddChild(new Label { Text = "Your turn: " + string.Join(" or ", offeredHere) });
             return;
         }
         Label prompt = new() { Text = choice.Title + ":" };

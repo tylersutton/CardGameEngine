@@ -3,7 +3,7 @@ using Editing;
 using Godot;
 
 /// Opens the real screens: the title screen, the lobby, every game on the table screen with bots playing every seat
-/// for a few moves, the dock's keys, dimmed cards, and every game in the editor (edited and undone back to the file). Reports load
+/// for a few moves, the dock's keys, dimmed cards, Next hand on a bot's turn, and every game in the editor (edited and undone back to the file). Reports load
 /// errors, failed steps and errors Godot reports.
 /// Run: godot --headless res://tests/ui_test.tscn
 public partial class UiTest : Node
@@ -31,6 +31,7 @@ public partial class UiTest : Node
         }
         await PressKeys();
         await DimOffSuitCards();
+        await NextHandOnABotsTurn();
         problems.AddRange(scriptErrors.Messages);
         GD.Print("UI TEST: ", problems.Count == 0 ? "all passed" : "FAILED\n  " + string.Join("\n  ", problems));
         GetTree().Quit(problems.Count == 0 ? 0 : 1);
@@ -286,6 +287,32 @@ public partial class UiTest : Node
         if (!MustFollowWithOthers() || !dimmed.SequenceEqual(hand.Where(card => card.Data["suit"] != leadSuit)))
         {
             problems.Add($"dimming: in Hearts, following {leadSuit}, dimmed {string.Join(", ", dimmed.Select(card => card.Title))}");
+        }
+        main.QueueFree();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+    }
+
+    /// Gin Rummy: a hand that ends on the bot's turn waits for a person to press Next hand, so the dock offers it.
+    async Task NextHandOnABotsTurn()
+    {
+        Main main = GD.Load<PackedScene>(MainScene).Instantiate<Main>();
+        main.RulesPath = "res://games/gin_rummy.jsonc";
+        AddChild(main);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Game game = main.Game!;
+        game.Rules.Bot["players"] = new List<object?> { 1.0, 2.0 };
+        Bot bot = new(game);
+        for (int move = 0; move < 500 && !game.Plays.Offered.Contains("Next hand"); move++)
+        {
+            bot.TakeInput();
+        }
+        game.Rules.Bot["players"] = new List<object?> { (double)game.CurrentPlayer() };
+        game.AnnounceStateChanged();
+        Button? nextHand = main.GetNode("%ActionButtons").GetChildren().OfType<Button>().FirstOrDefault(button => button.Text == "Next hand");
+        string prompt = string.Join(" ", main.GetNode("%ChoiceBar").GetChildren().OfType<Label>().Select(label => label.Text));
+        if (!game.Plays.Offered.Contains("Next hand") || nextHand is not { Visible: true, Disabled: false } || prompt.Contains("thinking"))
+        {
+            problems.Add($"Next hand on a bot's turn: offered {string.Join(", ", game.Plays.Offered)}; dock says \"{prompt}\"");
         }
         main.QueueFree();
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
